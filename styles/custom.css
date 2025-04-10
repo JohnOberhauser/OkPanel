@@ -1,0 +1,68 @@
+/* Round all Material buttons */
+.md-button {
+    border-radius: 999px !important; /* Fully rounded */
+    padding: 0.4em 1.2em; /* Optional: tweak padding for better shape */
+}
+
+/* Search bar input */
+.md-search__input {
+    background-color: #2A3540;
+    color: #AFB3BD;
+}
+
+.md-search-result__meta {
+    background-color: #2A3540;
+    color: #AFB3BD;
+}
+
+/* Increase the width of the main content area */
+.md-grid {
+    max-width: 80rem; /* default is 61rem */
+}
+
+.md-copyright {
+    display: none !important;
+}
+
+:root  > * {
+    --md-primary-fg-color:        #7C545F;
+    --md-primary-fg-color--light: #7C545F;
+    --md-primary-fg-color--dark:  #7C545F;
+    --md-primary-bg-color:        #AFB3BD;
+    --md-primary-bg-color--light: #AFB3BD;
+
+    --md-accent-fg-color:                #7C7C54;
+    --md-accent-fg-color--transparent:   #7C7C54;
+    --md-accent-bg-color:                #1F2932;
+    --md-accent-bg-color--light:         #1F2932;
+
+    --md-default-fg-color:               #AFB3BD;
+    --md-default-fg-color--light:        #C0C4CC;
+    --md-default-fg-color--lighter:      #D1D4DC;
+    --md-default-fg-color--lightest:     #E2E5EC;
+    --md-default-bg-color:               #1F2932;
+    --md-default-bg-color--light:        #2A3540;
+    --md-default-bg-color--lighter:      #38434D;
+    --md-default-bg-color--lightest:     #48525C;
+
+    --md-code-fg-color:                  #E2E5EC;
+    --md-code-bg-color:                  #2A3540;
+
+    --md-code-hl-color:                  #7C545F;
+    --md-code-hl-color--light:           #7C545F;
+
+    --md-typeset-table-color:            #AFB3BD;
+    --md-typeset-table-color--light:     #2A3540;
+
+    --md-admonition-fg-color:            #AFB3BD;
+    --md-admonition-bg-color:            #1F2932;
+
+    --md-warning-fg-color:              #1F2932;
+    --md-warning-bg-color:              #7C7C54;
+
+    --md-footer-fg-color:                #AFB3BD;
+    --md-footer-fg-color--light:         #C0C4CC;
+    --md-footer-fg-color--lighter:       #D1D4DC;
+    --md-footer-bg-color:                #1F2932;
+    --md-footer-bg-color--dark:          #1F2932;
+}
