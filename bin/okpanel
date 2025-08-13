@@ -54,7 +54,7 @@ run_run_command() {
 	trap cleanup SIGINT SIGTERM
 
 	echo "Starting ags..."
-	ags run --gtk4 -d $dir -a $dir
+	agsv2 run --gtk4 -d $dir -a $dir
 }
 
 cleanup() {
@@ -63,7 +63,7 @@ cleanup() {
 
 quit() {
 	cleanup
-	ags quit -i "OkPanel"
+	agsv2 quit -i "OkPanel"
 }
 
 main() {
