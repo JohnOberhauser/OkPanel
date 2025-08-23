@@ -1,5 +1,4 @@
 import App from "ags/gtk4/app"
-import Calendar from "./widget/calendar/Calendar"
 import SystemMenuWindow from "./widget/systemMenu/SystemMenuWindow";
 import {VolumeAlert, BrightnessAlert, ChargingAlertSound} from "./widget/alerts/Alerts";
 import NotificationPopups from "./widget/notification/NotificationPopups";
@@ -37,7 +36,6 @@ App.start({
 
         VerticalBar()
         HorizontalBar()
-        // Calendar()
         SystemMenuWindow()
         ChargingAlertSound()
         AppLauncher()
