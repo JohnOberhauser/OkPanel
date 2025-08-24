@@ -7,13 +7,46 @@ import {SystemMenuWindowName} from "../SystemMenuWindow";
 import Pango from "gi://Pango?version=1.0";
 import RevealerRow from "../../common/RevealerRow";
 import OkButton from "../../common/OkButton";
-import {createBinding, createComputed, createState, For, State, With} from "ags";
+import {createBinding, createComputed, createState, For, Setter, State, With} from "ags";
 
 const [wifiConnections, wifiConnectionsSetter] = createState<string[]>([])
 const [inactiveWifiConnections, inactiveWifiConnectionsSetter] = createState<string[]>([])
 const [activeWifiConnections, activeWifiConnectionsSetter] = createState<string[]>([])
 const [vpnConnections, vpnConnectionsSetter] = createState<string[]>([])
 export const [activeVpnConnections, activeVpnConnectionsSetter] = createState<string[]>([])
+const [airplaneModeEnabled, airplaneModelEnabledSetter] = createState(false)
+
+function updateAirplaneMode() {
+    execAsync(["bash", "-c", `nmcli networking`])
+        .catch((error) => {
+            console.error(error)
+        })
+        .then((value) => {
+            if (typeof value !== "string") {
+                return
+            }
+            const enabled = value.trim() === "disabled"
+            airplaneModelEnabledSetter(enabled)
+        })
+}
+
+function enableAirplaneMode() {
+    execAsync(["bash", "-c", `nmcli networking off`])
+        .catch((error) => {
+            console.error(error)
+        }).finally(() => {
+            updateAirplaneMode()
+        })
+}
+
+function disableAirplaneMode() {
+    execAsync(["bash", "-c", `nmcli networking on`])
+        .catch((error) => {
+            console.error(error)
+        }).finally(() => {
+            updateAirplaneMode()
+        })
+}
 
 function ssidInRange(ssid: string) {
     const network = AstalNetwork.get_default()
@@ -162,7 +195,8 @@ function addWireguardConnection()
     dialog.show();
 }
 
-function connectVpn(name: string) {
+function connectVpn(name: string, isConnectingSetter: Setter<boolean>) {
+    isConnectingSetter(true)
     // first disconnect any existing vpn connections
     activeVpnConnections.get().forEach((vpnName) => {
         execAsync(["bash", "-c", `nmcli connection down "${vpnName}"`])
@@ -176,7 +210,30 @@ function connectVpn(name: string) {
             console.error(error)
         }).finally(() => {
             updateConnections()
+            isConnectingSetter(false)
         })
+}
+
+function AirplaneMode() {
+    return <box
+        marginStart={20}
+        marginEnd={20}
+        orientation={Gtk.Orientation.HORIZONTAL}>
+        <label
+            halign={Gtk.Align.START}
+            hexpand={true}
+            label="󰀝  Airplane mode"
+            cssClasses={["labelMedium"]}/>
+        <switch
+            onNotifyActive={(self) => {
+                if (self.active) {
+                    enableAirplaneMode()
+                } else {
+                    disableAirplaneMode()
+                }
+            }}
+            active={airplaneModeEnabled}/>
+    </box>
 }
 
 function PasswordEntry(
@@ -543,8 +600,7 @@ function VpnConnections() {
                                 })}
                                 onClicked={() => {
                                     if (!isConnecting.get()) {
-                                        isConnectingSetter(true)
-                                        connectVpn(connection)
+                                        connectVpn(connection, isConnectingSetter)
                                     }
                                 }}/>
                             <OkButton
@@ -572,6 +628,7 @@ export default function () {
     const network = AstalNetwork.get_default()
 
     updateConnections()
+    updateAirplaneMode()
 
     setTimeout(() => {
         createBinding(App.get_window(SystemMenuWindowName)!, "visible").subscribe(() => {
@@ -619,6 +676,7 @@ export default function () {
                 marginTop={10}
                 orientation={Gtk.Orientation.VERTICAL}
                 spacing={12}>
+                <AirplaneMode/>
                 {network.wifi && <With value={createBinding(network.wifi, "activeAccessPoint")}>
                     {(activeAccessPoint: AstalNetwork.AccessPoint) => {
                         return <box
@@ -644,7 +702,9 @@ export default function () {
         setup={(revealed) => {
             revealed[0].subscribe(() => {
                 if (revealed[0].get()) {
+                    console.log("networking revealed")
                     network.wifi?.scan()
+                    updateAirplaneMode()
                 }
             })
         }}
