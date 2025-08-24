@@ -370,23 +370,25 @@ export default function () {
             <box
                 marginTop={10}
                 orientation={Gtk.Orientation.VERTICAL}>
-                <With value={availableConfigs.asAccessor()}>
-                    {(availConfigs) => {
-                        if (availConfigs.length > 1) {
-                            return <box
-                                orientation={Gtk.Orientation.VERTICAL}>
-                                <ThemeOptions/>
-                                <Divider
-                                    marginStart={20}
-                                    marginEnd={20}
-                                    marginTop={10}
-                                    marginBottom={10}/>
-                            </box>
-                        } else {
-                            return <box/>
-                        }
-                    }}
-                </With>
+                <box>
+                    <With value={availableConfigs.asAccessor()}>
+                        {(availConfigs) => {
+                            if (availConfigs.length > 1) {
+                                return <box
+                                    orientation={Gtk.Orientation.VERTICAL}>
+                                    <ThemeOptions/>
+                                    <Divider
+                                        marginStart={20}
+                                        marginEnd={20}
+                                        marginTop={10}
+                                        marginBottom={10}/>
+                                </box>
+                            } else {
+                                return <box/>
+                            }
+                        }}
+                    </With>
+                </box>
                 <BarPositionOptions/>
                 <box marginTop={20}/>
                 <NightLight/>
