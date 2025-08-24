@@ -24,3 +24,9 @@ window.NotificationPopups {
   margin: 5px 0 5px 0;
   border: 2px solid fun.smart-lighten(vars.$bg);
 }
+
+.notificationIndicator {
+  border-radius: 90px;
+  border: 1px solid vars.$barNotificationHistoryBackground;
+  background-color: vars.$barNotificationHistoryIndicatorForeground;
+}

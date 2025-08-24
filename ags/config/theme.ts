@@ -126,6 +126,7 @@ cat > "$TARGET_DIR/variables.scss" <<EOF
 \\$windowBackgroundColor: ${config.theme.windows.backgroundColor};
 
 \\$barWorkspacesInactiveForeground: ${config.theme.bars.workspaces.inactiveForeground};
+\\$barNotificationHistoryIndicatorForeground: ${config.theme.bars.notification_history.indicatorForeground};
 
 ${widgetLines}
 EOF

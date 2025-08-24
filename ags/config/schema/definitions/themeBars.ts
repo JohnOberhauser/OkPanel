@@ -299,7 +299,16 @@ export const themeBarsSchema = {
             name: BarWidget.NOTIFICATION_HISTORY,
             type: "object",
             description: "Configuration for the notification_history bar widget.",
-            children: [...widgetCommons()],
+            children: [
+                ...widgetCommons(),
+                {
+                    name: 'indicatorForeground',
+                    type: 'color',
+                    default: {from: 'theme.colors.warning'},
+                    description: 'Foreground color of the unread notification indicator.',
+                    reactive: false,
+                },
+            ],
         },
         {
             name: BarWidget.COLOR_PICKER,

@@ -565,29 +565,62 @@ function MprisPrimaryPlayerSwitcher({vertical}: { vertical: boolean }) {
 function NotificationButton({vertical}: { vertical: boolean }) {
     const notifications = Notifd.get_default()
 
-    const derivedNotificationState = createComputed([
-        createBinding(notifications, "notifications"),
+    const notificationIcon = createComputed([
         createBinding(notifications, "dontDisturb")
-    ])
+    ], (doNotDisturb) => {
+        if (doNotDisturb) {
+            return "󰂛"
+        } else{
+            return "󰂚"
+        }
+    })
 
-    return <OkButton
-        labelCss={["barNotificationHistoryForeground"]}
-        backgroundCss={["barNotificationHistoryBackground"]}
-        offset={1}
-        hpadding={getHPadding(vertical)}
-        vpadding={getVPadding(vertical)}
-        label={derivedNotificationState.as(([notificationsList, doNotDisturb]) => {
-            if (doNotDisturb) {
-                return "󰂛"
-            } else if (notificationsList.length === 0) {
-                return "󰂚"
-            } else {
-                return "󱅫"
-            }
-        })}
-        onClicked={() => {
-            toggleWindow(NotificationHistoryWindowName)
-        }}/>
+    const notificationIconOffset = createComputed([
+        createBinding(notifications, "dontDisturb")
+    ], (doNotDisturb) => {
+        if (doNotDisturb) {
+            return 2
+        } else{
+            return 1
+        }
+    })
+
+    const visible = createComputed([
+        createBinding(notifications, "notifications")
+    ], (notificationsList) => {
+        return notificationsList.length > 0
+    })
+
+    return <overlay
+        $={(self) => {
+            self.add_overlay(
+                <box
+                    canTarget={false}
+                    canFocus={false}
+                    hexpand={false}
+                    vexpand={false}
+                    visible={visible}
+                    cssClasses={["notificationIndicator"]}
+                    halign={Gtk.Align.CENTER}
+                    valign={Gtk.Align.CENTER}
+                    widthRequest={7}
+                    heightRequest={7}
+                    marginStart={6}
+                    marginBottom={6}
+                /> as Gtk.Box
+            )
+        }}>
+        <OkButton
+            labelCss={["barNotificationHistoryForeground"]}
+            backgroundCss={["barNotificationHistoryBackground"]}
+            offset={notificationIconOffset}
+            hpadding={getHPadding(vertical)}
+            vpadding={getVPadding(vertical)}
+            label={notificationIcon}
+            onClicked={() => {
+                toggleWindow(NotificationHistoryWindowName)
+            }}/>
+    </overlay>
 }
 
 function ColorPickerButton({vertical}: { vertical: boolean }) {
