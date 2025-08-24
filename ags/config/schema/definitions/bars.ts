@@ -47,7 +47,7 @@ const commonBarChildrenSchema = [
         name: 'enableFrame',
         type: 'boolean',
         default: false,
-        description: 'Adds a full screen frame.',
+        description: '(Experimental) Adds a full screen frame.',
     },
     {
         name: 'widgetSpacing',

@@ -102,7 +102,7 @@ export function MonitorFrameBottom(): Astal.Window {
     })
 
     return <window
-        cssClasses={["transparentBackground"]}
+        cssClasses={["frameWindow"]}
         layer={Astal.Layer.OVERLAY}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
@@ -136,7 +136,7 @@ export function MonitorFrameTop(): Astal.Window {
     })
 
     return <window
-        cssClasses={["transparentBackground"]}
+        cssClasses={["frameWindow"]}
         layer={Astal.Layer.OVERLAY}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
@@ -170,7 +170,7 @@ export function MonitorFrameLeft(): Astal.Window {
     })
 
     return <window
-        cssClasses={["transparentBackground"]}
+        cssClasses={["frameWindow"]}
         layer={Astal.Layer.OVERLAY}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
@@ -204,7 +204,7 @@ export function MonitorFrameRight(): Astal.Window {
     })
 
     return <window
-        cssClasses={["transparentBackground"]}
+        cssClasses={["frameWindow"]}
         layer={Astal.Layer.OVERLAY}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
