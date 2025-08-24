@@ -34,8 +34,16 @@ App.start({
 
         const hyprland = Hyprland.get_default()
 
+        MonitorFrame()
+
         VerticalBar()
         HorizontalBar()
+
+        MonitorFrameRight()
+        MonitorFrameLeft()
+        MonitorFrameBottom()
+        MonitorFrameTop()
+
         SystemMenuWindow()
         ChargingAlertSound()
         AppLauncher()
@@ -43,12 +51,6 @@ App.start({
         Screenshare()
         ClipboardManager()
         NotificationHistoryWindow()
-
-        MonitorFrameRight()
-        MonitorFrameLeft()
-        MonitorFrameBottom()
-        MonitorFrameTop()
-        MonitorFrame()
 
         hyprland.monitors.map((monitor) => {
             VolumeAlert(monitor)

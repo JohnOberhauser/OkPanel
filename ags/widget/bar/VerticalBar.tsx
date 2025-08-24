@@ -117,7 +117,7 @@ export default function () {
         defaultHeight={variableConfig.verticalBar.minimumHeight.asAccessor()}
         defaultWidth={1} // necessary or resizing doesn't work
         name={verticalBarWindowName}
-        layer={Astal.Layer.BOTTOM}
+        layer={Astal.Layer.TOP}
         namespace={"okpanel-vertical-bar"}
         heightRequest={variableConfig.verticalBar.minimumHeight.asAccessor()}
         cssClasses={["transparentBackground"]}

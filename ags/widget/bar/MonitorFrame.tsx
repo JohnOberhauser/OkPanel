@@ -20,7 +20,7 @@ function roundedRect(ctx: any, x: number, y: number, w: number, h: number, r: nu
 }
 
 export function OutlineOverlay() {
-    const thickness       = 0;
+    const thickness       = variableConfig.theme.bars.frameThickness.get();
     const innerRadius     = variableConfig.theme.bars.borderRadius.get();
     const [fr, fg, fb, fa]    = hexToRgba(variableConfig.theme.bars.backgroundColor.get());
     const [br, bg, bb, ba]  = hexToRgba(variableConfig.theme.colors.primary.get());
@@ -103,7 +103,7 @@ export function MonitorFrameBottom(): Astal.Window {
 
     return <window
         cssClasses={["frameWindow"]}
-        layer={Astal.Layer.OVERLAY}
+        layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
@@ -137,7 +137,7 @@ export function MonitorFrameTop(): Astal.Window {
 
     return <window
         cssClasses={["frameWindow"]}
-        layer={Astal.Layer.OVERLAY}
+        layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
@@ -171,7 +171,7 @@ export function MonitorFrameLeft(): Astal.Window {
 
     return <window
         cssClasses={["frameWindow"]}
-        layer={Astal.Layer.OVERLAY}
+        layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
@@ -205,7 +205,7 @@ export function MonitorFrameRight(): Astal.Window {
 
     return <window
         cssClasses={["frameWindow"]}
-        layer={Astal.Layer.OVERLAY}
+        layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.TOP}
@@ -239,9 +239,9 @@ export default function (): Astal.Window {
     return <window
         name={monitorFrameWindowName}
         cssClasses={["transparentBackground"]}
-        layer={Astal.Layer.OVERLAY}
+        layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
-        exclusivity={Astal.Exclusivity.NORMAL}
+        exclusivity={Astal.Exclusivity.IGNORE}
         anchor={Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
         visible={visible}
         application={App}
