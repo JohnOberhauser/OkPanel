@@ -3,7 +3,7 @@ import App from "ags/gtk4/app";
 import Cairo from 'gi://cairo';
 import {hexToRgba} from "../utils/strings";
 import {variableConfig} from "../../config/config";
-import {createComputed} from "ags";
+import {createComputed, Accessor} from "ags";
 import {Bar, selectedBar} from "../../config/bar";
 
 export const monitorFrameWindowName = "monitorFrame"
@@ -102,7 +102,7 @@ export function MonitorFrameBottom(): Astal.Window {
     })
 
     return <window
-        cssClasses={["frameWindow"]}
+        cssClasses={["mostlyTransparentBackground"]}
         layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
@@ -117,8 +117,7 @@ export function MonitorFrameBottom(): Astal.Window {
         <box
             vexpand={true}
             hexpand={true}
-            heightRequest={variableConfig.theme.bars.frameThickness.asAccessor()}
-            cssClasses={["frameWindow"]}/>
+            heightRequest={variableConfig.theme.bars.frameThickness.asAccessor()}/>
     </window> as Astal.Window
 }
 
@@ -136,7 +135,7 @@ export function MonitorFrameTop(): Astal.Window {
     })
 
     return <window
-        cssClasses={["frameWindow"]}
+        cssClasses={["mostlyTransparentBackground"]}
         layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
@@ -151,8 +150,7 @@ export function MonitorFrameTop(): Astal.Window {
         <box
             vexpand={true}
             hexpand={true}
-            heightRequest={variableConfig.theme.bars.frameThickness.asAccessor()}
-            cssClasses={["frameWindow"]}/>
+            heightRequest={variableConfig.theme.bars.frameThickness.asAccessor()}/>
     </window> as Astal.Window
 }
 
@@ -170,7 +168,7 @@ export function MonitorFrameLeft(): Astal.Window {
     })
 
     return <window
-        cssClasses={["frameWindow"]}
+        cssClasses={["mostlyTransparentBackground"]}
         layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
@@ -185,8 +183,7 @@ export function MonitorFrameLeft(): Astal.Window {
         <box
             vexpand={true}
             hexpand={true}
-            widthRequest={variableConfig.theme.bars.frameThickness.asAccessor()}
-            cssClasses={["frameWindow"]}/>
+            widthRequest={variableConfig.theme.bars.frameThickness.asAccessor()}/>
     </window> as Astal.Window
 }
 
@@ -204,7 +201,7 @@ export function MonitorFrameRight(): Astal.Window {
     })
 
     return <window
-        cssClasses={["frameWindow"]}
+        cssClasses={["mostlyTransparentBackground"]}
         layer={Astal.Layer.TOP}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
@@ -219,8 +216,7 @@ export function MonitorFrameRight(): Astal.Window {
         <box
             vexpand={true}
             hexpand={true}
-            widthRequest={variableConfig.theme.bars.frameThickness.asAccessor()}
-            cssClasses={["frameWindow"]}/>
+            widthRequest={variableConfig.theme.bars.frameThickness.asAccessor()}/>
     </window> as Astal.Window
 }
 
@@ -239,7 +235,7 @@ export default function (): Astal.Window {
     return <window
         name={monitorFrameWindowName}
         cssClasses={["transparentBackground"]}
-        layer={Astal.Layer.TOP}
+        layer={Astal.Layer.BOTTOM}
         namespace={"okpanel-monitor-frame"}
         exclusivity={Astal.Exclusivity.IGNORE}
         anchor={Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
@@ -249,6 +245,9 @@ export default function (): Astal.Window {
         canFocus={false}
         $={(self) => {
             self.get_native()?.get_surface()?.set_input_region(new Cairo.Region())
+            visible.subscribe(() => {
+                self.get_native()?.get_surface()?.set_input_region(new Cairo.Region())
+            })
         }}>
         <OutlineOverlay/>
     </window> as Astal.Window

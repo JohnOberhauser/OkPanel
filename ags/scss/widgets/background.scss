@@ -9,6 +9,10 @@
   background-color: vars.$scrimColor;
 }
 
+.mostlyTransparentBackground {
+  background-color: #00000001;
+}
+
 .testBackground {
   background-color: red;
 }
