@@ -7,13 +7,16 @@ import {createComputed} from "ags";
 import {Bar, selectedBar} from "../../../config/bar";
 import VerticalBar from "../VerticalBar";
 import IntegratedMenu from "../IntegratedMenu";
+import HorizontalBar from "../HorizontalBar";
 
 export const frameWindowName = "frame"
 
 let frameBox: Gtk.Box
 let verticalBox: Gtk.Box
+let horizontalBox: Gtk.Box
 let integratedMenu: Gtk.Widget
 let verticalBar: Gtk.Widget
+let horizontalBar: Gtk.Widget
 let frame: Gtk.Box
 
 function roundedRect(ctx: any, x: number, y: number, w: number, h: number, r: number) {
@@ -29,6 +32,7 @@ function roundedRect(ctx: any, x: number, y: number, w: number, h: number, r: nu
 
 export function OutlineOverlay() {
     const redrawAccessor = createComputed([
+        selectedBar.asAccessor(),
         variableConfig.theme.bars.frameThickness.asAccessor(),
         variableConfig.theme.bars.borderRadius.asAccessor(),
         variableConfig.theme.bars.backgroundColor.asAccessor(),
@@ -222,12 +226,22 @@ function VerticalBox() {
 export default function (): Astal.Window {
 
     selectedBar.asAccessor().subscribe(() => {
-        if (selectedBar.get() === Bar.LEFT) {
-            frameBox?.reorder_child_after(frame, verticalBox)
-            verticalBox?.reorder_child_after(verticalBar, integratedMenu)
-        } else if (selectedBar.get() === Bar.RIGHT) {
-            frameBox?.reorder_child_after(verticalBox, frame)
-            verticalBox?.reorder_child_after(integratedMenu, verticalBar)
+        const bar = selectedBar.get()
+        switch (bar) {
+            case Bar.LEFT:
+                frameBox?.reorder_child_after(frame, verticalBox)
+                verticalBox?.reorder_child_after(verticalBar, integratedMenu)
+                break
+            case Bar.RIGHT:
+                frameBox?.reorder_child_after(verticalBox, frame)
+                verticalBox?.reorder_child_after(integratedMenu, verticalBar)
+                break
+            case Bar.TOP:
+                horizontalBox.reorder_child_after(frameBox, horizontalBar)
+                break
+            case Bar.BOTTOM:
+                horizontalBox.reorder_child_after(horizontalBar, frameBox)
+                break
         }
     })
 
@@ -252,31 +266,50 @@ export default function (): Astal.Window {
         visible={true}
         application={App}>
         <box
-            orientation={Gtk.Orientation.HORIZONTAL}
             $={(self) => {
-                frameBox = self
+                horizontalBox = self
 
-                // Add the children in the proper order based on the currently selected bar
-                const f = <box
-                    canTarget={false}
-                    canFocus={false}
-                    visible={frameVisible}
+                const hb = <HorizontalBar
+                    setup={(self) => {
+                        horizontalBar = self
+                    }}/> as Gtk.Widget
+
+                const fb = <box
+                    orientation={Gtk.Orientation.HORIZONTAL}
                     $={(self) => {
-                        frame = self
+                        frameBox = self
+
+                        // Add the children in the proper order based on the currently selected bar
+                        const f = <box
+                            canTarget={false}
+                            canFocus={false}
+                            visible={frameVisible}
+                            $={(self) => {
+                                frame = self
+                            }}>
+                            <OutlineOverlay/>
+                        </box> as Gtk.Widget
+
+                        const vb = <VerticalBox/> as Gtk.Widget
+
+                        if (selectedBar.get() === Bar.RIGHT) {
+                            self.append(f)
+                            self.append(vb)
+                        } else {
+                            self.append(vb)
+                            self.append(f)
+                        }
                     }}>
-                    <OutlineOverlay/>
                 </box> as Gtk.Widget
 
-                const vb = <VerticalBox/> as Gtk.Widget
-
-                if (selectedBar.get() === Bar.RIGHT) {
-                    self.append(f)
-                    self.append(vb)
+                if (selectedBar.get() === Bar.BOTTOM) {
+                    self.append(fb)
+                    self.append(hb)
                 } else {
-                    self.append(vb)
-                    self.append(f)
+                    self.append(hb)
+                    self.append(fb)
                 }
-            }}>
-        </box>
+            }}
+            orientation={Gtk.Orientation.VERTICAL}/>
     </window> as Astal.Window
 }
