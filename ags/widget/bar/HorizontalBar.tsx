@@ -1,13 +1,13 @@
-import {Astal, Gtk} from "ags/gtk4"
-import App from "ags/gtk4/app"
+import {Gtk} from "ags/gtk4"
 import {addWidgets} from "./BarWidgets";
 import {variableConfig} from "../../config/config";
 import {Bar, selectedBar} from "../../config/bar";
-import {createComputed, With} from "ags";
+import {createComputed, createState, With} from "ags";
+import {interval} from "ags/time";
 
-export const horizontalBarWindowName = "horizontalBar"
+export const [horizontalBarHeight, horizontalBarHeightSetter] = createState(0)
 
-export default function () {
+export default function ({setup}: {setup: (self: Gtk.Widget) => void}) {
     const marginTop = createComputed([
         selectedBar.asAccessor(),
         variableConfig.horizontalBar.marginOuter.asAccessor(),
@@ -65,58 +65,40 @@ export default function () {
         variableConfig.horizontalBar.enableFrame.asAccessor(),
     ], (split, frame) => {
         if (frame) {
-            return ["topBar", "frameWindow"]
+            return ["frameWindow"]
         }
         if (split) {
-            return ["topBar"]
+            return []
         }
-        return ["topBar", "barWindow"]
+        return ["barWindow"]
     })
 
-    const anchor = createComputed([
-        selectedBar.asAccessor(),
-        variableConfig.horizontalBar.expanded.asAccessor(),
-        variableConfig.horizontalBar.enableFrame.asAccessor(),
-    ], (bar, expanded, framed) => {
-        if (bar === Bar.TOP) {
-            if (!expanded && !framed) {
-                return Astal.WindowAnchor.TOP
-            }
-            return Astal.WindowAnchor.TOP
-                | Astal.WindowAnchor.LEFT
-                | Astal.WindowAnchor.RIGHT
-        } else {
-            if (!expanded && !framed) {
-                return Astal.WindowAnchor.BOTTOM
-            }
-            return Astal.WindowAnchor.BOTTOM
-                | Astal.WindowAnchor.LEFT
-                | Astal.WindowAnchor.RIGHT
-        }
-    })
+    // wrapped in a box for the padding (margins of the center box)
+    return <box
+        $={(self) => {
+            setup(self)
 
-    return <window
-        defaultHeight={1} // necessary or resizing doesn't work
-        name={horizontalBarWindowName}
-        layer={Astal.Layer.TOP}
-        namespace={"okpanel-horizontal-bar"}
-        widthRequest={variableConfig.horizontalBar.minimumWidth.asAccessor()}
-        visible={selectedBar.asAccessor()((bar) => {
-            return bar === Bar.TOP || bar === Bar.BOTTOM
-        })}
-        cssClasses={["transparentBackground"]}
-        monitor={variableConfig.mainMonitor.asAccessor()}
-        exclusivity={Astal.Exclusivity.EXCLUSIVE}
-        // this window doesn't like marginStart for some reason
-        marginLeft={marginLeft}
-        marginRight={marginRight}
+            interval(1000, () => {
+                horizontalBarHeightSetter(self.get_allocated_height())
+            })
+            horizontalBarHeightSetter(self.get_allocated_height())
+        }}
+        marginStart={marginLeft}
+        marginEnd={marginRight}
         marginTop={marginTop}
         marginBottom={marginBottom}
-        anchor={anchor}
-        application={App}>
+        cssClasses={cssClasses}>
         <centerbox
+            marginTop={2}
+            marginBottom={2}
+            marginStart={2}
+            marginEnd={2}
+            hexpand={true}
+            widthRequest={variableConfig.horizontalBar.minimumWidth.asAccessor()}
+            visible={selectedBar.asAccessor()((bar) => {
+                return bar === Bar.TOP || bar === Bar.BOTTOM
+            })}
             orientation={Gtk.Orientation.HORIZONTAL}
-            cssClasses={cssClasses}
             startWidget={
                 <box
                     visible={variableConfig.horizontalBar.leftWidgets.asAccessor().as((widgets) =>
@@ -176,5 +158,5 @@ export default function () {
                     </With>
                 </box> as Gtk.Widget
             }/>
-    </window>
+    </box>
 }

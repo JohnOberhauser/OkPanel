@@ -5,8 +5,6 @@ import NotificationPopups from "./widget/notification/NotificationPopups";
 import AppLauncher, {AppLauncherWindowName} from "./widget/appLauncher/AppLauncher";
 import Screenshot, {ScreenshotWindowName} from "./widget/screenshot/Screenshot";
 import Screenshare, {ScreenshareWindowName, updateResponse, updateWindows} from "./widget/screenshare/Screenshare";
-import VerticalBar from "./widget/bar/VerticalBar";
-import HorizontalBar from "./widget/bar/HorizontalBar";
 import {decreaseVolume, increaseVolume, muteVolume} from "./widget/utils/audio";
 import Scrim from "./widget/common/Scrim";
 import {toggleWindow} from "./widget/utils/windows";
@@ -15,12 +13,11 @@ import ClipboardManager from "./widget/clipboardManager/ClipboardManager";
 import NotificationHistoryWindow from "./widget/notification/NotificationHistoryWindow";
 import {setThemeBasic} from "./config/theme";
 import {restoreBar} from "./config/bar";
-import MonitorFrame, {
-    MonitorFrameBottom,
-    MonitorFrameLeft,
-    MonitorFrameRight,
-    MonitorFrameTop
-} from "./widget/bar/MonitorFrame";
+import Frame from "./widget/bar/frame/Frame";
+import FrameRight from "./widget/bar/frame/FrameRight";
+import FrameLeft from "./widget/bar/frame/FrameLeft";
+import FrameBottom from "./widget/bar/frame/FrameBottom";
+import FrameTop from "./widget/bar/frame/FrameTop";
 
 export let projectDir = ""
 
@@ -34,15 +31,11 @@ App.start({
 
         const hyprland = Hyprland.get_default()
 
-        MonitorFrame()
-
-        VerticalBar()
-        HorizontalBar()
-
-        MonitorFrameRight()
-        MonitorFrameLeft()
-        MonitorFrameBottom()
-        MonitorFrameTop()
+        Frame()
+        FrameRight()
+        FrameLeft()
+        FrameBottom()
+        FrameTop()
 
         SystemMenuWindow()
         ChargingAlertSound()

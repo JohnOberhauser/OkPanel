@@ -8,7 +8,7 @@ import {monitorFile, readFile} from "ags/file";
 import Gio from "gi://Gio?version=2.0";
 import {setTheme, setThemeBasic} from "./theme";
 import {hideAllWindows} from "../widget/utils/windows";
-import {integratedMenuRevealed, integratedMenuRevealedSetting} from "../widget/bar/VerticalBar";
+import {integratedMenuRevealed, integratedMenuRevealedSetting} from "../widget/bar/IntegratedMenu";
 import GLib from "gi://GLib?version=2.0";
 
 const homePath = GLib.get_home_dir()
