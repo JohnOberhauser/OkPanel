@@ -1,13 +1,10 @@
-import App from "ags/gtk4/app"
 import {addWidgets} from "./BarWidgets";
 import {variableConfig} from "../../config/config";
 import {Bar, selectedBar} from "../../config/bar";
-import Astal from "gi://Astal?version=4.0";
 import {Gtk} from "ags/gtk4";
 import {createComputed, createState, With} from "ags"
 import {addSystemMenuWidgets, createSystemWidgets} from "../systemMenu/SystemMenuWindow";
 
-export const verticalBarWindowName = "verticalBar"
 export const integratedMenuWidth = 410
 
 export const [integratedMenuRevealed, integratedMenuRevealedSetting] = createState(false)
@@ -76,28 +73,6 @@ export default function ({setup}: {setup: (self: Gtk.Box) => void}) {
             return ["sideBar"]
         }
         return ["sideBar", "barWindow"]
-    })
-
-    const anchor = createComputed([
-        selectedBar.asAccessor(),
-        variableConfig.verticalBar.expanded.asAccessor(),
-        variableConfig.verticalBar.enableFrame.asAccessor(),
-    ], (bar, expanded, framed) => {
-        if (bar === Bar.LEFT) {
-            if (!expanded && !framed) {
-                return Astal.WindowAnchor.LEFT
-            }
-            return Astal.WindowAnchor.TOP
-                | Astal.WindowAnchor.LEFT
-                | Astal.WindowAnchor.BOTTOM
-        } else {
-            if (!expanded && !framed) {
-                return Astal.WindowAnchor.RIGHT
-            }
-            return Astal.WindowAnchor.TOP
-                | Astal.WindowAnchor.RIGHT
-                | Astal.WindowAnchor.BOTTOM
-        }
     })
 
     const systemJsxWidgets = createSystemWidgets()

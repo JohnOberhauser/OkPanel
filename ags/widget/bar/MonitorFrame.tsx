@@ -228,7 +228,7 @@ export function MonitorFrameLeft(): Astal.Window {
 
             return margin + barWidth
         }
-        return enableFrame ? frameThickness : 0
+        return enableFrame ? frameThickness + borderWidth : 0
     })
 
     return <window
@@ -310,7 +310,7 @@ export function MonitorFrameRight(): Astal.Window {
             }
             return margin + barWidth
         }
-        return enableFrame ? frameThickness : 0
+        return enableFrame ? frameThickness + borderWidth : 0
     })
 
     return <window
