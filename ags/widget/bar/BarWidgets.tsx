@@ -34,7 +34,7 @@ import GLib from "gi://GLib?version=2.0";
 import {runColorPicker} from "../utils/colorPicker";
 import {lock, logout, restart, shutdown} from "../utils/powerOptions";
 import {execAsync} from "ags/process";
-import {integratedMenuRevealed, integratedMenuRevealedSetting} from "./VerticalBar";
+import {integratedMenuRevealed, integratedMenuRevealedSetting} from "./IntegratedMenu";
 import App from "ags/gtk4/app"
 
 const tray = Tray.get_default()
