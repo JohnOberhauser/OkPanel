@@ -36,7 +36,6 @@ App.start({
 
         MonitorFrame()
 
-        VerticalBar()
         HorizontalBar()
 
         MonitorFrameRight()

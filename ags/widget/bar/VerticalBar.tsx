@@ -8,10 +8,11 @@ import {createComputed, createState, With} from "ags"
 import {addSystemMenuWidgets, createSystemWidgets} from "../systemMenu/SystemMenuWindow";
 
 export const verticalBarWindowName = "verticalBar"
+export const integratedMenuWidth = 410
 
 export const [integratedMenuRevealed, integratedMenuRevealedSetting] = createState(false)
 
-export default function () {
+export default function ({setup}: {setup: (self: Gtk.Box) => void}) {
     const marginLeft = createComputed([
         selectedBar.asAccessor(),
         variableConfig.verticalBar.marginOuter.asAccessor(),
@@ -113,26 +114,20 @@ export default function () {
         }
     })
 
-    return <window
-        defaultHeight={variableConfig.verticalBar.minimumHeight.asAccessor()}
-        defaultWidth={1} // necessary or resizing doesn't work
-        name={verticalBarWindowName}
-        layer={Astal.Layer.TOP}
-        namespace={"okpanel-vertical-bar"}
+    return <box
+        hexpand={false}
         heightRequest={variableConfig.verticalBar.minimumHeight.asAccessor()}
         cssClasses={["transparentBackground"]}
-        monitor={variableConfig.mainMonitor.asAccessor()}
         visible={selectedBar.asAccessor()(bar =>
             bar === Bar.LEFT || bar === Bar.RIGHT
         )}
-        exclusivity={Astal.Exclusivity.EXCLUSIVE}
-        // this window doesn't like marginStart for some reason
-        marginLeft={marginLeft}
-        marginRight={marginRight}
+        marginStart={marginLeft}
+        marginEnd={marginRight}
         marginTop={marginTop}
         marginBottom={marginBottom}
-        anchor={anchor}
-        application={App}>
+        $={(self) => {
+            setup(self)
+        }}>
         <box
             orientation={Gtk.Orientation.HORIZONTAL}
             cssClasses={cssClasses}
@@ -150,7 +145,7 @@ export default function () {
                     cssClasses={["scrollWindow"]}
                     vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
                     propagateNaturalHeight={true}
-                    widthRequest={410}>
+                    widthRequest={integratedMenuWidth}>
                     <With value={variableConfig.systemMenu.widgets.asAccessor()}>
                         {(widgets) => {
                             return <box
@@ -233,5 +228,5 @@ export default function () {
                     </box> as Gtk.Widget
                 }/>
         </box>
-    </window>
+    </box>
 }
