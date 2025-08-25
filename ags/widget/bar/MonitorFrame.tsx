@@ -188,7 +188,8 @@ export function MonitorFrameLeft(): Astal.Window {
         variableConfig.verticalBar.enableFrame.asAccessor(),
         variableConfig.horizontalBar.enableFrame.asAccessor(),
     ], (bar, enabledVert, enabledHor) => {
-        if (bar === Bar.RIGHT || bar === Bar.LEFT) {
+        if (bar === Bar.LEFT) return true
+        if (bar === Bar.RIGHT) {
             return enabledVert
         }
         return enabledHor
@@ -201,6 +202,7 @@ export function MonitorFrameLeft(): Astal.Window {
         variableConfig.verticalBar.marginOuter.asAccessor(),
         variableConfig.verticalBar.marginInner.asAccessor(),
         variableConfig.verticalBar.compact.asAccessor(),
+        variableConfig.theme.bars.borderWidth.asAccessor(),
     ], (
         bar,
         enableFrame,
@@ -208,19 +210,20 @@ export function MonitorFrameLeft(): Astal.Window {
         marginOuter,
         marginInner,
         compact,
+        borderWidth,
     ) => {
         if (bar === Bar.LEFT) {
             let barWidth: number
             if (compact) {
-                barWidth = 32
+                barWidth = 38
             } else {
                 barWidth = 46
             }
             let margin: number
             if (enableFrame) {
-                margin = marginOuter
+                margin = marginInner + borderWidth
             } else {
-                margin = marginOuter + marginInner
+                margin = marginOuter + marginInner + (borderWidth * 2)
             }
 
             return margin + barWidth
@@ -268,7 +271,8 @@ export function MonitorFrameRight(): Astal.Window {
         variableConfig.verticalBar.enableFrame.asAccessor(),
         variableConfig.horizontalBar.enableFrame.asAccessor(),
     ], (bar, enabledVert, enabledHor) => {
-        if (bar === Bar.RIGHT || bar === Bar.LEFT) {
+        if (bar === Bar.LEFT) return true
+        if (bar === Bar.RIGHT) {
             return enabledVert
         }
         return enabledHor
@@ -281,6 +285,7 @@ export function MonitorFrameRight(): Astal.Window {
         variableConfig.verticalBar.marginOuter.asAccessor(),
         variableConfig.verticalBar.marginInner.asAccessor(),
         variableConfig.verticalBar.compact.asAccessor(),
+        variableConfig.theme.bars.borderWidth.asAccessor(),
     ], (
         bar,
         enableFrame,
@@ -288,19 +293,20 @@ export function MonitorFrameRight(): Astal.Window {
         marginOuter,
         marginInner,
         compact,
+        borderWidth,
     ) => {
         if (bar === Bar.RIGHT) {
             let barWidth: number
             if (compact) {
-                barWidth = 32
+                barWidth = 38
             } else {
                 barWidth = 46
             }
             let margin: number
             if (enableFrame) {
-                margin = marginOuter
+                margin = marginInner + borderWidth
             } else {
-                margin = marginOuter + marginInner
+                margin = marginOuter + marginInner + (borderWidth * 2)
             }
             return margin + barWidth
         }
@@ -389,11 +395,6 @@ export default function (): Astal.Window {
                 visible={visible}
                 $={(self) => {
                     frame = self
-                    //TODO use layer TOP and figure this out
-                    // self.get_native()?.get_surface()?.set_input_region(new Cairo.Region())
-                    // visible.subscribe(() => {
-                    //     self.get_native()?.get_surface()?.set_input_region(new Cairo.Region())
-                    // })
                 }}>
                 <OutlineOverlay/>
             </box>
