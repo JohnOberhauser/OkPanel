@@ -17,7 +17,7 @@ let horizontalBox: Gtk.Box
 let integratedMenu: Gtk.Widget
 let verticalBar: Gtk.Widget
 let horizontalBar: Gtk.Widget
-let frame: Gtk.Box
+let frame: Gtk.Widget
 
 function roundedRect(ctx: any, x: number, y: number, w: number, h: number, r: number) {
     r = Math.max(0, Math.min(r, Math.min(w, h) / 2));
@@ -185,12 +185,12 @@ function VerticalBox() {
         variableConfig.verticalBar.enableFrame.asAccessor(),
     ], (split, frame) => {
         if (frame) {
-            return ["sideBar", "frameWindow"]
+            return ["frameWindow"]
         }
         if (split) {
-            return ["sideBar"]
+            return []
         }
-        return ["sideBar", "barWindow"]
+        return ["barWindow"]
     })
 
     return <box
