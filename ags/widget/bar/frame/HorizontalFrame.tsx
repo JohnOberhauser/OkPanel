@@ -4,6 +4,7 @@ import Cairo from 'gi://cairo';
 import {variableConfig} from "../../../config/config";
 import {createComputed} from "ags";
 import {Bar, selectedBar} from "../../../config/bar";
+import {horizontalBarHeight} from "../HorizontalBar";
 
 export enum Side {
     TOP,
@@ -37,37 +38,29 @@ export default function (
 
     const size = createComputed([
         selectedBar.asAccessor(),
+        horizontalBarHeight,
         variableConfig.horizontalBar.enableFrame.asAccessor(),
         variableConfig.theme.bars.frameThickness.asAccessor(),
         variableConfig.horizontalBar.marginOuter.asAccessor(),
         variableConfig.horizontalBar.marginInner.asAccessor(),
-        variableConfig.horizontalBar.compact.asAccessor(),
         variableConfig.theme.bars.borderWidth.asAccessor(),
     ], (
-        bar,
+        selectedBar,
+        barHeight,
         enableFrame,
         frameThickness,
         marginOuter,
         marginInner,
-        compact,
         borderWidth,
     ) => {
-        if (bar === thisSideBar) {
-            let barHeight: number
-            if (compact) {
-                barHeight = 26
-            } else {
-                barHeight = 34
-            }
-            let margin: number
+        if (selectedBar === thisSideBar) {
             if (enableFrame) {
-                margin = marginInner + borderWidth
+                return barHeight + marginInner + borderWidth
             } else {
-                margin = marginOuter + marginInner + (borderWidth * 2)
+                return barHeight + marginOuter + marginInner + (borderWidth * 2)
             }
-            return margin + barHeight
         }
-        return enableFrame ? frameThickness + borderWidth : 0
+        return enableFrame ? frameThickness + borderWidth + marginInner : 0
     })
 
     return <window

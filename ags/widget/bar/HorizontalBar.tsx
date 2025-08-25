@@ -3,6 +3,9 @@ import {addWidgets} from "./BarWidgets";
 import {variableConfig} from "../../config/config";
 import {Bar, selectedBar} from "../../config/bar";
 import {createComputed, createState, With} from "ags";
+import {interval} from "ags/time";
+
+export const [horizontalBarHeight, horizontalBarHeightSetter] = createState(0)
 
 export default function ({setup}: {setup: (self: Gtk.CenterBox) => void}) {
     const marginTop = createComputed([
@@ -73,6 +76,11 @@ export default function ({setup}: {setup: (self: Gtk.CenterBox) => void}) {
     return <centerbox
         $={(self) => {
             setup(self)
+
+            interval(1000, () => {
+                horizontalBarHeightSetter(self.get_allocated_height())
+            })
+            horizontalBarHeightSetter(self.get_allocated_height())
         }}
         marginStart={marginLeft}
         marginEnd={marginRight}

@@ -2,13 +2,21 @@ import {addWidgets} from "./BarWidgets";
 import {variableConfig} from "../../config/config";
 import {Bar, selectedBar} from "../../config/bar";
 import {Gtk} from "ags/gtk4";
-import {With} from "ags"
+import {createState, With} from "ags"
+import {interval} from "ags/time";
+
+export const [verticalBarWidth, verticalBarWidthSetter] = createState(0)
 
 export default function ({setup}: {setup: (self: Gtk.CenterBox) => void}) {
     return <centerbox
         hexpand={false}
         $={(self) => {
             setup(self)
+
+            interval(1000, () => {
+                verticalBarWidthSetter(self.get_allocated_width())
+            })
+            verticalBarWidthSetter(self.get_allocated_width())
         }}
         visible={selectedBar.asAccessor()(bar =>
             bar === Bar.LEFT || bar === Bar.RIGHT

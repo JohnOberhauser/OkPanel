@@ -5,6 +5,7 @@ import {variableConfig} from "../../../config/config";
 import {createComputed} from "ags";
 import {Bar, selectedBar} from "../../../config/bar";
 import {integratedMenuRevealed, integratedMenuWidth} from "../IntegratedMenu";
+import {verticalBarWidth} from "../VerticalBar";
 
 export enum Side {
     LEFT,
@@ -38,37 +39,29 @@ export default function (
 
     const size = createComputed([
         selectedBar.asAccessor(),
+        verticalBarWidth,
         variableConfig.verticalBar.enableFrame.asAccessor(),
         variableConfig.theme.bars.frameThickness.asAccessor(),
         variableConfig.verticalBar.marginOuter.asAccessor(),
         variableConfig.verticalBar.marginInner.asAccessor(),
-        variableConfig.verticalBar.compact.asAccessor(),
         variableConfig.theme.bars.borderWidth.asAccessor(),
     ], (
         bar,
+        barWidth,
         enableFrame,
         frameThickness,
         marginOuter,
         marginInner,
-        compact,
         borderWidth,
     ) => {
         if (bar === thisSideBar) {
-            let barWidth: number
-            if (compact) {
-                barWidth = 38
-            } else {
-                barWidth = 46
-            }
-            let margin: number
             if (enableFrame) {
-                margin = marginInner + borderWidth
+                return barWidth + marginInner + borderWidth
             } else {
-                margin = marginOuter + marginInner + (borderWidth * 2)
+                return barWidth + marginOuter + marginInner + (borderWidth * 2)
             }
-            return margin + barWidth
         }
-        return enableFrame ? frameThickness + borderWidth : 0
+        return enableFrame ? frameThickness + borderWidth + marginInner : 0
     })
 
     return <window
