@@ -122,7 +122,7 @@ export function OutlineOverlay() {
 
                 // After we draw the cutout, we change the input region of the frame window to include
                 // everything except the cutout region
-                
+
                 // ——— Build input region in *window* coordinates ———
                 const surf = frameWindow.get_native()?.get_surface();
                 if (!surf) return;

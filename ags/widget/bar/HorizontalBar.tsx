@@ -87,7 +87,10 @@ export default function ({setup}: {setup: (self: Gtk.Widget) => void}) {
         marginEnd={marginRight}
         marginTop={marginTop}
         marginBottom={marginBottom}
-        cssClasses={cssClasses}>
+        cssClasses={cssClasses}
+        visible={selectedBar.asAccessor()((bar) => {
+            return bar === Bar.TOP || bar === Bar.BOTTOM
+        })}>
         <centerbox
             marginTop={2}
             marginBottom={2}
@@ -95,9 +98,6 @@ export default function ({setup}: {setup: (self: Gtk.Widget) => void}) {
             marginEnd={2}
             hexpand={true}
             widthRequest={variableConfig.horizontalBar.minimumWidth.asAccessor()}
-            visible={selectedBar.asAccessor()((bar) => {
-                return bar === Bar.TOP || bar === Bar.BOTTOM
-            })}
             orientation={Gtk.Orientation.HORIZONTAL}
             startWidget={
                 <box
