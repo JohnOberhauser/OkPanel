@@ -18,6 +18,7 @@ let integratedMenu: Gtk.Widget
 let verticalBar: Gtk.Widget
 let horizontalBar: Gtk.Widget
 let frame: Gtk.Widget
+let frameWindow: Gtk.Window
 
 function roundedRect(ctx: any, x: number, y: number, w: number, h: number, r: number) {
     r = Math.max(0, Math.min(r, Math.min(w, h) / 2));
@@ -63,6 +64,7 @@ export function OutlineOverlay() {
                 ctx.rectangle(0, 0, w, h);
                 ctx.fill();
 
+                // Inner hole geometry
                 let x, y, iw, ih
 
                 switch (bar) {
@@ -92,7 +94,6 @@ export function OutlineOverlay() {
                         break
                 }
 
-                // Inner hole geometry
                 const r  = Math.max(0, Math.min(innerRadius, Math.min(iw, ih) / 2));
 
                 // Cutout (transparent center)
@@ -118,6 +119,50 @@ export function OutlineOverlay() {
 
                 ctx.restore();
                 ctx.setOperator(Cairo.Operator.OVER);
+
+                // After we draw the cutout, we change the input region of the frame window to include
+                // everything except the cutout region
+                
+                // ——— Build input region in *window* coordinates ———
+                const surf = frameWindow.get_native()?.get_surface();
+                if (!surf) return;
+
+                // Window size (not the drawing area)
+                const winW = frameWindow.get_allocated_width();
+                const winH = frameWindow.get_allocated_height();
+
+                // Offset of the drawing area inside the window
+                // (TS defs are thin; cast to any for GI boxed types)
+                const bounds = da.compute_bounds(frameWindow)[1];
+                const daOffX = bounds ? bounds.get_x() : 0;
+                const daOffY = bounds ? bounds.get_y() : 0;
+
+                // Hole rect in *window* coords
+                const holeL = Math.max(0, Math.floor(daOffX + x));
+                const holeT = Math.max(0, Math.floor(daOffY + y));
+                const holeR = Math.min(winW, Math.ceil(daOffX + x + iw));
+                const holeB = Math.min(winH, Math.ceil(daOffY + y + ih));
+
+                const Region = (Cairo as any).Region;
+                const RectangleInt = (Cairo as any).RectangleInt;
+                const region = new Region();
+
+                const addRect = (X: number, Y: number, W: number, H: number) => {
+                    if (W <= 0 || H <= 0) return;
+                    region.unionRectangle(new RectangleInt({ x: X, y: Y, width: W, height: H }));
+                };
+
+                // Four bands around the hole (all in window coords)
+                // Top
+                addRect(0, 0, winW, holeT);
+                // Left
+                addRect(0, holeT, holeL, Math.max(0, holeB - holeT));
+                // Right
+                addRect(holeR, holeT, Math.max(0, winW - holeR), Math.max(0, holeB - holeT));
+                // Bottom
+                addRect(0, holeB, winW, Math.max(0, winH - holeB));
+
+                surf.set_input_region(region);
             });
 
             redrawAccessor.subscribe(() => {
@@ -257,9 +302,12 @@ export default function (): Astal.Window {
     })
 
     return <window
+        $={(self) => {
+            frameWindow = self
+        }}
         name={frameWindowName}
         cssClasses={["transparentBackground"]}
-        layer={Astal.Layer.BOTTOM}
+        layer={Astal.Layer.TOP}
         namespace={"okpanel-frame"}
         exclusivity={Astal.Exclusivity.IGNORE}
         anchor={Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
