@@ -6,6 +6,8 @@ import Gtk from "gi://Gtk?version=4.0";
 import OkButton, {OkButtonSize} from "../common/OkButton";
 import {createBinding, createComputed, With} from "ags";
 import {getHPadding, getVPadding} from "./BarWidgets";
+import {Gdk} from "ags/gtk4";
+import {attachHoverScroll} from "../utils/scroll";
 
 function groupByProperty(
     array: Hyprland.Workspace[],
@@ -42,6 +44,15 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                     orientation={vertical ? Gtk.Orientation.VERTICAL : Gtk.Orientation.HORIZONTAL}>
                     {groupedWorkspaces.map((workspaceGroup, index) => {
                         return <box
+                            $={(self) => {
+                                attachHoverScroll(self, ({dy}) => {
+                                    if (dy > 0) {
+                                        hypr.dispatch("workspace", variableConfig.barWidgets.workspaces.scrollUpCommand.get())
+                                    } else if (dy < 0) {
+                                        hypr.dispatch("workspace", variableConfig.barWidgets.workspaces.scrollDownCommand.get())
+                                    }
+                                })
+                            }}
                             orientation={vertical ? Gtk.Orientation.VERTICAL : Gtk.Orientation.HORIZONTAL}>
                             {index > 0 && index < groupedWorkspaces.length &&
                                 <Divider

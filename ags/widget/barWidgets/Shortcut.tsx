@@ -195,8 +195,8 @@ export default function (
         createBinding(hyprland, "focusedClient"),
         // @ts-ignore
         variableConfig.barWidgets[`shortcut${shortcutNumber}`].class.asAccessor()
-    ], (focusedClient: AstalHyprland.Client, clazz: string) => {
-        return focusedClient.class === clazz
+    ], (focusedClient: AstalHyprland.Client | null, clazz: string) => {
+        return focusedClient?.class === clazz
     }).subscribe(() => {
         if (selectedDebounceTimer !== null) {
             selectedDebounceTimer.cancel()
