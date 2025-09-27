@@ -46,9 +46,9 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                         return <box
                             $={(self) => {
                                 attachHoverScroll(self, ({dy}) => {
-                                    if (dy > 0) {
+                                    if (dy < 0) {
                                         hypr.dispatch("workspace", variableConfig.barWidgets.workspaces.scrollUpCommand.get())
-                                    } else if (dy < 0) {
+                                    } else if (dy > 0) {
                                         hypr.dispatch("workspace", variableConfig.barWidgets.workspaces.scrollDownCommand.get())
                                     }
                                 })

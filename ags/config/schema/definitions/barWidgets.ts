@@ -587,13 +587,13 @@ export const barWidgetsSchema = {
                 {
                     name: 'scrollUpCommand',
                     type: 'string',
-                    default: "r+1",
+                    default: "r-1",
                     description: 'The hyprland workspace argument to dispatch when scrolling up while hovering over the workspaces bar widget.  See all options here https://wiki.hypr.land/Configuring/Dispatchers/#workspaces'
                 },
                 {
                     name: 'scrollDownCommand',
                     type: 'string',
-                    default: "r-1",
+                    default: "r+1",
                     description: 'The hyprland workspace argument to dispatch when scrolling down while hovering over the workspaces bar widget.  See all options here https://wiki.hypr.land/Configuring/Dispatchers/#workspaces'
                 },
             ],
