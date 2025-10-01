@@ -65,7 +65,6 @@ export function killOldMonitorWindows() {
         .flatMap(([_, wins]) => wins)
 
     orphanedWindows.forEach((window: Astal.Window) => {
-        App.remove_window?.(window)
         window.close?.()
     })
 

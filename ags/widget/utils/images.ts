@@ -10,6 +10,7 @@ import Gio from "gi://Gio?version=2.0";
  * @param path full path to the file
  */
 export async function createScaledTexture(width: number, height: number, path: string) {
+    if (width === 0 || height === 0) return null
     const file = Gio.File.new_for_path(path);
 
     let pixbuf: GdkPixbuf.Pixbuf;

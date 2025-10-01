@@ -41,11 +41,17 @@ App.start({
 
         hyprland.monitors.forEach(spawnMonitorWindows);
 
-        hyprland.connect("monitor-added", (_: any, monitor: any) => {
+        hyprland.connect("monitor-added", (_: any, monitor: Hyprland.Monitor) => {
+            if (monitor === undefined || monitor === null) return
+            if (monitor.id === undefined || monitor.id === null) return
+            if (monitor.name === undefined || monitor.name === null) return
+            console.log(`Monitor added name: ${monitor.name}`)
+            console.log(`Monitor added id: ${monitor.id}`)
             spawnMonitorWindows(monitor);
         });
 
         hyprland.connect("monitor-removed", () => {
+            console.log(`Monitor removed`)
             killOldMonitorWindows();
         });
     },

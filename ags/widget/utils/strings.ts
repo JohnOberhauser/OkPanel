@@ -1,4 +1,5 @@
 export function truncateString(str: string, maxLength: number) {
+    if (str === null) return ""
     if (str.length > maxLength) {
         return str.substring(0, maxLength).trim() + '…';
     }
