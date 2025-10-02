@@ -5,7 +5,6 @@ import {getVolumeIcon, playPowerPlug, playPowerUnplug} from "../utils/audio";
 import Brightness from "../utils/connectables/brightness";
 import {getBrightnessIcon} from "../utils/brightness";
 import Battery from "gi://AstalBattery"
-import Hyprland from "gi://AstalHyprland"
 import GLib from "gi://GLib?version=2.0";
 import Astal from "gi://Astal?version=4.0";
 import Gtk from "gi://Gtk?version=4.0";
@@ -21,21 +20,21 @@ export function AlertWindow(
         sliderValue,
         windowName,
         showVariable,
-        monitor
+        monitorId
     }: {
         enabled: Accessor<boolean>,
         iconLabel: Accessor<string>,
         sliderValue: Accessor<number>,
         windowName: string,
         showVariable: Accessor<any>
-        monitor: Hyprland.Monitor
+        monitorId: number
     }
 ): Astal.Window {
     let windowVisibilityTimeout: GLib.Source | null = null
 
     return <window
         namespace={"okpanel-alerts"}
-        monitor={monitor.id}
+        monitor={monitorId}
         name={windowName}
         application={App}
         anchor={Astal.WindowAnchor.BOTTOM}
@@ -90,7 +89,7 @@ export function AlertWindow(
     </window> as Astal.Window
 }
 
-export function VolumeAlert(monitor: Hyprland.Monitor): Astal.Window {
+export function VolumeAlert(monitorId: number): Astal.Window {
     const defaultSpeaker = Wp.get_default()!.audio.default_speaker
 
     const speakerVar = createComputed([
@@ -110,10 +109,10 @@ export function VolumeAlert(monitor: Hyprland.Monitor): Astal.Window {
         sliderValue={createBinding(defaultSpeaker, "volume")}
         windowName={VolumeAlertName}
         showVariable={showVariable}
-        monitor={monitor}/> as Astal.Window
+        monitorId={monitorId}/> as Astal.Window
 }
 
-export function BrightnessAlert(monitor: Hyprland.Monitor): Astal.Window {
+export function BrightnessAlert(monitorId: number): Astal.Window {
     const brightness = Brightness.get_default()
 
     const showVariable = createComputed([
@@ -128,7 +127,7 @@ export function BrightnessAlert(monitor: Hyprland.Monitor): Astal.Window {
         sliderValue={createBinding(brightness, "screen")}
         windowName={BrightnessAlertName}
         showVariable={showVariable}
-        monitor={monitor}/> as  Astal.Window
+        monitorId={monitorId}/> as  Astal.Window
 }
 
 export function ChargingAlertSound() {

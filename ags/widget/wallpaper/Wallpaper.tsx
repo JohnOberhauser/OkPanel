@@ -1,6 +1,5 @@
 import App from "ags/gtk4/app";
 import {Astal, Gtk} from "ags/gtk4";
-import AstalHyprland from "gi://AstalHyprland?version=0.1";
 import {createScaledTexture} from "../utils/images";
 import {resolveWallpaper} from "./getWallpaper";
 import GLib from "gi://GLib?version=2.0";
@@ -55,10 +54,14 @@ function applyWallpaper(
     });
 }
 
-export default function (monitor: AstalHyprland.Monitor): Astal.Window {
+export default function (
+    monitorId: number,
+    monitorWidth: number,
+    monitorHeight: number,
+): Astal.Window {
     return <window
         name={"wallpaper"}
-        monitor={monitor.id}
+        monitor={monitorId}
         cssClasses={["windowBackground"]}
         layer={Astal.Layer.BACKGROUND}
         namespace={"okpanel-wallpaper"}
@@ -71,7 +74,7 @@ export default function (monitor: AstalHyprland.Monitor): Astal.Window {
                 const wallpaperPath = resolveWallpaper()
 
                 if (wallpaperPath !== null) {
-                    createScaledTexture(monitor.width, monitor.height, wallpaperPath).then((texture) => {
+                    createScaledTexture(monitorWidth, monitorHeight, wallpaperPath).then((texture) => {
                         const picture = Gtk.Picture.new_for_paintable(texture)
                         picture.contentFit = Gtk.ContentFit.COVER
 

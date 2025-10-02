@@ -4,11 +4,6 @@ import {updateResponse, updateWindows} from "./widget/screenshare/Screenshare";
 import {decreaseVolume, increaseVolume, muteVolume} from "./widget/utils/audio";
 import Hyprland from "gi://AstalHyprland"
 import {setThemeBasic} from "./config/theme";
-import Frame from "./widget/frame/Frame";
-import SpacerRight from "./widget/frame/backgroundSpacers/SpacerRight";
-import SpacerLeft from "./widget/frame/backgroundSpacers/SpacerLeft";
-import SpacerBottom from "./widget/frame/backgroundSpacers/SpacerBottom";
-import SpacerTop from "./widget/frame/backgroundSpacers/SpacerTop";
 import {toggleIntegratedScreenshot} from "./widget/screenshot/IntegratedScreenshot";
 import {toggleIntegratedAppLauncher} from "./widget/appLauncher/IntegratedAppLauncher";
 import {toggleIntegratedScreenshare} from "./widget/screenshare/IntegratedScreenshare";
@@ -19,6 +14,7 @@ import {toggleIntegratedNotificationHistory} from "./widget/notification/Integra
 import {customWidgetLabelSetters} from "./widget/barWidgets/CustomWidget";
 import {setWallpaper} from "./widget/wallpaper/setWallpaper";
 import {killOldMonitorWindows, spawnMonitorWindows} from "./widget/utils/windows";
+import {getHyprMonitorInfoById} from "./widget/utils/monitors";
 
 export let projectDir = ""
 
@@ -31,23 +27,26 @@ App.start({
 
         const hyprland = Hyprland.get_default()
 
-        Frame()
-        SpacerBottom()
-        SpacerTop()
-        SpacerRight()
-        SpacerLeft()
-
         ChargingAlertSound()
 
-        hyprland.monitors.forEach(spawnMonitorWindows);
+        hyprland.monitors.forEach((monitor) => {
+            spawnMonitorWindows({
+                id: monitor.id,
+                name: monitor.name,
+                width: monitor.width,
+                height: monitor.height,
+            })
+        })
 
         hyprland.connect("monitor-added", (_: any, monitor: Hyprland.Monitor) => {
             if (monitor === undefined || monitor === null) return
             if (monitor.id === undefined || monitor.id === null) return
-            if (monitor.name === undefined || monitor.name === null) return
-            console.log(`Monitor added name: ${monitor.name}`)
-            console.log(`Monitor added id: ${monitor.id}`)
-            spawnMonitorWindows(monitor);
+
+            getHyprMonitorInfoById(monitor.id)
+                .then((hyprMonitorInfo) => {
+                    if (hyprMonitorInfo === null) return
+                    spawnMonitorWindows(hyprMonitorInfo)
+                })
         });
 
         hyprland.connect("monitor-removed", () => {

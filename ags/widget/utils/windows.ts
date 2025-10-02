@@ -5,7 +5,12 @@ import {createRoot} from "ags";
 import Wallpaper from "../wallpaper/Wallpaper";
 import {BrightnessAlert, VolumeAlert} from "../alerts/Alerts";
 import NotificationPopups from "../notification/NotificationPopups";
-import AstalHyprland from "gi://AstalHyprland?version=0.1";
+import Frame from "../frame/Frame";
+import SpacerBottom from "../frame/backgroundSpacers/SpacerBottom";
+import SpacerTop from "../frame/backgroundSpacers/SpacerTop";
+import SpacerRight from "../frame/backgroundSpacers/SpacerRight";
+import SpacerLeft from "../frame/backgroundSpacers/SpacerLeft";
+import {getHyprMonitorsInfo, HyprMonitorInfo} from "./monitors";
 
 const openedOneOffWindows: Astal.Window[] = []
 
@@ -35,43 +40,84 @@ export function addWindowOneOff(createWindow: () => Astal.Window) {
 
 // ========================== Permanent windows per monitor ================================
 
-const windowsByMonitor = new Map<string, Astal.Window[]>();
+export const windowsByMonitor = new Map<string, Astal.Window[]>();
 
 // Create all per-monitor windows and register them
-export function spawnMonitorWindows(monitor: AstalHyprland.Monitor) {
+export function spawnMonitorWindows(
+    hyprMonitorInfo: HyprMonitorInfo,
+) {
+    if ([...windowsByMonitor.keys()].find((it) => it === hyprMonitorInfo.name) !== undefined) {
+        console.log("Monitor already has windows")
+        return
+    }
+    console.log(`Creating windows for monitor: ${hyprMonitorInfo.name}`)
+
     createRoot(() => {
+        if (App.get_window("frame") === undefined) {
+            console.log("Creating frame")
+            Frame()
+            SpacerBottom()
+            SpacerTop()
+            SpacerRight()
+            SpacerLeft()
+        }
+
         const windows = [
-            Wallpaper(monitor),
-            VolumeAlert(monitor),
-            BrightnessAlert(monitor),
-            NotificationPopups(monitor),
-            Scrim(monitor),
+            Wallpaper(hyprMonitorInfo.id, hyprMonitorInfo.width, hyprMonitorInfo.height),
+            VolumeAlert(hyprMonitorInfo.id),
+            BrightnessAlert(hyprMonitorInfo.id),
+            NotificationPopups(hyprMonitorInfo.id),
+            Scrim(hyprMonitorInfo.id),
         ]
 
         windows.forEach((window) => {
             App.add_window(window)
         })
 
-        windowsByMonitor.set(monitor.name, windows)
+        windowsByMonitor.set(hyprMonitorInfo.name, windows)
+
+        logOpenedWindows()
     })
 }
 
 // Close & remove all windows for a monitor
 export function killOldMonitorWindows() {
-    const hyprland = AstalHyprland.get_default()
-    const activeNames = new Set(hyprland.monitors.map(m => m.name))
-    const orphanedWindows: Astal.Window[] = [...windowsByMonitor.entries()]
-        .filter(([name]) => !activeNames.has(name))
-        .flatMap(([_, wins]) => wins)
+    getHyprMonitorsInfo()
+        .then((monitors) => {
+            if (monitors === null) return
+            const activeNames = new Set(monitors.map(m => m.name))
+            const orphanedWindows: Astal.Window[] = [...windowsByMonitor.entries()]
+                .filter(([name]) => !activeNames.has(name))
+                .flatMap(([_, wins]) => wins)
 
-    orphanedWindows.forEach((window: Astal.Window) => {
-        window.close?.()
-    })
+            orphanedWindows.forEach((window: Astal.Window) => {
+                console.log(`Closing window ${window.name}`)
+                window.close()
+                App.remove_window(window)
+            })
 
-    // Remove all stale entries from the map
-    for (const name of windowsByMonitor.keys()) {
-        if (!activeNames.has(name)) {
-            windowsByMonitor.delete(name)
-        }
-    }
+            // Remove all stale entries from the map
+            for (const name of windowsByMonitor.keys()) {
+                if (!activeNames.has(name)) {
+                    windowsByMonitor.delete(name)
+                }
+            }
+
+            if (monitors.length === 0) {
+                console.log("Closing all windows")
+                App.get_windows().forEach((window) => {
+                    console.log(`Closing window ${window.name}`)
+                    window.close()
+                    App.remove_window(window)
+                })
+            }
+
+            logOpenedWindows()
+        })
+}
+
+function logOpenedWindows() {
+    console.log(`All opened windows:\n${App.get_windows()
+        .map(w => w.name ?? '(unnamed)')
+        .join('\n')}`)
 }

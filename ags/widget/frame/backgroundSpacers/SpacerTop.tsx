@@ -29,6 +29,7 @@ export default function (): Astal.Window {
     return <window
         defaultHeight={1} // necessary or resizing doesn't work
         cssClasses={["mostlyTransparentBackground"]}
+        name={"SpacerTop"}
         layer={Astal.Layer.BACKGROUND}
         namespace={"okpanel-frame-spacer"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}

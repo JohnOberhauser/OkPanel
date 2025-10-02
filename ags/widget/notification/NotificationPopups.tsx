@@ -1,12 +1,10 @@
 import {Astal, Gtk} from "ags/gtk4"
 import Notification from "./Notification"
 import {variableConfig} from "../../config/config";
-import Hyprland from "gi://AstalHyprland"
 import {NotificationsPosition} from "../../config/schema/definitions/notifications";
 import GLib from "gi://GLib?version=2.0";
 import {Accessor, createBinding, createComputed, createState, For, onCleanup} from "ags";
 import AstalNotifd from "gi://AstalNotifd?version=0.1";
-import {timeout} from "ags/time";
 import {AnimatedFor} from "../common/AnimatedFor";
 
 // see comment below in constructor
@@ -41,7 +39,7 @@ function withHideDelay(src: Accessor<boolean>, delayMs = 200): Accessor<boolean>
     return out
 }
 
-export default function NotificationPopups(monitor: Hyprland.Monitor): Astal.Window {
+export default function NotificationPopups(monitorId: number): Astal.Window {
     const notifd = AstalNotifd.get_default()
 
     const [notifications, setNotifications] = createState(
@@ -76,10 +74,11 @@ export default function NotificationPopups(monitor: Hyprland.Monitor): Astal.Win
 
     return <window
         defaultHeight={1}
+        name={"notificationPopups"}
         namespace={"okpanel-notifications"}
         visible={visible}
         cssClasses={["NotificationPopups"]}
-        monitor={monitor.id}
+        monitor={monitorId}
         exclusivity={variableConfig.notifications.respectExclusive.asAccessor().as((exclusive) => {
             if (exclusive) {
                 return Astal.Exclusivity.NORMAL

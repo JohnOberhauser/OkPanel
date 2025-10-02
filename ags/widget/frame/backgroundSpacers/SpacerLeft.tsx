@@ -48,6 +48,7 @@ export default function (): Astal.Window {
     return <window
         defaultWidth={1} // necessary or resizing doesn't work
         cssClasses={["mostlyTransparentBackground"]}
+        name={"SpacerLeft"}
         layer={Astal.Layer.BACKGROUND}
         namespace={"okpanel-frame-spacer"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
