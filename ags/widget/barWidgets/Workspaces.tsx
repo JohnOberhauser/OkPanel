@@ -6,7 +6,6 @@ import Gtk from "gi://Gtk?version=4.0";
 import OkButton, {OkButtonSize} from "../common/OkButton";
 import {createBinding, createComputed, With} from "ags";
 import {getHPadding, getVPadding} from "./BarWidgets";
-import {Gdk} from "ags/gtk4";
 import {attachHoverScroll} from "../utils/scroll";
 
 function groupByProperty(

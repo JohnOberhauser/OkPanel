@@ -184,6 +184,9 @@ function addWireguardConnection()
             const file = dlg.get_file();
             if (file !== null) {
                 execAsync(["bash", "-c", `nmcli connection import type wireguard file "${file.get_path()}"`])
+                    .catch((error) => {
+                        console.error(error)
+                    })
                     .finally(() => {
                         updateConnections()
                     })
