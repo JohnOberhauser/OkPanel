@@ -16,9 +16,13 @@ export default function () {
             GLib.DateTime.new_now_local().format("%m/%d/%Y")!
     );
 
-    const time = createPoll("", 1000, () =>
-            GLib.DateTime.new_now_local().format("%-I:%M %p")!
-    );
+    const time = createPoll("", 1000, () => {
+        if (variableConfig.systemMenu.clock.format24h.get()) {
+            return GLib.DateTime.new_now_local().format("%H:%M")!
+        } else {
+            return GLib.DateTime.new_now_local().format("%-I:%M %p")!
+        }
+    });
 
     return <box
         orientation={Gtk.Orientation.HORIZONTAL}>
