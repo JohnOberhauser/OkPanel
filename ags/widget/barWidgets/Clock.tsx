@@ -8,7 +8,7 @@ import {variableConfig} from "../../config/config";
 
 export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
     const time = createPoll("", 1000, () => {
-        const use24h = variableConfig.systemMenu.clock.format24h.get()
+        const use24h = variableConfig.barWidgets.clock.format24h.get()
         let format: string
 
         if (vertical) {

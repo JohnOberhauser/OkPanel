@@ -376,7 +376,15 @@ export const barWidgetsSchema = {
             name: BarWidget.CLOCK,
             type: "object",
             description: "Configuration for the clock bar widget.",
-            children: [...widgetCommons()],
+            children: [
+                ...widgetCommons(),
+                {
+                    name: 'format24h',
+                    type: 'boolean',
+                    default: false,
+                    description: 'If true, use 24-hour format. If false, use 12-hour format with AM/PM'
+                }
+            ],
         },
         {
             name: BarWidget.COLOR_PICKER,
