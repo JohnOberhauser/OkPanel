@@ -4,18 +4,21 @@ import OkButton, {OkButtonHorizontalPadding} from "../common/OkButton";
 import {Bar} from "../../config/bar";
 import {getVPadding} from "./BarWidgets";
 import {toggleIntegratedCalendar} from "../calendar/IntegratedCalendar";
+import {variableConfig} from "../../config/config";
 
 export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
-    let format: string
+    const time = createPoll("", 1000, () => {
+        const use24h = variableConfig.barWidgets.clock.format24h.get()
+        let format: string
 
-    if (vertical) {
-        format = "%I\n%M"
-    } else {
-        format = "%I:%M"
-    }
+        if (vertical) {
+            format = use24h ? "%H\n%M" : "%I\n%M"
+        } else {
+            format = use24h ? "%H:%M" : "%I:%M"
+        }
 
-    const time = createPoll("", 1000, () =>
-        GLib.DateTime.new_now_local().format(format)!)
+        return GLib.DateTime.new_now_local().format(format)!
+    })
 
     return <OkButton
         labelCss={["barClockForeground"]}

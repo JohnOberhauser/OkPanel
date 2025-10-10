@@ -51,12 +51,16 @@ wallpaper() {
 }
 
 run_run_command() {
-	if [ -d "/usr/share/okpanel" ]; then
+	# Force dev directory first
+	dev_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../ags
+	if [ -d "$dev_dir" ]; then
+		dir="$dev_dir"
+	elif [ -d "/usr/share/okpanel" ]; then
 		dir="/usr/share/okpanel"
 	elif [ -d "$HOME/.local/share/okpanel" ]; then
 		dir="$HOME/.local/share/okpanel"
 	else
-		dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../ags
+		dir="$dev_dir"
 	fi
 
 	# make the config file if it doesn't exist so that we can monitor for config changes
