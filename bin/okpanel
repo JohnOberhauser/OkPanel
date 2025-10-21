@@ -16,6 +16,7 @@ Commands:
 	volume-up     Increase system volume.
 	volume-down   Decrease system volume.
 	mute          Mute system sound.
+	closeAll	  Closes all expanded menus.
 	custom <n> <string>
 			      Update a custom bar widget's label. <n> is a slot number of the custom widget
 			      (1–20). <string> is the new label.
@@ -119,6 +120,7 @@ main() {
 		volume-up)    ags request -i "OkPanel" "volume-up";;
 		volume-down)  ags request -i "OkPanel" "volume-down";;
 		mute)         ags request -i "OkPanel" "mute";;
+		closeAll)	  ags request -i "OkPanel" "closeAll";;
 		custom)       shift; custom_command "$@";;
 		wallpaper)	  shift; wallpaper "$@";;
 		help|-h|--help) print_help;;

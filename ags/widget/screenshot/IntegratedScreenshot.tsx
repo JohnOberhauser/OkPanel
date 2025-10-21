@@ -14,6 +14,10 @@ export function toggleIntegratedScreenshot() {
     integratedScreenshotRevealedSetting(!integratedScreenshotRevealed.get())
 }
 
+export function closeIntegratedScreenshot() {
+    integratedScreenshotRevealedSetting(false)
+}
+
 export default function () {
     setDirectories()
     updateScreenshotAudioOptions()

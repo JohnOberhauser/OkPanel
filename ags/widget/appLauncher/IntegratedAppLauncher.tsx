@@ -11,6 +11,10 @@ export function toggleIntegratedAppLauncher() {
     integratedAppLauncherRevealedSetting(!integratedAppLauncherRevealed.get())
 }
 
+export function closeIntegratedAppLauncher() {
+    integratedAppLauncherRevealedSetting(false)
+}
+
 export default function () {
     const unsub = integratedAppLauncherRevealed.subscribe(() => {
         if (integratedAppLauncherRevealed.get()) {

@@ -10,6 +10,10 @@ export function toggleIntegratedNotificationHistory() {
     integratedNotificationHistoryRevealedSetting(!integratedNotificationHistoryRevealed.get())
 }
 
+export function closeIntegratedNotificationsHistory() {
+    integratedNotificationHistoryRevealedSetting(false)
+}
+
 export default function () {
     return <revealer
         hexpand={false}

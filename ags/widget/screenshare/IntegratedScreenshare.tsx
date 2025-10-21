@@ -10,6 +10,10 @@ export function toggleIntegratedScreenshare() {
     integratedScreenshareRevealedSetting(!integratedScreenshareRevealed.get())
 }
 
+export function closeIntegratedScreenshare() {
+    integratedScreenshareRevealedSetting(false)
+}
+
 export default function () {
     return <revealer
         hexpand={false}

@@ -12,6 +12,10 @@ export function toggleIntegratedCalendar() {
     integratedCalendarRevealedSetting(!integratedCalendarRevealed.get())
 }
 
+export function closeIntegratedCalendar() {
+    integratedCalendarRevealedSetting(false)
+}
+
 export default function () {
     return <revealer
         hexpand={false}

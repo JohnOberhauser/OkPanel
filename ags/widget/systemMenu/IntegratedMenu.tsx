@@ -25,6 +25,10 @@ export function toggleIntegratedMenu() {
     integratedMenuRevealedSetting(!integratedMenuRevealed.get())
 }
 
+export function closeIntegratedMenu() {
+    integratedMenuRevealedSetting(false)
+}
+
 let mainBox: Gtk.Box
 
 let network: Gtk.Widget

@@ -4,13 +4,19 @@ import {updateResponse, updateWindows} from "./widget/screenshare/Screenshare";
 import {decreaseVolume, increaseVolume, muteVolume} from "./widget/utils/audio";
 import Hyprland from "gi://AstalHyprland"
 import {setThemeBasic} from "./config/theme";
-import {toggleIntegratedScreenshot} from "./widget/screenshot/IntegratedScreenshot";
-import {toggleIntegratedAppLauncher} from "./widget/appLauncher/IntegratedAppLauncher";
-import {toggleIntegratedScreenshare} from "./widget/screenshare/IntegratedScreenshare";
-import {toggleIntegratedMenu} from "./widget/systemMenu/IntegratedMenu";
-import {toggleIntegratedCalendar} from "./widget/calendar/IntegratedCalendar";
-import {toggleIntegratedClipboardManager} from "./widget/clipboardManager/IntegratedClipboardManager";
-import {toggleIntegratedNotificationHistory} from "./widget/notification/IntegratedNotificationHistory";
+import {closeIntegratedScreenshot, toggleIntegratedScreenshot} from "./widget/screenshot/IntegratedScreenshot";
+import {closeIntegratedAppLauncher, toggleIntegratedAppLauncher} from "./widget/appLauncher/IntegratedAppLauncher";
+import {closeIntegratedScreenshare, toggleIntegratedScreenshare} from "./widget/screenshare/IntegratedScreenshare";
+import {closeIntegratedMenu, toggleIntegratedMenu} from "./widget/systemMenu/IntegratedMenu";
+import {closeIntegratedCalendar, toggleIntegratedCalendar} from "./widget/calendar/IntegratedCalendar";
+import {
+    closeIntegratedClipboardManager,
+    toggleIntegratedClipboardManager
+} from "./widget/clipboardManager/IntegratedClipboardManager";
+import {
+    closeIntegratedNotificationsHistory,
+    toggleIntegratedNotificationHistory
+} from "./widget/notification/IntegratedNotificationHistory";
 import {customWidgetLabelSetters} from "./widget/barWidgets/CustomWidget";
 import {setWallpaper} from "./widget/wallpaper/setWallpaper";
 import {killOldMonitorWindows, spawnMonitorWindows} from "./widget/utils/windows";
@@ -100,6 +106,14 @@ App.start({
         } else if (command === "notification") {
             toggleIntegratedNotificationHistory()
             res("notifications toggled")
+        } else if (command === "closeAll") {
+            closeIntegratedAppLauncher()
+            closeIntegratedCalendar()
+            closeIntegratedClipboardManager()
+            closeIntegratedMenu()
+            closeIntegratedScreenshare()
+            closeIntegratedNotificationsHistory()
+            closeIntegratedScreenshot()
         } else if (command.startsWith("wallpaper")) {
             const path = request[1]
             setWallpaper(path)

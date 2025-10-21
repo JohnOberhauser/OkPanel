@@ -10,6 +10,10 @@ export function toggleIntegratedClipboardManager() {
     integratedClipboardManagerRevealedSetting(!integratedClipboardManagerRevealed.get())
 }
 
+export function closeIntegratedClipboardManager() {
+    integratedClipboardManagerRevealedSetting(false)
+}
+
 export default function () {
     return <revealer
         hexpand={false}
