@@ -81,8 +81,9 @@ function watchForUpdates() {
 export function updateClipboardEntries() {
     execAsync(["bash", "-c", `cliphist list`])
         .catch((error) => {
-            console.error(error)
-        }).then((value) => {
+            console.error(`updateClipboardEntries error: ${error}`)
+        })
+        .then((value) => {
             if (typeof value !== "string") {
                 return
             }
