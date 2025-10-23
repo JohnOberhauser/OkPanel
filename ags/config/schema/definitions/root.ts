@@ -49,6 +49,12 @@ export const CONFIG_SCHEMA = [
         default: 0,
         description: 'Index of the primary monitor (0‑based as reported by Hyprland).',
     },
+    {
+        name: "clockFormat24h",
+        type: 'boolean',
+        default: false,
+        description: "If true, use 24-hour format. If false, use 12-hour format with AM/PM",
+    },
     soundsSchema,
     osdSchema,
     weatherSchema,

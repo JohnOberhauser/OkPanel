@@ -87,12 +87,6 @@ export function systemMenuWidgetsSchema() { return [
                 description: "Font used for the week day name",
                 reactive: false,
             },
-            {
-                name: "format24h",
-                type: 'boolean',
-                default: false,
-                description: "If true, use 24-hour format. If false, use 12-hour format with AM/PM",
-            }
         ]
     },
     {

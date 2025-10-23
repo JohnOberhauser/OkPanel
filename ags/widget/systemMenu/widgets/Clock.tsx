@@ -17,7 +17,7 @@ export default function () {
     );
 
     const time = createPoll("", 1000, () => {
-        if (variableConfig.systemMenu.clock.format24h.get()) {
+        if (variableConfig.clockFormat24h.get()) {
             return GLib.DateTime.new_now_local().format("%H:%M")!
         } else {
             return GLib.DateTime.new_now_local().format("%-I:%M %p")!

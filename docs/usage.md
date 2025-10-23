@@ -70,6 +70,16 @@ okpanel calendar
 
 ---
 
+### Close all opened menus
+
+This will close the menu, notifications, calendar, app launcher, clipboard manager, screenshot tool, and screenshare tool
+
+```
+okpanel closeAll
+```
+
+---
+
 ### Changing volume
 
 If you want your system to make a clicking sound when adjusting volume, bind these.  It is not required though.

@@ -1,5 +1,4 @@
 import {Gtk} from "ags/gtk4"
-import Divider from "../common/Divider";
 import {variableConfig} from "../../config/config";
 import {SpeedUnits, TemperatureUnits} from "../../config/schema/definitions/weather";
 import {createBinding, createComputed, createState, For, Accessor, onCleanup} from "ags";
@@ -308,7 +307,9 @@ export default function() {
                         orientation={Gtk.Orientation.VERTICAL}>
                         <label
                             cssClasses={["labelSmall"]}
-                            label={hourly.time.toLocaleTimeString([], { hour: 'numeric' })}/>
+                            label={variableConfig.clockFormat24h.asAccessor().as((format24h) => {
+                                return hourly.time.toLocaleTimeString([], { hour: 'numeric', hour12: !format24h })
+                            })}/>
                         <label
                             cssClasses={["labelLarge"]}
                             label={getWeatherIcon(hourly.weatherCode, hourly.isDay === 1)}/>
