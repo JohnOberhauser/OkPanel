@@ -4,6 +4,7 @@ import {Gdk, Gtk} from "ags/gtk4";
 import {createComputed, createState, For, Accessor, onCleanup} from "ags";
 import {integratedAppLauncherRevealed, toggleIntegratedAppLauncher} from "./IntegratedAppLauncher";
 import {launchDesktopApp} from "../utils/launch";
+import {variableConfig} from "../../config/config";
 
 interface AppButtonProps {
     app: Apps.Application;
@@ -42,8 +43,12 @@ function AppButton({ app, isSelected }: AppButtonProps) {
         <box>
             <box
                 valign={Gtk.Align.CENTER}
-                orientation={Gtk.Orientation.VERTICAL}
+                orientation={Gtk.Orientation.HORIZONTAL}
             >
+                <image
+                    visible={variableConfig.appLauncher.showAppIcons.asAccessor()}
+                    marginEnd={12}
+                    iconName={app.iconName}/>
                 <label
                     cssClasses={["name"]}
                     xalign={0}
