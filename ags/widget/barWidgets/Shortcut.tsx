@@ -191,13 +191,7 @@ export default function (
     // Delay setting the selected value because the focused client might not have a class name just yet
     let selectedDebounceTimer: Timer | null = null;
 
-    let dispose = createComputed([
-        createBinding(hyprland, "focusedClient"),
-        // @ts-ignore
-        variableConfig.barWidgets[`shortcut${shortcutNumber}`].class.asAccessor()
-    ], (focusedClient: AstalHyprland.Client | null, clazz: string) => {
-        return focusedClient?.class === clazz
-    }).subscribe(() => {
+    let dispose1 = createBinding(hyprland, "focusedClient").subscribe(() => {
         if (selectedDebounceTimer !== null) {
             selectedDebounceTimer.cancel()
         }
@@ -209,7 +203,21 @@ export default function (
         })
     })
 
-    onCleanup(dispose)
+    // @ts-ignore
+    let dispose2 = variableConfig.barWidgets[`shortcut${shortcutNumber}`].class.asAccessor().subscribe(() => {
+        if (selectedDebounceTimer !== null) {
+            selectedDebounceTimer.cancel()
+        }
+        selectedDebounceTimer = timeout(100, () => {
+            // @ts-ignore
+            const clazz = variableConfig.barWidgets[`shortcut${shortcutNumber}`].class.get()
+            selectedSet(hyprland.focusedClient?.class === clazz)
+            selectedDebounceTimer = null
+        })
+    })
+
+    onCleanup(dispose1)
+    onCleanup(dispose2)
 
     return <overlay
         $={(self) => {
