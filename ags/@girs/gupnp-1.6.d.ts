@@ -1838,7 +1838,7 @@ declare module 'gi://GUPnP?version=1.6' {
                 requested_height: number,
                 prefer_bigger: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Bytes, string, number, number, number]>;
+            ): globalThis.Promise<[GLib.Bytes, string, number, number, number]>;
             /**
              * Download the device icon matching the request parameters. For details on
              * the lookup procedure, see [method`GUPnP`.DeviceInfo.get_icon_url]
@@ -1878,7 +1878,7 @@ declare module 'gi://GUPnP?version=1.6' {
                 prefer_bigger: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Bytes, string, number, number, number]> | void;
+            ): globalThis.Promise<[GLib.Bytes, string, number, number, number]> | void;
             get_icon_finish(res: Gio.AsyncResult): [GLib.Bytes, string, number, number, number];
             /**
              * Get an URL pointing to the icon most closely matching the
@@ -3209,7 +3209,7 @@ declare module 'gi://GUPnP?version=1.6' {
              * error code %G_IO_ERROR_CANCELLED.
              * @param cancellable a #GCancellable that can be used to cancel the call.
              */
-            introspect_async(cancellable?: Gio.Cancellable | null): Promise<ServiceIntrospection | null>;
+            introspect_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>;
             /**
              * Note that introspection object is created from the information in service
              * description document (SCPD) provided by the service so it can not be created
@@ -3234,7 +3234,7 @@ declare module 'gi://GUPnP?version=1.6' {
             introspect_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<ServiceIntrospection | null> | void;
+            ): globalThis.Promise<ServiceIntrospection | null> | void;
             /**
              * Finish an asynchronous call initiated with
              * gupnp_service_info_introspect_async().
@@ -4006,7 +4006,7 @@ declare module 'gi://GUPnP?version=1.6' {
             call_action_async(
                 action: ServiceProxyAction,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<ServiceProxyAction | null>;
+            ): globalThis.Promise<ServiceProxyAction | null>;
             /**
              * Start a call on the remote UPnP service using the pre-configured `action`.
              * Use gupnp_service_proxy_call_action_finish() in the `callback` to finalize
@@ -4038,7 +4038,7 @@ declare module 'gi://GUPnP?version=1.6' {
                 action: ServiceProxyAction,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<ServiceProxyAction | null> | void;
+            ): globalThis.Promise<ServiceProxyAction | null> | void;
             /**
              * Finish an asynchronous call initiated with
              * gupnp_service_proxy_call_action_async().
@@ -5071,6 +5071,68 @@ declare module 'gi://GUPnP?version=1.6' {
 
         type XMLDocClass = typeof XMLDoc;
         namespace Acl {
+            /**
+             * Interface for implementing Acl.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Check whether [method`GUPnP`.Acl.is_allowed_async] is supported.
+                 */
+                vfunc_can_sync(): boolean;
+                /**
+                 * Check whether an IP address is allowed to access this resource.
+                 * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
+                 * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+                 * @param path The path being served.
+                 * @param address IP address of the peer.
+                 * @param agent The User-Agent header of the peer or %NULL if unknown. @returns %TRUE if the peer is allowed, %FALSE otherwise
+                 */
+                vfunc_is_allowed(
+                    device: Device | null,
+                    service: Service | null,
+                    path: string,
+                    address: string,
+                    agent?: string | null,
+                ): boolean;
+                /**
+                 * Check asynchronously whether an IP address is allowed to access
+                 * this resource.
+                 *
+                 * This function is optional. [method`GUPnP`.Acl.can_sync] should return %TRUE
+                 * if the implementing class supports it. If it is supported, GUPnP will
+                 * prefer to use this function over [method`GUPnP`.Acl.is_allowed].
+                 *
+                 * Implement this function if the process of verifying the access right
+                 * is expected to take some time, for example when using D-Bus etc.
+                 *
+                 * Use [method`GUPnP`.Acl.is_allowed_finish] to retrieve the result.
+                 * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
+                 * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
+                 * @param path The path being served.
+                 * @param address IP address of the peer
+                 * @param agent The User-Agent header of the peer or %NULL if not unknown.
+                 * @param cancellable A cancellable which can be used to cancel the operation.
+                 * @param callback Callback to call after the function is done.
+                 */
+                vfunc_is_allowed_async(
+                    device: Device | null,
+                    service: Service | null,
+                    path: string,
+                    address: string,
+                    agent?: string | null,
+                    cancellable?: Gio.Cancellable | null,
+                    callback?: Gio.AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Get the result of [method`GUPnP`.Acl.is_allowed_async].
+                 * @param res [iface@Gio.AsyncResult] obtained from the callback passed to [method@GUPnP.Acl.is_allowed_async]
+                 */
+                vfunc_is_allowed_finish(res: Gio.AsyncResult): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5080,7 +5142,7 @@ declare module 'gi://GUPnP?version=1.6' {
             $gtype: GObject.GType<Acl>;
             prototype: Acl;
         }
-        interface Acl extends GObject.Object {
+        interface Acl extends GObject.Object, Acl.Interface {
             // Methods
 
             /**
@@ -5128,7 +5190,7 @@ declare module 'gi://GUPnP?version=1.6' {
                 address: string,
                 agent?: string | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Check asynchronously whether an IP address is allowed to access
              * this resource.
@@ -5186,68 +5248,12 @@ declare module 'gi://GUPnP?version=1.6' {
                 agent?: string | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Get the result of [method`GUPnP`.Acl.is_allowed_async].
              * @param res [iface@Gio.AsyncResult] obtained from the callback passed to [method@GUPnP.Acl.is_allowed_async]
              */
             is_allowed_finish(res: Gio.AsyncResult): boolean;
-
-            // Virtual methods
-
-            /**
-             * Check whether [method`GUPnP`.Acl.is_allowed_async] is supported.
-             */
-            vfunc_can_sync(): boolean;
-            /**
-             * Check whether an IP address is allowed to access this resource.
-             * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
-             * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
-             * @param path The path being served.
-             * @param address IP address of the peer.
-             * @param agent The User-Agent header of the peer or %NULL if unknown. @returns %TRUE if the peer is allowed, %FALSE otherwise
-             */
-            vfunc_is_allowed(
-                device: Device | null,
-                service: Service | null,
-                path: string,
-                address: string,
-                agent?: string | null,
-            ): boolean;
-            /**
-             * Check asynchronously whether an IP address is allowed to access
-             * this resource.
-             *
-             * This function is optional. [method`GUPnP`.Acl.can_sync] should return %TRUE
-             * if the implementing class supports it. If it is supported, GUPnP will
-             * prefer to use this function over [method`GUPnP`.Acl.is_allowed].
-             *
-             * Implement this function if the process of verifying the access right
-             * is expected to take some time, for example when using D-Bus etc.
-             *
-             * Use [method`GUPnP`.Acl.is_allowed_finish] to retrieve the result.
-             * @param device The [class@GUPnP.Device] associated with @path or %NULL if unknown.
-             * @param service The [class@GUPnP.Service] associated with @path or %NULL if unknown.
-             * @param path The path being served.
-             * @param address IP address of the peer
-             * @param agent The User-Agent header of the peer or %NULL if not unknown.
-             * @param cancellable A cancellable which can be used to cancel the operation.
-             * @param callback Callback to call after the function is done.
-             */
-            vfunc_is_allowed_async(
-                device: Device | null,
-                service: Service | null,
-                path: string,
-                address: string,
-                agent?: string | null,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Get the result of [method`GUPnP`.Acl.is_allowed_async].
-             * @param res [iface@Gio.AsyncResult] obtained from the callback passed to [method@GUPnP.Acl.is_allowed_async]
-             */
-            vfunc_is_allowed_finish(res: Gio.AsyncResult): boolean;
         }
 
         export const Acl: AclNamespace & {

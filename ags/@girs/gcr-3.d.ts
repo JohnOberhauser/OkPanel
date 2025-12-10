@@ -599,7 +599,7 @@ declare module 'gi://Gcr?version=3' {
          * Asynchronously initialize the registered PKCS#11 modules.
          * @param cancellable optional cancellable used to cancel the operation
          */
-        function pkcs11_initialize_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+        function pkcs11_initialize_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously initialize the registered PKCS#11 modules.
          * @param cancellable optional cancellable used to cancel the operation
@@ -617,7 +617,7 @@ declare module 'gi://Gcr?version=3' {
         function pkcs11_initialize_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Complete the asynchronous operation to initialize the registered PKCS#11
          * modules.
@@ -696,7 +696,7 @@ declare module 'gi://Gcr?version=3' {
             purpose: string,
             peer: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Add a pinned certificate for communication with `peer` for `purpose`. A pinned
          * certificate overrides all other certificate verification and should be used
@@ -744,7 +744,7 @@ declare module 'gi://Gcr?version=3' {
             peer: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<Certificate> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous operation started by
          * gcr_trust_add_pinned_certificate_async().
@@ -787,7 +787,7 @@ declare module 'gi://Gcr?version=3' {
             certificate: Certificate,
             purpose: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Check if the `certificate` is a trust anchor for the given `purpose`. A trust
          * anchor is used to verify the signatures on other certificates when verifying
@@ -823,7 +823,7 @@ declare module 'gi://Gcr?version=3' {
             purpose: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<Certificate> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous operation started by
          * gcr_trust_is_certificate_anchored_async().
@@ -872,7 +872,7 @@ declare module 'gi://Gcr?version=3' {
             purpose: string,
             peer: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Check if `certificate` is pinned for `purpose` to communicate with `peer`. A
          * pinned certificate overrides all other certificate verification.
@@ -912,7 +912,7 @@ declare module 'gi://Gcr?version=3' {
             peer: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<Certificate> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous operation started by
          * gcr_trust_is_certificate_pinned_async().
@@ -962,7 +962,7 @@ declare module 'gi://Gcr?version=3' {
             purpose: string,
             peer: string,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Remove a pinned certificate for communication with `peer` for `purpose`.
          *
@@ -1006,7 +1006,7 @@ declare module 'gi://Gcr?version=3' {
             peer: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<Certificate> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous operation started by
          * gcr_trust_remove_pinned_certificate_async().
@@ -1238,7 +1238,7 @@ declare module 'gi://Gcr?version=3' {
                 peer: string | null,
                 flags: CertificateChainFlags | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Complete a certificate chain. Once a certificate chain has been built
              * its status can be examined.
@@ -1324,7 +1324,7 @@ declare module 'gi://Gcr?version=3' {
                 flags: CertificateChainFlags | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an asynchronous operation started by
              * gcr_certificate_chain_build_async().
@@ -1498,7 +1498,7 @@ declare module 'gi://Gcr?version=3' {
              * This call will return immediately and complete later.
              * @param cancellable a cancellation object
              */
-            complete_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            complete_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously complete and sign a certificate request, so that it can
              * be encoded and sent to a certificate authority.
@@ -1519,7 +1519,7 @@ declare module 'gi://Gcr?version=3' {
             complete_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finish an asynchronous operation to complete and sign a certificate
              * request.
@@ -2364,7 +2364,10 @@ declare module 'gi://Gcr?version=3' {
              * @param input The input stream
              * @param cancellable An optional cancellation object
              */
-            parse_stream_async(input: Gio.InputStream, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            parse_stream_async(
+                input: Gio.InputStream,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Parse items from the data in a #GInputStream. This function completes
              * asyncronously and doesn't block.
@@ -2394,7 +2397,7 @@ declare module 'gi://Gcr?version=3' {
                 input: Gio.InputStream,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Complete an operation to parse a stream.
              * @param result The operation result
@@ -4949,7 +4952,7 @@ declare module 'gi://Gcr?version=3' {
              * This call returns immediately and completes asynchronously.
              * @param cancellable an optional cancellation object
              */
-            close_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            close_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Close this prompt asynchronously. After calling this function, no further
              * methods may be called on this object. The prompt object is not unreferenced
@@ -4972,7 +4975,7 @@ declare module 'gi://Gcr?version=3' {
             close_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Complete operation to close this prompt.
              *
@@ -5164,7 +5167,7 @@ declare module 'gi://Gcr?version=3' {
              * This method will return immediately and complete asynchronously.
              * @param cancellable optional cancellation object
              */
-            confirm_async(cancellable?: Gio.Cancellable | null): Promise<PromptReply>;
+            confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<PromptReply>;
             /**
              * Prompts for confirmation asking a cancel/continue style question.
              * Set the various properties on the prompt before calling this method to
@@ -5187,7 +5190,7 @@ declare module 'gi://Gcr?version=3' {
             confirm_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<PromptReply> | void;
+            ): globalThis.Promise<PromptReply> | void;
             /**
              * Complete an operation to prompt for confirmation.
              *
@@ -5329,7 +5332,7 @@ declare module 'gi://Gcr?version=3' {
              * This method will return immediately and complete asynchronously.
              * @param cancellable optional cancellation object
              */
-            password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+            password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Prompts for password. Set the various properties on the prompt before calling
              * this method to explain which password should be entered.
@@ -5350,7 +5353,7 @@ declare module 'gi://Gcr?version=3' {
             password_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Complete an operation to prompt for a password.
              *
@@ -5564,7 +5567,7 @@ declare module 'gi://Gcr?version=3' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -5656,7 +5659,7 @@ declare module 'gi://Gcr?version=3' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -7131,6 +7134,19 @@ declare module 'gi://Gcr?version=3' {
         }
 
         namespace Certificate {
+            /**
+             * Interface for implementing Certificate.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends Comparable.Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the raw DER data for an X.509 certificate.
+                 */
+                vfunc_get_der_data(): Uint8Array;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Comparable.ConstructorProps {
@@ -7160,7 +7176,7 @@ declare module 'gi://Gcr?version=3' {
              */
             compare(first?: Comparable | null, other?: Comparable | null): number;
         }
-        interface Certificate extends Comparable {
+        interface Certificate extends Comparable, Certificate.Interface {
             // Properties
 
             /**
@@ -7373,13 +7389,6 @@ declare module 'gi://Gcr?version=3' {
              * properties.
              */
             mixin_emit_notify(): void;
-
-            // Virtual methods
-
-            /**
-             * Gets the raw DER data for an X.509 certificate.
-             */
-            vfunc_get_der_data(): Uint8Array;
         }
 
         export const Certificate: CertificateNamespace & {
@@ -7387,6 +7396,30 @@ declare module 'gi://Gcr?version=3' {
         };
 
         namespace Collection {
+            /**
+             * Interface for implementing Collection.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                vfunc_added(object: GObject.Object): void;
+                /**
+                 * Check whether the collection contains an object or not.
+                 * @param object object to check
+                 */
+                vfunc_contains(object: GObject.Object): boolean;
+                /**
+                 * Get the number of objects in this collection.
+                 */
+                vfunc_get_length(): number;
+                /**
+                 * Get a list of the objects in this collection.
+                 */
+                vfunc_get_objects(): GObject.Object[];
+                vfunc_removed(object: GObject.Object): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7396,7 +7429,7 @@ declare module 'gi://Gcr?version=3' {
             $gtype: GObject.GType<Collection>;
             prototype: Collection;
         }
-        interface Collection extends GObject.Object {
+        interface Collection extends GObject.Object, Collection.Interface {
             // Methods
 
             /**
@@ -7427,24 +7460,6 @@ declare module 'gi://Gcr?version=3' {
              * @returns a list of the objects          in this collection, which should be freed with g_list_free()
              */
             get_objects(): GObject.Object[];
-
-            // Virtual methods
-
-            vfunc_added(object: GObject.Object): void;
-            /**
-             * Check whether the collection contains an object or not.
-             * @param object object to check
-             */
-            vfunc_contains(object: GObject.Object): boolean;
-            /**
-             * Get the number of objects in this collection.
-             */
-            vfunc_get_length(): number;
-            /**
-             * Get a list of the objects in this collection.
-             */
-            vfunc_get_objects(): GObject.Object[];
-            vfunc_removed(object: GObject.Object): void;
         }
 
         export const Collection: CollectionNamespace & {
@@ -7452,6 +7467,21 @@ declare module 'gi://Gcr?version=3' {
         };
 
         namespace Comparable {
+            /**
+             * Interface for implementing Comparable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Compare whether two objects represent the same thing. The return value can
+                 * also be used to sort the objects.
+                 * @param other Another comparable object
+                 */
+                vfunc_compare(other?: Comparable | null): number;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7461,7 +7491,7 @@ declare module 'gi://Gcr?version=3' {
             $gtype: GObject.GType<Comparable>;
             prototype: Comparable;
         }
-        interface Comparable extends GObject.Object {
+        interface Comparable extends GObject.Object, Comparable.Interface {
             // Methods
 
             /**
@@ -7471,15 +7501,6 @@ declare module 'gi://Gcr?version=3' {
              * @returns Zero if the two objects represent the same thing, non-zero if not.
              */
             compare(other?: Comparable | null): number;
-
-            // Virtual methods
-
-            /**
-             * Compare whether two objects represent the same thing. The return value can
-             * also be used to sort the objects.
-             * @param other Another comparable object
-             */
-            vfunc_compare(other?: Comparable | null): number;
         }
 
         export const Comparable: ComparableNamespace & {
@@ -7487,6 +7508,60 @@ declare module 'gi://Gcr?version=3' {
         };
 
         namespace ImportInteraction {
+            /**
+             * Interface for implementing ImportInteraction.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Supplement attributes before import. This means prompting the user for
+                 * things like labels and the like. The needed attributes will have been passed
+                 * to gcr_import_interaction_supplement_prep().
+                 *
+                 * This method prompts the user and fills in the attributes. If the user or
+                 * cancellable cancels the operation the error should be set with %G_IO_ERROR_CANCELLED.
+                 * @param builder supplemented attributes
+                 * @param cancellable optional cancellable object
+                 */
+                vfunc_supplement(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult;
+                /**
+                 * Asynchronously supplement attributes before import. This means prompting the
+                 * user for things like labels and the like. The needed attributes will have
+                 * been passed to gcr_import_interaction_supplement_prep().
+                 *
+                 * This method prompts the user and fills in the attributes.
+                 * @param builder supplemented attributes
+                 * @param cancellable optional cancellable object
+                 * @param callback called when the operation completes
+                 */
+                vfunc_supplement_async(
+                    builder: Gck.Builder,
+                    cancellable?: Gio.Cancellable | null,
+                    callback?: Gio.AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Complete operation to asynchronously supplement attributes before import.
+                 *
+                 * If the user or cancellable cancels the operation the error should be set
+                 * with %G_IO_ERROR_CANCELLED.
+                 * @param result the asynchronous result
+                 */
+                vfunc_supplement_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult;
+                /**
+                 * Prepare for supplementing the given attributes before import. This means
+                 * prompting the user for things like labels and the like. The attributes
+                 * will contain attributes for values that the importer needs, either empty
+                 * or prefilled with suggested values.
+                 *
+                 * This method does not prompt the user, but rather just prepares the
+                 * interaction that these are the attributes that are needed.
+                 * @param builder attributes to supplement
+                 */
+                vfunc_supplement_prep(builder: Gck.Builder): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Gio.TlsInteraction.ConstructorProps {}
@@ -7496,7 +7571,7 @@ declare module 'gi://Gcr?version=3' {
             $gtype: GObject.GType<ImportInteraction>;
             prototype: ImportInteraction;
         }
-        interface ImportInteraction extends Gio.TlsInteraction {
+        interface ImportInteraction extends Gio.TlsInteraction, ImportInteraction.Interface {
             // Methods
 
             /**
@@ -7523,7 +7598,7 @@ declare module 'gi://Gcr?version=3' {
             supplement_async(
                 builder: Gck.Builder,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<Gio.TlsInteractionResult>;
+            ): globalThis.Promise<Gio.TlsInteractionResult>;
             /**
              * Asynchronously supplement attributes before import. This means prompting the
              * user for things like labels and the like. The needed attributes will have
@@ -7553,7 +7628,7 @@ declare module 'gi://Gcr?version=3' {
                 builder: Gck.Builder,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Gio.TlsInteractionResult> | void;
+            ): globalThis.Promise<Gio.TlsInteractionResult> | void;
             /**
              * Complete operation to asynchronously supplement attributes before import.
              *
@@ -7574,54 +7649,6 @@ declare module 'gi://Gcr?version=3' {
              * @param builder attributes to supplement
              */
             supplement_prep(builder: Gck.Builder): void;
-
-            // Virtual methods
-
-            /**
-             * Supplement attributes before import. This means prompting the user for
-             * things like labels and the like. The needed attributes will have been passed
-             * to gcr_import_interaction_supplement_prep().
-             *
-             * This method prompts the user and fills in the attributes. If the user or
-             * cancellable cancels the operation the error should be set with %G_IO_ERROR_CANCELLED.
-             * @param builder supplemented attributes
-             * @param cancellable optional cancellable object
-             */
-            vfunc_supplement(builder: Gck.Builder, cancellable?: Gio.Cancellable | null): Gio.TlsInteractionResult;
-            /**
-             * Asynchronously supplement attributes before import. This means prompting the
-             * user for things like labels and the like. The needed attributes will have
-             * been passed to gcr_import_interaction_supplement_prep().
-             *
-             * This method prompts the user and fills in the attributes.
-             * @param builder supplemented attributes
-             * @param cancellable optional cancellable object
-             * @param callback called when the operation completes
-             */
-            vfunc_supplement_async(
-                builder: Gck.Builder,
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Complete operation to asynchronously supplement attributes before import.
-             *
-             * If the user or cancellable cancels the operation the error should be set
-             * with %G_IO_ERROR_CANCELLED.
-             * @param result the asynchronous result
-             */
-            vfunc_supplement_finish(result: Gio.AsyncResult): Gio.TlsInteractionResult;
-            /**
-             * Prepare for supplementing the given attributes before import. This means
-             * prompting the user for things like labels and the like. The attributes
-             * will contain attributes for values that the importer needs, either empty
-             * or prefilled with suggested values.
-             *
-             * This method does not prompt the user, but rather just prepares the
-             * interaction that these are the attributes that are needed.
-             * @param builder attributes to supplement
-             */
-            vfunc_supplement_prep(builder: Gck.Builder): void;
         }
 
         export const ImportInteraction: ImportInteractionNamespace & {
@@ -7629,6 +7656,44 @@ declare module 'gi://Gcr?version=3' {
         };
 
         namespace Importer {
+            /**
+             * Interface for implementing Importer.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Import the queued items in the importer. This function returns immediately
+                 * and completes asynchronously.
+                 * @param cancellable a #GCancellable, or %NULL
+                 * @param callback called when the operation completes
+                 */
+                vfunc_import_async(
+                    cancellable?: Gio.Cancellable | null,
+                    callback?: Gio.AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Complete an asynchronous operation to import queued items.
+                 * @param result an asynchronous result
+                 */
+                vfunc_import_finish(result: Gio.AsyncResult): boolean;
+                /**
+                 * optional implementation of [method`Importer`.import]
+                 * @param cancellable
+                 */
+                vfunc_import_sync(cancellable?: Gio.Cancellable | null): boolean;
+                /**
+                 * Queues an additional item to be imported. The parsed item is represented
+                 * by the state of the [class`Parser]` at the time of calling this method.
+                 *
+                 * If the parsed item is incompatible with the importer, then this will
+                 * fail and the item will not be queued.
+                 * @param parsed a parsed item to import
+                 */
+                vfunc_queue_for_parsed(parsed: Parsed): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7674,7 +7739,7 @@ declare module 'gi://Gcr?version=3' {
              */
             register_well_known(): void;
         }
-        interface Importer extends GObject.Object {
+        interface Importer extends GObject.Object, Importer.Interface {
             // Properties
 
             /**
@@ -7715,7 +7780,7 @@ declare module 'gi://Gcr?version=3' {
              * and completes asynchronously.
              * @param cancellable a #GCancellable, or %NULL
              */
-            import_async(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            import_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Import the queued items in the importer. This function returns immediately
              * and completes asynchronously.
@@ -7732,7 +7797,7 @@ declare module 'gi://Gcr?version=3' {
             import_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Complete an asynchronous operation to import queued items.
              * @param result an asynchronous result
@@ -7755,38 +7820,6 @@ declare module 'gi://Gcr?version=3' {
              * @param interaction the interaction used by the importer
              */
             set_interaction(interaction: Gio.TlsInteraction): void;
-
-            // Virtual methods
-
-            /**
-             * Import the queued items in the importer. This function returns immediately
-             * and completes asynchronously.
-             * @param cancellable a #GCancellable, or %NULL
-             * @param callback called when the operation completes
-             */
-            vfunc_import_async(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Complete an asynchronous operation to import queued items.
-             * @param result an asynchronous result
-             */
-            vfunc_import_finish(result: Gio.AsyncResult): boolean;
-            /**
-             * optional implementation of [method`Importer`.import]
-             * @param cancellable
-             */
-            vfunc_import_sync(cancellable?: Gio.Cancellable | null): boolean;
-            /**
-             * Queues an additional item to be imported. The parsed item is represented
-             * by the state of the [class`Parser]` at the time of calling this method.
-             *
-             * If the parsed item is incompatible with the importer, then this will
-             * fail and the item will not be queued.
-             * @param parsed a parsed item to import
-             */
-            vfunc_queue_for_parsed(parsed: Parsed): boolean;
         }
 
         export const Importer: ImporterNamespace & {
@@ -7794,6 +7827,65 @@ declare module 'gi://Gcr?version=3' {
         };
 
         namespace Prompt {
+            /**
+             * Interface for implementing Prompt.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * close a prompt
+                 */
+                vfunc_prompt_close(): void;
+                /**
+                 * Prompts for confirmation asking a cancel/continue style question.
+                 * Set the various properties on the prompt before calling this method to
+                 * represent the question correctly.
+                 *
+                 * This method will return immediately and complete asynchronously.
+                 * @param cancellable optional cancellation object
+                 * @param callback called when the operation completes
+                 */
+                vfunc_prompt_confirm_async(
+                    cancellable?: Gio.Cancellable | null,
+                    callback?: Gio.AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Complete an operation to prompt for confirmation.
+                 *
+                 * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
+                 * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
+                 * an error occurs. Check the `error` argument to tell the difference.
+                 * @param result asynchronous result passed to callback
+                 */
+                vfunc_prompt_confirm_finish(result: Gio.AsyncResult): PromptReply;
+                /**
+                 * Prompts for password. Set the various properties on the prompt before calling
+                 * this method to explain which password should be entered.
+                 *
+                 * This method will return immediately and complete asynchronously.
+                 * @param cancellable optional cancellation object
+                 * @param callback called when the operation completes
+                 */
+                vfunc_prompt_password_async(
+                    cancellable?: Gio.Cancellable | null,
+                    callback?: Gio.AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Complete an operation to prompt for a password.
+                 *
+                 * A password will be returned if the user enters a password successfully.
+                 * The returned password is valid until the next time a method is called
+                 * to display another prompt.
+                 *
+                 * %NULL will be returned if the user cancels or if an error occurs. Check the
+                 * `error` argument to tell the difference.
+                 * @param result asynchronous result passed to callback
+                 */
+                vfunc_prompt_password_finish(result: Gio.AsyncResult): string;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7822,7 +7914,7 @@ declare module 'gi://Gcr?version=3' {
             $gtype: GObject.GType<Prompt>;
             prototype: Prompt;
         }
-        interface Prompt extends GObject.Object {
+        interface Prompt extends GObject.Object, Prompt.Interface {
             // Properties
 
             /**
@@ -8010,7 +8102,7 @@ declare module 'gi://Gcr?version=3' {
              * This method will return immediately and complete asynchronously.
              * @param cancellable optional cancellation object
              */
-            confirm_async(cancellable?: Gio.Cancellable | null): Promise<PromptReply>;
+            confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<PromptReply>;
             /**
              * Prompts for confirmation asking a cancel/continue style question.
              * Set the various properties on the prompt before calling this method to
@@ -8033,7 +8125,7 @@ declare module 'gi://Gcr?version=3' {
             confirm_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<PromptReply> | void;
+            ): globalThis.Promise<PromptReply> | void;
             /**
              * Complete an operation to prompt for confirmation.
              *
@@ -8175,7 +8267,7 @@ declare module 'gi://Gcr?version=3' {
              * This method will return immediately and complete asynchronously.
              * @param cancellable optional cancellation object
              */
-            password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+            password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Prompts for password. Set the various properties on the prompt before calling
              * this method to explain which password should be entered.
@@ -8196,7 +8288,7 @@ declare module 'gi://Gcr?version=3' {
             password_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Complete an operation to prompt for a password.
              *
@@ -8320,59 +8412,6 @@ declare module 'gi://Gcr?version=3' {
              * @param warning the warning or %NULL
              */
             set_warning(warning?: string | null): void;
-
-            // Virtual methods
-
-            /**
-             * close a prompt
-             */
-            vfunc_prompt_close(): void;
-            /**
-             * Prompts for confirmation asking a cancel/continue style question.
-             * Set the various properties on the prompt before calling this method to
-             * represent the question correctly.
-             *
-             * This method will return immediately and complete asynchronously.
-             * @param cancellable optional cancellation object
-             * @param callback called when the operation completes
-             */
-            vfunc_prompt_confirm_async(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Complete an operation to prompt for confirmation.
-             *
-             * %GCR_PROMPT_REPLY_CONTINUE will be returned if the user confirms the prompt. The
-             * return value will also be %GCR_PROMPT_REPLY_CANCEL if the user cancels or if
-             * an error occurs. Check the `error` argument to tell the difference.
-             * @param result asynchronous result passed to callback
-             */
-            vfunc_prompt_confirm_finish(result: Gio.AsyncResult): PromptReply;
-            /**
-             * Prompts for password. Set the various properties on the prompt before calling
-             * this method to explain which password should be entered.
-             *
-             * This method will return immediately and complete asynchronously.
-             * @param cancellable optional cancellation object
-             * @param callback called when the operation completes
-             */
-            vfunc_prompt_password_async(
-                cancellable?: Gio.Cancellable | null,
-                callback?: Gio.AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Complete an operation to prompt for a password.
-             *
-             * A password will be returned if the user enters a password successfully.
-             * The returned password is valid until the next time a method is called
-             * to display another prompt.
-             *
-             * %NULL will be returned if the user cancels or if an error occurs. Check the
-             * `error` argument to tell the difference.
-             * @param result asynchronous result passed to callback
-             */
-            vfunc_prompt_password_finish(result: Gio.AsyncResult): string;
         }
 
         export const Prompt: PromptNamespace & {

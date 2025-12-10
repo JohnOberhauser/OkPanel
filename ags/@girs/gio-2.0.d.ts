@@ -369,87 +369,95 @@ declare module 'gi://Gio?version=2.0' {
             // Static methods
 
             /**
-             * Creates a D-Bus error name to use for `error`. If `error` matches
-             * a registered error (cf. g_dbus_error_register_error()), the corresponding
-             * D-Bus error name will be returned.
+             * Creates a D-Bus error name to use for `error`.
+             *
+             * If `error` matches a registered error (see
+             * [func`Gio`.DBusError.register_error]), the corresponding D-Bus error name
+             * will be returned.
              *
              * Otherwise the a name of the form
              * `org.gtk.GDBus.UnmappedGError.Quark._ESCAPED_QUARK_NAME.Code_ERROR_CODE`
              * will be used. This allows other GDBus applications to map the error
-             * on the wire back to a #GError using g_dbus_error_new_for_dbus_error().
+             * on the wire back to a [type`GLib`.Error] using
+             * [func`Gio`.DBusError.new_for_dbus_error].
              *
              * This function is typically only used in object mappings to put a
-             * #GError on the wire. Regular applications should not use it.
-             * @param error A #GError.
+             * [type`GLib`.Error] on the wire. Regular applications should not use it.
+             * @param error an error
              */
             static encode_gerror(error: GLib.Error): string;
             /**
              * Gets the D-Bus error name used for `error,` if any.
              *
              * This function is guaranteed to return a D-Bus error name for all
-             * #GErrors returned from functions handling remote method calls
-             * (e.g. g_dbus_connection_call_finish()) unless
-             * g_dbus_error_strip_remote_error() has been used on `error`.
-             * @param error a #GError
+             * [type`GLib`.Error]s returned from functions handling remote method calls
+             * (for example, [method`Gio`.DBusConnection.call_finish]) unless
+             * [func`Gio`.DBusError.strip_remote_error] has already been used on `error`.
+             * @param error an error
              */
             static get_remote_error(error: GLib.Error): string | null;
             /**
-             * Checks if `error` represents an error received via D-Bus from a remote peer. If so,
-             * use g_dbus_error_get_remote_error() to get the name of the error.
-             * @param error A #GError.
+             * Checks if `error` represents an error received via D-Bus from a remote peer.
+             *
+             * If so, use [func`Gio`.DBusError.get_remote_error] to get the name of the error.
+             * @param error an error
              */
             static is_remote_error(error: GLib.Error): boolean;
             /**
-             * Creates a #GError based on the contents of `dbus_error_name` and
+             * Creates a [type`GLib`.Error] based on the contents of `dbus_error_name` and
              * `dbus_error_message`.
              *
-             * Errors registered with g_dbus_error_register_error() will be looked
+             * Errors registered with [func`Gio`.DBusError.register_error] will be looked
              * up using `dbus_error_name` and if a match is found, the error domain
-             * and code is used. Applications can use g_dbus_error_get_remote_error()
+             * and code is used. Applications can use [func`Gio`.DBusError.get_remote_error]
              * to recover `dbus_error_name`.
              *
              * If a match against a registered error is not found and the D-Bus
-             * error name is in a form as returned by g_dbus_error_encode_gerror()
+             * error name is in a form as returned by [func`Gio`.DBusError.encode_gerror]
              * the error domain and code encoded in the name is used to
-             * create the #GError. Also, `dbus_error_name` is added to the error message
-             * such that it can be recovered with g_dbus_error_get_remote_error().
+             * create the [type`GLib`.Error]. Also, `dbus_error_name` is added to the error
+             * message such that it can be recovered with
+             * [func`Gio`.DBusError.get_remote_error].
              *
-             * Otherwise, a #GError with the error code %G_IO_ERROR_DBUS_ERROR
-             * in the %G_IO_ERROR error domain is returned. Also, `dbus_error_name` is
+             * Otherwise, a [type`GLib`.Error] with the error code
+             * [error`Gio`.IOErrorEnum.DBUS_ERROR]
+             * in the [error`Gio`.IOErrorEnum] error domain is returned. Also, `dbus_error_name` is
              * added to the error message such that it can be recovered with
-             * g_dbus_error_get_remote_error().
+             * [func`Gio`.DBusError.get_remote_error].
              *
              * In all three cases, `dbus_error_name` can always be recovered from the
-             * returned #GError using the g_dbus_error_get_remote_error() function
-             * (unless g_dbus_error_strip_remote_error() hasn't been used on the returned error).
+             * returned [type`GLib`.Error] using the [func`Gio`.DBusError.get_remote_error]
+             * function (unless [func`Gio`.DBusError.strip_remote_error] hasn’t been used on
+             * the returned error).
              *
              * This function is typically only used in object mappings to prepare
-             * #GError instances for applications. Regular applications should not use
-             * it.
-             * @param dbus_error_name D-Bus error name.
-             * @param dbus_error_message D-Bus error message.
+             * [type`GLib`.Error] instances for applications. Regular applications should not
+             * use it.
+             * @param dbus_error_name D-Bus error name
+             * @param dbus_error_message D-Bus error message
              */
             static new_for_dbus_error(dbus_error_name: string, dbus_error_message: string): GLib.Error;
             static quark(): GLib.Quark;
             /**
-             * Creates an association to map between `dbus_error_name` and
-             * #GErrors specified by `error_domain` and `error_code`.
+             * Creates an association mapping between `dbus_error_name` and
+             * [type`GLib`.Error]s specified by `error_domain` and `error_code`.
              *
-             * This is typically done in the routine that returns the #GQuark for
+             * This is typically done in the function that returns the [type`GLib`.Quark] for
              * an error domain.
-             * @param error_domain A #GQuark for an error domain.
-             * @param error_code An error code.
-             * @param dbus_error_name A D-Bus error name.
+             * @param error_domain a [type@GLib.Quark] for an error domain
+             * @param error_code an error code
+             * @param dbus_error_name a D-Bus error name
              */
             static register_error(error_domain: GLib.Quark, error_code: number, dbus_error_name: string): boolean;
             /**
-             * Helper function for associating a #GError error domain with D-Bus error names.
+             * Helper function for associating a [type`GLib`.Error] error domain with D-Bus
+             * error names.
              *
              * While `quark_volatile` has a `volatile` qualifier, this is a historical
              * artifact and the argument passed to it should not be `volatile`.
-             * @param error_domain_quark_name The error domain name.
-             * @param quark_volatile A pointer where to store the #GQuark.
-             * @param entries A pointer to @num_entries #GDBusErrorEntry struct items.
+             * @param error_domain_quark_name the error domain name
+             * @param quark_volatile return location for the [type@GLib.Quark] representing the   error domain
+             * @param entries items to register
              */
             static register_error_domain(
                 error_domain_quark_name: string,
@@ -457,52 +465,55 @@ declare module 'gi://Gio?version=2.0' {
                 entries: DBusErrorEntry[],
             ): void;
             /**
-             * Does nothing if `error` is %NULL. Otherwise sets `*error` to
-             * a new #GError created with g_dbus_error_new_for_dbus_error()
-             * with `dbus_error_message` prepend with `format` (unless %NULL).
-             * @param error A pointer to a #GError or %NULL.
-             * @param dbus_error_name D-Bus error name.
-             * @param dbus_error_message D-Bus error message.
-             * @param format printf()-style format to prepend to @dbus_error_message or %NULL.
-             * @param ___ Arguments for @format.
+             * Sets `*error` to a new [type`GLib`.Error] created with
+             * [func`Gio`.DBusError.new_for_dbus_error].
+             *
+             * If `format` is non-`NULL` then it is prepended to `dbus_error_message`.
+             * Otherwise `dbus_error_message` is used unmodified.
+             *
+             * This function does nothing if `error` is `NULL`.
+             * @param dbus_error_name D-Bus error name
+             * @param dbus_error_message D-Bus error message
+             * @param format `printf()`-style format to prepend to   @dbus_error_message, or `NULL` to not modify the message
+             * @param ___ arguments for @format
              */
             static set_dbus_error(
-                error: GLib.Error,
                 dbus_error_name: string,
                 dbus_error_message: string,
                 format: string | null,
                 ___: any[],
-            ): void;
+            ): GLib.Error | null;
             /**
-             * Like g_dbus_error_set_dbus_error() but intended for language bindings.
-             * @param error A pointer to a #GError or %NULL.
-             * @param dbus_error_name D-Bus error name.
-             * @param dbus_error_message D-Bus error message.
-             * @param format printf()-style format to prepend to @dbus_error_message or %NULL.
-             * @param var_args Arguments for @format.
+             * Like [func`Gio`.DBusError.set_dbus_error] but intended for language bindings.
+             * @param dbus_error_name D-Bus error name
+             * @param dbus_error_message D-Bus error message
+             * @param format `printf()`-style format to prepend to   @dbus_error_message, or `NULL` to not modify the message
+             * @param var_args arguments for @format
              */
             static set_dbus_error_valist(
-                error: GLib.Error,
                 dbus_error_name: string,
                 dbus_error_message: string,
                 format: string | null,
                 var_args: any,
-            ): void;
+            ): GLib.Error | null;
             /**
              * Looks for extra information in the error message used to recover
-             * the D-Bus error name and strips it if found. If stripped, the
+             * the D-Bus error name and strips it if found.
+             *
+             * If stripped, the
              * message field in `error` will correspond exactly to what was
              * received on the wire.
              *
              * This is typically used when presenting errors to the end user.
-             * @param error A #GError.
+             * @param error an error
              */
             static strip_remote_error(error: GLib.Error): boolean;
             /**
-             * Destroys an association previously set up with g_dbus_error_register_error().
-             * @param error_domain A #GQuark for an error domain.
-             * @param error_code An error code.
-             * @param dbus_error_name A D-Bus error name.
+             * Destroys an association previously set up with
+             * [func`Gio`.DBusError.register_error].
+             * @param error_domain a [type@GLib.Quark] for an error domain
+             * @param error_code an error code
+             * @param dbus_error_name a D-Bus error name
              */
             static unregister_error(error_domain: GLib.Quark, error_code: number, dbus_error_name: string): boolean;
         }
@@ -2301,11 +2312,6 @@ declare module 'gi://Gio?version=2.0' {
          */
         const DEBUG_CONTROLLER_EXTENSION_POINT_NAME: string;
         /**
-         * Extension point for default handler to URI association. See
-         * [Extending GIO](overview.html#extending-gio).
-         */
-        const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME: string;
-        /**
          * The string used to obtain a Unix device path with g_drive_get_identifier().
          */
         const DRIVE_IDENTIFIER_KIND_UNIX_DEVICE: string;
@@ -3442,7 +3448,7 @@ declare module 'gi://Gio?version=2.0' {
             content_type: string,
             must_support_uris: boolean,
             cancellable?: Cancellable | null,
-        ): Promise<AppInfo>;
+        ): globalThis.Promise<AppInfo>;
         /**
          * Asynchronously gets the default [iface`Gio`.AppInfo] for a given content
          * type.
@@ -3470,7 +3476,7 @@ declare module 'gi://Gio?version=2.0' {
             must_support_uris: boolean,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<string> | null,
-        ): Promise<AppInfo> | void;
+        ): globalThis.Promise<AppInfo> | void;
         /**
          * Finishes a default [iface`Gio`.AppInfo] lookup started by
          * [func`Gio`.AppInfo.get_default_for_type_async].
@@ -3501,7 +3507,7 @@ declare module 'gi://Gio?version=2.0' {
         function app_info_get_default_for_uri_scheme_async(
             uri_scheme: string,
             cancellable?: Cancellable | null,
-        ): Promise<AppInfo>;
+        ): globalThis.Promise<AppInfo>;
         /**
          * Asynchronously gets the default application for handling URIs with
          * the given URI scheme. A URI scheme is the initial part
@@ -3529,7 +3535,7 @@ declare module 'gi://Gio?version=2.0' {
             uri_scheme: string,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<string> | null,
-        ): Promise<AppInfo> | void;
+        ): globalThis.Promise<AppInfo> | void;
         /**
          * Finishes a default [iface`Gio`.AppInfo] lookup started by
          * [func`Gio`.AppInfo.get_default_for_uri_scheme_async].
@@ -3591,7 +3597,7 @@ declare module 'gi://Gio?version=2.0' {
             uri: string,
             context?: AppLaunchContext | null,
             cancellable?: Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Async version of [func`Gio`.AppInfo.launch_default_for_uri].
          *
@@ -3633,7 +3639,7 @@ declare module 'gi://Gio?version=2.0' {
             context?: AppLaunchContext | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<string> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous launch-default-for-uri operation.
          * @param result the async result
@@ -3682,7 +3688,10 @@ declare module 'gi://Gio?version=2.0' {
          * @param bus_type a #GBusType
          * @param cancellable a #GCancellable or %NULL
          */
-        function bus_get(bus_type: BusType | null, cancellable?: Cancellable | null): Promise<DBusConnection>;
+        function bus_get(
+            bus_type: BusType | null,
+            cancellable?: Cancellable | null,
+        ): globalThis.Promise<DBusConnection>;
         /**
          * Asynchronously connects to the message bus specified by `bus_type`.
          *
@@ -3716,7 +3725,7 @@ declare module 'gi://Gio?version=2.0' {
             bus_type: BusType | null,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<BusType | null> | null,
-        ): Promise<DBusConnection> | void;
+        ): globalThis.Promise<DBusConnection> | void;
         /**
          * Finishes an operation started with g_bus_get().
          *
@@ -4042,7 +4051,7 @@ declare module 'gi://Gio?version=2.0' {
         function dbus_address_get_stream(
             address: string,
             cancellable?: Cancellable | null,
-        ): Promise<[IOStream, string]>;
+        ): globalThis.Promise<[IOStream, string]>;
         /**
          * Asynchronously connects to an endpoint specified by `address` and
          * sets up the connection so it is in a state to run the client-side
@@ -4084,7 +4093,7 @@ declare module 'gi://Gio?version=2.0' {
             address: string,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<string> | null,
-        ): Promise<[IOStream, string]> | void;
+        ): globalThis.Promise<[IOStream, string]> | void;
         /**
          * Finishes an operation started with g_dbus_address_get_stream().
          *
@@ -4120,82 +4129,89 @@ declare module 'gi://Gio?version=2.0' {
          */
         function dbus_annotation_info_lookup(annotations: DBusAnnotationInfo[] | null, name: string): string | null;
         /**
-         * Creates a D-Bus error name to use for `error`. If `error` matches
-         * a registered error (cf. g_dbus_error_register_error()), the corresponding
-         * D-Bus error name will be returned.
+         * Creates a D-Bus error name to use for `error`.
+         *
+         * If `error` matches a registered error (see
+         * [func`Gio`.DBusError.register_error]), the corresponding D-Bus error name
+         * will be returned.
          *
          * Otherwise the a name of the form
          * `org.gtk.GDBus.UnmappedGError.Quark._ESCAPED_QUARK_NAME.Code_ERROR_CODE`
          * will be used. This allows other GDBus applications to map the error
-         * on the wire back to a #GError using g_dbus_error_new_for_dbus_error().
+         * on the wire back to a [type`GLib`.Error] using
+         * [func`Gio`.DBusError.new_for_dbus_error].
          *
          * This function is typically only used in object mappings to put a
-         * #GError on the wire. Regular applications should not use it.
-         * @param error A #GError.
-         * @returns A D-Bus error name (never %NULL).     Free with g_free().
+         * [type`GLib`.Error] on the wire. Regular applications should not use it.
+         * @param error an error
+         * @returns a D-Bus error name
          */
         function dbus_error_encode_gerror(error: GLib.Error): string;
         /**
          * Gets the D-Bus error name used for `error,` if any.
          *
          * This function is guaranteed to return a D-Bus error name for all
-         * #GErrors returned from functions handling remote method calls
-         * (e.g. g_dbus_connection_call_finish()) unless
-         * g_dbus_error_strip_remote_error() has been used on `error`.
-         * @param error a #GError
-         * @returns an allocated string or %NULL if the     D-Bus error name could not be found. Free with g_free().
+         * [type`GLib`.Error]s returned from functions handling remote method calls
+         * (for example, [method`Gio`.DBusConnection.call_finish]) unless
+         * [func`Gio`.DBusError.strip_remote_error] has already been used on `error`.
+         * @param error an error
+         * @returns an allocated string, or `NULL` if the   D-Bus error name could not be found
          */
         function dbus_error_get_remote_error(error: GLib.Error): string | null;
         /**
-         * Checks if `error` represents an error received via D-Bus from a remote peer. If so,
-         * use g_dbus_error_get_remote_error() to get the name of the error.
-         * @param error A #GError.
-         * @returns %TRUE if @error represents an error from a remote peer, %FALSE otherwise.
+         * Checks if `error` represents an error received via D-Bus from a remote peer.
+         *
+         * If so, use [func`Gio`.DBusError.get_remote_error] to get the name of the error.
+         * @param error an error
+         * @returns true if @error represents an error from a remote peer; false otherwise
          */
         function dbus_error_is_remote_error(error: GLib.Error): boolean;
         /**
-         * Creates a #GError based on the contents of `dbus_error_name` and
+         * Creates a [type`GLib`.Error] based on the contents of `dbus_error_name` and
          * `dbus_error_message`.
          *
-         * Errors registered with g_dbus_error_register_error() will be looked
+         * Errors registered with [func`Gio`.DBusError.register_error] will be looked
          * up using `dbus_error_name` and if a match is found, the error domain
-         * and code is used. Applications can use g_dbus_error_get_remote_error()
+         * and code is used. Applications can use [func`Gio`.DBusError.get_remote_error]
          * to recover `dbus_error_name`.
          *
          * If a match against a registered error is not found and the D-Bus
-         * error name is in a form as returned by g_dbus_error_encode_gerror()
+         * error name is in a form as returned by [func`Gio`.DBusError.encode_gerror]
          * the error domain and code encoded in the name is used to
-         * create the #GError. Also, `dbus_error_name` is added to the error message
-         * such that it can be recovered with g_dbus_error_get_remote_error().
+         * create the [type`GLib`.Error]. Also, `dbus_error_name` is added to the error
+         * message such that it can be recovered with
+         * [func`Gio`.DBusError.get_remote_error].
          *
-         * Otherwise, a #GError with the error code %G_IO_ERROR_DBUS_ERROR
-         * in the %G_IO_ERROR error domain is returned. Also, `dbus_error_name` is
+         * Otherwise, a [type`GLib`.Error] with the error code
+         * [error`Gio`.IOErrorEnum.DBUS_ERROR]
+         * in the [error`Gio`.IOErrorEnum] error domain is returned. Also, `dbus_error_name` is
          * added to the error message such that it can be recovered with
-         * g_dbus_error_get_remote_error().
+         * [func`Gio`.DBusError.get_remote_error].
          *
          * In all three cases, `dbus_error_name` can always be recovered from the
-         * returned #GError using the g_dbus_error_get_remote_error() function
-         * (unless g_dbus_error_strip_remote_error() hasn't been used on the returned error).
+         * returned [type`GLib`.Error] using the [func`Gio`.DBusError.get_remote_error]
+         * function (unless [func`Gio`.DBusError.strip_remote_error] hasn’t been used on
+         * the returned error).
          *
          * This function is typically only used in object mappings to prepare
-         * #GError instances for applications. Regular applications should not use
-         * it.
-         * @param dbus_error_name D-Bus error name.
-         * @param dbus_error_message D-Bus error message.
-         * @returns An allocated #GError. Free with g_error_free().
+         * [type`GLib`.Error] instances for applications. Regular applications should not
+         * use it.
+         * @param dbus_error_name D-Bus error name
+         * @param dbus_error_message D-Bus error message
+         * @returns an allocated [type@GLib.Error]
          */
         function dbus_error_new_for_dbus_error(dbus_error_name: string, dbus_error_message: string): GLib.Error;
         function dbus_error_quark(): GLib.Quark;
         /**
-         * Creates an association to map between `dbus_error_name` and
-         * #GErrors specified by `error_domain` and `error_code`.
+         * Creates an association mapping between `dbus_error_name` and
+         * [type`GLib`.Error]s specified by `error_domain` and `error_code`.
          *
-         * This is typically done in the routine that returns the #GQuark for
+         * This is typically done in the function that returns the [type`GLib`.Quark] for
          * an error domain.
-         * @param error_domain A #GQuark for an error domain.
-         * @param error_code An error code.
-         * @param dbus_error_name A D-Bus error name.
-         * @returns %TRUE if the association was created, %FALSE if it already exists.
+         * @param error_domain a [type@GLib.Quark] for an error domain
+         * @param error_code an error code
+         * @param dbus_error_name a D-Bus error name
+         * @returns true if the association was created, false if it already   exists
          */
         function dbus_error_register_error(
             error_domain: GLib.Quark,
@@ -4203,13 +4219,14 @@ declare module 'gi://Gio?version=2.0' {
             dbus_error_name: string,
         ): boolean;
         /**
-         * Helper function for associating a #GError error domain with D-Bus error names.
+         * Helper function for associating a [type`GLib`.Error] error domain with D-Bus
+         * error names.
          *
          * While `quark_volatile` has a `volatile` qualifier, this is a historical
          * artifact and the argument passed to it should not be `volatile`.
-         * @param error_domain_quark_name The error domain name.
-         * @param quark_volatile A pointer where to store the #GQuark.
-         * @param entries A pointer to @num_entries #GDBusErrorEntry struct items.
+         * @param error_domain_quark_name the error domain name
+         * @param quark_volatile return location for the [type@GLib.Quark] representing the   error domain
+         * @param entries items to register
          */
         function dbus_error_register_error_domain(
             error_domain_quark_name: string,
@@ -4218,21 +4235,24 @@ declare module 'gi://Gio?version=2.0' {
         ): void;
         /**
          * Looks for extra information in the error message used to recover
-         * the D-Bus error name and strips it if found. If stripped, the
+         * the D-Bus error name and strips it if found.
+         *
+         * If stripped, the
          * message field in `error` will correspond exactly to what was
          * received on the wire.
          *
          * This is typically used when presenting errors to the end user.
-         * @param error A #GError.
-         * @returns %TRUE if information was stripped, %FALSE otherwise.
+         * @param error an error
+         * @returns true if information was stripped; false otherwise
          */
         function dbus_error_strip_remote_error(error: GLib.Error): boolean;
         /**
-         * Destroys an association previously set up with g_dbus_error_register_error().
-         * @param error_domain A #GQuark for an error domain.
-         * @param error_code An error code.
-         * @param dbus_error_name A D-Bus error name.
-         * @returns %TRUE if the association was destroyed, %FALSE if it wasn't found.
+         * Destroys an association previously set up with
+         * [func`Gio`.DBusError.register_error].
+         * @param error_domain a [type@GLib.Quark] for an error domain
+         * @param error_code an error code
+         * @param dbus_error_name a D-Bus error name
+         * @returns true if the association was destroyed, false if it wasn’t found
          */
         function dbus_error_unregister_error(
             error_domain: GLib.Quark,
@@ -4520,7 +4540,7 @@ declare module 'gi://Gio?version=2.0' {
             tmpl: string | null,
             io_priority: number,
             cancellable?: Cancellable | null,
-        ): Promise<[File, FileIOStream]>;
+        ): globalThis.Promise<[File, FileIOStream]>;
         /**
          * Asynchronously opens a file in the preferred directory for temporary files
          *  (as returned by g_get_tmp_dir()) as g_file_new_tmp().
@@ -4556,7 +4576,7 @@ declare module 'gi://Gio?version=2.0' {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<string | null> | null,
-        ): Promise<[File, FileIOStream]> | void;
+        ): globalThis.Promise<[File, FileIOStream]> | void;
         /**
          * Asynchronously creates a directory in the preferred directory for
          * temporary files (as returned by g_get_tmp_dir()) as g_dir_make_tmp().
@@ -4572,7 +4592,7 @@ declare module 'gi://Gio?version=2.0' {
             tmpl: string | null,
             io_priority: number,
             cancellable?: Cancellable | null,
-        ): Promise<File>;
+        ): globalThis.Promise<File>;
         /**
          * Asynchronously creates a directory in the preferred directory for
          * temporary files (as returned by g_get_tmp_dir()) as g_dir_make_tmp().
@@ -4608,7 +4628,7 @@ declare module 'gi://Gio?version=2.0' {
             io_priority: number,
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback<string | null> | null,
-        ): Promise<File> | void;
+        ): globalThis.Promise<File> | void;
         /**
          * Finishes a temporary directory creation started by
          * g_file_new_tmp_dir_async().
@@ -5205,342 +5225,6 @@ declare module 'gi://Gio?version=2.0' {
             base_io_stream: IOStream,
             certificate?: TlsCertificate | null,
         ): TlsServerConnection;
-        /**
-         * Determines if `mount_path` is considered an implementation of the
-         * OS.
-         *
-         * This is primarily used for hiding mountable and mounted volumes
-         * that only are used in the OS and has little to no relevance to the
-         * casual user.
-         * @param mount_path a mount path, e.g. `/media/disk` or `/usr`
-         * @returns true if @mount_path is considered an implementation detail    of the OS; false otherwise
-         */
-        function unix_is_mount_path_system_internal(mount_path: string): boolean;
-        /**
-         * Determines if `device_path` is considered a block device path which is only
-         * used in implementation of the OS.
-         *
-         * This is primarily used for hiding mounted volumes that are intended as APIs
-         * for programs to read, and system administrators at a shell; rather than
-         * something that should, for example, appear in a GUI. For example, the Linux
-         * `/proc` filesystem.
-         *
-         * The list of device paths considered ‘system’ ones may change over time.
-         * @param device_path a device path, e.g. `/dev/loop0` or `nfsd`
-         * @returns true if @device_path is considered an implementation detail of    the OS; false otherwise
-         */
-        function unix_is_system_device_path(device_path: string): boolean;
-        /**
-         * Determines if `fs_type` is considered a type of file system which is only
-         * used in implementation of the OS.
-         *
-         * This is primarily used for hiding mounted volumes that are intended as APIs
-         * for programs to read, and system administrators at a shell; rather than
-         * something that should, for example, appear in a GUI. For example, the Linux
-         * `/proc` filesystem.
-         *
-         * The list of file system types considered ‘system’ ones may change over time.
-         * @param fs_type a file system type, e.g. `procfs` or `tmpfs`
-         * @returns true if @fs_type is considered an implementation detail of the OS;    false otherwise
-         */
-        function unix_is_system_fs_type(fs_type: string): boolean;
-        /**
-         * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
-         *
-         * If `time_read` is set, it will be filled with a Unix timestamp for checking
-         * if the mounts have changed since with
-         * [func`GioUnix`.mount_entries_changed_since].
-         *
-         * If more mounts have the same mount path, the last matching mount
-         * is returned.
-         *
-         * This will return `NULL` if there is no mount point at `mount_path`.
-         * @param mount_path path for a possible Unix mount
-         * @returns a [struct@GioUnix.MountEntry]
-         */
-        function unix_mount_at(mount_path: string): [UnixMountEntry | null, number];
-        /**
-         * Compares two Unix mounts.
-         * @param mount1 first [struct@GioUnix.MountEntry] to compare
-         * @param mount2 second [struct@GioUnix.MountEntry] to compare
-         * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
-         */
-        function unix_mount_compare(mount1: UnixMountEntry, mount2: UnixMountEntry): number;
-        /**
-         * Makes a copy of `mount_entry`.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns a new [struct@GioUnix.MountEntry]
-         */
-        function unix_mount_copy(mount_entry: UnixMountEntry): UnixMountEntry;
-        /**
-         * Checks if the Unix mounts have changed since a given Unix time.
-         *
-         * This can only work reliably if a [class`GioUnix`.MountMonitor] is running in
-         * the process, otherwise changes in the mount entries file (such as
-         * `/proc/self/mountinfo` on Linux) cannot be detected and, as a result, this
-         * function has to conservatively always return `TRUE`.
-         *
-         * It is more efficient to use [signal`GioUnix`.MountMonitor::mounts-changed] to
-         * be signalled of changes to the mount entries, rather than polling using this
-         * function. This function is more appropriate for infrequently determining
-         * cache validity.
-         * @param time a timestamp
-         * @returns true if the mounts have changed since @time; false otherwise Since 2.84
-         */
-        function unix_mount_entries_changed_since(time: number): boolean;
-        /**
-         * Gets a list of [struct`GioUnix`.MountEntry] instances representing the Unix
-         * mounts.
-         *
-         * If `time_read` is set, it will be filled with the mount timestamp, allowing
-         * for checking if the mounts have changed with
-         * [func`GioUnix`.mount_entries_changed_since].
-         * @returns a list of the    Unix mounts
-         */
-        function unix_mount_entries_get(): [UnixMountEntry[], number];
-        /**
-         * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
-         * listed in `table_path`.
-         *
-         * This is a generalized version of [func`GioUnix`.mount_entries_get], mainly
-         * intended for internal testing use. Note that [func`GioUnix`.mount_entries_get]
-         * may parse multiple hierarchical table files, so this function is not a direct
-         * superset of its functionality.
-         *
-         * If there is an error reading or parsing the file, `NULL` will be returned
-         * and both out parameters will be set to `0`.
-         * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
-         * @returns mount   entries, or `NULL` if there was an error loading them
-         */
-        function unix_mount_entries_get_from_file(table_path: string): [UnixMountEntry[] | null, number];
-        /**
-         * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
-         *
-         * If `time_read` is set, it will be filled with a Unix timestamp for checking
-         * if the mounts have changed since with
-         * [func`GioUnix`.mount_entries_changed_since].
-         *
-         * If more mounts have the same mount path, the last matching mount
-         * is returned.
-         *
-         * This will return `NULL` if there is no mount point at `mount_path`.
-         * @param mount_path path for a possible Unix mount
-         * @returns a [struct@GioUnix.MountEntry]
-         */
-        function unix_mount_entry_at(mount_path: string): [UnixMountEntry | null, number];
-        /**
-         * Gets a [struct`GioUnix`.MountEntry] for a given file path.
-         *
-         * If `time_read` is set, it will be filled with a Unix timestamp for checking
-         * if the mounts have changed since with
-         * [func`GioUnix`.mount_entries_changed_since].
-         *
-         * If more mounts have the same mount path, the last matching mount
-         * is returned.
-         *
-         * This will return `NULL` if looking up the mount entry fails, if
-         * `file_path` doesn’t exist or there is an I/O error.
-         * @param file_path file path on some Unix mount
-         * @returns a [struct@GioUnix.MountEntry]
-         */
-        function unix_mount_entry_for(file_path: string): [UnixMountEntry | null, number];
-        /**
-         * Gets a [struct`GioUnix`.MountEntry] for a given file path.
-         *
-         * If `time_read` is set, it will be filled with a Unix timestamp for checking
-         * if the mounts have changed since with
-         * [func`GioUnix`.mount_entries_changed_since].
-         *
-         * If more mounts have the same mount path, the last matching mount
-         * is returned.
-         *
-         * This will return `NULL` if looking up the mount entry fails, if
-         * `file_path` doesn’t exist or there is an I/O error.
-         * @param file_path file path on some Unix mount
-         * @returns a [struct@GioUnix.MountEntry]
-         */
-        function unix_mount_for(file_path: string): [UnixMountEntry | null, number];
-        /**
-         * Frees a Unix mount.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         */
-        function unix_mount_free(mount_entry: UnixMountEntry): void;
-        /**
-         * Gets the device path for a Unix mount.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns a string containing the device path
-         */
-        function unix_mount_get_device_path(mount_entry: UnixMountEntry): string;
-        /**
-         * Gets the filesystem type for the Unix mount.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns a string containing the file system type
-         */
-        function unix_mount_get_fs_type(mount_entry: UnixMountEntry): string;
-        /**
-         * Gets the mount path for a Unix mount.
-         * @param mount_entry a [struct@GioUnix.MountEntry] to get the mount path for
-         * @returns the mount path for @mount_entry
-         */
-        function unix_mount_get_mount_path(mount_entry: UnixMountEntry): string;
-        /**
-         * Gets a comma separated list of mount options for the Unix mount.
-         *
-         * For example: `rw,relatime,seclabel,data=ordered`.
-         *
-         * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
-         * a [struct`GioUnix`.MountEntry] as an argument.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns a string containing the options, or `NULL` if not    available.
-         */
-        function unix_mount_get_options(mount_entry: UnixMountEntry): string | null;
-        /**
-         * Gets the root of the mount within the filesystem. This is useful e.g. for
-         * mounts created by bind operation, or btrfs subvolumes.
-         *
-         * For example, the root path is equal to `/` for a mount created by
-         * `mount /dev/sda1 /mnt/foo` and `/bar` for
-         * `mount --bind /mnt/foo/bar /mnt/bar`.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns a string containing the root, or `NULL` if not supported
-         */
-        function unix_mount_get_root_path(mount_entry: UnixMountEntry): string | null;
-        /**
-         * Guesses whether a Unix mount entry can be ejected.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns true if @mount_entry is deemed to be ejectable; false otherwise
-         */
-        function unix_mount_guess_can_eject(mount_entry: UnixMountEntry): boolean;
-        /**
-         * Guesses the icon of a Unix mount entry.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns a [iface@Gio.Icon]
-         */
-        function unix_mount_guess_icon(mount_entry: UnixMountEntry): Icon;
-        /**
-         * Guesses the name of a Unix mount entry.
-         *
-         * The result is a translated string.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns a newly allocated translated string
-         */
-        function unix_mount_guess_name(mount_entry: UnixMountEntry): string;
-        /**
-         * Guesses whether a Unix mount entry should be displayed in the UI.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns true if @mount_entry is deemed to be displayable; false otherwise
-         */
-        function unix_mount_guess_should_display(mount_entry: UnixMountEntry): boolean;
-        /**
-         * Guesses the symbolic icon of a Unix mount entry.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns a [iface@Gio.Icon]
-         */
-        function unix_mount_guess_symbolic_icon(mount_entry: UnixMountEntry): Icon;
-        /**
-         * Checks if a Unix mount is mounted read only.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns true if @mount_entry is read only; false otherwise
-         */
-        function unix_mount_is_readonly(mount_entry: UnixMountEntry): boolean;
-        /**
-         * Checks if a Unix mount is a system mount.
-         *
-         * This is the Boolean OR of
-         * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
-         * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
-         *
-         * The definition of what a ‘system’ mount entry is may change over time as new
-         * file system types and device paths are ignored.
-         * @param mount_entry a [struct@GioUnix.MountEntry]
-         * @returns true if the Unix mount is for a system path; false otherwise
-         */
-        function unix_mount_is_system_internal(mount_entry: UnixMountEntry): boolean;
-        /**
-         * Gets a [struct`GioUnix`.MountPoint] for a given mount path.
-         *
-         * If `time_read` is set, it will be filled with a Unix timestamp for checking if
-         * the mount points have changed since with
-         * [func`GioUnix`.mount_points_changed_since].
-         *
-         * If more mount points have the same mount path, the last matching mount point
-         * is returned.
-         * @param mount_path path for a possible Unix mount point
-         * @returns a [struct@GioUnix.MountPoint], or `NULL`    if no match is found
-         */
-        function unix_mount_point_at(mount_path: string): [UnixMountPoint | null, number];
-        /**
-         * Checks if the Unix mount points have changed since a given Unix time.
-         *
-         * Unlike [func`GioUnix`.mount_entries_changed_since], this function can work
-         * reliably without a [class`GioUnix`.MountMonitor] running, as it accesses the
-         * static mount point information (such as `/etc/fstab` on Linux), which has a
-         * valid modification time.
-         *
-         * It is more efficient to use [signal`GioUnix`.MountMonitor::mountpoints-changed]
-         * to be signalled of changes to the mount points, rather than polling using
-         * this function. This function is more appropriate for infrequently determining
-         * cache validity.
-         * @param time a timestamp
-         * @returns true if the mount points have changed since @time; false otherwise
-         */
-        function unix_mount_points_changed_since(time: number): boolean;
-        /**
-         * Gets a list of [struct`GioUnix`.MountPoint] instances representing the Unix
-         * mount points.
-         *
-         * If `time_read` is set, it will be filled with the mount timestamp, allowing
-         * for checking if the mounts have changed with
-         * [func`GioUnix`.mount_points_changed_since].
-         * @returns a list of the Unix    mount points
-         */
-        function unix_mount_points_get(): [UnixMountPoint[], number];
-        /**
-         * Gets an array of [struct`Gio`.UnixMountPoint]s containing the Unix mount
-         * points listed in `table_path`.
-         *
-         * This is a generalized version of [func`GioUnix`.mount_points_get], mainly
-         * intended for internal testing use. Note that [func`GioUnix`.mount_points_get]
-         * may parse multiple hierarchical table files, so this function is not a direct
-         * superset of its functionality.
-         *
-         * If there is an error reading or parsing the file, `NULL` will be returned
-         * and both out parameters will be set to `0`.
-         * @param table_path path to the mount points table file (for example `/etc/fstab`)
-         * @returns mount   points, or `NULL` if there was an error loading them
-         */
-        function unix_mount_points_get_from_file(table_path: string): [UnixMountPoint[] | null, number];
-        /**
-         * Checks if the Unix mounts have changed since a given Unix time.
-         * @param time a timestamp
-         * @returns true if the mounts have changed since @time; false otherwise
-         */
-        function unix_mounts_changed_since(time: number): boolean;
-        /**
-         * Gets a list of [struct`GioUnix`.MountEntry] instances representing the Unix
-         * mounts.
-         *
-         * If `time_read` is set, it will be filled with the mount timestamp, allowing
-         * for checking if the mounts have changed with
-         * [func`GioUnix`.mount_entries_changed_since].
-         * @returns a list of the    Unix mounts
-         */
-        function unix_mounts_get(): [UnixMountEntry[], number];
-        /**
-         * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
-         * listed in `table_path`.
-         *
-         * This is a generalized version of [func`GioUnix`.mount_entries_get], mainly
-         * intended for internal testing use. Note that [func`GioUnix`.mount_entries_get]
-         * may parse multiple hierarchical table files, so this function is not a direct
-         * superset of its functionality.
-         *
-         * If there is an error reading or parsing the file, `NULL` will be returned
-         * and both out parameters will be set to `0`.
-         * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
-         * @returns mount   entries, or `NULL` if there was an error loading them
-         */
-        function unix_mounts_get_from_file(table_path: string): [UnixMountEntry[] | null, number];
         interface AsyncReadyCallback<A = GObject.Object> {
             (source_object: A | null, res: AsyncResult, data?: any | null): void;
         }
@@ -5633,9 +5317,6 @@ declare module 'gi://Gio?version=2.0' {
         }
         interface DatagramBasedSourceFunc {
             (datagram_based: DatagramBased, condition: GLib.IOCondition, data?: any | null): boolean;
-        }
-        interface DesktopAppLaunchCallback {
-            (appinfo: DesktopAppInfo, pid: GLib.Pid): void;
         }
         interface FileMeasureProgressCallback {
             (reporting: boolean, current_size: number, num_dirs: number, num_files: number, data?: any | null): void;
@@ -5856,8 +5537,9 @@ declare module 'gi://Gio?version=2.0' {
              */
             REPLACE,
             /**
-             * If another message bus connection owns the name, immediately
-             * return an error from g_bus_own_name() rather than entering the waiting queue for that name. (Since 2.54)
+             * If another message bus connection owns the name, immediately return an error
+             * from [func`Gio`.bus_own_name] rather than entering the waiting queue for that
+             * name.
              */
             DO_NOT_QUEUE,
         }
@@ -7626,21 +7308,21 @@ declare module 'gi://Gio?version=2.0' {
             vfunc_activate(): void;
             /**
              * invoked (locally) to add 'platform data' to be sent to
-             *     the primary instance when activating, opening or invoking actions
+             *     the primary instance when activating, opening or invoking actions. Must chain up
              * @param builder
              */
             vfunc_add_platform_data(builder: GLib.VariantBuilder): void;
             /**
              * invoked on the primary instance after 'activate', 'open',
              *     'command-line' or any action invocation, gets the 'platform data' from
-             *     the calling instance
+             *     the calling instance. Must chain up
              * @param platform_data
              */
             vfunc_after_emit(platform_data: GLib.Variant): void;
             /**
              * invoked on the primary instance before 'activate', 'open',
              *     'command-line' or any action invocation, gets the 'platform data' from
-             *     the calling instance
+             *     the calling instance. Must chain up
              * @param platform_data
              */
             vfunc_before_emit(platform_data: GLib.Variant): void;
@@ -10002,7 +9684,11 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional [class@Gio.Cancellable] object
              */
-            fill_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+            fill_async(
+                count: number,
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<number>;
             /**
              * Reads data into `stream'`s buffer asynchronously, up to `count` size.
              * `io_priority` can be used to prioritize reads. For the synchronous
@@ -10038,7 +9724,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous read.
              * @param result a [iface@Gio.AsyncResult]
@@ -11454,7 +11140,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param size an integer.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            load_async(size: number, cancellable?: Cancellable | null): Promise<[InputStream, string]>;
+            load_async(size: number, cancellable?: Cancellable | null): globalThis.Promise<[InputStream, string]>;
             /**
              * Loads an icon asynchronously. To finish this function, see
              * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -11476,7 +11162,7 @@ declare module 'gi://Gio?version=2.0' {
                 size: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[InputStream, string]> | void;
+            ): globalThis.Promise<[InputStream, string]> | void;
             /**
              * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
              * @param res a #GAsyncResult.
@@ -13310,7 +12996,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional cancellable object
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Requests an asynchronous closes of the stream, releasing resources related to it.
              * When the operation is finished `callback` will be called.
@@ -13350,7 +13036,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
              * @param result a #GAsyncResult.
@@ -13431,7 +13117,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+            read_all_async(
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): [globalThis.Promise<number>, Uint8Array];
             /**
              * Request an asynchronous read of `count` bytes from the stream into the
              * buffer starting at `buffer`.
@@ -13471,7 +13160,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
+            ): [globalThis.Promise<number> | void, Uint8Array];
             /**
              * Finishes an asynchronous stream read operation started with
              * [method`InputStream`.read_all_async].
@@ -13513,7 +13202,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+            read_async(io_priority: number, cancellable?: Cancellable | null): [globalThis.Promise<number>, Uint8Array];
             /**
              * Request an asynchronous read of `count` bytes from the stream into the buffer
              * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -13579,7 +13268,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
+            ): [globalThis.Promise<number> | void, Uint8Array];
             /**
              * Like g_input_stream_read(), this tries to read `count` bytes from
              * the stream in a blocking fashion. However, rather than reading into
@@ -13634,7 +13323,11 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
+            read_bytes_async(
+                count: number,
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<GLib.Bytes>;
             /**
              * Request an asynchronous read of `count` bytes from the stream into a
              * new #GBytes. When the operation is finished `callback` will be
@@ -13698,7 +13391,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Bytes> | void;
+            ): globalThis.Promise<GLib.Bytes> | void;
             /**
              * Finishes an asynchronous stream read-into-#GBytes operation.
              * @param result a #GAsyncResult.
@@ -13766,7 +13459,11 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+            skip_async(
+                count: number,
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous skip of `count` bytes from the stream.
              * When the operation is finished `callback` will be called.
@@ -13836,7 +13533,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream skip operation.
              * @param result a #GAsyncResult.
@@ -14324,7 +14021,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the io priority of the request.
              * @param cancellable optional cancellable object
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Requests an asynchronous close of the stream, releasing resources
              * related to it. When the operation is finished `callback` will be
@@ -14364,7 +14061,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Closes an output stream.
              * @param result a #GAsyncResult.
@@ -14396,7 +14093,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the io priority of the request.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            flush_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            flush_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Forces an asynchronous write of all user-space buffered data for
              * the given `stream`.
@@ -14430,7 +14127,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes flushing an output stream.
              * @param result a GAsyncResult.
@@ -14492,7 +14189,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: OutputStreamSpliceFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Splices a stream asynchronously.
              * When the operation is finished `callback` will be called.
@@ -14534,7 +14231,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream splice operation.
              * @param result a #GAsyncResult.
@@ -14616,7 +14313,7 @@ declare module 'gi://Gio?version=2.0' {
                 buffer: Uint8Array | string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of `count` bytes from `buffer` into
              * the stream. When the operation is finished `callback` will be called.
@@ -14670,7 +14367,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream write operation started with
              * g_output_stream_write_all_async().
@@ -14730,7 +14427,7 @@ declare module 'gi://Gio?version=2.0' {
                 buffer: Uint8Array | string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of `count` bytes from `buffer` into
              * the stream. When the operation is finished `callback` will be called.
@@ -14824,7 +14521,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * A wrapper function for g_output_stream_write() which takes a
              * #GBytes as input.  This can be more convenient for use by language
@@ -14864,7 +14561,7 @@ declare module 'gi://Gio?version=2.0' {
                 bytes: GLib.Bytes | Uint8Array,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * This function is similar to g_output_stream_write_async(), but
              * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
@@ -14914,7 +14611,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream write-from-#GBytes operation.
              * @param result a #GAsyncResult.
@@ -15009,7 +14706,7 @@ declare module 'gi://Gio?version=2.0' {
                 vectors: OutputVector[],
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
              * the stream. When the operation is finished `callback` will be called.
@@ -15065,7 +14762,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream write operation started with
              * g_output_stream_writev_all_async().
@@ -15120,7 +14817,7 @@ declare module 'gi://Gio?version=2.0' {
                 vectors: OutputVector[],
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
              * the stream. When the operation is finished `callback` will be called.
@@ -15204,7 +14901,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream writev operation.
              * @param result a #GAsyncResult.
@@ -17187,7 +16884,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: DBusCallFlags | null,
                 timeout_msec: number,
                 cancellable?: Cancellable | null,
-            ): Promise<GLib.Variant<T>>;
+            ): globalThis.Promise<GLib.Variant<T>>;
             /**
              * Asynchronously invokes the `method_name` method on the
              * `interface_name` D-Bus interface on the remote object at
@@ -17329,7 +17026,7 @@ declare module 'gi://Gio?version=2.0' {
                 timeout_msec: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant<T>> | void;
+            ): globalThis.Promise<GLib.Variant<T>> | void;
             /**
              * Finishes an operation started with g_dbus_connection_call().
              * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_connection_call()
@@ -17435,7 +17132,7 @@ declare module 'gi://Gio?version=2.0' {
                 timeout_msec: number,
                 fd_list?: UnixFDList | null,
                 cancellable?: Cancellable | null,
-            ): Promise<[GLib.Variant, UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant, UnixFDList | null]>;
             /**
              * Like g_dbus_connection_call() but also takes a #GUnixFDList object.
              *
@@ -17517,7 +17214,7 @@ declare module 'gi://Gio?version=2.0' {
                 fd_list?: UnixFDList | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant, UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant, UnixFDList | null]> | void;
             /**
              * Finishes an operation started with g_dbus_connection_call_with_unix_fd_list().
              *
@@ -17592,7 +17289,7 @@ declare module 'gi://Gio?version=2.0' {
              * version.
              * @param cancellable a #GCancellable or %NULL
              */
-            close(cancellable?: Cancellable | null): Promise<boolean>;
+            close(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Closes `connection`. Note that this never causes the process to
              * exit (this might only happen if the other end of a shared message
@@ -17653,7 +17350,7 @@ declare module 'gi://Gio?version=2.0' {
             close(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with g_dbus_connection_close().
              * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed     to g_dbus_connection_close()
@@ -17757,7 +17454,7 @@ declare module 'gi://Gio?version=2.0' {
              * version.
              * @param cancellable a #GCancellable or %NULL
              */
-            flush(cancellable?: Cancellable | null): Promise<boolean>;
+            flush(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously flushes `connection,` that is, writes all queued
              * outgoing messages to the transport and then flushes the transport
@@ -17798,7 +17495,7 @@ declare module 'gi://Gio?version=2.0' {
             flush(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with g_dbus_connection_flush().
              * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed     to g_dbus_connection_flush()
@@ -18109,7 +17806,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: DBusSendMessageFlags | null,
                 timeout_msec: number,
                 cancellable?: Cancellable | null,
-            ): [Promise<DBusMessage>, number];
+            ): [globalThis.Promise<DBusMessage>, number];
             /**
              * Asynchronously sends `message` to the peer represented by `connection`.
              *
@@ -18197,7 +17894,7 @@ declare module 'gi://Gio?version=2.0' {
                 timeout_msec: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<DBusMessage> | void, number];
+            ): [globalThis.Promise<DBusMessage> | void, number];
             /**
              * Finishes an operation started with g_dbus_connection_send_message_with_reply().
              *
@@ -18453,7 +18150,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -18545,7 +18242,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -20018,7 +19715,7 @@ declare module 'gi://Gio?version=2.0' {
             get_interface(): string | null;
             /**
              * Checks whether `message` is locked. To monitor changes to this
-             * value, conncet to the #GObject::notify signal to listen for changes
+             * value, connect to the #GObject::notify signal to listen for changes
              * on the #GDBusMessage:locked property.
              * @returns %TRUE if @message is locked, %FALSE otherwise.
              */
@@ -20909,7 +20606,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -21001,7 +20698,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -23968,7 +23665,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: DBusCallFlags | null,
                 timeout_msec: number,
                 cancellable?: Cancellable | null,
-            ): Promise<GLib.Variant>;
+            ): globalThis.Promise<GLib.Variant>;
             /**
              * Asynchronously invokes the `method_name` method on `proxy`.
              *
@@ -24088,7 +23785,7 @@ declare module 'gi://Gio?version=2.0' {
                 timeout_msec: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant> | void;
+            ): globalThis.Promise<GLib.Variant> | void;
             /**
              * Finishes an operation started with g_dbus_proxy_call().
              * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
@@ -24164,7 +23861,7 @@ declare module 'gi://Gio?version=2.0' {
                 timeout_msec: number,
                 fd_list?: UnixFDList | null,
                 cancellable?: Cancellable | null,
-            ): Promise<[GLib.Variant, UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant, UnixFDList | null]>;
             /**
              * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
              *
@@ -24206,7 +23903,7 @@ declare module 'gi://Gio?version=2.0' {
                 fd_list?: UnixFDList | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant, UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant, UnixFDList | null]> | void;
             /**
              * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
              * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
@@ -24402,7 +24099,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -24494,7 +24191,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -25983,7 +25680,7 @@ declare module 'gi://Gio?version=2.0' {
             read_line_async(
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<[Uint8Array | null, number]>;
+            ): globalThis.Promise<[Uint8Array | null, number]>;
             /**
              * The asynchronous version of g_data_input_stream_read_line().  It is
              * an error to have two outstanding calls to this function.
@@ -26015,7 +25712,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[Uint8Array | null, number]> | void;
+            ): globalThis.Promise<[Uint8Array | null, number]> | void;
             /**
              * Finish an asynchronous call started by
              * g_data_input_stream_read_line_async().  Note the warning about
@@ -26118,7 +25815,7 @@ declare module 'gi://Gio?version=2.0' {
                 stop_chars: string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<[string, number]>;
+            ): globalThis.Promise<[string, number]>;
             /**
              * The asynchronous version of g_data_input_stream_read_until().
              * It is an error to have two outstanding calls to this function.
@@ -26172,7 +25869,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[string, number]> | void;
+            ): globalThis.Promise<[string, number]> | void;
             /**
              * Finish an asynchronous call started by
              * g_data_input_stream_read_until_async().
@@ -26224,7 +25921,7 @@ declare module 'gi://Gio?version=2.0' {
                 stop_chars_len: number,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<[string, number]>;
+            ): globalThis.Promise<[string, number]>;
             /**
              * The asynchronous version of g_data_input_stream_read_upto().
              * It is an error to have two outstanding calls to this function.
@@ -26280,7 +25977,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[string, number]> | void;
+            ): globalThis.Promise<[string, number]> | void;
             /**
              * Finish an asynchronous call started by
              * g_data_input_stream_read_upto_async().
@@ -28298,1210 +27995,6 @@ declare module 'gi://Gio?version=2.0' {
             stop_emission_by_name(detailedName: string): void;
         }
 
-        namespace DesktopAppInfo {
-            // Signal signatures
-            interface SignalSignatures extends GObject.Object.SignalSignatures {
-                'notify::filename': (pspec: GObject.ParamSpec) => void;
-            }
-
-            // Constructor properties interface
-
-            interface ConstructorProps extends GObject.Object.ConstructorProps, AppInfo.ConstructorProps {
-                filename: string;
-            }
-        }
-
-        /**
-         * `GDesktopAppInfo` is an implementation of [iface`Gio`.AppInfo] based on
-         * desktop files.
-         *
-         * Note that `<gio/gdesktopappinfo.h>` belongs to the UNIX-specific
-         * GIO interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
-         * file or the `GioUnix-2.0` GIR namespace when using it.
-         */
-        class DesktopAppInfo extends GObject.Object implements AppInfo {
-            static $gtype: GObject.GType<DesktopAppInfo>;
-
-            // Properties
-
-            /**
-             * The origin filename of this [class`Gio`.DesktopAppInfo]
-             */
-            get filename(): string;
-
-            /**
-             * Compile-time signal type information.
-             *
-             * This instance property is generated only for TypeScript type checking.
-             * It is not defined at runtime and should not be accessed in JS code.
-             * @internal
-             */
-            $signals: DesktopAppInfo.SignalSignatures;
-
-            // Constructors
-
-            constructor(properties?: Partial<DesktopAppInfo.ConstructorProps>, ...args: any[]);
-
-            _init(...args: any[]): void;
-
-            static ['new'](desktop_id: string): DesktopAppInfo;
-
-            static new_from_filename(filename: string): DesktopAppInfo;
-
-            static new_from_keyfile(key_file: GLib.KeyFile): DesktopAppInfo;
-
-            // Signals
-
-            connect<K extends keyof DesktopAppInfo.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>,
-            ): number;
-            connect(signal: string, callback: (...args: any[]) => any): number;
-            connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>,
-            ): number;
-            connect_after(signal: string, callback: (...args: any[]) => any): number;
-            emit<K extends keyof DesktopAppInfo.SignalSignatures>(
-                signal: K,
-                ...args: GObject.GjsParameters<DesktopAppInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-            ): void;
-            emit(signal: string, ...args: any[]): void;
-
-            // Static methods
-
-            /**
-             * Gets all applications that implement `interface`.
-             *
-             * An application implements an interface if that interface is listed in
-             * the `Implements` line of the desktop file of the application.
-             * @param _interface the name of the interface
-             */
-            static get_implementations(_interface: string): DesktopAppInfo[];
-            /**
-             * Searches desktop files for ones that match `search_string`.
-             *
-             * The return value is an array of strvs.  Each strv contains a list of
-             * applications that matched `search_string` with an equal score.  The
-             * outer list is sorted by score so that the first strv contains the
-             * best-matching applications, and so on.
-             * The algorithm for determining matches is undefined and may change at
-             * any time.
-             *
-             * None of the search results are subjected to the normal validation
-             * checks performed by [ctor`Gio`.DesktopAppInfo.new] (for example, checking that
-             * the executable referenced by a result exists), and so it is possible for
-             * [ctor`Gio`.DesktopAppInfo.new] to return `NULL` when passed an app ID returned
-             * by this function. It is expected that calling code will do this when
-             * subsequently creating a [class`Gio`.DesktopAppInfo] for each result.
-             * @param search_string the search string to use
-             */
-            static search(search_string: string): string[][];
-            /**
-             * Sets the name of the desktop that the application is running in.
-             *
-             * This is used by [method`Gio`.AppInfo.should_show] and
-             * [method`Gio`.DesktopAppInfo.get_show_in] to evaluate the
-             * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-             * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
-             * keys.
-             *
-             * Should be called only once; subsequent calls are ignored.
-             * @param desktop_env a string specifying what desktop this is
-             */
-            static set_desktop_env(desktop_env: string): void;
-
-            // Methods
-
-            /**
-             * Gets the user-visible display name of the
-             * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
-             * specified by `action_name`.
-             *
-             * This corresponds to the `Name` key within the keyfile group for the
-             * action.
-             * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
-             * @returns the locale-specific action name
-             */
-            get_action_name(action_name: string): string;
-            /**
-             * Looks up a boolean value in the keyfile backing `info`.
-             *
-             * The `key` is looked up in the `Desktop Entry` group.
-             * @param key the key to look up
-             * @returns the boolean value, or `FALSE` if the key is not found
-             */
-            get_boolean(key: string): boolean;
-            /**
-             * Gets the categories from the desktop file.
-             * @returns The unparsed   [`Categories` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-categories)   from the desktop file;   i.e. no attempt is made to split it by `;` or validate it.
-             */
-            get_categories(): string | null;
-            /**
-             * When `info` was created from a known filename, return it.  In some
-             * situations such as a [class`Gio`.DesktopAppInfo] returned from
-             * [ctor`Gio`.DesktopAppInfo.new_from_keyfile], this function will return `NULL`.
-             * @returns The full path to the file for @info,   or `NULL` if not known.
-             */
-            get_filename(): string | null;
-            /**
-             * Gets the generic name from the desktop file.
-             * @returns The value of the   [`GenericName` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-genericname)
-             */
-            get_generic_name(): string | null;
-            /**
-             * A desktop file is hidden if the
-             * [`Hidden` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-hidden)
-             * in it is set to `True`.
-             * @returns `TRUE` if hidden, `FALSE` otherwise.
-             */
-            get_is_hidden(): boolean;
-            /**
-             * Gets the keywords from the desktop file.
-             * @returns The value of the   [`Keywords` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-keywords)
-             */
-            get_keywords(): string[];
-            /**
-             * Looks up a localized string value in the keyfile backing `info`
-             * translated to the current locale.
-             *
-             * The `key` is looked up in the `Desktop Entry` group.
-             * @param key the key to look up
-             * @returns a newly allocated string, or `NULL` if the key is not   found
-             */
-            get_locale_string(key: string): string | null;
-            /**
-             * Gets the value of the
-             * [`NoDisplay` key](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-nodisplay)
-             *  which helps determine if the application info should be shown in menus. See
-             * `G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY` and [method`Gio`.AppInfo.should_show].
-             * @returns The value of the `NoDisplay` key
-             */
-            get_nodisplay(): boolean;
-            /**
-             * Checks if the application info should be shown in menus that list available
-             * applications for a specific name of the desktop, based on the
-             * [`OnlyShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-onlyshowin)
-             * and [`NotShowIn`](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html#key-notshowin)
-             * keys.
-             *
-             * `desktop_env` should typically be given as `NULL`, in which case the
-             * `XDG_CURRENT_DESKTOP` environment variable is consulted.  If you want
-             * to override the default mechanism then you may specify `desktop_env,`
-             * but this is not recommended.
-             *
-             * Note that [method`Gio`.AppInfo.should_show] for `info` will include this check
-             * (with `NULL` for `desktop_env)` as well as additional checks.
-             * @param desktop_env a string specifying a desktop name
-             * @returns `TRUE` if the @info should be shown in @desktop_env according to the `OnlyShowIn` and `NotShowIn` keys, `FALSE` otherwise.
-             */
-            get_show_in(desktop_env?: string | null): boolean;
-            /**
-             * Retrieves the `StartupWMClass` field from `info`. This represents the
-             * `WM_CLASS` property of the main window of the application, if launched
-             * through `info`.
-             * @returns the startup WM class, or `NULL` if none   is set in the desktop file.
-             */
-            get_startup_wm_class(): string | null;
-            /**
-             * Looks up a string value in the keyfile backing `info`.
-             *
-             * The `key` is looked up in the `Desktop Entry` group.
-             * @param key the key to look up
-             * @returns a newly allocated string, or `NULL` if the key is not   found
-             */
-            get_string(key: string): string | null;
-            /**
-             * Looks up a string list value in the keyfile backing `info`.
-             *
-             * The `key` is looked up in the `Desktop Entry` group.
-             * @param key the key to look up
-             * @returns a `NULL`-terminated string array or `NULL` if the specified   key cannot be found. The array should be freed with [func@GLib.strfreev].
-             */
-            get_string_list(key: string): string[];
-            /**
-             * Returns whether `key` exists in the `Desktop Entry` group
-             * of the keyfile backing `info`.
-             * @param key the key to look up
-             * @returns `TRUE` if the @key exists
-             */
-            has_key(key: string): boolean;
-            /**
-             * Activates the named application action.
-             *
-             * You may only call this function on action names that were
-             * returned from [method`Gio`.DesktopAppInfo.list_actions].
-             *
-             * Note that if the main entry of the desktop file indicates that the
-             * application supports startup notification, and `launch_context` is
-             * non-`NULL`, then startup notification will be used when activating the
-             * action (and as such, invocation of the action on the receiving side
-             * must signal the end of startup notification when it is completed).
-             * This is the expected behaviour of applications declaring additional
-             * actions, as per the
-             * [desktop file specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html).
-             *
-             * As with [method`Gio`.AppInfo.launch] there is no way to detect failures that
-             * occur while using this function.
-             * @param action_name the name of the action as from   [method@Gio.DesktopAppInfo.list_actions]
-             * @param launch_context a [class@Gio.AppLaunchContext]
-             */
-            launch_action(action_name: string, launch_context?: AppLaunchContext | null): void;
-            /**
-             * This function performs the equivalent of [method`Gio`.AppInfo.launch_uris],
-             * but is intended primarily for operating system components that
-             * launch applications.  Ordinary applications should use
-             * [method`Gio`.AppInfo.launch_uris].
-             *
-             * If the application is launched via GSpawn, then `spawn_flags,` `user_setup`
-             * and `user_setup_data` are used for the call to [func`GLib`.spawn_async].
-             * Additionally, `pid_callback` (with `pid_callback_data)` will be called to
-             * inform about the PID of the created process. See
-             * [func`GLib`.spawn_async_with_pipes] for information on certain parameter
-             * conditions that can enable an optimized [`posix_spawn()`](man:posix_spawn(3))
-             * code path to be used.
-             *
-             * If application launching occurs via some other mechanism (for example, D-Bus
-             * activation) then `spawn_flags,` `user_setup,` `user_setup_data,`
-             * `pid_callback` and `pid_callback_data` are ignored.
-             * @param uris List of URIs
-             * @param launch_context a [class@Gio.AppLaunchContext]
-             * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
-             * @param user_setup a [callback@GLib.SpawnChildSetupFunc],   used once  for each process.
-             * @param pid_callback Callback for child processes
-             * @returns `TRUE` on successful launch, `FALSE` otherwise.
-             */
-            launch_uris_as_manager(
-                uris: string[],
-                launch_context: AppLaunchContext | null,
-                spawn_flags: GLib.SpawnFlags | null,
-                user_setup?: GLib.SpawnChildSetupFunc | null,
-                pid_callback?: DesktopAppLaunchCallback | null,
-            ): boolean;
-            /**
-             * Equivalent to [method`Gio`.DesktopAppInfo.launch_uris_as_manager] but allows
-             * you to pass in file descriptors for the stdin, stdout and stderr streams
-             * of the launched process.
-             *
-             * If application launching occurs via some non-spawn mechanism (e.g. D-Bus
-             * activation) then `stdin_fd,` `stdout_fd` and `stderr_fd` are ignored.
-             * @param uris List of URIs
-             * @param launch_context a [class@Gio.AppLaunchContext]
-             * @param spawn_flags [flags@GLib.SpawnFlags], used for each process
-             * @param user_setup a   [callback@GLib.SpawnChildSetupFunc], used once for each process.
-             * @param pid_callback Callback for child processes
-             * @param stdin_fd file descriptor to use for child’s stdin, or `-1`
-             * @param stdout_fd file descriptor to use for child’s stdout, or `-1`
-             * @param stderr_fd file descriptor to use for child’s stderr, or `-1`
-             * @returns `TRUE` on successful launch, `FALSE` otherwise.
-             */
-            launch_uris_as_manager_with_fds(
-                uris: string[],
-                launch_context: AppLaunchContext | null,
-                spawn_flags: GLib.SpawnFlags | null,
-                user_setup: GLib.SpawnChildSetupFunc | null,
-                pid_callback: DesktopAppLaunchCallback | null,
-                stdin_fd: number,
-                stdout_fd: number,
-                stderr_fd: number,
-            ): boolean;
-            /**
-             * Returns the list of
-             * [‘additional application actions’](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s11.html)
-             * supported on the desktop file, as per the desktop file specification.
-             *
-             * As per the specification, this is the list of actions that are
-             * explicitly listed in the `Actions` key of the `Desktop Entry` group.
-             * @returns a   list of strings, always non-`NULL`
-             */
-            list_actions(): string[];
-
-            // Inherited methods
-            /**
-             * Adds a content type to the application information to indicate the
-             * application is capable of opening files with the given content type.
-             * @param content_type a string.
-             * @returns `TRUE` on success, `FALSE` on error.
-             */
-            add_supports_type(content_type: string): boolean;
-            /**
-             * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-             * See [method`Gio`.AppInfo.delete].
-             * @returns `TRUE` if @appinfo can be deleted
-             */
-            can_delete(): boolean;
-            /**
-             * Checks if a supported content type can be removed from an application.
-             * @returns `TRUE` if it is possible to remove supported content types from a   given @appinfo, `FALSE` if not.
-             */
-            can_remove_supports_type(): boolean;
-            /**
-             * Tries to delete a [iface`Gio`.AppInfo].
-             *
-             * On some platforms, there may be a difference between user-defined
-             * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-             * See [method`Gio`.AppInfo.can_delete].
-             * @returns `TRUE` if @appinfo has been deleted
-             */
-            ['delete'](): boolean;
-            /**
-             * Creates a duplicate of a [iface`Gio`.AppInfo].
-             * @returns a duplicate of @appinfo.
-             */
-            dup(): AppInfo;
-            /**
-             * Checks if two [iface`Gio`.AppInfo]s are equal.
-             *
-             * Note that the check *may not* compare each individual field, and only does
-             * an identity check. In case detecting changes in the contents is needed,
-             * program code must additionally compare relevant fields.
-             * @param appinfo2 the second [iface@Gio.AppInfo].
-             * @returns `TRUE` if @appinfo1 is equal to @appinfo2. `FALSE` otherwise.
-             */
-            equal(appinfo2: AppInfo): boolean;
-            /**
-             * Gets the commandline with which the application will be
-             * started.
-             * @returns a string containing the @appinfo’s   commandline, or `NULL` if this information is not available
-             */
-            get_commandline(): string | null;
-            /**
-             * Gets a human-readable description of an installed application.
-             * @returns a string containing a description of the application @appinfo, or `NULL` if none.
-             */
-            get_description(): string | null;
-            /**
-             * Gets the display name of the application. The display name is often more
-             * descriptive to the user than the name itself.
-             * @returns the display name of the application for @appinfo, or the name if no display name is available.
-             */
-            get_display_name(): string;
-            /**
-             * Gets the executable’s name for the installed application.
-             *
-             * This is intended to be used for debugging or labelling what program is going
-             * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
-             * functions, rather than spawning the return value from this function.
-             * @returns a string containing the @appinfo’s application binaries name
-             */
-            get_executable(): string;
-            /**
-             * Gets the icon for the application.
-             * @returns the default [iface@Gio.Icon] for   @appinfo or `NULL` if there is no default icon.
-             */
-            get_icon(): Icon | null;
-            /**
-             * Gets the ID of an application. An id is a string that identifies the
-             * application. The exact format of the id is platform dependent. For instance,
-             * on Unix this is the desktop file id from the xdg menu specification.
-             *
-             * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-             * been constructed.
-             * @returns a string containing the application’s ID.
-             */
-            get_id(): string | null;
-            /**
-             * Gets the installed name of the application.
-             * @returns the name of the application for @appinfo.
-             */
-            get_name(): string;
-            /**
-             * Retrieves the list of content types that `app_info` claims to support.
-             * If this information is not provided by the environment, this function
-             * will return `NULL`.
-             *
-             * This function does not take in consideration associations added with
-             * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
-             * the application.
-             * @returns a list of content types.
-             */
-            get_supported_types(): string[];
-            /**
-             * Launches the application. Passes `files` to the launched application
-             * as arguments, using the optional `context` to get information
-             * about the details of the launcher (like what screen it is on).
-             * On error, `error` will be set accordingly.
-             *
-             * To launch the application without arguments pass a `NULL` `files` list.
-             *
-             * Note that even if the launch is successful the application launched
-             * can fail to start if it runs into problems during startup. There is
-             * no way to detect this.
-             *
-             * Some URIs can be changed when passed through a GFile (for instance
-             * unsupported URIs with strange formats like mailto:), so if you have
-             * a textual URI you want to pass in as argument, consider using
-             * [method`Gio`.AppInfo.launch_uris] instead.
-             *
-             * The launched application inherits the environment of the launching
-             * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-             * and [method`Gio`.AppLaunchContext.unsetenv].
-             *
-             * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
-             * environment variable with the path of the launched desktop file and
-             * `GIO_LAUNCHED_DESKTOP_FILE_PID` to the process id of the launched
-             * process. This can be used to ignore `GIO_LAUNCHED_DESKTOP_FILE`,
-             * should it be inherited by further processes. The `DISPLAY`,
-             * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
-             * variables are also set, based on information provided in `context`.
-             * @param files a list of [iface@Gio.File] objects
-             * @param context the launch context
-             * @returns `TRUE` on successful launch, `FALSE` otherwise.
-             */
-            launch(files?: File[] | null, context?: AppLaunchContext | null): boolean;
-            /**
-             * Launches the application. This passes the `uris` to the launched application
-             * as arguments, using the optional `context` to get information
-             * about the details of the launcher (like what screen it is on).
-             * On error, `error` will be set accordingly. If the application only supports
-             * one URI per invocation as part of their command-line, multiple instances
-             * of the application will be spawned.
-             *
-             * To launch the application without arguments pass a `NULL` `uris` list.
-             *
-             * Note that even if the launch is successful the application launched
-             * can fail to start if it runs into problems during startup. There is
-             * no way to detect this.
-             * @param uris a list of URIs to launch.
-             * @param context the launch context
-             * @returns `TRUE` on successful launch, `FALSE` otherwise.
-             */
-            launch_uris(uris?: string[] | null, context?: AppLaunchContext | null): boolean;
-            /**
-             * Async version of [method`Gio`.AppInfo.launch_uris].
-             *
-             * The `callback` is invoked immediately after the application launch, but it
-             * waits for activation in case of D-Bus–activated applications and also provides
-             * extended error information for sandboxed applications, see notes for
-             * [func`Gio`.AppInfo.launch_default_for_uri_async].
-             * @param uris a list of URIs to launch.
-             * @param context the launch context
-             * @param cancellable a [class@Gio.Cancellable]
-             */
-            launch_uris_async(
-                uris?: string[] | null,
-                context?: AppLaunchContext | null,
-                cancellable?: Cancellable | null,
-            ): Promise<boolean>;
-            /**
-             * Async version of [method`Gio`.AppInfo.launch_uris].
-             *
-             * The `callback` is invoked immediately after the application launch, but it
-             * waits for activation in case of D-Bus–activated applications and also provides
-             * extended error information for sandboxed applications, see notes for
-             * [func`Gio`.AppInfo.launch_default_for_uri_async].
-             * @param uris a list of URIs to launch.
-             * @param context the launch context
-             * @param cancellable a [class@Gio.Cancellable]
-             * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
-             */
-            launch_uris_async(
-                uris: string[] | null,
-                context: AppLaunchContext | null,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Async version of [method`Gio`.AppInfo.launch_uris].
-             *
-             * The `callback` is invoked immediately after the application launch, but it
-             * waits for activation in case of D-Bus–activated applications and also provides
-             * extended error information for sandboxed applications, see notes for
-             * [func`Gio`.AppInfo.launch_default_for_uri_async].
-             * @param uris a list of URIs to launch.
-             * @param context the launch context
-             * @param cancellable a [class@Gio.Cancellable]
-             * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
-             */
-            launch_uris_async(
-                uris?: string[] | null,
-                context?: AppLaunchContext | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
-            /**
-             * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-             * @param result the async result
-             * @returns `TRUE` on successful launch, `FALSE` otherwise.
-             */
-            launch_uris_finish(result: AsyncResult): boolean;
-            /**
-             * Removes a supported type from an application, if possible.
-             * @param content_type a string.
-             * @returns `TRUE` on success, `FALSE` on error.
-             */
-            remove_supports_type(content_type: string): boolean;
-            /**
-             * Sets the application as the default handler for the given file extension.
-             * @param extension a string containing the file extension (without   the dot).
-             * @returns `TRUE` on success, `FALSE` on error.
-             */
-            set_as_default_for_extension(extension: string): boolean;
-            /**
-             * Sets the application as the default handler for a given type.
-             * @param content_type the content type.
-             * @returns `TRUE` on success, `FALSE` on error.
-             */
-            set_as_default_for_type(content_type: string): boolean;
-            /**
-             * Sets the application as the last used application for a given type. This
-             * will make the application appear as first in the list returned by
-             * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
-             * application for that content type.
-             * @param content_type the content type.
-             * @returns `TRUE` on success, `FALSE` on error.
-             */
-            set_as_last_used_for_type(content_type: string): boolean;
-            /**
-             * Checks if the application info should be shown in menus that
-             * list available applications.
-             * @returns `TRUE` if the @appinfo should be shown, `FALSE` otherwise.
-             */
-            should_show(): boolean;
-            /**
-             * Checks if the application accepts files as arguments.
-             * @returns `TRUE` if the @appinfo supports files.
-             */
-            supports_files(): boolean;
-            /**
-             * Checks if the application supports reading files and directories from URIs.
-             * @returns `TRUE` if the @appinfo supports URIs.
-             */
-            supports_uris(): boolean;
-            /**
-             * Adds a content type to the application information to indicate the
-             * application is capable of opening files with the given content type.
-             * @param content_type a string.
-             */
-            vfunc_add_supports_type(content_type: string): boolean;
-            /**
-             * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-             * See [method`Gio`.AppInfo.delete].
-             */
-            vfunc_can_delete(): boolean;
-            /**
-             * Checks if a supported content type can be removed from an application.
-             */
-            vfunc_can_remove_supports_type(): boolean;
-            /**
-             * Tries to delete a [iface`Gio`.AppInfo].
-             *
-             * On some platforms, there may be a difference between user-defined
-             * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-             * See [method`Gio`.AppInfo.can_delete].
-             */
-            vfunc_do_delete(): boolean;
-            /**
-             * Creates a duplicate of a [iface`Gio`.AppInfo].
-             */
-            vfunc_dup(): AppInfo;
-            /**
-             * Checks if two [iface`Gio`.AppInfo]s are equal.
-             *
-             * Note that the check *may not* compare each individual field, and only does
-             * an identity check. In case detecting changes in the contents is needed,
-             * program code must additionally compare relevant fields.
-             * @param appinfo2 the second [iface@Gio.AppInfo].
-             */
-            vfunc_equal(appinfo2: AppInfo): boolean;
-            /**
-             * Gets the commandline with which the application will be
-             * started.
-             */
-            vfunc_get_commandline(): string | null;
-            /**
-             * Gets a human-readable description of an installed application.
-             */
-            vfunc_get_description(): string | null;
-            /**
-             * Gets the display name of the application. The display name is often more
-             * descriptive to the user than the name itself.
-             */
-            vfunc_get_display_name(): string;
-            /**
-             * Gets the executable’s name for the installed application.
-             *
-             * This is intended to be used for debugging or labelling what program is going
-             * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
-             * functions, rather than spawning the return value from this function.
-             */
-            vfunc_get_executable(): string;
-            /**
-             * Gets the icon for the application.
-             */
-            vfunc_get_icon(): Icon | null;
-            /**
-             * Gets the ID of an application. An id is a string that identifies the
-             * application. The exact format of the id is platform dependent. For instance,
-             * on Unix this is the desktop file id from the xdg menu specification.
-             *
-             * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-             * been constructed.
-             */
-            vfunc_get_id(): string | null;
-            /**
-             * Gets the installed name of the application.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Retrieves the list of content types that `app_info` claims to support.
-             * If this information is not provided by the environment, this function
-             * will return `NULL`.
-             *
-             * This function does not take in consideration associations added with
-             * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
-             * the application.
-             */
-            vfunc_get_supported_types(): string[];
-            /**
-             * Launches the application. Passes `files` to the launched application
-             * as arguments, using the optional `context` to get information
-             * about the details of the launcher (like what screen it is on).
-             * On error, `error` will be set accordingly.
-             *
-             * To launch the application without arguments pass a `NULL` `files` list.
-             *
-             * Note that even if the launch is successful the application launched
-             * can fail to start if it runs into problems during startup. There is
-             * no way to detect this.
-             *
-             * Some URIs can be changed when passed through a GFile (for instance
-             * unsupported URIs with strange formats like mailto:), so if you have
-             * a textual URI you want to pass in as argument, consider using
-             * [method`Gio`.AppInfo.launch_uris] instead.
-             *
-             * The launched application inherits the environment of the launching
-             * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-             * and [method`Gio`.AppLaunchContext.unsetenv].
-             *
-             * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
-             * environment variable with the path of the launched desktop file and
-             * `GIO_LAUNCHED_DESKTOP_FILE_PID` to the process id of the launched
-             * process. This can be used to ignore `GIO_LAUNCHED_DESKTOP_FILE`,
-             * should it be inherited by further processes. The `DISPLAY`,
-             * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
-             * variables are also set, based on information provided in `context`.
-             * @param files a list of [iface@Gio.File] objects
-             * @param context the launch context
-             */
-            vfunc_launch(files?: File[] | null, context?: AppLaunchContext | null): boolean;
-            /**
-             * Launches the application. This passes the `uris` to the launched application
-             * as arguments, using the optional `context` to get information
-             * about the details of the launcher (like what screen it is on).
-             * On error, `error` will be set accordingly. If the application only supports
-             * one URI per invocation as part of their command-line, multiple instances
-             * of the application will be spawned.
-             *
-             * To launch the application without arguments pass a `NULL` `uris` list.
-             *
-             * Note that even if the launch is successful the application launched
-             * can fail to start if it runs into problems during startup. There is
-             * no way to detect this.
-             * @param uris a list of URIs to launch.
-             * @param context the launch context
-             */
-            vfunc_launch_uris(uris?: string[] | null, context?: AppLaunchContext | null): boolean;
-            /**
-             * Async version of [method`Gio`.AppInfo.launch_uris].
-             *
-             * The `callback` is invoked immediately after the application launch, but it
-             * waits for activation in case of D-Bus–activated applications and also provides
-             * extended error information for sandboxed applications, see notes for
-             * [func`Gio`.AppInfo.launch_default_for_uri_async].
-             * @param uris a list of URIs to launch.
-             * @param context the launch context
-             * @param cancellable a [class@Gio.Cancellable]
-             * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
-             */
-            vfunc_launch_uris_async(
-                uris?: string[] | null,
-                context?: AppLaunchContext | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-             * @param result the async result
-             */
-            vfunc_launch_uris_finish(result: AsyncResult): boolean;
-            /**
-             * Removes a supported type from an application, if possible.
-             * @param content_type a string.
-             */
-            vfunc_remove_supports_type(content_type: string): boolean;
-            /**
-             * Sets the application as the default handler for the given file extension.
-             * @param extension a string containing the file extension (without   the dot).
-             */
-            vfunc_set_as_default_for_extension(extension: string): boolean;
-            /**
-             * Sets the application as the default handler for a given type.
-             * @param content_type the content type.
-             */
-            vfunc_set_as_default_for_type(content_type: string): boolean;
-            /**
-             * Sets the application as the last used application for a given type. This
-             * will make the application appear as first in the list returned by
-             * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
-             * application for that content type.
-             * @param content_type the content type.
-             */
-            vfunc_set_as_last_used_for_type(content_type: string): boolean;
-            /**
-             * Checks if the application info should be shown in menus that
-             * list available applications.
-             */
-            vfunc_should_show(): boolean;
-            /**
-             * Checks if the application accepts files as arguments.
-             */
-            vfunc_supports_files(): boolean;
-            /**
-             * Checks if the application supports reading files and directories from URIs.
-             */
-            vfunc_supports_uris(): boolean;
-            /**
-             * Creates a binding between `source_property` on `source` and `target_property`
-             * on `target`.
-             *
-             * Whenever the `source_property` is changed the `target_property` is
-             * updated using the same value. For instance:
-             *
-             *
-             * ```c
-             *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-             * ```
-             *
-             *
-             * Will result in the "sensitive" property of the widget #GObject instance to be
-             * updated with the same value of the "active" property of the action #GObject
-             * instance.
-             *
-             * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-             * if `target_property` on `target` changes then the `source_property` on `source`
-             * will be updated as well.
-             *
-             * The binding will automatically be removed when either the `source` or the
-             * `target` instances are finalized. To remove the binding without affecting the
-             * `source` and the `target` you can just call g_object_unref() on the returned
-             * #GBinding instance.
-             *
-             * Removing the binding by calling g_object_unref() on it must only be done if
-             * the binding, `source` and `target` are only used from a single thread and it
-             * is clear that both `source` and `target` outlive the binding. Especially it
-             * is not safe to rely on this if the binding, `source` or `target` can be
-             * finalized from different threads. Keep another reference to the binding and
-             * use g_binding_unbind() instead to be on the safe side.
-             *
-             * A #GObject can have multiple bindings.
-             * @param source_property the property on @source to bind
-             * @param target the target #GObject
-             * @param target_property the property on @target to bind
-             * @param flags flags to pass to #GBinding
-             * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-             */
-            bind_property(
-                source_property: string,
-                target: GObject.Object,
-                target_property: string,
-                flags: GObject.BindingFlags | null,
-            ): GObject.Binding;
-            /**
-             * Complete version of g_object_bind_property().
-             *
-             * Creates a binding between `source_property` on `source` and `target_property`
-             * on `target,` allowing you to set the transformation functions to be used by
-             * the binding.
-             *
-             * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-             * if `target_property` on `target` changes then the `source_property` on `source`
-             * will be updated as well. The `transform_from` function is only used in case
-             * of bidirectional bindings, otherwise it will be ignored
-             *
-             * The binding will automatically be removed when either the `source` or the
-             * `target` instances are finalized. This will release the reference that is
-             * being held on the #GBinding instance; if you want to hold on to the
-             * #GBinding instance, you will need to hold a reference to it.
-             *
-             * To remove the binding, call g_binding_unbind().
-             *
-             * A #GObject can have multiple bindings.
-             *
-             * The same `user_data` parameter will be used for both `transform_to`
-             * and `transform_from` transformation functions; the `notify` function will
-             * be called once, when the binding is removed. If you need different data
-             * for each transformation function, please use
-             * g_object_bind_property_with_closures() instead.
-             * @param source_property the property on @source to bind
-             * @param target the target #GObject
-             * @param target_property the property on @target to bind
-             * @param flags flags to pass to #GBinding
-             * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-             * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-             * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-             * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-             */
-            bind_property_full(
-                source_property: string,
-                target: GObject.Object,
-                target_property: string,
-                flags: GObject.BindingFlags | null,
-                transform_to?: GObject.BindingTransformFunc | null,
-                transform_from?: GObject.BindingTransformFunc | null,
-                notify?: GLib.DestroyNotify | null,
-            ): GObject.Binding;
-            // Conflicted with GObject.Object.bind_property_full
-            bind_property_full(...args: never[]): any;
-            /**
-             * This function is intended for #GObject implementations to re-enforce
-             * a [floating][floating-ref] object reference. Doing this is seldom
-             * required: all #GInitiallyUnowneds are created with a floating reference
-             * which usually just needs to be sunken by calling g_object_ref_sink().
-             */
-            force_floating(): void;
-            /**
-             * Increases the freeze count on `object`. If the freeze count is
-             * non-zero, the emission of "notify" signals on `object` is
-             * stopped. The signals are queued until the freeze count is decreased
-             * to zero. Duplicate notifications are squashed so that at most one
-             * #GObject::notify signal is emitted for each property modified while the
-             * object is frozen.
-             *
-             * This is necessary for accessors that modify multiple properties to prevent
-             * premature notification while the object is still being modified.
-             */
-            freeze_notify(): void;
-            /**
-             * Gets a named field from the objects table of associations (see g_object_set_data()).
-             * @param key name of the key for that association
-             * @returns the data if found,          or %NULL if no such data exists.
-             */
-            get_data(key: string): any | null;
-            /**
-             * Gets a property of an object.
-             *
-             * The value can be:
-             * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-             * - a GObject.Value initialized with the expected type of the property
-             * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-             *
-             * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-             *
-             * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-             * @param property_name The name of the property to get
-             * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-             */
-            get_property(property_name: string, value: GObject.Value | any): any;
-            /**
-             * This function gets back user data pointers stored via
-             * g_object_set_qdata().
-             * @param quark A #GQuark, naming the user data pointer
-             * @returns The user data pointer set, or %NULL
-             */
-            get_qdata(quark: GLib.Quark): any | null;
-            /**
-             * Gets `n_properties` properties for an `object`.
-             * Obtained properties will be set to `values`. All properties must be valid.
-             * Warnings will be emitted and undefined behaviour may result if invalid
-             * properties are passed in.
-             * @param names the names of each property to get
-             * @param values the values of each property to get
-             */
-            getv(names: string[], values: (GObject.Value | any)[]): void;
-            /**
-             * Checks whether `object` has a [floating][floating-ref] reference.
-             * @returns %TRUE if @object has a floating reference
-             */
-            is_floating(): boolean;
-            /**
-             * Emits a "notify" signal for the property `property_name` on `object`.
-             *
-             * When possible, eg. when signaling a property change from within the class
-             * that registered the property, you should use g_object_notify_by_pspec()
-             * instead.
-             *
-             * Note that emission of the notify signal may be blocked with
-             * g_object_freeze_notify(). In this case, the signal emissions are queued
-             * and will be emitted (in reverse order) when g_object_thaw_notify() is
-             * called.
-             * @param property_name the name of a property installed on the class of @object.
-             */
-            notify(property_name: string): void;
-            /**
-             * Emits a "notify" signal for the property specified by `pspec` on `object`.
-             *
-             * This function omits the property name lookup, hence it is faster than
-             * g_object_notify().
-             *
-             * One way to avoid using g_object_notify() from within the
-             * class that registered the properties, and using g_object_notify_by_pspec()
-             * instead, is to store the GParamSpec used with
-             * g_object_class_install_property() inside a static array, e.g.:
-             *
-             *
-             * ```c
-             *   typedef enum
-             *   {
-             *     PROP_FOO = 1,
-             *     PROP_LAST
-             *   } MyObjectProperty;
-             *
-             *   static GParamSpec *properties[PROP_LAST];
-             *
-             *   static void
-             *   my_object_class_init (MyObjectClass *klass)
-             *   {
-             *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-             *                                              0, 100,
-             *                                              50,
-             *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-             *     g_object_class_install_property (gobject_class,
-             *                                      PROP_FOO,
-             *                                      properties[PROP_FOO]);
-             *   }
-             * ```
-             *
-             *
-             * and then notify a change on the "foo" property with:
-             *
-             *
-             * ```c
-             *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-             * ```
-             *
-             * @param pspec the #GParamSpec of a property installed on the class of @object.
-             */
-            notify_by_pspec(pspec: GObject.ParamSpec): void;
-            /**
-             * Increases the reference count of `object`.
-             *
-             * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-             * of `object` will be propagated to the return type (using the GCC typeof()
-             * extension), so any casting the caller needs to do on the return type must be
-             * explicit.
-             * @returns the same @object
-             */
-            ref(): GObject.Object;
-            /**
-             * Increase the reference count of `object,` and possibly remove the
-             * [floating][floating-ref] reference, if `object` has a floating reference.
-             *
-             * In other words, if the object is floating, then this call "assumes
-             * ownership" of the floating reference, converting it to a normal
-             * reference by clearing the floating flag while leaving the reference
-             * count unchanged.  If the object is not floating, then this call
-             * adds a new normal reference increasing the reference count by one.
-             *
-             * Since GLib 2.56, the type of `object` will be propagated to the return type
-             * under the same conditions as for g_object_ref().
-             * @returns @object
-             */
-            ref_sink(): GObject.Object;
-            /**
-             * Releases all references to other objects. This can be used to break
-             * reference cycles.
-             *
-             * This function should only be called from object system implementations.
-             */
-            run_dispose(): void;
-            /**
-             * Each object carries around a table of associations from
-             * strings to pointers.  This function lets you set an association.
-             *
-             * If the object already had an association with that name,
-             * the old association will be destroyed.
-             *
-             * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-             * This means a copy of `key` is kept permanently (even after `object` has been
-             * finalized) — so it is recommended to only use a small, bounded set of values
-             * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-             * @param key name of the key
-             * @param data data to associate with that key
-             */
-            set_data(key: string, data?: any | null): void;
-            /**
-             * Sets a property on an object.
-             * @param property_name The name of the property to set
-             * @param value The value to set the property to
-             */
-            set_property(property_name: string, value: GObject.Value | any): void;
-            /**
-             * Remove a specified datum from the object's data associations,
-             * without invoking the association's destroy handler.
-             * @param key name of the key
-             * @returns the data if found, or %NULL          if no such data exists.
-             */
-            steal_data(key: string): any | null;
-            /**
-             * This function gets back user data pointers stored via
-             * g_object_set_qdata() and removes the `data` from object
-             * without invoking its destroy() function (if any was
-             * set).
-             * Usually, calling this function is only required to update
-             * user data pointers with a destroy notifier, for example:
-             *
-             * ```c
-             * void
-             * object_add_to_user_list (GObject     *object,
-             *                          const gchar *new_string)
-             * {
-             *   // the quark, naming the object data
-             *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-             *   // retrieve the old string list
-             *   GList *list = g_object_steal_qdata (object, quark_string_list);
-             *
-             *   // prepend new string
-             *   list = g_list_prepend (list, g_strdup (new_string));
-             *   // this changed 'list', so we need to set it again
-             *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-             * }
-             * static void
-             * free_string_list (gpointer data)
-             * {
-             *   GList *node, *list = data;
-             *
-             *   for (node = list; node; node = node->next)
-             *     g_free (node->data);
-             *   g_list_free (list);
-             * }
-             * ```
-             *
-             * Using g_object_get_qdata() in the above example, instead of
-             * g_object_steal_qdata() would have left the destroy function set,
-             * and thus the partial string list would have been freed upon
-             * g_object_set_qdata_full().
-             * @param quark A #GQuark, naming the user data pointer
-             * @returns The user data pointer set, or %NULL
-             */
-            steal_qdata(quark: GLib.Quark): any | null;
-            /**
-             * Reverts the effect of a previous call to
-             * g_object_freeze_notify(). The freeze count is decreased on `object`
-             * and when it reaches zero, queued "notify" signals are emitted.
-             *
-             * Duplicate notifications for each property are squashed so that at most one
-             * #GObject::notify signal is emitted for each property, in the reverse order
-             * in which they have been queued.
-             *
-             * It is an error to call this function when the freeze count is zero.
-             */
-            thaw_notify(): void;
-            /**
-             * Decreases the reference count of `object`. When its reference count
-             * drops to 0, the object is finalized (i.e. its memory is freed).
-             *
-             * If the pointer to the #GObject may be reused in future (for example, if it is
-             * an instance variable of another object), it is recommended to clear the
-             * pointer to %NULL rather than retain a dangling pointer to a potentially
-             * invalid #GObject instance. Use g_clear_object() for this.
-             */
-            unref(): void;
-            /**
-             * This function essentially limits the life time of the `closure` to
-             * the life time of the object. That is, when the object is finalized,
-             * the `closure` is invalidated by calling g_closure_invalidate() on
-             * it, in order to prevent invocations of the closure with a finalized
-             * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-             * added as marshal guards to the `closure,` to ensure that an extra
-             * reference count is held on `object` during invocation of the
-             * `closure`.  Usually, this function will be called on closures that
-             * use this `object` as closure data.
-             * @param closure #GClosure to watch
-             */
-            watch_closure(closure: GObject.Closure): void;
-            /**
-             * the `constructed` function is called by g_object_new() as the
-             *  final step of the object creation process.  At the point of the call, all
-             *  construction properties have been set on the object.  The purpose of this
-             *  call is to allow for object initialisation steps that can only be performed
-             *  after construction properties have been set.  `constructed` implementors
-             *  should chain up to the `constructed` call of their parent class to allow it
-             *  to complete its initialisation.
-             */
-            vfunc_constructed(): void;
-            /**
-             * emits property change notification for a bunch
-             *  of properties. Overriding `dispatch_properties_changed` should be rarely
-             *  needed.
-             * @param n_pspecs
-             * @param pspecs
-             */
-            vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-            /**
-             * the `dispose` function is supposed to drop all references to other
-             *  objects, but keep the instance otherwise intact, so that client method
-             *  invocations still work. It may be run multiple times (due to reference
-             *  loops). Before returning, `dispose` should chain up to the `dispose` method
-             *  of the parent class.
-             */
-            vfunc_dispose(): void;
-            /**
-             * instance finalization function, should finish the finalization of
-             *  the instance begun in `dispose` and chain up to the `finalize` method of the
-             *  parent class.
-             */
-            vfunc_finalize(): void;
-            /**
-             * the generic getter for all properties of this type. Should be
-             *  overridden for every type with properties.
-             * @param property_id
-             * @param value
-             * @param pspec
-             */
-            vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-            /**
-             * Emits a "notify" signal for the property `property_name` on `object`.
-             *
-             * When possible, eg. when signaling a property change from within the class
-             * that registered the property, you should use g_object_notify_by_pspec()
-             * instead.
-             *
-             * Note that emission of the notify signal may be blocked with
-             * g_object_freeze_notify(). In this case, the signal emissions are queued
-             * and will be emitted (in reverse order) when g_object_thaw_notify() is
-             * called.
-             * @param pspec
-             */
-            vfunc_notify(pspec: GObject.ParamSpec): void;
-            /**
-             * the generic setter for all properties of this type. Should be
-             *  overridden for every type with properties. If implementations of
-             *  `set_property` don't emit property change notification explicitly, this will
-             *  be done implicitly by the type system. However, if the notify signal is
-             *  emitted explicitly, the type system will not emit it a second time.
-             * @param property_id
-             * @param value
-             * @param pspec
-             */
-            vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-            /**
-             * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-             * @param id Handler ID of the handler to be disconnected
-             */
-            disconnect(id: number): void;
-            /**
-             * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-             * @param properties Object containing the properties to set
-             */
-            set(properties: { [key: string]: any }): void;
-            /**
-             * Blocks a handler of an instance so it will not be called during any signal emissions
-             * @param id Handler ID of the handler to be blocked
-             */
-            block_signal_handler(id: number): void;
-            /**
-             * Unblocks a handler so it will be called again during any signal emissions
-             * @param id Handler ID of the handler to be unblocked
-             */
-            unblock_signal_handler(id: number): void;
-            /**
-             * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-             * @param detailedName Name of the signal to stop emission of
-             */
-            stop_emission_by_name(detailedName: string): void;
-        }
-
         namespace Emblem {
             // Signal signatures
             interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -30969,7 +29462,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously closes the file enumerator.
              *
@@ -31001,7 +29494,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes closing a file enumerator, started from g_file_enumerator_close_async().
              *
@@ -31187,7 +29680,7 @@ declare module 'gi://Gio?version=2.0' {
                 num_files: number,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileInfo[]>;
+            ): globalThis.Promise<FileInfo[]>;
             /**
              * Request information for a number of files from the enumerator asynchronously.
              * When all I/O for the operation is finished the `callback` will be called with
@@ -31343,7 +29836,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileInfo[]> | void;
+            ): globalThis.Promise<FileInfo[]> | void;
             /**
              * Finishes the asynchronous operation started with g_file_enumerator_next_files_async().
              * @param result a #GAsyncResult.
@@ -31534,7 +30027,7 @@ declare module 'gi://Gio?version=2.0' {
                 attributes: string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileInfo>;
+            ): globalThis.Promise<FileInfo>;
             /**
              * Asynchronously queries the `stream` for a #GFileInfo. When completed,
              * `callback` will be called with a #GAsyncResult which can be used to
@@ -31570,7 +30063,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileInfo> | void;
+            ): globalThis.Promise<FileInfo> | void;
             /**
              * Finalizes the asynchronous query started
              * by g_file_io_stream_query_info_async().
@@ -32226,7 +30719,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param size an integer.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            load_async(size: number, cancellable?: Cancellable | null): Promise<[InputStream, string]>;
+            load_async(size: number, cancellable?: Cancellable | null): globalThis.Promise<[InputStream, string]>;
             /**
              * Loads an icon asynchronously. To finish this function, see
              * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -32248,7 +30741,7 @@ declare module 'gi://Gio?version=2.0' {
                 size: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[InputStream, string]> | void;
+            ): globalThis.Promise<[InputStream, string]> | void;
             /**
              * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
              * @param res a #GAsyncResult.
@@ -33491,7 +31984,7 @@ declare module 'gi://Gio?version=2.0' {
                 attributes: string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileInfo>;
+            ): globalThis.Promise<FileInfo>;
             /**
              * Queries the stream information asynchronously.
              * When the operation is finished `callback` will be called.
@@ -33537,7 +32030,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileInfo> | void;
+            ): globalThis.Promise<FileInfo> | void;
             /**
              * Finishes an asynchronous info query operation.
              * @param result a #GAsyncResult.
@@ -34167,10 +32660,10 @@ declare module 'gi://Gio?version=2.0' {
              * thread-default main context (see [method`GLib`.MainContext.push_thread_default])
              * of the thread that the monitor was created in.
              * @param child a #GFile.
-             * @param other_file a #GFile.
+             * @param other_file a #GFile, or %NULL.
              * @param event_type a set of #GFileMonitorEvent flags.
              */
-            emit_event(child: File, other_file: File, event_type: FileMonitorEvent | null): void;
+            emit_event(child: File, other_file: File | null, event_type: FileMonitorEvent | null): void;
             /**
              * Returns whether the monitor is canceled.
              * @returns %TRUE if monitor is canceled. %FALSE otherwise.
@@ -34354,7 +32847,7 @@ declare module 'gi://Gio?version=2.0' {
                 attributes: string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileInfo>;
+            ): globalThis.Promise<FileInfo>;
             /**
              * Asynchronously queries the `stream` for a #GFileInfo. When completed,
              * `callback` will be called with a #GAsyncResult which can be used to
@@ -34390,7 +32883,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileInfo> | void;
+            ): globalThis.Promise<FileInfo> | void;
             /**
              * Finalizes the asynchronous query started
              * by g_file_output_stream_query_info_async().
@@ -34956,9 +33449,12 @@ declare module 'gi://Gio?version=2.0' {
             // Methods
 
             /**
-             * Obtains a completion for `initial_text` from `completer`.
+             * Obtains a suffix completion for `initial_text` from `completer`.
+             *
+             * Suffix will be an empty string if there's no shared suffix among matching
+             * completions. If there's no matching completions anyway, `NULL` is returned.
              * @param initial_text text to be completed.
-             * @returns a completed string, or %NULL if no     completion exists. This string is not owned by GIO, so remember to g_free()     it when finished.
+             * @returns a suffix completion string, or `NULL` if no     completion exists.
              */
             get_completion_suffix(initial_text: string): string | null;
             /**
@@ -34970,6 +33466,9 @@ declare module 'gi://Gio?version=2.0' {
             /**
              * If `dirs_only` is %TRUE, `completer` will only
              * complete directory names, and not file names.
+             *
+             * This function needs to be called before waiting for results from the
+             * completer to be populated.
              * @param dirs_only a #gboolean.
              */
             set_dirs_only(dirs_only: boolean): void;
@@ -35983,7 +34482,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the io priority of the request
              * @param cancellable optional cancellable object
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Requests an asynchronous close of the stream, releasing resources
              * related to it. When the operation is finished `callback` will be
@@ -36023,7 +34522,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Closes a stream.
              * @param result a #GAsyncResult
@@ -36087,6 +34586,7 @@ declare module 'gi://Gio?version=2.0' {
             interface SignalSignatures extends GObject.Object.SignalSignatures {
                 'notify::bytes': (pspec: GObject.ParamSpec) => void;
                 'notify::family': (pspec: GObject.ParamSpec) => void;
+                'notify::flowinfo': (pspec: GObject.ParamSpec) => void;
                 'notify::is-any': (pspec: GObject.ParamSpec) => void;
                 'notify::is-link-local': (pspec: GObject.ParamSpec) => void;
                 'notify::is-loopback': (pspec: GObject.ParamSpec) => void;
@@ -36097,6 +34597,7 @@ declare module 'gi://Gio?version=2.0' {
                 'notify::is-mc-site-local': (pspec: GObject.ParamSpec) => void;
                 'notify::is-multicast': (pspec: GObject.ParamSpec) => void;
                 'notify::is-site-local': (pspec: GObject.ParamSpec) => void;
+                'notify::scope-id': (pspec: GObject.ParamSpec) => void;
             }
 
             // Constructor properties interface
@@ -36104,6 +34605,7 @@ declare module 'gi://Gio?version=2.0' {
             interface ConstructorProps extends GObject.Object.ConstructorProps {
                 bytes: any;
                 family: SocketFamily;
+                flowinfo: number;
                 is_any: boolean;
                 isAny: boolean;
                 is_link_local: boolean;
@@ -36124,6 +34626,8 @@ declare module 'gi://Gio?version=2.0' {
                 isMulticast: boolean;
                 is_site_local: boolean;
                 isSiteLocal: boolean;
+                scope_id: number;
+                scopeId: number;
             }
         }
 
@@ -36152,6 +34656,11 @@ declare module 'gi://Gio?version=2.0' {
              * The address family (IPv4 or IPv6).
              */
             get family(): SocketFamily;
+            /**
+             * The flowinfo for an IPv6 address.
+             * See [method`Gio`.InetAddress.get_flowinfo].
+             */
+            get flowinfo(): number;
             /**
              * Whether this is the "any" address for its family.
              * See g_inet_address_get_is_any().
@@ -36252,6 +34761,16 @@ declare module 'gi://Gio?version=2.0' {
              * See g_inet_address_get_is_loopback().
              */
             get isSiteLocal(): boolean;
+            /**
+             * The scope-id for an IPv6 address.
+             * See [method`Gio`.InetAddress.get_scope_id].
+             */
+            get scope_id(): number;
+            /**
+             * The scope-id for an IPv6 address.
+             * See [method`Gio`.InetAddress.get_scope_id].
+             */
+            get scopeId(): number;
 
             /**
              * Compile-time signal type information.
@@ -36271,6 +34790,13 @@ declare module 'gi://Gio?version=2.0' {
             static new_any(family: SocketFamily): InetAddress;
 
             static new_from_bytes(bytes: Uint8Array | string, family: SocketFamily): InetAddress;
+
+            static new_from_bytes_with_ipv6_info(
+                bytes: Uint8Array | string,
+                family: SocketFamily,
+                flowinfo: number,
+                scope_id: number,
+            ): InetAddress;
 
             static new_from_string(string: string): InetAddress;
 
@@ -36314,6 +34840,11 @@ declare module 'gi://Gio?version=2.0' {
              * @returns @address's family
              */
             get_family(): SocketFamily;
+            /**
+             * Gets the value of [property`Gio`.InetAddress:flowinfo].
+             * @returns The flowinfo for the address, `0` if unset or not IPv6 address.
+             */
+            get_flowinfo(): number;
             /**
              * Tests whether `address` is the "any" address for its family.
              * @returns %TRUE if @address is the "any" address for its family.
@@ -36375,6 +34906,11 @@ declare module 'gi://Gio?version=2.0' {
              * @returns the number of bytes used for the native version of @address.
              */
             get_native_size(): number;
+            /**
+             * Gets the value of [property`Gio`.InetAddress:scope-id].
+             * @returns The scope-id for the address, `0` if unset or not IPv6 address.
+             */
+            get_scope_id(): number;
             /**
              * Converts `address` to string form.
              * @returns a representation of @address as a string, which should be freed after use.
@@ -37065,6 +35601,8 @@ declare module 'gi://Gio?version=2.0' {
             get address(): InetAddress;
             /**
              * The `sin6_flowinfo` field, for IPv6 addresses.
+             *
+             * If unset this property is inherited from [property`Gio`.InetSocketAddress:address].
              */
             get flowinfo(): number;
             /**
@@ -37073,10 +35611,14 @@ declare module 'gi://Gio?version=2.0' {
             get port(): number;
             /**
              * The `sin6_scope_id` field, for IPv6 addresses.
+             *
+             * If unset this property is inherited from [property`Gio`.InetSocketAddress:address].
              */
             get scope_id(): number;
             /**
              * The `sin6_scope_id` field, for IPv6 addresses.
+             *
+             * If unset this property is inherited from [property`Gio`.InetSocketAddress:address].
              */
             get scopeId(): number;
 
@@ -37129,6 +35671,8 @@ declare module 'gi://Gio?version=2.0' {
             /**
              * Gets the `sin6_flowinfo` field from `address,`
              * which must be an IPv6 address.
+             *
+             * If not overridden this value will be inherited from [property`Gio`.InetSocketAddress:address].
              * @returns the flowinfo field
              */
             get_flowinfo(): number;
@@ -37140,6 +35684,8 @@ declare module 'gi://Gio?version=2.0' {
             /**
              * Gets the `sin6_scope_id` field from `address,`
              * which must be an IPv6 address.
+             *
+             * If not overridden this value will be inherited from [property`Gio`.InetSocketAddress:address].
              * @returns the scope id field
              */
             get_scope_id(): number;
@@ -37872,7 +36418,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional cancellable object
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Requests an asynchronous closes of the stream, releasing resources related to it.
              * When the operation is finished `callback` will be called.
@@ -37912,7 +36458,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
              * @param result a #GAsyncResult.
@@ -37993,7 +36539,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+            read_all_async(
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): [globalThis.Promise<number>, Uint8Array];
             /**
              * Request an asynchronous read of `count` bytes from the stream into the
              * buffer starting at `buffer`.
@@ -38033,7 +36582,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
+            ): [globalThis.Promise<number> | void, Uint8Array];
             /**
              * Finishes an asynchronous stream read operation started with
              * [method`InputStream`.read_all_async].
@@ -38075,7 +36624,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+            read_async(io_priority: number, cancellable?: Cancellable | null): [globalThis.Promise<number>, Uint8Array];
             /**
              * Request an asynchronous read of `count` bytes from the stream into the buffer
              * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -38141,7 +36690,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
+            ): [globalThis.Promise<number> | void, Uint8Array];
             /**
              * Like g_input_stream_read(), this tries to read `count` bytes from
              * the stream in a blocking fashion. However, rather than reading into
@@ -38196,7 +36745,11 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
+            read_bytes_async(
+                count: number,
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<GLib.Bytes>;
             /**
              * Request an asynchronous read of `count` bytes from the stream into a
              * new #GBytes. When the operation is finished `callback` will be
@@ -38260,7 +36813,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Bytes> | void;
+            ): globalThis.Promise<GLib.Bytes> | void;
             /**
              * Finishes an asynchronous stream read-into-#GBytes operation.
              * @param result a #GAsyncResult.
@@ -38328,7 +36881,11 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+            skip_async(
+                count: number,
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous skip of `count` bytes from the stream.
              * When the operation is finished `callback` will be called.
@@ -38398,7 +36955,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream skip operation.
              * @param result a #GAsyncResult.
@@ -39534,7 +38091,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional cancellable object
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Requests an asynchronous closes of the stream, releasing resources related to it.
              * When the operation is finished `callback` will be called.
@@ -39574,7 +38131,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
              * @param result a #GAsyncResult.
@@ -39655,7 +38212,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+            read_all_async(
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): [globalThis.Promise<number>, Uint8Array];
             /**
              * Request an asynchronous read of `count` bytes from the stream into the
              * buffer starting at `buffer`.
@@ -39695,7 +38255,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
+            ): [globalThis.Promise<number> | void, Uint8Array];
             /**
              * Finishes an asynchronous stream read operation started with
              * [method`InputStream`.read_all_async].
@@ -39737,7 +38297,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
+            read_async(io_priority: number, cancellable?: Cancellable | null): [globalThis.Promise<number>, Uint8Array];
             /**
              * Request an asynchronous read of `count` bytes from the stream into the buffer
              * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -39803,7 +38363,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
+            ): [globalThis.Promise<number> | void, Uint8Array];
             /**
              * Like g_input_stream_read(), this tries to read `count` bytes from
              * the stream in a blocking fashion. However, rather than reading into
@@ -39858,7 +38418,11 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
+            read_bytes_async(
+                count: number,
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<GLib.Bytes>;
             /**
              * Request an asynchronous read of `count` bytes from the stream into a
              * new #GBytes. When the operation is finished `callback` will be
@@ -39922,7 +38486,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Bytes> | void;
+            ): globalThis.Promise<GLib.Bytes> | void;
             /**
              * Finishes an asynchronous stream read-into-#GBytes operation.
              * @param result a #GAsyncResult.
@@ -39990,7 +38554,11 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
+            skip_async(
+                count: number,
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous skip of `count` bytes from the stream.
              * When the operation is finished `callback` will be called.
@@ -40060,7 +38628,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream skip operation.
              * @param result a #GAsyncResult.
@@ -41146,7 +39714,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the io priority of the request.
              * @param cancellable optional cancellable object
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Requests an asynchronous close of the stream, releasing resources
              * related to it. When the operation is finished `callback` will be
@@ -41186,7 +39754,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Closes an output stream.
              * @param result a #GAsyncResult.
@@ -41218,7 +39786,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the io priority of the request.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            flush_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            flush_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Forces an asynchronous write of all user-space buffered data for
              * the given `stream`.
@@ -41252,7 +39820,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes flushing an output stream.
              * @param result a GAsyncResult.
@@ -41314,7 +39882,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: OutputStreamSpliceFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Splices a stream asynchronously.
              * When the operation is finished `callback` will be called.
@@ -41356,7 +39924,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream splice operation.
              * @param result a #GAsyncResult.
@@ -41438,7 +40006,7 @@ declare module 'gi://Gio?version=2.0' {
                 buffer: Uint8Array | string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of `count` bytes from `buffer` into
              * the stream. When the operation is finished `callback` will be called.
@@ -41492,7 +40060,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream write operation started with
              * g_output_stream_write_all_async().
@@ -41552,7 +40120,7 @@ declare module 'gi://Gio?version=2.0' {
                 buffer: Uint8Array | string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of `count` bytes from `buffer` into
              * the stream. When the operation is finished `callback` will be called.
@@ -41646,7 +40214,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * A wrapper function for g_output_stream_write() which takes a
              * #GBytes as input.  This can be more convenient for use by language
@@ -41686,7 +40254,7 @@ declare module 'gi://Gio?version=2.0' {
                 bytes: GLib.Bytes | Uint8Array,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * This function is similar to g_output_stream_write_async(), but
              * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
@@ -41736,7 +40304,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream write-from-#GBytes operation.
              * @param result a #GAsyncResult.
@@ -41831,7 +40399,7 @@ declare module 'gi://Gio?version=2.0' {
                 vectors: OutputVector[],
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
              * the stream. When the operation is finished `callback` will be called.
@@ -41887,7 +40455,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream write operation started with
              * g_output_stream_writev_all_async().
@@ -41942,7 +40510,7 @@ declare module 'gi://Gio?version=2.0' {
                 vectors: OutputVector[],
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
              * the stream. When the operation is finished `callback` will be called.
@@ -42026,7 +40594,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream writev operation.
              * @param result a #GAsyncResult.
@@ -46403,7 +44971,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the io priority of the request.
              * @param cancellable optional cancellable object
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Requests an asynchronous close of the stream, releasing resources
              * related to it. When the operation is finished `callback` will be
@@ -46443,7 +45011,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Closes an output stream.
              * @param result a #GAsyncResult.
@@ -46475,7 +45043,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the io priority of the request.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            flush_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            flush_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Forces an asynchronous write of all user-space buffered data for
              * the given `stream`.
@@ -46509,7 +45077,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes flushing an output stream.
              * @param result a GAsyncResult.
@@ -46571,7 +45139,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: OutputStreamSpliceFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Splices a stream asynchronously.
              * When the operation is finished `callback` will be called.
@@ -46613,7 +45181,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream splice operation.
              * @param result a #GAsyncResult.
@@ -46695,7 +45263,7 @@ declare module 'gi://Gio?version=2.0' {
                 buffer: Uint8Array | string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of `count` bytes from `buffer` into
              * the stream. When the operation is finished `callback` will be called.
@@ -46749,7 +45317,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream write operation started with
              * g_output_stream_write_all_async().
@@ -46809,7 +45377,7 @@ declare module 'gi://Gio?version=2.0' {
                 buffer: Uint8Array | string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of `count` bytes from `buffer` into
              * the stream. When the operation is finished `callback` will be called.
@@ -46903,7 +45471,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * A wrapper function for g_output_stream_write() which takes a
              * #GBytes as input.  This can be more convenient for use by language
@@ -46943,7 +45511,7 @@ declare module 'gi://Gio?version=2.0' {
                 bytes: GLib.Bytes | Uint8Array,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * This function is similar to g_output_stream_write_async(), but
              * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
@@ -46993,7 +45561,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream write-from-#GBytes operation.
              * @param result a #GAsyncResult.
@@ -47088,7 +45656,7 @@ declare module 'gi://Gio?version=2.0' {
                 vectors: OutputVector[],
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
              * the stream. When the operation is finished `callback` will be called.
@@ -47144,7 +45712,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an asynchronous stream write operation started with
              * g_output_stream_writev_all_async().
@@ -47199,7 +45767,7 @@ declare module 'gi://Gio?version=2.0' {
                 vectors: OutputVector[],
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
              * the stream. When the operation is finished `callback` will be called.
@@ -47283,7 +45851,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream writev operation.
              * @param result a #GAsyncResult.
@@ -47498,7 +46066,7 @@ declare module 'gi://Gio?version=2.0' {
              * g_permission_acquire().
              * @param cancellable a #GCancellable, or %NULL
              */
-            acquire_async(cancellable?: Cancellable | null): Promise<boolean>;
+            acquire_async(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Attempts to acquire the permission represented by `permission`.
              *
@@ -47519,7 +46087,7 @@ declare module 'gi://Gio?version=2.0' {
             acquire_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Collects the result of attempting to acquire the permission
              * represented by `permission`.
@@ -47589,7 +46157,7 @@ declare module 'gi://Gio?version=2.0' {
              * g_permission_release().
              * @param cancellable a #GCancellable, or %NULL
              */
-            release_async(cancellable?: Cancellable | null): Promise<boolean>;
+            release_async(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Attempts to release the permission represented by `permission`.
              *
@@ -47610,7 +46178,7 @@ declare module 'gi://Gio?version=2.0' {
             release_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Collects the result of attempting to release the permission
              * represented by `permission`.
@@ -49493,7 +48061,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param address the address to reverse-resolve
              * @param cancellable a #GCancellable, or %NULL
              */
-            lookup_by_address_async(address: InetAddress, cancellable?: Cancellable | null): Promise<string>;
+            lookup_by_address_async(address: InetAddress, cancellable?: Cancellable | null): globalThis.Promise<string>;
             /**
              * Begins asynchronously reverse-resolving `address` to determine its
              * associated hostname, and eventually calls `callback,` which must
@@ -49519,7 +48087,7 @@ declare module 'gi://Gio?version=2.0' {
                 address: InetAddress,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Retrieves the result of a previous call to
              * g_resolver_lookup_by_address_async().
@@ -49568,7 +48136,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param hostname the hostname to look up the address of
              * @param cancellable a #GCancellable, or %NULL
              */
-            lookup_by_name_async(hostname: string, cancellable?: Cancellable | null): Promise<InetAddress[]>;
+            lookup_by_name_async(hostname: string, cancellable?: Cancellable | null): globalThis.Promise<InetAddress[]>;
             /**
              * Begins asynchronously resolving `hostname` to determine its
              * associated IP address(es), and eventually calls `callback,` which
@@ -49596,7 +48164,7 @@ declare module 'gi://Gio?version=2.0' {
                 hostname: string,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<InetAddress[]> | void;
+            ): globalThis.Promise<InetAddress[]> | void;
             /**
              * Retrieves the result of a call to
              * g_resolver_lookup_by_name_async().
@@ -49635,7 +48203,7 @@ declare module 'gi://Gio?version=2.0' {
                 hostname: string,
                 flags: ResolverNameLookupFlags | null,
                 cancellable?: Cancellable | null,
-            ): Promise<InetAddress[]>;
+            ): globalThis.Promise<InetAddress[]>;
             /**
              * Begins asynchronously resolving `hostname` to determine its
              * associated IP address(es), and eventually calls `callback,` which
@@ -49667,7 +48235,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: ResolverNameLookupFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<InetAddress[]> | void;
+            ): globalThis.Promise<InetAddress[]> | void;
             /**
              * Retrieves the result of a call to
              * g_resolver_lookup_by_name_with_flags_async().
@@ -49713,7 +48281,7 @@ declare module 'gi://Gio?version=2.0' {
                 rrname: string,
                 record_type: ResolverRecordType | null,
                 cancellable?: Cancellable | null,
-            ): Promise<GLib.Variant[]>;
+            ): globalThis.Promise<GLib.Variant[]>;
             /**
              * Begins asynchronously performing a DNS lookup for the given
              * `rrname,` and eventually calls `callback,` which must call
@@ -49745,7 +48313,7 @@ declare module 'gi://Gio?version=2.0' {
                 record_type: ResolverRecordType | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant[]> | void;
+            ): globalThis.Promise<GLib.Variant[]> | void;
             /**
              * Retrieves the result of a previous call to
              * g_resolver_lookup_records_async(). Returns a non-empty list of records as
@@ -49809,7 +48377,7 @@ declare module 'gi://Gio?version=2.0' {
                 protocol: string,
                 domain: string,
                 cancellable?: Cancellable | null,
-            ): Promise<SrvTarget[]>;
+            ): globalThis.Promise<SrvTarget[]>;
             /**
              * Begins asynchronously performing a DNS SRV lookup for the given
              * `service` and `protocol` in the given `domain,` and eventually calls
@@ -49847,7 +48415,7 @@ declare module 'gi://Gio?version=2.0' {
                 domain: string,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<SrvTarget[]> | void;
+            ): globalThis.Promise<SrvTarget[]> | void;
             /**
              * Retrieves the result of a previous call to
              * g_resolver_lookup_service_async().
@@ -51231,7 +49799,7 @@ declare module 'gi://Gio?version=2.0' {
              * end with '/' and must not contain '//').
              *
              * The meaning of this signal is that any of the key names resulting
-             * from the contatenation of `path` with each item in `items` may have
+             * from the concatenation of `path` with each item in `items` may have
              * changed.
              *
              * The same rules for when notifications must occur apply as per
@@ -54354,7 +52922,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param uri a URI representing the destination to connect to
              * @param cancellable a #GCancellable, or %NULL
              */
-            lookup_async(uri: string, cancellable?: Cancellable | null): Promise<string[]>;
+            lookup_async(uri: string, cancellable?: Cancellable | null): globalThis.Promise<string[]>;
             /**
              * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
              * details.
@@ -54374,7 +52942,7 @@ declare module 'gi://Gio?version=2.0' {
                 uri: string,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<string[]> | void;
+            ): globalThis.Promise<string[]> | void;
             /**
              * Call this function to obtain the array of proxy URIs when
              * g_proxy_resolver_lookup_async() is complete. See
@@ -56925,7 +55493,7 @@ declare module 'gi://Gio?version=2.0' {
              * Gets the size of `address'`s native struct sockaddr.
              * You can use this to allocate memory to pass to
              * g_socket_address_to_native().
-             * @returns the size of the native struct sockaddr that     @address represents
+             * @returns the size of the native struct sockaddr that     @address represents, or `-1` if @address     is not valid
              */
             get_native_size(): number;
             /**
@@ -57564,7 +56132,7 @@ declare module 'gi://Gio?version=2.0' {
              * It is an error to call this multiple times before the previous callback has finished.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            next_async(cancellable?: Cancellable | null): Promise<SocketAddress | null>;
+            next_async(cancellable?: Cancellable | null): globalThis.Promise<SocketAddress | null>;
             /**
              * Asynchronously retrieves the next #GSocketAddress from `enumerator`
              * and then calls `callback,` which must call
@@ -57587,7 +56155,7 @@ declare module 'gi://Gio?version=2.0' {
             next_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<SocketAddress | null> | void;
+            ): globalThis.Promise<SocketAddress | null> | void;
             /**
              * Retrieves the result of a completed call to
              * g_socket_address_enumerator_next_async(). See
@@ -57856,7 +56424,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param connectable a #GSocketConnectable specifying the remote address.
              * @param cancellable a #GCancellable, or %NULL
              */
-            connect_async(connectable: SocketConnectable, cancellable?: Cancellable | null): Promise<SocketConnection>;
+            connect_async(
+                connectable: SocketConnectable,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<SocketConnection>;
             /**
              * This is the asynchronous version of g_socket_client_connect().
              *
@@ -57904,7 +56475,7 @@ declare module 'gi://Gio?version=2.0' {
                 connectable: SocketConnectable,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<SocketConnection> | void;
+            ): globalThis.Promise<SocketConnection> | void;
             /**
              * Finishes an async connect operation. See g_socket_client_connect_async()
              * @param result a #GAsyncResult.
@@ -57966,7 +56537,7 @@ declare module 'gi://Gio?version=2.0' {
                 host_and_port: string,
                 default_port: number,
                 cancellable?: Cancellable | null,
-            ): Promise<SocketConnection>;
+            ): globalThis.Promise<SocketConnection>;
             /**
              * This is the asynchronous version of g_socket_client_connect_to_host().
              *
@@ -58000,7 +56571,7 @@ declare module 'gi://Gio?version=2.0' {
                 default_port: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<SocketConnection> | void;
+            ): globalThis.Promise<SocketConnection> | void;
             /**
              * Finishes an async connect operation. See g_socket_client_connect_to_host_async()
              * @param result a #GAsyncResult.
@@ -58039,7 +56610,7 @@ declare module 'gi://Gio?version=2.0' {
                 domain: string,
                 service: string,
                 cancellable?: Cancellable | null,
-            ): Promise<SocketConnection>;
+            ): globalThis.Promise<SocketConnection>;
             /**
              * This is the asynchronous version of
              * g_socket_client_connect_to_service().
@@ -58067,7 +56638,7 @@ declare module 'gi://Gio?version=2.0' {
                 service: string,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<SocketConnection> | void;
+            ): globalThis.Promise<SocketConnection> | void;
             /**
              * Finishes an async connect operation. See g_socket_client_connect_to_service_async()
              * @param result a #GAsyncResult.
@@ -58116,7 +56687,7 @@ declare module 'gi://Gio?version=2.0' {
                 uri: string,
                 default_port: number,
                 cancellable?: Cancellable | null,
-            ): Promise<SocketConnection>;
+            ): globalThis.Promise<SocketConnection>;
             /**
              * This is the asynchronous version of g_socket_client_connect_to_uri().
              *
@@ -58150,7 +56721,7 @@ declare module 'gi://Gio?version=2.0' {
                 default_port: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<SocketConnection> | void;
+            ): globalThis.Promise<SocketConnection> | void;
             /**
              * Finishes an async connect operation. See g_socket_client_connect_to_uri_async()
              * @param result a #GAsyncResult.
@@ -58460,7 +57031,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param address a #GSocketAddress specifying the remote address.
              * @param cancellable a %GCancellable or %NULL
              */
-            connect_async(address: SocketAddress, cancellable?: Cancellable | null): Promise<boolean>;
+            connect_async(address: SocketAddress, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously connect `connection` to the specified remote address.
              *
@@ -58500,7 +57071,7 @@ declare module 'gi://Gio?version=2.0' {
                 address: SocketAddress,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result of a g_socket_connection_connect_async() call.
              * @param result the #GAsyncResult
@@ -58800,7 +57371,9 @@ declare module 'gi://Gio?version=2.0' {
              * to get the result of the operation.
              * @param cancellable a #GCancellable, or %NULL
              */
-            accept_async(cancellable?: Cancellable | null): Promise<[SocketConnection, GObject.Object | null]>;
+            accept_async(
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<[SocketConnection, GObject.Object | null]>;
             /**
              * This is the asynchronous version of g_socket_listener_accept().
              *
@@ -58823,7 +57396,7 @@ declare module 'gi://Gio?version=2.0' {
             accept_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[SocketConnection, GObject.Object | null]> | void;
+            ): globalThis.Promise<[SocketConnection, GObject.Object | null]> | void;
             /**
              * Finishes an async accept operation. See g_socket_listener_accept_async()
              * @param result a #GAsyncResult.
@@ -58857,7 +57430,7 @@ declare module 'gi://Gio?version=2.0' {
              * to get the result of the operation.
              * @param cancellable a #GCancellable, or %NULL
              */
-            accept_socket_async(cancellable?: Cancellable | null): Promise<[Socket, GObject.Object | null]>;
+            accept_socket_async(cancellable?: Cancellable | null): globalThis.Promise<[Socket, GObject.Object | null]>;
             /**
              * This is the asynchronous version of g_socket_listener_accept_socket().
              *
@@ -58880,7 +57453,7 @@ declare module 'gi://Gio?version=2.0' {
             accept_socket_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[Socket, GObject.Object | null]> | void;
+            ): globalThis.Promise<[Socket, GObject.Object | null]> | void;
             /**
              * Finishes an async accept operation. See g_socket_listener_accept_socket_async()
              * @param result a #GAsyncResult.
@@ -58930,6 +57503,14 @@ declare module 'gi://Gio?version=2.0' {
              * This is useful if you need to have a socket for incoming connections
              * but don't care about the specific port number.
              *
+             * If possible, the [class`Gio`.SocketListener] will listen on both IPv4 and
+             * IPv6 (listening on the same port on both). If listening on one of the socket
+             * families fails, the [class`Gio`.SocketListener] will only listen on the other.
+             * If listening on both fails, an error will be returned.
+             *
+             * If you need to distinguish whether listening on IPv4 or IPv6 or both was
+             * successful, connect to [signal`Gio`.SocketListener::event].
+             *
              * `source_object` will be passed out in the various calls
              * to accept to identify this particular source, which is
              * useful if you're listening on multiple addresses and do
@@ -58942,6 +57523,14 @@ declare module 'gi://Gio?version=2.0' {
              * Helper function for g_socket_listener_add_address() that
              * creates a TCP/IP socket listening on IPv4 and IPv6 (if
              * supported) on the specified port on all interfaces.
+             *
+             * If possible, the [class`Gio`.SocketListener] will listen on both IPv4 and
+             * IPv6 (listening on the same port on both). If listening on one of the socket
+             * families fails, the [class`Gio`.SocketListener] will only listen on the other.
+             * If listening on both fails, an error will be returned.
+             *
+             * If you need to distinguish whether listening on IPv4 or IPv6 or both was
+             * successful, connect to [signal`Gio`.SocketListener::event].
              *
              * `source_object` will be passed out in the various calls
              * to accept to identify this particular source, which is
@@ -58960,6 +57549,9 @@ declare module 'gi://Gio?version=2.0' {
              * Adds `socket` to the set of sockets that we try to accept
              * new clients from. The socket must be bound to a local
              * address and listened to.
+             *
+             * For parallel calls to [class`Gio`.SocketListener] methods to work, the socket
+             * must be in non-blocking mode. (See [property`Gio`.Socket:blocking].)
              *
              * `source_object` will be passed out in the various calls
              * to accept to identify this particular source, which is
@@ -59318,7 +57910,7 @@ declare module 'gi://Gio?version=2.0' {
             communicate_async(
                 stdin_buf?: GLib.Bytes | null,
                 cancellable?: Cancellable | null,
-            ): Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
+            ): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
             /**
              * Asynchronous version of g_subprocess_communicate().  Complete
              * invocation with g_subprocess_communicate_finish().
@@ -59342,7 +57934,7 @@ declare module 'gi://Gio?version=2.0' {
                 stdin_buf?: GLib.Bytes | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
+            ): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
             /**
              * Complete an invocation of g_subprocess_communicate_async().
              * @param result Result
@@ -59367,7 +57959,7 @@ declare module 'gi://Gio?version=2.0' {
             communicate_utf8_async(
                 stdin_buf?: string | null,
                 cancellable?: Cancellable | null,
-            ): Promise<[string, string]>;
+            ): globalThis.Promise<[string, string]>;
             /**
              * Asynchronous version of g_subprocess_communicate_utf8().  Complete
              * invocation with g_subprocess_communicate_utf8_finish().
@@ -59391,7 +57983,7 @@ declare module 'gi://Gio?version=2.0' {
                 stdin_buf?: string | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[string, string]> | void;
+            ): globalThis.Promise<[string, string]> | void;
             /**
              * Complete an invocation of g_subprocess_communicate_utf8_async().
              * @param result Result
@@ -59543,7 +58135,7 @@ declare module 'gi://Gio?version=2.0' {
              * This is the asynchronous version of g_subprocess_wait().
              * @param cancellable a #GCancellable, or %NULL
              */
-            wait_async(cancellable?: Cancellable | null): Promise<boolean>;
+            wait_async(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Wait for the subprocess to terminate.
              *
@@ -59562,7 +58154,7 @@ declare module 'gi://Gio?version=2.0' {
             wait_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Combines g_subprocess_wait() with g_spawn_check_wait_status().
              * @param cancellable a #GCancellable
@@ -59575,7 +58167,7 @@ declare module 'gi://Gio?version=2.0' {
              * This is the asynchronous version of g_subprocess_wait_check().
              * @param cancellable a #GCancellable, or %NULL
              */
-            wait_check_async(cancellable?: Cancellable | null): Promise<boolean>;
+            wait_check_async(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Combines g_subprocess_wait_async() with g_spawn_check_wait_status().
              *
@@ -59594,7 +58186,7 @@ declare module 'gi://Gio?version=2.0' {
             wait_check_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Collects the result of a previous call to
              * g_subprocess_wait_check_async().
@@ -64057,7 +62649,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable a #GCancellable, or %NULL
              */
-            handshake_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            handshake_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously performs a TLS handshake on `conn`. See
              * g_tls_connection_handshake() for more information.
@@ -64081,7 +62673,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finish an asynchronous TLS handshake operation. See
              * g_tls_connection_handshake() for more information.
@@ -64583,7 +63175,7 @@ declare module 'gi://Gio?version=2.0' {
                 interaction: TlsInteraction | null,
                 flags: TlsDatabaseLookupFlags | null,
                 cancellable?: Cancellable | null,
-            ): Promise<TlsCertificate>;
+            ): globalThis.Promise<TlsCertificate>;
             /**
              * Asynchronously look up a certificate by its handle in the database. See
              * g_tls_database_lookup_certificate_for_handle() for more information.
@@ -64615,7 +63207,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: TlsDatabaseLookupFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<TlsCertificate> | void;
+            ): globalThis.Promise<TlsCertificate> | void;
             /**
              * Finish an asynchronous lookup of a certificate by its handle. See
              * g_tls_database_lookup_certificate_for_handle() for more information.
@@ -64672,7 +63264,7 @@ declare module 'gi://Gio?version=2.0' {
                 interaction: TlsInteraction | null,
                 flags: TlsDatabaseLookupFlags | null,
                 cancellable?: Cancellable | null,
-            ): Promise<TlsCertificate>;
+            ): globalThis.Promise<TlsCertificate>;
             /**
              * Asynchronously look up the issuer of `certificate` in the database. See
              * g_tls_database_lookup_certificate_issuer() for more information.
@@ -64704,7 +63296,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: TlsDatabaseLookupFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<TlsCertificate> | void;
+            ): globalThis.Promise<TlsCertificate> | void;
             /**
              * Finish an asynchronous lookup issuer operation. See
              * g_tls_database_lookup_certificate_issuer() for more information.
@@ -64746,7 +63338,7 @@ declare module 'gi://Gio?version=2.0' {
                 interaction: TlsInteraction | null,
                 flags: TlsDatabaseLookupFlags | null,
                 cancellable?: Cancellable | null,
-            ): Promise<TlsCertificate[]>;
+            ): globalThis.Promise<TlsCertificate[]>;
             /**
              * Asynchronously look up certificates issued by this issuer in the database. See
              * g_tls_database_lookup_certificates_issued_by() for more information.
@@ -64786,7 +63378,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: TlsDatabaseLookupFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<TlsCertificate[]> | void;
+            ): globalThis.Promise<TlsCertificate[]> | void;
             /**
              * Finish an asynchronous lookup of certificates. See
              * g_tls_database_lookup_certificates_issued_by() for more information.
@@ -64889,7 +63481,7 @@ declare module 'gi://Gio?version=2.0' {
                 interaction: TlsInteraction | null,
                 flags: TlsDatabaseVerifyFlags | null,
                 cancellable?: Cancellable | null,
-            ): Promise<TlsCertificateFlags>;
+            ): globalThis.Promise<TlsCertificateFlags>;
             /**
              * Asynchronously determines the validity of a certificate chain after
              * looking up and adding any missing certificates to the chain. See
@@ -64931,7 +63523,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: TlsDatabaseVerifyFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<TlsCertificateFlags> | void;
+            ): globalThis.Promise<TlsCertificateFlags> | void;
             /**
              * Finish an asynchronous verify chain operation. See
              * g_tls_database_verify_chain() for more information.
@@ -65176,7 +63768,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param password a #GTlsPassword object
              * @param cancellable an optional #GCancellable cancellation object
              */
-            ask_password_async(password: TlsPassword, cancellable?: Cancellable | null): Promise<TlsInteractionResult>;
+            ask_password_async(
+                password: TlsPassword,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<TlsInteractionResult>;
             /**
              * Run asynchronous interaction to ask the user for a password. In general,
              * g_tls_interaction_invoke_ask_password() should be used instead of this
@@ -65226,7 +63821,7 @@ declare module 'gi://Gio?version=2.0' {
                 password: TlsPassword,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<TlsInteractionResult> | void;
+            ): globalThis.Promise<TlsInteractionResult> | void;
             /**
              * Complete an ask password user interaction request. This should be once
              * the g_tls_interaction_ask_password_async() completion callback is called.
@@ -65341,7 +63936,7 @@ declare module 'gi://Gio?version=2.0' {
                 connection: TlsConnection,
                 flags: TlsCertificateRequestFlags | null,
                 cancellable?: Cancellable | null,
-            ): Promise<TlsInteractionResult>;
+            ): globalThis.Promise<TlsInteractionResult>;
             /**
              * Run asynchronous interaction to ask the user for a certificate to use with
              * the connection. In general, g_tls_interaction_invoke_request_certificate() should
@@ -65381,7 +63976,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: TlsCertificateRequestFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<TlsInteractionResult> | void;
+            ): globalThis.Promise<TlsInteractionResult> | void;
             /**
              * Complete a request certificate user interaction request. This should be once
              * the g_tls_interaction_request_certificate_async() completion callback is called.
@@ -65672,7 +64267,7 @@ declare module 'gi://Gio?version=2.0' {
              * g_unix_connection_receive_credentials_finish() to get the result of the operation.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            receive_credentials_async(cancellable?: Cancellable | null): Promise<Credentials>;
+            receive_credentials_async(cancellable?: Cancellable | null): globalThis.Promise<Credentials>;
             /**
              * Asynchronously receive credentials.
              *
@@ -65699,7 +64294,7 @@ declare module 'gi://Gio?version=2.0' {
             receive_credentials_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<Credentials> | void;
+            ): globalThis.Promise<Credentials> | void;
             /**
              * Finishes an asynchronous receive credentials operation started with
              * g_unix_connection_receive_credentials_async().
@@ -65753,7 +64348,7 @@ declare module 'gi://Gio?version=2.0' {
              * g_unix_connection_send_credentials_finish() to get the result of the operation.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            send_credentials_async(cancellable?: Cancellable | null): Promise<boolean>;
+            send_credentials_async(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously send credentials.
              *
@@ -65780,7 +64375,7 @@ declare module 'gi://Gio?version=2.0' {
             send_credentials_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an asynchronous send credentials operation started with
              * g_unix_connection_send_credentials_async().
@@ -66048,3557 +64643,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns an array of file     descriptors
              */
             steal_fds(): number[];
-        }
-
-        namespace UnixFDMessage {
-            // Signal signatures
-            interface SignalSignatures extends SocketControlMessage.SignalSignatures {
-                'notify::fd-list': (pspec: GObject.ParamSpec) => void;
-            }
-
-            // Constructor properties interface
-
-            interface ConstructorProps extends SocketControlMessage.ConstructorProps {
-                fd_list: UnixFDList;
-                fdList: UnixFDList;
-            }
-        }
-
-        /**
-         * This [class`Gio`.SocketControlMessage] contains a [class`Gio`.UnixFDList].
-         * It may be sent using [method`Gio`.Socket.send_message] and received using
-         * [method`Gio`.Socket.receive_message] over UNIX sockets (ie: sockets in the
-         * `G_SOCKET_FAMILY_UNIX` family). The file descriptors are copied
-         * between processes by the kernel.
-         *
-         * For an easier way to send and receive file descriptors over
-         * stream-oriented UNIX sockets, see [method`Gio`.UnixConnection.send_fd] and
-         * [method`Gio`.UnixConnection.receive_fd].
-         *
-         * Note that `<gio/gunixfdmessage.h>` belongs to the UNIX-specific GIO
-         * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
-         * file or the `GioUnix-2.0` GIR namespace when using it.
-         */
-        class UnixFDMessage extends SocketControlMessage {
-            static $gtype: GObject.GType<UnixFDMessage>;
-
-            // Properties
-
-            /**
-             * The [class`Gio`.UnixFDList] object to send with the message.
-             */
-            get fd_list(): UnixFDList;
-            /**
-             * The [class`Gio`.UnixFDList] object to send with the message.
-             */
-            get fdList(): UnixFDList;
-
-            /**
-             * Compile-time signal type information.
-             *
-             * This instance property is generated only for TypeScript type checking.
-             * It is not defined at runtime and should not be accessed in JS code.
-             * @internal
-             */
-            $signals: UnixFDMessage.SignalSignatures;
-
-            // Constructors
-
-            constructor(properties?: Partial<UnixFDMessage.ConstructorProps>, ...args: any[]);
-
-            _init(...args: any[]): void;
-
-            static ['new'](): UnixFDMessage;
-
-            static new_with_fd_list(fd_list: UnixFDList): UnixFDMessage;
-
-            // Signals
-
-            connect<K extends keyof UnixFDMessage.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, UnixFDMessage.SignalSignatures[K]>,
-            ): number;
-            connect(signal: string, callback: (...args: any[]) => any): number;
-            connect_after<K extends keyof UnixFDMessage.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, UnixFDMessage.SignalSignatures[K]>,
-            ): number;
-            connect_after(signal: string, callback: (...args: any[]) => any): number;
-            emit<K extends keyof UnixFDMessage.SignalSignatures>(
-                signal: K,
-                ...args: GObject.GjsParameters<UnixFDMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-            ): void;
-            emit(signal: string, ...args: any[]): void;
-
-            // Methods
-
-            /**
-             * Adds a file descriptor to `message`.
-             *
-             * The file descriptor is duplicated using dup(). You keep your copy
-             * of the descriptor and the copy contained in `message` will be closed
-             * when `message` is finalized.
-             *
-             * A possible cause of failure is exceeding the per-process or
-             * system-wide file descriptor limit.
-             * @param fd a valid open file descriptor
-             * @returns %TRUE in case of success, else %FALSE (and @error is set)
-             */
-            append_fd(fd: number): boolean;
-            /**
-             * Gets the #GUnixFDList contained in `message`.  This function does not
-             * return a reference to the caller, but the returned list is valid for
-             * the lifetime of `message`.
-             * @returns the #GUnixFDList from @message
-             */
-            get_fd_list(): UnixFDList;
-            /**
-             * Returns the array of file descriptors that is contained in this
-             * object.
-             *
-             * After this call, the descriptors are no longer contained in
-             * `message`. Further calls will return an empty list (unless more
-             * descriptors have been added).
-             *
-             * The return result of this function must be freed with g_free().
-             * The caller is also responsible for closing all of the file
-             * descriptors.
-             *
-             * If `length` is non-%NULL then it is set to the number of file
-             * descriptors in the returned array. The returned array is also
-             * terminated with -1.
-             *
-             * This function never returns %NULL. In case there are no file
-             * descriptors contained in `message,` an empty array is returned.
-             * @returns an array of file     descriptors
-             */
-            steal_fds(): number[];
-        }
-
-        namespace UnixInputStream {
-            // Signal signatures
-            interface SignalSignatures extends InputStream.SignalSignatures {
-                'notify::close-fd': (pspec: GObject.ParamSpec) => void;
-                'notify::fd': (pspec: GObject.ParamSpec) => void;
-            }
-
-            // Constructor properties interface
-
-            interface ConstructorProps
-                extends InputStream.ConstructorProps,
-                    FileDescriptorBased.ConstructorProps,
-                    PollableInputStream.ConstructorProps {
-                close_fd: boolean;
-                closeFd: boolean;
-                fd: number;
-            }
-        }
-
-        /**
-         * `GUnixInputStream` implements [class`Gio`.InputStream] for reading from a UNIX
-         * file descriptor, including asynchronous operations. (If the file
-         * descriptor refers to a socket or pipe, this will use `poll()` to do
-         * asynchronous I/O. If it refers to a regular file, it will fall back
-         * to doing asynchronous I/O in another thread.)
-         *
-         * Note that `<gio/gunixinputstream.h>` belongs to the UNIX-specific GIO
-         * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
-         * file or the `GioUnix-2.0` GIR namespace when using it.
-         */
-        class UnixInputStream extends InputStream implements FileDescriptorBased, PollableInputStream {
-            static $gtype: GObject.GType<UnixInputStream>;
-
-            // Properties
-
-            /**
-             * Whether to close the file descriptor when the stream is closed.
-             */
-            get close_fd(): boolean;
-            set close_fd(val: boolean);
-            /**
-             * Whether to close the file descriptor when the stream is closed.
-             */
-            get closeFd(): boolean;
-            set closeFd(val: boolean);
-            /**
-             * The file descriptor that the stream reads from.
-             */
-            get fd(): number;
-
-            /**
-             * Compile-time signal type information.
-             *
-             * This instance property is generated only for TypeScript type checking.
-             * It is not defined at runtime and should not be accessed in JS code.
-             * @internal
-             */
-            $signals: UnixInputStream.SignalSignatures;
-
-            // Constructors
-
-            constructor(properties?: Partial<UnixInputStream.ConstructorProps>, ...args: any[]);
-
-            _init(...args: any[]): void;
-
-            static ['new'](fd: number, close_fd: boolean): UnixInputStream;
-
-            // Signals
-
-            connect<K extends keyof UnixInputStream.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, UnixInputStream.SignalSignatures[K]>,
-            ): number;
-            connect(signal: string, callback: (...args: any[]) => any): number;
-            connect_after<K extends keyof UnixInputStream.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, UnixInputStream.SignalSignatures[K]>,
-            ): number;
-            connect_after(signal: string, callback: (...args: any[]) => any): number;
-            emit<K extends keyof UnixInputStream.SignalSignatures>(
-                signal: K,
-                ...args: GObject.GjsParameters<UnixInputStream.SignalSignatures[K]> extends [any, ...infer Q]
-                    ? Q
-                    : never
-            ): void;
-            emit(signal: string, ...args: any[]): void;
-
-            // Methods
-
-            /**
-             * Returns whether the file descriptor of `stream` will be
-             * closed when the stream is closed.
-             * @returns %TRUE if the file descriptor is closed when done
-             */
-            get_close_fd(): boolean;
-            /**
-             * Return the UNIX file descriptor that the stream reads from.
-             * @returns The file descriptor of @stream
-             */
-            get_fd(): number;
-            /**
-             * Sets whether the file descriptor of `stream` shall be closed
-             * when the stream is closed.
-             * @param close_fd %TRUE to close the file descriptor when done
-             */
-            set_close_fd(close_fd: boolean): void;
-
-            // Inherited methods
-            /**
-             * Gets the underlying file descriptor.
-             */
-            vfunc_get_fd(): number;
-            /**
-             * Checks if `stream` is actually pollable. Some classes may implement
-             * #GPollableInputStream but have only certain instances of that class
-             * be pollable. If this method returns %FALSE, then the behavior of
-             * other #GPollableInputStream methods is undefined.
-             *
-             * For any given stream, the value returned by this method is constant;
-             * a stream cannot switch from pollable to non-pollable or vice versa.
-             * @returns %TRUE if @stream is pollable, %FALSE if not.
-             */
-            can_poll(): boolean;
-            /**
-             * Creates a #GSource that triggers when `stream` can be read, or
-             * `cancellable` is triggered or an error occurs. The callback on the
-             * source is of the #GPollableSourceFunc type.
-             *
-             * As with g_pollable_input_stream_is_readable(), it is possible that
-             * the stream may not actually be readable even after the source
-             * triggers, so you should use g_pollable_input_stream_read_nonblocking()
-             * rather than g_input_stream_read() from the callback.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             * @param cancellable a #GCancellable, or %NULL
-             * @returns a new #GSource
-             */
-            create_source(cancellable?: Cancellable | null): GLib.Source;
-            /**
-             * Checks if `stream` can be read.
-             *
-             * Note that some stream types may not be able to implement this 100%
-             * reliably, and it is possible that a call to g_input_stream_read()
-             * after this returns %TRUE would still block. To guarantee
-             * non-blocking behavior, you should always use
-             * g_pollable_input_stream_read_nonblocking(), which will return a
-             * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             * @returns %TRUE if @stream is readable, %FALSE if not. If an error   has occurred on @stream, this will result in   g_pollable_input_stream_is_readable() returning %TRUE, and the   next attempt to read will return the error.
-             */
-            is_readable(): boolean;
-            /**
-             * Attempts to read up to `count` bytes from `stream` into `buffer,` as
-             * with g_input_stream_read(). If `stream` is not currently readable,
-             * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-             * use g_pollable_input_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is readable.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             * @param cancellable a #GCancellable, or %NULL
-             * @returns the number of bytes read, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
-             */
-            read_nonblocking(cancellable?: Cancellable | null): [number, Uint8Array];
-            /**
-             * Checks if `stream` is actually pollable. Some classes may implement
-             * #GPollableInputStream but have only certain instances of that class
-             * be pollable. If this method returns %FALSE, then the behavior of
-             * other #GPollableInputStream methods is undefined.
-             *
-             * For any given stream, the value returned by this method is constant;
-             * a stream cannot switch from pollable to non-pollable or vice versa.
-             */
-            vfunc_can_poll(): boolean;
-            /**
-             * Creates a #GSource that triggers when `stream` can be read, or
-             * `cancellable` is triggered or an error occurs. The callback on the
-             * source is of the #GPollableSourceFunc type.
-             *
-             * As with g_pollable_input_stream_is_readable(), it is possible that
-             * the stream may not actually be readable even after the source
-             * triggers, so you should use g_pollable_input_stream_read_nonblocking()
-             * rather than g_input_stream_read() from the callback.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_create_source(cancellable?: Cancellable | null): GLib.Source;
-            /**
-             * Checks if `stream` can be read.
-             *
-             * Note that some stream types may not be able to implement this 100%
-             * reliably, and it is possible that a call to g_input_stream_read()
-             * after this returns %TRUE would still block. To guarantee
-             * non-blocking behavior, you should always use
-             * g_pollable_input_stream_read_nonblocking(), which will return a
-             * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             */
-            vfunc_is_readable(): boolean;
-            /**
-             * Attempts to read up to `count` bytes from `stream` into `buffer,` as
-             * with g_input_stream_read(). If `stream` is not currently readable,
-             * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-             * use g_pollable_input_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is readable.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             */
-            vfunc_read_nonblocking(): [number, Uint8Array | null];
-            /**
-             * Creates a binding between `source_property` on `source` and `target_property`
-             * on `target`.
-             *
-             * Whenever the `source_property` is changed the `target_property` is
-             * updated using the same value. For instance:
-             *
-             *
-             * ```c
-             *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-             * ```
-             *
-             *
-             * Will result in the "sensitive" property of the widget #GObject instance to be
-             * updated with the same value of the "active" property of the action #GObject
-             * instance.
-             *
-             * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-             * if `target_property` on `target` changes then the `source_property` on `source`
-             * will be updated as well.
-             *
-             * The binding will automatically be removed when either the `source` or the
-             * `target` instances are finalized. To remove the binding without affecting the
-             * `source` and the `target` you can just call g_object_unref() on the returned
-             * #GBinding instance.
-             *
-             * Removing the binding by calling g_object_unref() on it must only be done if
-             * the binding, `source` and `target` are only used from a single thread and it
-             * is clear that both `source` and `target` outlive the binding. Especially it
-             * is not safe to rely on this if the binding, `source` or `target` can be
-             * finalized from different threads. Keep another reference to the binding and
-             * use g_binding_unbind() instead to be on the safe side.
-             *
-             * A #GObject can have multiple bindings.
-             * @param source_property the property on @source to bind
-             * @param target the target #GObject
-             * @param target_property the property on @target to bind
-             * @param flags flags to pass to #GBinding
-             * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-             */
-            bind_property(
-                source_property: string,
-                target: GObject.Object,
-                target_property: string,
-                flags: GObject.BindingFlags | null,
-            ): GObject.Binding;
-            /**
-             * Complete version of g_object_bind_property().
-             *
-             * Creates a binding between `source_property` on `source` and `target_property`
-             * on `target,` allowing you to set the transformation functions to be used by
-             * the binding.
-             *
-             * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-             * if `target_property` on `target` changes then the `source_property` on `source`
-             * will be updated as well. The `transform_from` function is only used in case
-             * of bidirectional bindings, otherwise it will be ignored
-             *
-             * The binding will automatically be removed when either the `source` or the
-             * `target` instances are finalized. This will release the reference that is
-             * being held on the #GBinding instance; if you want to hold on to the
-             * #GBinding instance, you will need to hold a reference to it.
-             *
-             * To remove the binding, call g_binding_unbind().
-             *
-             * A #GObject can have multiple bindings.
-             *
-             * The same `user_data` parameter will be used for both `transform_to`
-             * and `transform_from` transformation functions; the `notify` function will
-             * be called once, when the binding is removed. If you need different data
-             * for each transformation function, please use
-             * g_object_bind_property_with_closures() instead.
-             * @param source_property the property on @source to bind
-             * @param target the target #GObject
-             * @param target_property the property on @target to bind
-             * @param flags flags to pass to #GBinding
-             * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-             * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-             * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-             * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-             */
-            bind_property_full(
-                source_property: string,
-                target: GObject.Object,
-                target_property: string,
-                flags: GObject.BindingFlags | null,
-                transform_to?: GObject.BindingTransformFunc | null,
-                transform_from?: GObject.BindingTransformFunc | null,
-                notify?: GLib.DestroyNotify | null,
-            ): GObject.Binding;
-            // Conflicted with GObject.Object.bind_property_full
-            bind_property_full(...args: never[]): any;
-            /**
-             * This function is intended for #GObject implementations to re-enforce
-             * a [floating][floating-ref] object reference. Doing this is seldom
-             * required: all #GInitiallyUnowneds are created with a floating reference
-             * which usually just needs to be sunken by calling g_object_ref_sink().
-             */
-            force_floating(): void;
-            /**
-             * Increases the freeze count on `object`. If the freeze count is
-             * non-zero, the emission of "notify" signals on `object` is
-             * stopped. The signals are queued until the freeze count is decreased
-             * to zero. Duplicate notifications are squashed so that at most one
-             * #GObject::notify signal is emitted for each property modified while the
-             * object is frozen.
-             *
-             * This is necessary for accessors that modify multiple properties to prevent
-             * premature notification while the object is still being modified.
-             */
-            freeze_notify(): void;
-            /**
-             * Gets a named field from the objects table of associations (see g_object_set_data()).
-             * @param key name of the key for that association
-             * @returns the data if found,          or %NULL if no such data exists.
-             */
-            get_data(key: string): any | null;
-            /**
-             * Gets a property of an object.
-             *
-             * The value can be:
-             * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-             * - a GObject.Value initialized with the expected type of the property
-             * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-             *
-             * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-             *
-             * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-             * @param property_name The name of the property to get
-             * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-             */
-            get_property(property_name: string, value: GObject.Value | any): any;
-            /**
-             * This function gets back user data pointers stored via
-             * g_object_set_qdata().
-             * @param quark A #GQuark, naming the user data pointer
-             * @returns The user data pointer set, or %NULL
-             */
-            get_qdata(quark: GLib.Quark): any | null;
-            /**
-             * Gets `n_properties` properties for an `object`.
-             * Obtained properties will be set to `values`. All properties must be valid.
-             * Warnings will be emitted and undefined behaviour may result if invalid
-             * properties are passed in.
-             * @param names the names of each property to get
-             * @param values the values of each property to get
-             */
-            getv(names: string[], values: (GObject.Value | any)[]): void;
-            /**
-             * Checks whether `object` has a [floating][floating-ref] reference.
-             * @returns %TRUE if @object has a floating reference
-             */
-            is_floating(): boolean;
-            /**
-             * Emits a "notify" signal for the property `property_name` on `object`.
-             *
-             * When possible, eg. when signaling a property change from within the class
-             * that registered the property, you should use g_object_notify_by_pspec()
-             * instead.
-             *
-             * Note that emission of the notify signal may be blocked with
-             * g_object_freeze_notify(). In this case, the signal emissions are queued
-             * and will be emitted (in reverse order) when g_object_thaw_notify() is
-             * called.
-             * @param property_name the name of a property installed on the class of @object.
-             */
-            notify(property_name: string): void;
-            /**
-             * Emits a "notify" signal for the property specified by `pspec` on `object`.
-             *
-             * This function omits the property name lookup, hence it is faster than
-             * g_object_notify().
-             *
-             * One way to avoid using g_object_notify() from within the
-             * class that registered the properties, and using g_object_notify_by_pspec()
-             * instead, is to store the GParamSpec used with
-             * g_object_class_install_property() inside a static array, e.g.:
-             *
-             *
-             * ```c
-             *   typedef enum
-             *   {
-             *     PROP_FOO = 1,
-             *     PROP_LAST
-             *   } MyObjectProperty;
-             *
-             *   static GParamSpec *properties[PROP_LAST];
-             *
-             *   static void
-             *   my_object_class_init (MyObjectClass *klass)
-             *   {
-             *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-             *                                              0, 100,
-             *                                              50,
-             *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-             *     g_object_class_install_property (gobject_class,
-             *                                      PROP_FOO,
-             *                                      properties[PROP_FOO]);
-             *   }
-             * ```
-             *
-             *
-             * and then notify a change on the "foo" property with:
-             *
-             *
-             * ```c
-             *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-             * ```
-             *
-             * @param pspec the #GParamSpec of a property installed on the class of @object.
-             */
-            notify_by_pspec(pspec: GObject.ParamSpec): void;
-            /**
-             * Increases the reference count of `object`.
-             *
-             * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-             * of `object` will be propagated to the return type (using the GCC typeof()
-             * extension), so any casting the caller needs to do on the return type must be
-             * explicit.
-             * @returns the same @object
-             */
-            ref(): GObject.Object;
-            /**
-             * Increase the reference count of `object,` and possibly remove the
-             * [floating][floating-ref] reference, if `object` has a floating reference.
-             *
-             * In other words, if the object is floating, then this call "assumes
-             * ownership" of the floating reference, converting it to a normal
-             * reference by clearing the floating flag while leaving the reference
-             * count unchanged.  If the object is not floating, then this call
-             * adds a new normal reference increasing the reference count by one.
-             *
-             * Since GLib 2.56, the type of `object` will be propagated to the return type
-             * under the same conditions as for g_object_ref().
-             * @returns @object
-             */
-            ref_sink(): GObject.Object;
-            /**
-             * Releases all references to other objects. This can be used to break
-             * reference cycles.
-             *
-             * This function should only be called from object system implementations.
-             */
-            run_dispose(): void;
-            /**
-             * Each object carries around a table of associations from
-             * strings to pointers.  This function lets you set an association.
-             *
-             * If the object already had an association with that name,
-             * the old association will be destroyed.
-             *
-             * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-             * This means a copy of `key` is kept permanently (even after `object` has been
-             * finalized) — so it is recommended to only use a small, bounded set of values
-             * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-             * @param key name of the key
-             * @param data data to associate with that key
-             */
-            set_data(key: string, data?: any | null): void;
-            /**
-             * Sets a property on an object.
-             * @param property_name The name of the property to set
-             * @param value The value to set the property to
-             */
-            set_property(property_name: string, value: GObject.Value | any): void;
-            /**
-             * Remove a specified datum from the object's data associations,
-             * without invoking the association's destroy handler.
-             * @param key name of the key
-             * @returns the data if found, or %NULL          if no such data exists.
-             */
-            steal_data(key: string): any | null;
-            /**
-             * This function gets back user data pointers stored via
-             * g_object_set_qdata() and removes the `data` from object
-             * without invoking its destroy() function (if any was
-             * set).
-             * Usually, calling this function is only required to update
-             * user data pointers with a destroy notifier, for example:
-             *
-             * ```c
-             * void
-             * object_add_to_user_list (GObject     *object,
-             *                          const gchar *new_string)
-             * {
-             *   // the quark, naming the object data
-             *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-             *   // retrieve the old string list
-             *   GList *list = g_object_steal_qdata (object, quark_string_list);
-             *
-             *   // prepend new string
-             *   list = g_list_prepend (list, g_strdup (new_string));
-             *   // this changed 'list', so we need to set it again
-             *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-             * }
-             * static void
-             * free_string_list (gpointer data)
-             * {
-             *   GList *node, *list = data;
-             *
-             *   for (node = list; node; node = node->next)
-             *     g_free (node->data);
-             *   g_list_free (list);
-             * }
-             * ```
-             *
-             * Using g_object_get_qdata() in the above example, instead of
-             * g_object_steal_qdata() would have left the destroy function set,
-             * and thus the partial string list would have been freed upon
-             * g_object_set_qdata_full().
-             * @param quark A #GQuark, naming the user data pointer
-             * @returns The user data pointer set, or %NULL
-             */
-            steal_qdata(quark: GLib.Quark): any | null;
-            /**
-             * Reverts the effect of a previous call to
-             * g_object_freeze_notify(). The freeze count is decreased on `object`
-             * and when it reaches zero, queued "notify" signals are emitted.
-             *
-             * Duplicate notifications for each property are squashed so that at most one
-             * #GObject::notify signal is emitted for each property, in the reverse order
-             * in which they have been queued.
-             *
-             * It is an error to call this function when the freeze count is zero.
-             */
-            thaw_notify(): void;
-            /**
-             * Decreases the reference count of `object`. When its reference count
-             * drops to 0, the object is finalized (i.e. its memory is freed).
-             *
-             * If the pointer to the #GObject may be reused in future (for example, if it is
-             * an instance variable of another object), it is recommended to clear the
-             * pointer to %NULL rather than retain a dangling pointer to a potentially
-             * invalid #GObject instance. Use g_clear_object() for this.
-             */
-            unref(): void;
-            /**
-             * This function essentially limits the life time of the `closure` to
-             * the life time of the object. That is, when the object is finalized,
-             * the `closure` is invalidated by calling g_closure_invalidate() on
-             * it, in order to prevent invocations of the closure with a finalized
-             * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-             * added as marshal guards to the `closure,` to ensure that an extra
-             * reference count is held on `object` during invocation of the
-             * `closure`.  Usually, this function will be called on closures that
-             * use this `object` as closure data.
-             * @param closure #GClosure to watch
-             */
-            watch_closure(closure: GObject.Closure): void;
-            /**
-             * the `constructed` function is called by g_object_new() as the
-             *  final step of the object creation process.  At the point of the call, all
-             *  construction properties have been set on the object.  The purpose of this
-             *  call is to allow for object initialisation steps that can only be performed
-             *  after construction properties have been set.  `constructed` implementors
-             *  should chain up to the `constructed` call of their parent class to allow it
-             *  to complete its initialisation.
-             */
-            vfunc_constructed(): void;
-            /**
-             * emits property change notification for a bunch
-             *  of properties. Overriding `dispatch_properties_changed` should be rarely
-             *  needed.
-             * @param n_pspecs
-             * @param pspecs
-             */
-            vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-            /**
-             * the `dispose` function is supposed to drop all references to other
-             *  objects, but keep the instance otherwise intact, so that client method
-             *  invocations still work. It may be run multiple times (due to reference
-             *  loops). Before returning, `dispose` should chain up to the `dispose` method
-             *  of the parent class.
-             */
-            vfunc_dispose(): void;
-            /**
-             * instance finalization function, should finish the finalization of
-             *  the instance begun in `dispose` and chain up to the `finalize` method of the
-             *  parent class.
-             */
-            vfunc_finalize(): void;
-            /**
-             * the generic getter for all properties of this type. Should be
-             *  overridden for every type with properties.
-             * @param property_id
-             * @param value
-             * @param pspec
-             */
-            vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-            /**
-             * Emits a "notify" signal for the property `property_name` on `object`.
-             *
-             * When possible, eg. when signaling a property change from within the class
-             * that registered the property, you should use g_object_notify_by_pspec()
-             * instead.
-             *
-             * Note that emission of the notify signal may be blocked with
-             * g_object_freeze_notify(). In this case, the signal emissions are queued
-             * and will be emitted (in reverse order) when g_object_thaw_notify() is
-             * called.
-             * @param pspec
-             */
-            vfunc_notify(pspec: GObject.ParamSpec): void;
-            /**
-             * the generic setter for all properties of this type. Should be
-             *  overridden for every type with properties. If implementations of
-             *  `set_property` don't emit property change notification explicitly, this will
-             *  be done implicitly by the type system. However, if the notify signal is
-             *  emitted explicitly, the type system will not emit it a second time.
-             * @param property_id
-             * @param value
-             * @param pspec
-             */
-            vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-            /**
-             * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-             * @param id Handler ID of the handler to be disconnected
-             */
-            disconnect(id: number): void;
-            /**
-             * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-             * @param properties Object containing the properties to set
-             */
-            set(properties: { [key: string]: any }): void;
-            /**
-             * Blocks a handler of an instance so it will not be called during any signal emissions
-             * @param id Handler ID of the handler to be blocked
-             */
-            block_signal_handler(id: number): void;
-            /**
-             * Unblocks a handler so it will be called again during any signal emissions
-             * @param id Handler ID of the handler to be unblocked
-             */
-            unblock_signal_handler(id: number): void;
-            /**
-             * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-             * @param detailedName Name of the signal to stop emission of
-             */
-            stop_emission_by_name(detailedName: string): void;
-            /**
-             * Clears the pending flag on `stream`.
-             */
-            clear_pending(): void;
-            /**
-             * Closes the stream, releasing resources related to it.
-             *
-             * Once the stream is closed, all other operations will return %G_IO_ERROR_CLOSED.
-             * Closing a stream multiple times will not return an error.
-             *
-             * Streams will be automatically closed when the last reference
-             * is dropped, but you might want to call this function to make sure
-             * resources are released as early as possible.
-             *
-             * Some streams might keep the backing store of the stream (e.g. a file descriptor)
-             * open after the stream is closed. See the documentation for the individual
-             * stream for details.
-             *
-             * On failure the first error that happened will be reported, but the close
-             * operation will finish as much as possible. A stream that failed to
-             * close will still return %G_IO_ERROR_CLOSED for all operations. Still, it
-             * is important to check and report the error to the user.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * Cancelling a close will still leave the stream closed, but some streams
-             * can use a faster close that doesn't block to e.g. check errors.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @returns %TRUE on success, %FALSE on failure
-             */
-            close(cancellable?: Cancellable | null): boolean;
-            /**
-             * Requests an asynchronous closes of the stream, releasing resources related to it.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_close_finish() to get the result of the
-             * operation.
-             *
-             * For behaviour details see g_input_stream_close().
-             *
-             * The asynchronous methods have a default fallback that uses threads to implement
-             * asynchronicity, so they are optional for inheriting classes. However, if you
-             * override one you must override all.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional cancellable object
-             */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
-            /**
-             * Requests an asynchronous closes of the stream, releasing resources related to it.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_close_finish() to get the result of the
-             * operation.
-             *
-             * For behaviour details see g_input_stream_close().
-             *
-             * The asynchronous methods have a default fallback that uses threads to implement
-             * asynchronicity, so they are optional for inheriting classes. However, if you
-             * override one you must override all.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional cancellable object
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            close_async(
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Requests an asynchronous closes of the stream, releasing resources related to it.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_close_finish() to get the result of the
-             * operation.
-             *
-             * For behaviour details see g_input_stream_close().
-             *
-             * The asynchronous methods have a default fallback that uses threads to implement
-             * asynchronicity, so they are optional for inheriting classes. However, if you
-             * override one you must override all.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional cancellable object
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            close_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
-            /**
-             * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
-             * @param result a #GAsyncResult.
-             * @returns %TRUE if the stream was closed successfully.
-             */
-            close_finish(result: AsyncResult): boolean;
-            /**
-             * Checks if an input stream has pending actions.
-             * @returns %TRUE if @stream has pending actions.
-             */
-            has_pending(): boolean;
-            /**
-             * Checks if an input stream is closed.
-             * @returns %TRUE if the stream is closed.
-             */
-            is_closed(): boolean;
-            /**
-             * Tries to read `count` bytes from the stream into the buffer starting at
-             * `buffer`. Will block during this read.
-             *
-             * If count is zero returns zero and does nothing. A value of `count`
-             * larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes read into the buffer is returned.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file. Zero is returned on end of file
-             * (or if `count` is zero),  but never otherwise.
-             *
-             * The returned `buffer` is not a nul-terminated string, it can contain nul bytes
-             * at any position, and this function doesn't nul-terminate the `buffer`.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             *
-             * On error -1 is returned and `error` is set accordingly.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @returns Number of bytes read, or -1 on error, or 0 on end of file.
-             */
-            read(cancellable?: Cancellable | null): [number, Uint8Array];
-            /**
-             * Tries to read `count` bytes from the stream into the buffer starting at
-             * `buffer`. Will block during this read.
-             *
-             * This function is similar to g_input_stream_read(), except it tries to
-             * read as many bytes as requested, only stopping on an error or end of stream.
-             *
-             * On a successful read of `count` bytes, or if we reached the end of the
-             * stream,  %TRUE is returned, and `bytes_read` is set to the number of bytes
-             * read into `buffer`.
-             *
-             * If there is an error during the operation %FALSE is returned and `error`
-             * is set to indicate the error status.
-             *
-             * As a special exception to the normal conventions for functions that
-             * use #GError, if this function returns %FALSE (and sets `error)` then
-             * `bytes_read` will be set to the number of bytes that were successfully
-             * read before the error was encountered.  This functionality is only
-             * available from C.  If you need it from another language then you must
-             * write your own loop around g_input_stream_read().
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @returns %TRUE on success, %FALSE if there was an error
-             */
-            read_all(cancellable?: Cancellable | null): [boolean, Uint8Array, number];
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into the
-             * buffer starting at `buffer`.
-             *
-             * This is the asynchronous equivalent of [method`InputStream`.read_all].
-             *
-             * Call [method`InputStream`.read_all_finish] to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             */
-            read_all_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into the
-             * buffer starting at `buffer`.
-             *
-             * This is the asynchronous equivalent of [method`InputStream`.read_all].
-             *
-             * Call [method`InputStream`.read_all_finish] to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            read_all_async(
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): Uint8Array;
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into the
-             * buffer starting at `buffer`.
-             *
-             * This is the asynchronous equivalent of [method`InputStream`.read_all].
-             *
-             * Call [method`InputStream`.read_all_finish] to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            read_all_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
-            /**
-             * Finishes an asynchronous stream read operation started with
-             * [method`InputStream`.read_all_async].
-             *
-             * As a special exception to the normal conventions for functions that
-             * use #GError, if this function returns %FALSE (and sets `error)` then
-             * `bytes_read` will be set to the number of bytes that were successfully
-             * read before the error was encountered.  This functionality is only
-             * available from C.  If you need it from another language then you must
-             * write your own loop around g_input_stream_read_async().
-             * @param result a #GAsyncResult
-             * @returns %TRUE on success, %FALSE if there was an error
-             */
-            read_all_finish(result: AsyncResult): [boolean, number];
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into the buffer
-             * starting at `buffer`. When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_read_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed on `stream,` and will
-             * result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes read into the buffer will be passed to the
-             * callback. It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file, but generally we try to read
-             * as many bytes as requested. Zero is returned on end of file
-             * (or if `count` is zero),  but never otherwise.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical value) will
-             * be executed before an outstanding request with lower priority. Default
-             * priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads to implement
-             * asynchronicity, so they are optional for inheriting classes. However, if you
-             * override one you must override all.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            read_async(io_priority: number, cancellable?: Cancellable | null): [Promise<number>, Uint8Array];
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into the buffer
-             * starting at `buffer`. When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_read_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed on `stream,` and will
-             * result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes read into the buffer will be passed to the
-             * callback. It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file, but generally we try to read
-             * as many bytes as requested. Zero is returned on end of file
-             * (or if `count` is zero),  but never otherwise.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical value) will
-             * be executed before an outstanding request with lower priority. Default
-             * priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads to implement
-             * asynchronicity, so they are optional for inheriting classes. However, if you
-             * override one you must override all.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            read_async(
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): Uint8Array;
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into the buffer
-             * starting at `buffer`. When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_read_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed on `stream,` and will
-             * result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes read into the buffer will be passed to the
-             * callback. It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file, but generally we try to read
-             * as many bytes as requested. Zero is returned on end of file
-             * (or if `count` is zero),  but never otherwise.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical value) will
-             * be executed before an outstanding request with lower priority. Default
-             * priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads to implement
-             * asynchronicity, so they are optional for inheriting classes. However, if you
-             * override one you must override all.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            read_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
-            /**
-             * Like g_input_stream_read(), this tries to read `count` bytes from
-             * the stream in a blocking fashion. However, rather than reading into
-             * a user-supplied buffer, this will create a new #GBytes containing
-             * the data that was read. This may be easier to use from language
-             * bindings.
-             *
-             * If count is zero, returns a zero-length #GBytes and does nothing. A
-             * value of `count` larger than %G_MAXSSIZE will cause a
-             * %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, a new #GBytes is returned. It is not an error if the
-             * size of this object is not the same as the requested size, as it
-             * can happen e.g. near the end of a file. A zero-length #GBytes is
-             * returned on end of file (or if `count` is zero), but never
-             * otherwise.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             *
-             * On error %NULL is returned and `error` is set accordingly.
-             * @param count maximum number of bytes that will be read from the stream. Common values include 4096 and 8192.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @returns a new #GBytes, or %NULL on error
-             */
-            read_bytes(count: number, cancellable?: Cancellable | null): GLib.Bytes;
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into a
-             * new #GBytes. When the operation is finished `callback` will be
-             * called. You can then call g_input_stream_read_bytes_finish() to get the
-             * result of the operation.
-             *
-             * During an async request no other sync and async calls are allowed
-             * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a
-             * %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the new #GBytes will be passed to the callback. It is
-             * not an error if this is smaller than the requested size, as it can
-             * happen e.g. near the end of a file, but generally we try to read as
-             * many bytes as requested. Zero is returned on end of file (or if
-             * `count` is zero), but never otherwise.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param count the number of bytes that will be read from the stream
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            read_bytes_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<GLib.Bytes>;
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into a
-             * new #GBytes. When the operation is finished `callback` will be
-             * called. You can then call g_input_stream_read_bytes_finish() to get the
-             * result of the operation.
-             *
-             * During an async request no other sync and async calls are allowed
-             * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a
-             * %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the new #GBytes will be passed to the callback. It is
-             * not an error if this is smaller than the requested size, as it can
-             * happen e.g. near the end of a file, but generally we try to read as
-             * many bytes as requested. Zero is returned on end of file (or if
-             * `count` is zero), but never otherwise.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param count the number of bytes that will be read from the stream
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            read_bytes_async(
-                count: number,
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into a
-             * new #GBytes. When the operation is finished `callback` will be
-             * called. You can then call g_input_stream_read_bytes_finish() to get the
-             * result of the operation.
-             *
-             * During an async request no other sync and async calls are allowed
-             * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a
-             * %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the new #GBytes will be passed to the callback. It is
-             * not an error if this is smaller than the requested size, as it can
-             * happen e.g. near the end of a file, but generally we try to read as
-             * many bytes as requested. Zero is returned on end of file (or if
-             * `count` is zero), but never otherwise.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param count the number of bytes that will be read from the stream
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            read_bytes_async(
-                count: number,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Bytes> | void;
-            /**
-             * Finishes an asynchronous stream read-into-#GBytes operation.
-             * @param result a #GAsyncResult.
-             * @returns the newly-allocated #GBytes, or %NULL on error
-             */
-            read_bytes_finish(result: AsyncResult): GLib.Bytes;
-            /**
-             * Finishes an asynchronous stream read operation.
-             * @param result a #GAsyncResult.
-             * @returns number of bytes read in, or -1 on error, or 0 on end of file.
-             */
-            read_finish(result: AsyncResult): number;
-            /**
-             * Sets `stream` to have actions pending. If the pending flag is
-             * already set or `stream` is closed, it will return %FALSE and set
-             * `error`.
-             * @returns %TRUE if pending was previously unset and is now set.
-             */
-            set_pending(): boolean;
-            /**
-             * Tries to skip `count` bytes from the stream. Will block during the operation.
-             *
-             * This is identical to g_input_stream_read(), from a behaviour standpoint,
-             * but the bytes that are skipped are not returned to the user. Some
-             * streams have an implementation that is more efficient than reading the data.
-             *
-             * This function is optional for inherited classes, as the default implementation
-             * emulates it using read.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             * @param count the number of bytes that will be skipped from the stream
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @returns Number of bytes skipped, or -1 on error
-             */
-            skip(count: number, cancellable?: Cancellable | null): number;
-            /**
-             * Request an asynchronous skip of `count` bytes from the stream.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_skip_finish() to get the result
-             * of the operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes skipped will be passed to the callback.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file, but generally we try to skip
-             * as many bytes as requested. Zero is returned on end of file
-             * (or if `count` is zero), but never otherwise.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical value)
-             * will be executed before an outstanding request with lower priority.
-             * Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads to
-             * implement asynchronicity, so they are optional for inheriting classes.
-             * However, if you override one, you must override all.
-             * @param count the number of bytes that will be skipped from the stream
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            skip_async(count: number, io_priority: number, cancellable?: Cancellable | null): Promise<number>;
-            /**
-             * Request an asynchronous skip of `count` bytes from the stream.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_skip_finish() to get the result
-             * of the operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes skipped will be passed to the callback.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file, but generally we try to skip
-             * as many bytes as requested. Zero is returned on end of file
-             * (or if `count` is zero), but never otherwise.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical value)
-             * will be executed before an outstanding request with lower priority.
-             * Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads to
-             * implement asynchronicity, so they are optional for inheriting classes.
-             * However, if you override one, you must override all.
-             * @param count the number of bytes that will be skipped from the stream
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            skip_async(
-                count: number,
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Request an asynchronous skip of `count` bytes from the stream.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_skip_finish() to get the result
-             * of the operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes skipped will be passed to the callback.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file, but generally we try to skip
-             * as many bytes as requested. Zero is returned on end of file
-             * (or if `count` is zero), but never otherwise.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical value)
-             * will be executed before an outstanding request with lower priority.
-             * Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads to
-             * implement asynchronicity, so they are optional for inheriting classes.
-             * However, if you override one, you must override all.
-             * @param count the number of bytes that will be skipped from the stream
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            skip_async(
-                count: number,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
-            /**
-             * Finishes a stream skip operation.
-             * @param result a #GAsyncResult.
-             * @returns the size of the bytes skipped, or `-1` on error.
-             */
-            skip_finish(result: AsyncResult): number;
-            /**
-             * Requests an asynchronous closes of the stream, releasing resources related to it.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_close_finish() to get the result of the
-             * operation.
-             *
-             * For behaviour details see g_input_stream_close().
-             *
-             * The asynchronous methods have a default fallback that uses threads to implement
-             * asynchronicity, so they are optional for inheriting classes. However, if you
-             * override one you must override all.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional cancellable object
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_close_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
-             * @param result a #GAsyncResult.
-             */
-            vfunc_close_finish(result: AsyncResult): boolean;
-            vfunc_close_fn(cancellable?: Cancellable | null): boolean;
-            /**
-             * Request an asynchronous read of `count` bytes from the stream into the buffer
-             * starting at `buffer`. When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_read_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed on `stream,` and will
-             * result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes read into the buffer will be passed to the
-             * callback. It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file, but generally we try to read
-             * as many bytes as requested. Zero is returned on end of file
-             * (or if `count` is zero),  but never otherwise.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical value) will
-             * be executed before an outstanding request with lower priority. Default
-             * priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads to implement
-             * asynchronicity, so they are optional for inheriting classes. However, if you
-             * override one you must override all.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_read_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Uint8Array | null;
-            /**
-             * Finishes an asynchronous stream read operation.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_read_finish(result: AsyncResult): number;
-            vfunc_read_fn(buffer: any | null, count: number, cancellable?: Cancellable | null): number;
-            /**
-             * Tries to skip `count` bytes from the stream. Will block during the operation.
-             *
-             * This is identical to g_input_stream_read(), from a behaviour standpoint,
-             * but the bytes that are skipped are not returned to the user. Some
-             * streams have an implementation that is more efficient than reading the data.
-             *
-             * This function is optional for inherited classes, as the default implementation
-             * emulates it using read.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             * @param count the number of bytes that will be skipped from the stream
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_skip(count: number, cancellable?: Cancellable | null): number;
-            /**
-             * Request an asynchronous skip of `count` bytes from the stream.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_input_stream_skip_finish() to get the result
-             * of the operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes skipped will be passed to the callback.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. near the end of a file, but generally we try to skip
-             * as many bytes as requested. Zero is returned on end of file
-             * (or if `count` is zero), but never otherwise.
-             *
-             * Any outstanding i/o request with higher priority (lower numerical value)
-             * will be executed before an outstanding request with lower priority.
-             * Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads to
-             * implement asynchronicity, so they are optional for inheriting classes.
-             * However, if you override one, you must override all.
-             * @param count the number of bytes that will be skipped from the stream
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_skip_async(
-                count: number,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a stream skip operation.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_skip_finish(result: AsyncResult): number;
-            /**
-             * Creates an asynchronous iterator for a Gio.InputStream that reads the stream in chunks.
-             *
-             * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
-             *
-             * Example:
-             * ```js
-             * import Gio from "gi://Gio";
-             *
-             * const textDecoder = new TextDecoder("utf-8");
-             *
-             * const file = Gio.File.new_for_path("/etc/os-release");
-             * const inputStream = file.read(null);
-             *
-             * for await (const bytes of inputStream.createAsyncIterator(4)) {
-             *   log(textDecoder.decode(bytes.toArray()));
-             * }
-             * ```
-             *
-             * `returns` An async iterator yielding GLib.Bytes objects
-             * @param count Maximum number of bytes to read per chunk (default: 4096)
-             * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
-             */
-            createAsyncIterator(count?: number, priority?: number): AsyncIterableIterator<GLib.Bytes>;
-            /**
-             * Creates a synchronous iterator for a Gio.InputStream that reads the stream in chunks.
-             *
-             * Each iteration will return a GLib.Bytes object containing at most `count` bytes (default 4096). The iterator will end when the stream is exhausted.
-             *
-             * Example:
-             * ```js
-             * import Gio from "gi://Gio";
-             *
-             * const textDecoder = new TextDecoder("utf-8");
-             *
-             * const file = Gio.File.new_for_path("/etc/os-release");
-             * const inputStream = file.read(null);
-             *
-             * for (const bytes of inputStream.createSyncIterator(4)) {
-             *   log(textDecoder.decode(bytes.toArray()));
-             * }
-             * ```
-             *
-             * `returns` An iterable yielding GLib.Bytes objects
-             * @param count Maximum number of bytes to read per chunk (default: 4096)
-             * @param priority I/O priority of the request (default: GLib.PRIORITY_DEFAULT)
-             */
-            createSyncIterator(count?: number, priority?: number): IterableIterator<GLib.Bytes>;
-        }
-
-        namespace UnixMountMonitor {
-            // Signal signatures
-            interface SignalSignatures extends GObject.Object.SignalSignatures {
-                'mountpoints-changed': () => void;
-                'mounts-changed': () => void;
-            }
-
-            // Constructor properties interface
-
-            interface ConstructorProps extends GObject.Object.ConstructorProps {}
-        }
-
-        /**
-         * Watches for changes to the set of mount entries and mount points in the
-         * system.
-         *
-         * Connect to the [signal`GioUnix`.MountMonitor::mounts-changed] signal to be
-         * notified of changes to the [struct`GioUnix`.MountEntry] list.
-         *
-         * Connect to the [signal`GioUnix`.MountMonitor::mountpoints-changed] signal to
-         * be notified of changes to the [struct`GioUnix`.MountPoint] list.
-         */
-        class UnixMountMonitor extends GObject.Object {
-            static $gtype: GObject.GType<UnixMountMonitor>;
-
-            /**
-             * Compile-time signal type information.
-             *
-             * This instance property is generated only for TypeScript type checking.
-             * It is not defined at runtime and should not be accessed in JS code.
-             * @internal
-             */
-            $signals: UnixMountMonitor.SignalSignatures;
-
-            // Constructors
-
-            constructor(properties?: Partial<UnixMountMonitor.ConstructorProps>, ...args: any[]);
-
-            _init(...args: any[]): void;
-
-            static ['new'](): UnixMountMonitor;
-
-            // Signals
-
-            connect<K extends keyof UnixMountMonitor.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, UnixMountMonitor.SignalSignatures[K]>,
-            ): number;
-            connect(signal: string, callback: (...args: any[]) => any): number;
-            connect_after<K extends keyof UnixMountMonitor.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, UnixMountMonitor.SignalSignatures[K]>,
-            ): number;
-            connect_after(signal: string, callback: (...args: any[]) => any): number;
-            emit<K extends keyof UnixMountMonitor.SignalSignatures>(
-                signal: K,
-                ...args: GObject.GjsParameters<UnixMountMonitor.SignalSignatures[K]> extends [any, ...infer Q]
-                    ? Q
-                    : never
-            ): void;
-            emit(signal: string, ...args: any[]): void;
-
-            // Static methods
-
-            /**
-             * Gets the [class`GioUnix`.MountMonitor] for the current thread-default main
-             * context.
-             *
-             * The mount monitor can be used to monitor for changes to the list of
-             * mounted filesystems as well as the list of mount points (ie: fstab
-             * entries).
-             *
-             * You must only call [method`GObject`.Object.unref] on the return value from
-             * under the same main context as you called this function.
-             */
-            static get(): UnixMountMonitor;
-
-            // Methods
-
-            /**
-             * This function does nothing.
-             *
-             * Before 2.44, this was a partially-effective way of controlling the
-             * rate at which events would be reported under some uncommon
-             * circumstances.  Since `mount_monitor` is a singleton, it also meant
-             * that calling this function would have side effects for other users of
-             * the monitor.
-             * @param limit_msec a integer with the limit (in milliseconds) to poll for changes
-             */
-            set_rate_limit(limit_msec: number): void;
-        }
-
-        namespace UnixOutputStream {
-            // Signal signatures
-            interface SignalSignatures extends OutputStream.SignalSignatures {
-                'notify::close-fd': (pspec: GObject.ParamSpec) => void;
-                'notify::fd': (pspec: GObject.ParamSpec) => void;
-            }
-
-            // Constructor properties interface
-
-            interface ConstructorProps
-                extends OutputStream.ConstructorProps,
-                    FileDescriptorBased.ConstructorProps,
-                    PollableOutputStream.ConstructorProps {
-                close_fd: boolean;
-                closeFd: boolean;
-                fd: number;
-            }
-        }
-
-        /**
-         * `GUnixOutputStream` implements [class`Gio`.OutputStream] for writing to a UNIX
-         * file descriptor, including asynchronous operations. (If the file
-         * descriptor refers to a socket or pipe, this will use `poll()` to do
-         * asynchronous I/O. If it refers to a regular file, it will fall back
-         * to doing asynchronous I/O in another thread.)
-         *
-         * Note that `<gio/gunixoutputstream.h>` belongs to the UNIX-specific GIO
-         * interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config file
-         * file or the `GioUnix-2.0` GIR namespace when using it.
-         */
-        class UnixOutputStream extends OutputStream implements FileDescriptorBased, PollableOutputStream {
-            static $gtype: GObject.GType<UnixOutputStream>;
-
-            // Properties
-
-            /**
-             * Whether to close the file descriptor when the stream is closed.
-             */
-            get close_fd(): boolean;
-            set close_fd(val: boolean);
-            /**
-             * Whether to close the file descriptor when the stream is closed.
-             */
-            get closeFd(): boolean;
-            set closeFd(val: boolean);
-            /**
-             * The file descriptor that the stream writes to.
-             */
-            get fd(): number;
-
-            /**
-             * Compile-time signal type information.
-             *
-             * This instance property is generated only for TypeScript type checking.
-             * It is not defined at runtime and should not be accessed in JS code.
-             * @internal
-             */
-            $signals: UnixOutputStream.SignalSignatures;
-
-            // Constructors
-
-            constructor(properties?: Partial<UnixOutputStream.ConstructorProps>, ...args: any[]);
-
-            _init(...args: any[]): void;
-
-            static ['new'](fd: number, close_fd: boolean): UnixOutputStream;
-
-            // Signals
-
-            connect<K extends keyof UnixOutputStream.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, UnixOutputStream.SignalSignatures[K]>,
-            ): number;
-            connect(signal: string, callback: (...args: any[]) => any): number;
-            connect_after<K extends keyof UnixOutputStream.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, UnixOutputStream.SignalSignatures[K]>,
-            ): number;
-            connect_after(signal: string, callback: (...args: any[]) => any): number;
-            emit<K extends keyof UnixOutputStream.SignalSignatures>(
-                signal: K,
-                ...args: GObject.GjsParameters<UnixOutputStream.SignalSignatures[K]> extends [any, ...infer Q]
-                    ? Q
-                    : never
-            ): void;
-            emit(signal: string, ...args: any[]): void;
-
-            // Methods
-
-            /**
-             * Returns whether the file descriptor of `stream` will be
-             * closed when the stream is closed.
-             * @returns %TRUE if the file descriptor is closed when done
-             */
-            get_close_fd(): boolean;
-            /**
-             * Return the UNIX file descriptor that the stream writes to.
-             * @returns The file descriptor of @stream
-             */
-            get_fd(): number;
-            /**
-             * Sets whether the file descriptor of `stream` shall be closed
-             * when the stream is closed.
-             * @param close_fd %TRUE to close the file descriptor when done
-             */
-            set_close_fd(close_fd: boolean): void;
-
-            // Inherited methods
-            /**
-             * Gets the underlying file descriptor.
-             */
-            vfunc_get_fd(): number;
-            /**
-             * Checks if `stream` is actually pollable. Some classes may implement
-             * #GPollableOutputStream but have only certain instances of that
-             * class be pollable. If this method returns %FALSE, then the behavior
-             * of other #GPollableOutputStream methods is undefined.
-             *
-             * For any given stream, the value returned by this method is constant;
-             * a stream cannot switch from pollable to non-pollable or vice versa.
-             * @returns %TRUE if @stream is pollable, %FALSE if not.
-             */
-            can_poll(): boolean;
-            /**
-             * Creates a #GSource that triggers when `stream` can be written, or
-             * `cancellable` is triggered or an error occurs. The callback on the
-             * source is of the #GPollableSourceFunc type.
-             *
-             * As with g_pollable_output_stream_is_writable(), it is possible that
-             * the stream may not actually be writable even after the source
-             * triggers, so you should use g_pollable_output_stream_write_nonblocking()
-             * rather than g_output_stream_write() from the callback.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param cancellable a #GCancellable, or %NULL
-             * @returns a new #GSource
-             */
-            create_source(cancellable?: Cancellable | null): GLib.Source;
-            /**
-             * Checks if `stream` can be written.
-             *
-             * Note that some stream types may not be able to implement this 100%
-             * reliably, and it is possible that a call to g_output_stream_write()
-             * after this returns %TRUE would still block. To guarantee
-             * non-blocking behavior, you should always use
-             * g_pollable_output_stream_write_nonblocking(), which will return a
-             * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @returns %TRUE if @stream is writable, %FALSE if not. If an error   has occurred on @stream, this will result in   g_pollable_output_stream_is_writable() returning %TRUE, and the   next attempt to write will return the error.
-             */
-            is_writable(): boolean;
-            /**
-             * Attempts to write up to `count` bytes from `buffer` to `stream,` as
-             * with g_output_stream_write(). If `stream` is not currently writable,
-             * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-             * use g_pollable_output_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is writable.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * Also note that if %G_IO_ERROR_WOULD_BLOCK is returned some underlying
-             * transports like D/TLS require that you re-send the same `buffer` and
-             * `count` in the next write call.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param buffer a buffer to write     data from
-             * @param cancellable a #GCancellable, or %NULL
-             * @returns the number of bytes written, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
-             */
-            write_nonblocking(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
-            /**
-             * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream,`
-             * as with g_output_stream_writev(). If `stream` is not currently writable,
-             * this will immediately return %`G_POLLABLE_RETURN_WOULD_BLOCK,` and you can
-             * use g_pollable_output_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is writable. `error` will *not* be
-             * set in that case.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * Also note that if %G_POLLABLE_RETURN_WOULD_BLOCK is returned some underlying
-             * transports like D/TLS require that you re-send the same `vectors` and
-             * `n_vectors` in the next write call.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param cancellable a #GCancellable, or %NULL
-             * @returns %@G_POLLABLE_RETURN_OK on success, %G_POLLABLE_RETURN_WOULD_BLOCK if the stream is not currently writable (and @error is *not* set), or %G_POLLABLE_RETURN_FAILED if there was an error in which case @error will be set.
-             */
-            writev_nonblocking(vectors: OutputVector[], cancellable?: Cancellable | null): [PollableReturn, number];
-            /**
-             * Checks if `stream` is actually pollable. Some classes may implement
-             * #GPollableOutputStream but have only certain instances of that
-             * class be pollable. If this method returns %FALSE, then the behavior
-             * of other #GPollableOutputStream methods is undefined.
-             *
-             * For any given stream, the value returned by this method is constant;
-             * a stream cannot switch from pollable to non-pollable or vice versa.
-             */
-            vfunc_can_poll(): boolean;
-            /**
-             * Creates a #GSource that triggers when `stream` can be written, or
-             * `cancellable` is triggered or an error occurs. The callback on the
-             * source is of the #GPollableSourceFunc type.
-             *
-             * As with g_pollable_output_stream_is_writable(), it is possible that
-             * the stream may not actually be writable even after the source
-             * triggers, so you should use g_pollable_output_stream_write_nonblocking()
-             * rather than g_output_stream_write() from the callback.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_create_source(cancellable?: Cancellable | null): GLib.Source;
-            /**
-             * Checks if `stream` can be written.
-             *
-             * Note that some stream types may not be able to implement this 100%
-             * reliably, and it is possible that a call to g_output_stream_write()
-             * after this returns %TRUE would still block. To guarantee
-             * non-blocking behavior, you should always use
-             * g_pollable_output_stream_write_nonblocking(), which will return a
-             * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             */
-            vfunc_is_writable(): boolean;
-            /**
-             * Attempts to write up to `count` bytes from `buffer` to `stream,` as
-             * with g_output_stream_write(). If `stream` is not currently writable,
-             * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-             * use g_pollable_output_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is writable.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * Also note that if %G_IO_ERROR_WOULD_BLOCK is returned some underlying
-             * transports like D/TLS require that you re-send the same `buffer` and
-             * `count` in the next write call.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param buffer a buffer to write     data from
-             */
-            vfunc_write_nonblocking(buffer?: Uint8Array | null): number;
-            /**
-             * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream,`
-             * as with g_output_stream_writev(). If `stream` is not currently writable,
-             * this will immediately return %`G_POLLABLE_RETURN_WOULD_BLOCK,` and you can
-             * use g_pollable_output_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is writable. `error` will *not* be
-             * set in that case.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * Also note that if %G_POLLABLE_RETURN_WOULD_BLOCK is returned some underlying
-             * transports like D/TLS require that you re-send the same `vectors` and
-             * `n_vectors` in the next write call.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             */
-            vfunc_writev_nonblocking(vectors: OutputVector[]): [PollableReturn, number];
-            /**
-             * Creates a binding between `source_property` on `source` and `target_property`
-             * on `target`.
-             *
-             * Whenever the `source_property` is changed the `target_property` is
-             * updated using the same value. For instance:
-             *
-             *
-             * ```c
-             *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-             * ```
-             *
-             *
-             * Will result in the "sensitive" property of the widget #GObject instance to be
-             * updated with the same value of the "active" property of the action #GObject
-             * instance.
-             *
-             * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-             * if `target_property` on `target` changes then the `source_property` on `source`
-             * will be updated as well.
-             *
-             * The binding will automatically be removed when either the `source` or the
-             * `target` instances are finalized. To remove the binding without affecting the
-             * `source` and the `target` you can just call g_object_unref() on the returned
-             * #GBinding instance.
-             *
-             * Removing the binding by calling g_object_unref() on it must only be done if
-             * the binding, `source` and `target` are only used from a single thread and it
-             * is clear that both `source` and `target` outlive the binding. Especially it
-             * is not safe to rely on this if the binding, `source` or `target` can be
-             * finalized from different threads. Keep another reference to the binding and
-             * use g_binding_unbind() instead to be on the safe side.
-             *
-             * A #GObject can have multiple bindings.
-             * @param source_property the property on @source to bind
-             * @param target the target #GObject
-             * @param target_property the property on @target to bind
-             * @param flags flags to pass to #GBinding
-             * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-             */
-            bind_property(
-                source_property: string,
-                target: GObject.Object,
-                target_property: string,
-                flags: GObject.BindingFlags | null,
-            ): GObject.Binding;
-            /**
-             * Complete version of g_object_bind_property().
-             *
-             * Creates a binding between `source_property` on `source` and `target_property`
-             * on `target,` allowing you to set the transformation functions to be used by
-             * the binding.
-             *
-             * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-             * if `target_property` on `target` changes then the `source_property` on `source`
-             * will be updated as well. The `transform_from` function is only used in case
-             * of bidirectional bindings, otherwise it will be ignored
-             *
-             * The binding will automatically be removed when either the `source` or the
-             * `target` instances are finalized. This will release the reference that is
-             * being held on the #GBinding instance; if you want to hold on to the
-             * #GBinding instance, you will need to hold a reference to it.
-             *
-             * To remove the binding, call g_binding_unbind().
-             *
-             * A #GObject can have multiple bindings.
-             *
-             * The same `user_data` parameter will be used for both `transform_to`
-             * and `transform_from` transformation functions; the `notify` function will
-             * be called once, when the binding is removed. If you need different data
-             * for each transformation function, please use
-             * g_object_bind_property_with_closures() instead.
-             * @param source_property the property on @source to bind
-             * @param target the target #GObject
-             * @param target_property the property on @target to bind
-             * @param flags flags to pass to #GBinding
-             * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-             * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-             * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-             * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-             */
-            bind_property_full(
-                source_property: string,
-                target: GObject.Object,
-                target_property: string,
-                flags: GObject.BindingFlags | null,
-                transform_to?: GObject.BindingTransformFunc | null,
-                transform_from?: GObject.BindingTransformFunc | null,
-                notify?: GLib.DestroyNotify | null,
-            ): GObject.Binding;
-            // Conflicted with GObject.Object.bind_property_full
-            bind_property_full(...args: never[]): any;
-            /**
-             * This function is intended for #GObject implementations to re-enforce
-             * a [floating][floating-ref] object reference. Doing this is seldom
-             * required: all #GInitiallyUnowneds are created with a floating reference
-             * which usually just needs to be sunken by calling g_object_ref_sink().
-             */
-            force_floating(): void;
-            /**
-             * Increases the freeze count on `object`. If the freeze count is
-             * non-zero, the emission of "notify" signals on `object` is
-             * stopped. The signals are queued until the freeze count is decreased
-             * to zero. Duplicate notifications are squashed so that at most one
-             * #GObject::notify signal is emitted for each property modified while the
-             * object is frozen.
-             *
-             * This is necessary for accessors that modify multiple properties to prevent
-             * premature notification while the object is still being modified.
-             */
-            freeze_notify(): void;
-            /**
-             * Gets a named field from the objects table of associations (see g_object_set_data()).
-             * @param key name of the key for that association
-             * @returns the data if found,          or %NULL if no such data exists.
-             */
-            get_data(key: string): any | null;
-            /**
-             * Gets a property of an object.
-             *
-             * The value can be:
-             * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-             * - a GObject.Value initialized with the expected type of the property
-             * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-             *
-             * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-             *
-             * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-             * @param property_name The name of the property to get
-             * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-             */
-            get_property(property_name: string, value: GObject.Value | any): any;
-            /**
-             * This function gets back user data pointers stored via
-             * g_object_set_qdata().
-             * @param quark A #GQuark, naming the user data pointer
-             * @returns The user data pointer set, or %NULL
-             */
-            get_qdata(quark: GLib.Quark): any | null;
-            /**
-             * Gets `n_properties` properties for an `object`.
-             * Obtained properties will be set to `values`. All properties must be valid.
-             * Warnings will be emitted and undefined behaviour may result if invalid
-             * properties are passed in.
-             * @param names the names of each property to get
-             * @param values the values of each property to get
-             */
-            getv(names: string[], values: (GObject.Value | any)[]): void;
-            /**
-             * Checks whether `object` has a [floating][floating-ref] reference.
-             * @returns %TRUE if @object has a floating reference
-             */
-            is_floating(): boolean;
-            /**
-             * Emits a "notify" signal for the property `property_name` on `object`.
-             *
-             * When possible, eg. when signaling a property change from within the class
-             * that registered the property, you should use g_object_notify_by_pspec()
-             * instead.
-             *
-             * Note that emission of the notify signal may be blocked with
-             * g_object_freeze_notify(). In this case, the signal emissions are queued
-             * and will be emitted (in reverse order) when g_object_thaw_notify() is
-             * called.
-             * @param property_name the name of a property installed on the class of @object.
-             */
-            notify(property_name: string): void;
-            /**
-             * Emits a "notify" signal for the property specified by `pspec` on `object`.
-             *
-             * This function omits the property name lookup, hence it is faster than
-             * g_object_notify().
-             *
-             * One way to avoid using g_object_notify() from within the
-             * class that registered the properties, and using g_object_notify_by_pspec()
-             * instead, is to store the GParamSpec used with
-             * g_object_class_install_property() inside a static array, e.g.:
-             *
-             *
-             * ```c
-             *   typedef enum
-             *   {
-             *     PROP_FOO = 1,
-             *     PROP_LAST
-             *   } MyObjectProperty;
-             *
-             *   static GParamSpec *properties[PROP_LAST];
-             *
-             *   static void
-             *   my_object_class_init (MyObjectClass *klass)
-             *   {
-             *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-             *                                              0, 100,
-             *                                              50,
-             *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-             *     g_object_class_install_property (gobject_class,
-             *                                      PROP_FOO,
-             *                                      properties[PROP_FOO]);
-             *   }
-             * ```
-             *
-             *
-             * and then notify a change on the "foo" property with:
-             *
-             *
-             * ```c
-             *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-             * ```
-             *
-             * @param pspec the #GParamSpec of a property installed on the class of @object.
-             */
-            notify_by_pspec(pspec: GObject.ParamSpec): void;
-            /**
-             * Increases the reference count of `object`.
-             *
-             * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-             * of `object` will be propagated to the return type (using the GCC typeof()
-             * extension), so any casting the caller needs to do on the return type must be
-             * explicit.
-             * @returns the same @object
-             */
-            ref(): GObject.Object;
-            /**
-             * Increase the reference count of `object,` and possibly remove the
-             * [floating][floating-ref] reference, if `object` has a floating reference.
-             *
-             * In other words, if the object is floating, then this call "assumes
-             * ownership" of the floating reference, converting it to a normal
-             * reference by clearing the floating flag while leaving the reference
-             * count unchanged.  If the object is not floating, then this call
-             * adds a new normal reference increasing the reference count by one.
-             *
-             * Since GLib 2.56, the type of `object` will be propagated to the return type
-             * under the same conditions as for g_object_ref().
-             * @returns @object
-             */
-            ref_sink(): GObject.Object;
-            /**
-             * Releases all references to other objects. This can be used to break
-             * reference cycles.
-             *
-             * This function should only be called from object system implementations.
-             */
-            run_dispose(): void;
-            /**
-             * Each object carries around a table of associations from
-             * strings to pointers.  This function lets you set an association.
-             *
-             * If the object already had an association with that name,
-             * the old association will be destroyed.
-             *
-             * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-             * This means a copy of `key` is kept permanently (even after `object` has been
-             * finalized) — so it is recommended to only use a small, bounded set of values
-             * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-             * @param key name of the key
-             * @param data data to associate with that key
-             */
-            set_data(key: string, data?: any | null): void;
-            /**
-             * Sets a property on an object.
-             * @param property_name The name of the property to set
-             * @param value The value to set the property to
-             */
-            set_property(property_name: string, value: GObject.Value | any): void;
-            /**
-             * Remove a specified datum from the object's data associations,
-             * without invoking the association's destroy handler.
-             * @param key name of the key
-             * @returns the data if found, or %NULL          if no such data exists.
-             */
-            steal_data(key: string): any | null;
-            /**
-             * This function gets back user data pointers stored via
-             * g_object_set_qdata() and removes the `data` from object
-             * without invoking its destroy() function (if any was
-             * set).
-             * Usually, calling this function is only required to update
-             * user data pointers with a destroy notifier, for example:
-             *
-             * ```c
-             * void
-             * object_add_to_user_list (GObject     *object,
-             *                          const gchar *new_string)
-             * {
-             *   // the quark, naming the object data
-             *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-             *   // retrieve the old string list
-             *   GList *list = g_object_steal_qdata (object, quark_string_list);
-             *
-             *   // prepend new string
-             *   list = g_list_prepend (list, g_strdup (new_string));
-             *   // this changed 'list', so we need to set it again
-             *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-             * }
-             * static void
-             * free_string_list (gpointer data)
-             * {
-             *   GList *node, *list = data;
-             *
-             *   for (node = list; node; node = node->next)
-             *     g_free (node->data);
-             *   g_list_free (list);
-             * }
-             * ```
-             *
-             * Using g_object_get_qdata() in the above example, instead of
-             * g_object_steal_qdata() would have left the destroy function set,
-             * and thus the partial string list would have been freed upon
-             * g_object_set_qdata_full().
-             * @param quark A #GQuark, naming the user data pointer
-             * @returns The user data pointer set, or %NULL
-             */
-            steal_qdata(quark: GLib.Quark): any | null;
-            /**
-             * Reverts the effect of a previous call to
-             * g_object_freeze_notify(). The freeze count is decreased on `object`
-             * and when it reaches zero, queued "notify" signals are emitted.
-             *
-             * Duplicate notifications for each property are squashed so that at most one
-             * #GObject::notify signal is emitted for each property, in the reverse order
-             * in which they have been queued.
-             *
-             * It is an error to call this function when the freeze count is zero.
-             */
-            thaw_notify(): void;
-            /**
-             * Decreases the reference count of `object`. When its reference count
-             * drops to 0, the object is finalized (i.e. its memory is freed).
-             *
-             * If the pointer to the #GObject may be reused in future (for example, if it is
-             * an instance variable of another object), it is recommended to clear the
-             * pointer to %NULL rather than retain a dangling pointer to a potentially
-             * invalid #GObject instance. Use g_clear_object() for this.
-             */
-            unref(): void;
-            /**
-             * This function essentially limits the life time of the `closure` to
-             * the life time of the object. That is, when the object is finalized,
-             * the `closure` is invalidated by calling g_closure_invalidate() on
-             * it, in order to prevent invocations of the closure with a finalized
-             * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-             * added as marshal guards to the `closure,` to ensure that an extra
-             * reference count is held on `object` during invocation of the
-             * `closure`.  Usually, this function will be called on closures that
-             * use this `object` as closure data.
-             * @param closure #GClosure to watch
-             */
-            watch_closure(closure: GObject.Closure): void;
-            /**
-             * the `constructed` function is called by g_object_new() as the
-             *  final step of the object creation process.  At the point of the call, all
-             *  construction properties have been set on the object.  The purpose of this
-             *  call is to allow for object initialisation steps that can only be performed
-             *  after construction properties have been set.  `constructed` implementors
-             *  should chain up to the `constructed` call of their parent class to allow it
-             *  to complete its initialisation.
-             */
-            vfunc_constructed(): void;
-            /**
-             * emits property change notification for a bunch
-             *  of properties. Overriding `dispatch_properties_changed` should be rarely
-             *  needed.
-             * @param n_pspecs
-             * @param pspecs
-             */
-            vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-            /**
-             * the `dispose` function is supposed to drop all references to other
-             *  objects, but keep the instance otherwise intact, so that client method
-             *  invocations still work. It may be run multiple times (due to reference
-             *  loops). Before returning, `dispose` should chain up to the `dispose` method
-             *  of the parent class.
-             */
-            vfunc_dispose(): void;
-            /**
-             * instance finalization function, should finish the finalization of
-             *  the instance begun in `dispose` and chain up to the `finalize` method of the
-             *  parent class.
-             */
-            vfunc_finalize(): void;
-            /**
-             * the generic getter for all properties of this type. Should be
-             *  overridden for every type with properties.
-             * @param property_id
-             * @param value
-             * @param pspec
-             */
-            vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-            /**
-             * Emits a "notify" signal for the property `property_name` on `object`.
-             *
-             * When possible, eg. when signaling a property change from within the class
-             * that registered the property, you should use g_object_notify_by_pspec()
-             * instead.
-             *
-             * Note that emission of the notify signal may be blocked with
-             * g_object_freeze_notify(). In this case, the signal emissions are queued
-             * and will be emitted (in reverse order) when g_object_thaw_notify() is
-             * called.
-             * @param pspec
-             */
-            vfunc_notify(pspec: GObject.ParamSpec): void;
-            /**
-             * the generic setter for all properties of this type. Should be
-             *  overridden for every type with properties. If implementations of
-             *  `set_property` don't emit property change notification explicitly, this will
-             *  be done implicitly by the type system. However, if the notify signal is
-             *  emitted explicitly, the type system will not emit it a second time.
-             * @param property_id
-             * @param value
-             * @param pspec
-             */
-            vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-            /**
-             * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-             * @param id Handler ID of the handler to be disconnected
-             */
-            disconnect(id: number): void;
-            /**
-             * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-             * @param properties Object containing the properties to set
-             */
-            set(properties: { [key: string]: any }): void;
-            /**
-             * Blocks a handler of an instance so it will not be called during any signal emissions
-             * @param id Handler ID of the handler to be blocked
-             */
-            block_signal_handler(id: number): void;
-            /**
-             * Unblocks a handler so it will be called again during any signal emissions
-             * @param id Handler ID of the handler to be unblocked
-             */
-            unblock_signal_handler(id: number): void;
-            /**
-             * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-             * @param detailedName Name of the signal to stop emission of
-             */
-            stop_emission_by_name(detailedName: string): void;
-            /**
-             * Clears the pending flag on `stream`.
-             */
-            clear_pending(): void;
-            /**
-             * Closes the stream, releasing resources related to it.
-             *
-             * Once the stream is closed, all other operations will return %G_IO_ERROR_CLOSED.
-             * Closing a stream multiple times will not return an error.
-             *
-             * Closing a stream will automatically flush any outstanding buffers in the
-             * stream.
-             *
-             * Streams will be automatically closed when the last reference
-             * is dropped, but you might want to call this function to make sure
-             * resources are released as early as possible.
-             *
-             * Some streams might keep the backing store of the stream (e.g. a file descriptor)
-             * open after the stream is closed. See the documentation for the individual
-             * stream for details.
-             *
-             * On failure the first error that happened will be reported, but the close
-             * operation will finish as much as possible. A stream that failed to
-             * close will still return %G_IO_ERROR_CLOSED for all operations. Still, it
-             * is important to check and report the error to the user, otherwise
-             * there might be a loss of data as all data might not be written.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * Cancelling a close will still leave the stream closed, but there some streams
-             * can use a faster close that doesn't block to e.g. check errors. On
-             * cancellation (as with any error) there is no guarantee that all written
-             * data will reach the target.
-             * @param cancellable optional cancellable object
-             * @returns %TRUE on success, %FALSE on failure
-             */
-            close(cancellable?: Cancellable | null): boolean;
-            /**
-             * Requests an asynchronous close of the stream, releasing resources
-             * related to it. When the operation is finished `callback` will be
-             * called. You can then call g_output_stream_close_finish() to get
-             * the result of the operation.
-             *
-             * For behaviour details see g_output_stream_close().
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional cancellable object
-             */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
-            /**
-             * Requests an asynchronous close of the stream, releasing resources
-             * related to it. When the operation is finished `callback` will be
-             * called. You can then call g_output_stream_close_finish() to get
-             * the result of the operation.
-             *
-             * For behaviour details see g_output_stream_close().
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional cancellable object
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            close_async(
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Requests an asynchronous close of the stream, releasing resources
-             * related to it. When the operation is finished `callback` will be
-             * called. You can then call g_output_stream_close_finish() to get
-             * the result of the operation.
-             *
-             * For behaviour details see g_output_stream_close().
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional cancellable object
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            close_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
-            /**
-             * Closes an output stream.
-             * @param result a #GAsyncResult.
-             * @returns %TRUE if stream was successfully closed, %FALSE otherwise.
-             */
-            close_finish(result: AsyncResult): boolean;
-            /**
-             * Forces a write of all user-space buffered data for the given
-             * `stream`. Will block during the operation. Closing the stream will
-             * implicitly cause a flush.
-             *
-             * This function is optional for inherited classes.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param cancellable optional cancellable object
-             * @returns %TRUE on success, %FALSE on error
-             */
-            flush(cancellable?: Cancellable | null): boolean;
-            /**
-             * Forces an asynchronous write of all user-space buffered data for
-             * the given `stream`.
-             * For behaviour details see g_output_stream_flush().
-             *
-             * When the operation is finished `callback` will be
-             * called. You can then call g_output_stream_flush_finish() to get the
-             * result of the operation.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            flush_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
-            /**
-             * Forces an asynchronous write of all user-space buffered data for
-             * the given `stream`.
-             * For behaviour details see g_output_stream_flush().
-             *
-             * When the operation is finished `callback` will be
-             * called. You can then call g_output_stream_flush_finish() to get the
-             * result of the operation.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            flush_async(
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Forces an asynchronous write of all user-space buffered data for
-             * the given `stream`.
-             * For behaviour details see g_output_stream_flush().
-             *
-             * When the operation is finished `callback` will be
-             * called. You can then call g_output_stream_flush_finish() to get the
-             * result of the operation.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            flush_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
-            /**
-             * Finishes flushing an output stream.
-             * @param result a GAsyncResult.
-             * @returns %TRUE if flush operation succeeded, %FALSE otherwise.
-             */
-            flush_finish(result: AsyncResult): boolean;
-            /**
-             * Checks if an output stream has pending actions.
-             * @returns %TRUE if @stream has pending actions.
-             */
-            has_pending(): boolean;
-            /**
-             * Checks if an output stream has already been closed.
-             * @returns %TRUE if @stream is closed. %FALSE otherwise.
-             */
-            is_closed(): boolean;
-            /**
-             * Checks if an output stream is being closed. This can be
-             * used inside e.g. a flush implementation to see if the
-             * flush (or other i/o operation) is called from within
-             * the closing operation.
-             * @returns %TRUE if @stream is being closed. %FALSE otherwise.
-             */
-            is_closing(): boolean;
-            /**
-             * Sets `stream` to have actions pending. If the pending flag is
-             * already set or `stream` is closed, it will return %FALSE and set
-             * `error`.
-             * @returns %TRUE if pending was previously unset and is now set.
-             */
-            set_pending(): boolean;
-            /**
-             * Splices an input stream into an output stream.
-             * @param source a #GInputStream.
-             * @param flags a set of #GOutputStreamSpliceFlags.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @returns a #gssize containing the size of the data spliced, or     -1 if an error occurred. Note that if the number of bytes     spliced is greater than %G_MAXSSIZE, then that will be     returned, and there is no way to determine the actual number     of bytes spliced.
-             */
-            splice(
-                source: InputStream,
-                flags: OutputStreamSpliceFlags | null,
-                cancellable?: Cancellable | null,
-            ): number;
-            /**
-             * Splices a stream asynchronously.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_splice_finish() to get the
-             * result of the operation.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_splice().
-             * @param source a #GInputStream.
-             * @param flags a set of #GOutputStreamSpliceFlags.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            splice_async(
-                source: InputStream,
-                flags: OutputStreamSpliceFlags | null,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-            ): Promise<number>;
-            /**
-             * Splices a stream asynchronously.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_splice_finish() to get the
-             * result of the operation.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_splice().
-             * @param source a #GInputStream.
-             * @param flags a set of #GOutputStreamSpliceFlags.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            splice_async(
-                source: InputStream,
-                flags: OutputStreamSpliceFlags | null,
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Splices a stream asynchronously.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_splice_finish() to get the
-             * result of the operation.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_splice().
-             * @param source a #GInputStream.
-             * @param flags a set of #GOutputStreamSpliceFlags.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            splice_async(
-                source: InputStream,
-                flags: OutputStreamSpliceFlags | null,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
-            /**
-             * Finishes an asynchronous stream splice operation.
-             * @param result a #GAsyncResult.
-             * @returns a #gssize of the number of bytes spliced. Note that if the     number of bytes spliced is greater than %G_MAXSSIZE, then that     will be returned, and there is no way to determine the actual     number of bytes spliced.
-             */
-            splice_finish(result: AsyncResult): number;
-            /**
-             * Tries to write `count` bytes from `buffer` into the stream. Will block
-             * during the operation.
-             *
-             * If count is 0, returns 0 and does nothing. A value of `count`
-             * larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes written to the stream is returned.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. on a partial I/O error, or if there is not enough
-             * storage in the stream. All writes block until at least one byte
-             * is written or an error occurs; 0 is never returned (unless
-             * `count` is 0).
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             *
-             * On error -1 is returned and `error` is set accordingly.
-             * @param buffer the buffer containing the data to write.
-             * @param cancellable optional cancellable object
-             * @returns Number of bytes written, or -1 on error
-             */
-            write(buffer: Uint8Array | string, cancellable?: Cancellable | null): number;
-            /**
-             * Tries to write `count` bytes from `buffer` into the stream. Will block
-             * during the operation.
-             *
-             * This function is similar to g_output_stream_write(), except it tries to
-             * write as many bytes as requested, only stopping on an error.
-             *
-             * On a successful write of `count` bytes, %TRUE is returned, and `bytes_written`
-             * is set to `count`.
-             *
-             * If there is an error during the operation %FALSE is returned and `error`
-             * is set to indicate the error status.
-             *
-             * As a special exception to the normal conventions for functions that
-             * use #GError, if this function returns %FALSE (and sets `error)` then
-             * `bytes_written` will be set to the number of bytes that were
-             * successfully written before the error was encountered.  This
-             * functionality is only available from C.  If you need it from another
-             * language then you must write your own loop around
-             * g_output_stream_write().
-             * @param buffer the buffer containing the data to write.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @returns %TRUE on success, %FALSE if there was an error
-             */
-            write_all(buffer: Uint8Array | string, cancellable?: Cancellable | null): [boolean, number];
-            /**
-             * Request an asynchronous write of `count` bytes from `buffer` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_write_all_finish() to get the result of the
-             * operation.
-             *
-             * This is the asynchronous version of g_output_stream_write_all().
-             *
-             * Call g_output_stream_write_all_finish() to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * Note that no copy of `buffer` will be made, so it must stay valid
-             * until `callback` is called.
-             * @param buffer the buffer containing the data to write
-             * @param io_priority the io priority of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             */
-            write_all_async(
-                buffer: Uint8Array | string,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-            ): Promise<number>;
-            /**
-             * Request an asynchronous write of `count` bytes from `buffer` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_write_all_finish() to get the result of the
-             * operation.
-             *
-             * This is the asynchronous version of g_output_stream_write_all().
-             *
-             * Call g_output_stream_write_all_finish() to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * Note that no copy of `buffer` will be made, so it must stay valid
-             * until `callback` is called.
-             * @param buffer the buffer containing the data to write
-             * @param io_priority the io priority of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            write_all_async(
-                buffer: Uint8Array | string,
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Request an asynchronous write of `count` bytes from `buffer` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_write_all_finish() to get the result of the
-             * operation.
-             *
-             * This is the asynchronous version of g_output_stream_write_all().
-             *
-             * Call g_output_stream_write_all_finish() to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * Note that no copy of `buffer` will be made, so it must stay valid
-             * until `callback` is called.
-             * @param buffer the buffer containing the data to write
-             * @param io_priority the io priority of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            write_all_async(
-                buffer: Uint8Array | string,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
-            /**
-             * Finishes an asynchronous stream write operation started with
-             * g_output_stream_write_all_async().
-             *
-             * As a special exception to the normal conventions for functions that
-             * use #GError, if this function returns %FALSE (and sets `error)` then
-             * `bytes_written` will be set to the number of bytes that were
-             * successfully written before the error was encountered.  This
-             * functionality is only available from C.  If you need it from another
-             * language then you must write your own loop around
-             * g_output_stream_write_async().
-             * @param result a #GAsyncResult
-             * @returns %TRUE on success, %FALSE if there was an error
-             */
-            write_all_finish(result: AsyncResult): [boolean, number];
-            /**
-             * Request an asynchronous write of `count` bytes from `buffer` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_write_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a
-             * %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes written will be passed to the
-             * `callback`. It is not an error if this is not the same as the
-             * requested size, as it can happen e.g. on a partial I/O error,
-             * but generally we try to write as many bytes as requested.
-             *
-             * You are guaranteed that this method will never fail with
-             * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
-             * method will just wait until this changes.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_write().
-             *
-             * Note that no copy of `buffer` will be made, so it must stay valid
-             * until `callback` is called. See g_output_stream_write_bytes_async()
-             * for a #GBytes version that will automatically hold a reference to
-             * the contents (without copying) for the duration of the call.
-             * @param buffer the buffer containing the data to write.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            write_async(
-                buffer: Uint8Array | string,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-            ): Promise<number>;
-            /**
-             * Request an asynchronous write of `count` bytes from `buffer` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_write_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a
-             * %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes written will be passed to the
-             * `callback`. It is not an error if this is not the same as the
-             * requested size, as it can happen e.g. on a partial I/O error,
-             * but generally we try to write as many bytes as requested.
-             *
-             * You are guaranteed that this method will never fail with
-             * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
-             * method will just wait until this changes.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_write().
-             *
-             * Note that no copy of `buffer` will be made, so it must stay valid
-             * until `callback` is called. See g_output_stream_write_bytes_async()
-             * for a #GBytes version that will automatically hold a reference to
-             * the contents (without copying) for the duration of the call.
-             * @param buffer the buffer containing the data to write.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            write_async(
-                buffer: Uint8Array | string,
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Request an asynchronous write of `count` bytes from `buffer` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_write_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a
-             * %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes written will be passed to the
-             * `callback`. It is not an error if this is not the same as the
-             * requested size, as it can happen e.g. on a partial I/O error,
-             * but generally we try to write as many bytes as requested.
-             *
-             * You are guaranteed that this method will never fail with
-             * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
-             * method will just wait until this changes.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_write().
-             *
-             * Note that no copy of `buffer` will be made, so it must stay valid
-             * until `callback` is called. See g_output_stream_write_bytes_async()
-             * for a #GBytes version that will automatically hold a reference to
-             * the contents (without copying) for the duration of the call.
-             * @param buffer the buffer containing the data to write.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            write_async(
-                buffer: Uint8Array | string,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
-            /**
-             * A wrapper function for g_output_stream_write() which takes a
-             * #GBytes as input.  This can be more convenient for use by language
-             * bindings or in other cases where the refcounted nature of #GBytes
-             * is helpful over a bare pointer interface.
-             *
-             * However, note that this function may still perform partial writes,
-             * just like g_output_stream_write().  If that occurs, to continue
-             * writing, you will need to create a new #GBytes containing just the
-             * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
-             * #GBytes instance multiple times potentially can result in duplicated
-             * data in the output stream.
-             * @param bytes the #GBytes to write
-             * @param cancellable optional cancellable object
-             * @returns Number of bytes written, or -1 on error
-             */
-            write_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Cancellable | null): number;
-            /**
-             * This function is similar to g_output_stream_write_async(), but
-             * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
-             * this allows the stream to avoid taking a copy of the data.
-             *
-             * However, note that this function may still perform partial writes,
-             * just like g_output_stream_write_async(). If that occurs, to continue
-             * writing, you will need to create a new #GBytes containing just the
-             * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
-             * #GBytes instance multiple times potentially can result in duplicated
-             * data in the output stream.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_write_bytes().
-             * @param bytes The bytes to write
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            write_bytes_async(
-                bytes: GLib.Bytes | Uint8Array,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-            ): Promise<number>;
-            /**
-             * This function is similar to g_output_stream_write_async(), but
-             * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
-             * this allows the stream to avoid taking a copy of the data.
-             *
-             * However, note that this function may still perform partial writes,
-             * just like g_output_stream_write_async(). If that occurs, to continue
-             * writing, you will need to create a new #GBytes containing just the
-             * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
-             * #GBytes instance multiple times potentially can result in duplicated
-             * data in the output stream.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_write_bytes().
-             * @param bytes The bytes to write
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            write_bytes_async(
-                bytes: GLib.Bytes | Uint8Array,
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * This function is similar to g_output_stream_write_async(), but
-             * takes a #GBytes as input.  Due to the refcounted nature of #GBytes,
-             * this allows the stream to avoid taking a copy of the data.
-             *
-             * However, note that this function may still perform partial writes,
-             * just like g_output_stream_write_async(). If that occurs, to continue
-             * writing, you will need to create a new #GBytes containing just the
-             * remaining bytes, using g_bytes_new_from_bytes(). Passing the same
-             * #GBytes instance multiple times potentially can result in duplicated
-             * data in the output stream.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_write_bytes().
-             * @param bytes The bytes to write
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            write_bytes_async(
-                bytes: GLib.Bytes | Uint8Array,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
-            /**
-             * Finishes a stream write-from-#GBytes operation.
-             * @param result a #GAsyncResult.
-             * @returns a #gssize containing the number of bytes written to the stream.
-             */
-            write_bytes_finish(result: AsyncResult): number;
-            /**
-             * Finishes a stream write operation.
-             * @param result a #GAsyncResult.
-             * @returns a #gssize containing the number of bytes written to the stream.
-             */
-            write_finish(result: AsyncResult): number;
-            /**
-             * Tries to write the bytes contained in the `n_vectors` `vectors` into the
-             * stream. Will block during the operation.
-             *
-             * If `n_vectors` is 0 or the sum of all bytes in `vectors` is 0, returns 0 and
-             * does nothing.
-             *
-             * On success, the number of bytes written to the stream is returned.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. on a partial I/O error, or if there is not enough
-             * storage in the stream. All writes block until at least one byte
-             * is written or an error occurs; 0 is never returned (unless
-             * `n_vectors` is 0 or the sum of all bytes in `vectors` is 0).
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             *
-             * Some implementations of g_output_stream_writev() may have limitations on the
-             * aggregate buffer size, and will return %G_IO_ERROR_INVALID_ARGUMENT if these
-             * are exceeded. For example, when writing to a local file on UNIX platforms,
-             * the aggregate buffer size must not exceed %G_MAXSSIZE bytes.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param cancellable optional cancellable object
-             * @returns %TRUE on success, %FALSE if there was an error
-             */
-            writev(vectors: OutputVector[], cancellable?: Cancellable | null): [boolean, number];
-            /**
-             * Tries to write the bytes contained in the `n_vectors` `vectors` into the
-             * stream. Will block during the operation.
-             *
-             * This function is similar to g_output_stream_writev(), except it tries to
-             * write as many bytes as requested, only stopping on an error.
-             *
-             * On a successful write of all `n_vectors` vectors, %TRUE is returned, and
-             * `bytes_written` is set to the sum of all the sizes of `vectors`.
-             *
-             * If there is an error during the operation %FALSE is returned and `error`
-             * is set to indicate the error status.
-             *
-             * As a special exception to the normal conventions for functions that
-             * use #GError, if this function returns %FALSE (and sets `error)` then
-             * `bytes_written` will be set to the number of bytes that were
-             * successfully written before the error was encountered.  This
-             * functionality is only available from C. If you need it from another
-             * language then you must write your own loop around
-             * g_output_stream_write().
-             *
-             * The content of the individual elements of `vectors` might be changed by this
-             * function.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @returns %TRUE on success, %FALSE if there was an error
-             */
-            writev_all(vectors: OutputVector[], cancellable?: Cancellable | null): [boolean, number];
-            /**
-             * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_writev_all_finish() to get the result of the
-             * operation.
-             *
-             * This is the asynchronous version of g_output_stream_writev_all().
-             *
-             * Call g_output_stream_writev_all_finish() to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * Note that no copy of `vectors` will be made, so it must stay valid
-             * until `callback` is called. The content of the individual elements
-             * of `vectors` might be changed by this function.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param io_priority the I/O priority of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             */
-            writev_all_async(
-                vectors: OutputVector[],
-                io_priority: number,
-                cancellable?: Cancellable | null,
-            ): Promise<number>;
-            /**
-             * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_writev_all_finish() to get the result of the
-             * operation.
-             *
-             * This is the asynchronous version of g_output_stream_writev_all().
-             *
-             * Call g_output_stream_writev_all_finish() to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * Note that no copy of `vectors` will be made, so it must stay valid
-             * until `callback` is called. The content of the individual elements
-             * of `vectors` might be changed by this function.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param io_priority the I/O priority of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            writev_all_async(
-                vectors: OutputVector[],
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Request an asynchronous write of the bytes contained in the `n_vectors` `vectors` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_writev_all_finish() to get the result of the
-             * operation.
-             *
-             * This is the asynchronous version of g_output_stream_writev_all().
-             *
-             * Call g_output_stream_writev_all_finish() to collect the result.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * Note that no copy of `vectors` will be made, so it must stay valid
-             * until `callback` is called. The content of the individual elements
-             * of `vectors` might be changed by this function.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param io_priority the I/O priority of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            writev_all_async(
-                vectors: OutputVector[],
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
-            /**
-             * Finishes an asynchronous stream write operation started with
-             * g_output_stream_writev_all_async().
-             *
-             * As a special exception to the normal conventions for functions that
-             * use #GError, if this function returns %FALSE (and sets `error)` then
-             * `bytes_written` will be set to the number of bytes that were
-             * successfully written before the error was encountered.  This
-             * functionality is only available from C.  If you need it from another
-             * language then you must write your own loop around
-             * g_output_stream_writev_async().
-             * @param result a #GAsyncResult
-             * @returns %TRUE on success, %FALSE if there was an error
-             */
-            writev_all_finish(result: AsyncResult): [boolean, number];
-            /**
-             * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_writev_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * On success, the number of bytes written will be passed to the
-             * `callback`. It is not an error if this is not the same as the
-             * requested size, as it can happen e.g. on a partial I/O error,
-             * but generally we try to write as many bytes as requested.
-             *
-             * You are guaranteed that this method will never fail with
-             * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
-             * method will just wait until this changes.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_writev().
-             *
-             * Note that no copy of `vectors` will be made, so it must stay valid
-             * until `callback` is called.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param io_priority the I/O priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            writev_async(
-                vectors: OutputVector[],
-                io_priority: number,
-                cancellable?: Cancellable | null,
-            ): Promise<number>;
-            /**
-             * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_writev_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * On success, the number of bytes written will be passed to the
-             * `callback`. It is not an error if this is not the same as the
-             * requested size, as it can happen e.g. on a partial I/O error,
-             * but generally we try to write as many bytes as requested.
-             *
-             * You are guaranteed that this method will never fail with
-             * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
-             * method will just wait until this changes.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_writev().
-             *
-             * Note that no copy of `vectors` will be made, so it must stay valid
-             * until `callback` is called.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param io_priority the I/O priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            writev_async(
-                vectors: OutputVector[],
-                io_priority: number,
-                cancellable: Cancellable | null,
-                callback: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_writev_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * On success, the number of bytes written will be passed to the
-             * `callback`. It is not an error if this is not the same as the
-             * requested size, as it can happen e.g. on a partial I/O error,
-             * but generally we try to write as many bytes as requested.
-             *
-             * You are guaranteed that this method will never fail with
-             * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
-             * method will just wait until this changes.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_writev().
-             *
-             * Note that no copy of `vectors` will be made, so it must stay valid
-             * until `callback` is called.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param io_priority the I/O priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            writev_async(
-                vectors: OutputVector[],
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
-            /**
-             * Finishes a stream writev operation.
-             * @param result a #GAsyncResult.
-             * @returns %TRUE on success, %FALSE if there was an error
-             */
-            writev_finish(result: AsyncResult): [boolean, number];
-            /**
-             * Requests an asynchronous close of the stream, releasing resources
-             * related to it. When the operation is finished `callback` will be
-             * called. You can then call g_output_stream_close_finish() to get
-             * the result of the operation.
-             *
-             * For behaviour details see g_output_stream_close().
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional cancellable object
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_close_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Closes an output stream.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_close_finish(result: AsyncResult): boolean;
-            vfunc_close_fn(cancellable?: Cancellable | null): boolean;
-            /**
-             * Forces a write of all user-space buffered data for the given
-             * `stream`. Will block during the operation. Closing the stream will
-             * implicitly cause a flush.
-             *
-             * This function is optional for inherited classes.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param cancellable optional cancellable object
-             */
-            vfunc_flush(cancellable?: Cancellable | null): boolean;
-            /**
-             * Forces an asynchronous write of all user-space buffered data for
-             * the given `stream`.
-             * For behaviour details see g_output_stream_flush().
-             *
-             * When the operation is finished `callback` will be
-             * called. You can then call g_output_stream_flush_finish() to get the
-             * result of the operation.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_flush_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes flushing an output stream.
-             * @param result a GAsyncResult.
-             */
-            vfunc_flush_finish(result: AsyncResult): boolean;
-            /**
-             * Splices an input stream into an output stream.
-             * @param source a #GInputStream.
-             * @param flags a set of #GOutputStreamSpliceFlags.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_splice(source: InputStream, flags: OutputStreamSpliceFlags, cancellable?: Cancellable | null): number;
-            /**
-             * Splices a stream asynchronously.
-             * When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_splice_finish() to get the
-             * result of the operation.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_splice().
-             * @param source a #GInputStream.
-             * @param flags a set of #GOutputStreamSpliceFlags.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_splice_async(
-                source: InputStream,
-                flags: OutputStreamSpliceFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous stream splice operation.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_splice_finish(result: AsyncResult): number;
-            /**
-             * Request an asynchronous write of `count` bytes from `buffer` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_write_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * A value of `count` larger than %G_MAXSSIZE will cause a
-             * %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes written will be passed to the
-             * `callback`. It is not an error if this is not the same as the
-             * requested size, as it can happen e.g. on a partial I/O error,
-             * but generally we try to write as many bytes as requested.
-             *
-             * You are guaranteed that this method will never fail with
-             * %G_IO_ERROR_WOULD_BLOCK - if `stream` can't accept more data, the
-             * method will just wait until this changes.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_write().
-             *
-             * Note that no copy of `buffer` will be made, so it must stay valid
-             * until `callback` is called. See g_output_stream_write_bytes_async()
-             * for a #GBytes version that will automatically hold a reference to
-             * the contents (without copying) for the duration of the call.
-             * @param buffer the buffer containing the data to write.
-             * @param io_priority the io priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            vfunc_write_async(
-                buffer: Uint8Array | null,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a stream write operation.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_write_finish(result: AsyncResult): number;
-            /**
-             * Tries to write `count` bytes from `buffer` into the stream. Will block
-             * during the operation.
-             *
-             * If count is 0, returns 0 and does nothing. A value of `count`
-             * larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
-             *
-             * On success, the number of bytes written to the stream is returned.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. on a partial I/O error, or if there is not enough
-             * storage in the stream. All writes block until at least one byte
-             * is written or an error occurs; 0 is never returned (unless
-             * `count` is 0).
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             *
-             * On error -1 is returned and `error` is set accordingly.
-             * @param buffer the buffer containing the data to write.
-             * @param cancellable optional cancellable object
-             */
-            vfunc_write_fn(buffer?: Uint8Array | null, cancellable?: Cancellable | null): number;
-            /**
-             * Request an asynchronous write of the bytes contained in `n_vectors` `vectors` into
-             * the stream. When the operation is finished `callback` will be called.
-             * You can then call g_output_stream_writev_finish() to get the result of the
-             * operation.
-             *
-             * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
-             *
-             * On success, the number of bytes written will be passed to the
-             * `callback`. It is not an error if this is not the same as the
-             * requested size, as it can happen e.g. on a partial I/O error,
-             * but generally we try to write as many bytes as requested.
-             *
-             * You are guaranteed that this method will never fail with
-             * %G_IO_ERROR_WOULD_BLOCK — if `stream` can't accept more data, the
-             * method will just wait until this changes.
-             *
-             * Any outstanding I/O request with higher priority (lower numerical
-             * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             *
-             * The asynchronous methods have a default fallback that uses threads
-             * to implement asynchronicity, so they are optional for inheriting
-             * classes. However, if you override one you must override all.
-             *
-             * For the synchronous, blocking version of this function, see
-             * g_output_stream_writev().
-             *
-             * Note that no copy of `vectors` will be made, so it must stay valid
-             * until `callback` is called.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param io_priority the I/O priority of the request.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            vfunc_writev_async(
-                vectors: OutputVector[],
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a stream writev operation.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_writev_finish(result: AsyncResult): [boolean, number];
-            /**
-             * Tries to write the bytes contained in the `n_vectors` `vectors` into the
-             * stream. Will block during the operation.
-             *
-             * If `n_vectors` is 0 or the sum of all bytes in `vectors` is 0, returns 0 and
-             * does nothing.
-             *
-             * On success, the number of bytes written to the stream is returned.
-             * It is not an error if this is not the same as the requested size, as it
-             * can happen e.g. on a partial I/O error, or if there is not enough
-             * storage in the stream. All writes block until at least one byte
-             * is written or an error occurs; 0 is never returned (unless
-             * `n_vectors` is 0 or the sum of all bytes in `vectors` is 0).
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             *
-             * Some implementations of g_output_stream_writev() may have limitations on the
-             * aggregate buffer size, and will return %G_IO_ERROR_INVALID_ARGUMENT if these
-             * are exceeded. For example, when writing to a local file on UNIX platforms,
-             * the aggregate buffer size must not exceed %G_MAXSSIZE bytes.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             * @param cancellable optional cancellable object
-             */
-            vfunc_writev_fn(vectors: OutputVector[], cancellable?: Cancellable | null): [boolean, number];
         }
 
         namespace UnixSocketAddress {
@@ -70635,6 +65679,7 @@ declare module 'gi://Gio?version=2.0' {
                 'notify::file-info': (pspec: GObject.ParamSpec) => void;
                 'notify::format': (pspec: GObject.ParamSpec) => void;
                 'notify::level': (pspec: GObject.ParamSpec) => void;
+                'notify::os': (pspec: GObject.ParamSpec) => void;
             }
 
             // Constructor properties interface
@@ -70644,6 +65689,7 @@ declare module 'gi://Gio?version=2.0' {
                 fileInfo: FileInfo;
                 format: ZlibCompressorFormat;
                 level: number;
+                os: number;
             }
         }
 
@@ -70657,16 +65703,26 @@ declare module 'gi://Gio?version=2.0' {
             // Properties
 
             /**
-             * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
-             * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
-             * and modification time from the file info to the GZIP header.
+             * A [class`Gio`.FileInfo] containing file information to put into the gzip
+             * header.
+             *
+             * The file name and modification time from the file info will be used.
+             *
+             * This will only be used if non-`NULL` and
+             * [property`Gio`.ZlibCompressor:format] is
+             * [enum`Gio`.ZlibCompressorFormat.GZIP].
              */
             get file_info(): FileInfo;
             set file_info(val: FileInfo);
             /**
-             * If set to a non-%NULL #GFileInfo object, and #GZlibCompressor:format is
-             * %G_ZLIB_COMPRESSOR_FORMAT_GZIP, the compressor will write the file name
-             * and modification time from the file info to the GZIP header.
+             * A [class`Gio`.FileInfo] containing file information to put into the gzip
+             * header.
+             *
+             * The file name and modification time from the file info will be used.
+             *
+             * This will only be used if non-`NULL` and
+             * [property`Gio`.ZlibCompressor:format] is
+             * [enum`Gio`.ZlibCompressorFormat.GZIP].
              */
             get fileInfo(): FileInfo;
             set fileInfo(val: FileInfo);
@@ -70676,9 +65732,25 @@ declare module 'gi://Gio?version=2.0' {
             get format(): ZlibCompressorFormat;
             /**
              * The level of compression from `0` (no compression) to `9` (most
-             * compression). `-1` for the default level.
+             * compression).
+             *
+             * `-1` for the default level.
              */
             get level(): number;
+            /**
+             * The OS code of the gzip header.
+             *
+             * This will be used if set to a non-negative value, and if
+             * [property`Gio`.ZlibCompressor:format] is
+             * [enum`Gio`.ZlibCompressorFormat.GZIP], the compressor will set the OS code of
+             * the gzip header to this value.
+             *
+             * If the value is unset, zlib will set the OS code depending on the platform.
+             * This may be undesirable when reproducible output is desired. In that case setting
+             * the OS code to `3` (for Unix) is recommended.
+             */
+            get os(): number;
+            set os(val: number);
 
             /**
              * Compile-time signal type information.
@@ -70718,22 +65790,33 @@ declare module 'gi://Gio?version=2.0' {
             // Methods
 
             /**
-             * Returns the #GZlibCompressor:file-info property.
-             * @returns a #GFileInfo, or %NULL
+             * Gets the [property`Gio`.ZlibCompressor:file-info] property.
+             * @returns file info for the gzip header, if set
              */
             get_file_info(): FileInfo | null;
             /**
-             * Sets `file_info` in `compressor`. If non-%NULL, and `compressor'`s
-             * #GZlibCompressor:format property is %G_ZLIB_COMPRESSOR_FORMAT_GZIP,
-             * it will be used to set the file name and modification time in
-             * the GZIP header of the compressed data.
+             * Gets the [property`Gio`.ZlibCompressor:os] property.
+             * @returns the previously set OS value, or `-1` if unset
+             */
+            get_os(): number;
+            /**
+             * Sets the [property`Gio`.ZlibCompressor:file-info] property.
              *
              * Note: it is an error to call this function while a compression is in
              * progress; it may only be called immediately after creation of `compressor,`
-             * or after resetting it with g_converter_reset().
-             * @param file_info a #GFileInfo
+             * or after resetting it with [method`Gio`.Converter.reset].
+             * @param file_info file info for the gzip header
              */
             set_file_info(file_info?: FileInfo | null): void;
+            /**
+             * Sets the [property`Gio`.ZlibCompressor:os] property.
+             *
+             * Note: it is an error to call this function while a compression is in
+             * progress; it may only be called immediately after creation of `compressor,`
+             * or after resetting it with [method`Gio`.Converter.reset].
+             * @param os the OS code to use, or `-1` to unset
+             */
+            set_os(os: number): void;
 
             // Inherited methods
             /**
@@ -71406,17 +66489,21 @@ declare module 'gi://Gio?version=2.0' {
             // Properties
 
             /**
-             * A #GFileInfo containing the information found in the GZIP header
-             * of the data stream processed, or %NULL if the header was not yet
-             * fully processed, is not present at all, or the compressor's
-             * #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP.
+             * A [class`Gio`.FileInfo] containing the information found in the gzip header
+             * of the data stream processed.
+             *
+             * This will be `NULL` if the header was not yet fully processed, is not
+             * present at all, or the compressor’s [property`Gio`.ZlibDecompressor:format]
+             * property is not [enum`Gio`.ZlibCompressorFormat.GZIP].
              */
             get file_info(): FileInfo;
             /**
-             * A #GFileInfo containing the information found in the GZIP header
-             * of the data stream processed, or %NULL if the header was not yet
-             * fully processed, is not present at all, or the compressor's
-             * #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP.
+             * A [class`Gio`.FileInfo] containing the information found in the gzip header
+             * of the data stream processed.
+             *
+             * This will be `NULL` if the header was not yet fully processed, is not
+             * present at all, or the compressor’s [property`Gio`.ZlibDecompressor:format]
+             * property is not [enum`Gio`.ZlibCompressorFormat.GZIP].
              */
             get fileInfo(): FileInfo;
             /**
@@ -71464,12 +66551,8 @@ declare module 'gi://Gio?version=2.0' {
             // Methods
 
             /**
-             * Retrieves the #GFileInfo constructed from the GZIP header data
-             * of compressed data processed by `compressor,` or %NULL if `decompressor'`s
-             * #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP,
-             * or the header data was not fully processed yet, or it not present in the
-             * data stream at all.
-             * @returns a #GFileInfo, or %NULL
+             * Gets the [property`Gio`.ZlibDecompressor:file-info] property.
+             * @returns file info from the gzip header, if available
              */
             get_file_info(): FileInfo | null;
 
@@ -72326,7 +67409,7 @@ declare module 'gi://Gio?version=2.0' {
         }
 
         /**
-         * Struct used in g_dbus_error_register_error_domain().
+         * Struct used in [func`Gio`.DBusError.register_error_domain].
          */
         class DBusErrorEntry {
             static $gtype: GObject.GType<DBusErrorEntry>;
@@ -72764,8 +67847,6 @@ declare module 'gi://Gio?version=2.0' {
         type DatagramBasedInterface = typeof DatagramBased;
         type DebugControllerDBusClass = typeof DebugControllerDBus;
         type DebugControllerInterface = typeof DebugController;
-        type DesktopAppInfoClass = typeof DesktopAppInfo;
-        type DesktopAppInfoLookupIface = typeof DesktopAppInfoLookup;
         type DriveIface = typeof Drive;
         type DtlsClientConnectionInterface = typeof DtlsClientConnection;
         type DtlsConnectionInterface = typeof DtlsConnection;
@@ -72931,7 +68012,6 @@ declare module 'gi://Gio?version=2.0' {
             unref(): void;
         }
 
-        type FileDescriptorBasedIface = typeof FileDescriptorBased;
         type FileEnumeratorClass = typeof FileEnumerator;
         abstract class FileEnumeratorPrivate {
             static $gtype: GObject.GType<FileEnumeratorPrivate>;
@@ -74488,277 +69568,6 @@ declare module 'gi://Gio?version=2.0' {
             _init(...args: any[]): void;
         }
 
-        type UnixFDMessageClass = typeof UnixFDMessage;
-        abstract class UnixFDMessagePrivate {
-            static $gtype: GObject.GType<UnixFDMessagePrivate>;
-
-            // Constructors
-
-            _init(...args: any[]): void;
-        }
-
-        type UnixInputStreamClass = typeof UnixInputStream;
-        abstract class UnixInputStreamPrivate {
-            static $gtype: GObject.GType<UnixInputStreamPrivate>;
-
-            // Constructors
-
-            _init(...args: any[]): void;
-        }
-
-        /**
-         * Defines a Unix mount entry (e.g. `/media/cdrom`).
-         * This corresponds roughly to a mtab entry.
-         */
-        abstract class UnixMountEntry {
-            static $gtype: GObject.GType<UnixMountEntry>;
-
-            // Constructors
-
-            _init(...args: any[]): void;
-
-            // Static methods
-
-            /**
-             * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
-             *
-             * If `time_read` is set, it will be filled with a Unix timestamp for checking
-             * if the mounts have changed since with
-             * [func`GioUnix`.mount_entries_changed_since].
-             *
-             * If more mounts have the same mount path, the last matching mount
-             * is returned.
-             *
-             * This will return `NULL` if there is no mount point at `mount_path`.
-             * @param mount_path path for a possible Unix mount
-             */
-            static at(mount_path: string): [UnixMountEntry | null, number];
-            /**
-             * Gets a [struct`GioUnix`.MountEntry] for a given file path.
-             *
-             * If `time_read` is set, it will be filled with a Unix timestamp for checking
-             * if the mounts have changed since with
-             * [func`GioUnix`.mount_entries_changed_since].
-             *
-             * If more mounts have the same mount path, the last matching mount
-             * is returned.
-             *
-             * This will return `NULL` if looking up the mount entry fails, if
-             * `file_path` doesn’t exist or there is an I/O error.
-             * @param file_path file path on some Unix mount
-             */
-            static ['for'](file_path: string): [UnixMountEntry | null, number];
-
-            // Methods
-
-            /**
-             * Compares two Unix mounts.
-             * @param mount2 second [struct@GioUnix.MountEntry] to compare
-             * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
-             */
-            compare(mount2: UnixMountEntry): number;
-            /**
-             * Makes a copy of `mount_entry`.
-             * @returns a new [struct@GioUnix.MountEntry]
-             */
-            copy(): UnixMountEntry;
-            /**
-             * Frees a Unix mount.
-             */
-            free(): void;
-            /**
-             * Gets the device path for a Unix mount.
-             * @returns a string containing the device path
-             */
-            get_device_path(): string;
-            /**
-             * Gets the filesystem type for the Unix mount.
-             * @returns a string containing the file system type
-             */
-            get_fs_type(): string;
-            /**
-             * Gets the mount path for a Unix mount.
-             * @returns the mount path for @mount_entry
-             */
-            get_mount_path(): string;
-            /**
-             * Gets a comma separated list of mount options for the Unix mount.
-             *
-             * For example: `rw,relatime,seclabel,data=ordered`.
-             *
-             * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
-             * a [struct`GioUnix`.MountEntry] as an argument.
-             * @returns a string containing the options, or `NULL` if not    available.
-             */
-            get_options(): string | null;
-            /**
-             * Gets the root of the mount within the filesystem. This is useful e.g. for
-             * mounts created by bind operation, or btrfs subvolumes.
-             *
-             * For example, the root path is equal to `/` for a mount created by
-             * `mount /dev/sda1 /mnt/foo` and `/bar` for
-             * `mount --bind /mnt/foo/bar /mnt/bar`.
-             * @returns a string containing the root, or `NULL` if not supported
-             */
-            get_root_path(): string | null;
-            /**
-             * Guesses whether a Unix mount entry can be ejected.
-             * @returns true if @mount_entry is deemed to be ejectable; false otherwise
-             */
-            guess_can_eject(): boolean;
-            /**
-             * Guesses the icon of a Unix mount entry.
-             * @returns a [iface@Gio.Icon]
-             */
-            guess_icon(): Icon;
-            /**
-             * Guesses the name of a Unix mount entry.
-             *
-             * The result is a translated string.
-             * @returns a newly allocated translated string
-             */
-            guess_name(): string;
-            /**
-             * Guesses whether a Unix mount entry should be displayed in the UI.
-             * @returns true if @mount_entry is deemed to be displayable; false otherwise
-             */
-            guess_should_display(): boolean;
-            /**
-             * Guesses the symbolic icon of a Unix mount entry.
-             * @returns a [iface@Gio.Icon]
-             */
-            guess_symbolic_icon(): Icon;
-            /**
-             * Checks if a Unix mount is mounted read only.
-             * @returns true if @mount_entry is read only; false otherwise
-             */
-            is_readonly(): boolean;
-            /**
-             * Checks if a Unix mount is a system mount.
-             *
-             * This is the Boolean OR of
-             * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
-             * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
-             *
-             * The definition of what a ‘system’ mount entry is may change over time as new
-             * file system types and device paths are ignored.
-             * @returns true if the Unix mount is for a system path; false otherwise
-             */
-            is_system_internal(): boolean;
-        }
-
-        type UnixMountMonitorClass = typeof UnixMountMonitor;
-        /**
-         * Defines a Unix mount point (e.g. `/dev`).
-         * This corresponds roughly to a fstab entry.
-         */
-        abstract class UnixMountPoint {
-            static $gtype: GObject.GType<UnixMountPoint>;
-
-            // Constructors
-
-            _init(...args: any[]): void;
-
-            // Static methods
-
-            /**
-             * Gets a [struct`GioUnix`.MountPoint] for a given mount path.
-             *
-             * If `time_read` is set, it will be filled with a Unix timestamp for checking if
-             * the mount points have changed since with
-             * [func`GioUnix`.mount_points_changed_since].
-             *
-             * If more mount points have the same mount path, the last matching mount point
-             * is returned.
-             * @param mount_path path for a possible Unix mount point
-             */
-            static at(mount_path: string): [UnixMountPoint | null, number];
-
-            // Methods
-
-            /**
-             * Compares two Unix mount points.
-             * @param mount2 a [struct@GioUnix.MountPoint]
-             * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
-             */
-            compare(mount2: UnixMountPoint): number;
-            /**
-             * Makes a copy of `mount_point`.
-             * @returns a new [struct@GioUnix.MountPoint]
-             */
-            copy(): UnixMountPoint;
-            /**
-             * Frees a Unix mount point.
-             */
-            free(): void;
-            /**
-             * Gets the device path for a Unix mount point.
-             * @returns a string containing the device path
-             */
-            get_device_path(): string;
-            /**
-             * Gets the file system type for the mount point.
-             * @returns a string containing the file system type
-             */
-            get_fs_type(): string;
-            /**
-             * Gets the mount path for a Unix mount point.
-             * @returns a string containing the mount path
-             */
-            get_mount_path(): string;
-            /**
-             * Gets the options for the mount point.
-             * @returns a string containing the options
-             */
-            get_options(): string | null;
-            /**
-             * Guesses whether a Unix mount point can be ejected.
-             * @returns true if @mount_point is deemed to be ejectable; false otherwise
-             */
-            guess_can_eject(): boolean;
-            /**
-             * Guesses the icon of a Unix mount point.
-             * @returns a [iface@Gio.Icon]
-             */
-            guess_icon(): Icon;
-            /**
-             * Guesses the name of a Unix mount point.
-             *
-             * The result is a translated string.
-             * @returns a newly allocated translated string
-             */
-            guess_name(): string;
-            /**
-             * Guesses the symbolic icon of a Unix mount point.
-             * @returns a [iface@Gio.Icon]
-             */
-            guess_symbolic_icon(): Icon;
-            /**
-             * Checks if a Unix mount point is a loopback device.
-             * @returns true if the mount point is a loopback device; false otherwise
-             */
-            is_loopback(): boolean;
-            /**
-             * Checks if a Unix mount point is read only.
-             * @returns true if a mount point is read only; false otherwise
-             */
-            is_readonly(): boolean;
-            /**
-             * Checks if a Unix mount point is mountable by the user.
-             * @returns true if the mount point is user mountable; false otherwise
-             */
-            is_user_mountable(): boolean;
-        }
-
-        type UnixOutputStreamClass = typeof UnixOutputStream;
-        abstract class UnixOutputStreamPrivate {
-            static $gtype: GObject.GType<UnixOutputStreamPrivate>;
-
-            // Constructors
-
-            _init(...args: any[]): void;
-        }
-
         type UnixSocketAddressClass = typeof UnixSocketAddress;
         abstract class UnixSocketAddressPrivate {
             static $gtype: GObject.GType<UnixSocketAddressPrivate>;
@@ -74774,6 +69583,110 @@ declare module 'gi://Gio?version=2.0' {
         type ZlibCompressorClass = typeof ZlibCompressor;
         type ZlibDecompressorClass = typeof ZlibDecompressor;
         namespace Action {
+            /**
+             * Interface for implementing Action.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Activates the action.
+                 *
+                 * `parameter` must be the correct type of parameter for the action (ie:
+                 * the parameter type given at construction time).  If the parameter
+                 * type was `NULL` then `parameter` must also be `NULL`.
+                 *
+                 * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
+                 * @param parameter the parameter to the activation
+                 */
+                vfunc_activate(parameter?: GLib.Variant | null): void;
+                /**
+                 * Request for the state of `action` to be changed to `value`.
+                 *
+                 * The action must be stateful and `value` must be of the correct type.
+                 * See [method`Gio`.Action.get_state_type].
+                 *
+                 * This call merely requests a change.  The action may refuse to change
+                 * its state or may change its state to something other than `value`.
+                 * See [method`Gio`.Action.get_state_hint].
+                 *
+                 * If the `value` [type`GLib`.Variant] is floating, it is consumed.
+                 * @param value the new state
+                 */
+                vfunc_change_state(value: GLib.Variant): void;
+                /**
+                 * Checks if `action` is currently enabled.
+                 *
+                 * An action must be enabled in order to be activated or in order to
+                 * have its state changed from outside callers.
+                 */
+                vfunc_get_enabled(): boolean;
+                /**
+                 * Queries the name of `action`.
+                 */
+                vfunc_get_name(): string;
+                /**
+                 * Queries the type of the parameter that must be given when activating
+                 * `action`.
+                 *
+                 * When activating the action using [method`Gio`.Action.activate], the
+                 * [type`GLib`.Variant] given to that function must be of the type returned by
+                 * this function.
+                 *
+                 * In the case that this function returns `NULL`, you must not give any
+                 * [type`GLib`.Variant], but `NULL` instead.
+                 */
+                vfunc_get_parameter_type(): GLib.VariantType | null;
+                /**
+                 * Queries the current state of `action`.
+                 *
+                 * If the action is not stateful then `NULL` will be returned.  If the
+                 * action is stateful then the type of the return value is the type
+                 * given by [method`Gio`.Action.get_state_type].
+                 *
+                 * The return value (if non-`NULL`) should be freed with
+                 * [method`GLib`.Variant.unref] when it is no longer required.
+                 */
+                vfunc_get_state(): GLib.Variant | null;
+                /**
+                 * Requests a hint about the valid range of values for the state of
+                 * `action`.
+                 *
+                 * If `NULL` is returned it either means that the action is not stateful
+                 * or that there is no hint about the valid range of values for the
+                 * state of the action.
+                 *
+                 * If a [type`GLib`.Variant] array is returned then each item in the array is a
+                 * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+                 * returned then the tuple specifies the inclusive lower and upper bound
+                 * of valid values for the state.
+                 *
+                 * In any case, the information is merely a hint.  It may be possible to
+                 * have a state value outside of the hinted range and setting a value
+                 * within the range may fail.
+                 *
+                 * The return value (if non-`NULL`) should be freed with
+                 * [method`GLib`.Variant.unref] when it is no longer required.
+                 */
+                vfunc_get_state_hint(): GLib.Variant | null;
+                /**
+                 * Queries the type of the state of `action`.
+                 *
+                 * If the action is stateful (e.g. created with
+                 * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
+                 * [type`GLib`.VariantType] of the state.  This is the type of the initial value
+                 * given as the state. All calls to [method`Gio`.Action.change_state] must give a
+                 * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
+                 * [type`GLib`.Variant] of the same type.
+                 *
+                 * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
+                 * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
+                 * will return `NULL` and you must not call [method`Gio`.Action.change_state].
+                 */
+                vfunc_get_state_type(): GLib.VariantType | null;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -74852,7 +69765,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             print_detailed_name(action_name: string, target_value?: GLib.Variant | null): string;
         }
-        interface Action extends GObject.Object {
+        interface Action extends GObject.Object, Action.Interface {
             // Properties
 
             /**
@@ -74997,104 +69910,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns the state type, if the action is stateful
              */
             get_state_type(): GLib.VariantType | null;
-
-            // Virtual methods
-
-            /**
-             * Activates the action.
-             *
-             * `parameter` must be the correct type of parameter for the action (ie:
-             * the parameter type given at construction time).  If the parameter
-             * type was `NULL` then `parameter` must also be `NULL`.
-             *
-             * If the `parameter` [type`GLib`.Variant] is floating, it is consumed.
-             * @param parameter the parameter to the activation
-             */
-            vfunc_activate(parameter?: GLib.Variant | null): void;
-            /**
-             * Request for the state of `action` to be changed to `value`.
-             *
-             * The action must be stateful and `value` must be of the correct type.
-             * See [method`Gio`.Action.get_state_type].
-             *
-             * This call merely requests a change.  The action may refuse to change
-             * its state or may change its state to something other than `value`.
-             * See [method`Gio`.Action.get_state_hint].
-             *
-             * If the `value` [type`GLib`.Variant] is floating, it is consumed.
-             * @param value the new state
-             */
-            vfunc_change_state(value: GLib.Variant): void;
-            /**
-             * Checks if `action` is currently enabled.
-             *
-             * An action must be enabled in order to be activated or in order to
-             * have its state changed from outside callers.
-             */
-            vfunc_get_enabled(): boolean;
-            /**
-             * Queries the name of `action`.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Queries the type of the parameter that must be given when activating
-             * `action`.
-             *
-             * When activating the action using [method`Gio`.Action.activate], the
-             * [type`GLib`.Variant] given to that function must be of the type returned by
-             * this function.
-             *
-             * In the case that this function returns `NULL`, you must not give any
-             * [type`GLib`.Variant], but `NULL` instead.
-             */
-            vfunc_get_parameter_type(): GLib.VariantType | null;
-            /**
-             * Queries the current state of `action`.
-             *
-             * If the action is not stateful then `NULL` will be returned.  If the
-             * action is stateful then the type of the return value is the type
-             * given by [method`Gio`.Action.get_state_type].
-             *
-             * The return value (if non-`NULL`) should be freed with
-             * [method`GLib`.Variant.unref] when it is no longer required.
-             */
-            vfunc_get_state(): GLib.Variant | null;
-            /**
-             * Requests a hint about the valid range of values for the state of
-             * `action`.
-             *
-             * If `NULL` is returned it either means that the action is not stateful
-             * or that there is no hint about the valid range of values for the
-             * state of the action.
-             *
-             * If a [type`GLib`.Variant] array is returned then each item in the array is a
-             * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
-             * returned then the tuple specifies the inclusive lower and upper bound
-             * of valid values for the state.
-             *
-             * In any case, the information is merely a hint.  It may be possible to
-             * have a state value outside of the hinted range and setting a value
-             * within the range may fail.
-             *
-             * The return value (if non-`NULL`) should be freed with
-             * [method`GLib`.Variant.unref] when it is no longer required.
-             */
-            vfunc_get_state_hint(): GLib.Variant | null;
-            /**
-             * Queries the type of the state of `action`.
-             *
-             * If the action is stateful (e.g. created with
-             * [ctor`Gio`.SimpleAction.new_stateful]) then this function returns the
-             * [type`GLib`.VariantType] of the state.  This is the type of the initial value
-             * given as the state. All calls to [method`Gio`.Action.change_state] must give a
-             * [type`GLib`.Variant] of this type and [method`Gio`.Action.get_state] will return a
-             * [type`GLib`.Variant] of the same type.
-             *
-             * If the action is not stateful (e.g. created with [ctor`Gio`.SimpleAction.new])
-             * then this function will return `NULL`. In that case, [method`Gio`.Action.get_state]
-             * will return `NULL` and you must not call [method`Gio`.Action.change_state].
-             */
-            vfunc_get_state_type(): GLib.VariantType | null;
         }
 
         export const Action: ActionNamespace & {
@@ -75102,6 +69917,230 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace ActionGroup {
+            /**
+             * Interface for implementing ActionGroup.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+                 *
+                 * This function should only be called by [type`Gio`.ActionGroup] implementations.
+                 * @param action_name the name of an action in the group
+                 */
+                vfunc_action_added(action_name: string): void;
+                /**
+                 * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+                 *
+                 * This function should only be called by [type`Gio`.ActionGroup] implementations.
+                 * @param action_name the name of an action in the group
+                 * @param enabled whether the action is now enabled
+                 */
+                vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
+                /**
+                 * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+                 *
+                 * This function should only be called by [type`Gio`.ActionGroup] implementations.
+                 * @param action_name the name of an action in the group
+                 */
+                vfunc_action_removed(action_name: string): void;
+                /**
+                 * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+                 *
+                 * This function should only be called by [type`Gio`.ActionGroup] implementations.
+                 * @param action_name the name of an action in the group
+                 * @param state the new state of the named action
+                 */
+                vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
+                /**
+                 * Activate the named action within `action_group`.
+                 *
+                 * If the action is expecting a parameter, then the correct type of
+                 * parameter must be given as `parameter`.  If the action is expecting no
+                 * parameters then `parameter` must be `NULL`.  See
+                 * [method`Gio`.ActionGroup.get_action_parameter_type].
+                 *
+                 * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+                 * activation over D-Bus, this call may return before the relevant
+                 * D-Bus traffic has been sent, or any replies have been received. In
+                 * order to block on such asynchronous activation calls,
+                 * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+                 * depends on the result of the action activation. Without flushing
+                 * the D-Bus connection, there is no guarantee that the action would
+                 * have been activated.
+                 *
+                 * The following code which runs in a remote app instance, shows an
+                 * example of a ‘quit’ action being activated on the primary app
+                 * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
+                 * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
+                 * may fail to be activated on the primary instance.
+                 *
+                 * ```c
+                 * // call ‘quit’ action on primary instance
+                 * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
+                 *
+                 * // make sure the action is activated now
+                 * g_dbus_connection_flush (…);
+                 *
+                 * g_debug ("Application has been terminated. Exiting.");
+                 *
+                 * exit (0);
+                 * ```
+                 * @param action_name the name of the action to activate
+                 * @param parameter parameters to the activation
+                 */
+                vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
+                /**
+                 * Request for the state of the named action within `action_group` to be
+                 * changed to `value`.
+                 *
+                 * The action must be stateful and `value` must be of the correct type.
+                 * See [method`Gio`.ActionGroup.get_action_state_type].
+                 *
+                 * This call merely requests a change.  The action may refuse to change
+                 * its state or may change its state to something other than `value`.
+                 * See [method`Gio`.ActionGroup.get_action_state_hint].
+                 *
+                 * If the `value` GVariant is floating, it is consumed.
+                 * @param action_name the name of the action to request the change on
+                 * @param value the new state
+                 */
+                vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
+                /**
+                 * Checks if the named action within `action_group` is currently enabled.
+                 *
+                 * An action must be enabled in order to be activated or in order to
+                 * have its state changed from outside callers.
+                 * @param action_name the name of the action to query
+                 */
+                vfunc_get_action_enabled(action_name: string): boolean;
+                /**
+                 * Queries the type of the parameter that must be given when activating
+                 * the named action within `action_group`.
+                 *
+                 * When activating the action using [method`Gio`.ActionGroup.activate_action],
+                 * the [type`GLib`.Variant] given to that function must be of the type returned
+                 * by this function.
+                 *
+                 * In the case that this function returns `NULL`, you must not give any
+                 * [type`GLib`.Variant], but `NULL` instead.
+                 *
+                 * The parameter type of a particular action will never change but it is
+                 * possible for an action to be removed and for a new action to be added
+                 * with the same name but a different parameter type.
+                 * @param action_name the name of the action to query
+                 */
+                vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
+                /**
+                 * Queries the current state of the named action within `action_group`.
+                 *
+                 * If the action is not stateful then `NULL` will be returned.  If the
+                 * action is stateful then the type of the return value is the type
+                 * given by [method`Gio`.ActionGroup.get_action_state_type].
+                 *
+                 * The return value (if non-`NULL`) should be freed with
+                 * [method`GLib`.Variant.unref] when it is no longer required.
+                 * @param action_name the name of the action to query
+                 */
+                vfunc_get_action_state(action_name: string): GLib.Variant | null;
+                /**
+                 * Requests a hint about the valid range of values for the state of the
+                 * named action within `action_group`.
+                 *
+                 * If `NULL` is returned it either means that the action is not stateful
+                 * or that there is no hint about the valid range of values for the
+                 * state of the action.
+                 *
+                 * If a [type`GLib`.Variant] array is returned then each item in the array is a
+                 * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+                 * returned then the tuple specifies the inclusive lower and upper bound
+                 * of valid values for the state.
+                 *
+                 * In any case, the information is merely a hint.  It may be possible to
+                 * have a state value outside of the hinted range and setting a value
+                 * within the range may fail.
+                 *
+                 * The return value (if non-`NULL`) should be freed with
+                 * [method`GLib`.Variant.unref] when it is no longer required.
+                 * @param action_name the name of the action to query
+                 */
+                vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
+                /**
+                 * Queries the type of the state of the named action within
+                 * `action_group`.
+                 *
+                 * If the action is stateful then this function returns the
+                 * [type`GLib`.VariantType] of the state.  All calls to
+                 * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
+                 * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+                 * of the same type.
+                 *
+                 * If the action is not stateful then this function will return `NULL`.
+                 * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
+                 * and you must not call [method`Gio`.ActionGroup.change_action_state].
+                 *
+                 * The state type of a particular action will never change but it is
+                 * possible for an action to be removed and for a new action to be added
+                 * with the same name but a different state type.
+                 * @param action_name the name of the action to query
+                 */
+                vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
+                /**
+                 * Checks if the named action exists within `action_group`.
+                 * @param action_name the name of the action to check for
+                 */
+                vfunc_has_action(action_name: string): boolean;
+                /**
+                 * Lists the actions contained within `action_group`.
+                 *
+                 * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+                 * it is no longer required.
+                 */
+                vfunc_list_actions(): string[];
+                /**
+                 * Queries all aspects of the named action within an `action_group`.
+                 *
+                 * This function acquires the information available from
+                 * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
+                 * [method`Gio`.ActionGroup.get_action_parameter_type],
+                 * [method`Gio`.ActionGroup.get_action_state_type],
+                 * [method`Gio`.ActionGroup.get_action_state_hint] and
+                 * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+                 *
+                 * This provides two main benefits.
+                 *
+                 * The first is the improvement in efficiency that comes with not having
+                 * to perform repeated lookups of the action in order to discover
+                 * different things about it.  The second is that implementing
+                 * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+                 * function.
+                 *
+                 * The interface provides a default implementation of this function that
+                 * calls the individual functions, as required, to fetch the
+                 * information.  The interface also provides default implementations of
+                 * those functions that call this function.  All implementations,
+                 * therefore, must override either this function or all of the others.
+                 *
+                 * If the action exists, `TRUE` is returned and any of the requested
+                 * fields (as indicated by having a non-`NULL` reference passed in) are
+                 * filled.  If the action doesn’t exist, `FALSE` is returned and the
+                 * fields may or may not have been modified.
+                 * @param action_name the name of an action in the group
+                 */
+                vfunc_query_action(
+                    action_name: string,
+                ): [
+                    boolean,
+                    boolean,
+                    GLib.VariantType | null,
+                    GLib.VariantType | null,
+                    GLib.Variant | null,
+                    GLib.Variant | null,
+                ];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -75111,7 +70150,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<ActionGroup>;
             prototype: ActionGroup;
         }
-        interface ActionGroup extends GObject.Object {
+        interface ActionGroup extends GObject.Object, ActionGroup.Interface {
             // Methods
 
             /**
@@ -75337,224 +70376,6 @@ declare module 'gi://Gio?version=2.0' {
                 GLib.Variant | null,
                 GLib.Variant | null,
             ];
-
-            // Virtual methods
-
-            /**
-             * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
-             *
-             * This function should only be called by [type`Gio`.ActionGroup] implementations.
-             * @param action_name the name of an action in the group
-             */
-            vfunc_action_added(action_name: string): void;
-            /**
-             * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
-             *
-             * This function should only be called by [type`Gio`.ActionGroup] implementations.
-             * @param action_name the name of an action in the group
-             * @param enabled whether the action is now enabled
-             */
-            vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
-            /**
-             * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
-             *
-             * This function should only be called by [type`Gio`.ActionGroup] implementations.
-             * @param action_name the name of an action in the group
-             */
-            vfunc_action_removed(action_name: string): void;
-            /**
-             * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
-             *
-             * This function should only be called by [type`Gio`.ActionGroup] implementations.
-             * @param action_name the name of an action in the group
-             * @param state the new state of the named action
-             */
-            vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
-            /**
-             * Activate the named action within `action_group`.
-             *
-             * If the action is expecting a parameter, then the correct type of
-             * parameter must be given as `parameter`.  If the action is expecting no
-             * parameters then `parameter` must be `NULL`.  See
-             * [method`Gio`.ActionGroup.get_action_parameter_type].
-             *
-             * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
-             * activation over D-Bus, this call may return before the relevant
-             * D-Bus traffic has been sent, or any replies have been received. In
-             * order to block on such asynchronous activation calls,
-             * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
-             * depends on the result of the action activation. Without flushing
-             * the D-Bus connection, there is no guarantee that the action would
-             * have been activated.
-             *
-             * The following code which runs in a remote app instance, shows an
-             * example of a ‘quit’ action being activated on the primary app
-             * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
-             * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
-             * may fail to be activated on the primary instance.
-             *
-             * ```c
-             * // call ‘quit’ action on primary instance
-             * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
-             *
-             * // make sure the action is activated now
-             * g_dbus_connection_flush (…);
-             *
-             * g_debug ("Application has been terminated. Exiting.");
-             *
-             * exit (0);
-             * ```
-             * @param action_name the name of the action to activate
-             * @param parameter parameters to the activation
-             */
-            vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
-            /**
-             * Request for the state of the named action within `action_group` to be
-             * changed to `value`.
-             *
-             * The action must be stateful and `value` must be of the correct type.
-             * See [method`Gio`.ActionGroup.get_action_state_type].
-             *
-             * This call merely requests a change.  The action may refuse to change
-             * its state or may change its state to something other than `value`.
-             * See [method`Gio`.ActionGroup.get_action_state_hint].
-             *
-             * If the `value` GVariant is floating, it is consumed.
-             * @param action_name the name of the action to request the change on
-             * @param value the new state
-             */
-            vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
-            /**
-             * Checks if the named action within `action_group` is currently enabled.
-             *
-             * An action must be enabled in order to be activated or in order to
-             * have its state changed from outside callers.
-             * @param action_name the name of the action to query
-             */
-            vfunc_get_action_enabled(action_name: string): boolean;
-            /**
-             * Queries the type of the parameter that must be given when activating
-             * the named action within `action_group`.
-             *
-             * When activating the action using [method`Gio`.ActionGroup.activate_action],
-             * the [type`GLib`.Variant] given to that function must be of the type returned
-             * by this function.
-             *
-             * In the case that this function returns `NULL`, you must not give any
-             * [type`GLib`.Variant], but `NULL` instead.
-             *
-             * The parameter type of a particular action will never change but it is
-             * possible for an action to be removed and for a new action to be added
-             * with the same name but a different parameter type.
-             * @param action_name the name of the action to query
-             */
-            vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
-            /**
-             * Queries the current state of the named action within `action_group`.
-             *
-             * If the action is not stateful then `NULL` will be returned.  If the
-             * action is stateful then the type of the return value is the type
-             * given by [method`Gio`.ActionGroup.get_action_state_type].
-             *
-             * The return value (if non-`NULL`) should be freed with
-             * [method`GLib`.Variant.unref] when it is no longer required.
-             * @param action_name the name of the action to query
-             */
-            vfunc_get_action_state(action_name: string): GLib.Variant | null;
-            /**
-             * Requests a hint about the valid range of values for the state of the
-             * named action within `action_group`.
-             *
-             * If `NULL` is returned it either means that the action is not stateful
-             * or that there is no hint about the valid range of values for the
-             * state of the action.
-             *
-             * If a [type`GLib`.Variant] array is returned then each item in the array is a
-             * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
-             * returned then the tuple specifies the inclusive lower and upper bound
-             * of valid values for the state.
-             *
-             * In any case, the information is merely a hint.  It may be possible to
-             * have a state value outside of the hinted range and setting a value
-             * within the range may fail.
-             *
-             * The return value (if non-`NULL`) should be freed with
-             * [method`GLib`.Variant.unref] when it is no longer required.
-             * @param action_name the name of the action to query
-             */
-            vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
-            /**
-             * Queries the type of the state of the named action within
-             * `action_group`.
-             *
-             * If the action is stateful then this function returns the
-             * [type`GLib`.VariantType] of the state.  All calls to
-             * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-             * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
-             * of the same type.
-             *
-             * If the action is not stateful then this function will return `NULL`.
-             * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-             * and you must not call [method`Gio`.ActionGroup.change_action_state].
-             *
-             * The state type of a particular action will never change but it is
-             * possible for an action to be removed and for a new action to be added
-             * with the same name but a different state type.
-             * @param action_name the name of the action to query
-             */
-            vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
-            /**
-             * Checks if the named action exists within `action_group`.
-             * @param action_name the name of the action to check for
-             */
-            vfunc_has_action(action_name: string): boolean;
-            /**
-             * Lists the actions contained within `action_group`.
-             *
-             * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
-             * it is no longer required.
-             */
-            vfunc_list_actions(): string[];
-            /**
-             * Queries all aspects of the named action within an `action_group`.
-             *
-             * This function acquires the information available from
-             * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-             * [method`Gio`.ActionGroup.get_action_parameter_type],
-             * [method`Gio`.ActionGroup.get_action_state_type],
-             * [method`Gio`.ActionGroup.get_action_state_hint] and
-             * [method`Gio`.ActionGroup.get_action_state] with a single function call.
-             *
-             * This provides two main benefits.
-             *
-             * The first is the improvement in efficiency that comes with not having
-             * to perform repeated lookups of the action in order to discover
-             * different things about it.  The second is that implementing
-             * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
-             * function.
-             *
-             * The interface provides a default implementation of this function that
-             * calls the individual functions, as required, to fetch the
-             * information.  The interface also provides default implementations of
-             * those functions that call this function.  All implementations,
-             * therefore, must override either this function or all of the others.
-             *
-             * If the action exists, `TRUE` is returned and any of the requested
-             * fields (as indicated by having a non-`NULL` reference passed in) are
-             * filled.  If the action doesn’t exist, `FALSE` is returned and the
-             * fields may or may not have been modified.
-             * @param action_name the name of an action in the group
-             */
-            vfunc_query_action(
-                action_name: string,
-            ): [
-                boolean,
-                boolean,
-                GLib.VariantType | null,
-                GLib.VariantType | null,
-                GLib.Variant | null,
-                GLib.Variant | null,
-            ];
         }
 
         export const ActionGroup: ActionGroupNamespace & {
@@ -75562,6 +70383,39 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace ActionMap {
+            /**
+             * Interface for implementing ActionMap.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Adds an action to the `action_map`.
+                 *
+                 * If the action map already contains an action with the same name
+                 * as `action` then the old action is dropped from the action map.
+                 *
+                 * The action map takes its own reference on `action`.
+                 * @param action a [iface@Gio.Action]
+                 */
+                vfunc_add_action(action: Action): void;
+                /**
+                 * Looks up the action with the name `action_name` in `action_map`.
+                 *
+                 * If no such action exists, returns `NULL`.
+                 * @param action_name the name of an action
+                 */
+                vfunc_lookup_action(action_name: string): Action | null;
+                /**
+                 * Removes the named action from the action map.
+                 *
+                 * If no action of this name is in the map then nothing happens.
+                 * @param action_name the name of the action
+                 */
+                vfunc_remove_action(action_name: string): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -75571,7 +70425,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<ActionMap>;
             prototype: ActionMap;
         }
-        interface ActionMap extends GObject.Object {
+        interface ActionMap extends GObject.Object, ActionMap.Interface {
             // Methods
 
             /**
@@ -75631,33 +70485,6 @@ declare module 'gi://Gio?version=2.0' {
              * @param entries a pointer to   the first item in an array of [struct@Gio.ActionEntry] structs
              */
             remove_action_entries(entries: ActionEntry[]): void;
-
-            // Virtual methods
-
-            /**
-             * Adds an action to the `action_map`.
-             *
-             * If the action map already contains an action with the same name
-             * as `action` then the old action is dropped from the action map.
-             *
-             * The action map takes its own reference on `action`.
-             * @param action a [iface@Gio.Action]
-             */
-            vfunc_add_action(action: Action): void;
-            /**
-             * Looks up the action with the name `action_name` in `action_map`.
-             *
-             * If no such action exists, returns `NULL`.
-             * @param action_name the name of an action
-             */
-            vfunc_lookup_action(action_name: string): Action | null;
-            /**
-             * Removes the named action from the action map.
-             *
-             * If no action of this name is in the map then nothing happens.
-             * @param action_name the name of the action
-             */
-            vfunc_remove_action(action_name: string): void;
         }
 
         export const ActionMap: ActionMapNamespace & {
@@ -75665,6 +70492,208 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace AppInfo {
+            /**
+             * Interface for implementing AppInfo.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Adds a content type to the application information to indicate the
+                 * application is capable of opening files with the given content type.
+                 * @param content_type a string.
+                 */
+                vfunc_add_supports_type(content_type: string): boolean;
+                /**
+                 * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
+                 * See [method`Gio`.AppInfo.delete].
+                 */
+                vfunc_can_delete(): boolean;
+                /**
+                 * Checks if a supported content type can be removed from an application.
+                 */
+                vfunc_can_remove_supports_type(): boolean;
+                /**
+                 * Tries to delete a [iface`Gio`.AppInfo].
+                 *
+                 * On some platforms, there may be a difference between user-defined
+                 * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
+                 * See [method`Gio`.AppInfo.can_delete].
+                 */
+                vfunc_do_delete(): boolean;
+                /**
+                 * Creates a duplicate of a [iface`Gio`.AppInfo].
+                 */
+                vfunc_dup(): AppInfo;
+                /**
+                 * Checks if two [iface`Gio`.AppInfo]s are equal.
+                 *
+                 * Note that the check *may not* compare each individual field, and only does
+                 * an identity check. In case detecting changes in the contents is needed,
+                 * program code must additionally compare relevant fields.
+                 * @param appinfo2 the second [iface@Gio.AppInfo].
+                 */
+                vfunc_equal(appinfo2: AppInfo): boolean;
+                /**
+                 * Gets the commandline with which the application will be
+                 * started.
+                 */
+                vfunc_get_commandline(): string | null;
+                /**
+                 * Gets a human-readable description of an installed application.
+                 */
+                vfunc_get_description(): string | null;
+                /**
+                 * Gets the display name of the application. The display name is often more
+                 * descriptive to the user than the name itself.
+                 */
+                vfunc_get_display_name(): string;
+                /**
+                 * Gets the executable’s name for the installed application.
+                 *
+                 * This is intended to be used for debugging or labelling what program is going
+                 * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+                 * functions, rather than spawning the return value from this function.
+                 */
+                vfunc_get_executable(): string;
+                /**
+                 * Gets the icon for the application.
+                 */
+                vfunc_get_icon(): Icon | null;
+                /**
+                 * Gets the ID of an application. An id is a string that identifies the
+                 * application. The exact format of the id is platform dependent. For instance,
+                 * on Unix this is the desktop file id from the xdg menu specification.
+                 *
+                 * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
+                 * been constructed.
+                 */
+                vfunc_get_id(): string | null;
+                /**
+                 * Gets the installed name of the application.
+                 */
+                vfunc_get_name(): string;
+                /**
+                 * Retrieves the list of content types that `app_info` claims to support.
+                 * If this information is not provided by the environment, this function
+                 * will return `NULL`.
+                 *
+                 * This function does not take in consideration associations added with
+                 * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+                 * the application.
+                 */
+                vfunc_get_supported_types(): string[];
+                /**
+                 * Launches the application. Passes `files` to the launched application
+                 * as arguments, using the optional `context` to get information
+                 * about the details of the launcher (like what screen it is on).
+                 * On error, `error` will be set accordingly.
+                 *
+                 * To launch the application without arguments pass a `NULL` `files` list.
+                 *
+                 * Note that even if the launch is successful the application launched
+                 * can fail to start if it runs into problems during startup. There is
+                 * no way to detect this.
+                 *
+                 * Some URIs can be changed when passed through a GFile (for instance
+                 * unsupported URIs with strange formats like mailto:), so if you have
+                 * a textual URI you want to pass in as argument, consider using
+                 * [method`Gio`.AppInfo.launch_uris] instead.
+                 *
+                 * The launched application inherits the environment of the launching
+                 * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
+                 * and [method`Gio`.AppLaunchContext.unsetenv].
+                 *
+                 * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
+                 * environment variable with the path of the launched desktop file and
+                 * `GIO_LAUNCHED_DESKTOP_FILE_PID` to the process id of the launched
+                 * process. This can be used to ignore `GIO_LAUNCHED_DESKTOP_FILE`,
+                 * should it be inherited by further processes. The `DISPLAY`,
+                 * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
+                 * variables are also set, based on information provided in `context`.
+                 * @param files a list of [iface@Gio.File] objects
+                 * @param context the launch context
+                 */
+                vfunc_launch(files?: File[] | null, context?: AppLaunchContext | null): boolean;
+                /**
+                 * Launches the application. This passes the `uris` to the launched application
+                 * as arguments, using the optional `context` to get information
+                 * about the details of the launcher (like what screen it is on).
+                 * On error, `error` will be set accordingly. If the application only supports
+                 * one URI per invocation as part of their command-line, multiple instances
+                 * of the application will be spawned.
+                 *
+                 * To launch the application without arguments pass a `NULL` `uris` list.
+                 *
+                 * Note that even if the launch is successful the application launched
+                 * can fail to start if it runs into problems during startup. There is
+                 * no way to detect this.
+                 * @param uris a list of URIs to launch.
+                 * @param context the launch context
+                 */
+                vfunc_launch_uris(uris?: string[] | null, context?: AppLaunchContext | null): boolean;
+                /**
+                 * Async version of [method`Gio`.AppInfo.launch_uris].
+                 *
+                 * The `callback` is invoked immediately after the application launch, but it
+                 * waits for activation in case of D-Bus–activated applications and also provides
+                 * extended error information for sandboxed applications, see notes for
+                 * [func`Gio`.AppInfo.launch_default_for_uri_async].
+                 * @param uris a list of URIs to launch.
+                 * @param context the launch context
+                 * @param cancellable a [class@Gio.Cancellable]
+                 * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+                 */
+                vfunc_launch_uris_async(
+                    uris?: string[] | null,
+                    context?: AppLaunchContext | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
+                 * @param result the async result
+                 */
+                vfunc_launch_uris_finish(result: AsyncResult): boolean;
+                /**
+                 * Removes a supported type from an application, if possible.
+                 * @param content_type a string.
+                 */
+                vfunc_remove_supports_type(content_type: string): boolean;
+                /**
+                 * Sets the application as the default handler for the given file extension.
+                 * @param extension a string containing the file extension (without   the dot).
+                 */
+                vfunc_set_as_default_for_extension(extension: string): boolean;
+                /**
+                 * Sets the application as the default handler for a given type.
+                 * @param content_type the content type.
+                 */
+                vfunc_set_as_default_for_type(content_type: string): boolean;
+                /**
+                 * Sets the application as the last used application for a given type. This
+                 * will make the application appear as first in the list returned by
+                 * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+                 * application for that content type.
+                 * @param content_type the content type.
+                 */
+                vfunc_set_as_last_used_for_type(content_type: string): boolean;
+                /**
+                 * Checks if the application info should be shown in menus that
+                 * list available applications.
+                 */
+                vfunc_should_show(): boolean;
+                /**
+                 * Checks if the application accepts files as arguments.
+                 */
+                vfunc_supports_files(): boolean;
+                /**
+                 * Checks if the application supports reading files and directories from URIs.
+                 */
+                vfunc_supports_uris(): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -75843,7 +70872,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             reset_type_associations(content_type: string): void;
         }
-        interface AppInfo extends GObject.Object {
+        interface AppInfo extends GObject.Object, AppInfo.Interface {
             // Methods
 
             /**
@@ -76011,7 +71040,7 @@ declare module 'gi://Gio?version=2.0' {
                 uris?: string[] | null,
                 context?: AppLaunchContext | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Async version of [method`Gio`.AppInfo.launch_uris].
              *
@@ -76047,7 +71076,7 @@ declare module 'gi://Gio?version=2.0' {
                 context?: AppLaunchContext | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
              * @param result the async result
@@ -76097,202 +71126,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns `TRUE` if the @appinfo supports URIs.
              */
             supports_uris(): boolean;
-
-            // Virtual methods
-
-            /**
-             * Adds a content type to the application information to indicate the
-             * application is capable of opening files with the given content type.
-             * @param content_type a string.
-             */
-            vfunc_add_supports_type(content_type: string): boolean;
-            /**
-             * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-             * See [method`Gio`.AppInfo.delete].
-             */
-            vfunc_can_delete(): boolean;
-            /**
-             * Checks if a supported content type can be removed from an application.
-             */
-            vfunc_can_remove_supports_type(): boolean;
-            /**
-             * Tries to delete a [iface`Gio`.AppInfo].
-             *
-             * On some platforms, there may be a difference between user-defined
-             * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-             * See [method`Gio`.AppInfo.can_delete].
-             */
-            vfunc_do_delete(): boolean;
-            /**
-             * Creates a duplicate of a [iface`Gio`.AppInfo].
-             */
-            vfunc_dup(): AppInfo;
-            /**
-             * Checks if two [iface`Gio`.AppInfo]s are equal.
-             *
-             * Note that the check *may not* compare each individual field, and only does
-             * an identity check. In case detecting changes in the contents is needed,
-             * program code must additionally compare relevant fields.
-             * @param appinfo2 the second [iface@Gio.AppInfo].
-             */
-            vfunc_equal(appinfo2: AppInfo): boolean;
-            /**
-             * Gets the commandline with which the application will be
-             * started.
-             */
-            vfunc_get_commandline(): string | null;
-            /**
-             * Gets a human-readable description of an installed application.
-             */
-            vfunc_get_description(): string | null;
-            /**
-             * Gets the display name of the application. The display name is often more
-             * descriptive to the user than the name itself.
-             */
-            vfunc_get_display_name(): string;
-            /**
-             * Gets the executable’s name for the installed application.
-             *
-             * This is intended to be used for debugging or labelling what program is going
-             * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
-             * functions, rather than spawning the return value from this function.
-             */
-            vfunc_get_executable(): string;
-            /**
-             * Gets the icon for the application.
-             */
-            vfunc_get_icon(): Icon | null;
-            /**
-             * Gets the ID of an application. An id is a string that identifies the
-             * application. The exact format of the id is platform dependent. For instance,
-             * on Unix this is the desktop file id from the xdg menu specification.
-             *
-             * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
-             * been constructed.
-             */
-            vfunc_get_id(): string | null;
-            /**
-             * Gets the installed name of the application.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Retrieves the list of content types that `app_info` claims to support.
-             * If this information is not provided by the environment, this function
-             * will return `NULL`.
-             *
-             * This function does not take in consideration associations added with
-             * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
-             * the application.
-             */
-            vfunc_get_supported_types(): string[];
-            /**
-             * Launches the application. Passes `files` to the launched application
-             * as arguments, using the optional `context` to get information
-             * about the details of the launcher (like what screen it is on).
-             * On error, `error` will be set accordingly.
-             *
-             * To launch the application without arguments pass a `NULL` `files` list.
-             *
-             * Note that even if the launch is successful the application launched
-             * can fail to start if it runs into problems during startup. There is
-             * no way to detect this.
-             *
-             * Some URIs can be changed when passed through a GFile (for instance
-             * unsupported URIs with strange formats like mailto:), so if you have
-             * a textual URI you want to pass in as argument, consider using
-             * [method`Gio`.AppInfo.launch_uris] instead.
-             *
-             * The launched application inherits the environment of the launching
-             * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-             * and [method`Gio`.AppLaunchContext.unsetenv].
-             *
-             * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
-             * environment variable with the path of the launched desktop file and
-             * `GIO_LAUNCHED_DESKTOP_FILE_PID` to the process id of the launched
-             * process. This can be used to ignore `GIO_LAUNCHED_DESKTOP_FILE`,
-             * should it be inherited by further processes. The `DISPLAY`,
-             * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
-             * variables are also set, based on information provided in `context`.
-             * @param files a list of [iface@Gio.File] objects
-             * @param context the launch context
-             */
-            vfunc_launch(files?: File[] | null, context?: AppLaunchContext | null): boolean;
-            /**
-             * Launches the application. This passes the `uris` to the launched application
-             * as arguments, using the optional `context` to get information
-             * about the details of the launcher (like what screen it is on).
-             * On error, `error` will be set accordingly. If the application only supports
-             * one URI per invocation as part of their command-line, multiple instances
-             * of the application will be spawned.
-             *
-             * To launch the application without arguments pass a `NULL` `uris` list.
-             *
-             * Note that even if the launch is successful the application launched
-             * can fail to start if it runs into problems during startup. There is
-             * no way to detect this.
-             * @param uris a list of URIs to launch.
-             * @param context the launch context
-             */
-            vfunc_launch_uris(uris?: string[] | null, context?: AppLaunchContext | null): boolean;
-            /**
-             * Async version of [method`Gio`.AppInfo.launch_uris].
-             *
-             * The `callback` is invoked immediately after the application launch, but it
-             * waits for activation in case of D-Bus–activated applications and also provides
-             * extended error information for sandboxed applications, see notes for
-             * [func`Gio`.AppInfo.launch_default_for_uri_async].
-             * @param uris a list of URIs to launch.
-             * @param context the launch context
-             * @param cancellable a [class@Gio.Cancellable]
-             * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
-             */
-            vfunc_launch_uris_async(
-                uris?: string[] | null,
-                context?: AppLaunchContext | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
-             * @param result the async result
-             */
-            vfunc_launch_uris_finish(result: AsyncResult): boolean;
-            /**
-             * Removes a supported type from an application, if possible.
-             * @param content_type a string.
-             */
-            vfunc_remove_supports_type(content_type: string): boolean;
-            /**
-             * Sets the application as the default handler for the given file extension.
-             * @param extension a string containing the file extension (without   the dot).
-             */
-            vfunc_set_as_default_for_extension(extension: string): boolean;
-            /**
-             * Sets the application as the default handler for a given type.
-             * @param content_type the content type.
-             */
-            vfunc_set_as_default_for_type(content_type: string): boolean;
-            /**
-             * Sets the application as the last used application for a given type. This
-             * will make the application appear as first in the list returned by
-             * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
-             * application for that content type.
-             * @param content_type the content type.
-             */
-            vfunc_set_as_last_used_for_type(content_type: string): boolean;
-            /**
-             * Checks if the application info should be shown in menus that
-             * list available applications.
-             */
-            vfunc_should_show(): boolean;
-            /**
-             * Checks if the application accepts files as arguments.
-             */
-            vfunc_supports_files(): boolean;
-            /**
-             * Checks if the application supports reading files and directories from URIs.
-             */
-            vfunc_supports_uris(): boolean;
         }
 
         export const AppInfo: AppInfoNamespace & {
@@ -76300,6 +71133,67 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace AsyncInitable {
+            /**
+             * Interface for implementing AsyncInitable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface<A extends GObject.Object = GObject.Object> {
+                // Virtual methods
+
+                /**
+                 * Starts asynchronous initialization of the object implementing the
+                 * interface. This must be done before any real use of the object after
+                 * initial construction. If the object also implements #GInitable you can
+                 * optionally call g_initable_init() instead.
+                 *
+                 * This method is intended for language bindings. If writing in C,
+                 * g_async_initable_new_async() should typically be used instead.
+                 *
+                 * When the initialization is finished, `callback` will be called. You can
+                 * then call g_async_initable_init_finish() to get the result of the
+                 * initialization.
+                 *
+                 * Implementations may also support cancellation. If `cancellable` is not
+                 * %NULL, then initialization can be cancelled by triggering the cancellable
+                 * object from another thread. If the operation was cancelled, the error
+                 * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+                 * the object doesn't support cancellable initialization, the error
+                 * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+                 *
+                 * As with #GInitable, if the object is not initialized, or initialization
+                 * returns with an error, then all operations on the object except
+                 * g_object_ref() and g_object_unref() are considered to be invalid, and
+                 * have undefined behaviour. They will often fail with g_critical() or
+                 * g_warning(), but this must not be relied on.
+                 *
+                 * Callers should not assume that a class which implements #GAsyncInitable can
+                 * be initialized multiple times; for more information, see g_initable_init().
+                 * If a class explicitly supports being initialized multiple times,
+                 * implementation requires yielding all subsequent calls to init_async() on the
+                 * results of the first call.
+                 *
+                 * For classes that also support the #GInitable interface, the default
+                 * implementation of this method will run the g_initable_init() function
+                 * in a thread, so if you want to support asynchronous initialization via
+                 * threads, just implement the #GAsyncInitable interface without overriding
+                 * any interface methods.
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+                 */
+                vfunc_init_async(
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes asynchronous initialization and returns the result.
+                 * See g_async_initable_init_async().
+                 * @param res a #GAsyncResult.
+                 */
+                vfunc_init_finish(res: AsyncResult): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -76333,7 +71227,9 @@ declare module 'gi://Gio?version=2.0' {
                 callback?: AsyncReadyCallback<AsyncInitable> | null,
             ): void;
         }
-        interface AsyncInitable<A extends GObject.Object = GObject.Object> extends GObject.Object {
+        interface AsyncInitable<A extends GObject.Object = GObject.Object>
+            extends GObject.Object,
+                AsyncInitable.Interface<A> {
             // Methods
 
             /**
@@ -76376,7 +71272,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -76468,7 +71364,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -76483,61 +71379,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
              */
             new_finish(res: AsyncResult): A;
-
-            // Virtual methods
-
-            /**
-             * Starts asynchronous initialization of the object implementing the
-             * interface. This must be done before any real use of the object after
-             * initial construction. If the object also implements #GInitable you can
-             * optionally call g_initable_init() instead.
-             *
-             * This method is intended for language bindings. If writing in C,
-             * g_async_initable_new_async() should typically be used instead.
-             *
-             * When the initialization is finished, `callback` will be called. You can
-             * then call g_async_initable_init_finish() to get the result of the
-             * initialization.
-             *
-             * Implementations may also support cancellation. If `cancellable` is not
-             * %NULL, then initialization can be cancelled by triggering the cancellable
-             * object from another thread. If the operation was cancelled, the error
-             * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
-             * the object doesn't support cancellable initialization, the error
-             * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-             *
-             * As with #GInitable, if the object is not initialized, or initialization
-             * returns with an error, then all operations on the object except
-             * g_object_ref() and g_object_unref() are considered to be invalid, and
-             * have undefined behaviour. They will often fail with g_critical() or
-             * g_warning(), but this must not be relied on.
-             *
-             * Callers should not assume that a class which implements #GAsyncInitable can
-             * be initialized multiple times; for more information, see g_initable_init().
-             * If a class explicitly supports being initialized multiple times,
-             * implementation requires yielding all subsequent calls to init_async() on the
-             * results of the first call.
-             *
-             * For classes that also support the #GInitable interface, the default
-             * implementation of this method will run the g_initable_init() function
-             * in a thread, so if you want to support asynchronous initialization via
-             * threads, just implement the #GAsyncInitable interface without overriding
-             * any interface methods.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
-             */
-            vfunc_init_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes asynchronous initialization and returns the result.
-             * See g_async_initable_init_async().
-             * @param res a #GAsyncResult.
-             */
-            vfunc_init_finish(res: AsyncResult): boolean;
         }
 
         export const AsyncInitable: AsyncInitableNamespace & {
@@ -76545,6 +71386,29 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace AsyncResult {
+            /**
+             * Interface for implementing AsyncResult.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the source object from a [iface`Gio`.AsyncResult].
+                 */
+                vfunc_get_source_object<T = GObject.Object>(): T;
+                /**
+                 * Gets the user data from a [iface`Gio`.AsyncResult].
+                 */
+                vfunc_get_user_data(): any | null;
+                /**
+                 * Checks if `res` has the given `source_tag` (generally a function
+                 * pointer indicating the function `res` was created by).
+                 * @param source_tag an application-defined tag
+                 */
+                vfunc_is_tagged(source_tag?: any | null): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -76554,7 +71418,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<AsyncResult>;
             prototype: AsyncResult;
         }
-        interface AsyncResult extends GObject.Object {
+        interface AsyncResult extends GObject.Object, AsyncResult.Interface {
             // Methods
 
             /**
@@ -76588,23 +71452,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
              */
             legacy_propagate_error(): boolean;
-
-            // Virtual methods
-
-            /**
-             * Gets the source object from a [iface`Gio`.AsyncResult].
-             */
-            vfunc_get_source_object<T = GObject.Object>(): T;
-            /**
-             * Gets the user data from a [iface`Gio`.AsyncResult].
-             */
-            vfunc_get_user_data(): any | null;
-            /**
-             * Checks if `res` has the given `source_tag` (generally a function
-             * pointer indicating the function `res` was created by).
-             * @param source_tag an application-defined tag
-             */
-            vfunc_is_tagged(source_tag?: any | null): boolean;
         }
 
         export const AsyncResult: AsyncResultNamespace & {
@@ -76612,6 +71459,113 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace Converter {
+            /**
+             * Interface for implementing Converter.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * This is the main operation used when converting data. It is to be called
+                 * multiple times in a loop, and each time it will do some work, i.e.
+                 * producing some output (in `outbuf)` or consuming some input (from `inbuf)` or
+                 * both. If its not possible to do any work an error is returned.
+                 *
+                 * Note that a single call may not consume all input (or any input at all).
+                 * Also a call may produce output even if given no input, due to state stored
+                 * in the converter producing output.
+                 *
+                 * If any data was either produced or consumed, and then an error happens, then
+                 * only the successful conversion is reported and the error is returned on the
+                 * next call.
+                 *
+                 * A full conversion loop involves calling this method repeatedly, each time
+                 * giving it new input and space output space. When there is no more input
+                 * data after the data in `inbuf,` the flag %G_CONVERTER_INPUT_AT_END must be set.
+                 * The loop will be (unless some error happens) returning %G_CONVERTER_CONVERTED
+                 * each time until all data is consumed and all output is produced, then
+                 * %G_CONVERTER_FINISHED is returned instead. Note, that %G_CONVERTER_FINISHED
+                 * may be returned even if %G_CONVERTER_INPUT_AT_END is not set, for instance
+                 * in a decompression converter where the end of data is detectable from the
+                 * data (and there might even be other data after the end of the compressed data).
+                 *
+                 * When some data has successfully been converted `bytes_read` and is set to
+                 * the number of bytes read from `inbuf,` and `bytes_written` is set to indicate
+                 * how many bytes was written to `outbuf`. If there are more data to output
+                 * or consume (i.e. unless the %G_CONVERTER_INPUT_AT_END is specified) then
+                 * %G_CONVERTER_CONVERTED is returned, and if no more data is to be output
+                 * then %G_CONVERTER_FINISHED is returned.
+                 *
+                 * On error %G_CONVERTER_ERROR is returned and `error` is set accordingly.
+                 * Some errors need special handling:
+                 *
+                 * %G_IO_ERROR_NO_SPACE is returned if there is not enough space
+                 * to write the resulting converted data, the application should
+                 * call the function again with a larger `outbuf` to continue.
+                 *
+                 * %G_IO_ERROR_PARTIAL_INPUT is returned if there is not enough
+                 * input to fully determine what the conversion should produce,
+                 * and the %G_CONVERTER_INPUT_AT_END flag is not set. This happens for
+                 * example with an incomplete multibyte sequence when converting text,
+                 * or when a regexp matches up to the end of the input (and may match
+                 * further input). It may also happen when `inbuf_size` is zero and
+                 * there is no more data to produce.
+                 *
+                 * When this happens the application should read more input and then
+                 * call the function again. If further input shows that there is no
+                 * more data call the function again with the same data but with
+                 * the %G_CONVERTER_INPUT_AT_END flag set. This may cause the conversion
+                 * to finish as e.g. in the regexp match case (or, to fail again with
+                 * %G_IO_ERROR_PARTIAL_INPUT in e.g. a charset conversion where the
+                 * input is actually partial).
+                 *
+                 * After g_converter_convert() has returned %G_CONVERTER_FINISHED the
+                 * converter object is in an invalid state where its not allowed
+                 * to call g_converter_convert() anymore. At this time you can only
+                 * free the object or call g_converter_reset() to reset it to the
+                 * initial state.
+                 *
+                 * If the flag %G_CONVERTER_FLUSH is set then conversion is modified
+                 * to try to write out all internal state to the output. The application
+                 * has to call the function multiple times with the flag set, and when
+                 * the available input has been consumed and all internal state has
+                 * been produced then %G_CONVERTER_FLUSHED (or %G_CONVERTER_FINISHED if
+                 * really at the end) is returned instead of %G_CONVERTER_CONVERTED.
+                 * This is somewhat similar to what happens at the end of the input stream,
+                 * but done in the middle of the data.
+                 *
+                 * This has different meanings for different conversions. For instance
+                 * in a compression converter it would mean that we flush all the
+                 * compression state into output such that if you uncompress the
+                 * compressed data you get back all the input data. Doing this may
+                 * make the final file larger due to padding though. Another example
+                 * is a regexp conversion, where if you at the end of the flushed data
+                 * have a match, but there is also a potential longer match. In the
+                 * non-flushed case we would ask for more input, but when flushing we
+                 * treat this as the end of input and do the match.
+                 *
+                 * Flushing is not always possible (like if a charset converter flushes
+                 * at a partial multibyte sequence). Converters are supposed to try
+                 * to produce as much output as possible and then return an error
+                 * (typically %G_IO_ERROR_PARTIAL_INPUT).
+                 * @param inbuf the buffer         containing the data to convert.
+                 * @param outbuf a    buffer to write converted data in.
+                 * @param flags a #GConverterFlags controlling the conversion details
+                 */
+                vfunc_convert(
+                    inbuf: Uint8Array | null,
+                    outbuf: Uint8Array | string,
+                    flags: ConverterFlags,
+                ): [ConverterResult, number, number];
+                /**
+                 * Resets all internal state in the converter, making it behave
+                 * as if it was just created. If the converter has any internal
+                 * state that would produce output then that output is lost.
+                 */
+                vfunc_reset(): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -76621,7 +71575,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<Converter>;
             prototype: Converter;
         }
-        interface Converter extends GObject.Object {
+        interface Converter extends GObject.Object, Converter.Interface {
             // Methods
 
             /**
@@ -76729,107 +71683,6 @@ declare module 'gi://Gio?version=2.0' {
              * state that would produce output then that output is lost.
              */
             reset(): void;
-
-            // Virtual methods
-
-            /**
-             * This is the main operation used when converting data. It is to be called
-             * multiple times in a loop, and each time it will do some work, i.e.
-             * producing some output (in `outbuf)` or consuming some input (from `inbuf)` or
-             * both. If its not possible to do any work an error is returned.
-             *
-             * Note that a single call may not consume all input (or any input at all).
-             * Also a call may produce output even if given no input, due to state stored
-             * in the converter producing output.
-             *
-             * If any data was either produced or consumed, and then an error happens, then
-             * only the successful conversion is reported and the error is returned on the
-             * next call.
-             *
-             * A full conversion loop involves calling this method repeatedly, each time
-             * giving it new input and space output space. When there is no more input
-             * data after the data in `inbuf,` the flag %G_CONVERTER_INPUT_AT_END must be set.
-             * The loop will be (unless some error happens) returning %G_CONVERTER_CONVERTED
-             * each time until all data is consumed and all output is produced, then
-             * %G_CONVERTER_FINISHED is returned instead. Note, that %G_CONVERTER_FINISHED
-             * may be returned even if %G_CONVERTER_INPUT_AT_END is not set, for instance
-             * in a decompression converter where the end of data is detectable from the
-             * data (and there might even be other data after the end of the compressed data).
-             *
-             * When some data has successfully been converted `bytes_read` and is set to
-             * the number of bytes read from `inbuf,` and `bytes_written` is set to indicate
-             * how many bytes was written to `outbuf`. If there are more data to output
-             * or consume (i.e. unless the %G_CONVERTER_INPUT_AT_END is specified) then
-             * %G_CONVERTER_CONVERTED is returned, and if no more data is to be output
-             * then %G_CONVERTER_FINISHED is returned.
-             *
-             * On error %G_CONVERTER_ERROR is returned and `error` is set accordingly.
-             * Some errors need special handling:
-             *
-             * %G_IO_ERROR_NO_SPACE is returned if there is not enough space
-             * to write the resulting converted data, the application should
-             * call the function again with a larger `outbuf` to continue.
-             *
-             * %G_IO_ERROR_PARTIAL_INPUT is returned if there is not enough
-             * input to fully determine what the conversion should produce,
-             * and the %G_CONVERTER_INPUT_AT_END flag is not set. This happens for
-             * example with an incomplete multibyte sequence when converting text,
-             * or when a regexp matches up to the end of the input (and may match
-             * further input). It may also happen when `inbuf_size` is zero and
-             * there is no more data to produce.
-             *
-             * When this happens the application should read more input and then
-             * call the function again. If further input shows that there is no
-             * more data call the function again with the same data but with
-             * the %G_CONVERTER_INPUT_AT_END flag set. This may cause the conversion
-             * to finish as e.g. in the regexp match case (or, to fail again with
-             * %G_IO_ERROR_PARTIAL_INPUT in e.g. a charset conversion where the
-             * input is actually partial).
-             *
-             * After g_converter_convert() has returned %G_CONVERTER_FINISHED the
-             * converter object is in an invalid state where its not allowed
-             * to call g_converter_convert() anymore. At this time you can only
-             * free the object or call g_converter_reset() to reset it to the
-             * initial state.
-             *
-             * If the flag %G_CONVERTER_FLUSH is set then conversion is modified
-             * to try to write out all internal state to the output. The application
-             * has to call the function multiple times with the flag set, and when
-             * the available input has been consumed and all internal state has
-             * been produced then %G_CONVERTER_FLUSHED (or %G_CONVERTER_FINISHED if
-             * really at the end) is returned instead of %G_CONVERTER_CONVERTED.
-             * This is somewhat similar to what happens at the end of the input stream,
-             * but done in the middle of the data.
-             *
-             * This has different meanings for different conversions. For instance
-             * in a compression converter it would mean that we flush all the
-             * compression state into output such that if you uncompress the
-             * compressed data you get back all the input data. Doing this may
-             * make the final file larger due to padding though. Another example
-             * is a regexp conversion, where if you at the end of the flushed data
-             * have a match, but there is also a potential longer match. In the
-             * non-flushed case we would ask for more input, but when flushing we
-             * treat this as the end of input and do the match.
-             *
-             * Flushing is not always possible (like if a charset converter flushes
-             * at a partial multibyte sequence). Converters are supposed to try
-             * to produce as much output as possible and then return an error
-             * (typically %G_IO_ERROR_PARTIAL_INPUT).
-             * @param inbuf the buffer         containing the data to convert.
-             * @param outbuf a    buffer to write converted data in.
-             * @param flags a #GConverterFlags controlling the conversion details
-             */
-            vfunc_convert(
-                inbuf: Uint8Array | null,
-                outbuf: Uint8Array | string,
-                flags: ConverterFlags,
-            ): [ConverterResult, number, number];
-            /**
-             * Resets all internal state in the converter, making it behave
-             * as if it was just created. If the converter has any internal
-             * state that would produce output then that output is lost.
-             */
-            vfunc_reset(): void;
         }
 
         export const Converter: ConverterNamespace & {
@@ -76837,6 +71690,31 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace DBusInterface {
+            /**
+             * Interface for implementing DBusInterface.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the #GDBusObject that `interface_` belongs to, if any.
+                 */
+                vfunc_dup_object(): DBusObject | null;
+                /**
+                 * Gets D-Bus introspection information for the D-Bus interface
+                 * implemented by `interface_`.
+                 */
+                vfunc_get_info(): DBusInterfaceInfo;
+                /**
+                 * Sets the #GDBusObject for `interface_` to `object`.
+                 *
+                 * Note that `interface_` will hold a weak reference to `object`.
+                 * @param object A #GDBusObject or %NULL.
+                 */
+                vfunc_set_object(object?: DBusObject | null): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -76846,7 +71724,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<DBusInterface>;
             prototype: DBusInterface;
         }
-        interface DBusInterface extends GObject.Object {
+        interface DBusInterface extends GObject.Object, DBusInterface.Interface {
             // Methods
 
             /**
@@ -76867,25 +71745,6 @@ declare module 'gi://Gio?version=2.0' {
              * @param object A #GDBusObject or %NULL.
              */
             set_object(object?: DBusObject | null): void;
-
-            // Virtual methods
-
-            /**
-             * Gets the #GDBusObject that `interface_` belongs to, if any.
-             */
-            vfunc_dup_object(): DBusObject | null;
-            /**
-             * Gets D-Bus introspection information for the D-Bus interface
-             * implemented by `interface_`.
-             */
-            vfunc_get_info(): DBusInterfaceInfo;
-            /**
-             * Sets the #GDBusObject for `interface_` to `object`.
-             *
-             * Note that `interface_` will hold a weak reference to `object`.
-             * @param object A #GDBusObject or %NULL.
-             */
-            vfunc_set_object(object?: DBusObject | null): void;
         }
 
         export const DBusInterface: DBusInterfaceNamespace & {
@@ -76893,6 +71752,39 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace DBusObject {
+            /**
+             * Interface for implementing DBusObject.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the D-Bus interface with name `interface_name` associated with
+                 * `object,` if any.
+                 * @param interface_name A D-Bus interface name.
+                 */
+                vfunc_get_interface(interface_name: string): DBusInterface | null;
+                /**
+                 * Gets the D-Bus interfaces associated with `object`.
+                 */
+                vfunc_get_interfaces(): DBusInterface[];
+                /**
+                 * Gets the object path for `object`.
+                 */
+                vfunc_get_object_path(): string;
+                /**
+                 * Signal handler for the #GDBusObject::interface-added signal.
+                 * @param interface_
+                 */
+                vfunc_interface_added(interface_: DBusInterface): void;
+                /**
+                 * Signal handler for the #GDBusObject::interface-removed signal.
+                 * @param interface_
+                 */
+                vfunc_interface_removed(interface_: DBusInterface): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -76902,7 +71794,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<DBusObject>;
             prototype: DBusObject;
         }
-        interface DBusObject extends GObject.Object {
+        interface DBusObject extends GObject.Object, DBusObject.Interface {
             // Methods
 
             /**
@@ -76922,33 +71814,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns A string owned by @object. Do not free.
              */
             get_object_path(): string;
-
-            // Virtual methods
-
-            /**
-             * Gets the D-Bus interface with name `interface_name` associated with
-             * `object,` if any.
-             * @param interface_name A D-Bus interface name.
-             */
-            vfunc_get_interface(interface_name: string): DBusInterface | null;
-            /**
-             * Gets the D-Bus interfaces associated with `object`.
-             */
-            vfunc_get_interfaces(): DBusInterface[];
-            /**
-             * Gets the object path for `object`.
-             */
-            vfunc_get_object_path(): string;
-            /**
-             * Signal handler for the #GDBusObject::interface-added signal.
-             * @param interface_
-             */
-            vfunc_interface_added(interface_: DBusInterface): void;
-            /**
-             * Signal handler for the #GDBusObject::interface-removed signal.
-             * @param interface_
-             */
-            vfunc_interface_removed(interface_: DBusInterface): void;
         }
 
         export const DBusObject: DBusObjectNamespace & {
@@ -76956,6 +71821,57 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace DBusObjectManager {
+            /**
+             * Interface for implementing DBusObjectManager.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the interface proxy for `interface_name` at `object_path,` if
+                 * any.
+                 * @param object_path Object path to look up.
+                 * @param interface_name D-Bus interface name to look up.
+                 */
+                vfunc_get_interface(object_path: string, interface_name: string): DBusInterface | null;
+                /**
+                 * Gets the #GDBusObject at `object_path,` if any.
+                 * @param object_path Object path to look up.
+                 */
+                vfunc_get_object(object_path: string): DBusObject | null;
+                /**
+                 * Gets the object path that `manager` is for.
+                 */
+                vfunc_get_object_path(): string;
+                /**
+                 * Gets all #GDBusObject objects known to `manager`.
+                 */
+                vfunc_get_objects(): DBusObject[];
+                /**
+                 * Signal handler for the #GDBusObjectManager::interface-added signal.
+                 * @param object
+                 * @param interface_
+                 */
+                vfunc_interface_added(object: DBusObject, interface_: DBusInterface): void;
+                /**
+                 * Signal handler for the #GDBusObjectManager::interface-removed signal.
+                 * @param object
+                 * @param interface_
+                 */
+                vfunc_interface_removed(object: DBusObject, interface_: DBusInterface): void;
+                /**
+                 * Signal handler for the #GDBusObjectManager::object-added signal.
+                 * @param object
+                 */
+                vfunc_object_added(object: DBusObject): void;
+                /**
+                 * Signal handler for the #GDBusObjectManager::object-removed signal.
+                 * @param object
+                 */
+                vfunc_object_removed(object: DBusObject): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -76965,7 +71881,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<DBusObjectManager>;
             prototype: DBusObjectManager;
         }
-        interface DBusObjectManager extends GObject.Object {
+        interface DBusObjectManager extends GObject.Object, DBusObjectManager.Interface {
             // Methods
 
             /**
@@ -76992,51 +71908,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns A list of   #GDBusObject objects. The returned list should be freed with   g_list_free() after each element has been freed with   g_object_unref().
              */
             get_objects(): DBusObject[];
-
-            // Virtual methods
-
-            /**
-             * Gets the interface proxy for `interface_name` at `object_path,` if
-             * any.
-             * @param object_path Object path to look up.
-             * @param interface_name D-Bus interface name to look up.
-             */
-            vfunc_get_interface(object_path: string, interface_name: string): DBusInterface | null;
-            /**
-             * Gets the #GDBusObject at `object_path,` if any.
-             * @param object_path Object path to look up.
-             */
-            vfunc_get_object(object_path: string): DBusObject | null;
-            /**
-             * Gets the object path that `manager` is for.
-             */
-            vfunc_get_object_path(): string;
-            /**
-             * Gets all #GDBusObject objects known to `manager`.
-             */
-            vfunc_get_objects(): DBusObject[];
-            /**
-             * Signal handler for the #GDBusObjectManager::interface-added signal.
-             * @param object
-             * @param interface_
-             */
-            vfunc_interface_added(object: DBusObject, interface_: DBusInterface): void;
-            /**
-             * Signal handler for the #GDBusObjectManager::interface-removed signal.
-             * @param object
-             * @param interface_
-             */
-            vfunc_interface_removed(object: DBusObject, interface_: DBusInterface): void;
-            /**
-             * Signal handler for the #GDBusObjectManager::object-added signal.
-             * @param object
-             */
-            vfunc_object_added(object: DBusObject): void;
-            /**
-             * Signal handler for the #GDBusObjectManager::object-removed signal.
-             * @param object
-             */
-            vfunc_object_removed(object: DBusObject): void;
         }
 
         export const DBusObjectManager: DBusObjectManagerNamespace & {
@@ -77044,6 +71915,205 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace DatagramBased {
+            /**
+             * Interface for implementing DatagramBased.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks on the readiness of `datagram_based` to perform operations. The
+                 * operations specified in `condition` are checked for and masked against the
+                 * currently-satisfied conditions on `datagram_based`. The result is returned.
+                 *
+                 * %G_IO_IN will be set in the return value if data is available to read with
+                 * g_datagram_based_receive_messages(), or if the connection is closed remotely
+                 * (EOS); and if the datagram_based has not been closed locally using some
+                 * implementation-specific method (such as g_socket_close() or
+                 * g_socket_shutdown() with `shutdown_read` set, if it’s a #GSocket).
+                 *
+                 * If the connection is shut down or closed (by calling g_socket_close() or
+                 * g_socket_shutdown() with `shutdown_read` set, if it’s a #GSocket, for
+                 * example), all calls to this function will return %G_IO_ERROR_CLOSED.
+                 *
+                 * %G_IO_OUT will be set if it is expected that at least one byte can be sent
+                 * using g_datagram_based_send_messages() without blocking. It will not be set
+                 * if the datagram_based has been closed locally.
+                 *
+                 * %G_IO_HUP will be set if the connection has been closed locally.
+                 *
+                 * %G_IO_ERR will be set if there was an asynchronous error in transmitting data
+                 * previously enqueued using g_datagram_based_send_messages().
+                 *
+                 * Note that on Windows, it is possible for an operation to return
+                 * %G_IO_ERROR_WOULD_BLOCK even immediately after
+                 * g_datagram_based_condition_check() has claimed that the #GDatagramBased is
+                 * ready for writing. Rather than calling g_datagram_based_condition_check() and
+                 * then writing to the #GDatagramBased if it succeeds, it is generally better to
+                 * simply try writing right away, and try again later if the initial attempt
+                 * returns %G_IO_ERROR_WOULD_BLOCK.
+                 *
+                 * It is meaningless to specify %G_IO_ERR or %G_IO_HUP in `condition;` these
+                 * conditions will always be set in the output if they are true. Apart from
+                 * these flags, the output is guaranteed to be masked by `condition`.
+                 *
+                 * This call never blocks.
+                 * @param condition a #GIOCondition mask to check
+                 */
+                vfunc_condition_check(condition: GLib.IOCondition): GLib.IOCondition;
+                /**
+                 * Waits for up to `timeout` microseconds for condition to become true on
+                 * `datagram_based`. If the condition is met, %TRUE is returned.
+                 *
+                 * If `cancellable` is cancelled before the condition is met, or if `timeout` is
+                 * reached before the condition is met, then %FALSE is returned and `error` is
+                 * set appropriately (%G_IO_ERROR_CANCELLED or %G_IO_ERROR_TIMED_OUT).
+                 * @param condition a #GIOCondition mask to wait for
+                 * @param timeout the maximum time (in microseconds) to wait, 0 to not block, or -1   to block indefinitely
+                 * @param cancellable a #GCancellable
+                 */
+                vfunc_condition_wait(
+                    condition: GLib.IOCondition,
+                    timeout: number,
+                    cancellable?: Cancellable | null,
+                ): boolean;
+                /**
+                 * Creates a #GSource that can be attached to a #GMainContext to monitor for
+                 * the availability of the specified `condition` on the #GDatagramBased. The
+                 * #GSource keeps a reference to the `datagram_based`.
+                 *
+                 * The callback on the source is of the #GDatagramBasedSourceFunc type.
+                 *
+                 * It is meaningless to specify %G_IO_ERR or %G_IO_HUP in `condition;` these
+                 * conditions will always be reported in the callback if they are true.
+                 *
+                 * If non-%NULL, `cancellable` can be used to cancel the source, which will
+                 * cause the source to trigger, reporting the current condition (which is
+                 * likely 0 unless cancellation happened at the same time as a condition
+                 * change). You can check for this in the callback using
+                 * g_cancellable_is_cancelled().
+                 * @param condition a #GIOCondition mask to monitor
+                 * @param cancellable a #GCancellable
+                 */
+                vfunc_create_source(condition: GLib.IOCondition, cancellable?: Cancellable | null): GLib.Source;
+                /**
+                 * Receive one or more data messages from `datagram_based` in one go.
+                 *
+                 * `messages` must point to an array of #GInputMessage structs and
+                 * `num_messages` must be the length of this array. Each #GInputMessage
+                 * contains a pointer to an array of #GInputVector structs describing the
+                 * buffers that the data received in each message will be written to.
+                 *
+                 * `flags` modify how all messages are received. The commonly available
+                 * arguments for this are available in the #GSocketMsgFlags enum, but the
+                 * values there are the same as the system values, and the flags
+                 * are passed in as-is, so you can pass in system-specific flags too. These
+                 * flags affect the overall receive operation. Flags affecting individual
+                 * messages are returned in #GInputMessage.flags.
+                 *
+                 * The other members of #GInputMessage are treated as described in its
+                 * documentation.
+                 *
+                 * If `timeout` is negative the call will block until `num_messages` have been
+                 * received, the connection is closed remotely (EOS), `cancellable` is cancelled,
+                 * or an error occurs.
+                 *
+                 * If `timeout` is 0 the call will return up to `num_messages` without blocking,
+                 * or %G_IO_ERROR_WOULD_BLOCK if no messages are queued in the operating system
+                 * to be received.
+                 *
+                 * If `timeout` is positive the call will block on the same conditions as if
+                 * `timeout` were negative. If the timeout is reached
+                 * before any messages are received, %G_IO_ERROR_TIMED_OUT is returned,
+                 * otherwise it will return the number of messages received before timing out.
+                 * (Note: This is effectively the behaviour of `MSG_WAITFORONE` with
+                 * recvmmsg().)
+                 *
+                 * To be notified when messages are available, wait for the %G_IO_IN condition.
+                 * Note though that you may still receive %G_IO_ERROR_WOULD_BLOCK from
+                 * g_datagram_based_receive_messages() even if you were previously notified of a
+                 * %G_IO_IN condition.
+                 *
+                 * If the remote peer closes the connection, any messages queued in the
+                 * underlying receive buffer will be returned, and subsequent calls to
+                 * g_datagram_based_receive_messages() will return 0 (with no error set).
+                 *
+                 * If the connection is shut down or closed (by calling g_socket_close() or
+                 * g_socket_shutdown() with `shutdown_read` set, if it’s a #GSocket, for
+                 * example), all calls to this function will return %G_IO_ERROR_CLOSED.
+                 *
+                 * On error -1 is returned and `error` is set accordingly. An error will only
+                 * be returned if zero messages could be received; otherwise the number of
+                 * messages successfully received before the error will be returned. If
+                 * `cancellable` is cancelled, %G_IO_ERROR_CANCELLED is returned as with any
+                 * other error.
+                 * @param messages an array of #GInputMessage structs
+                 * @param flags an int containing #GSocketMsgFlags flags for the overall operation
+                 * @param timeout the maximum time (in microseconds) to wait, 0 to not block, or -1   to block indefinitely
+                 * @param cancellable a %GCancellable
+                 */
+                vfunc_receive_messages(
+                    messages: InputMessage[],
+                    flags: number,
+                    timeout: number,
+                    cancellable?: Cancellable | null,
+                ): number;
+                /**
+                 * Send one or more data messages from `datagram_based` in one go.
+                 *
+                 * `messages` must point to an array of #GOutputMessage structs and
+                 * `num_messages` must be the length of this array. Each #GOutputMessage
+                 * contains an address to send the data to, and a pointer to an array of
+                 * #GOutputVector structs to describe the buffers that the data to be sent
+                 * for each message will be gathered from.
+                 *
+                 * `flags` modify how the message is sent. The commonly available arguments
+                 * for this are available in the #GSocketMsgFlags enum, but the
+                 * values there are the same as the system values, and the flags
+                 * are passed in as-is, so you can pass in system-specific flags too.
+                 *
+                 * The other members of #GOutputMessage are treated as described in its
+                 * documentation.
+                 *
+                 * If `timeout` is negative the call will block until `num_messages` have been
+                 * sent, `cancellable` is cancelled, or an error occurs.
+                 *
+                 * If `timeout` is 0 the call will send up to `num_messages` without blocking,
+                 * or will return %G_IO_ERROR_WOULD_BLOCK if there is no space to send messages.
+                 *
+                 * If `timeout` is positive the call will block on the same conditions as if
+                 * `timeout` were negative. If the timeout is reached before any messages are
+                 * sent, %G_IO_ERROR_TIMED_OUT is returned, otherwise it will return the number
+                 * of messages sent before timing out.
+                 *
+                 * To be notified when messages can be sent, wait for the %G_IO_OUT condition.
+                 * Note though that you may still receive %G_IO_ERROR_WOULD_BLOCK from
+                 * g_datagram_based_send_messages() even if you were previously notified of a
+                 * %G_IO_OUT condition. (On Windows in particular, this is very common due to
+                 * the way the underlying APIs work.)
+                 *
+                 * If the connection is shut down or closed (by calling g_socket_close() or
+                 * g_socket_shutdown() with `shutdown_write` set, if it’s a #GSocket, for
+                 * example), all calls to this function will return %G_IO_ERROR_CLOSED.
+                 *
+                 * On error -1 is returned and `error` is set accordingly. An error will only
+                 * be returned if zero messages could be sent; otherwise the number of messages
+                 * successfully sent before the error will be returned. If `cancellable` is
+                 * cancelled, %G_IO_ERROR_CANCELLED is returned as with any other error.
+                 * @param messages an array of #GOutputMessage structs
+                 * @param flags an int containing #GSocketMsgFlags flags
+                 * @param timeout the maximum time (in microseconds) to wait, 0 to not block, or -1   to block indefinitely
+                 * @param cancellable a %GCancellable
+                 */
+                vfunc_send_messages(
+                    messages: OutputMessage[],
+                    flags: number,
+                    timeout: number,
+                    cancellable?: Cancellable | null,
+                ): number;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -77053,7 +72123,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<DatagramBased>;
             prototype: DatagramBased;
         }
-        interface DatagramBased extends GObject.Object {
+        interface DatagramBased extends GObject.Object, DatagramBased.Interface {
             // Methods
 
             /**
@@ -77251,199 +72321,6 @@ declare module 'gi://Gio?version=2.0' {
                 timeout: number,
                 cancellable?: Cancellable | null,
             ): number;
-
-            // Virtual methods
-
-            /**
-             * Checks on the readiness of `datagram_based` to perform operations. The
-             * operations specified in `condition` are checked for and masked against the
-             * currently-satisfied conditions on `datagram_based`. The result is returned.
-             *
-             * %G_IO_IN will be set in the return value if data is available to read with
-             * g_datagram_based_receive_messages(), or if the connection is closed remotely
-             * (EOS); and if the datagram_based has not been closed locally using some
-             * implementation-specific method (such as g_socket_close() or
-             * g_socket_shutdown() with `shutdown_read` set, if it’s a #GSocket).
-             *
-             * If the connection is shut down or closed (by calling g_socket_close() or
-             * g_socket_shutdown() with `shutdown_read` set, if it’s a #GSocket, for
-             * example), all calls to this function will return %G_IO_ERROR_CLOSED.
-             *
-             * %G_IO_OUT will be set if it is expected that at least one byte can be sent
-             * using g_datagram_based_send_messages() without blocking. It will not be set
-             * if the datagram_based has been closed locally.
-             *
-             * %G_IO_HUP will be set if the connection has been closed locally.
-             *
-             * %G_IO_ERR will be set if there was an asynchronous error in transmitting data
-             * previously enqueued using g_datagram_based_send_messages().
-             *
-             * Note that on Windows, it is possible for an operation to return
-             * %G_IO_ERROR_WOULD_BLOCK even immediately after
-             * g_datagram_based_condition_check() has claimed that the #GDatagramBased is
-             * ready for writing. Rather than calling g_datagram_based_condition_check() and
-             * then writing to the #GDatagramBased if it succeeds, it is generally better to
-             * simply try writing right away, and try again later if the initial attempt
-             * returns %G_IO_ERROR_WOULD_BLOCK.
-             *
-             * It is meaningless to specify %G_IO_ERR or %G_IO_HUP in `condition;` these
-             * conditions will always be set in the output if they are true. Apart from
-             * these flags, the output is guaranteed to be masked by `condition`.
-             *
-             * This call never blocks.
-             * @param condition a #GIOCondition mask to check
-             */
-            vfunc_condition_check(condition: GLib.IOCondition): GLib.IOCondition;
-            /**
-             * Waits for up to `timeout` microseconds for condition to become true on
-             * `datagram_based`. If the condition is met, %TRUE is returned.
-             *
-             * If `cancellable` is cancelled before the condition is met, or if `timeout` is
-             * reached before the condition is met, then %FALSE is returned and `error` is
-             * set appropriately (%G_IO_ERROR_CANCELLED or %G_IO_ERROR_TIMED_OUT).
-             * @param condition a #GIOCondition mask to wait for
-             * @param timeout the maximum time (in microseconds) to wait, 0 to not block, or -1   to block indefinitely
-             * @param cancellable a #GCancellable
-             */
-            vfunc_condition_wait(
-                condition: GLib.IOCondition,
-                timeout: number,
-                cancellable?: Cancellable | null,
-            ): boolean;
-            /**
-             * Creates a #GSource that can be attached to a #GMainContext to monitor for
-             * the availability of the specified `condition` on the #GDatagramBased. The
-             * #GSource keeps a reference to the `datagram_based`.
-             *
-             * The callback on the source is of the #GDatagramBasedSourceFunc type.
-             *
-             * It is meaningless to specify %G_IO_ERR or %G_IO_HUP in `condition;` these
-             * conditions will always be reported in the callback if they are true.
-             *
-             * If non-%NULL, `cancellable` can be used to cancel the source, which will
-             * cause the source to trigger, reporting the current condition (which is
-             * likely 0 unless cancellation happened at the same time as a condition
-             * change). You can check for this in the callback using
-             * g_cancellable_is_cancelled().
-             * @param condition a #GIOCondition mask to monitor
-             * @param cancellable a #GCancellable
-             */
-            vfunc_create_source(condition: GLib.IOCondition, cancellable?: Cancellable | null): GLib.Source;
-            /**
-             * Receive one or more data messages from `datagram_based` in one go.
-             *
-             * `messages` must point to an array of #GInputMessage structs and
-             * `num_messages` must be the length of this array. Each #GInputMessage
-             * contains a pointer to an array of #GInputVector structs describing the
-             * buffers that the data received in each message will be written to.
-             *
-             * `flags` modify how all messages are received. The commonly available
-             * arguments for this are available in the #GSocketMsgFlags enum, but the
-             * values there are the same as the system values, and the flags
-             * are passed in as-is, so you can pass in system-specific flags too. These
-             * flags affect the overall receive operation. Flags affecting individual
-             * messages are returned in #GInputMessage.flags.
-             *
-             * The other members of #GInputMessage are treated as described in its
-             * documentation.
-             *
-             * If `timeout` is negative the call will block until `num_messages` have been
-             * received, the connection is closed remotely (EOS), `cancellable` is cancelled,
-             * or an error occurs.
-             *
-             * If `timeout` is 0 the call will return up to `num_messages` without blocking,
-             * or %G_IO_ERROR_WOULD_BLOCK if no messages are queued in the operating system
-             * to be received.
-             *
-             * If `timeout` is positive the call will block on the same conditions as if
-             * `timeout` were negative. If the timeout is reached
-             * before any messages are received, %G_IO_ERROR_TIMED_OUT is returned,
-             * otherwise it will return the number of messages received before timing out.
-             * (Note: This is effectively the behaviour of `MSG_WAITFORONE` with
-             * recvmmsg().)
-             *
-             * To be notified when messages are available, wait for the %G_IO_IN condition.
-             * Note though that you may still receive %G_IO_ERROR_WOULD_BLOCK from
-             * g_datagram_based_receive_messages() even if you were previously notified of a
-             * %G_IO_IN condition.
-             *
-             * If the remote peer closes the connection, any messages queued in the
-             * underlying receive buffer will be returned, and subsequent calls to
-             * g_datagram_based_receive_messages() will return 0 (with no error set).
-             *
-             * If the connection is shut down or closed (by calling g_socket_close() or
-             * g_socket_shutdown() with `shutdown_read` set, if it’s a #GSocket, for
-             * example), all calls to this function will return %G_IO_ERROR_CLOSED.
-             *
-             * On error -1 is returned and `error` is set accordingly. An error will only
-             * be returned if zero messages could be received; otherwise the number of
-             * messages successfully received before the error will be returned. If
-             * `cancellable` is cancelled, %G_IO_ERROR_CANCELLED is returned as with any
-             * other error.
-             * @param messages an array of #GInputMessage structs
-             * @param flags an int containing #GSocketMsgFlags flags for the overall operation
-             * @param timeout the maximum time (in microseconds) to wait, 0 to not block, or -1   to block indefinitely
-             * @param cancellable a %GCancellable
-             */
-            vfunc_receive_messages(
-                messages: InputMessage[],
-                flags: number,
-                timeout: number,
-                cancellable?: Cancellable | null,
-            ): number;
-            /**
-             * Send one or more data messages from `datagram_based` in one go.
-             *
-             * `messages` must point to an array of #GOutputMessage structs and
-             * `num_messages` must be the length of this array. Each #GOutputMessage
-             * contains an address to send the data to, and a pointer to an array of
-             * #GOutputVector structs to describe the buffers that the data to be sent
-             * for each message will be gathered from.
-             *
-             * `flags` modify how the message is sent. The commonly available arguments
-             * for this are available in the #GSocketMsgFlags enum, but the
-             * values there are the same as the system values, and the flags
-             * are passed in as-is, so you can pass in system-specific flags too.
-             *
-             * The other members of #GOutputMessage are treated as described in its
-             * documentation.
-             *
-             * If `timeout` is negative the call will block until `num_messages` have been
-             * sent, `cancellable` is cancelled, or an error occurs.
-             *
-             * If `timeout` is 0 the call will send up to `num_messages` without blocking,
-             * or will return %G_IO_ERROR_WOULD_BLOCK if there is no space to send messages.
-             *
-             * If `timeout` is positive the call will block on the same conditions as if
-             * `timeout` were negative. If the timeout is reached before any messages are
-             * sent, %G_IO_ERROR_TIMED_OUT is returned, otherwise it will return the number
-             * of messages sent before timing out.
-             *
-             * To be notified when messages can be sent, wait for the %G_IO_OUT condition.
-             * Note though that you may still receive %G_IO_ERROR_WOULD_BLOCK from
-             * g_datagram_based_send_messages() even if you were previously notified of a
-             * %G_IO_OUT condition. (On Windows in particular, this is very common due to
-             * the way the underlying APIs work.)
-             *
-             * If the connection is shut down or closed (by calling g_socket_close() or
-             * g_socket_shutdown() with `shutdown_write` set, if it’s a #GSocket, for
-             * example), all calls to this function will return %G_IO_ERROR_CLOSED.
-             *
-             * On error -1 is returned and `error` is set accordingly. An error will only
-             * be returned if zero messages could be sent; otherwise the number of messages
-             * successfully sent before the error will be returned. If `cancellable` is
-             * cancelled, %G_IO_ERROR_CANCELLED is returned as with any other error.
-             * @param messages an array of #GOutputMessage structs
-             * @param flags an int containing #GSocketMsgFlags flags
-             * @param timeout the maximum time (in microseconds) to wait, 0 to not block, or -1   to block indefinitely
-             * @param cancellable a %GCancellable
-             */
-            vfunc_send_messages(
-                messages: OutputMessage[],
-                flags: number,
-                timeout: number,
-                cancellable?: Cancellable | null,
-            ): number;
         }
 
         export const DatagramBased: DatagramBasedNamespace & {
@@ -77497,56 +72374,218 @@ declare module 'gi://Gio?version=2.0' {
             new (): DebugController; // This allows `obj instanceof DebugController`
         };
 
-        namespace DesktopAppInfoLookup {
-            // Constructor properties interface
-
-            interface ConstructorProps extends GObject.Object.ConstructorProps {}
-        }
-
-        export interface DesktopAppInfoLookupNamespace {
-            $gtype: GObject.GType<DesktopAppInfoLookup>;
-            prototype: DesktopAppInfoLookup;
-        }
-        interface DesktopAppInfoLookup extends GObject.Object {
-            // Methods
-
-            /**
-             * Gets the default application for launching applications
-             * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
-             * implementation.
-             *
-             * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
-             * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
-             * in a GIO module. There is no reason for applications to use it
-             * directly. Applications should use
-             * [func`Gio`.AppInfo.get_default_for_uri_scheme].
-             * @param uri_scheme a string containing a URI scheme.
-             * @returns [iface@Gio.AppInfo] for given   @uri_scheme or `NULL` on error.
-             */
-            get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
-
-            // Virtual methods
-
-            /**
-             * Gets the default application for launching applications
-             * using this URI scheme for a particular [iface`Gio`.DesktopAppInfoLookup]
-             * implementation.
-             *
-             * The [iface`Gio`.DesktopAppInfoLookup] interface and this function is used
-             * to implement [func`Gio`.AppInfo.get_default_for_uri_scheme] backends
-             * in a GIO module. There is no reason for applications to use it
-             * directly. Applications should use
-             * [func`Gio`.AppInfo.get_default_for_uri_scheme].
-             * @param uri_scheme a string containing a URI scheme.
-             */
-            vfunc_get_default_for_uri_scheme(uri_scheme: string): AppInfo | null;
-        }
-
-        export const DesktopAppInfoLookup: DesktopAppInfoLookupNamespace & {
-            new (): DesktopAppInfoLookup; // This allows `obj instanceof DesktopAppInfoLookup`
-        };
-
         namespace Drive {
+            /**
+             * Interface for implementing Drive.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if a drive can be ejected.
+                 */
+                vfunc_can_eject(): boolean;
+                /**
+                 * Checks if a drive can be polled for media changes.
+                 */
+                vfunc_can_poll_for_media(): boolean;
+                /**
+                 * Checks if a drive can be started.
+                 */
+                vfunc_can_start(): boolean;
+                /**
+                 * Checks if a drive can be started degraded.
+                 */
+                vfunc_can_start_degraded(): boolean;
+                /**
+                 * Checks if a drive can be stopped.
+                 */
+                vfunc_can_stop(): boolean;
+                /**
+                 * Signal emitted when the drive is changed.
+                 */
+                vfunc_changed(): void;
+                /**
+                 * The removed signal that is emitted when the #GDrive have been disconnected. If the recipient is holding references to the object they should release them so the object can be finalized.
+                 */
+                vfunc_disconnected(): void;
+                /**
+                 * Asynchronously ejects a drive.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_drive_eject_finish() to obtain the
+                 * result of the operation.
+                 * @param flags flags affecting the unmount if required for eject
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_eject(
+                    flags: MountUnmountFlags,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Signal emitted when the physical eject button (if any) of a drive have been pressed.
+                 */
+                vfunc_eject_button(): void;
+                /**
+                 * Finishes ejecting a drive.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_eject_finish(result: AsyncResult): boolean;
+                /**
+                 * Ejects a drive. This is an asynchronous operation, and is
+                 * finished by calling g_drive_eject_with_operation_finish() with the `drive`
+                 * and #GAsyncResult data returned in the `callback`.
+                 * @param flags flags affecting the unmount if required for eject
+                 * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_eject_with_operation(
+                    flags: MountUnmountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes ejecting a drive. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_eject_with_operation_finish(result: AsyncResult): boolean;
+                /**
+                 * Gets the kinds of identifiers that `drive` has.
+                 * Use g_drive_get_identifier() to obtain the identifiers
+                 * themselves.
+                 */
+                vfunc_enumerate_identifiers(): string[];
+                /**
+                 * Gets the icon for `drive`.
+                 */
+                vfunc_get_icon(): Icon;
+                /**
+                 * Gets the identifier of the given kind for `drive`. The only
+                 * identifier currently available is
+                 * %G_DRIVE_IDENTIFIER_KIND_UNIX_DEVICE.
+                 * @param kind the kind of identifier to return
+                 */
+                vfunc_get_identifier(kind: string): string | null;
+                /**
+                 * Gets the name of `drive`.
+                 */
+                vfunc_get_name(): string;
+                /**
+                 * Gets the sort key for `drive,` if any.
+                 */
+                vfunc_get_sort_key(): string | null;
+                /**
+                 * Gets a hint about how a drive can be started/stopped.
+                 */
+                vfunc_get_start_stop_type(): DriveStartStopType;
+                /**
+                 * Gets the icon for `drive`.
+                 */
+                vfunc_get_symbolic_icon(): Icon;
+                /**
+                 * Get a list of mountable volumes for `drive`.
+                 *
+                 * The returned list should be freed with g_list_free(), after
+                 * its elements have been unreffed with g_object_unref().
+                 */
+                vfunc_get_volumes(): Volume[];
+                /**
+                 * Checks if the `drive` has media. Note that the OS may not be polling
+                 * the drive for media changes; see g_drive_is_media_check_automatic()
+                 * for more details.
+                 */
+                vfunc_has_media(): boolean;
+                /**
+                 * Check if `drive` has any mountable volumes.
+                 */
+                vfunc_has_volumes(): boolean;
+                /**
+                 * Checks if `drive` is capable of automatically detecting media changes.
+                 */
+                vfunc_is_media_check_automatic(): boolean;
+                /**
+                 * Checks if the `drive` supports removable media.
+                 */
+                vfunc_is_media_removable(): boolean;
+                /**
+                 * Checks if the #GDrive and/or its media is considered removable by the user.
+                 * See g_drive_is_media_removable().
+                 */
+                vfunc_is_removable(): boolean;
+                /**
+                 * Asynchronously polls `drive` to see if media has been inserted or removed.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_drive_poll_for_media_finish() to obtain the
+                 * result of the operation.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_poll_for_media(
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an operation started with g_drive_poll_for_media() on a drive.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_poll_for_media_finish(result: AsyncResult): boolean;
+                /**
+                 * Asynchronously starts a drive.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_drive_start_finish() to obtain the
+                 * result of the operation.
+                 * @param flags flags affecting the start operation.
+                 * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_start(
+                    flags: DriveStartFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes starting a drive.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_start_finish(result: AsyncResult): boolean;
+                /**
+                 * Asynchronously stops a drive.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_drive_stop_finish() to obtain the
+                 * result of the operation.
+                 * @param flags flags affecting the unmount if required for stopping.
+                 * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_stop(
+                    flags: MountUnmountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Signal emitted when the physical stop button (if any) of a drive have been pressed. Since 2.22.
+                 */
+                vfunc_stop_button(): void;
+                /**
+                 * Finishes stopping a drive.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_stop_finish(result: AsyncResult): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -77556,7 +72595,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<Drive>;
             prototype: Drive;
         }
-        interface Drive extends GObject.Object {
+        interface Drive extends GObject.Object, Drive.Interface {
             // Methods
 
             /**
@@ -77593,7 +72632,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param flags flags affecting the unmount if required for eject
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
+            eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously ejects a drive.
              *
@@ -77623,7 +72662,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes ejecting a drive.
              * @param result a #GAsyncResult.
@@ -77642,7 +72681,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Ejects a drive. This is an asynchronous operation, and is
              * finished by calling g_drive_eject_with_operation_finish() with the `drive`
@@ -77672,7 +72711,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes ejecting a drive. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -77764,7 +72803,7 @@ declare module 'gi://Gio?version=2.0' {
              * result of the operation.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            poll_for_media(cancellable?: Cancellable | null): Promise<boolean>;
+            poll_for_media(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously polls `drive` to see if media has been inserted or removed.
              *
@@ -77787,7 +72826,7 @@ declare module 'gi://Gio?version=2.0' {
             poll_for_media(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with g_drive_poll_for_media() on a drive.
              * @param result a #GAsyncResult.
@@ -77808,7 +72847,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: DriveStartFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously starts a drive.
              *
@@ -77842,7 +72881,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes starting a drive.
              * @param result a #GAsyncResult.
@@ -77863,7 +72902,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously stops a drive.
              *
@@ -77897,215 +72936,13 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes stopping a drive.
              * @param result a #GAsyncResult.
              * @returns %TRUE if the drive has been stopped successfully,     %FALSE otherwise.
              */
             stop_finish(result: AsyncResult): boolean;
-
-            // Virtual methods
-
-            /**
-             * Checks if a drive can be ejected.
-             */
-            vfunc_can_eject(): boolean;
-            /**
-             * Checks if a drive can be polled for media changes.
-             */
-            vfunc_can_poll_for_media(): boolean;
-            /**
-             * Checks if a drive can be started.
-             */
-            vfunc_can_start(): boolean;
-            /**
-             * Checks if a drive can be started degraded.
-             */
-            vfunc_can_start_degraded(): boolean;
-            /**
-             * Checks if a drive can be stopped.
-             */
-            vfunc_can_stop(): boolean;
-            /**
-             * Signal emitted when the drive is changed.
-             */
-            vfunc_changed(): void;
-            /**
-             * The removed signal that is emitted when the #GDrive have been disconnected. If the recipient is holding references to the object they should release them so the object can be finalized.
-             */
-            vfunc_disconnected(): void;
-            /**
-             * Asynchronously ejects a drive.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_drive_eject_finish() to obtain the
-             * result of the operation.
-             * @param flags flags affecting the unmount if required for eject
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_eject(
-                flags: MountUnmountFlags,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Signal emitted when the physical eject button (if any) of a drive have been pressed.
-             */
-            vfunc_eject_button(): void;
-            /**
-             * Finishes ejecting a drive.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_eject_finish(result: AsyncResult): boolean;
-            /**
-             * Ejects a drive. This is an asynchronous operation, and is
-             * finished by calling g_drive_eject_with_operation_finish() with the `drive`
-             * and #GAsyncResult data returned in the `callback`.
-             * @param flags flags affecting the unmount if required for eject
-             * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_eject_with_operation(
-                flags: MountUnmountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes ejecting a drive. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_eject_with_operation_finish(result: AsyncResult): boolean;
-            /**
-             * Gets the kinds of identifiers that `drive` has.
-             * Use g_drive_get_identifier() to obtain the identifiers
-             * themselves.
-             */
-            vfunc_enumerate_identifiers(): string[];
-            /**
-             * Gets the icon for `drive`.
-             */
-            vfunc_get_icon(): Icon;
-            /**
-             * Gets the identifier of the given kind for `drive`. The only
-             * identifier currently available is
-             * %G_DRIVE_IDENTIFIER_KIND_UNIX_DEVICE.
-             * @param kind the kind of identifier to return
-             */
-            vfunc_get_identifier(kind: string): string | null;
-            /**
-             * Gets the name of `drive`.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Gets the sort key for `drive,` if any.
-             */
-            vfunc_get_sort_key(): string | null;
-            /**
-             * Gets a hint about how a drive can be started/stopped.
-             */
-            vfunc_get_start_stop_type(): DriveStartStopType;
-            /**
-             * Gets the icon for `drive`.
-             */
-            vfunc_get_symbolic_icon(): Icon;
-            /**
-             * Get a list of mountable volumes for `drive`.
-             *
-             * The returned list should be freed with g_list_free(), after
-             * its elements have been unreffed with g_object_unref().
-             */
-            vfunc_get_volumes(): Volume[];
-            /**
-             * Checks if the `drive` has media. Note that the OS may not be polling
-             * the drive for media changes; see g_drive_is_media_check_automatic()
-             * for more details.
-             */
-            vfunc_has_media(): boolean;
-            /**
-             * Check if `drive` has any mountable volumes.
-             */
-            vfunc_has_volumes(): boolean;
-            /**
-             * Checks if `drive` is capable of automatically detecting media changes.
-             */
-            vfunc_is_media_check_automatic(): boolean;
-            /**
-             * Checks if the `drive` supports removable media.
-             */
-            vfunc_is_media_removable(): boolean;
-            /**
-             * Checks if the #GDrive and/or its media is considered removable by the user.
-             * See g_drive_is_media_removable().
-             */
-            vfunc_is_removable(): boolean;
-            /**
-             * Asynchronously polls `drive` to see if media has been inserted or removed.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_drive_poll_for_media_finish() to obtain the
-             * result of the operation.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_poll_for_media(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
-            /**
-             * Finishes an operation started with g_drive_poll_for_media() on a drive.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_poll_for_media_finish(result: AsyncResult): boolean;
-            /**
-             * Asynchronously starts a drive.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_drive_start_finish() to obtain the
-             * result of the operation.
-             * @param flags flags affecting the start operation.
-             * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_start(
-                flags: DriveStartFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes starting a drive.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_start_finish(result: AsyncResult): boolean;
-            /**
-             * Asynchronously stops a drive.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_drive_stop_finish() to obtain the
-             * result of the operation.
-             * @param flags flags affecting the unmount if required for stopping.
-             * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_stop(
-                flags: MountUnmountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Signal emitted when the physical stop button (if any) of a drive have been pressed. Since 2.22.
-             */
-            vfunc_stop_button(): void;
-            /**
-             * Finishes stopping a drive.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_stop_finish(result: AsyncResult): boolean;
         }
 
         export const Drive: DriveNamespace & {
@@ -78290,6 +73127,147 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace DtlsConnection {
+            /**
+             * Interface for implementing DtlsConnection.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends DatagramBased.Interface {
+                // Virtual methods
+
+                /**
+                 * Check whether to accept a certificate.
+                 * @param peer_cert
+                 * @param errors
+                 */
+                vfunc_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
+                /**
+                 * Retrieve TLS channel binding data (Since: 2.66)
+                 * @param type
+                 * @param data
+                 */
+                vfunc_get_binding_data(type: TlsChannelBindingType, data: Uint8Array | string): boolean;
+                /**
+                 * Gets the name of the application-layer protocol negotiated during
+                 * the handshake.
+                 *
+                 * If the peer did not use the ALPN extension, or did not advertise a
+                 * protocol that matched one of `conn'`s protocols, or the TLS backend
+                 * does not support ALPN, then this will be %NULL. See
+                 * g_dtls_connection_set_advertised_protocols().
+                 */
+                vfunc_get_negotiated_protocol(): string | null;
+                /**
+                 * Attempts a TLS handshake on `conn`.
+                 *
+                 * On the client side, it is never necessary to call this method;
+                 * although the connection needs to perform a handshake after
+                 * connecting, #GDtlsConnection will handle this for you automatically
+                 * when you try to send or receive data on the connection. You can call
+                 * g_dtls_connection_handshake() manually if you want to know whether
+                 * the initial handshake succeeded or failed (as opposed to just
+                 * immediately trying to use `conn` to read or write, in which case,
+                 * if it fails, it may not be possible to tell if it failed before
+                 * or after completing the handshake), but beware that servers may reject
+                 * client authentication after the handshake has completed, so a
+                 * successful handshake does not indicate the connection will be usable.
+                 *
+                 * Likewise, on the server side, although a handshake is necessary at
+                 * the beginning of the communication, you do not need to call this
+                 * function explicitly unless you want clearer error reporting.
+                 *
+                 * Previously, calling g_dtls_connection_handshake() after the initial
+                 * handshake would trigger a rehandshake; however, this usage was
+                 * deprecated in GLib 2.60 because rehandshaking was removed from the
+                 * TLS protocol in TLS 1.3. Since GLib 2.64, calling this function after
+                 * the initial handshake will no longer do anything.
+                 *
+                 * #GDtlsConnection::accept_certificate may be emitted during the
+                 * handshake.
+                 * @param cancellable a #GCancellable, or %NULL
+                 */
+                vfunc_handshake(cancellable?: Cancellable | null): boolean;
+                /**
+                 * Asynchronously performs a TLS handshake on `conn`. See
+                 * g_dtls_connection_handshake() for more information.
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable a #GCancellable, or %NULL
+                 * @param callback callback to call when the handshake is complete
+                 */
+                vfunc_handshake_async(
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finish an asynchronous TLS handshake operation. See
+                 * g_dtls_connection_handshake() for more information.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_handshake_finish(result: AsyncResult): boolean;
+                /**
+                 * Sets the list of application-layer protocols to advertise that the
+                 * caller is willing to speak on this connection. The
+                 * Application-Layer Protocol Negotiation (ALPN) extension will be
+                 * used to negotiate a compatible protocol with the peer; use
+                 * g_dtls_connection_get_negotiated_protocol() to find the negotiated
+                 * protocol after the handshake.  Specifying %NULL for the the value
+                 * of `protocols` will disable ALPN negotiation.
+                 *
+                 * See [IANA TLS ALPN Protocol IDs](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids)
+                 * for a list of registered protocol IDs.
+                 * @param protocols a %NULL-terminated   array of ALPN protocol names (eg, "http/1.1", "h2"), or %NULL
+                 */
+                vfunc_set_advertised_protocols(protocols?: string[] | null): void;
+                /**
+                 * Shut down part or all of a DTLS connection.
+                 *
+                 * If `shutdown_read` is %TRUE then the receiving side of the connection is shut
+                 * down, and further reading is disallowed. Subsequent calls to
+                 * g_datagram_based_receive_messages() will return %G_IO_ERROR_CLOSED.
+                 *
+                 * If `shutdown_write` is %TRUE then the sending side of the connection is shut
+                 * down, and further writing is disallowed. Subsequent calls to
+                 * g_datagram_based_send_messages() will return %G_IO_ERROR_CLOSED.
+                 *
+                 * It is allowed for both `shutdown_read` and `shutdown_write` to be TRUE — this
+                 * is equivalent to calling g_dtls_connection_close().
+                 *
+                 * If `cancellable` is cancelled, the #GDtlsConnection may be left
+                 * partially-closed and any pending untransmitted data may be lost. Call
+                 * g_dtls_connection_shutdown() again to complete closing the #GDtlsConnection.
+                 * @param shutdown_read %TRUE to stop reception of incoming datagrams
+                 * @param shutdown_write %TRUE to stop sending outgoing datagrams
+                 * @param cancellable a #GCancellable, or %NULL
+                 */
+                vfunc_shutdown(
+                    shutdown_read: boolean,
+                    shutdown_write: boolean,
+                    cancellable?: Cancellable | null,
+                ): boolean;
+                /**
+                 * Asynchronously shut down part or all of the DTLS connection. See
+                 * g_dtls_connection_shutdown() for more information.
+                 * @param shutdown_read %TRUE to stop reception of incoming datagrams
+                 * @param shutdown_write %TRUE to stop sending outgoing datagrams
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable a #GCancellable, or %NULL
+                 * @param callback callback to call when the shutdown operation is complete
+                 */
+                vfunc_shutdown_async(
+                    shutdown_read: boolean,
+                    shutdown_write: boolean,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finish an asynchronous TLS shutdown operation. See
+                 * g_dtls_connection_shutdown() for more information.
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_shutdown_finish(result: AsyncResult): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends DatagramBased.ConstructorProps {
@@ -78321,7 +73299,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<DtlsConnection>;
             prototype: DtlsConnection;
         }
-        interface DtlsConnection extends DatagramBased {
+        interface DtlsConnection extends DatagramBased, DtlsConnection.Interface {
             // Properties
 
             /**
@@ -78516,7 +73494,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable a #GCancellable, or %NULL
              */
-            close_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously close the DTLS connection. See g_dtls_connection_close() for
              * more information.
@@ -78540,7 +73518,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finish an asynchronous TLS close operation. See g_dtls_connection_close()
              * for more information.
@@ -78688,7 +73666,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable a #GCancellable, or %NULL
              */
-            handshake_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            handshake_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously performs a TLS handshake on `conn`. See
              * g_dtls_connection_handshake() for more information.
@@ -78712,7 +73690,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finish an asynchronous TLS handshake operation. See
              * g_dtls_connection_handshake() for more information.
@@ -78854,7 +73832,7 @@ declare module 'gi://Gio?version=2.0' {
                 shutdown_write: boolean,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously shut down part or all of the DTLS connection. See
              * g_dtls_connection_shutdown() for more information.
@@ -78886,7 +73864,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finish an asynchronous TLS shutdown operation. See
              * g_dtls_connection_shutdown() for more information.
@@ -78894,137 +73872,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns %TRUE on success, %FALSE on failure, in which case @error will be set
              */
             shutdown_finish(result: AsyncResult): boolean;
-
-            // Virtual methods
-
-            /**
-             * Check whether to accept a certificate.
-             * @param peer_cert
-             * @param errors
-             */
-            vfunc_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
-            /**
-             * Retrieve TLS channel binding data (Since: 2.66)
-             * @param type
-             * @param data
-             */
-            vfunc_get_binding_data(type: TlsChannelBindingType, data: Uint8Array | string): boolean;
-            /**
-             * Gets the name of the application-layer protocol negotiated during
-             * the handshake.
-             *
-             * If the peer did not use the ALPN extension, or did not advertise a
-             * protocol that matched one of `conn'`s protocols, or the TLS backend
-             * does not support ALPN, then this will be %NULL. See
-             * g_dtls_connection_set_advertised_protocols().
-             */
-            vfunc_get_negotiated_protocol(): string | null;
-            /**
-             * Attempts a TLS handshake on `conn`.
-             *
-             * On the client side, it is never necessary to call this method;
-             * although the connection needs to perform a handshake after
-             * connecting, #GDtlsConnection will handle this for you automatically
-             * when you try to send or receive data on the connection. You can call
-             * g_dtls_connection_handshake() manually if you want to know whether
-             * the initial handshake succeeded or failed (as opposed to just
-             * immediately trying to use `conn` to read or write, in which case,
-             * if it fails, it may not be possible to tell if it failed before
-             * or after completing the handshake), but beware that servers may reject
-             * client authentication after the handshake has completed, so a
-             * successful handshake does not indicate the connection will be usable.
-             *
-             * Likewise, on the server side, although a handshake is necessary at
-             * the beginning of the communication, you do not need to call this
-             * function explicitly unless you want clearer error reporting.
-             *
-             * Previously, calling g_dtls_connection_handshake() after the initial
-             * handshake would trigger a rehandshake; however, this usage was
-             * deprecated in GLib 2.60 because rehandshaking was removed from the
-             * TLS protocol in TLS 1.3. Since GLib 2.64, calling this function after
-             * the initial handshake will no longer do anything.
-             *
-             * #GDtlsConnection::accept_certificate may be emitted during the
-             * handshake.
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_handshake(cancellable?: Cancellable | null): boolean;
-            /**
-             * Asynchronously performs a TLS handshake on `conn`. See
-             * g_dtls_connection_handshake() for more information.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable a #GCancellable, or %NULL
-             * @param callback callback to call when the handshake is complete
-             */
-            vfunc_handshake_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finish an asynchronous TLS handshake operation. See
-             * g_dtls_connection_handshake() for more information.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_handshake_finish(result: AsyncResult): boolean;
-            /**
-             * Sets the list of application-layer protocols to advertise that the
-             * caller is willing to speak on this connection. The
-             * Application-Layer Protocol Negotiation (ALPN) extension will be
-             * used to negotiate a compatible protocol with the peer; use
-             * g_dtls_connection_get_negotiated_protocol() to find the negotiated
-             * protocol after the handshake.  Specifying %NULL for the the value
-             * of `protocols` will disable ALPN negotiation.
-             *
-             * See [IANA TLS ALPN Protocol IDs](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids)
-             * for a list of registered protocol IDs.
-             * @param protocols a %NULL-terminated   array of ALPN protocol names (eg, "http/1.1", "h2"), or %NULL
-             */
-            vfunc_set_advertised_protocols(protocols?: string[] | null): void;
-            /**
-             * Shut down part or all of a DTLS connection.
-             *
-             * If `shutdown_read` is %TRUE then the receiving side of the connection is shut
-             * down, and further reading is disallowed. Subsequent calls to
-             * g_datagram_based_receive_messages() will return %G_IO_ERROR_CLOSED.
-             *
-             * If `shutdown_write` is %TRUE then the sending side of the connection is shut
-             * down, and further writing is disallowed. Subsequent calls to
-             * g_datagram_based_send_messages() will return %G_IO_ERROR_CLOSED.
-             *
-             * It is allowed for both `shutdown_read` and `shutdown_write` to be TRUE — this
-             * is equivalent to calling g_dtls_connection_close().
-             *
-             * If `cancellable` is cancelled, the #GDtlsConnection may be left
-             * partially-closed and any pending untransmitted data may be lost. Call
-             * g_dtls_connection_shutdown() again to complete closing the #GDtlsConnection.
-             * @param shutdown_read %TRUE to stop reception of incoming datagrams
-             * @param shutdown_write %TRUE to stop sending outgoing datagrams
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_shutdown(shutdown_read: boolean, shutdown_write: boolean, cancellable?: Cancellable | null): boolean;
-            /**
-             * Asynchronously shut down part or all of the DTLS connection. See
-             * g_dtls_connection_shutdown() for more information.
-             * @param shutdown_read %TRUE to stop reception of incoming datagrams
-             * @param shutdown_write %TRUE to stop sending outgoing datagrams
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable a #GCancellable, or %NULL
-             * @param callback callback to call when the shutdown operation is complete
-             */
-            vfunc_shutdown_async(
-                shutdown_read: boolean,
-                shutdown_write: boolean,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finish an asynchronous TLS shutdown operation. See
-             * g_dtls_connection_shutdown() for more information.
-             * @param result a #GAsyncResult
-             */
-            vfunc_shutdown_finish(result: AsyncResult): boolean;
         }
 
         export const DtlsConnection: DtlsConnectionNamespace & {
@@ -79075,6 +73922,1601 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace File {
+            /**
+             * Interface for implementing File.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets an output stream for appending data to the file.
+                 * If the file doesn't already exist it is created.
+                 *
+                 * By default files created are generally readable by everyone,
+                 * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
+                 * will be made readable only to the current user, to the level that
+                 * is supported on the target filesystem.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled
+                 * by triggering the cancellable object from another thread. If the
+                 * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+                 * returned.
+                 *
+                 * Some file systems don't allow all file names, and may return an
+                 * %G_IO_ERROR_INVALID_FILENAME error. If the file is a directory the
+                 * %G_IO_ERROR_IS_DIRECTORY error will be returned. Other errors are
+                 * possible too, and depend on what kind of filesystem the file is on.
+                 * @param flags a set of #GFileCreateFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_append_to(flags: FileCreateFlags, cancellable?: Cancellable | null): FileOutputStream;
+                /**
+                 * Asynchronously opens `file` for appending.
+                 *
+                 * For more details, see g_file_append_to() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_append_to_finish() to get the result
+                 * of the operation.
+                 * @param flags a set of #GFileCreateFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_append_to_async(
+                    flags: FileCreateFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file append operation started with
+                 * g_file_append_to_async().
+                 * @param res #GAsyncResult
+                 */
+                vfunc_append_to_finish(res: AsyncResult): FileOutputStream;
+                /**
+                 * Copies the file `source` to the location specified by `destination`.
+                 * Can not handle recursive copies of directories.
+                 *
+                 * If the flag %G_FILE_COPY_OVERWRITE is specified an already
+                 * existing `destination` file is overwritten.
+                 *
+                 * If the flag %G_FILE_COPY_NOFOLLOW_SYMLINKS is specified then symlinks
+                 * will be copied as symlinks, otherwise the target of the
+                 * `source` symlink will be copied.
+                 *
+                 * If the flag %G_FILE_COPY_ALL_METADATA is specified then all the metadata
+                 * that is possible to copy is copied, not just the default subset (which,
+                 * for instance, does not include the owner, see #GFileInfo).
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * If `progress_callback` is not %NULL, then the operation can be monitored
+                 * by setting this to a #GFileProgressCallback function.
+                 * `progress_callback_data` will be passed to this function. It is guaranteed
+                 * that this callback will be called after all data has been transferred with
+                 * the total number of bytes copied during the operation.
+                 *
+                 * If the `source` file does not exist, then the %G_IO_ERROR_NOT_FOUND error
+                 * is returned, independent on the status of the `destination`.
+                 *
+                 * If %G_FILE_COPY_OVERWRITE is not specified and the target exists, then
+                 * the error %G_IO_ERROR_EXISTS is returned.
+                 *
+                 * If trying to overwrite a file over a directory, the %G_IO_ERROR_IS_DIRECTORY
+                 * error is returned. If trying to overwrite a directory with a directory the
+                 * %G_IO_ERROR_WOULD_MERGE error is returned.
+                 *
+                 * If the source is a directory and the target does not exist, or
+                 * %G_FILE_COPY_OVERWRITE is specified and the target is a file, then the
+                 * %G_IO_ERROR_WOULD_RECURSE error is returned.
+                 *
+                 * If you are interested in copying the #GFile object itself (not the on-disk
+                 * file), see g_file_dup().
+                 * @param destination destination #GFile
+                 * @param flags set of #GFileCopyFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param progress_callback function to callback with   progress information, or %NULL if progress information is not needed
+                 */
+                vfunc_copy(
+                    destination: File,
+                    flags: FileCopyFlags,
+                    cancellable?: Cancellable | null,
+                    progress_callback?: FileProgressCallback | null,
+                ): boolean;
+                /**
+                 * Copies the file `source` to the location specified by `destination`
+                 * asynchronously. For details of the behaviour, see g_file_copy().
+                 *
+                 * If `progress_callback` is not %NULL, then that function that will be called
+                 * just like in g_file_copy(). The callback will run in the default main context
+                 * of the thread calling g_file_copy_async() — the same context as `callback` is
+                 * run in.
+                 *
+                 * When the operation is finished, `callback` will be called. You can then call
+                 * g_file_copy_finish() to get the result of the operation.
+                 * @param destination destination #GFile
+                 * @param flags set of #GFileCopyFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_copy_async(
+                    destination: File,
+                    flags: FileCopyFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    progress_callback?: FileProgressCallback | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes copying the file started with g_file_copy_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_copy_finish(res: AsyncResult): boolean;
+                /**
+                 * Creates a new file and returns an output stream for writing to it.
+                 * The file must not already exist.
+                 *
+                 * By default files created are generally readable by everyone,
+                 * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
+                 * will be made readable only to the current user, to the level
+                 * that is supported on the target filesystem.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled
+                 * by triggering the cancellable object from another thread. If the
+                 * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+                 * returned.
+                 *
+                 * If a file or directory with this name already exists the
+                 * %G_IO_ERROR_EXISTS error will be returned. Some file systems don't
+                 * allow all file names, and may return an %G_IO_ERROR_INVALID_FILENAME
+                 * error, and if the name is to long %G_IO_ERROR_FILENAME_TOO_LONG will
+                 * be returned. Other errors are possible too, and depend on what kind
+                 * of filesystem the file is on.
+                 * @param flags a set of #GFileCreateFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_create(flags: FileCreateFlags, cancellable?: Cancellable | null): FileOutputStream;
+                /**
+                 * Asynchronously creates a new file and returns an output stream
+                 * for writing to it. The file must not already exist.
+                 *
+                 * For more details, see g_file_create() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_create_finish() to get the result
+                 * of the operation.
+                 * @param flags a set of #GFileCreateFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_create_async(
+                    flags: FileCreateFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file create operation started with
+                 * g_file_create_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_create_finish(res: AsyncResult): FileOutputStream;
+                /**
+                 * Creates a new file and returns a stream for reading and
+                 * writing to it. The file must not already exist.
+                 *
+                 * By default files created are generally readable by everyone,
+                 * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
+                 * will be made readable only to the current user, to the level
+                 * that is supported on the target filesystem.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled
+                 * by triggering the cancellable object from another thread. If the
+                 * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+                 * returned.
+                 *
+                 * If a file or directory with this name already exists, the
+                 * %G_IO_ERROR_EXISTS error will be returned. Some file systems don't
+                 * allow all file names, and may return an %G_IO_ERROR_INVALID_FILENAME
+                 * error, and if the name is too long, %G_IO_ERROR_FILENAME_TOO_LONG
+                 * will be returned. Other errors are possible too, and depend on what
+                 * kind of filesystem the file is on.
+                 *
+                 * Note that in many non-local file cases read and write streams are
+                 * not supported, so make sure you really need to do read and write
+                 * streaming, rather than just opening for reading or writing.
+                 * @param flags a set of #GFileCreateFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_create_readwrite(flags: FileCreateFlags, cancellable?: Cancellable | null): FileIOStream;
+                /**
+                 * Asynchronously creates a new file and returns a stream
+                 * for reading and writing to it. The file must not already exist.
+                 *
+                 * For more details, see g_file_create_readwrite() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_create_readwrite_finish() to get
+                 * the result of the operation.
+                 * @param flags a set of #GFileCreateFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_create_readwrite_async(
+                    flags: FileCreateFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file create operation started with
+                 * g_file_create_readwrite_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_create_readwrite_finish(res: AsyncResult): FileIOStream;
+                /**
+                 * Deletes a file. If the `file` is a directory, it will only be
+                 * deleted if it is empty. This has the same semantics as g_unlink().
+                 *
+                 * If `file` doesn’t exist, %G_IO_ERROR_NOT_FOUND will be returned. This allows
+                 * for deletion to be implemented avoiding
+                 * [time-of-check to time-of-use races](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use):
+                 *
+                 * ```
+                 * g_autoptr(GError) local_error = NULL;
+                 * if (!g_file_delete (my_file, my_cancellable, &local_error) &&
+                 *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
+                 *   {
+                 *     // deletion failed for some reason other than the file not existing:
+                 *     // so report the error
+                 *     g_warning ("Failed to delete %s: %s",
+                 *                g_file_peek_path (my_file), local_error->message);
+                 *   }
+                 * ```
+                 *
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_delete_file(cancellable?: Cancellable | null): boolean;
+                /**
+                 * Asynchronously delete a file. If the `file` is a directory, it will
+                 * only be deleted if it is empty.  This has the same semantics as
+                 * g_unlink().
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+                 */
+                vfunc_delete_file_async(
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes deleting a file started with g_file_delete_async().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_delete_file_finish(result: AsyncResult): boolean;
+                /**
+                 * Duplicates a #GFile handle. This operation does not duplicate
+                 * the actual file or directory represented by the #GFile; see
+                 * g_file_copy() if attempting to copy a file.
+                 *
+                 * g_file_dup() is useful when a second handle is needed to the same underlying
+                 * file, for use in a separate thread (#GFile is not thread-safe). For use
+                 * within the same thread, use g_object_ref() to increment the existing object’s
+                 * reference count.
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_dup(): File;
+                /**
+                 * Starts an asynchronous eject on a mountable.
+                 * When this operation has completed, `callback` will be called with
+                 * `user_user` data, and the operation can be finalized with
+                 * g_file_eject_mountable_finish().
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param flags flags affecting the operation
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_eject_mountable(
+                    flags: MountUnmountFlags,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous eject operation started by
+                 * g_file_eject_mountable().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_eject_mountable_finish(result: AsyncResult): boolean;
+                /**
+                 * Starts an asynchronous eject on a mountable.
+                 * When this operation has completed, `callback` will be called with
+                 * `user_user` data, and the operation can be finalized with
+                 * g_file_eject_mountable_with_operation_finish().
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param flags flags affecting the operation
+                 * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_eject_mountable_with_operation(
+                    flags: MountUnmountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous eject operation started by
+                 * g_file_eject_mountable_with_operation().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_eject_mountable_with_operation_finish(result: AsyncResult): boolean;
+                /**
+                 * Gets the requested information about the files in a directory.
+                 * The result is a #GFileEnumerator object that will give out
+                 * #GFileInfo objects for all the files in the directory.
+                 *
+                 * The `attributes` value is a string that specifies the file
+                 * attributes that should be gathered. It is not an error if
+                 * it's not possible to read a particular requested attribute
+                 * from a file - it just won't be set. `attributes` should
+                 * be a comma-separated list of attributes or attribute wildcards.
+                 * The wildcard "*" means all attributes, and a wildcard like
+                 * "standard::*" means all attributes in the standard namespace.
+                 * An example attribute query be "standard::*,owner::user".
+                 * The standard attributes are available as defines, like
+                 * %G_FILE_ATTRIBUTE_STANDARD_NAME. %G_FILE_ATTRIBUTE_STANDARD_NAME should
+                 * always be specified if you plan to call g_file_enumerator_get_child() or
+                 * g_file_enumerator_iterate() on the returned enumerator.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled
+                 * by triggering the cancellable object from another thread. If the
+                 * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+                 * returned.
+                 *
+                 * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
+                 * be returned. If the file is not a directory, the %G_IO_ERROR_NOT_DIRECTORY
+                 * error will be returned. Other errors are possible too.
+                 * @param attributes an attribute query string
+                 * @param flags a set of #GFileQueryInfoFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_enumerate_children(
+                    attributes: string,
+                    flags: FileQueryInfoFlags,
+                    cancellable?: Cancellable | null,
+                ): FileEnumerator;
+                /**
+                 * Asynchronously gets the requested information about the files
+                 * in a directory. The result is a #GFileEnumerator object that will
+                 * give out #GFileInfo objects for all the files in the directory.
+                 *
+                 * For more details, see g_file_enumerate_children() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called. You can
+                 * then call g_file_enumerate_children_finish() to get the result of
+                 * the operation.
+                 * @param attributes an attribute query string
+                 * @param flags a set of #GFileQueryInfoFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_enumerate_children_async(
+                    attributes: string,
+                    flags: FileQueryInfoFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an async enumerate children operation.
+                 * See g_file_enumerate_children_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_enumerate_children_finish(res: AsyncResult): FileEnumerator;
+                /**
+                 * Checks if the two given #GFiles refer to the same file.
+                 *
+                 * Note that two #GFiles that differ can still refer to the same
+                 * file on the filesystem due to various forms of filename
+                 * aliasing.
+                 *
+                 * This call does no blocking I/O.
+                 * @param file2 the second #GFile
+                 */
+                vfunc_equal(file2: File): boolean;
+                /**
+                 * Gets a #GMount for the #GFile.
+                 *
+                 * #GMount is returned only for user interesting locations, see
+                 * #GVolumeMonitor. If the #GFileIface for `file` does not have a #mount,
+                 * `error` will be set to %G_IO_ERROR_NOT_FOUND and %NULL #will be returned.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_find_enclosing_mount(cancellable?: Cancellable | null): Mount;
+                /**
+                 * Asynchronously gets the mount for the file.
+                 *
+                 * For more details, see g_file_find_enclosing_mount() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_find_enclosing_mount_finish() to
+                 * get the result of the operation.
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_find_enclosing_mount_async(
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous find mount request.
+                 * See g_file_find_enclosing_mount_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_find_enclosing_mount_finish(res: AsyncResult): Mount;
+                /**
+                 * Gets the base name (the last component of the path) for a given #GFile.
+                 *
+                 * If called for the top level of a system (such as the filesystem root
+                 * or a uri like sftp://host/) it will return a single directory separator
+                 * (and on Windows, possibly a drive letter).
+                 *
+                 * The base name is a byte string (not UTF-8). It has no defined encoding
+                 * or rules other than it may not contain zero bytes.  If you want to use
+                 * filenames in a user interface you should use the display name that you
+                 * can get by requesting the %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME
+                 * attribute with g_file_query_info().
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_get_basename(): string | null;
+                /**
+                 * Gets the child of `file` for a given `display_name` (i.e. a UTF-8
+                 * version of the name). If this function fails, it returns %NULL
+                 * and `error` will be set. This is very useful when constructing a
+                 * #GFile for a new file and the user entered the filename in the
+                 * user interface, for instance when you select a directory and
+                 * type a filename in the file selector.
+                 *
+                 * This call does no blocking I/O.
+                 * @param display_name string to a possible child
+                 */
+                vfunc_get_child_for_display_name(display_name: string): File;
+                /**
+                 * Gets the parent directory for the `file`.
+                 * If the `file` represents the root directory of the
+                 * file system, then %NULL will be returned.
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_get_parent(): File | null;
+                /**
+                 * Gets the parse name of the `file`.
+                 * A parse name is a UTF-8 string that describes the
+                 * file such that one can get the #GFile back using
+                 * g_file_parse_name().
+                 *
+                 * This is generally used to show the #GFile as a nice
+                 * full-pathname kind of string in a user interface,
+                 * like in a location entry.
+                 *
+                 * For local files with names that can safely be converted
+                 * to UTF-8 the pathname is used, otherwise the IRI is used
+                 * (a form of URI that allows UTF-8 characters unescaped).
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_get_parse_name(): string;
+                /**
+                 * Gets the local pathname for #GFile, if one exists. If non-%NULL, this is
+                 * guaranteed to be an absolute, canonical path. It might contain symlinks.
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_get_path(): string | null;
+                /**
+                 * Gets the path for `descendant` relative to `parent`.
+                 *
+                 * This call does no blocking I/O.
+                 * @param descendant input #GFile
+                 */
+                vfunc_get_relative_path(descendant: File): string | null;
+                /**
+                 * Gets the URI for the `file`.
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_get_uri(): string;
+                /**
+                 * Gets the URI scheme for a #GFile.
+                 * RFC 3986 decodes the scheme as:
+                 *
+                 * ```
+                 * URI = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
+                 * ```
+                 *
+                 * Common schemes include "file", "http", "ftp", etc.
+                 *
+                 * The scheme can be different from the one used to construct the #GFile,
+                 * in that it might be replaced with one that is logically equivalent to the #GFile.
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_get_uri_scheme(): string | null;
+                /**
+                 * Checks to see if a #GFile has a given URI scheme.
+                 *
+                 * This call does no blocking I/O.
+                 * @param uri_scheme a string containing a URI scheme
+                 */
+                vfunc_has_uri_scheme(uri_scheme: string): boolean;
+                /**
+                 * Creates a hash value for a #GFile.
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_hash(): number;
+                /**
+                 * Checks to see if a file is native to the platform.
+                 *
+                 * A native file is one expressed in the platform-native filename format,
+                 * e.g. "C:\Windows" or "/usr/bin/". This does not mean the file is local,
+                 * as it might be on a locally mounted remote filesystem.
+                 *
+                 * On some systems non-native files may be available using the native
+                 * filesystem via a userspace filesystem (FUSE), in these cases this call
+                 * will return %FALSE, but g_file_get_path() will still return a native path.
+                 *
+                 * This call does no blocking I/O.
+                 */
+                vfunc_is_native(): boolean;
+                /**
+                 * Creates a directory.
+                 *
+                 * Note that this will only create a child directory
+                 * of the immediate parent directory of the path or URI given by the #GFile.
+                 * To recursively create directories, see g_file_make_directory_with_parents().
+                 *
+                 * This function will fail if the parent directory does not exist, setting
+                 * `error` to %G_IO_ERROR_NOT_FOUND. If the file system doesn't support
+                 * creating directories, this function will fail, setting `error` to
+                 * %G_IO_ERROR_NOT_SUPPORTED. If the directory already exists,
+                 * [error`Gio`.IOErrorEnum.EXISTS] will be returned.
+                 *
+                 * For a local #GFile the newly created directory will have the default
+                 * (current) ownership and permissions of the current process.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_make_directory(cancellable?: Cancellable | null): boolean;
+                /**
+                 * Asynchronously creates a directory.
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+                 */
+                vfunc_make_directory_async(
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous directory creation, started with
+                 * g_file_make_directory_async().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_make_directory_finish(result: AsyncResult): boolean;
+                /**
+                 * Creates a symbolic link named `file` which contains the string
+                 * `symlink_value`.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param symlink_value a string with the path for the target   of the new symlink
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_make_symbolic_link(symlink_value: string, cancellable?: Cancellable | null): boolean;
+                /**
+                 * Asynchronously creates a symbolic link named `file` which contains the
+                 * string `symlink_value`.
+                 * @param symlink_value a string with the path for the target   of the new symlink
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+                 */
+                vfunc_make_symbolic_link_async(
+                    symlink_value: string,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous symbolic link creation, started with
+                 * g_file_make_symbolic_link_async().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_make_symbolic_link_finish(result: AsyncResult): boolean;
+                /**
+                 * Recursively measures the disk usage of `file`.
+                 *
+                 * This is essentially an analog of the 'du' command, but it also
+                 * reports the number of directories and non-directory files encountered
+                 * (including things like symbolic links).
+                 *
+                 * By default, errors are only reported against the toplevel file
+                 * itself.  Errors found while recursing are silently ignored, unless
+                 * %G_FILE_MEASURE_REPORT_ANY_ERROR is given in `flags`.
+                 *
+                 * The returned size, `disk_usage,` is in bytes and should be formatted
+                 * with g_format_size() in order to get something reasonable for showing
+                 * in a user interface.
+                 *
+                 * `progress_callback` and `progress_data` can be given to request
+                 * periodic progress updates while scanning.  See the documentation for
+                 * #GFileMeasureProgressCallback for information about when and how the
+                 * callback will be invoked.
+                 * @param flags #GFileMeasureFlags
+                 * @param cancellable optional #GCancellable
+                 * @param progress_callback a #GFileMeasureProgressCallback
+                 */
+                vfunc_measure_disk_usage(
+                    flags: FileMeasureFlags,
+                    cancellable: Cancellable | null,
+                    progress_callback: FileMeasureProgressCallback | null,
+                ): [boolean, number, number, number];
+                /**
+                 * Collects the results from an earlier call to
+                 * g_file_measure_disk_usage_async().  See g_file_measure_disk_usage() for
+                 * more information.
+                 * @param result the #GAsyncResult passed to your #GAsyncReadyCallback
+                 */
+                vfunc_measure_disk_usage_finish(result: AsyncResult): [boolean, number, number, number];
+                /**
+                 * Obtains a directory monitor for the given file.
+                 * This may fail if directory monitoring is not supported.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * It does not make sense for `flags` to contain
+                 * %G_FILE_MONITOR_WATCH_HARD_LINKS, since hard links can not be made to
+                 * directories.  It is not possible to monitor all the files in a
+                 * directory for changes made via hard links; if you want to do this then
+                 * you must register individual watches with g_file_monitor().
+                 * @param flags a set of #GFileMonitorFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_monitor_dir(flags: FileMonitorFlags, cancellable?: Cancellable | null): FileMonitor;
+                /**
+                 * Obtains a file monitor for the given file. If no file notification
+                 * mechanism exists, then regular polling of the file is used.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * If `flags` contains %G_FILE_MONITOR_WATCH_HARD_LINKS then the monitor
+                 * will also attempt to report changes made to the file via another
+                 * filename (ie, a hard link). Without this flag, you can only rely on
+                 * changes made through the filename contained in `file` to be
+                 * reported. Using this flag may result in an increase in resource
+                 * usage, and may not have any effect depending on the #GFileMonitor
+                 * backend and/or filesystem type.
+                 * @param flags a set of #GFileMonitorFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_monitor_file(flags: FileMonitorFlags, cancellable?: Cancellable | null): FileMonitor;
+                /**
+                 * Starts a `mount_operation,` mounting the volume that contains
+                 * the file `location`.
+                 *
+                 * When this operation has completed, `callback` will be called with
+                 * `user_user` data, and the operation can be finalized with
+                 * g_file_mount_enclosing_volume_finish().
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param flags flags affecting the operation
+                 * @param mount_operation a #GMountOperation   or %NULL to avoid user interaction
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+                 */
+                vfunc_mount_enclosing_volume(
+                    flags: MountMountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes a mount operation started by g_file_mount_enclosing_volume().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_mount_enclosing_volume_finish(result: AsyncResult): boolean;
+                /**
+                 * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
+                 * Using `mount_operation,` you can request callbacks when, for instance,
+                 * passwords are needed during authentication.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_mount_mountable_finish() to get
+                 * the result of the operation.
+                 * @param flags flags affecting the operation
+                 * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_mount_mountable(
+                    flags: MountMountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes a mount operation. See g_file_mount_mountable() for details.
+                 *
+                 * Finish an asynchronous mount operation that was started
+                 * with g_file_mount_mountable().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_mount_mountable_finish(result: AsyncResult): File;
+                /**
+                 * Tries to move the file or directory `source` to the location specified
+                 * by `destination`. If native move operations are supported then this is
+                 * used, otherwise a copy + delete fallback is used. The native
+                 * implementation may support moving directories (for instance on moves
+                 * inside the same filesystem), but the fallback code does not.
+                 *
+                 * If the flag %G_FILE_COPY_OVERWRITE is specified an already
+                 * existing `destination` file is overwritten.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * If `progress_callback` is not %NULL, then the operation can be monitored
+                 * by setting this to a #GFileProgressCallback function.
+                 * `progress_callback_data` will be passed to this function. It is
+                 * guaranteed that this callback will be called after all data has been
+                 * transferred with the total number of bytes copied during the operation.
+                 *
+                 * If the `source` file does not exist, then the %G_IO_ERROR_NOT_FOUND
+                 * error is returned, independent on the status of the `destination`.
+                 *
+                 * If %G_FILE_COPY_OVERWRITE is not specified and the target exists,
+                 * then the error %G_IO_ERROR_EXISTS is returned.
+                 *
+                 * If trying to overwrite a file over a directory, the %G_IO_ERROR_IS_DIRECTORY
+                 * error is returned. If trying to overwrite a directory with a directory the
+                 * %G_IO_ERROR_WOULD_MERGE error is returned.
+                 *
+                 * If the source is a directory and the target does not exist, or
+                 * %G_FILE_COPY_OVERWRITE is specified and the target is a file, then
+                 * the %G_IO_ERROR_WOULD_RECURSE error may be returned (if the native
+                 * move operation isn't available).
+                 * @param destination #GFile pointing to the destination location
+                 * @param flags set of #GFileCopyFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param progress_callback #GFileProgressCallback   function for updates
+                 */
+                vfunc_move(
+                    destination: File,
+                    flags: FileCopyFlags,
+                    cancellable?: Cancellable | null,
+                    progress_callback?: FileProgressCallback | null,
+                ): boolean;
+                /**
+                 * Asynchronously moves a file `source` to the location of `destination`. For details of the behaviour, see g_file_move().
+                 *
+                 * If `progress_callback` is not %NULL, then that function that will be called
+                 * just like in g_file_move(). The callback will run in the default main context
+                 * of the thread calling g_file_move_async() — the same context as `callback` is
+                 * run in.
+                 *
+                 * When the operation is finished, `callback` will be called. You can then call
+                 * g_file_move_finish() to get the result of the operation.
+                 * @param destination #GFile pointing to the destination location
+                 * @param flags set of #GFileCopyFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param progress_callback #GFileProgressCallback function for updates
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_move_async(
+                    destination: File,
+                    flags: FileCopyFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    progress_callback?: FileProgressCallback | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file movement, started with
+                 * g_file_move_async().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_move_finish(result: AsyncResult): boolean;
+                /**
+                 * Opens an existing file for reading and writing. The result is
+                 * a #GFileIOStream that can be used to read and write the contents
+                 * of the file.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled
+                 * by triggering the cancellable object from another thread. If the
+                 * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+                 * returned.
+                 *
+                 * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
+                 * be returned. If the file is a directory, the %G_IO_ERROR_IS_DIRECTORY
+                 * error will be returned. Other errors are possible too, and depend on
+                 * what kind of filesystem the file is on. Note that in many non-local
+                 * file cases read and write streams are not supported, so make sure you
+                 * really need to do read and write streaming, rather than just opening
+                 * for reading or writing.
+                 * @param cancellable a #GCancellable
+                 */
+                vfunc_open_readwrite(cancellable?: Cancellable | null): FileIOStream;
+                /**
+                 * Asynchronously opens `file` for reading and writing.
+                 *
+                 * For more details, see g_file_open_readwrite() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_open_readwrite_finish() to get
+                 * the result of the operation.
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_open_readwrite_async(
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file read operation started with
+                 * g_file_open_readwrite_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_open_readwrite_finish(res: AsyncResult): FileIOStream;
+                /**
+                 * Polls a file of type %G_FILE_TYPE_MOUNTABLE.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_mount_mountable_finish() to get
+                 * the result of the operation.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+                 */
+                vfunc_poll_mountable(
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes a poll operation. See g_file_poll_mountable() for details.
+                 *
+                 * Finish an asynchronous poll operation that was polled
+                 * with g_file_poll_mountable().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_poll_mountable_finish(result: AsyncResult): boolean;
+                /**
+                 * Checks whether `file` has the prefix specified by `prefix`.
+                 *
+                 * In other words, if the names of initial elements of `file'`s
+                 * pathname match `prefix`. Only full pathname elements are matched,
+                 * so a path like /foo is not considered a prefix of /foobar, only
+                 * of /foo/bar.
+                 *
+                 * A #GFile is not a prefix of itself. If you want to check for
+                 * equality, use g_file_equal().
+                 *
+                 * This call does no I/O, as it works purely on names. As such it can
+                 * sometimes return %FALSE even if `file` is inside a `prefix` (from a
+                 * filesystem point of view), because the prefix of `file` is an alias
+                 * of `prefix`.
+                 * @param file input #GFile
+                 */
+                vfunc_prefix_matches(file: File): boolean;
+                /**
+                 * Utility function to check if a particular file exists.
+                 *
+                 * The fallback implementation of this API is using [method`Gio`.File.query_info]
+                 * and therefore may do blocking I/O. To asynchronously query the existence
+                 * of a file, use [method`Gio`.File.query_info_async].
+                 *
+                 * Note that in many cases it is [racy to first check for file existence](https://en.wikipedia.org/wiki/Time_of_check_to_time_of_use)
+                 * and then execute something based on the outcome of that, because the
+                 * file might have been created or removed in between the operations. The
+                 * general approach to handling that is to not check, but just do the
+                 * operation and handle the errors as they come.
+                 *
+                 * As an example of race-free checking, take the case of reading a file,
+                 * and if it doesn't exist, creating it. There are two racy versions: read
+                 * it, and on error create it; and: check if it exists, if not create it.
+                 * These can both result in two processes creating the file (with perhaps
+                 * a partially written file as the result). The correct approach is to
+                 * always try to create the file with g_file_create() which will either
+                 * atomically create the file or fail with a %G_IO_ERROR_EXISTS error.
+                 *
+                 * However, in many cases an existence check is useful in a user interface,
+                 * for instance to make a menu item sensitive/insensitive, so that you don't
+                 * have to fool users that something is possible and then just show an error
+                 * dialog. If you do this, you should make sure to also handle the errors
+                 * that can happen due to races when you execute the operation.
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_query_exists(cancellable?: Cancellable | null): boolean;
+                /**
+                 * Similar to g_file_query_info(), but obtains information
+                 * about the filesystem the `file` is on, rather than the file itself.
+                 * For instance the amount of space available and the type of
+                 * the filesystem.
+                 *
+                 * The `attributes` value is a string that specifies the attributes
+                 * that should be gathered. It is not an error if it's not possible
+                 * to read a particular requested attribute from a file - it just
+                 * won't be set. `attributes` should be a comma-separated list of
+                 * attributes or attribute wildcards. The wildcard "*" means all
+                 * attributes, and a wildcard like "filesystem::*" means all attributes
+                 * in the filesystem namespace. The standard namespace for filesystem
+                 * attributes is "filesystem". Common attributes of interest are
+                 * %G_FILE_ATTRIBUTE_FILESYSTEM_SIZE (the total size of the filesystem
+                 * in bytes), %G_FILE_ATTRIBUTE_FILESYSTEM_FREE (number of bytes available),
+                 * and %G_FILE_ATTRIBUTE_FILESYSTEM_TYPE (type of the filesystem).
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled
+                 * by triggering the cancellable object from another thread. If the
+                 * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+                 * returned.
+                 *
+                 * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
+                 * be returned. Other errors are possible too, and depend on what
+                 * kind of filesystem the file is on.
+                 * @param attributes an attribute query string
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_query_filesystem_info(attributes: string, cancellable?: Cancellable | null): FileInfo;
+                /**
+                 * Asynchronously gets the requested information about the filesystem
+                 * that the specified `file` is on. The result is a #GFileInfo object
+                 * that contains key-value attributes (such as type or size for the
+                 * file).
+                 *
+                 * For more details, see g_file_query_filesystem_info() which is the
+                 * synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called. You can
+                 * then call g_file_query_info_finish() to get the result of the
+                 * operation.
+                 * @param attributes an attribute query string
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_query_filesystem_info_async(
+                    attributes: string,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous filesystem info query.
+                 * See g_file_query_filesystem_info_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_query_filesystem_info_finish(res: AsyncResult): FileInfo;
+                /**
+                 * Gets the requested information about specified `file`.
+                 *
+                 * The result is a [class`Gio`.FileInfo] object that contains key-value
+                 * attributes (such as the type or size of the file).
+                 *
+                 * The `attributes` value is a string that specifies the file
+                 * attributes that should be gathered. It is not an error if
+                 * it’s not possible to read a particular requested attribute
+                 * from a file — it just won't be set. In particular this means that if a file
+                 * is inaccessible (due to being in a folder with restrictive permissions), for
+                 * example, you can expect the returned [class`Gio`.FileInfo] to have very few
+                 * attributes set. You should check whether an attribute is set using
+                 * [method`Gio`.FileInfo.has_attribute] before trying to retrieve its value.
+                 *
+                 * It is guaranteed that if any of the following attributes are listed in
+                 * `attributes,` they will always be set in the returned [class`Gio`.FileInfo],
+                 * even if the user doesn’t have permissions to access the file:
+                 *
+                 *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME]
+                 *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]
+                 *
+                 * `attributes` should be a comma-separated list of attributes or attribute
+                 * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+                 * `"standard::*"` means all attributes in the standard namespace.
+                 * An example attribute query might be `"standard::*,owner::user"`.
+                 * The standard attributes are available as defines, like
+                 * [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME].
+                 *
+                 * If `cancellable` is not `NULL`, then the operation can be cancelled
+                 * by triggering the cancellable object from another thread. If the
+                 * operation was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be
+                 * returned.
+                 *
+                 * For symlinks, normally the information about the target of the
+                 * symlink is returned, rather than information about the symlink
+                 * itself. However if you pass [flags`Gio`.FileQueryInfoFlags.NOFOLLOW_SYMLINKS]
+                 * in `flags` the information about the symlink itself will be returned.
+                 * Also, for symlinks that point to non-existing files the information
+                 * about the symlink itself will be returned.
+                 *
+                 * If the file does not exist, the [error`Gio`.IOErrorEnum.NOT_FOUND] error will be
+                 * returned. Other errors are possible too, and depend on what kind of
+                 * file system the file is on.
+                 * @param attributes an attribute query string
+                 * @param flags flags to affect the query operation
+                 * @param cancellable optional cancellable object
+                 */
+                vfunc_query_info(
+                    attributes: string,
+                    flags: FileQueryInfoFlags,
+                    cancellable?: Cancellable | null,
+                ): FileInfo;
+                /**
+                 * Asynchronously gets the requested information about specified `file`.
+                 * The result is a #GFileInfo object that contains key-value attributes
+                 * (such as type or size for the file).
+                 *
+                 * For more details, see g_file_query_info() which is the synchronous
+                 * version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called. You can
+                 * then call g_file_query_info_finish() to get the result of the operation.
+                 * @param attributes an attribute query string
+                 * @param flags a set of #GFileQueryInfoFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_query_info_async(
+                    attributes: string,
+                    flags: FileQueryInfoFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file info query.
+                 * See g_file_query_info_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_query_info_finish(res: AsyncResult): FileInfo;
+                /**
+                 * Obtain the list of settable attributes for the file.
+                 *
+                 * Returns the type and full attribute name of all the attributes
+                 * that can be set on this file. This doesn't mean setting it will
+                 * always succeed though, you might get an access failure, or some
+                 * specific file may not support a specific attribute.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_query_settable_attributes(cancellable?: Cancellable | null): FileAttributeInfoList;
+                /**
+                 * Obtain the list of attribute namespaces where new attributes
+                 * can be created by a user. An example of this is extended
+                 * attributes (in the "xattr" namespace).
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_query_writable_namespaces(cancellable?: Cancellable | null): FileAttributeInfoList;
+                /**
+                 * Asynchronously opens `file` for reading.
+                 *
+                 * For more details, see g_file_read() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_read_finish() to get the result
+                 * of the operation.
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_read_async(
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file read operation started with
+                 * g_file_read_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_read_finish(res: AsyncResult): FileInputStream;
+                /**
+                 * Opens a file for reading. The result is a #GFileInputStream that
+                 * can be used to read the contents of the file.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
+                 * returned. If the file is a directory, the %G_IO_ERROR_IS_DIRECTORY
+                 * error will be returned. Other errors are possible too, and depend
+                 * on what kind of filesystem the file is on.
+                 * @param cancellable a #GCancellable
+                 */
+                vfunc_read_fn(cancellable?: Cancellable | null): FileInputStream;
+                /**
+                 * Returns an output stream for overwriting the file, possibly
+                 * creating a backup copy of the file first. If the file doesn't exist,
+                 * it will be created.
+                 *
+                 * This will try to replace the file in the safest way possible so
+                 * that any errors during the writing will not affect an already
+                 * existing copy of the file. For instance, for local files it
+                 * may write to a temporary file and then atomically rename over
+                 * the destination when the stream is closed.
+                 *
+                 * By default files created are generally readable by everyone,
+                 * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
+                 * will be made readable only to the current user, to the level that
+                 * is supported on the target filesystem.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled
+                 * by triggering the cancellable object from another thread. If the
+                 * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+                 * returned.
+                 *
+                 * If you pass in a non-%NULL `etag` value and `file` already exists, then
+                 * this value is compared to the current entity tag of the file, and if
+                 * they differ an %G_IO_ERROR_WRONG_ETAG error is returned. This
+                 * generally means that the file has been changed since you last read
+                 * it. You can get the new etag from g_file_output_stream_get_etag()
+                 * after you've finished writing and closed the #GFileOutputStream. When
+                 * you load a new file you can use g_file_input_stream_query_info() to
+                 * get the etag of the file.
+                 *
+                 * If `make_backup` is %TRUE, this function will attempt to make a
+                 * backup of the current file before overwriting it. If this fails
+                 * a %G_IO_ERROR_CANT_CREATE_BACKUP error will be returned. If you
+                 * want to replace anyway, try again with `make_backup` set to %FALSE.
+                 *
+                 * If the file is a directory the %G_IO_ERROR_IS_DIRECTORY error will
+                 * be returned, and if the file is some other form of non-regular file
+                 * then a %G_IO_ERROR_NOT_REGULAR_FILE error will be returned. Some
+                 * file systems don't allow all file names, and may return an
+                 * %G_IO_ERROR_INVALID_FILENAME error, and if the name is to long
+                 * %G_IO_ERROR_FILENAME_TOO_LONG will be returned. Other errors are
+                 * possible too, and depend on what kind of filesystem the file is on.
+                 * @param etag an optional [entity tag](#entity-tags)   for the current #GFile, or #NULL to ignore
+                 * @param make_backup %TRUE if a backup should be created
+                 * @param flags a set of #GFileCreateFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_replace(
+                    etag: string | null,
+                    make_backup: boolean,
+                    flags: FileCreateFlags,
+                    cancellable?: Cancellable | null,
+                ): FileOutputStream;
+                /**
+                 * Asynchronously overwrites the file, replacing the contents,
+                 * possibly creating a backup copy of the file first.
+                 *
+                 * For more details, see g_file_replace() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_replace_finish() to get the result
+                 * of the operation.
+                 * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
+                 * @param make_backup %TRUE if a backup should be created
+                 * @param flags a set of #GFileCreateFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_replace_async(
+                    etag: string | null,
+                    make_backup: boolean,
+                    flags: FileCreateFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file replace operation started with
+                 * g_file_replace_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_replace_finish(res: AsyncResult): FileOutputStream;
+                /**
+                 * Returns an output stream for overwriting the file in readwrite mode,
+                 * possibly creating a backup copy of the file first. If the file doesn't
+                 * exist, it will be created.
+                 *
+                 * For details about the behaviour, see g_file_replace() which does the
+                 * same thing but returns an output stream only.
+                 *
+                 * Note that in many non-local file cases read and write streams are not
+                 * supported, so make sure you really need to do read and write streaming,
+                 * rather than just opening for reading or writing.
+                 * @param etag an optional [entity tag](#entity-tags)   for the current #GFile, or #NULL to ignore
+                 * @param make_backup %TRUE if a backup should be created
+                 * @param flags a set of #GFileCreateFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_replace_readwrite(
+                    etag: string | null,
+                    make_backup: boolean,
+                    flags: FileCreateFlags,
+                    cancellable?: Cancellable | null,
+                ): FileIOStream;
+                /**
+                 * Asynchronously overwrites the file in read-write mode,
+                 * replacing the contents, possibly creating a backup copy
+                 * of the file first.
+                 *
+                 * For more details, see g_file_replace_readwrite() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_replace_readwrite_finish() to get
+                 * the result of the operation.
+                 * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
+                 * @param make_backup %TRUE if a backup should be created
+                 * @param flags a set of #GFileCreateFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_replace_readwrite_async(
+                    etag: string | null,
+                    make_backup: boolean,
+                    flags: FileCreateFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file replace operation started with
+                 * g_file_replace_readwrite_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_replace_readwrite_finish(res: AsyncResult): FileIOStream;
+                /**
+                 * Resolves a relative path for `file` to an absolute path.
+                 *
+                 * This call does no blocking I/O.
+                 *
+                 * If the `relative_path` is an absolute path name, the resolution
+                 * is done absolutely (without taking `file` path as base).
+                 * @param relative_path a given relative path string
+                 */
+                vfunc_resolve_relative_path(relative_path: string): File;
+                /**
+                 * Sets an attribute in the file with attribute name `attribute` to `value_p`.
+                 *
+                 * Some attributes can be unset by setting `type` to
+                 * %G_FILE_ATTRIBUTE_TYPE_INVALID and `value_p` to %NULL.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param attribute a string containing the attribute's name
+                 * @param type The type of the attribute
+                 * @param value_p a pointer to the value (or the pointer   itself if the type is a pointer type)
+                 * @param flags a set of #GFileQueryInfoFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_set_attribute(
+                    attribute: string,
+                    type: FileAttributeType,
+                    value_p: any | null,
+                    flags: FileQueryInfoFlags,
+                    cancellable?: Cancellable | null,
+                ): boolean;
+                /**
+                 * Asynchronously sets the attributes of `file` with `info`.
+                 *
+                 * For more details, see g_file_set_attributes_from_info(),
+                 * which is the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_set_attributes_finish() to get
+                 * the result of the operation.
+                 * @param info a #GFileInfo
+                 * @param flags a #GFileQueryInfoFlags
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_set_attributes_async(
+                    info: FileInfo,
+                    flags: FileQueryInfoFlags,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes setting an attribute started in g_file_set_attributes_async().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_set_attributes_finish(result: AsyncResult): [boolean, FileInfo];
+                /**
+                 * Tries to set all attributes in the #GFileInfo on the target
+                 * values, not stopping on the first error.
+                 *
+                 * If there is any error during this operation then `error` will
+                 * be set to the first error. Error on particular fields are flagged
+                 * by setting the "status" field in the attribute value to
+                 * %G_FILE_ATTRIBUTE_STATUS_ERROR_SETTING, which means you can
+                 * also detect further errors.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param info a #GFileInfo
+                 * @param flags #GFileQueryInfoFlags
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_set_attributes_from_info(
+                    info: FileInfo,
+                    flags: FileQueryInfoFlags,
+                    cancellable?: Cancellable | null,
+                ): boolean;
+                /**
+                 * Renames `file` to the specified display name.
+                 *
+                 * The display name is converted from UTF-8 to the correct encoding
+                 * for the target filesystem if possible and the `file` is renamed to this.
+                 *
+                 * If you want to implement a rename operation in the user interface the
+                 * edit name (%G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME) should be used as the
+                 * initial value in the rename widget, and then the result after editing
+                 * should be passed to g_file_set_display_name().
+                 *
+                 * On success the resulting converted filename is returned.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param display_name a string
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_set_display_name(display_name: string, cancellable?: Cancellable | null): File;
+                /**
+                 * Asynchronously sets the display name for a given #GFile.
+                 *
+                 * For more details, see g_file_set_display_name() which is
+                 * the synchronous version of this call.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_set_display_name_finish() to get
+                 * the result of the operation.
+                 * @param display_name a string
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_set_display_name_async(
+                    display_name: string,
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes setting a display name started with
+                 * g_file_set_display_name_async().
+                 * @param res a #GAsyncResult
+                 */
+                vfunc_set_display_name_finish(res: AsyncResult): File;
+                /**
+                 * Starts a file of type %G_FILE_TYPE_MOUNTABLE.
+                 * Using `start_operation,` you can request callbacks when, for instance,
+                 * passwords are needed during authentication.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_mount_mountable_finish() to get
+                 * the result of the operation.
+                 * @param flags flags affecting the operation
+                 * @param start_operation a #GMountOperation, or %NULL to avoid user interaction
+                 * @param cancellable optional #GCancellable object, %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback to call when the request is satisfied, or %NULL
+                 */
+                vfunc_start_mountable(
+                    flags: DriveStartFlags,
+                    start_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes a start operation. See g_file_start_mountable() for details.
+                 *
+                 * Finish an asynchronous start operation that was started
+                 * with g_file_start_mountable().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_start_mountable_finish(result: AsyncResult): boolean;
+                /**
+                 * Stops a file of type %G_FILE_TYPE_MOUNTABLE.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_stop_mountable_finish() to get
+                 * the result of the operation.
+                 * @param flags flags affecting the operation
+                 * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction.
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
+                 */
+                vfunc_stop_mountable(
+                    flags: MountUnmountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes a stop operation, see g_file_stop_mountable() for details.
+                 *
+                 * Finish an asynchronous stop operation that was started
+                 * with g_file_stop_mountable().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_stop_mountable_finish(result: AsyncResult): boolean;
+                /**
+                 * Sends `file` to the "Trashcan", if possible. This is similar to
+                 * deleting it, but the user can recover it before emptying the trashcan.
+                 * Trashing is disabled for system mounts by default (see
+                 * g_unix_mount_entry_is_system_internal()), so this call can return the
+                 * %G_IO_ERROR_NOT_SUPPORTED error. Since GLib 2.66, the `x-gvfs-notrash` unix
+                 * mount option can be used to disable g_file_trash() support for particular
+                 * mounts, the %G_IO_ERROR_NOT_SUPPORTED error will be returned in that case.
+                 * Since 2.82, the `x-gvfs-trash` unix mount option can be used to enable
+                 * g_file_trash() support for particular system mounts.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 */
+                vfunc_trash(cancellable?: Cancellable | null): boolean;
+                /**
+                 * Asynchronously sends `file` to the Trash location, if possible.
+                 * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
+                 */
+                vfunc_trash_async(
+                    io_priority: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous file trashing operation, started with
+                 * g_file_trash_async().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_trash_finish(result: AsyncResult): boolean;
+                /**
+                 * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_unmount_mountable_finish() to get
+                 * the result of the operation.
+                 * @param flags flags affecting the operation
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_unmount_mountable(
+                    flags: MountUnmountFlags,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an unmount operation, see g_file_unmount_mountable() for details.
+                 *
+                 * Finish an asynchronous unmount operation that was started
+                 * with g_file_unmount_mountable().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_unmount_mountable_finish(result: AsyncResult): boolean;
+                /**
+                 * Unmounts a file of type %G_FILE_TYPE_MOUNTABLE.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_file_unmount_mountable_finish() to get
+                 * the result of the operation.
+                 * @param flags flags affecting the operation
+                 * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
+                 * @param cancellable optional #GCancellable object,   %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_unmount_mountable_with_operation(
+                    flags: MountUnmountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an unmount operation,
+                 * see g_file_unmount_mountable_with_operation() for details.
+                 *
+                 * Finish an asynchronous unmount operation that was started
+                 * with g_file_unmount_mountable_with_operation().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_unmount_mountable_with_operation_finish(result: AsyncResult): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -79212,7 +75654,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             parse_name(parse_name: string): File;
         }
-        interface File extends GObject.Object {
+        interface File extends GObject.Object, File.Interface {
             // Methods
 
             /**
@@ -79255,7 +75697,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileCreateFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileOutputStream>;
+            ): globalThis.Promise<FileOutputStream>;
             /**
              * Asynchronously opens `file` for appending.
              *
@@ -79295,7 +75737,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileOutputStream> | void;
+            ): globalThis.Promise<FileOutputStream> | void;
             /**
              * Finishes an asynchronous file append operation started with
              * g_file_append_to_async().
@@ -79394,7 +75836,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 progress_callback?: FileProgressCallback | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Copies the file `source` to the location specified by `destination`
              * asynchronously. For details of the behaviour, see g_file_copy().
@@ -79446,7 +75888,7 @@ declare module 'gi://Gio?version=2.0' {
                 cancellable?: Cancellable | null,
                 progress_callback?: FileProgressCallback | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Version of [method`Gio`.File.copy_async] using closures instead of callbacks for
              * easier binding in other languages.
@@ -79529,7 +75971,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileCreateFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileOutputStream>;
+            ): globalThis.Promise<FileOutputStream>;
             /**
              * Asynchronously creates a new file and returns an output stream
              * for writing to it. The file must not already exist.
@@ -79571,7 +76013,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileOutputStream> | void;
+            ): globalThis.Promise<FileOutputStream> | void;
             /**
              * Finishes an asynchronous file create operation started with
              * g_file_create_async().
@@ -79626,7 +76068,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileCreateFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileIOStream>;
+            ): globalThis.Promise<FileIOStream>;
             /**
              * Asynchronously creates a new file and returns a stream
              * for reading and writing to it. The file must not already exist.
@@ -79668,7 +76110,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileIOStream> | void;
+            ): globalThis.Promise<FileIOStream> | void;
             /**
              * Finishes an asynchronous file create operation started with
              * g_file_create_readwrite_async().
@@ -79711,7 +76153,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object,   %NULL to ignore
              */
-            delete_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            delete_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously delete a file. If the `file` is a directory, it will
              * only be deleted if it is empty.  This has the same semantics as
@@ -79737,7 +76179,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes deleting a file started with g_file_delete_async().
              * @param result a #GAsyncResult
@@ -79770,7 +76212,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param flags flags affecting the operation
              * @param cancellable optional #GCancellable object,   %NULL to ignore
              */
-            eject_mountable(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
+            eject_mountable(
+                flags: MountUnmountFlags | null,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Starts an asynchronous eject on a mountable.
              * When this operation has completed, `callback` will be called with
@@ -79806,7 +76251,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an asynchronous eject operation started by
              * g_file_eject_mountable().
@@ -79831,7 +76276,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Starts an asynchronous eject on a mountable.
              * When this operation has completed, `callback` will be called with
@@ -79871,7 +76316,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an asynchronous eject operation started by
              * g_file_eject_mountable_with_operation().
@@ -79936,7 +76381,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileQueryInfoFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileEnumerator>;
+            ): globalThis.Promise<FileEnumerator>;
             /**
              * Asynchronously gets the requested information about the files
              * in a directory. The result is a #GFileEnumerator object that will
@@ -79984,7 +76429,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileEnumerator> | void;
+            ): globalThis.Promise<FileEnumerator> | void;
             /**
              * Finishes an async enumerate children operation.
              * See g_file_enumerate_children_async().
@@ -80030,7 +76475,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object,   %NULL to ignore
              */
-            find_enclosing_mount_async(io_priority: number, cancellable?: Cancellable | null): Promise<Mount>;
+            find_enclosing_mount_async(
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<Mount>;
             /**
              * Asynchronously gets the mount for the file.
              *
@@ -80066,7 +76514,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<Mount> | void;
+            ): globalThis.Promise<Mount> | void;
             /**
              * Finishes an asynchronous find mount request.
              * See g_file_find_enclosing_mount_async().
@@ -80271,7 +76719,7 @@ declare module 'gi://Gio?version=2.0' {
              * See g_file_load_bytes() for more information.
              * @param cancellable a #GCancellable or %NULL
              */
-            load_bytes_async(cancellable?: Cancellable | null): Promise<[GLib.Bytes, string]>;
+            load_bytes_async(cancellable?: Cancellable | null): globalThis.Promise<[GLib.Bytes, string]>;
             /**
              * Asynchronously loads the contents of `file` as #GBytes.
              *
@@ -80304,7 +76752,7 @@ declare module 'gi://Gio?version=2.0' {
             load_bytes_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Bytes, string]> | void;
+            ): globalThis.Promise<[GLib.Bytes, string]> | void;
             /**
              * Completes an asynchronous request to g_file_load_bytes_async().
              *
@@ -80348,7 +76796,7 @@ declare module 'gi://Gio?version=2.0' {
              * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            load_contents_async(cancellable?: Cancellable | null): Promise<[Uint8Array, string]>;
+            load_contents_async(cancellable?: Cancellable | null): globalThis.Promise<[Uint8Array, string]>;
             /**
              * Starts an asynchronous load of the `file'`s contents.
              *
@@ -80387,7 +76835,7 @@ declare module 'gi://Gio?version=2.0' {
             load_contents_async(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[Uint8Array, string]> | void;
+            ): globalThis.Promise<[Uint8Array, string]> | void;
             /**
              * Finishes an asynchronous load of the `file'`s contents.
              * The contents are placed in `contents,` and `length` is set to the
@@ -80436,7 +76884,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object,   %NULL to ignore
              */
-            make_directory_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            make_directory_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously creates a directory.
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
@@ -80458,7 +76906,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an asynchronous directory creation, started with
              * g_file_make_directory_async().
@@ -80507,7 +76955,7 @@ declare module 'gi://Gio?version=2.0' {
                 symlink_value: string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously creates a symbolic link named `file` which contains the
              * string `symlink_value`.
@@ -80535,7 +76983,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an asynchronous symbolic link creation, started with
              * g_file_make_symbolic_link_async().
@@ -80649,7 +77097,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountMountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Starts a `mount_operation,` mounting the volume that contains
              * the file `location`.
@@ -80693,7 +77141,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes a mount operation started by g_file_mount_enclosing_volume().
              * @param result a #GAsyncResult
@@ -80720,7 +77168,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountMountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<File>;
+            ): globalThis.Promise<File>;
             /**
              * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
              * Using `mount_operation,` you can request callbacks when, for instance,
@@ -80766,7 +77214,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<File> | void;
+            ): globalThis.Promise<File> | void;
             /**
              * Finishes a mount operation. See g_file_mount_mountable() for details.
              *
@@ -80844,7 +77292,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 progress_callback?: FileProgressCallback | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously moves a file `source` to the location of `destination`. For details of the behaviour, see g_file_move().
              *
@@ -80894,7 +77342,7 @@ declare module 'gi://Gio?version=2.0' {
                 cancellable?: Cancellable | null,
                 progress_callback?: FileProgressCallback | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Version of [method`Gio`.File.move_async] using closures instead of callbacks for
              * easier binding in other languages.
@@ -80953,7 +77401,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object,   %NULL to ignore
              */
-            open_readwrite_async(io_priority: number, cancellable?: Cancellable | null): Promise<FileIOStream>;
+            open_readwrite_async(
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<FileIOStream>;
             /**
              * Asynchronously opens `file` for reading and writing.
              *
@@ -80989,7 +77440,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileIOStream> | void;
+            ): globalThis.Promise<FileIOStream> | void;
             /**
              * Finishes an asynchronous file read operation started with
              * g_file_open_readwrite_async().
@@ -81020,7 +77471,7 @@ declare module 'gi://Gio?version=2.0' {
              * the result of the operation.
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            poll_mountable(cancellable?: Cancellable | null): Promise<boolean>;
+            poll_mountable(cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Polls a file of type %G_FILE_TYPE_MOUNTABLE.
              *
@@ -81051,7 +77502,7 @@ declare module 'gi://Gio?version=2.0' {
             poll_mountable(
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes a poll operation. See g_file_poll_mountable() for details.
              *
@@ -81077,7 +77528,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            query_default_handler_async(io_priority: number, cancellable?: Cancellable | null): Promise<AppInfo>;
+            query_default_handler_async(
+                io_priority: number,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<AppInfo>;
             /**
              * Async version of g_file_query_default_handler().
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
@@ -81099,7 +77553,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<AppInfo> | void;
+            ): globalThis.Promise<AppInfo> | void;
             /**
              * Finishes a g_file_query_default_handler_async() operation.
              * @param result a #GAsyncResult
@@ -81198,7 +77652,7 @@ declare module 'gi://Gio?version=2.0' {
                 attributes: string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileInfo>;
+            ): globalThis.Promise<FileInfo>;
             /**
              * Asynchronously gets the requested information about the filesystem
              * that the specified `file` is on. The result is a #GFileInfo object
@@ -81244,7 +77698,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileInfo> | void;
+            ): globalThis.Promise<FileInfo> | void;
             /**
              * Finishes an asynchronous filesystem info query.
              * See g_file_query_filesystem_info_async().
@@ -81254,39 +77708,52 @@ declare module 'gi://Gio?version=2.0' {
             query_filesystem_info_finish(res: AsyncResult): FileInfo;
             /**
              * Gets the requested information about specified `file`.
-             * The result is a #GFileInfo object that contains key-value
+             *
+             * The result is a [class`Gio`.FileInfo] object that contains key-value
              * attributes (such as the type or size of the file).
              *
              * The `attributes` value is a string that specifies the file
              * attributes that should be gathered. It is not an error if
-             * it's not possible to read a particular requested attribute
-             * from a file - it just won't be set. `attributes` should be a
-             * comma-separated list of attributes or attribute wildcards.
-             * The wildcard "*" means all attributes, and a wildcard like
-             * "standard::*" means all attributes in the standard namespace.
-             * An example attribute query be "standard::*,owner::user".
-             * The standard attributes are available as defines, like
-             * %G_FILE_ATTRIBUTE_STANDARD_NAME.
+             * it’s not possible to read a particular requested attribute
+             * from a file — it just won't be set. In particular this means that if a file
+             * is inaccessible (due to being in a folder with restrictive permissions), for
+             * example, you can expect the returned [class`Gio`.FileInfo] to have very few
+             * attributes set. You should check whether an attribute is set using
+             * [method`Gio`.FileInfo.has_attribute] before trying to retrieve its value.
              *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
+             * It is guaranteed that if any of the following attributes are listed in
+             * `attributes,` they will always be set in the returned [class`Gio`.FileInfo],
+             * even if the user doesn’t have permissions to access the file:
+             *
+             *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME]
+             *  - [const`Gio`.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]
+             *
+             * `attributes` should be a comma-separated list of attributes or attribute
+             * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
+             * `"standard::*"` means all attributes in the standard namespace.
+             * An example attribute query might be `"standard::*,owner::user"`.
+             * The standard attributes are available as defines, like
+             * [const`Gio`.FILE_ATTRIBUTE_STANDARD_NAME].
+             *
+             * If `cancellable` is not `NULL`, then the operation can be cancelled
              * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+             * operation was cancelled, the error [error`Gio`.IOErrorEnum.CANCELLED] will be
              * returned.
              *
              * For symlinks, normally the information about the target of the
              * symlink is returned, rather than information about the symlink
-             * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
+             * itself. However if you pass [flags`Gio`.FileQueryInfoFlags.NOFOLLOW_SYMLINKS]
              * in `flags` the information about the symlink itself will be returned.
              * Also, for symlinks that point to non-existing files the information
              * about the symlink itself will be returned.
              *
-             * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
+             * If the file does not exist, the [error`Gio`.IOErrorEnum.NOT_FOUND] error will be
              * returned. Other errors are possible too, and depend on what kind of
-             * filesystem the file is on.
+             * file system the file is on.
              * @param attributes an attribute query string
-             * @param flags a set of #GFileQueryInfoFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @returns a #GFileInfo for the given @file, or %NULL   on error. Free the returned object with g_object_unref().
+             * @param flags flags to affect the query operation
+             * @param cancellable optional cancellable object
+             * @returns a [class@Gio.FileInfo] for the given @file
              */
             query_info(
                 attributes: string,
@@ -81313,7 +77780,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileQueryInfoFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileInfo>;
+            ): globalThis.Promise<FileInfo>;
             /**
              * Asynchronously gets the requested information about specified `file`.
              * The result is a #GFileInfo object that contains key-value attributes
@@ -81359,7 +77826,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileInfo> | void;
+            ): globalThis.Promise<FileInfo> | void;
             /**
              * Finishes an asynchronous file info query.
              * See g_file_query_info_async().
@@ -81422,7 +77889,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object,   %NULL to ignore
              */
-            read_async(io_priority: number, cancellable?: Cancellable | null): Promise<FileInputStream>;
+            read_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<FileInputStream>;
             /**
              * Asynchronously opens `file` for reading.
              *
@@ -81458,7 +77925,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileInputStream> | void;
+            ): globalThis.Promise<FileInputStream> | void;
             /**
              * Finishes an asynchronous file read operation started with
              * g_file_read_async().
@@ -81542,7 +78009,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileCreateFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileOutputStream>;
+            ): globalThis.Promise<FileOutputStream>;
             /**
              * Asynchronously overwrites the file, replacing the contents,
              * possibly creating a backup copy of the file first.
@@ -81592,7 +78059,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileOutputStream> | void;
+            ): globalThis.Promise<FileOutputStream> | void;
             /**
              * Replaces the contents of `file` with `contents` of `length` bytes.
              *
@@ -81656,7 +78123,7 @@ declare module 'gi://Gio?version=2.0' {
                 make_backup: boolean,
                 flags: FileCreateFlags | null,
                 cancellable?: Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Starts an asynchronous replacement of `file` with the given
              * `contents` of `length` bytes. `etag` will replace the document's
@@ -81726,7 +78193,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileCreateFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Same as g_file_replace_contents_async() but takes a #GBytes input instead.
              * This function will keep a ref on `contents` until the operation is done.
@@ -81812,7 +78279,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileCreateFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileIOStream>;
+            ): globalThis.Promise<FileIOStream>;
             /**
              * Asynchronously overwrites the file in read-write mode,
              * replacing the contents, possibly creating a backup copy
@@ -81864,7 +78331,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileIOStream> | void;
+            ): globalThis.Promise<FileIOStream> | void;
             /**
              * Finishes an asynchronous file replace operation started with
              * g_file_replace_readwrite_async().
@@ -82040,7 +78507,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: FileQueryInfoFlags | null,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<FileInfo>;
+            ): globalThis.Promise<FileInfo>;
             /**
              * Asynchronously sets the attributes of `file` with `info`.
              *
@@ -82084,7 +78551,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<FileInfo> | void;
+            ): globalThis.Promise<FileInfo> | void;
             /**
              * Finishes setting an attribute started in g_file_set_attributes_async().
              * @param result a #GAsyncResult
@@ -82152,7 +78619,7 @@ declare module 'gi://Gio?version=2.0' {
                 display_name: string,
                 io_priority: number,
                 cancellable?: Cancellable | null,
-            ): Promise<File>;
+            ): globalThis.Promise<File>;
             /**
              * Asynchronously sets the display name for a given #GFile.
              *
@@ -82192,7 +78659,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<File> | void;
+            ): globalThis.Promise<File> | void;
             /**
              * Finishes setting a display name started with
              * g_file_set_display_name_async().
@@ -82220,7 +78687,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: DriveStartFlags | null,
                 start_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Starts a file of type %G_FILE_TYPE_MOUNTABLE.
              * Using `start_operation,` you can request callbacks when, for instance,
@@ -82266,7 +78733,7 @@ declare module 'gi://Gio?version=2.0' {
                 start_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes a start operation. See g_file_start_mountable() for details.
              *
@@ -82294,7 +78761,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Stops a file of type %G_FILE_TYPE_MOUNTABLE.
              *
@@ -82336,7 +78803,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes a stop operation, see g_file_stop_mountable() for details.
              *
@@ -82377,7 +78844,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object,   %NULL to ignore
              */
-            trash_async(io_priority: number, cancellable?: Cancellable | null): Promise<boolean>;
+            trash_async(io_priority: number, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously sends `file` to the Trash location, if possible.
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
@@ -82399,7 +78866,7 @@ declare module 'gi://Gio?version=2.0' {
                 io_priority: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an asynchronous file trashing operation, started with
              * g_file_trash_async().
@@ -82420,7 +78887,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param flags flags affecting the operation
              * @param cancellable optional #GCancellable object,   %NULL to ignore
              */
-            unmount_mountable(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
+            unmount_mountable(
+                flags: MountUnmountFlags | null,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
              *
@@ -82458,7 +78928,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an unmount operation, see g_file_unmount_mountable() for details.
              *
@@ -82486,7 +78956,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Unmounts a file of type %G_FILE_TYPE_MOUNTABLE.
              *
@@ -82528,7 +78998,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an unmount operation,
              * see g_file_unmount_mountable_with_operation() for details.
@@ -82547,1613 +79017,44 @@ declare module 'gi://Gio?version=2.0' {
                 cancellable: Cancellable,
                 callback: AsyncReadyCallback,
             ): void;
-
-            // Virtual methods
-
-            /**
-             * Gets an output stream for appending data to the file.
-             * If the file doesn't already exist it is created.
-             *
-             * By default files created are generally readable by everyone,
-             * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
-             * will be made readable only to the current user, to the level that
-             * is supported on the target filesystem.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
-             * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
-             * returned.
-             *
-             * Some file systems don't allow all file names, and may return an
-             * %G_IO_ERROR_INVALID_FILENAME error. If the file is a directory the
-             * %G_IO_ERROR_IS_DIRECTORY error will be returned. Other errors are
-             * possible too, and depend on what kind of filesystem the file is on.
-             * @param flags a set of #GFileCreateFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_append_to(flags: FileCreateFlags, cancellable?: Cancellable | null): FileOutputStream;
-            /**
-             * Asynchronously opens `file` for appending.
-             *
-             * For more details, see g_file_append_to() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_append_to_finish() to get the result
-             * of the operation.
-             * @param flags a set of #GFileCreateFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_append_to_async(
-                flags: FileCreateFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file append operation started with
-             * g_file_append_to_async().
-             * @param res #GAsyncResult
-             */
-            vfunc_append_to_finish(res: AsyncResult): FileOutputStream;
-            /**
-             * Copies the file `source` to the location specified by `destination`.
-             * Can not handle recursive copies of directories.
-             *
-             * If the flag %G_FILE_COPY_OVERWRITE is specified an already
-             * existing `destination` file is overwritten.
-             *
-             * If the flag %G_FILE_COPY_NOFOLLOW_SYMLINKS is specified then symlinks
-             * will be copied as symlinks, otherwise the target of the
-             * `source` symlink will be copied.
-             *
-             * If the flag %G_FILE_COPY_ALL_METADATA is specified then all the metadata
-             * that is possible to copy is copied, not just the default subset (which,
-             * for instance, does not include the owner, see #GFileInfo).
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * If `progress_callback` is not %NULL, then the operation can be monitored
-             * by setting this to a #GFileProgressCallback function.
-             * `progress_callback_data` will be passed to this function. It is guaranteed
-             * that this callback will be called after all data has been transferred with
-             * the total number of bytes copied during the operation.
-             *
-             * If the `source` file does not exist, then the %G_IO_ERROR_NOT_FOUND error
-             * is returned, independent on the status of the `destination`.
-             *
-             * If %G_FILE_COPY_OVERWRITE is not specified and the target exists, then
-             * the error %G_IO_ERROR_EXISTS is returned.
-             *
-             * If trying to overwrite a file over a directory, the %G_IO_ERROR_IS_DIRECTORY
-             * error is returned. If trying to overwrite a directory with a directory the
-             * %G_IO_ERROR_WOULD_MERGE error is returned.
-             *
-             * If the source is a directory and the target does not exist, or
-             * %G_FILE_COPY_OVERWRITE is specified and the target is a file, then the
-             * %G_IO_ERROR_WOULD_RECURSE error is returned.
-             *
-             * If you are interested in copying the #GFile object itself (not the on-disk
-             * file), see g_file_dup().
-             * @param destination destination #GFile
-             * @param flags set of #GFileCopyFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param progress_callback function to callback with   progress information, or %NULL if progress information is not needed
-             */
-            vfunc_copy(
-                destination: File,
-                flags: FileCopyFlags,
-                cancellable?: Cancellable | null,
-                progress_callback?: FileProgressCallback | null,
-            ): boolean;
-            /**
-             * Copies the file `source` to the location specified by `destination`
-             * asynchronously. For details of the behaviour, see g_file_copy().
-             *
-             * If `progress_callback` is not %NULL, then that function that will be called
-             * just like in g_file_copy(). The callback will run in the default main context
-             * of the thread calling g_file_copy_async() — the same context as `callback` is
-             * run in.
-             *
-             * When the operation is finished, `callback` will be called. You can then call
-             * g_file_copy_finish() to get the result of the operation.
-             * @param destination destination #GFile
-             * @param flags set of #GFileCopyFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param progress_callback function to callback with progress information, or %NULL if   progress information is not needed
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_copy_async(
-                destination: File,
-                flags: FileCopyFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                progress_callback?: FileProgressCallback | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes copying the file started with g_file_copy_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_copy_finish(res: AsyncResult): boolean;
-            /**
-             * Creates a new file and returns an output stream for writing to it.
-             * The file must not already exist.
-             *
-             * By default files created are generally readable by everyone,
-             * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
-             * will be made readable only to the current user, to the level
-             * that is supported on the target filesystem.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
-             * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
-             * returned.
-             *
-             * If a file or directory with this name already exists the
-             * %G_IO_ERROR_EXISTS error will be returned. Some file systems don't
-             * allow all file names, and may return an %G_IO_ERROR_INVALID_FILENAME
-             * error, and if the name is to long %G_IO_ERROR_FILENAME_TOO_LONG will
-             * be returned. Other errors are possible too, and depend on what kind
-             * of filesystem the file is on.
-             * @param flags a set of #GFileCreateFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_create(flags: FileCreateFlags, cancellable?: Cancellable | null): FileOutputStream;
-            /**
-             * Asynchronously creates a new file and returns an output stream
-             * for writing to it. The file must not already exist.
-             *
-             * For more details, see g_file_create() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_create_finish() to get the result
-             * of the operation.
-             * @param flags a set of #GFileCreateFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_create_async(
-                flags: FileCreateFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file create operation started with
-             * g_file_create_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_create_finish(res: AsyncResult): FileOutputStream;
-            /**
-             * Creates a new file and returns a stream for reading and
-             * writing to it. The file must not already exist.
-             *
-             * By default files created are generally readable by everyone,
-             * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
-             * will be made readable only to the current user, to the level
-             * that is supported on the target filesystem.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
-             * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
-             * returned.
-             *
-             * If a file or directory with this name already exists, the
-             * %G_IO_ERROR_EXISTS error will be returned. Some file systems don't
-             * allow all file names, and may return an %G_IO_ERROR_INVALID_FILENAME
-             * error, and if the name is too long, %G_IO_ERROR_FILENAME_TOO_LONG
-             * will be returned. Other errors are possible too, and depend on what
-             * kind of filesystem the file is on.
-             *
-             * Note that in many non-local file cases read and write streams are
-             * not supported, so make sure you really need to do read and write
-             * streaming, rather than just opening for reading or writing.
-             * @param flags a set of #GFileCreateFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_create_readwrite(flags: FileCreateFlags, cancellable?: Cancellable | null): FileIOStream;
-            /**
-             * Asynchronously creates a new file and returns a stream
-             * for reading and writing to it. The file must not already exist.
-             *
-             * For more details, see g_file_create_readwrite() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_create_readwrite_finish() to get
-             * the result of the operation.
-             * @param flags a set of #GFileCreateFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_create_readwrite_async(
-                flags: FileCreateFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file create operation started with
-             * g_file_create_readwrite_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_create_readwrite_finish(res: AsyncResult): FileIOStream;
-            /**
-             * Deletes a file. If the `file` is a directory, it will only be
-             * deleted if it is empty. This has the same semantics as g_unlink().
-             *
-             * If `file` doesn’t exist, %G_IO_ERROR_NOT_FOUND will be returned. This allows
-             * for deletion to be implemented avoiding
-             * [time-of-check to time-of-use races](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use):
-             *
-             * ```
-             * g_autoptr(GError) local_error = NULL;
-             * if (!g_file_delete (my_file, my_cancellable, &local_error) &&
-             *     !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
-             *   {
-             *     // deletion failed for some reason other than the file not existing:
-             *     // so report the error
-             *     g_warning ("Failed to delete %s: %s",
-             *                g_file_peek_path (my_file), local_error->message);
-             *   }
-             * ```
-             *
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_delete_file(cancellable?: Cancellable | null): boolean;
-            /**
-             * Asynchronously delete a file. If the `file` is a directory, it will
-             * only be deleted if it is empty.  This has the same semantics as
-             * g_unlink().
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
-             */
-            vfunc_delete_file_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes deleting a file started with g_file_delete_async().
-             * @param result a #GAsyncResult
-             */
-            vfunc_delete_file_finish(result: AsyncResult): boolean;
-            /**
-             * Duplicates a #GFile handle. This operation does not duplicate
-             * the actual file or directory represented by the #GFile; see
-             * g_file_copy() if attempting to copy a file.
-             *
-             * g_file_dup() is useful when a second handle is needed to the same underlying
-             * file, for use in a separate thread (#GFile is not thread-safe). For use
-             * within the same thread, use g_object_ref() to increment the existing object’s
-             * reference count.
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_dup(): File;
-            /**
-             * Starts an asynchronous eject on a mountable.
-             * When this operation has completed, `callback` will be called with
-             * `user_user` data, and the operation can be finalized with
-             * g_file_eject_mountable_finish().
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param flags flags affecting the operation
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_eject_mountable(
-                flags: MountUnmountFlags,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous eject operation started by
-             * g_file_eject_mountable().
-             * @param result a #GAsyncResult
-             */
-            vfunc_eject_mountable_finish(result: AsyncResult): boolean;
-            /**
-             * Starts an asynchronous eject on a mountable.
-             * When this operation has completed, `callback` will be called with
-             * `user_user` data, and the operation can be finalized with
-             * g_file_eject_mountable_with_operation_finish().
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param flags flags affecting the operation
-             * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_eject_mountable_with_operation(
-                flags: MountUnmountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous eject operation started by
-             * g_file_eject_mountable_with_operation().
-             * @param result a #GAsyncResult
-             */
-            vfunc_eject_mountable_with_operation_finish(result: AsyncResult): boolean;
-            /**
-             * Gets the requested information about the files in a directory.
-             * The result is a #GFileEnumerator object that will give out
-             * #GFileInfo objects for all the files in the directory.
-             *
-             * The `attributes` value is a string that specifies the file
-             * attributes that should be gathered. It is not an error if
-             * it's not possible to read a particular requested attribute
-             * from a file - it just won't be set. `attributes` should
-             * be a comma-separated list of attributes or attribute wildcards.
-             * The wildcard "*" means all attributes, and a wildcard like
-             * "standard::*" means all attributes in the standard namespace.
-             * An example attribute query be "standard::*,owner::user".
-             * The standard attributes are available as defines, like
-             * %G_FILE_ATTRIBUTE_STANDARD_NAME. %G_FILE_ATTRIBUTE_STANDARD_NAME should
-             * always be specified if you plan to call g_file_enumerator_get_child() or
-             * g_file_enumerator_iterate() on the returned enumerator.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
-             * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
-             * returned.
-             *
-             * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
-             * be returned. If the file is not a directory, the %G_IO_ERROR_NOT_DIRECTORY
-             * error will be returned. Other errors are possible too.
-             * @param attributes an attribute query string
-             * @param flags a set of #GFileQueryInfoFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_enumerate_children(
-                attributes: string,
-                flags: FileQueryInfoFlags,
-                cancellable?: Cancellable | null,
-            ): FileEnumerator;
-            /**
-             * Asynchronously gets the requested information about the files
-             * in a directory. The result is a #GFileEnumerator object that will
-             * give out #GFileInfo objects for all the files in the directory.
-             *
-             * For more details, see g_file_enumerate_children() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called. You can
-             * then call g_file_enumerate_children_finish() to get the result of
-             * the operation.
-             * @param attributes an attribute query string
-             * @param flags a set of #GFileQueryInfoFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_enumerate_children_async(
-                attributes: string,
-                flags: FileQueryInfoFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an async enumerate children operation.
-             * See g_file_enumerate_children_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_enumerate_children_finish(res: AsyncResult): FileEnumerator;
-            /**
-             * Checks if the two given #GFiles refer to the same file.
-             *
-             * Note that two #GFiles that differ can still refer to the same
-             * file on the filesystem due to various forms of filename
-             * aliasing.
-             *
-             * This call does no blocking I/O.
-             * @param file2 the second #GFile
-             */
-            vfunc_equal(file2: File): boolean;
-            /**
-             * Gets a #GMount for the #GFile.
-             *
-             * #GMount is returned only for user interesting locations, see
-             * #GVolumeMonitor. If the #GFileIface for `file` does not have a #mount,
-             * `error` will be set to %G_IO_ERROR_NOT_FOUND and %NULL #will be returned.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_find_enclosing_mount(cancellable?: Cancellable | null): Mount;
-            /**
-             * Asynchronously gets the mount for the file.
-             *
-             * For more details, see g_file_find_enclosing_mount() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_find_enclosing_mount_finish() to
-             * get the result of the operation.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_find_enclosing_mount_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous find mount request.
-             * See g_file_find_enclosing_mount_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_find_enclosing_mount_finish(res: AsyncResult): Mount;
-            /**
-             * Gets the base name (the last component of the path) for a given #GFile.
-             *
-             * If called for the top level of a system (such as the filesystem root
-             * or a uri like sftp://host/) it will return a single directory separator
-             * (and on Windows, possibly a drive letter).
-             *
-             * The base name is a byte string (not UTF-8). It has no defined encoding
-             * or rules other than it may not contain zero bytes.  If you want to use
-             * filenames in a user interface you should use the display name that you
-             * can get by requesting the %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME
-             * attribute with g_file_query_info().
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_get_basename(): string | null;
-            /**
-             * Gets the child of `file` for a given `display_name` (i.e. a UTF-8
-             * version of the name). If this function fails, it returns %NULL
-             * and `error` will be set. This is very useful when constructing a
-             * #GFile for a new file and the user entered the filename in the
-             * user interface, for instance when you select a directory and
-             * type a filename in the file selector.
-             *
-             * This call does no blocking I/O.
-             * @param display_name string to a possible child
-             */
-            vfunc_get_child_for_display_name(display_name: string): File;
-            /**
-             * Gets the parent directory for the `file`.
-             * If the `file` represents the root directory of the
-             * file system, then %NULL will be returned.
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_get_parent(): File | null;
-            /**
-             * Gets the parse name of the `file`.
-             * A parse name is a UTF-8 string that describes the
-             * file such that one can get the #GFile back using
-             * g_file_parse_name().
-             *
-             * This is generally used to show the #GFile as a nice
-             * full-pathname kind of string in a user interface,
-             * like in a location entry.
-             *
-             * For local files with names that can safely be converted
-             * to UTF-8 the pathname is used, otherwise the IRI is used
-             * (a form of URI that allows UTF-8 characters unescaped).
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_get_parse_name(): string;
-            /**
-             * Gets the local pathname for #GFile, if one exists. If non-%NULL, this is
-             * guaranteed to be an absolute, canonical path. It might contain symlinks.
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_get_path(): string | null;
-            /**
-             * Gets the path for `descendant` relative to `parent`.
-             *
-             * This call does no blocking I/O.
-             * @param descendant input #GFile
-             */
-            vfunc_get_relative_path(descendant: File): string | null;
-            /**
-             * Gets the URI for the `file`.
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_get_uri(): string;
-            /**
-             * Gets the URI scheme for a #GFile.
-             * RFC 3986 decodes the scheme as:
-             *
-             * ```
-             * URI = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
-             * ```
-             *
-             * Common schemes include "file", "http", "ftp", etc.
-             *
-             * The scheme can be different from the one used to construct the #GFile,
-             * in that it might be replaced with one that is logically equivalent to the #GFile.
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_get_uri_scheme(): string | null;
-            /**
-             * Checks to see if a #GFile has a given URI scheme.
-             *
-             * This call does no blocking I/O.
-             * @param uri_scheme a string containing a URI scheme
-             */
-            vfunc_has_uri_scheme(uri_scheme: string): boolean;
-            /**
-             * Creates a hash value for a #GFile.
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_hash(): number;
-            /**
-             * Checks to see if a file is native to the platform.
-             *
-             * A native file is one expressed in the platform-native filename format,
-             * e.g. "C:\Windows" or "/usr/bin/". This does not mean the file is local,
-             * as it might be on a locally mounted remote filesystem.
-             *
-             * On some systems non-native files may be available using the native
-             * filesystem via a userspace filesystem (FUSE), in these cases this call
-             * will return %FALSE, but g_file_get_path() will still return a native path.
-             *
-             * This call does no blocking I/O.
-             */
-            vfunc_is_native(): boolean;
-            /**
-             * Creates a directory.
-             *
-             * Note that this will only create a child directory
-             * of the immediate parent directory of the path or URI given by the #GFile.
-             * To recursively create directories, see g_file_make_directory_with_parents().
-             *
-             * This function will fail if the parent directory does not exist, setting
-             * `error` to %G_IO_ERROR_NOT_FOUND. If the file system doesn't support
-             * creating directories, this function will fail, setting `error` to
-             * %G_IO_ERROR_NOT_SUPPORTED. If the directory already exists,
-             * [error`Gio`.IOErrorEnum.EXISTS] will be returned.
-             *
-             * For a local #GFile the newly created directory will have the default
-             * (current) ownership and permissions of the current process.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_make_directory(cancellable?: Cancellable | null): boolean;
-            /**
-             * Asynchronously creates a directory.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
-             */
-            vfunc_make_directory_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous directory creation, started with
-             * g_file_make_directory_async().
-             * @param result a #GAsyncResult
-             */
-            vfunc_make_directory_finish(result: AsyncResult): boolean;
-            /**
-             * Creates a symbolic link named `file` which contains the string
-             * `symlink_value`.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param symlink_value a string with the path for the target   of the new symlink
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_make_symbolic_link(symlink_value: string, cancellable?: Cancellable | null): boolean;
-            /**
-             * Asynchronously creates a symbolic link named `file` which contains the
-             * string `symlink_value`.
-             * @param symlink_value a string with the path for the target   of the new symlink
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
-             */
-            vfunc_make_symbolic_link_async(
-                symlink_value: string,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous symbolic link creation, started with
-             * g_file_make_symbolic_link_async().
-             * @param result a #GAsyncResult
-             */
-            vfunc_make_symbolic_link_finish(result: AsyncResult): boolean;
-            /**
-             * Recursively measures the disk usage of `file`.
-             *
-             * This is essentially an analog of the 'du' command, but it also
-             * reports the number of directories and non-directory files encountered
-             * (including things like symbolic links).
-             *
-             * By default, errors are only reported against the toplevel file
-             * itself.  Errors found while recursing are silently ignored, unless
-             * %G_FILE_MEASURE_REPORT_ANY_ERROR is given in `flags`.
-             *
-             * The returned size, `disk_usage,` is in bytes and should be formatted
-             * with g_format_size() in order to get something reasonable for showing
-             * in a user interface.
-             *
-             * `progress_callback` and `progress_data` can be given to request
-             * periodic progress updates while scanning.  See the documentation for
-             * #GFileMeasureProgressCallback for information about when and how the
-             * callback will be invoked.
-             * @param flags #GFileMeasureFlags
-             * @param cancellable optional #GCancellable
-             * @param progress_callback a #GFileMeasureProgressCallback
-             */
-            vfunc_measure_disk_usage(
-                flags: FileMeasureFlags,
-                cancellable: Cancellable | null,
-                progress_callback: FileMeasureProgressCallback | null,
-            ): [boolean, number, number, number];
-            /**
-             * Collects the results from an earlier call to
-             * g_file_measure_disk_usage_async().  See g_file_measure_disk_usage() for
-             * more information.
-             * @param result the #GAsyncResult passed to your #GAsyncReadyCallback
-             */
-            vfunc_measure_disk_usage_finish(result: AsyncResult): [boolean, number, number, number];
-            /**
-             * Obtains a directory monitor for the given file.
-             * This may fail if directory monitoring is not supported.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * It does not make sense for `flags` to contain
-             * %G_FILE_MONITOR_WATCH_HARD_LINKS, since hard links can not be made to
-             * directories.  It is not possible to monitor all the files in a
-             * directory for changes made via hard links; if you want to do this then
-             * you must register individual watches with g_file_monitor().
-             * @param flags a set of #GFileMonitorFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_monitor_dir(flags: FileMonitorFlags, cancellable?: Cancellable | null): FileMonitor;
-            /**
-             * Obtains a file monitor for the given file. If no file notification
-             * mechanism exists, then regular polling of the file is used.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * If `flags` contains %G_FILE_MONITOR_WATCH_HARD_LINKS then the monitor
-             * will also attempt to report changes made to the file via another
-             * filename (ie, a hard link). Without this flag, you can only rely on
-             * changes made through the filename contained in `file` to be
-             * reported. Using this flag may result in an increase in resource
-             * usage, and may not have any effect depending on the #GFileMonitor
-             * backend and/or filesystem type.
-             * @param flags a set of #GFileMonitorFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_monitor_file(flags: FileMonitorFlags, cancellable?: Cancellable | null): FileMonitor;
-            /**
-             * Starts a `mount_operation,` mounting the volume that contains
-             * the file `location`.
-             *
-             * When this operation has completed, `callback` will be called with
-             * `user_user` data, and the operation can be finalized with
-             * g_file_mount_enclosing_volume_finish().
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param flags flags affecting the operation
-             * @param mount_operation a #GMountOperation   or %NULL to avoid user interaction
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
-             */
-            vfunc_mount_enclosing_volume(
-                flags: MountMountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a mount operation started by g_file_mount_enclosing_volume().
-             * @param result a #GAsyncResult
-             */
-            vfunc_mount_enclosing_volume_finish(result: AsyncResult): boolean;
-            /**
-             * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
-             * Using `mount_operation,` you can request callbacks when, for instance,
-             * passwords are needed during authentication.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_mount_mountable_finish() to get
-             * the result of the operation.
-             * @param flags flags affecting the operation
-             * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_mount_mountable(
-                flags: MountMountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a mount operation. See g_file_mount_mountable() for details.
-             *
-             * Finish an asynchronous mount operation that was started
-             * with g_file_mount_mountable().
-             * @param result a #GAsyncResult
-             */
-            vfunc_mount_mountable_finish(result: AsyncResult): File;
-            /**
-             * Tries to move the file or directory `source` to the location specified
-             * by `destination`. If native move operations are supported then this is
-             * used, otherwise a copy + delete fallback is used. The native
-             * implementation may support moving directories (for instance on moves
-             * inside the same filesystem), but the fallback code does not.
-             *
-             * If the flag %G_FILE_COPY_OVERWRITE is specified an already
-             * existing `destination` file is overwritten.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * If `progress_callback` is not %NULL, then the operation can be monitored
-             * by setting this to a #GFileProgressCallback function.
-             * `progress_callback_data` will be passed to this function. It is
-             * guaranteed that this callback will be called after all data has been
-             * transferred with the total number of bytes copied during the operation.
-             *
-             * If the `source` file does not exist, then the %G_IO_ERROR_NOT_FOUND
-             * error is returned, independent on the status of the `destination`.
-             *
-             * If %G_FILE_COPY_OVERWRITE is not specified and the target exists,
-             * then the error %G_IO_ERROR_EXISTS is returned.
-             *
-             * If trying to overwrite a file over a directory, the %G_IO_ERROR_IS_DIRECTORY
-             * error is returned. If trying to overwrite a directory with a directory the
-             * %G_IO_ERROR_WOULD_MERGE error is returned.
-             *
-             * If the source is a directory and the target does not exist, or
-             * %G_FILE_COPY_OVERWRITE is specified and the target is a file, then
-             * the %G_IO_ERROR_WOULD_RECURSE error may be returned (if the native
-             * move operation isn't available).
-             * @param destination #GFile pointing to the destination location
-             * @param flags set of #GFileCopyFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param progress_callback #GFileProgressCallback   function for updates
-             */
-            vfunc_move(
-                destination: File,
-                flags: FileCopyFlags,
-                cancellable?: Cancellable | null,
-                progress_callback?: FileProgressCallback | null,
-            ): boolean;
-            /**
-             * Asynchronously moves a file `source` to the location of `destination`. For details of the behaviour, see g_file_move().
-             *
-             * If `progress_callback` is not %NULL, then that function that will be called
-             * just like in g_file_move(). The callback will run in the default main context
-             * of the thread calling g_file_move_async() — the same context as `callback` is
-             * run in.
-             *
-             * When the operation is finished, `callback` will be called. You can then call
-             * g_file_move_finish() to get the result of the operation.
-             * @param destination #GFile pointing to the destination location
-             * @param flags set of #GFileCopyFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param progress_callback #GFileProgressCallback function for updates
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_move_async(
-                destination: File,
-                flags: FileCopyFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                progress_callback?: FileProgressCallback | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file movement, started with
-             * g_file_move_async().
-             * @param result a #GAsyncResult
-             */
-            vfunc_move_finish(result: AsyncResult): boolean;
-            /**
-             * Opens an existing file for reading and writing. The result is
-             * a #GFileIOStream that can be used to read and write the contents
-             * of the file.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
-             * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
-             * returned.
-             *
-             * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
-             * be returned. If the file is a directory, the %G_IO_ERROR_IS_DIRECTORY
-             * error will be returned. Other errors are possible too, and depend on
-             * what kind of filesystem the file is on. Note that in many non-local
-             * file cases read and write streams are not supported, so make sure you
-             * really need to do read and write streaming, rather than just opening
-             * for reading or writing.
-             * @param cancellable a #GCancellable
-             */
-            vfunc_open_readwrite(cancellable?: Cancellable | null): FileIOStream;
-            /**
-             * Asynchronously opens `file` for reading and writing.
-             *
-             * For more details, see g_file_open_readwrite() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_open_readwrite_finish() to get
-             * the result of the operation.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_open_readwrite_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file read operation started with
-             * g_file_open_readwrite_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_open_readwrite_finish(res: AsyncResult): FileIOStream;
-            /**
-             * Polls a file of type %G_FILE_TYPE_MOUNTABLE.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_mount_mountable_finish() to get
-             * the result of the operation.
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
-             */
-            vfunc_poll_mountable(cancellable?: Cancellable | null, callback?: AsyncReadyCallback<this> | null): void;
-            /**
-             * Finishes a poll operation. See g_file_poll_mountable() for details.
-             *
-             * Finish an asynchronous poll operation that was polled
-             * with g_file_poll_mountable().
-             * @param result a #GAsyncResult
-             */
-            vfunc_poll_mountable_finish(result: AsyncResult): boolean;
-            /**
-             * Checks whether `file` has the prefix specified by `prefix`.
-             *
-             * In other words, if the names of initial elements of `file'`s
-             * pathname match `prefix`. Only full pathname elements are matched,
-             * so a path like /foo is not considered a prefix of /foobar, only
-             * of /foo/bar.
-             *
-             * A #GFile is not a prefix of itself. If you want to check for
-             * equality, use g_file_equal().
-             *
-             * This call does no I/O, as it works purely on names. As such it can
-             * sometimes return %FALSE even if `file` is inside a `prefix` (from a
-             * filesystem point of view), because the prefix of `file` is an alias
-             * of `prefix`.
-             * @param file input #GFile
-             */
-            vfunc_prefix_matches(file: File): boolean;
-            /**
-             * Utility function to check if a particular file exists.
-             *
-             * The fallback implementation of this API is using [method`Gio`.File.query_info]
-             * and therefore may do blocking I/O. To asynchronously query the existence
-             * of a file, use [method`Gio`.File.query_info_async].
-             *
-             * Note that in many cases it is [racy to first check for file existence](https://en.wikipedia.org/wiki/Time_of_check_to_time_of_use)
-             * and then execute something based on the outcome of that, because the
-             * file might have been created or removed in between the operations. The
-             * general approach to handling that is to not check, but just do the
-             * operation and handle the errors as they come.
-             *
-             * As an example of race-free checking, take the case of reading a file,
-             * and if it doesn't exist, creating it. There are two racy versions: read
-             * it, and on error create it; and: check if it exists, if not create it.
-             * These can both result in two processes creating the file (with perhaps
-             * a partially written file as the result). The correct approach is to
-             * always try to create the file with g_file_create() which will either
-             * atomically create the file or fail with a %G_IO_ERROR_EXISTS error.
-             *
-             * However, in many cases an existence check is useful in a user interface,
-             * for instance to make a menu item sensitive/insensitive, so that you don't
-             * have to fool users that something is possible and then just show an error
-             * dialog. If you do this, you should make sure to also handle the errors
-             * that can happen due to races when you execute the operation.
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_query_exists(cancellable?: Cancellable | null): boolean;
-            /**
-             * Similar to g_file_query_info(), but obtains information
-             * about the filesystem the `file` is on, rather than the file itself.
-             * For instance the amount of space available and the type of
-             * the filesystem.
-             *
-             * The `attributes` value is a string that specifies the attributes
-             * that should be gathered. It is not an error if it's not possible
-             * to read a particular requested attribute from a file - it just
-             * won't be set. `attributes` should be a comma-separated list of
-             * attributes or attribute wildcards. The wildcard "*" means all
-             * attributes, and a wildcard like "filesystem::*" means all attributes
-             * in the filesystem namespace. The standard namespace for filesystem
-             * attributes is "filesystem". Common attributes of interest are
-             * %G_FILE_ATTRIBUTE_FILESYSTEM_SIZE (the total size of the filesystem
-             * in bytes), %G_FILE_ATTRIBUTE_FILESYSTEM_FREE (number of bytes available),
-             * and %G_FILE_ATTRIBUTE_FILESYSTEM_TYPE (type of the filesystem).
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
-             * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
-             * returned.
-             *
-             * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
-             * be returned. Other errors are possible too, and depend on what
-             * kind of filesystem the file is on.
-             * @param attributes an attribute query string
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_query_filesystem_info(attributes: string, cancellable?: Cancellable | null): FileInfo;
-            /**
-             * Asynchronously gets the requested information about the filesystem
-             * that the specified `file` is on. The result is a #GFileInfo object
-             * that contains key-value attributes (such as type or size for the
-             * file).
-             *
-             * For more details, see g_file_query_filesystem_info() which is the
-             * synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called. You can
-             * then call g_file_query_info_finish() to get the result of the
-             * operation.
-             * @param attributes an attribute query string
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_query_filesystem_info_async(
-                attributes: string,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous filesystem info query.
-             * See g_file_query_filesystem_info_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_query_filesystem_info_finish(res: AsyncResult): FileInfo;
-            /**
-             * Gets the requested information about specified `file`.
-             * The result is a #GFileInfo object that contains key-value
-             * attributes (such as the type or size of the file).
-             *
-             * The `attributes` value is a string that specifies the file
-             * attributes that should be gathered. It is not an error if
-             * it's not possible to read a particular requested attribute
-             * from a file - it just won't be set. `attributes` should be a
-             * comma-separated list of attributes or attribute wildcards.
-             * The wildcard "*" means all attributes, and a wildcard like
-             * "standard::*" means all attributes in the standard namespace.
-             * An example attribute query be "standard::*,owner::user".
-             * The standard attributes are available as defines, like
-             * %G_FILE_ATTRIBUTE_STANDARD_NAME.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
-             * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
-             * returned.
-             *
-             * For symlinks, normally the information about the target of the
-             * symlink is returned, rather than information about the symlink
-             * itself. However if you pass %G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS
-             * in `flags` the information about the symlink itself will be returned.
-             * Also, for symlinks that point to non-existing files the information
-             * about the symlink itself will be returned.
-             *
-             * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
-             * returned. Other errors are possible too, and depend on what kind of
-             * filesystem the file is on.
-             * @param attributes an attribute query string
-             * @param flags a set of #GFileQueryInfoFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_query_info(attributes: string, flags: FileQueryInfoFlags, cancellable?: Cancellable | null): FileInfo;
-            /**
-             * Asynchronously gets the requested information about specified `file`.
-             * The result is a #GFileInfo object that contains key-value attributes
-             * (such as type or size for the file).
-             *
-             * For more details, see g_file_query_info() which is the synchronous
-             * version of this call.
-             *
-             * When the operation is finished, `callback` will be called. You can
-             * then call g_file_query_info_finish() to get the result of the operation.
-             * @param attributes an attribute query string
-             * @param flags a set of #GFileQueryInfoFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_query_info_async(
-                attributes: string,
-                flags: FileQueryInfoFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file info query.
-             * See g_file_query_info_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_query_info_finish(res: AsyncResult): FileInfo;
-            /**
-             * Obtain the list of settable attributes for the file.
-             *
-             * Returns the type and full attribute name of all the attributes
-             * that can be set on this file. This doesn't mean setting it will
-             * always succeed though, you might get an access failure, or some
-             * specific file may not support a specific attribute.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_query_settable_attributes(cancellable?: Cancellable | null): FileAttributeInfoList;
-            /**
-             * Obtain the list of attribute namespaces where new attributes
-             * can be created by a user. An example of this is extended
-             * attributes (in the "xattr" namespace).
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_query_writable_namespaces(cancellable?: Cancellable | null): FileAttributeInfoList;
-            /**
-             * Asynchronously opens `file` for reading.
-             *
-             * For more details, see g_file_read() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_read_finish() to get the result
-             * of the operation.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_read_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file read operation started with
-             * g_file_read_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_read_finish(res: AsyncResult): FileInputStream;
-            /**
-             * Opens a file for reading. The result is a #GFileInputStream that
-             * can be used to read the contents of the file.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will be
-             * returned. If the file is a directory, the %G_IO_ERROR_IS_DIRECTORY
-             * error will be returned. Other errors are possible too, and depend
-             * on what kind of filesystem the file is on.
-             * @param cancellable a #GCancellable
-             */
-            vfunc_read_fn(cancellable?: Cancellable | null): FileInputStream;
-            /**
-             * Returns an output stream for overwriting the file, possibly
-             * creating a backup copy of the file first. If the file doesn't exist,
-             * it will be created.
-             *
-             * This will try to replace the file in the safest way possible so
-             * that any errors during the writing will not affect an already
-             * existing copy of the file. For instance, for local files it
-             * may write to a temporary file and then atomically rename over
-             * the destination when the stream is closed.
-             *
-             * By default files created are generally readable by everyone,
-             * but if you pass %G_FILE_CREATE_PRIVATE in `flags` the file
-             * will be made readable only to the current user, to the level that
-             * is supported on the target filesystem.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled
-             * by triggering the cancellable object from another thread. If the
-             * operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
-             * returned.
-             *
-             * If you pass in a non-%NULL `etag` value and `file` already exists, then
-             * this value is compared to the current entity tag of the file, and if
-             * they differ an %G_IO_ERROR_WRONG_ETAG error is returned. This
-             * generally means that the file has been changed since you last read
-             * it. You can get the new etag from g_file_output_stream_get_etag()
-             * after you've finished writing and closed the #GFileOutputStream. When
-             * you load a new file you can use g_file_input_stream_query_info() to
-             * get the etag of the file.
-             *
-             * If `make_backup` is %TRUE, this function will attempt to make a
-             * backup of the current file before overwriting it. If this fails
-             * a %G_IO_ERROR_CANT_CREATE_BACKUP error will be returned. If you
-             * want to replace anyway, try again with `make_backup` set to %FALSE.
-             *
-             * If the file is a directory the %G_IO_ERROR_IS_DIRECTORY error will
-             * be returned, and if the file is some other form of non-regular file
-             * then a %G_IO_ERROR_NOT_REGULAR_FILE error will be returned. Some
-             * file systems don't allow all file names, and may return an
-             * %G_IO_ERROR_INVALID_FILENAME error, and if the name is to long
-             * %G_IO_ERROR_FILENAME_TOO_LONG will be returned. Other errors are
-             * possible too, and depend on what kind of filesystem the file is on.
-             * @param etag an optional [entity tag](#entity-tags)   for the current #GFile, or #NULL to ignore
-             * @param make_backup %TRUE if a backup should be created
-             * @param flags a set of #GFileCreateFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_replace(
-                etag: string | null,
-                make_backup: boolean,
-                flags: FileCreateFlags,
-                cancellable?: Cancellable | null,
-            ): FileOutputStream;
-            /**
-             * Asynchronously overwrites the file, replacing the contents,
-             * possibly creating a backup copy of the file first.
-             *
-             * For more details, see g_file_replace() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_replace_finish() to get the result
-             * of the operation.
-             * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
-             * @param make_backup %TRUE if a backup should be created
-             * @param flags a set of #GFileCreateFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_replace_async(
-                etag: string | null,
-                make_backup: boolean,
-                flags: FileCreateFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file replace operation started with
-             * g_file_replace_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_replace_finish(res: AsyncResult): FileOutputStream;
-            /**
-             * Returns an output stream for overwriting the file in readwrite mode,
-             * possibly creating a backup copy of the file first. If the file doesn't
-             * exist, it will be created.
-             *
-             * For details about the behaviour, see g_file_replace() which does the
-             * same thing but returns an output stream only.
-             *
-             * Note that in many non-local file cases read and write streams are not
-             * supported, so make sure you really need to do read and write streaming,
-             * rather than just opening for reading or writing.
-             * @param etag an optional [entity tag](#entity-tags)   for the current #GFile, or #NULL to ignore
-             * @param make_backup %TRUE if a backup should be created
-             * @param flags a set of #GFileCreateFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_replace_readwrite(
-                etag: string | null,
-                make_backup: boolean,
-                flags: FileCreateFlags,
-                cancellable?: Cancellable | null,
-            ): FileIOStream;
-            /**
-             * Asynchronously overwrites the file in read-write mode,
-             * replacing the contents, possibly creating a backup copy
-             * of the file first.
-             *
-             * For more details, see g_file_replace_readwrite() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_replace_readwrite_finish() to get
-             * the result of the operation.
-             * @param etag an [entity tag](#entity-tags) for the current #GFile,   or %NULL to ignore
-             * @param make_backup %TRUE if a backup should be created
-             * @param flags a set of #GFileCreateFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_replace_readwrite_async(
-                etag: string | null,
-                make_backup: boolean,
-                flags: FileCreateFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file replace operation started with
-             * g_file_replace_readwrite_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_replace_readwrite_finish(res: AsyncResult): FileIOStream;
-            /**
-             * Resolves a relative path for `file` to an absolute path.
-             *
-             * This call does no blocking I/O.
-             *
-             * If the `relative_path` is an absolute path name, the resolution
-             * is done absolutely (without taking `file` path as base).
-             * @param relative_path a given relative path string
-             */
-            vfunc_resolve_relative_path(relative_path: string): File;
-            /**
-             * Sets an attribute in the file with attribute name `attribute` to `value_p`.
-             *
-             * Some attributes can be unset by setting `type` to
-             * %G_FILE_ATTRIBUTE_TYPE_INVALID and `value_p` to %NULL.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param attribute a string containing the attribute's name
-             * @param type The type of the attribute
-             * @param value_p a pointer to the value (or the pointer   itself if the type is a pointer type)
-             * @param flags a set of #GFileQueryInfoFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_set_attribute(
-                attribute: string,
-                type: FileAttributeType,
-                value_p: any | null,
-                flags: FileQueryInfoFlags,
-                cancellable?: Cancellable | null,
-            ): boolean;
-            /**
-             * Asynchronously sets the attributes of `file` with `info`.
-             *
-             * For more details, see g_file_set_attributes_from_info(),
-             * which is the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_set_attributes_finish() to get
-             * the result of the operation.
-             * @param info a #GFileInfo
-             * @param flags a #GFileQueryInfoFlags
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_set_attributes_async(
-                info: FileInfo,
-                flags: FileQueryInfoFlags,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes setting an attribute started in g_file_set_attributes_async().
-             * @param result a #GAsyncResult
-             */
-            vfunc_set_attributes_finish(result: AsyncResult): [boolean, FileInfo];
-            /**
-             * Tries to set all attributes in the #GFileInfo on the target
-             * values, not stopping on the first error.
-             *
-             * If there is any error during this operation then `error` will
-             * be set to the first error. Error on particular fields are flagged
-             * by setting the "status" field in the attribute value to
-             * %G_FILE_ATTRIBUTE_STATUS_ERROR_SETTING, which means you can
-             * also detect further errors.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param info a #GFileInfo
-             * @param flags #GFileQueryInfoFlags
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_set_attributes_from_info(
-                info: FileInfo,
-                flags: FileQueryInfoFlags,
-                cancellable?: Cancellable | null,
-            ): boolean;
-            /**
-             * Renames `file` to the specified display name.
-             *
-             * The display name is converted from UTF-8 to the correct encoding
-             * for the target filesystem if possible and the `file` is renamed to this.
-             *
-             * If you want to implement a rename operation in the user interface the
-             * edit name (%G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME) should be used as the
-             * initial value in the rename widget, and then the result after editing
-             * should be passed to g_file_set_display_name().
-             *
-             * On success the resulting converted filename is returned.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param display_name a string
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_set_display_name(display_name: string, cancellable?: Cancellable | null): File;
-            /**
-             * Asynchronously sets the display name for a given #GFile.
-             *
-             * For more details, see g_file_set_display_name() which is
-             * the synchronous version of this call.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_set_display_name_finish() to get
-             * the result of the operation.
-             * @param display_name a string
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_set_display_name_async(
-                display_name: string,
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes setting a display name started with
-             * g_file_set_display_name_async().
-             * @param res a #GAsyncResult
-             */
-            vfunc_set_display_name_finish(res: AsyncResult): File;
-            /**
-             * Starts a file of type %G_FILE_TYPE_MOUNTABLE.
-             * Using `start_operation,` you can request callbacks when, for instance,
-             * passwords are needed during authentication.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_mount_mountable_finish() to get
-             * the result of the operation.
-             * @param flags flags affecting the operation
-             * @param start_operation a #GMountOperation, or %NULL to avoid user interaction
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied, or %NULL
-             */
-            vfunc_start_mountable(
-                flags: DriveStartFlags,
-                start_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a start operation. See g_file_start_mountable() for details.
-             *
-             * Finish an asynchronous start operation that was started
-             * with g_file_start_mountable().
-             * @param result a #GAsyncResult
-             */
-            vfunc_start_mountable_finish(result: AsyncResult): boolean;
-            /**
-             * Stops a file of type %G_FILE_TYPE_MOUNTABLE.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_stop_mountable_finish() to get
-             * the result of the operation.
-             * @param flags flags affecting the operation
-             * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction.
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call   when the request is satisfied, or %NULL
-             */
-            vfunc_stop_mountable(
-                flags: MountUnmountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes a stop operation, see g_file_stop_mountable() for details.
-             *
-             * Finish an asynchronous stop operation that was started
-             * with g_file_stop_mountable().
-             * @param result a #GAsyncResult
-             */
-            vfunc_stop_mountable_finish(result: AsyncResult): boolean;
-            /**
-             * Sends `file` to the "Trashcan", if possible. This is similar to
-             * deleting it, but the user can recover it before emptying the trashcan.
-             * Trashing is disabled for system mounts by default (see
-             * g_unix_mount_entry_is_system_internal()), so this call can return the
-             * %G_IO_ERROR_NOT_SUPPORTED error. Since GLib 2.66, the `x-gvfs-notrash` unix
-             * mount option can be used to disable g_file_trash() support for particular
-             * mounts, the %G_IO_ERROR_NOT_SUPPORTED error will be returned in that case.
-             * Since 2.82, the `x-gvfs-trash` unix mount option can be used to enable
-             * g_file_trash() support for particular system mounts.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             */
-            vfunc_trash(cancellable?: Cancellable | null): boolean;
-            /**
-             * Asynchronously sends `file` to the Trash location, if possible.
-             * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call   when the request is satisfied
-             */
-            vfunc_trash_async(
-                io_priority: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous file trashing operation, started with
-             * g_file_trash_async().
-             * @param result a #GAsyncResult
-             */
-            vfunc_trash_finish(result: AsyncResult): boolean;
-            /**
-             * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_unmount_mountable_finish() to get
-             * the result of the operation.
-             * @param flags flags affecting the operation
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_unmount_mountable(
-                flags: MountUnmountFlags,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an unmount operation, see g_file_unmount_mountable() for details.
-             *
-             * Finish an asynchronous unmount operation that was started
-             * with g_file_unmount_mountable().
-             * @param result a #GAsyncResult
-             */
-            vfunc_unmount_mountable_finish(result: AsyncResult): boolean;
-            /**
-             * Unmounts a file of type %G_FILE_TYPE_MOUNTABLE.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_file_unmount_mountable_finish() to get
-             * the result of the operation.
-             * @param flags flags affecting the operation
-             * @param mount_operation a #GMountOperation,   or %NULL to avoid user interaction
-             * @param cancellable optional #GCancellable object,   %NULL to ignore
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_unmount_mountable_with_operation(
-                flags: MountUnmountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an unmount operation,
-             * see g_file_unmount_mountable_with_operation() for details.
-             *
-             * Finish an asynchronous unmount operation that was started
-             * with g_file_unmount_mountable_with_operation().
-             * @param result a #GAsyncResult
-             */
-            vfunc_unmount_mountable_with_operation_finish(result: AsyncResult): boolean;
         }
 
         export const File: FileNamespace & {
             new (): File; // This allows `obj instanceof File`
         };
 
-        namespace FileDescriptorBased {
-            // Constructor properties interface
-
-            interface ConstructorProps extends GObject.Object.ConstructorProps {}
-        }
-
-        export interface FileDescriptorBasedNamespace {
-            $gtype: GObject.GType<FileDescriptorBased>;
-            prototype: FileDescriptorBased;
-        }
-        interface FileDescriptorBased extends GObject.Object {
-            // Methods
-
-            /**
-             * Gets the underlying file descriptor.
-             * @returns The file descriptor
-             */
-            get_fd(): number;
-
-            // Virtual methods
-
-            /**
-             * Gets the underlying file descriptor.
-             */
-            vfunc_get_fd(): number;
-        }
-
-        export const FileDescriptorBased: FileDescriptorBasedNamespace & {
-            new (): FileDescriptorBased; // This allows `obj instanceof FileDescriptorBased`
-        };
-
         namespace Icon {
+            /**
+             * Interface for implementing Icon.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if two icons are equal.
+                 * @param icon2 pointer to the second #GIcon.
+                 */
+                vfunc_equal(icon2?: Icon | null): boolean;
+                /**
+                 * Gets a hash for an icon.
+                 */
+                vfunc_hash(): number;
+                /**
+                 * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
+                 * back by calling g_icon_deserialize() on the returned value.
+                 * As serialization will avoid using raw icon data when possible, it only
+                 * makes sense to transfer the #GVariant between processes on the same machine,
+                 * (as opposed to over the network), and within the same file system namespace.
+                 */
+                vfunc_serialize(): GLib.Variant | null;
+                /**
+                 * Serializes the `icon` into string tokens.
+                 * This is can be invoked when g_icon_new_for_string() is called.
+                 */
+                vfunc_to_tokens(): [boolean, string[], number];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -84179,7 +79080,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             new_for_string(str: string): Icon;
         }
-        interface Icon extends GObject.Object {
+        interface Icon extends GObject.Object, Icon.Interface {
             // Methods
 
             /**
@@ -84222,31 +79123,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns An allocated NUL-terminated UTF8 string or %NULL if @icon can't be serialized. Use g_free() to free.
              */
             to_string(): string | null;
-
-            // Virtual methods
-
-            /**
-             * Checks if two icons are equal.
-             * @param icon2 pointer to the second #GIcon.
-             */
-            vfunc_equal(icon2?: Icon | null): boolean;
-            /**
-             * Gets a hash for an icon.
-             */
-            vfunc_hash(): number;
-            /**
-             * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-             * back by calling g_icon_deserialize() on the returned value.
-             * As serialization will avoid using raw icon data when possible, it only
-             * makes sense to transfer the #GVariant between processes on the same machine,
-             * (as opposed to over the network), and within the same file system namespace.
-             */
-            vfunc_serialize(): GLib.Variant | null;
-            /**
-             * Serializes the `icon` into string tokens.
-             * This is can be invoked when g_icon_new_for_string() is called.
-             */
-            vfunc_to_tokens(): [boolean, string[], number];
         }
 
         export const Icon: IconNamespace & {
@@ -84254,6 +79130,57 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace Initable {
+            /**
+             * Interface for implementing Initable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Initializes the object implementing the interface.
+                 *
+                 * This method is intended for language bindings. If writing in C,
+                 * g_initable_new() should typically be used instead.
+                 *
+                 * The object must be initialized before any real use after initial
+                 * construction, either with this function or g_async_initable_init_async().
+                 *
+                 * Implementations may also support cancellation. If `cancellable` is not %NULL,
+                 * then initialization can be cancelled by triggering the cancellable object
+                 * from another thread. If the operation was cancelled, the error
+                 * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+                 * the object doesn't support cancellable initialization the error
+                 * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+                 *
+                 * If the object is not initialized, or initialization returns with an
+                 * error, then all operations on the object except g_object_ref() and
+                 * g_object_unref() are considered to be invalid, and have undefined
+                 * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+                 *
+                 * Callers should not assume that a class which implements #GInitable can be
+                 * initialized multiple times, unless the class explicitly documents itself as
+                 * supporting this. Generally, a class’ implementation of init() can assume
+                 * (and assert) that it will only be called once. Previously, this documentation
+                 * recommended all #GInitable implementations should be idempotent; that
+                 * recommendation was relaxed in GLib 2.54.
+                 *
+                 * If a class explicitly supports being initialized multiple times, it is
+                 * recommended that the method is idempotent: multiple calls with the same
+                 * arguments should return the same results. Only the first call initializes
+                 * the object; further calls return the result of the first call.
+                 *
+                 * One reason why a class might need to support idempotent initialization is if
+                 * it is designed to be used via the singleton pattern, with a
+                 * #GObjectClass.constructor that sometimes returns an existing instance.
+                 * In this pattern, a caller would expect to be able to call g_initable_init()
+                 * on the result of g_object_new(), regardless of whether it is in fact a new
+                 * instance.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 */
+                vfunc_init(cancellable?: Cancellable | null): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -84278,7 +79205,7 @@ declare module 'gi://Gio?version=2.0' {
             ): T;
             newv(...args: never[]): any;
         }
-        interface Initable extends GObject.Object {
+        interface Initable extends GObject.Object, Initable.Interface {
             // Methods
 
             /**
@@ -84324,51 +79251,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
              */
             init(cancellable?: Cancellable | null): boolean;
-
-            // Virtual methods
-
-            /**
-             * Initializes the object implementing the interface.
-             *
-             * This method is intended for language bindings. If writing in C,
-             * g_initable_new() should typically be used instead.
-             *
-             * The object must be initialized before any real use after initial
-             * construction, either with this function or g_async_initable_init_async().
-             *
-             * Implementations may also support cancellation. If `cancellable` is not %NULL,
-             * then initialization can be cancelled by triggering the cancellable object
-             * from another thread. If the operation was cancelled, the error
-             * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-             * the object doesn't support cancellable initialization the error
-             * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-             *
-             * If the object is not initialized, or initialization returns with an
-             * error, then all operations on the object except g_object_ref() and
-             * g_object_unref() are considered to be invalid, and have undefined
-             * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
-             *
-             * Callers should not assume that a class which implements #GInitable can be
-             * initialized multiple times, unless the class explicitly documents itself as
-             * supporting this. Generally, a class’ implementation of init() can assume
-             * (and assert) that it will only be called once. Previously, this documentation
-             * recommended all #GInitable implementations should be idempotent; that
-             * recommendation was relaxed in GLib 2.54.
-             *
-             * If a class explicitly supports being initialized multiple times, it is
-             * recommended that the method is idempotent: multiple calls with the same
-             * arguments should return the same results. Only the first call initializes
-             * the object; further calls return the result of the first call.
-             *
-             * One reason why a class might need to support idempotent initialization is if
-             * it is designed to be used via the singleton pattern, with a
-             * #GObjectClass.constructor that sometimes returns an existing instance.
-             * In this pattern, a caller would expect to be able to call g_initable_init()
-             * on the result of g_object_new(), regardless of whether it is in fact a new
-             * instance.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_init(cancellable?: Cancellable | null): boolean;
         }
 
         export const Initable: InitableNamespace & {
@@ -84376,6 +79258,45 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace ListModel {
+            /**
+             * Interface for implementing ListModel.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface<A extends GObject.Object = GObject.Object> {
+                // Virtual methods
+
+                /**
+                 * Get the item at `position`. If `position` is greater than the number of
+                 * items in `list,` %NULL is returned.
+                 *
+                 * %NULL is never returned for an index that is smaller than the length
+                 * of the list.  See g_list_model_get_n_items().
+                 *
+                 * The same #GObject instance may not appear more than once in a #GListModel.
+                 * @param position the position of the item to fetch
+                 */
+                vfunc_get_item(position: number): A | null;
+                /**
+                 * Gets the type of the items in `list`.
+                 *
+                 * All items returned from g_list_model_get_item() are of the type
+                 * returned by this function, or a subtype, or if the type is an
+                 * interface, they are an implementation of that interface.
+                 *
+                 * The item type of a #GListModel can not change during the life of the
+                 * model.
+                 */
+                vfunc_get_item_type(): GObject.GType;
+                /**
+                 * Gets the number of items in `list`.
+                 *
+                 * Depending on the model implementation, calling this function may be
+                 * less efficient than iterating the list with increasing values for
+                 * `position` until g_list_model_get_item() returns %NULL.
+                 */
+                vfunc_get_n_items(): number;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -84386,7 +79307,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<ListModel>;
             prototype: ListModel;
         }
-        interface ListModel<A extends GObject.Object = GObject.Object> extends GObject.Object {
+        interface ListModel<A extends GObject.Object = GObject.Object> extends GObject.Object, ListModel.Interface<A> {
             // Methods
 
             /**
@@ -84453,39 +79374,6 @@ declare module 'gi://Gio?version=2.0' {
              * @param added the number of items added
              */
             items_changed(position: number, removed: number, added: number): void;
-
-            // Virtual methods
-
-            /**
-             * Get the item at `position`. If `position` is greater than the number of
-             * items in `list,` %NULL is returned.
-             *
-             * %NULL is never returned for an index that is smaller than the length
-             * of the list.  See g_list_model_get_n_items().
-             *
-             * The same #GObject instance may not appear more than once in a #GListModel.
-             * @param position the position of the item to fetch
-             */
-            vfunc_get_item(position: number): A | null;
-            /**
-             * Gets the type of the items in `list`.
-             *
-             * All items returned from g_list_model_get_item() are of the type
-             * returned by this function, or a subtype, or if the type is an
-             * interface, they are an implementation of that interface.
-             *
-             * The item type of a #GListModel can not change during the life of the
-             * model.
-             */
-            vfunc_get_item_type(): GObject.GType;
-            /**
-             * Gets the number of items in `list`.
-             *
-             * Depending on the model implementation, calling this function may be
-             * less efficient than iterating the list with increasing values for
-             * `position` until g_list_model_get_item() returns %NULL.
-             */
-            vfunc_get_n_items(): number;
         }
 
         export const ListModel: ListModelNamespace & {
@@ -84493,6 +79381,40 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace LoadableIcon {
+            /**
+             * Interface for implementing LoadableIcon.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends Icon.Interface {
+                // Virtual methods
+
+                /**
+                 * Loads a loadable icon. For the asynchronous version of this function,
+                 * see g_loadable_icon_load_async().
+                 * @param size an integer.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 */
+                vfunc_load(size: number, cancellable?: Cancellable | null): [InputStream, string];
+                /**
+                 * Loads an icon asynchronously. To finish this function, see
+                 * g_loadable_icon_load_finish(). For the synchronous, blocking
+                 * version of this function, see g_loadable_icon_load().
+                 * @param size an integer.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+                 */
+                vfunc_load_async(
+                    size: number,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
+                 * @param res a #GAsyncResult.
+                 */
+                vfunc_load_finish(res: AsyncResult): [InputStream, string];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Icon.ConstructorProps {}
@@ -84502,7 +79424,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<LoadableIcon>;
             prototype: LoadableIcon;
         }
-        interface LoadableIcon extends Icon {
+        interface LoadableIcon extends Icon, LoadableIcon.Interface {
             // Methods
 
             /**
@@ -84520,7 +79442,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param size an integer.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            load_async(size: number, cancellable?: Cancellable | null): Promise<[InputStream, string]>;
+            load_async(size: number, cancellable?: Cancellable | null): globalThis.Promise<[InputStream, string]>;
             /**
              * Loads an icon asynchronously. To finish this function, see
              * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -84542,41 +79464,13 @@ declare module 'gi://Gio?version=2.0' {
                 size: number,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<[InputStream, string]> | void;
+            ): globalThis.Promise<[InputStream, string]> | void;
             /**
              * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
              * @param res a #GAsyncResult.
              * @returns a #GInputStream to read the icon from.
              */
             load_finish(res: AsyncResult): [InputStream, string];
-
-            // Virtual methods
-
-            /**
-             * Loads a loadable icon. For the asynchronous version of this function,
-             * see g_loadable_icon_load_async().
-             * @param size an integer.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_load(size: number, cancellable?: Cancellable | null): [InputStream, string];
-            /**
-             * Loads an icon asynchronously. To finish this function, see
-             * g_loadable_icon_load_finish(). For the synchronous, blocking
-             * version of this function, see g_loadable_icon_load().
-             * @param size an integer.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
-             */
-            vfunc_load_async(
-                size: number,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-             * @param res a #GAsyncResult.
-             */
-            vfunc_load_finish(res: AsyncResult): [InputStream, string];
         }
 
         export const LoadableIcon: LoadableIconNamespace & {
@@ -84584,6 +79478,21 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace MemoryMonitor {
+            /**
+             * Interface for implementing MemoryMonitor.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends Initable.Interface {
+                // Virtual methods
+
+                /**
+                 * the virtual function pointer for the
+                 *  #GMemoryMonitor::low-memory-warning signal.
+                 * @param level
+                 */
+                vfunc_low_memory_warning(level: MemoryMonitorWarningLevel): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Initable.ConstructorProps {}
@@ -84598,22 +79507,237 @@ declare module 'gi://Gio?version=2.0' {
              */
             dup_default(): MemoryMonitor;
         }
-        interface MemoryMonitor extends Initable {
-            // Virtual methods
-
-            /**
-             * the virtual function pointer for the
-             *  #GMemoryMonitor::low-memory-warning signal.
-             * @param level
-             */
-            vfunc_low_memory_warning(level: MemoryMonitorWarningLevel): void;
-        }
+        interface MemoryMonitor extends Initable, MemoryMonitor.Interface {}
 
         export const MemoryMonitor: MemoryMonitorNamespace & {
             new (): MemoryMonitor; // This allows `obj instanceof MemoryMonitor`
         };
 
         namespace Mount {
+            /**
+             * Interface for implementing Mount.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if `mount` can be ejected.
+                 */
+                vfunc_can_eject(): boolean;
+                /**
+                 * Checks if `mount` can be unmounted.
+                 */
+                vfunc_can_unmount(): boolean;
+                /**
+                 * Changed signal that is emitted when the mount's state has changed.
+                 */
+                vfunc_changed(): void;
+                /**
+                 * Ejects a mount. This is an asynchronous operation, and is
+                 * finished by calling g_mount_eject_finish() with the `mount`
+                 * and #GAsyncResult data returned in the `callback`.
+                 * @param flags flags affecting the unmount if required for eject
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_eject(
+                    flags: MountUnmountFlags,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes ejecting a mount. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_eject_finish(result: AsyncResult): boolean;
+                /**
+                 * Ejects a mount. This is an asynchronous operation, and is
+                 * finished by calling g_mount_eject_with_operation_finish() with the `mount`
+                 * and #GAsyncResult data returned in the `callback`.
+                 * @param flags flags affecting the unmount if required for eject
+                 * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_eject_with_operation(
+                    flags: MountUnmountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes ejecting a mount. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_eject_with_operation_finish(result: AsyncResult): boolean;
+                /**
+                 * Gets the default location of `mount`. The default location of the given
+                 * `mount` is a path that reflects the main entry point for the user (e.g.
+                 * the home directory, or the root of the volume).
+                 */
+                vfunc_get_default_location(): File;
+                /**
+                 * Gets the drive for the `mount`.
+                 *
+                 * This is a convenience method for getting the #GVolume and then
+                 * using that object to get the #GDrive.
+                 */
+                vfunc_get_drive(): Drive | null;
+                /**
+                 * Gets the icon for `mount`.
+                 */
+                vfunc_get_icon(): Icon;
+                /**
+                 * Gets the name of `mount`.
+                 */
+                vfunc_get_name(): string;
+                /**
+                 * Gets the root directory on `mount`.
+                 */
+                vfunc_get_root(): File;
+                /**
+                 * Gets the sort key for `mount,` if any.
+                 */
+                vfunc_get_sort_key(): string | null;
+                /**
+                 * Gets the symbolic icon for `mount`.
+                 */
+                vfunc_get_symbolic_icon(): Icon;
+                /**
+                 * Gets the UUID for the `mount`. The reference is typically based on
+                 * the file system UUID for the mount in question and should be
+                 * considered an opaque string. Returns %NULL if there is no UUID
+                 * available.
+                 */
+                vfunc_get_uuid(): string | null;
+                /**
+                 * Gets the volume for the `mount`.
+                 */
+                vfunc_get_volume(): Volume | null;
+                /**
+                 * Tries to guess the type of content stored on `mount`. Returns one or
+                 * more textual identifiers of well-known content types (typically
+                 * prefixed with "x-content/"), e.g. x-content/image-dcf for camera
+                 * memory cards. See the
+                 * [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
+                 * specification for more on x-content types.
+                 *
+                 * This is an asynchronous operation (see
+                 * g_mount_guess_content_type_sync() for the synchronous version), and
+                 * is finished by calling g_mount_guess_content_type_finish() with the
+                 * `mount` and #GAsyncResult data returned in the `callback`.
+                 * @param force_rescan Whether to force a rescan of the content.     Otherwise a cached result will be used if available
+                 * @param cancellable optional #GCancellable object, %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback
+                 */
+                vfunc_guess_content_type(
+                    force_rescan: boolean,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes guessing content types of `mount`. If any errors occurred
+                 * during the operation, `error` will be set to contain the errors and
+                 * %FALSE will be returned. In particular, you may get an
+                 * %G_IO_ERROR_NOT_SUPPORTED if the mount does not support content
+                 * guessing.
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_guess_content_type_finish(result: AsyncResult): string[];
+                /**
+                 * Tries to guess the type of content stored on `mount`. Returns one or
+                 * more textual identifiers of well-known content types (typically
+                 * prefixed with "x-content/"), e.g. x-content/image-dcf for camera
+                 * memory cards. See the
+                 * [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
+                 * specification for more on x-content types.
+                 *
+                 * This is a synchronous operation and as such may block doing IO;
+                 * see g_mount_guess_content_type() for the asynchronous version.
+                 * @param force_rescan Whether to force a rescan of the content.     Otherwise a cached result will be used if available
+                 * @param cancellable optional #GCancellable object, %NULL to ignore
+                 */
+                vfunc_guess_content_type_sync(force_rescan: boolean, cancellable?: Cancellable | null): string[];
+                /**
+                 * The ::pre-unmount signal that is emitted when the #GMount will soon be emitted. If the recipient is somehow holding the mount open by keeping an open file on it it should close the file.
+                 */
+                vfunc_pre_unmount(): void;
+                /**
+                 * Remounts a mount. This is an asynchronous operation, and is
+                 * finished by calling g_mount_remount_finish() with the `mount`
+                 * and #GAsyncResults data returned in the `callback`.
+                 *
+                 * Remounting is useful when some setting affecting the operation
+                 * of the volume has been changed, as these may need a remount to
+                 * take affect. While this is semantically equivalent with unmounting
+                 * and then remounting not all backends might need to actually be
+                 * unmounted.
+                 * @param flags flags affecting the operation
+                 * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_remount(
+                    flags: MountMountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes remounting a mount. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_remount_finish(result: AsyncResult): boolean;
+                /**
+                 * Unmounts a mount. This is an asynchronous operation, and is
+                 * finished by calling g_mount_unmount_finish() with the `mount`
+                 * and #GAsyncResult data returned in the `callback`.
+                 * @param flags flags affecting the operation
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_unmount(
+                    flags: MountUnmountFlags,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes unmounting a mount. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_unmount_finish(result: AsyncResult): boolean;
+                /**
+                 * Unmounts a mount. This is an asynchronous operation, and is
+                 * finished by calling g_mount_unmount_with_operation_finish() with the `mount`
+                 * and #GAsyncResult data returned in the `callback`.
+                 * @param flags flags affecting the operation
+                 * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 * @param callback a #GAsyncReadyCallback, or %NULL.
+                 */
+                vfunc_unmount_with_operation(
+                    flags: MountUnmountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes unmounting a mount. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 * @param result a #GAsyncResult.
+                 */
+                vfunc_unmount_with_operation_finish(result: AsyncResult): boolean;
+                /**
+                 * The unmounted signal that is emitted when the #GMount have been unmounted. If the recipient is holding references to the object they should release them so the object can be finalized.
+                 */
+                vfunc_unmounted(): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -84623,7 +79747,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<Mount>;
             prototype: Mount;
         }
-        interface Mount extends GObject.Object {
+        interface Mount extends GObject.Object, Mount.Interface {
             // Methods
 
             /**
@@ -84643,7 +79767,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param flags flags affecting the unmount if required for eject
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
+            eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Ejects a mount. This is an asynchronous operation, and is
              * finished by calling g_mount_eject_finish() with the `mount`
@@ -84669,7 +79793,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes ejecting a mount. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -84689,7 +79813,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Ejects a mount. This is an asynchronous operation, and is
              * finished by calling g_mount_eject_with_operation_finish() with the `mount`
@@ -84719,7 +79843,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes ejecting a mount. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -84795,7 +79919,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param force_rescan Whether to force a rescan of the content.     Otherwise a cached result will be used if available
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            guess_content_type(force_rescan: boolean, cancellable?: Cancellable | null): Promise<string[]>;
+            guess_content_type(force_rescan: boolean, cancellable?: Cancellable | null): globalThis.Promise<string[]>;
             /**
              * Tries to guess the type of content stored on `mount`. Returns one or
              * more textual identifiers of well-known content types (typically
@@ -84837,7 +79961,7 @@ declare module 'gi://Gio?version=2.0' {
                 force_rescan: boolean,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<string[]> | void;
+            ): globalThis.Promise<string[]> | void;
             /**
              * Finishes guessing content types of `mount`. If any errors occurred
              * during the operation, `error` will be set to contain the errors and
@@ -84908,7 +80032,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountMountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Remounts a mount. This is an asynchronous operation, and is
              * finished by calling g_mount_remount_finish() with the `mount`
@@ -84950,7 +80074,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes remounting a mount. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -84972,7 +80096,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param flags flags affecting the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            unmount(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
+            unmount(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Unmounts a mount. This is an asynchronous operation, and is
              * finished by calling g_mount_unmount_finish() with the `mount`
@@ -84998,7 +80122,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes unmounting a mount. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -85018,7 +80142,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Unmounts a mount. This is an asynchronous operation, and is
              * finished by calling g_mount_unmount_with_operation_finish() with the `mount`
@@ -85048,7 +80172,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes unmounting a mount. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -85063,224 +80187,6 @@ declare module 'gi://Gio?version=2.0' {
              * will need to emit the #GMount::changed signal on `mount` manually.
              */
             unshadow(): void;
-
-            // Virtual methods
-
-            /**
-             * Checks if `mount` can be ejected.
-             */
-            vfunc_can_eject(): boolean;
-            /**
-             * Checks if `mount` can be unmounted.
-             */
-            vfunc_can_unmount(): boolean;
-            /**
-             * Changed signal that is emitted when the mount's state has changed.
-             */
-            vfunc_changed(): void;
-            /**
-             * Ejects a mount. This is an asynchronous operation, and is
-             * finished by calling g_mount_eject_finish() with the `mount`
-             * and #GAsyncResult data returned in the `callback`.
-             * @param flags flags affecting the unmount if required for eject
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_eject(
-                flags: MountUnmountFlags,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes ejecting a mount. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_eject_finish(result: AsyncResult): boolean;
-            /**
-             * Ejects a mount. This is an asynchronous operation, and is
-             * finished by calling g_mount_eject_with_operation_finish() with the `mount`
-             * and #GAsyncResult data returned in the `callback`.
-             * @param flags flags affecting the unmount if required for eject
-             * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_eject_with_operation(
-                flags: MountUnmountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes ejecting a mount. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_eject_with_operation_finish(result: AsyncResult): boolean;
-            /**
-             * Gets the default location of `mount`. The default location of the given
-             * `mount` is a path that reflects the main entry point for the user (e.g.
-             * the home directory, or the root of the volume).
-             */
-            vfunc_get_default_location(): File;
-            /**
-             * Gets the drive for the `mount`.
-             *
-             * This is a convenience method for getting the #GVolume and then
-             * using that object to get the #GDrive.
-             */
-            vfunc_get_drive(): Drive | null;
-            /**
-             * Gets the icon for `mount`.
-             */
-            vfunc_get_icon(): Icon;
-            /**
-             * Gets the name of `mount`.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Gets the root directory on `mount`.
-             */
-            vfunc_get_root(): File;
-            /**
-             * Gets the sort key for `mount,` if any.
-             */
-            vfunc_get_sort_key(): string | null;
-            /**
-             * Gets the symbolic icon for `mount`.
-             */
-            vfunc_get_symbolic_icon(): Icon;
-            /**
-             * Gets the UUID for the `mount`. The reference is typically based on
-             * the file system UUID for the mount in question and should be
-             * considered an opaque string. Returns %NULL if there is no UUID
-             * available.
-             */
-            vfunc_get_uuid(): string | null;
-            /**
-             * Gets the volume for the `mount`.
-             */
-            vfunc_get_volume(): Volume | null;
-            /**
-             * Tries to guess the type of content stored on `mount`. Returns one or
-             * more textual identifiers of well-known content types (typically
-             * prefixed with "x-content/"), e.g. x-content/image-dcf for camera
-             * memory cards. See the
-             * [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
-             * specification for more on x-content types.
-             *
-             * This is an asynchronous operation (see
-             * g_mount_guess_content_type_sync() for the synchronous version), and
-             * is finished by calling g_mount_guess_content_type_finish() with the
-             * `mount` and #GAsyncResult data returned in the `callback`.
-             * @param force_rescan Whether to force a rescan of the content.     Otherwise a cached result will be used if available
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback
-             */
-            vfunc_guess_content_type(
-                force_rescan: boolean,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes guessing content types of `mount`. If any errors occurred
-             * during the operation, `error` will be set to contain the errors and
-             * %FALSE will be returned. In particular, you may get an
-             * %G_IO_ERROR_NOT_SUPPORTED if the mount does not support content
-             * guessing.
-             * @param result a #GAsyncResult
-             */
-            vfunc_guess_content_type_finish(result: AsyncResult): string[];
-            /**
-             * Tries to guess the type of content stored on `mount`. Returns one or
-             * more textual identifiers of well-known content types (typically
-             * prefixed with "x-content/"), e.g. x-content/image-dcf for camera
-             * memory cards. See the
-             * [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
-             * specification for more on x-content types.
-             *
-             * This is a synchronous operation and as such may block doing IO;
-             * see g_mount_guess_content_type() for the asynchronous version.
-             * @param force_rescan Whether to force a rescan of the content.     Otherwise a cached result will be used if available
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             */
-            vfunc_guess_content_type_sync(force_rescan: boolean, cancellable?: Cancellable | null): string[];
-            /**
-             * The ::pre-unmount signal that is emitted when the #GMount will soon be emitted. If the recipient is somehow holding the mount open by keeping an open file on it it should close the file.
-             */
-            vfunc_pre_unmount(): void;
-            /**
-             * Remounts a mount. This is an asynchronous operation, and is
-             * finished by calling g_mount_remount_finish() with the `mount`
-             * and #GAsyncResults data returned in the `callback`.
-             *
-             * Remounting is useful when some setting affecting the operation
-             * of the volume has been changed, as these may need a remount to
-             * take affect. While this is semantically equivalent with unmounting
-             * and then remounting not all backends might need to actually be
-             * unmounted.
-             * @param flags flags affecting the operation
-             * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_remount(
-                flags: MountMountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes remounting a mount. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_remount_finish(result: AsyncResult): boolean;
-            /**
-             * Unmounts a mount. This is an asynchronous operation, and is
-             * finished by calling g_mount_unmount_finish() with the `mount`
-             * and #GAsyncResult data returned in the `callback`.
-             * @param flags flags affecting the operation
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_unmount(
-                flags: MountUnmountFlags,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes unmounting a mount. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_unmount_finish(result: AsyncResult): boolean;
-            /**
-             * Unmounts a mount. This is an asynchronous operation, and is
-             * finished by calling g_mount_unmount_with_operation_finish() with the `mount`
-             * and #GAsyncResult data returned in the `callback`.
-             * @param flags flags affecting the operation
-             * @param mount_operation a #GMountOperation or %NULL to avoid     user interaction.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback, or %NULL.
-             */
-            vfunc_unmount_with_operation(
-                flags: MountUnmountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes unmounting a mount. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             * @param result a #GAsyncResult.
-             */
-            vfunc_unmount_with_operation_finish(result: AsyncResult): boolean;
-            /**
-             * The unmounted signal that is emitted when the #GMount have been unmounted. If the recipient is holding references to the object they should release them so the object can be finalized.
-             */
-            vfunc_unmounted(): void;
         }
 
         export const Mount: MountNamespace & {
@@ -85288,6 +80194,68 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace NetworkMonitor {
+            /**
+             * Interface for implementing NetworkMonitor.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends Initable.Interface {
+                // Virtual methods
+
+                /**
+                 * Attempts to determine whether or not the host pointed to by
+                 * `connectable` can be reached, without actually trying to connect to
+                 * it.
+                 *
+                 * This may return %TRUE even when #GNetworkMonitor:network-available
+                 * is %FALSE, if, for example, `monitor` can determine that
+                 * `connectable` refers to a host on a local network.
+                 *
+                 * If `monitor` believes that an attempt to connect to `connectable`
+                 * will succeed, it will return %TRUE. Otherwise, it will return
+                 * %FALSE and set `error` to an appropriate error (such as
+                 * %G_IO_ERROR_HOST_UNREACHABLE).
+                 *
+                 * Note that although this does not attempt to connect to
+                 * `connectable,` it may still block for a brief period of time (eg,
+                 * trying to do multicast DNS on the local network), so if you do not
+                 * want to block, you should use g_network_monitor_can_reach_async().
+                 * @param connectable a #GSocketConnectable
+                 * @param cancellable a #GCancellable, or %NULL
+                 */
+                vfunc_can_reach(connectable: SocketConnectable, cancellable?: Cancellable | null): boolean;
+                /**
+                 * Asynchronously attempts to determine whether or not the host
+                 * pointed to by `connectable` can be reached, without actually
+                 * trying to connect to it.
+                 *
+                 * For more details, see g_network_monitor_can_reach().
+                 *
+                 * When the operation is finished, `callback` will be called.
+                 * You can then call g_network_monitor_can_reach_finish()
+                 * to get the result of the operation.
+                 * @param connectable a #GSocketConnectable
+                 * @param cancellable a #GCancellable, or %NULL
+                 * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
+                 */
+                vfunc_can_reach_async(
+                    connectable: SocketConnectable,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes an async network connectivity test.
+                 * See g_network_monitor_can_reach_async().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_can_reach_finish(result: AsyncResult): boolean;
+                /**
+                 * the virtual function pointer for the
+                 *  GNetworkMonitor::network-changed signal.
+                 * @param network_available
+                 */
+                vfunc_network_changed(network_available: boolean): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Initable.ConstructorProps {
@@ -85308,7 +80276,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             get_default(): NetworkMonitor;
         }
-        interface NetworkMonitor extends Initable {
+        interface NetworkMonitor extends Initable, NetworkMonitor.Interface {
             // Properties
 
             /**
@@ -85444,7 +80412,10 @@ declare module 'gi://Gio?version=2.0' {
              * @param connectable a #GSocketConnectable
              * @param cancellable a #GCancellable, or %NULL
              */
-            can_reach_async(connectable: SocketConnectable, cancellable?: Cancellable | null): Promise<boolean>;
+            can_reach_async(
+                connectable: SocketConnectable,
+                cancellable?: Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously attempts to determine whether or not the host
              * pointed to by `connectable` can be reached, without actually
@@ -85482,7 +80453,7 @@ declare module 'gi://Gio?version=2.0' {
                 connectable: SocketConnectable,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an async network connectivity test.
              * See g_network_monitor_can_reach_async().
@@ -85527,62 +80498,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns whether the connection is metered
              */
             get_network_metered(): boolean;
-
-            // Virtual methods
-
-            /**
-             * Attempts to determine whether or not the host pointed to by
-             * `connectable` can be reached, without actually trying to connect to
-             * it.
-             *
-             * This may return %TRUE even when #GNetworkMonitor:network-available
-             * is %FALSE, if, for example, `monitor` can determine that
-             * `connectable` refers to a host on a local network.
-             *
-             * If `monitor` believes that an attempt to connect to `connectable`
-             * will succeed, it will return %TRUE. Otherwise, it will return
-             * %FALSE and set `error` to an appropriate error (such as
-             * %G_IO_ERROR_HOST_UNREACHABLE).
-             *
-             * Note that although this does not attempt to connect to
-             * `connectable,` it may still block for a brief period of time (eg,
-             * trying to do multicast DNS on the local network), so if you do not
-             * want to block, you should use g_network_monitor_can_reach_async().
-             * @param connectable a #GSocketConnectable
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_can_reach(connectable: SocketConnectable, cancellable?: Cancellable | null): boolean;
-            /**
-             * Asynchronously attempts to determine whether or not the host
-             * pointed to by `connectable` can be reached, without actually
-             * trying to connect to it.
-             *
-             * For more details, see g_network_monitor_can_reach().
-             *
-             * When the operation is finished, `callback` will be called.
-             * You can then call g_network_monitor_can_reach_finish()
-             * to get the result of the operation.
-             * @param connectable a #GSocketConnectable
-             * @param cancellable a #GCancellable, or %NULL
-             * @param callback a #GAsyncReadyCallback     to call when the request is satisfied
-             */
-            vfunc_can_reach_async(
-                connectable: SocketConnectable,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes an async network connectivity test.
-             * See g_network_monitor_can_reach_async().
-             * @param result a #GAsyncResult
-             */
-            vfunc_can_reach_finish(result: AsyncResult): boolean;
-            /**
-             * the virtual function pointer for the
-             *  GNetworkMonitor::network-changed signal.
-             * @param network_available
-             */
-            vfunc_network_changed(network_available: boolean): void;
         }
 
         export const NetworkMonitor: NetworkMonitorNamespace & {
@@ -85590,6 +80505,71 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace PollableInputStream {
+            /**
+             * Interface for implementing PollableInputStream.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if `stream` is actually pollable. Some classes may implement
+                 * #GPollableInputStream but have only certain instances of that class
+                 * be pollable. If this method returns %FALSE, then the behavior of
+                 * other #GPollableInputStream methods is undefined.
+                 *
+                 * For any given stream, the value returned by this method is constant;
+                 * a stream cannot switch from pollable to non-pollable or vice versa.
+                 */
+                vfunc_can_poll(): boolean;
+                /**
+                 * Creates a #GSource that triggers when `stream` can be read, or
+                 * `cancellable` is triggered or an error occurs. The callback on the
+                 * source is of the #GPollableSourceFunc type.
+                 *
+                 * As with g_pollable_input_stream_is_readable(), it is possible that
+                 * the stream may not actually be readable even after the source
+                 * triggers, so you should use g_pollable_input_stream_read_nonblocking()
+                 * rather than g_input_stream_read() from the callback.
+                 *
+                 * The behaviour of this method is undefined if
+                 * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
+                 * @param cancellable a #GCancellable, or %NULL
+                 */
+                vfunc_create_source(cancellable?: Cancellable | null): GLib.Source;
+                /**
+                 * Checks if `stream` can be read.
+                 *
+                 * Note that some stream types may not be able to implement this 100%
+                 * reliably, and it is possible that a call to g_input_stream_read()
+                 * after this returns %TRUE would still block. To guarantee
+                 * non-blocking behavior, you should always use
+                 * g_pollable_input_stream_read_nonblocking(), which will return a
+                 * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
+                 *
+                 * The behaviour of this method is undefined if
+                 * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
+                 */
+                vfunc_is_readable(): boolean;
+                /**
+                 * Attempts to read up to `count` bytes from `stream` into `buffer,` as
+                 * with g_input_stream_read(). If `stream` is not currently readable,
+                 * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
+                 * use g_pollable_input_stream_create_source() to create a #GSource
+                 * that will be triggered when `stream` is readable.
+                 *
+                 * Note that since this method never blocks, you cannot actually
+                 * use `cancellable` to cancel it. However, it will return an error
+                 * if `cancellable` has already been cancelled when you call, which
+                 * may happen if you call this method after a source triggers due
+                 * to having been cancelled.
+                 *
+                 * The behaviour of this method is undefined if
+                 * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
+                 */
+                vfunc_read_nonblocking(): [number, Uint8Array | null];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends InputStream.ConstructorProps {}
@@ -85599,7 +80579,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<PollableInputStream>;
             prototype: PollableInputStream;
         }
-        interface PollableInputStream extends InputStream {
+        interface PollableInputStream extends InputStream, PollableInputStream.Interface {
             // Methods
 
             /**
@@ -85663,65 +80643,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns the number of bytes read, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
              */
             read_nonblocking(cancellable?: Cancellable | null): [number, Uint8Array];
-
-            // Virtual methods
-
-            /**
-             * Checks if `stream` is actually pollable. Some classes may implement
-             * #GPollableInputStream but have only certain instances of that class
-             * be pollable. If this method returns %FALSE, then the behavior of
-             * other #GPollableInputStream methods is undefined.
-             *
-             * For any given stream, the value returned by this method is constant;
-             * a stream cannot switch from pollable to non-pollable or vice versa.
-             */
-            vfunc_can_poll(): boolean;
-            /**
-             * Creates a #GSource that triggers when `stream` can be read, or
-             * `cancellable` is triggered or an error occurs. The callback on the
-             * source is of the #GPollableSourceFunc type.
-             *
-             * As with g_pollable_input_stream_is_readable(), it is possible that
-             * the stream may not actually be readable even after the source
-             * triggers, so you should use g_pollable_input_stream_read_nonblocking()
-             * rather than g_input_stream_read() from the callback.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_create_source(cancellable?: Cancellable | null): GLib.Source;
-            /**
-             * Checks if `stream` can be read.
-             *
-             * Note that some stream types may not be able to implement this 100%
-             * reliably, and it is possible that a call to g_input_stream_read()
-             * after this returns %TRUE would still block. To guarantee
-             * non-blocking behavior, you should always use
-             * g_pollable_input_stream_read_nonblocking(), which will return a
-             * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             */
-            vfunc_is_readable(): boolean;
-            /**
-             * Attempts to read up to `count` bytes from `stream` into `buffer,` as
-             * with g_input_stream_read(). If `stream` is not currently readable,
-             * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-             * use g_pollable_input_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is readable.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-             */
-            vfunc_read_nonblocking(): [number, Uint8Array | null];
         }
 
         export const PollableInputStream: PollableInputStreamNamespace & {
@@ -85729,6 +80650,99 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace PollableOutputStream {
+            /**
+             * Interface for implementing PollableOutputStream.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if `stream` is actually pollable. Some classes may implement
+                 * #GPollableOutputStream but have only certain instances of that
+                 * class be pollable. If this method returns %FALSE, then the behavior
+                 * of other #GPollableOutputStream methods is undefined.
+                 *
+                 * For any given stream, the value returned by this method is constant;
+                 * a stream cannot switch from pollable to non-pollable or vice versa.
+                 */
+                vfunc_can_poll(): boolean;
+                /**
+                 * Creates a #GSource that triggers when `stream` can be written, or
+                 * `cancellable` is triggered or an error occurs. The callback on the
+                 * source is of the #GPollableSourceFunc type.
+                 *
+                 * As with g_pollable_output_stream_is_writable(), it is possible that
+                 * the stream may not actually be writable even after the source
+                 * triggers, so you should use g_pollable_output_stream_write_nonblocking()
+                 * rather than g_output_stream_write() from the callback.
+                 *
+                 * The behaviour of this method is undefined if
+                 * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
+                 * @param cancellable a #GCancellable, or %NULL
+                 */
+                vfunc_create_source(cancellable?: Cancellable | null): GLib.Source;
+                /**
+                 * Checks if `stream` can be written.
+                 *
+                 * Note that some stream types may not be able to implement this 100%
+                 * reliably, and it is possible that a call to g_output_stream_write()
+                 * after this returns %TRUE would still block. To guarantee
+                 * non-blocking behavior, you should always use
+                 * g_pollable_output_stream_write_nonblocking(), which will return a
+                 * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
+                 *
+                 * The behaviour of this method is undefined if
+                 * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
+                 */
+                vfunc_is_writable(): boolean;
+                /**
+                 * Attempts to write up to `count` bytes from `buffer` to `stream,` as
+                 * with g_output_stream_write(). If `stream` is not currently writable,
+                 * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
+                 * use g_pollable_output_stream_create_source() to create a #GSource
+                 * that will be triggered when `stream` is writable.
+                 *
+                 * Note that since this method never blocks, you cannot actually
+                 * use `cancellable` to cancel it. However, it will return an error
+                 * if `cancellable` has already been cancelled when you call, which
+                 * may happen if you call this method after a source triggers due
+                 * to having been cancelled.
+                 *
+                 * Also note that if %G_IO_ERROR_WOULD_BLOCK is returned some underlying
+                 * transports like D/TLS require that you re-send the same `buffer` and
+                 * `count` in the next write call.
+                 *
+                 * The behaviour of this method is undefined if
+                 * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
+                 * @param buffer a buffer to write     data from
+                 */
+                vfunc_write_nonblocking(buffer?: Uint8Array | null): number;
+                /**
+                 * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream,`
+                 * as with g_output_stream_writev(). If `stream` is not currently writable,
+                 * this will immediately return %`G_POLLABLE_RETURN_WOULD_BLOCK,` and you can
+                 * use g_pollable_output_stream_create_source() to create a #GSource
+                 * that will be triggered when `stream` is writable. `error` will *not* be
+                 * set in that case.
+                 *
+                 * Note that since this method never blocks, you cannot actually
+                 * use `cancellable` to cancel it. However, it will return an error
+                 * if `cancellable` has already been cancelled when you call, which
+                 * may happen if you call this method after a source triggers due
+                 * to having been cancelled.
+                 *
+                 * Also note that if %G_POLLABLE_RETURN_WOULD_BLOCK is returned some underlying
+                 * transports like D/TLS require that you re-send the same `vectors` and
+                 * `n_vectors` in the next write call.
+                 *
+                 * The behaviour of this method is undefined if
+                 * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
+                 * @param vectors the buffer containing the #GOutputVectors to write.
+                 */
+                vfunc_writev_nonblocking(vectors: OutputVector[]): [PollableReturn, number];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends OutputStream.ConstructorProps {}
@@ -85738,7 +80752,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<PollableOutputStream>;
             prototype: PollableOutputStream;
         }
-        interface PollableOutputStream extends OutputStream {
+        interface PollableOutputStream extends OutputStream, PollableOutputStream.Interface {
             // Methods
 
             /**
@@ -85832,93 +80846,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns %@G_POLLABLE_RETURN_OK on success, %G_POLLABLE_RETURN_WOULD_BLOCK if the stream is not currently writable (and @error is *not* set), or %G_POLLABLE_RETURN_FAILED if there was an error in which case @error will be set.
              */
             writev_nonblocking(vectors: OutputVector[], cancellable?: Cancellable | null): [PollableReturn, number];
-
-            // Virtual methods
-
-            /**
-             * Checks if `stream` is actually pollable. Some classes may implement
-             * #GPollableOutputStream but have only certain instances of that
-             * class be pollable. If this method returns %FALSE, then the behavior
-             * of other #GPollableOutputStream methods is undefined.
-             *
-             * For any given stream, the value returned by this method is constant;
-             * a stream cannot switch from pollable to non-pollable or vice versa.
-             */
-            vfunc_can_poll(): boolean;
-            /**
-             * Creates a #GSource that triggers when `stream` can be written, or
-             * `cancellable` is triggered or an error occurs. The callback on the
-             * source is of the #GPollableSourceFunc type.
-             *
-             * As with g_pollable_output_stream_is_writable(), it is possible that
-             * the stream may not actually be writable even after the source
-             * triggers, so you should use g_pollable_output_stream_write_nonblocking()
-             * rather than g_output_stream_write() from the callback.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_create_source(cancellable?: Cancellable | null): GLib.Source;
-            /**
-             * Checks if `stream` can be written.
-             *
-             * Note that some stream types may not be able to implement this 100%
-             * reliably, and it is possible that a call to g_output_stream_write()
-             * after this returns %TRUE would still block. To guarantee
-             * non-blocking behavior, you should always use
-             * g_pollable_output_stream_write_nonblocking(), which will return a
-             * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             */
-            vfunc_is_writable(): boolean;
-            /**
-             * Attempts to write up to `count` bytes from `buffer` to `stream,` as
-             * with g_output_stream_write(). If `stream` is not currently writable,
-             * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-             * use g_pollable_output_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is writable.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * Also note that if %G_IO_ERROR_WOULD_BLOCK is returned some underlying
-             * transports like D/TLS require that you re-send the same `buffer` and
-             * `count` in the next write call.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param buffer a buffer to write     data from
-             */
-            vfunc_write_nonblocking(buffer?: Uint8Array | null): number;
-            /**
-             * Attempts to write the bytes contained in the `n_vectors` `vectors` to `stream,`
-             * as with g_output_stream_writev(). If `stream` is not currently writable,
-             * this will immediately return %`G_POLLABLE_RETURN_WOULD_BLOCK,` and you can
-             * use g_pollable_output_stream_create_source() to create a #GSource
-             * that will be triggered when `stream` is writable. `error` will *not* be
-             * set in that case.
-             *
-             * Note that since this method never blocks, you cannot actually
-             * use `cancellable` to cancel it. However, it will return an error
-             * if `cancellable` has already been cancelled when you call, which
-             * may happen if you call this method after a source triggers due
-             * to having been cancelled.
-             *
-             * Also note that if %G_POLLABLE_RETURN_WOULD_BLOCK is returned some underlying
-             * transports like D/TLS require that you re-send the same `vectors` and
-             * `n_vectors` in the next write call.
-             *
-             * The behaviour of this method is undefined if
-             * g_pollable_output_stream_can_poll() returns %FALSE for `stream`.
-             * @param vectors the buffer containing the #GOutputVectors to write.
-             */
-            vfunc_writev_nonblocking(vectors: OutputVector[]): [PollableReturn, number];
         }
 
         export const PollableOutputStream: PollableOutputStreamNamespace & {
@@ -85973,6 +80900,57 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace Proxy {
+            /**
+             * Interface for implementing Proxy.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Given `connection` to communicate with a proxy (eg, a
+                 * #GSocketConnection that is connected to the proxy server), this
+                 * does the necessary handshake to connect to `proxy_address,` and if
+                 * required, wraps the #GIOStream to handle proxy payload.
+                 * @param connection a #GIOStream
+                 * @param proxy_address a #GProxyAddress
+                 * @param cancellable a #GCancellable
+                 */
+                vfunc_connect(
+                    connection: IOStream,
+                    proxy_address: ProxyAddress,
+                    cancellable?: Cancellable | null,
+                ): IOStream;
+                /**
+                 * Asynchronous version of g_proxy_connect().
+                 * @param connection a #GIOStream
+                 * @param proxy_address a #GProxyAddress
+                 * @param cancellable a #GCancellable
+                 * @param callback a #GAsyncReadyCallback
+                 */
+                vfunc_connect_async(
+                    connection: IOStream,
+                    proxy_address: ProxyAddress,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * See g_proxy_connect().
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_connect_finish(result: AsyncResult): IOStream;
+                /**
+                 * Some proxy protocols expect to be passed a hostname, which they
+                 * will resolve to an IP address themselves. Others, like SOCKS4, do
+                 * not allow this. This function will return %FALSE if `proxy` is
+                 * implementing such a protocol. When %FALSE is returned, the caller
+                 * should resolve the destination hostname first, and then pass a
+                 * #GProxyAddress containing the stringified IP address to
+                 * g_proxy_connect() or g_proxy_connect_async().
+                 */
+                vfunc_supports_hostname(): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -85989,7 +80967,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             get_default_for_protocol(protocol: string): Proxy | null;
         }
-        interface Proxy extends GObject.Object {
+        interface Proxy extends GObject.Object, Proxy.Interface {
             // Methods
 
             /**
@@ -86014,7 +80992,7 @@ declare module 'gi://Gio?version=2.0' {
                 connection: IOStream,
                 proxy_address: ProxyAddress,
                 cancellable?: Cancellable | null,
-            ): Promise<IOStream>;
+            ): globalThis.Promise<IOStream>;
             /**
              * Asynchronous version of g_proxy_connect().
              * @param connection a #GIOStream
@@ -86040,7 +81018,7 @@ declare module 'gi://Gio?version=2.0' {
                 proxy_address: ProxyAddress,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<IOStream> | void;
+            ): globalThis.Promise<IOStream> | void;
             /**
              * See g_proxy_connect().
              * @param result a #GAsyncResult
@@ -86058,51 +81036,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns %TRUE if hostname resolution is supported.
              */
             supports_hostname(): boolean;
-
-            // Virtual methods
-
-            /**
-             * Given `connection` to communicate with a proxy (eg, a
-             * #GSocketConnection that is connected to the proxy server), this
-             * does the necessary handshake to connect to `proxy_address,` and if
-             * required, wraps the #GIOStream to handle proxy payload.
-             * @param connection a #GIOStream
-             * @param proxy_address a #GProxyAddress
-             * @param cancellable a #GCancellable
-             */
-            vfunc_connect(
-                connection: IOStream,
-                proxy_address: ProxyAddress,
-                cancellable?: Cancellable | null,
-            ): IOStream;
-            /**
-             * Asynchronous version of g_proxy_connect().
-             * @param connection a #GIOStream
-             * @param proxy_address a #GProxyAddress
-             * @param cancellable a #GCancellable
-             * @param callback a #GAsyncReadyCallback
-             */
-            vfunc_connect_async(
-                connection: IOStream,
-                proxy_address: ProxyAddress,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * See g_proxy_connect().
-             * @param result a #GAsyncResult
-             */
-            vfunc_connect_finish(result: AsyncResult): IOStream;
-            /**
-             * Some proxy protocols expect to be passed a hostname, which they
-             * will resolve to an IP address themselves. Others, like SOCKS4, do
-             * not allow this. This function will return %FALSE if `proxy` is
-             * implementing such a protocol. When %FALSE is returned, the caller
-             * should resolve the destination hostname first, and then pass a
-             * #GProxyAddress containing the stringified IP address to
-             * g_proxy_connect() or g_proxy_connect_async().
-             */
-            vfunc_supports_hostname(): boolean;
         }
 
         export const Proxy: ProxyNamespace & {
@@ -86110,6 +81043,60 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace ProxyResolver {
+            /**
+             * Interface for implementing ProxyResolver.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if `resolver` can be used on this system. (This is used
+                 * internally; g_proxy_resolver_get_default() will only return a proxy
+                 * resolver that returns %TRUE for this method.)
+                 */
+                vfunc_is_supported(): boolean;
+                /**
+                 * Looks into the system proxy configuration to determine what proxy,
+                 * if any, to use to connect to `uri`. The returned proxy URIs are of
+                 * the form `<protocol>://[user[:password]`]`host[:port]` or
+                 * `direct://`, where `<protocol>` could be http, rtsp, socks
+                 * or other proxying protocol.
+                 *
+                 * If you don't know what network protocol is being used on the
+                 * socket, you should use `none` as the URI protocol.
+                 * In this case, the resolver might still return a generic proxy type
+                 * (such as SOCKS), but would not return protocol-specific proxy types
+                 * (such as http).
+                 *
+                 * `direct://` is used when no proxy is needed.
+                 * Direct connection should not be attempted unless it is part of the
+                 * returned array of proxies.
+                 * @param uri a URI representing the destination to connect to
+                 * @param cancellable a #GCancellable, or %NULL
+                 */
+                vfunc_lookup(uri: string, cancellable?: Cancellable | null): string[];
+                /**
+                 * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
+                 * details.
+                 * @param uri a URI representing the destination to connect to
+                 * @param cancellable a #GCancellable, or %NULL
+                 * @param callback callback to call after resolution completes
+                 */
+                vfunc_lookup_async(
+                    uri: string,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Call this function to obtain the array of proxy URIs when
+                 * g_proxy_resolver_lookup_async() is complete. See
+                 * g_proxy_resolver_lookup() for more details.
+                 * @param result the result passed to your #GAsyncReadyCallback
+                 */
+                vfunc_lookup_finish(result: AsyncResult): string[];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -86124,7 +81111,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             get_default(): ProxyResolver;
         }
-        interface ProxyResolver extends GObject.Object {
+        interface ProxyResolver extends GObject.Object, ProxyResolver.Interface {
             // Methods
 
             /**
@@ -86161,7 +81148,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param uri a URI representing the destination to connect to
              * @param cancellable a #GCancellable, or %NULL
              */
-            lookup_async(uri: string, cancellable?: Cancellable | null): Promise<string[]>;
+            lookup_async(uri: string, cancellable?: Cancellable | null): globalThis.Promise<string[]>;
             /**
              * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
              * details.
@@ -86181,7 +81168,7 @@ declare module 'gi://Gio?version=2.0' {
                 uri: string,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<string[]> | void;
+            ): globalThis.Promise<string[]> | void;
             /**
              * Call this function to obtain the array of proxy URIs when
              * g_proxy_resolver_lookup_async() is complete. See
@@ -86190,54 +81177,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns A               NULL-terminated array of proxy URIs. Must be freed               with g_strfreev().
              */
             lookup_finish(result: AsyncResult): string[];
-
-            // Virtual methods
-
-            /**
-             * Checks if `resolver` can be used on this system. (This is used
-             * internally; g_proxy_resolver_get_default() will only return a proxy
-             * resolver that returns %TRUE for this method.)
-             */
-            vfunc_is_supported(): boolean;
-            /**
-             * Looks into the system proxy configuration to determine what proxy,
-             * if any, to use to connect to `uri`. The returned proxy URIs are of
-             * the form `<protocol>://[user[:password]`]`host[:port]` or
-             * `direct://`, where `<protocol>` could be http, rtsp, socks
-             * or other proxying protocol.
-             *
-             * If you don't know what network protocol is being used on the
-             * socket, you should use `none` as the URI protocol.
-             * In this case, the resolver might still return a generic proxy type
-             * (such as SOCKS), but would not return protocol-specific proxy types
-             * (such as http).
-             *
-             * `direct://` is used when no proxy is needed.
-             * Direct connection should not be attempted unless it is part of the
-             * returned array of proxies.
-             * @param uri a URI representing the destination to connect to
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_lookup(uri: string, cancellable?: Cancellable | null): string[];
-            /**
-             * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
-             * details.
-             * @param uri a URI representing the destination to connect to
-             * @param cancellable a #GCancellable, or %NULL
-             * @param callback callback to call after resolution completes
-             */
-            vfunc_lookup_async(
-                uri: string,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Call this function to obtain the array of proxy URIs when
-             * g_proxy_resolver_lookup_async() is complete. See
-             * g_proxy_resolver_lookup() for more details.
-             * @param result the result passed to your #GAsyncReadyCallback
-             */
-            vfunc_lookup_finish(result: AsyncResult): string[];
         }
 
         export const ProxyResolver: ProxyResolverNamespace & {
@@ -86245,6 +81184,53 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace RemoteActionGroup {
+            /**
+             * Interface for implementing RemoteActionGroup.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends ActionGroup.Interface {
+                // Virtual methods
+
+                /**
+                 * Activates the remote action.
+                 *
+                 * This is the same as g_action_group_activate_action() except that it
+                 * allows for provision of "platform data" to be sent along with the
+                 * activation request.  This typically contains details such as the user
+                 * interaction timestamp or startup notification information.
+                 *
+                 * `platform_data` must be non-%NULL and must have the type
+                 * %G_VARIANT_TYPE_VARDICT.  If it is floating, it will be consumed.
+                 * @param action_name the name of the action to activate
+                 * @param parameter the optional parameter to the activation
+                 * @param platform_data the platform data to send
+                 */
+                vfunc_activate_action_full(
+                    action_name: string,
+                    parameter: GLib.Variant | null,
+                    platform_data: GLib.Variant,
+                ): void;
+                /**
+                 * Changes the state of a remote action.
+                 *
+                 * This is the same as g_action_group_change_action_state() except that
+                 * it allows for provision of "platform data" to be sent along with the
+                 * state change request.  This typically contains details such as the
+                 * user interaction timestamp or startup notification information.
+                 *
+                 * `platform_data` must be non-%NULL and must have the type
+                 * %G_VARIANT_TYPE_VARDICT.  If it is floating, it will be consumed.
+                 * @param action_name the name of the action to change the state of
+                 * @param value the new requested value for the state
+                 * @param platform_data the platform data to send
+                 */
+                vfunc_change_action_state_full(
+                    action_name: string,
+                    value: GLib.Variant,
+                    platform_data: GLib.Variant,
+                ): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends ActionGroup.ConstructorProps {}
@@ -86254,7 +81240,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<RemoteActionGroup>;
             prototype: RemoteActionGroup;
         }
-        interface RemoteActionGroup extends ActionGroup {
+        interface RemoteActionGroup extends ActionGroup, RemoteActionGroup.Interface {
             // Methods
 
             /**
@@ -86291,43 +81277,6 @@ declare module 'gi://Gio?version=2.0' {
              * @param platform_data the platform data to send
              */
             change_action_state_full(action_name: string, value: GLib.Variant, platform_data: GLib.Variant): void;
-
-            // Virtual methods
-
-            /**
-             * Activates the remote action.
-             *
-             * This is the same as g_action_group_activate_action() except that it
-             * allows for provision of "platform data" to be sent along with the
-             * activation request.  This typically contains details such as the user
-             * interaction timestamp or startup notification information.
-             *
-             * `platform_data` must be non-%NULL and must have the type
-             * %G_VARIANT_TYPE_VARDICT.  If it is floating, it will be consumed.
-             * @param action_name the name of the action to activate
-             * @param parameter the optional parameter to the activation
-             * @param platform_data the platform data to send
-             */
-            vfunc_activate_action_full(
-                action_name: string,
-                parameter: GLib.Variant | null,
-                platform_data: GLib.Variant,
-            ): void;
-            /**
-             * Changes the state of a remote action.
-             *
-             * This is the same as g_action_group_change_action_state() except that
-             * it allows for provision of "platform data" to be sent along with the
-             * state change request.  This typically contains details such as the
-             * user interaction timestamp or startup notification information.
-             *
-             * `platform_data` must be non-%NULL and must have the type
-             * %G_VARIANT_TYPE_VARDICT.  If it is floating, it will be consumed.
-             * @param action_name the name of the action to change the state of
-             * @param value the new requested value for the state
-             * @param platform_data the platform data to send
-             */
-            vfunc_change_action_state_full(action_name: string, value: GLib.Variant, platform_data: GLib.Variant): void;
         }
 
         export const RemoteActionGroup: RemoteActionGroupNamespace & {
@@ -86335,6 +81284,62 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace Seekable {
+            /**
+             * Interface for implementing Seekable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Tests if the stream supports the #GSeekableIface.
+                 */
+                vfunc_can_seek(): boolean;
+                /**
+                 * Tests if the length of the stream can be adjusted with
+                 * g_seekable_truncate().
+                 */
+                vfunc_can_truncate(): boolean;
+                /**
+                 * Seeks in the stream by the given `offset,` modified by `type`.
+                 *
+                 * Attempting to seek past the end of the stream will have different
+                 * results depending on if the stream is fixed-sized or resizable.  If
+                 * the stream is resizable then seeking past the end and then writing
+                 * will result in zeros filling the empty space.  Seeking past the end
+                 * of a resizable stream and reading will result in EOF.  Seeking past
+                 * the end of a fixed-sized stream will fail.
+                 *
+                 * Any operation that would result in a negative offset will fail.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+                 * @param offset a #goffset.
+                 * @param type a #GSeekType.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 */
+                vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
+                /**
+                 * Tells the current position within the stream.
+                 */
+                vfunc_tell(): number;
+                /**
+                 * Sets the length of the stream to `offset`. If the stream was previously
+                 * larger than `offset,` the extra data is discarded. If the stream was
+                 * previously shorter than `offset,` it is extended with NUL ('\0') bytes.
+                 *
+                 * If `cancellable` is not %NULL, then the operation can be cancelled by
+                 * triggering the cancellable object from another thread. If the operation
+                 * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+                 * operation was partially finished when the operation was cancelled the
+                 * partial result will be returned, without an error.
+                 * @param offset new length for @seekable, in bytes.
+                 * @param cancellable optional #GCancellable object, %NULL to ignore.
+                 */
+                vfunc_truncate_fn(offset: number, cancellable?: Cancellable | null): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -86344,7 +81349,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<Seekable>;
             prototype: Seekable;
         }
-        interface Seekable extends GObject.Object {
+        interface Seekable extends GObject.Object, Seekable.Interface {
             // Methods
 
             /**
@@ -86399,56 +81404,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
              */
             truncate(offset: number, cancellable?: Cancellable | null): boolean;
-
-            // Virtual methods
-
-            /**
-             * Tests if the stream supports the #GSeekableIface.
-             */
-            vfunc_can_seek(): boolean;
-            /**
-             * Tests if the length of the stream can be adjusted with
-             * g_seekable_truncate().
-             */
-            vfunc_can_truncate(): boolean;
-            /**
-             * Seeks in the stream by the given `offset,` modified by `type`.
-             *
-             * Attempting to seek past the end of the stream will have different
-             * results depending on if the stream is fixed-sized or resizable.  If
-             * the stream is resizable then seeking past the end and then writing
-             * will result in zeros filling the empty space.  Seeking past the end
-             * of a resizable stream and reading will result in EOF.  Seeking past
-             * the end of a fixed-sized stream will fail.
-             *
-             * Any operation that would result in a negative offset will fail.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-             * @param offset a #goffset.
-             * @param type a #GSeekType.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Cancellable | null): boolean;
-            /**
-             * Tells the current position within the stream.
-             */
-            vfunc_tell(): number;
-            /**
-             * Sets the length of the stream to `offset`. If the stream was previously
-             * larger than `offset,` the extra data is discarded. If the stream was
-             * previously shorter than `offset,` it is extended with NUL ('\0') bytes.
-             *
-             * If `cancellable` is not %NULL, then the operation can be cancelled by
-             * triggering the cancellable object from another thread. If the operation
-             * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
-             * operation was partially finished when the operation was cancelled the
-             * partial result will be returned, without an error.
-             * @param offset new length for @seekable, in bytes.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             */
-            vfunc_truncate_fn(offset: number, cancellable?: Cancellable | null): boolean;
         }
 
         export const Seekable: SeekableNamespace & {
@@ -86456,6 +81411,39 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace SocketConnectable {
+            /**
+             * Interface for implementing SocketConnectable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Creates a #GSocketAddressEnumerator for `connectable`.
+                 */
+                vfunc_enumerate(): SocketAddressEnumerator;
+                /**
+                 * Creates a #GSocketAddressEnumerator for `connectable` that will
+                 * return a #GProxyAddress for each of its addresses that you must connect
+                 * to via a proxy.
+                 *
+                 * If `connectable` does not implement
+                 * g_socket_connectable_proxy_enumerate(), this will fall back to
+                 * calling g_socket_connectable_enumerate().
+                 */
+                vfunc_proxy_enumerate(): SocketAddressEnumerator;
+                /**
+                 * Format a #GSocketConnectable as a string. This is a human-readable format for
+                 * use in debugging output, and is not a stable serialization format. It is not
+                 * suitable for use in user interfaces as it exposes too much information for a
+                 * user.
+                 *
+                 * If the #GSocketConnectable implementation does not support string formatting,
+                 * the implementation’s type name will be returned as a fallback.
+                 */
+                vfunc_to_string(): string;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -86465,7 +81453,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<SocketConnectable>;
             prototype: SocketConnectable;
         }
-        interface SocketConnectable extends GObject.Object {
+        interface SocketConnectable extends GObject.Object, SocketConnectable.Interface {
             // Methods
 
             /**
@@ -86495,33 +81483,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns the formatted string
              */
             to_string(): string;
-
-            // Virtual methods
-
-            /**
-             * Creates a #GSocketAddressEnumerator for `connectable`.
-             */
-            vfunc_enumerate(): SocketAddressEnumerator;
-            /**
-             * Creates a #GSocketAddressEnumerator for `connectable` that will
-             * return a #GProxyAddress for each of its addresses that you must connect
-             * to via a proxy.
-             *
-             * If `connectable` does not implement
-             * g_socket_connectable_proxy_enumerate(), this will fall back to
-             * calling g_socket_connectable_enumerate().
-             */
-            vfunc_proxy_enumerate(): SocketAddressEnumerator;
-            /**
-             * Format a #GSocketConnectable as a string. This is a human-readable format for
-             * use in debugging output, and is not a stable serialization format. It is not
-             * suitable for use in user interfaces as it exposes too much information for a
-             * user.
-             *
-             * If the #GSocketConnectable implementation does not support string formatting,
-             * the implementation’s type name will be returned as a fallback.
-             */
-            vfunc_to_string(): string;
         }
 
         export const SocketConnectable: SocketConnectableNamespace & {
@@ -86529,6 +81490,29 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace TlsBackend {
+            /**
+             * Interface for implementing TlsBackend.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the default #GTlsDatabase used to verify TLS connections.
+                 */
+                vfunc_get_default_database(): TlsDatabase;
+                /**
+                 * Checks if DTLS is supported. DTLS support may not be available even if TLS
+                 * support is available, and vice-versa.
+                 */
+                vfunc_supports_dtls(): boolean;
+                /**
+                 * Checks if TLS is supported; if this returns %FALSE for the default
+                 * #GTlsBackend, it means no "real" TLS backend is available.
+                 */
+                vfunc_supports_tls(): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -86543,7 +81527,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             get_default(): TlsBackend;
         }
-        interface TlsBackend extends GObject.Object {
+        interface TlsBackend extends GObject.Object, TlsBackend.Interface {
             // Methods
 
             /**
@@ -86605,23 +81589,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns whether or not TLS is supported
              */
             supports_tls(): boolean;
-
-            // Virtual methods
-
-            /**
-             * Gets the default #GTlsDatabase used to verify TLS connections.
-             */
-            vfunc_get_default_database(): TlsDatabase;
-            /**
-             * Checks if DTLS is supported. DTLS support may not be available even if TLS
-             * support is available, and vice-versa.
-             */
-            vfunc_supports_dtls(): boolean;
-            /**
-             * Checks if TLS is supported; if this returns %FALSE for the default
-             * #GTlsBackend, it means no "real" TLS backend is available.
-             */
-            vfunc_supports_tls(): boolean;
         }
 
         export const TlsBackend: TlsBackendNamespace & {
@@ -86629,6 +81596,47 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace TlsClientConnection {
+            /**
+             * Interface for implementing TlsClientConnection.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Possibly copies session state from one connection to another, for use
+                 * in TLS session resumption. This is not normally needed, but may be
+                 * used when the same session needs to be used between different
+                 * endpoints, as is required by some protocols, such as FTP over TLS.
+                 * `source` should have already completed a handshake and, since TLS 1.3,
+                 * it should have been used to read data at least once. `conn` should not
+                 * have completed a handshake.
+                 *
+                 * It is not possible to know whether a call to this function will
+                 * actually do anything. Because session resumption is normally used
+                 * only for performance benefit, the TLS backend might not implement
+                 * this function. Even if implemented, it may not actually succeed in
+                 * allowing `conn` to resume `source'`s TLS session, because the server
+                 * may not have sent a session resumption token to `source,` or it may
+                 * refuse to accept the token from `conn`. There is no way to know
+                 * whether a call to this function is actually successful.
+                 *
+                 * Using this function is not required to benefit from session
+                 * resumption. If the TLS backend supports session resumption, the
+                 * session will be resumed automatically if it is possible to do so
+                 * without weakening the privacy guarantees normally provided by TLS,
+                 * without need to call this function. For example, with TLS 1.3,
+                 * a session ticket will be automatically copied from any
+                 * #GTlsClientConnection that has previously received session tickets
+                 * from the server, provided a ticket is available that has not
+                 * previously been used for session resumption, since session ticket
+                 * reuse would be a privacy weakness. Using this function causes the
+                 * ticket to be copied without regard for privacy considerations.
+                 * @param source a #GTlsClientConnection
+                 */
+                vfunc_copy_session_state(source: TlsClientConnection): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends TlsConnection.ConstructorProps {
@@ -86660,7 +81668,7 @@ declare module 'gi://Gio?version=2.0' {
              */
             ['new'](base_io_stream: IOStream, server_identity?: SocketConnectable | null): TlsClientConnection;
         }
-        interface TlsClientConnection extends TlsConnection {
+        interface TlsClientConnection extends TlsConnection, TlsClientConnection.Interface {
             // Properties
 
             /**
@@ -86870,41 +81878,6 @@ declare module 'gi://Gio?version=2.0' {
              * @param flags the #GTlsCertificateFlags to use
              */
             set_validation_flags(flags: TlsCertificateFlags | null): void;
-
-            // Virtual methods
-
-            /**
-             * Possibly copies session state from one connection to another, for use
-             * in TLS session resumption. This is not normally needed, but may be
-             * used when the same session needs to be used between different
-             * endpoints, as is required by some protocols, such as FTP over TLS.
-             * `source` should have already completed a handshake and, since TLS 1.3,
-             * it should have been used to read data at least once. `conn` should not
-             * have completed a handshake.
-             *
-             * It is not possible to know whether a call to this function will
-             * actually do anything. Because session resumption is normally used
-             * only for performance benefit, the TLS backend might not implement
-             * this function. Even if implemented, it may not actually succeed in
-             * allowing `conn` to resume `source'`s TLS session, because the server
-             * may not have sent a session resumption token to `source,` or it may
-             * refuse to accept the token from `conn`. There is no way to know
-             * whether a call to this function is actually successful.
-             *
-             * Using this function is not required to benefit from session
-             * resumption. If the TLS backend supports session resumption, the
-             * session will be resumed automatically if it is possible to do so
-             * without weakening the privacy guarantees normally provided by TLS,
-             * without need to call this function. For example, with TLS 1.3,
-             * a session ticket will be automatically copied from any
-             * #GTlsClientConnection that has previously received session tickets
-             * from the server, provided a ticket is available that has not
-             * previously been used for session resumption, since session ticket
-             * reuse would be a privacy weakness. Using this function causes the
-             * ticket to be copied without regard for privacy considerations.
-             * @param source a #GTlsClientConnection
-             */
-            vfunc_copy_session_state(source: TlsClientConnection): void;
         }
 
         export const TlsClientConnection: TlsClientConnectionNamespace & {
@@ -86998,6 +81971,177 @@ declare module 'gi://Gio?version=2.0' {
         };
 
         namespace Volume {
+            /**
+             * Interface for implementing Volume.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if a volume can be ejected.
+                 */
+                vfunc_can_eject(): boolean;
+                /**
+                 * Checks if a volume can be mounted.
+                 */
+                vfunc_can_mount(): boolean;
+                /**
+                 * Changed signal that is emitted when the volume's state has changed.
+                 */
+                vfunc_changed(): void;
+                /**
+                 * Ejects a volume. This is an asynchronous operation, and is
+                 * finished by calling g_volume_eject_finish() with the `volume`
+                 * and #GAsyncResult returned in the `callback`.
+                 * @param flags flags affecting the unmount if required for eject
+                 * @param cancellable optional #GCancellable object, %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback, or %NULL
+                 */
+                vfunc_eject(
+                    flags: MountUnmountFlags,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes ejecting a volume. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_eject_finish(result: AsyncResult): boolean;
+                /**
+                 * Ejects a volume. This is an asynchronous operation, and is
+                 * finished by calling g_volume_eject_with_operation_finish() with the `volume`
+                 * and #GAsyncResult data returned in the `callback`.
+                 * @param flags flags affecting the unmount if required for eject
+                 * @param mount_operation a #GMountOperation or %NULL to     avoid user interaction
+                 * @param cancellable optional #GCancellable object, %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback, or %NULL
+                 */
+                vfunc_eject_with_operation(
+                    flags: MountUnmountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes ejecting a volume. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_eject_with_operation_finish(result: AsyncResult): boolean;
+                /**
+                 * Gets the kinds of [identifiers](#volume-identifiers) that `volume` has.
+                 * Use g_volume_get_identifier() to obtain the identifiers themselves.
+                 */
+                vfunc_enumerate_identifiers(): string[];
+                /**
+                 * Gets the activation root for a #GVolume if it is known ahead of
+                 * mount time. Returns %NULL otherwise. If not %NULL and if `volume`
+                 * is mounted, then the result of g_mount_get_root() on the
+                 * #GMount object obtained from g_volume_get_mount() will always
+                 * either be equal or a prefix of what this function returns. In
+                 * other words, in code
+                 *
+                 *
+                 * ```c
+                 *   GMount *mount;
+                 *   GFile *mount_root
+                 *   GFile *volume_activation_root;
+                 *
+                 *   mount = g_volume_get_mount (volume); // mounted, so never NULL
+                 *   mount_root = g_mount_get_root (mount);
+                 *   volume_activation_root = g_volume_get_activation_root (volume); // assume not NULL
+                 * ```
+                 *
+                 * then the expression
+                 *
+                 * ```c
+                 *   (g_file_has_prefix (volume_activation_root, mount_root) ||
+                 *    g_file_equal (volume_activation_root, mount_root))
+                 * ```
+                 *
+                 * will always be %TRUE.
+                 *
+                 * Activation roots are typically used in #GVolumeMonitor
+                 * implementations to find the underlying mount to shadow, see
+                 * g_mount_is_shadowed() for more details.
+                 */
+                vfunc_get_activation_root(): File | null;
+                /**
+                 * Gets the drive for the `volume`.
+                 */
+                vfunc_get_drive(): Drive | null;
+                /**
+                 * Gets the icon for `volume`.
+                 */
+                vfunc_get_icon(): Icon;
+                /**
+                 * Gets the identifier of the given kind for `volume`.
+                 * See the [introduction](#volume-identifiers) for more
+                 * information about volume identifiers.
+                 * @param kind the kind of identifier to return
+                 */
+                vfunc_get_identifier(kind: string): string | null;
+                /**
+                 * Gets the mount for the `volume`.
+                 */
+                vfunc_get_mount(): Mount | null;
+                /**
+                 * Gets the name of `volume`.
+                 */
+                vfunc_get_name(): string;
+                /**
+                 * Gets the sort key for `volume,` if any.
+                 */
+                vfunc_get_sort_key(): string | null;
+                /**
+                 * Gets the symbolic icon for `volume`.
+                 */
+                vfunc_get_symbolic_icon(): Icon;
+                /**
+                 * Gets the UUID for the `volume`. The reference is typically based on
+                 * the file system UUID for the volume in question and should be
+                 * considered an opaque string. Returns %NULL if there is no UUID
+                 * available.
+                 */
+                vfunc_get_uuid(): string | null;
+                /**
+                 * Finishes mounting a volume. If any errors occurred during the operation,
+                 * `error` will be set to contain the errors and %FALSE will be returned.
+                 *
+                 * If the mount operation succeeded, g_volume_get_mount() on `volume`
+                 * is guaranteed to return the mount right after calling this
+                 * function; there's no need to listen for the 'mount-added' signal on
+                 * #GVolumeMonitor.
+                 * @param result a #GAsyncResult
+                 */
+                vfunc_mount_finish(result: AsyncResult): boolean;
+                /**
+                 * Mounts a volume. This is an asynchronous operation, and is
+                 * finished by calling g_volume_mount_finish() with the `volume`
+                 * and #GAsyncResult returned in the `callback`.
+                 * @param flags flags affecting the operation
+                 * @param mount_operation a #GMountOperation or %NULL to avoid user interaction
+                 * @param cancellable optional #GCancellable object, %NULL to ignore
+                 * @param callback a #GAsyncReadyCallback, or %NULL
+                 */
+                vfunc_mount_fn(
+                    flags: MountMountFlags,
+                    mount_operation?: MountOperation | null,
+                    cancellable?: Cancellable | null,
+                    callback?: AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * The removed signal that is emitted when the #GVolume have been removed. If the recipient is holding references to the object they should release them so the object can be finalized.
+                 */
+                vfunc_removed(): void;
+                /**
+                 * Returns whether the volume should be automatically mounted.
+                 */
+                vfunc_should_automount(): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -87007,7 +82151,7 @@ declare module 'gi://Gio?version=2.0' {
             $gtype: GObject.GType<Volume>;
             prototype: Volume;
         }
-        interface Volume extends GObject.Object {
+        interface Volume extends GObject.Object, Volume.Interface {
             // Methods
 
             /**
@@ -87027,7 +82171,7 @@ declare module 'gi://Gio?version=2.0' {
              * @param flags flags affecting the unmount if required for eject
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): Promise<boolean>;
+            eject(flags: MountUnmountFlags | null, cancellable?: Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Ejects a volume. This is an asynchronous operation, and is
              * finished by calling g_volume_eject_finish() with the `volume`
@@ -87053,7 +82197,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes ejecting a volume. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -87073,7 +82217,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountUnmountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Ejects a volume. This is an asynchronous operation, and is
              * finished by calling g_volume_eject_with_operation_finish() with the `volume`
@@ -87103,7 +82247,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes ejecting a volume. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -87209,7 +82353,7 @@ declare module 'gi://Gio?version=2.0' {
                 flags: MountMountFlags | null,
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Mounts a volume. This is an asynchronous operation, and is
              * finished by calling g_volume_mount_finish() with the `volume`
@@ -87239,7 +82383,7 @@ declare module 'gi://Gio?version=2.0' {
                 mount_operation?: MountOperation | null,
                 cancellable?: Cancellable | null,
                 callback?: AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes mounting a volume. If any errors occurred during the operation,
              * `error` will be set to contain the errors and %FALSE will be returned.
@@ -87257,171 +82401,6 @@ declare module 'gi://Gio?version=2.0' {
              * @returns %TRUE if the volume should be automatically mounted
              */
             should_automount(): boolean;
-
-            // Virtual methods
-
-            /**
-             * Checks if a volume can be ejected.
-             */
-            vfunc_can_eject(): boolean;
-            /**
-             * Checks if a volume can be mounted.
-             */
-            vfunc_can_mount(): boolean;
-            /**
-             * Changed signal that is emitted when the volume's state has changed.
-             */
-            vfunc_changed(): void;
-            /**
-             * Ejects a volume. This is an asynchronous operation, and is
-             * finished by calling g_volume_eject_finish() with the `volume`
-             * and #GAsyncResult returned in the `callback`.
-             * @param flags flags affecting the unmount if required for eject
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback, or %NULL
-             */
-            vfunc_eject(
-                flags: MountUnmountFlags,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes ejecting a volume. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             * @param result a #GAsyncResult
-             */
-            vfunc_eject_finish(result: AsyncResult): boolean;
-            /**
-             * Ejects a volume. This is an asynchronous operation, and is
-             * finished by calling g_volume_eject_with_operation_finish() with the `volume`
-             * and #GAsyncResult data returned in the `callback`.
-             * @param flags flags affecting the unmount if required for eject
-             * @param mount_operation a #GMountOperation or %NULL to     avoid user interaction
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback, or %NULL
-             */
-            vfunc_eject_with_operation(
-                flags: MountUnmountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * Finishes ejecting a volume. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             * @param result a #GAsyncResult
-             */
-            vfunc_eject_with_operation_finish(result: AsyncResult): boolean;
-            /**
-             * Gets the kinds of [identifiers](#volume-identifiers) that `volume` has.
-             * Use g_volume_get_identifier() to obtain the identifiers themselves.
-             */
-            vfunc_enumerate_identifiers(): string[];
-            /**
-             * Gets the activation root for a #GVolume if it is known ahead of
-             * mount time. Returns %NULL otherwise. If not %NULL and if `volume`
-             * is mounted, then the result of g_mount_get_root() on the
-             * #GMount object obtained from g_volume_get_mount() will always
-             * either be equal or a prefix of what this function returns. In
-             * other words, in code
-             *
-             *
-             * ```c
-             *   GMount *mount;
-             *   GFile *mount_root
-             *   GFile *volume_activation_root;
-             *
-             *   mount = g_volume_get_mount (volume); // mounted, so never NULL
-             *   mount_root = g_mount_get_root (mount);
-             *   volume_activation_root = g_volume_get_activation_root (volume); // assume not NULL
-             * ```
-             *
-             * then the expression
-             *
-             * ```c
-             *   (g_file_has_prefix (volume_activation_root, mount_root) ||
-             *    g_file_equal (volume_activation_root, mount_root))
-             * ```
-             *
-             * will always be %TRUE.
-             *
-             * Activation roots are typically used in #GVolumeMonitor
-             * implementations to find the underlying mount to shadow, see
-             * g_mount_is_shadowed() for more details.
-             */
-            vfunc_get_activation_root(): File | null;
-            /**
-             * Gets the drive for the `volume`.
-             */
-            vfunc_get_drive(): Drive | null;
-            /**
-             * Gets the icon for `volume`.
-             */
-            vfunc_get_icon(): Icon;
-            /**
-             * Gets the identifier of the given kind for `volume`.
-             * See the [introduction](#volume-identifiers) for more
-             * information about volume identifiers.
-             * @param kind the kind of identifier to return
-             */
-            vfunc_get_identifier(kind: string): string | null;
-            /**
-             * Gets the mount for the `volume`.
-             */
-            vfunc_get_mount(): Mount | null;
-            /**
-             * Gets the name of `volume`.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Gets the sort key for `volume,` if any.
-             */
-            vfunc_get_sort_key(): string | null;
-            /**
-             * Gets the symbolic icon for `volume`.
-             */
-            vfunc_get_symbolic_icon(): Icon;
-            /**
-             * Gets the UUID for the `volume`. The reference is typically based on
-             * the file system UUID for the volume in question and should be
-             * considered an opaque string. Returns %NULL if there is no UUID
-             * available.
-             */
-            vfunc_get_uuid(): string | null;
-            /**
-             * Finishes mounting a volume. If any errors occurred during the operation,
-             * `error` will be set to contain the errors and %FALSE will be returned.
-             *
-             * If the mount operation succeeded, g_volume_get_mount() on `volume`
-             * is guaranteed to return the mount right after calling this
-             * function; there's no need to listen for the 'mount-added' signal on
-             * #GVolumeMonitor.
-             * @param result a #GAsyncResult
-             */
-            vfunc_mount_finish(result: AsyncResult): boolean;
-            /**
-             * Mounts a volume. This is an asynchronous operation, and is
-             * finished by calling g_volume_mount_finish() with the `volume`
-             * and #GAsyncResult returned in the `callback`.
-             * @param flags flags affecting the operation
-             * @param mount_operation a #GMountOperation or %NULL to avoid user interaction
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback, or %NULL
-             */
-            vfunc_mount_fn(
-                flags: MountMountFlags,
-                mount_operation?: MountOperation | null,
-                cancellable?: Cancellable | null,
-                callback?: AsyncReadyCallback<this> | null,
-            ): void;
-            /**
-             * The removed signal that is emitted when the #GVolume have been removed. If the recipient is holding references to the object they should release them so the object can be finalized.
-             */
-            vfunc_removed(): void;
-            /**
-             * Returns whether the volume should be automatically mounted.
-             */
-            vfunc_should_automount(): boolean;
         }
 
         export const Volume: VolumeNamespace & {

@@ -441,7 +441,7 @@ declare module 'gi://Polkit?version=1.0' {
                 cookie: string,
                 identity: Identity,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously provide response that `identity` successfully authenticated
              * for the authentication request identified by `cookie`.
@@ -489,7 +489,7 @@ declare module 'gi://Polkit?version=1.0' {
                 identity: Identity,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes providing response from an authentication agent.
              * @param res A #GAsyncResult obtained from the callback.
@@ -551,7 +551,7 @@ declare module 'gi://Polkit?version=1.0' {
                 details: Details | null,
                 flags: CheckAuthorizationFlags | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<AuthorizationResult>;
+            ): globalThis.Promise<AuthorizationResult>;
             /**
              * Asynchronously checks if `subject` is authorized to perform the action represented
              * by `action_id`.
@@ -631,7 +631,7 @@ declare module 'gi://Polkit?version=1.0' {
                 flags: CheckAuthorizationFlags | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<AuthorizationResult> | void;
+            ): globalThis.Promise<AuthorizationResult> | void;
             /**
              * Finishes checking if a subject is authorized for an action.
              * @param res A #GAsyncResult obtained from the callback.
@@ -684,7 +684,7 @@ declare module 'gi://Polkit?version=1.0' {
              * to get the result of the operation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            enumerate_actions(cancellable?: Gio.Cancellable | null): Promise<ActionDescription[]>;
+            enumerate_actions(cancellable?: Gio.Cancellable | null): globalThis.Promise<ActionDescription[]>;
             /**
              * Asynchronously retrieves all registered actions.
              *
@@ -711,7 +711,7 @@ declare module 'gi://Polkit?version=1.0' {
             enumerate_actions(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<ActionDescription[]> | void;
+            ): globalThis.Promise<ActionDescription[]> | void;
             /**
              * Finishes retrieving all registered actions.
              * @param res A #GAsyncResult obtained from the callback.
@@ -741,7 +741,7 @@ declare module 'gi://Polkit?version=1.0' {
             enumerate_temporary_authorizations(
                 subject: Subject,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<TemporaryAuthorization[]>;
+            ): globalThis.Promise<TemporaryAuthorization[]>;
             /**
              * Asynchronously gets all temporary authorizations for `subject`.
              *
@@ -777,7 +777,7 @@ declare module 'gi://Polkit?version=1.0' {
                 subject: Subject,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<TemporaryAuthorization[]> | void;
+            ): globalThis.Promise<TemporaryAuthorization[]> | void;
             /**
              * Finishes retrieving all registered actions.
              * @param res A #GAsyncResult obtained from the callback.
@@ -844,7 +844,7 @@ declare module 'gi://Polkit?version=1.0' {
                 locale: string,
                 object_path: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously registers an authentication agent.
              *
@@ -896,7 +896,7 @@ declare module 'gi://Polkit?version=1.0' {
                 object_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes registering an authentication agent.
              * @param res A #GAsyncResult obtained from the callback.
@@ -951,7 +951,7 @@ declare module 'gi://Polkit?version=1.0' {
                 object_path: string,
                 options?: GLib.Variant | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously registers an authentication agent.
              *
@@ -1007,7 +1007,7 @@ declare module 'gi://Polkit?version=1.0' {
                 options?: GLib.Variant | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes registering an authentication agent.
              * @param res A #GAsyncResult obtained from the callback.
@@ -1051,7 +1051,10 @@ declare module 'gi://Polkit?version=1.0' {
              * @param id The opaque identifier for the temporary authorization.
              * @param cancellable A #GCancellable or %NULL.
              */
-            revoke_temporary_authorization_by_id(id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            revoke_temporary_authorization_by_id(
+                id: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously revoke a temporary authorization.
              *
@@ -1087,7 +1090,7 @@ declare module 'gi://Polkit?version=1.0' {
                 id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes revoking a temporary authorization by id.
              * @param res A #GAsyncResult obtained from the callback.
@@ -1117,7 +1120,10 @@ declare module 'gi://Polkit?version=1.0' {
              * @param subject The subject to revoke authorizations from, typically a #PolkitUnixSession.
              * @param cancellable A #GCancellable or %NULL.
              */
-            revoke_temporary_authorizations(subject: Subject, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            revoke_temporary_authorizations(
+                subject: Subject,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously revokes all temporary authorizations for `subject`.
              *
@@ -1153,7 +1159,7 @@ declare module 'gi://Polkit?version=1.0' {
                 subject: Subject,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes revoking temporary authorizations.
              * @param res A #GAsyncResult obtained from the callback.
@@ -1188,7 +1194,7 @@ declare module 'gi://Polkit?version=1.0' {
                 subject: Subject,
                 object_path: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously unregisters an authentication agent.
              *
@@ -1228,7 +1234,7 @@ declare module 'gi://Polkit?version=1.0' {
                 object_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes unregistering an authentication agent.
              * @param res A #GAsyncResult obtained from the callback.
@@ -1292,7 +1298,7 @@ declare module 'gi://Polkit?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -1384,7 +1390,7 @@ declare module 'gi://Polkit?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -2336,7 +2342,7 @@ declare module 'gi://Polkit?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -2428,7 +2434,7 @@ declare module 'gi://Polkit?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -3137,7 +3143,7 @@ declare module 'gi://Polkit?version=1.0' {
              * result of the operation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            exists(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            exists(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously checks if `subject` exists.
              *
@@ -3164,7 +3170,7 @@ declare module 'gi://Polkit?version=1.0' {
             exists(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes checking whether a subject exists.
              * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
@@ -5134,7 +5140,7 @@ declare module 'gi://Polkit?version=1.0' {
              * result of the operation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            exists(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            exists(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously checks if `subject` exists.
              *
@@ -5161,7 +5167,7 @@ declare module 'gi://Polkit?version=1.0' {
             exists(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes checking whether a subject exists.
              * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
@@ -5851,7 +5857,7 @@ declare module 'gi://Polkit?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -5943,7 +5949,7 @@ declare module 'gi://Polkit?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -6115,7 +6121,7 @@ declare module 'gi://Polkit?version=1.0' {
              * result of the operation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            exists(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            exists(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously checks if `subject` exists.
              *
@@ -6142,7 +6148,7 @@ declare module 'gi://Polkit?version=1.0' {
             exists(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes checking whether a subject exists.
              * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
@@ -7238,6 +7244,31 @@ declare module 'gi://Polkit?version=1.0' {
         type UnixSessionClass = typeof UnixSession;
         type UnixUserClass = typeof UnixUser;
         namespace Identity {
+            /**
+             * Interface for implementing Identity.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if `a` and `b` are equal, ie. represent the same identity.
+                 *
+                 * This function can be used in e.g. g_hash_table_new().
+                 * @param b A #PolkitIdentity.
+                 */
+                vfunc_equal(b: Identity): boolean;
+                /**
+                 * Gets a hash code for `identity` that can be used with e.g. g_hash_table_new().
+                 */
+                vfunc_hash(): number;
+                /**
+                 * Serializes `identity` to a string that can be used in
+                 * polkit_identity_from_string().
+                 */
+                vfunc_to_string(): string;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7254,7 +7285,7 @@ declare module 'gi://Polkit?version=1.0' {
              */
             from_string(str: string): Identity | null;
         }
-        interface Identity extends GObject.Object {
+        interface Identity extends GObject.Object, Identity.Interface {
             // Methods
 
             /**
@@ -7276,25 +7307,6 @@ declare module 'gi://Polkit?version=1.0' {
              * @returns A string representing @identity. Free with g_free().
              */
             to_string(): string;
-
-            // Virtual methods
-
-            /**
-             * Checks if `a` and `b` are equal, ie. represent the same identity.
-             *
-             * This function can be used in e.g. g_hash_table_new().
-             * @param b A #PolkitIdentity.
-             */
-            vfunc_equal(b: Identity): boolean;
-            /**
-             * Gets a hash code for `identity` that can be used with e.g. g_hash_table_new().
-             */
-            vfunc_hash(): number;
-            /**
-             * Serializes `identity` to a string that can be used in
-             * polkit_identity_from_string().
-             */
-            vfunc_to_string(): string;
         }
 
         export const Identity: IdentityNamespace & {
@@ -7302,6 +7314,62 @@ declare module 'gi://Polkit?version=1.0' {
         };
 
         namespace Subject {
+            /**
+             * Interface for implementing Subject.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Checks if `a` and `b` are equal, ie. represent the same subject.
+                 * However, avoid calling polkit_subject_equal() to compare two processes;
+                 * for more information see the `PolkitUnixProcess` documentation.
+                 *
+                 * This function can be used in e.g. g_hash_table_new().
+                 * @param b A #PolkitSubject.
+                 */
+                vfunc_equal(b: Subject): boolean;
+                /**
+                 * Asynchronously checks if `subject` exists.
+                 *
+                 * When the operation is finished, `callback` will be invoked in the
+                 * <link linkend="g-main-context-push-thread-default">thread-default
+                 * main loop</link> of the thread you are calling this method
+                 * from. You can then call polkit_subject_exists_finish() to get the
+                 * result of the operation.
+                 * @param cancellable A #GCancellable or %NULL.
+                 * @param callback A #GAsyncReadyCallback to call when the request is satisfied
+                 */
+                vfunc_exists(
+                    cancellable?: Gio.Cancellable | null,
+                    callback?: Gio.AsyncReadyCallback<this> | null,
+                ): void;
+                /**
+                 * Finishes checking whether a subject exists.
+                 * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
+                 */
+                vfunc_exists_finish(res: Gio.AsyncResult): boolean;
+                /**
+                 * Checks if `subject` exists.
+                 *
+                 * This is a synchronous blocking call - the calling thread is blocked
+                 * until a reply is received. See polkit_subject_exists() for the
+                 * asynchronous version.
+                 * @param cancellable A #GCancellable or %NULL.
+                 */
+                vfunc_exists_sync(cancellable?: Gio.Cancellable | null): boolean;
+                /**
+                 * Gets a hash code for `subject` that can be used with e.g. g_hash_table_new().
+                 */
+                vfunc_hash(): number;
+                /**
+                 * Serializes `subject` to a string that can be used in
+                 * polkit_subject_from_string().
+                 */
+                vfunc_to_string(): string;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7318,7 +7386,7 @@ declare module 'gi://Polkit?version=1.0' {
              */
             from_string(str: string): Subject;
         }
-        interface Subject extends GObject.Object {
+        interface Subject extends GObject.Object, Subject.Interface {
             // Methods
 
             /**
@@ -7341,7 +7409,7 @@ declare module 'gi://Polkit?version=1.0' {
              * result of the operation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            exists(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            exists(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously checks if `subject` exists.
              *
@@ -7368,7 +7436,7 @@ declare module 'gi://Polkit?version=1.0' {
             exists(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes checking whether a subject exists.
              * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
@@ -7396,53 +7464,6 @@ declare module 'gi://Polkit?version=1.0' {
              * @returns A string representing @subject. Free with g_free().
              */
             to_string(): string;
-
-            // Virtual methods
-
-            /**
-             * Checks if `a` and `b` are equal, ie. represent the same subject.
-             * However, avoid calling polkit_subject_equal() to compare two processes;
-             * for more information see the `PolkitUnixProcess` documentation.
-             *
-             * This function can be used in e.g. g_hash_table_new().
-             * @param b A #PolkitSubject.
-             */
-            vfunc_equal(b: Subject): boolean;
-            /**
-             * Asynchronously checks if `subject` exists.
-             *
-             * When the operation is finished, `callback` will be invoked in the
-             * <link linkend="g-main-context-push-thread-default">thread-default
-             * main loop</link> of the thread you are calling this method
-             * from. You can then call polkit_subject_exists_finish() to get the
-             * result of the operation.
-             * @param cancellable A #GCancellable or %NULL.
-             * @param callback A #GAsyncReadyCallback to call when the request is satisfied
-             */
-            vfunc_exists(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
-            /**
-             * Finishes checking whether a subject exists.
-             * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to polkit_subject_exists().
-             */
-            vfunc_exists_finish(res: Gio.AsyncResult): boolean;
-            /**
-             * Checks if `subject` exists.
-             *
-             * This is a synchronous blocking call - the calling thread is blocked
-             * until a reply is received. See polkit_subject_exists() for the
-             * asynchronous version.
-             * @param cancellable A #GCancellable or %NULL.
-             */
-            vfunc_exists_sync(cancellable?: Gio.Cancellable | null): boolean;
-            /**
-             * Gets a hash code for `subject` that can be used with e.g. g_hash_table_new().
-             */
-            vfunc_hash(): number;
-            /**
-             * Serializes `subject` to a string that can be used in
-             * polkit_subject_from_string().
-             */
-            vfunc_to_string(): string;
         }
 
         export const Subject: SubjectNamespace & {

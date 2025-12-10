@@ -4966,7 +4966,7 @@ declare module 'gi://Gst?version=1.0' {
             (obj: MiniObject): void;
         }
         interface MiniObjectNotify {
-            (obj: MiniObject): void;
+            (user_data: any | null, obj: MiniObject): void;
         }
         interface PadActivateFunction {
             (pad: Pad, parent: Object): boolean;
@@ -5050,10 +5050,10 @@ declare module 'gi://Gst?version=1.0' {
             (dest: GObject.Value | any, src: GObject.Value | any): void;
         }
         interface TaskFunction {
-            (): void;
+            (user_data?: any | null): void;
         }
         interface TaskPoolFunction {
-            (): void;
+            (user_data?: any | null): void;
         }
         interface TaskThreadFunc {
             (task: Task, thread: GLib.Thread): void;
@@ -23790,6 +23790,45 @@ declare module 'gi://Gst?version=1.0' {
         }
 
         namespace ChildProxy {
+            /**
+             * Interface for implementing ChildProxy.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Emits the #GstChildProxy::child-added signal.
+                 * @param child the newly added child
+                 * @param name the name of the new child
+                 */
+                vfunc_child_added(child: GObject.Object, name: string): void;
+                /**
+                 * Emits the #GstChildProxy::child-removed signal.
+                 * @param child the removed child
+                 * @param name the name of the old child
+                 */
+                vfunc_child_removed(child: GObject.Object, name: string): void;
+                /**
+                 * Fetches a child by its number.
+                 * @param index the child's position in the child list
+                 */
+                vfunc_get_child_by_index<T = GObject.Object>(index: number): T;
+                /**
+                 * Looks up a child element by the given name.
+                 *
+                 * This virtual method has a default implementation that uses #GstObject
+                 * together with gst_object_get_name(). If the interface is to be used with
+                 * #GObjects, this methods needs to be overridden.
+                 * @param name the child's name
+                 */
+                vfunc_get_child_by_name<T = GObject.Object>(name: string): T;
+                /**
+                 * Gets the number of child objects this parent contains.
+                 */
+                vfunc_get_children_count(): number;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23799,7 +23838,7 @@ declare module 'gi://Gst?version=1.0' {
             $gtype: GObject.GType<ChildProxy>;
             prototype: ChildProxy;
         }
-        interface ChildProxy extends GObject.Object {
+        interface ChildProxy extends GObject.Object, ChildProxy.Interface {
             // Methods
 
             /**
@@ -23868,39 +23907,6 @@ declare module 'gi://Gst?version=1.0' {
              * @param value new #GValue for the property
              */
             set_property(name: string, value: GObject.Value | any): void;
-
-            // Virtual methods
-
-            /**
-             * Emits the #GstChildProxy::child-added signal.
-             * @param child the newly added child
-             * @param name the name of the new child
-             */
-            vfunc_child_added(child: GObject.Object, name: string): void;
-            /**
-             * Emits the #GstChildProxy::child-removed signal.
-             * @param child the removed child
-             * @param name the name of the old child
-             */
-            vfunc_child_removed(child: GObject.Object, name: string): void;
-            /**
-             * Fetches a child by its number.
-             * @param index the child's position in the child list
-             */
-            vfunc_get_child_by_index<T = GObject.Object>(index: number): T;
-            /**
-             * Looks up a child element by the given name.
-             *
-             * This virtual method has a default implementation that uses #GstObject
-             * together with gst_object_get_name(). If the interface is to be used with
-             * #GObjects, this methods needs to be overridden.
-             * @param name the child's name
-             */
-            vfunc_get_child_by_name<T = GObject.Object>(name: string): T;
-            /**
-             * Gets the number of child objects this parent contains.
-             */
-            vfunc_get_children_count(): number;
         }
 
         export const ChildProxy: ChildProxyNamespace & {
@@ -23908,6 +23914,62 @@ declare module 'gi://Gst?version=1.0' {
         };
 
         namespace Preset {
+            /**
+             * Interface for implementing Preset.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Delete the given preset.
+                 * @param name preset name to remove
+                 */
+                vfunc_delete_preset(name: string): boolean;
+                /**
+                 * Gets the `value` for an existing meta data `tag`. Meta data `tag` names can be
+                 * something like e.g. "comment". Returned values need to be released when done.
+                 * @param name preset name
+                 * @param tag meta data item name
+                 */
+                vfunc_get_meta(name: string, tag: string): [boolean, string];
+                /**
+                 * Get a copy of preset names as a %NULL terminated string array.
+                 */
+                vfunc_get_preset_names(): string[];
+                /**
+                 * Get a the names of the GObject properties that can be used for presets.
+                 */
+                vfunc_get_property_names(): string[];
+                /**
+                 * Load the given preset.
+                 * @param name preset name to load
+                 */
+                vfunc_load_preset(name: string): boolean;
+                /**
+                 * Renames a preset. If there is already a preset by the `new_name` it will be
+                 * overwritten.
+                 * @param old_name current preset name
+                 * @param new_name new preset name
+                 */
+                vfunc_rename_preset(old_name: string, new_name: string): boolean;
+                /**
+                 * Save the current object settings as a preset under the given name. If there
+                 * is already a preset by this `name` it will be overwritten.
+                 * @param name preset name to save
+                 */
+                vfunc_save_preset(name: string): boolean;
+                /**
+                 * Sets a new `value` for an existing meta data item or adds a new item. Meta
+                 * data `tag` names can be something like e.g. "comment". Supplying %NULL for the
+                 * `value` will unset an existing value.
+                 * @param name preset name
+                 * @param tag meta data item name
+                 * @param value new value
+                 */
+                vfunc_set_meta(name: string, tag: string, value?: string | null): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23930,7 +23992,7 @@ declare module 'gi://Gst?version=1.0' {
              */
             set_app_dir(app_dir: string): boolean;
         }
-        interface Preset extends GObject.Object {
+        interface Preset extends GObject.Object, Preset.Interface {
             // Methods
 
             /**
@@ -23993,56 +24055,6 @@ declare module 'gi://Gst?version=1.0' {
              * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name
              */
             set_meta(name: string, tag: string, value?: string | null): boolean;
-
-            // Virtual methods
-
-            /**
-             * Delete the given preset.
-             * @param name preset name to remove
-             */
-            vfunc_delete_preset(name: string): boolean;
-            /**
-             * Gets the `value` for an existing meta data `tag`. Meta data `tag` names can be
-             * something like e.g. "comment". Returned values need to be released when done.
-             * @param name preset name
-             * @param tag meta data item name
-             */
-            vfunc_get_meta(name: string, tag: string): [boolean, string];
-            /**
-             * Get a copy of preset names as a %NULL terminated string array.
-             */
-            vfunc_get_preset_names(): string[];
-            /**
-             * Get a the names of the GObject properties that can be used for presets.
-             */
-            vfunc_get_property_names(): string[];
-            /**
-             * Load the given preset.
-             * @param name preset name to load
-             */
-            vfunc_load_preset(name: string): boolean;
-            /**
-             * Renames a preset. If there is already a preset by the `new_name` it will be
-             * overwritten.
-             * @param old_name current preset name
-             * @param new_name new preset name
-             */
-            vfunc_rename_preset(old_name: string, new_name: string): boolean;
-            /**
-             * Save the current object settings as a preset under the given name. If there
-             * is already a preset by this `name` it will be overwritten.
-             * @param name preset name to save
-             */
-            vfunc_save_preset(name: string): boolean;
-            /**
-             * Sets a new `value` for an existing meta data item or adds a new item. Meta
-             * data `tag` names can be something like e.g. "comment". Supplying %NULL for the
-             * `value` will unset an existing value.
-             * @param name preset name
-             * @param tag meta data item name
-             * @param value new value
-             */
-            vfunc_set_meta(name: string, tag: string, value?: string | null): boolean;
         }
 
         export const Preset: PresetNamespace & {
@@ -24144,6 +24156,24 @@ declare module 'gi://Gst?version=1.0' {
         };
 
         namespace URIHandler {
+            /**
+             * Interface for implementing URIHandler.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the currently handled URI.
+                 */
+                vfunc_get_uri(): string | null;
+                /**
+                 * Tries to set the URI of the given handler.
+                 * @param uri URI to set
+                 */
+                vfunc_set_uri(uri: string): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24153,7 +24183,7 @@ declare module 'gi://Gst?version=1.0' {
             $gtype: GObject.GType<URIHandler>;
             prototype: URIHandler;
         }
-        interface URIHandler extends GObject.Object {
+        interface URIHandler extends GObject.Object, URIHandler.Interface {
             // Methods
 
             /**
@@ -24178,18 +24208,6 @@ declare module 'gi://Gst?version=1.0' {
              * @returns %TRUE if the URI was set successfully, else %FALSE.
              */
             set_uri(uri: string): boolean;
-
-            // Virtual methods
-
-            /**
-             * Gets the currently handled URI.
-             */
-            vfunc_get_uri(): string | null;
-            /**
-             * Tries to set the URI of the given handler.
-             * @param uri URI to set
-             */
-            vfunc_set_uri(uri: string): boolean;
         }
 
         export const URIHandler: URIHandlerNamespace & {

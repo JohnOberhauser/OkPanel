@@ -596,11 +596,11 @@ declare module 'gi://GstController?version=1.0' {
              */
             find_control_point_iter(timestamp: Gst.ClockTime): GLib.SequenceIter | null;
             /**
-             * Returns a read-only copy of the list of #GstTimedValue for the given property.
+             * Returns a read-only copy of the list of #GstControlPoint for the given property.
              * Free the list after done with it.
              * @returns a copy of the list, or %NULL if the property isn't handled by the controller
              */
-            get_all(): Gst.TimedValue[];
+            get_all(): ControlPoint[];
             /**
              * Get the number of control points that are set.
              * @returns the number of control points that are set.

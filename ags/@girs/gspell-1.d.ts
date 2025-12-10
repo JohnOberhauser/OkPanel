@@ -6734,6 +6734,21 @@ declare module 'gi://Gspell?version=1' {
         type TextBufferClass = typeof TextBuffer;
         type TextViewClass = typeof TextView;
         namespace LanguageChooser {
+            /**
+             * Interface for implementing LanguageChooser.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                vfunc_get_language_full(default_language: boolean): Language;
+                /**
+                 * Sets the selected language.
+                 * @param language a #GspellLanguage or %NULL to pick the default   language.
+                 */
+                vfunc_set_language(language?: Language | null): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6747,7 +6762,7 @@ declare module 'gi://Gspell?version=1' {
             $gtype: GObject.GType<LanguageChooser>;
             prototype: LanguageChooser;
         }
-        interface LanguageChooser extends GObject.Object {
+        interface LanguageChooser extends GObject.Object, LanguageChooser.Interface {
             // Properties
 
             /**
@@ -6780,15 +6795,6 @@ declare module 'gi://Gspell?version=1' {
              */
             set_language(language?: Language | null): void;
             set_language_code(language_code?: string | null): void;
-
-            // Virtual methods
-
-            vfunc_get_language_full(default_language: boolean): Language;
-            /**
-             * Sets the selected language.
-             * @param language a #GspellLanguage or %NULL to pick the default   language.
-             */
-            vfunc_set_language(language?: Language | null): void;
         }
 
         export const LanguageChooser: LanguageChooserNamespace & {
@@ -6796,6 +6802,41 @@ declare module 'gi://Gspell?version=1' {
         };
 
         namespace Navigator {
+            /**
+             * Interface for implementing Navigator.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Changes the current `word` by `change_to` in the text. `word` must be the same
+                 * as returned by the last call to gspell_navigator_goto_next().
+                 *
+                 * This function doesn't call gspell_checker_set_correction(). A widget using a
+                 * #GspellNavigator should call gspell_checker_set_correction() in addition to
+                 * this function.
+                 * @param word the word to change.
+                 * @param change_to the replacement.
+                 */
+                vfunc_change(word: string, change_to: string): void;
+                /**
+                 * Changes all occurrences of `word` by `change_to` in the text.
+                 *
+                 * This function doesn't call gspell_checker_set_correction(). A widget using a
+                 * #GspellNavigator should call gspell_checker_set_correction() in addition to
+                 * this function.
+                 * @param word the word to change.
+                 * @param change_to the replacement.
+                 */
+                vfunc_change_all(word: string, change_to: string): void;
+                /**
+                 * Goes to the next misspelled word. When called the first time, goes to the
+                 * first misspelled word.
+                 */
+                vfunc_goto_next(): [boolean, string, Checker | null];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -6805,7 +6846,7 @@ declare module 'gi://Gspell?version=1' {
             $gtype: GObject.GType<Navigator>;
             prototype: Navigator;
         }
-        interface Navigator extends GObject.InitiallyUnowned {
+        interface Navigator extends GObject.InitiallyUnowned, Navigator.Interface {
             // Methods
 
             /**
@@ -6835,35 +6876,6 @@ declare module 'gi://Gspell?version=1' {
              * @returns %TRUE if a next misspelled word has been found, %FALSE if the spell checking is finished or if an error occurred.
              */
             goto_next(): [boolean, string, Checker | null];
-
-            // Virtual methods
-
-            /**
-             * Changes the current `word` by `change_to` in the text. `word` must be the same
-             * as returned by the last call to gspell_navigator_goto_next().
-             *
-             * This function doesn't call gspell_checker_set_correction(). A widget using a
-             * #GspellNavigator should call gspell_checker_set_correction() in addition to
-             * this function.
-             * @param word the word to change.
-             * @param change_to the replacement.
-             */
-            vfunc_change(word: string, change_to: string): void;
-            /**
-             * Changes all occurrences of `word` by `change_to` in the text.
-             *
-             * This function doesn't call gspell_checker_set_correction(). A widget using a
-             * #GspellNavigator should call gspell_checker_set_correction() in addition to
-             * this function.
-             * @param word the word to change.
-             * @param change_to the replacement.
-             */
-            vfunc_change_all(word: string, change_to: string): void;
-            /**
-             * Goes to the next misspelled word. When called the first time, goes to the
-             * first misspelled word.
-             */
-            vfunc_goto_next(): [boolean, string, Checker | null];
         }
 
         export const Navigator: NavigatorNamespace & {

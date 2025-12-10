@@ -520,7 +520,7 @@ declare module 'gi://AstalBluetooth?version=0.1' {
              * This is a generic method to connect any profiles the remote device supports that can be connected to.
              * Possible errors: `NotReady`, `Failed`, `InProgress`, `AlreadyConnected`.
              */
-            connect_device(): Promise<void>;
+            connect_device(): globalThis.Promise<void>;
             /**
              * This is a generic method to connect any profiles the remote device supports that can be connected to.
              * Possible errors: `NotReady`, `Failed`, `InProgress`, `AlreadyConnected`.
@@ -532,13 +532,13 @@ declare module 'gi://AstalBluetooth?version=0.1' {
              * Possible errors: `NotReady`, `Failed`, `InProgress`, `AlreadyConnected`.
              * @param _callback_
              */
-            connect_device(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+            connect_device(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
             connect_device_finish(_res_: Gio.AsyncResult): void;
             /**
              * This method gracefully disconnects all connected profiles.
              * Possible errors: `NotConnected`.
              */
-            disconnect_device(): Promise<void>;
+            disconnect_device(): globalThis.Promise<void>;
             /**
              * This method gracefully disconnects all connected profiles.
              * Possible errors: `NotConnected`.
@@ -550,7 +550,7 @@ declare module 'gi://AstalBluetooth?version=0.1' {
              * Possible errors: `NotConnected`.
              * @param _callback_
              */
-            disconnect_device(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+            disconnect_device(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
             disconnect_device_finish(_res_: Gio.AsyncResult): void;
             /**
              * This method connects a specific profile of this device. The UUID provided is the remote service UUID for the profile.

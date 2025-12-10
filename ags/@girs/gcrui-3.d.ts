@@ -14665,7 +14665,7 @@ declare module 'gi://GcrUi?version=3' {
              * This method will return immediately and complete asynchronously.
              * @param cancellable optional cancellation object
              */
-            confirm_async(cancellable?: Gio.Cancellable | null): Promise<Gcr.PromptReply>;
+            confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gcr.PromptReply>;
             /**
              * Prompts for confirmation asking a cancel/continue style question.
              * Set the various properties on the prompt before calling this method to
@@ -14688,7 +14688,7 @@ declare module 'gi://GcrUi?version=3' {
             confirm_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Gcr.PromptReply> | void;
+            ): globalThis.Promise<Gcr.PromptReply> | void;
             /**
              * Complete an operation to prompt for confirmation.
              *
@@ -14832,7 +14832,7 @@ declare module 'gi://GcrUi?version=3' {
              * This method will return immediately and complete asynchronously.
              * @param cancellable optional cancellation object
              */
-            password_async(cancellable?: Gio.Cancellable | null): Promise<string>;
+            password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Prompts for password. Set the various properties on the prompt before calling
              * this method to explain which password should be entered.
@@ -14853,7 +14853,7 @@ declare module 'gi://GcrUi?version=3' {
             password_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Complete an operation to prompt for a password.
              *
@@ -17630,6 +17630,31 @@ declare module 'gi://GcrUi?version=3' {
         type ViewerIface = typeof Viewer;
         type ViewerWidgetClass = typeof ViewerWidget;
         namespace Renderer {
+            /**
+             * Interface for implementing Renderer.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * signal emitted when data being rendered changes
+                 */
+                vfunc_data_changed(): void;
+                /**
+                 * method invoked to populate a popup menu with additional
+                 *                  renderer options
+                 * @param viewer
+                 * @param menu
+                 */
+                vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
+                /**
+                 * Render the contents of the renderer to the given viewer.
+                 * @param viewer The viewer to render to.
+                 */
+                vfunc_render_view(viewer: Viewer): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17662,7 +17687,7 @@ declare module 'gi://GcrUi?version=3' {
              */
             register_well_known(): void;
         }
-        interface Renderer extends GObject.Object {
+        interface Renderer extends GObject.Object, Renderer.Interface {
             // Properties
 
             /**
@@ -17705,25 +17730,6 @@ declare module 'gi://GcrUi?version=3' {
              * @param attrs attributes to set
              */
             set_attributes(attrs?: Gck.Attributes | null): void;
-
-            // Virtual methods
-
-            /**
-             * signal emitted when data being rendered changes
-             */
-            vfunc_data_changed(): void;
-            /**
-             * method invoked to populate a popup menu with additional
-             *                  renderer options
-             * @param viewer
-             * @param menu
-             */
-            vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
-            /**
-             * Render the contents of the renderer to the given viewer.
-             * @param viewer The viewer to render to.
-             */
-            vfunc_render_view(viewer: Viewer): void;
         }
 
         export const Renderer: RendererNamespace & {
@@ -17731,6 +17737,41 @@ declare module 'gi://GcrUi?version=3' {
         };
 
         namespace Viewer {
+            /**
+             * Interface for implementing Viewer.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Add a renderer to this viewer.
+                 * @param renderer The renderer to add
+                 */
+                vfunc_add_renderer(renderer: Renderer): void;
+                /**
+                 * Get the number of renderers present in the viewer.
+                 */
+                vfunc_count_renderers(): number;
+                /**
+                 * Get a pointer to the renderer at the given index. It is an error to request
+                 * an index that is out of bounds.
+                 * @param index_ The index of the renderer to get
+                 */
+                vfunc_get_renderer(index_: number): Renderer;
+                /**
+                 * Insert a renderer at a specific point in the viewer
+                 * @param renderer the renderer to insert
+                 * @param before the renderer to insert before
+                 */
+                vfunc_insert_renderer(renderer: Renderer, before?: Renderer | null): void;
+                /**
+                 * Remove a renderer from this viewer.
+                 * @param renderer The renderer to remove
+                 */
+                vfunc_remove_renderer(renderer: Renderer): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -17751,7 +17792,7 @@ declare module 'gi://GcrUi?version=3' {
              */
             new_scrolled(): Viewer;
         }
-        interface Viewer extends Gtk.Widget {
+        interface Viewer extends Gtk.Widget, Viewer.Interface {
             // Methods
 
             /**
@@ -17782,35 +17823,6 @@ declare module 'gi://GcrUi?version=3' {
              * @param renderer The renderer to remove
              */
             remove_renderer(renderer: Renderer): void;
-
-            // Virtual methods
-
-            /**
-             * Add a renderer to this viewer.
-             * @param renderer The renderer to add
-             */
-            vfunc_add_renderer(renderer: Renderer): void;
-            /**
-             * Get the number of renderers present in the viewer.
-             */
-            vfunc_count_renderers(): number;
-            /**
-             * Get a pointer to the renderer at the given index. It is an error to request
-             * an index that is out of bounds.
-             * @param index_ The index of the renderer to get
-             */
-            vfunc_get_renderer(index_: number): Renderer;
-            /**
-             * Insert a renderer at a specific point in the viewer
-             * @param renderer the renderer to insert
-             * @param before the renderer to insert before
-             */
-            vfunc_insert_renderer(renderer: Renderer, before?: Renderer | null): void;
-            /**
-             * Remove a renderer from this viewer.
-             * @param renderer The renderer to remove
-             */
-            vfunc_remove_renderer(renderer: Renderer): void;
         }
 
         export const Viewer: ViewerNamespace & {

@@ -1164,9 +1164,9 @@ declare module 'gi://GstRtsp?version=1.0' {
             get_ignore_x_server_reply(): boolean;
             /**
              * Retrieve the IP address of the other end of `conn`.
-             * @returns The IP address as a string. this value remains valid until the connection is closed.
+             * @returns The IP address as a string. This value remains valid until the connection is closed.
              */
-            get_ip(): string;
+            get_ip(): string | null;
             /**
              * Get the file descriptor for reading.
              * @returns the file descriptor used for reading or %NULL on error. The file descriptor remains valid until the connection is closed.
@@ -2174,6 +2174,25 @@ declare module 'gi://GstRtsp?version=1.0' {
         }
 
         namespace RTSPExtension {
+            /**
+             * Interface for implementing RTSPExtension.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                vfunc_after_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
+                vfunc_before_send(req: RTSPMessage): RTSPResult;
+                vfunc_configure_stream(caps: Gst.Caps): boolean;
+                vfunc_detect_server(resp: RTSPMessage): boolean;
+                vfunc_get_transports(protocols: RTSPLowerTrans, transport: string): RTSPResult;
+                vfunc_parse_sdp(sdp: GstSdp.SDPMessage, s: Gst.Structure): RTSPResult;
+                vfunc_receive_request(req: RTSPMessage): RTSPResult;
+                vfunc_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
+                vfunc_setup_media(media: GstSdp.SDPMedia): RTSPResult;
+                vfunc_stream_select(url: RTSPUrl): RTSPResult;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2183,7 +2202,7 @@ declare module 'gi://GstRtsp?version=1.0' {
             $gtype: GObject.GType<RTSPExtension>;
             prototype: RTSPExtension;
         }
-        interface RTSPExtension extends GObject.Object {
+        interface RTSPExtension extends GObject.Object, RTSPExtension.Interface {
             // Methods
 
             after_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
@@ -2196,19 +2215,6 @@ declare module 'gi://GstRtsp?version=1.0' {
             send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
             setup_media(media: GstSdp.SDPMedia): RTSPResult;
             stream_select(url: RTSPUrl): RTSPResult;
-
-            // Virtual methods
-
-            vfunc_after_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
-            vfunc_before_send(req: RTSPMessage): RTSPResult;
-            vfunc_configure_stream(caps: Gst.Caps): boolean;
-            vfunc_detect_server(resp: RTSPMessage): boolean;
-            vfunc_get_transports(protocols: RTSPLowerTrans, transport: string): RTSPResult;
-            vfunc_parse_sdp(sdp: GstSdp.SDPMessage, s: Gst.Structure): RTSPResult;
-            vfunc_receive_request(req: RTSPMessage): RTSPResult;
-            vfunc_send(req: RTSPMessage, resp: RTSPMessage): RTSPResult;
-            vfunc_setup_media(media: GstSdp.SDPMedia): RTSPResult;
-            vfunc_stream_select(url: RTSPUrl): RTSPResult;
         }
 
         export const RTSPExtension: RTSPExtensionNamespace & {

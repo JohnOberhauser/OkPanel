@@ -2391,7 +2391,7 @@ declare module 'gi://GstAudio?version=1.0' {
             set latency_time(val: number);
             get latencyTime(): number;
             set latencyTime(val: number);
-            // This accessor conflicts with a property or field in a parent class or interface.
+            // This accessor conflicts with a field or function name in a parent class or interface.
             provide_clock: boolean | any;
             get provideClock(): boolean;
             set provideClock(val: boolean);
@@ -2613,7 +2613,7 @@ declare module 'gi://GstAudio?version=1.0' {
             set latency_time(val: number);
             get latencyTime(): number;
             set latencyTime(val: number);
-            // This accessor conflicts with a property or field in a parent class or interface.
+            // This accessor conflicts with a field or function name in a parent class or interface.
             provide_clock: boolean | any;
             get provideClock(): boolean;
             set provideClock(val: boolean);

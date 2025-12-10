@@ -206,16 +206,16 @@ declare module 'gi://GdkWayland?version=4.0' {
              */
             get_egl_display(): any | null;
             /**
-             * Gets the startup notification ID for a Wayland display, or %NULL
+             * Gets the startup notification ID for a Wayland display, or `NULL`
              * if no ID has been defined.
              * @returns the startup notification ID for @display
              */
             get_startup_notification_id(): string | null;
             /**
-             * Returns %TRUE if the interface was found in the display
+             * Returns true if the interface was found in the display
              * `wl_registry.global` handler.
              * @param global global interface to query in the registry
-             * @returns %TRUE if the global is offered by the compositor
+             * @returns true if the global is offered by the compositor
              */
             query_registry(global: string): boolean;
             /**
@@ -765,9 +765,9 @@ declare module 'gi://GdkWayland?version=4.0' {
              *
              * Use [method`Gdk`.Display.supports_input_shapes] to find out if
              * a particular backend supports input regions.
-             * @param region region of surface to be reactive
+             * @param region region of surface to be reactive,   or %NULL to make the entire surface reactive
              */
-            set_input_region(region: cairo.Region): void;
+            set_input_region(region?: cairo.Region | null): void;
             /**
              * Marks a region of the `GdkSurface` as opaque.
              *
@@ -935,9 +935,11 @@ declare module 'gi://GdkWayland?version=4.0' {
                 'notify::scale': (pspec: GObject.ParamSpec) => void;
                 'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
                 'notify::width': (pspec: GObject.ParamSpec) => void;
+                'notify::capabilities': (pspec: GObject.ParamSpec) => void;
                 'notify::decorated': (pspec: GObject.ParamSpec) => void;
                 'notify::deletable': (pspec: GObject.ParamSpec) => void;
                 'notify::fullscreen-mode': (pspec: GObject.ParamSpec) => void;
+                'notify::gravity': (pspec: GObject.ParamSpec) => void;
                 'notify::icon-list': (pspec: GObject.ParamSpec) => void;
                 'notify::modal': (pspec: GObject.ParamSpec) => void;
                 'notify::shortcuts-inhibited': (pspec: GObject.ParamSpec) => void;
@@ -1072,6 +1074,10 @@ declare module 'gi://GdkWayland?version=4.0' {
 
             // Inherited properties
             /**
+             * The capabilities that are available for this toplevel.
+             */
+            get capabilities(): Gdk.ToplevelCapabilities;
+            /**
              * Whether the window manager should add decorations.
              */
             get decorated(): boolean;
@@ -1091,6 +1097,20 @@ declare module 'gi://GdkWayland?version=4.0' {
              */
             get fullscreenMode(): Gdk.FullscreenMode;
             set fullscreenMode(val: Gdk.FullscreenMode);
+            /**
+             * The gravity to use when resizing a surface programmatically.
+             *
+             * Gravity describes which point of the surface we want to keep
+             * fixed (meaning that the surface will grow in the opposite direction).
+             * For example, a gravity of `GDK_GRAVITY_NORTH_EAST` means that we
+             * want to fix top right corner of the surface.
+             *
+             * This property is just a hint that may affect the result when negotiating
+             * toplevel sizes with the windowing system. It does not affect interactive
+             * resizes started with [method`Gdk`.Toplevel.begin_resize].
+             */
+            get gravity(): Gdk.Gravity;
+            set gravity(val: Gdk.Gravity);
             /**
              * A list of textures to use as icon.
              */
@@ -1238,6 +1258,16 @@ declare module 'gi://GdkWayland?version=4.0' {
              */
             focus(timestamp: number): void;
             /**
+             * The capabilities that are available for this toplevel.
+             */
+            get_capabilities(): Gdk.ToplevelCapabilities;
+            /**
+             * Returns the gravity that is used when changing the toplevel
+             * size programmatically.
+             * @returns the gravity
+             */
+            get_gravity(): Gdk.Gravity;
+            /**
              * Gets the bitwise or of the currently active surface state flags,
              * from the `GdkToplevelState` enumeration.
              * @returns surface state bitfield
@@ -1321,6 +1351,12 @@ declare module 'gi://GdkWayland?version=4.0' {
              * @param deletable %TRUE to request a delete button
              */
             set_deletable(deletable: boolean): void;
+            /**
+             * Sets the gravity that is used when changing the toplevel
+             * size programmatically.
+             * @param gravity the new gravity
+             */
+            set_gravity(gravity: Gdk.Gravity | null): void;
             /**
              * Sets a list of icons for the surface.
              *
@@ -1627,9 +1663,9 @@ declare module 'gi://GdkWayland?version=4.0' {
              *
              * Use [method`Gdk`.Display.supports_input_shapes] to find out if
              * a particular backend supports input regions.
-             * @param region region of surface to be reactive
+             * @param region region of surface to be reactive,   or %NULL to make the entire surface reactive
              */
-            set_input_region(region: cairo.Region): void;
+            set_input_region(region?: cairo.Region | null): void;
             /**
              * Marks a region of the `GdkSurface` as opaque.
              *

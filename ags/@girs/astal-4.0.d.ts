@@ -1031,6 +1031,7 @@ declare module 'gi://Astal?version=4.0' {
                 'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
                 'notify::focus-widget': (pspec: GObject.ParamSpec) => void;
                 'notify::fullscreened': (pspec: GObject.ParamSpec) => void;
+                'notify::gravity': (pspec: GObject.ParamSpec) => void;
                 'notify::handle-menubar-accel': (pspec: GObject.ParamSpec) => void;
                 'notify::hide-on-close': (pspec: GObject.ParamSpec) => void;
                 'notify::icon-name': (pspec: GObject.ParamSpec) => void;

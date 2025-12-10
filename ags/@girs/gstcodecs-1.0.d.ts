@@ -1264,9 +1264,9 @@ declare module 'gi://GstCodecs?version=1.0' {
              *
              * If a `user_data` was previously set, then the previous set `notify` will be called
              * before the `user_data` is replaced.
-             * @param notify a #GDestroyNotify
+             * @param user_data private data
              */
-            set_user_data(notify: GLib.DestroyNotify): void;
+            set_user_data(user_data?: any | null): void;
         }
 
         type H264DecoderClass = typeof H264Decoder;

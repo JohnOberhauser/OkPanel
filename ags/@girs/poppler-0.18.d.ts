@@ -1337,7 +1337,7 @@ declare module 'gi://Poppler?version=0.18' {
          * @param timet an uninitialized #time_t
          * @returns #TRUE, if @timet was set
          */
-        function date_parse(date: string, timet: never): boolean;
+        function date_parse(date: string, timet: number): boolean;
         function error_quark(): GLib.Quark;
         /**
          * Get all available signing certificate information
@@ -2077,10 +2077,20 @@ declare module 'gi://Poppler?version=0.18' {
             // Methods
 
             /**
+             * Returns whether the annotation is drawn below the page content or not.
+             */
+            get_draw_below(): boolean;
+            /**
              * Each element of the return value is a path.
              * @returns a GSList of PopplerPath
              */
             get_ink_list(): Path[];
+            /**
+             * This is typically used for highlight annotations. Technically, this implies that the
+             * annotation is drawn using a multiply blend mode.
+             * @param draw_below whether the annotation should be drawn below the document content
+             */
+            set_draw_below(draw_below: boolean): void;
             /**
              * Each element of `ink_list` is a path. The annotation must have
              * already been added to a page, otherwise the annotation may be
@@ -3172,7 +3182,7 @@ declare module 'gi://Poppler?version=0.18' {
              * Returns the date the document was created as seconds since the Epoch
              * @returns the date the document was created, or -1
              */
-            get_creation_date(): never;
+            get_creation_date(): number;
             /**
              * Returns the date the document was created as a #GDateTime
              * @returns the date the document was created, or %NULL
@@ -3218,7 +3228,7 @@ declare module 'gi://Poppler?version=0.18' {
              * Returns the date the document was most recently modified as seconds since the Epoch
              * @returns the date the document was most recently modified, or -1
              */
-            get_modification_date(): never;
+            get_modification_date(): number;
             /**
              * Returns the date the document was most recently modified as a #GDateTime
              * @returns the date the document was modified, or %NULL
@@ -3427,7 +3437,7 @@ declare module 'gi://Poppler?version=0.18' {
              * entry is removed from the document's Info dictionary.
              * @param creation_date A new creation date
              */
-            set_creation_date(creation_date: never): void;
+            set_creation_date(creation_date: number): void;
             /**
              * Sets the document's creation date. If `creation_datetime` is %NULL,
              * CreationDate entry is removed from the document's Info dictionary.
@@ -3451,7 +3461,7 @@ declare module 'gi://Poppler?version=0.18' {
              * entry is removed from the document's Info dictionary.
              * @param modification_date A new modification date
              */
-            set_modification_date(modification_date: never): void;
+            set_modification_date(modification_date: number): void;
             /**
              * Sets the document's modification date. If `modification_datetime` is %NULL,
              * ModDate entry is removed from the document's Info dictionary.
@@ -3481,7 +3491,7 @@ declare module 'gi://Poppler?version=0.18' {
              * @param signing_data a #PopplerSigningData
              * @param cancellable a #GCancellable
              */
-            sign(signing_data: SigningData, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            sign(signing_data: SigningData, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Sign #document using #signing_data.
              * @param signing_data a #PopplerSigningData
@@ -3503,7 +3513,7 @@ declare module 'gi://Poppler?version=0.18' {
                 signing_data: SigningData,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finish poppler_sign_document and get return status or error.
              * @param result a #GAsyncResult
@@ -3794,7 +3804,7 @@ declare module 'gi://Poppler?version=0.18' {
             signature_validate_async(
                 flags: SignatureValidationFlags | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<SignatureInfo>;
+            ): globalThis.Promise<SignatureInfo>;
             /**
              * Asynchronously validates the cryptographic signature contained in `signature_field`.
              * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
@@ -3816,7 +3826,7 @@ declare module 'gi://Poppler?version=0.18' {
                 flags: SignatureValidationFlags | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<SignatureInfo> | void;
+            ): globalThis.Promise<SignatureInfo> | void;
             /**
              * Finishes validation of the cryptographic signature contained in `signature_field`.
              * See poppler_form_field_signature_validate_async().
@@ -4660,6 +4670,30 @@ declare module 'gi://Poppler?version=0.18' {
              * @param ps_file the PopplerPSFile to render to
              */
             render_to_ps(ps_file: PSFile): void;
+            /**
+             * Render the selection specified by `selection` for `page` to
+             * the given cairo context.  The selection will be rendered using
+             * `background_color` and `background_opacity` for the selection
+             * background. Glyphs will not be drawn.
+             *
+             * If non-NULL, `old_selection` specifies the selection that is already
+             * rendered to `cairo,` in which case this function will (some day)
+             * only render the changed part of the selection.
+             * @param cairo cairo context to render to
+             * @param selection start and end point of selection as a rectangle
+             * @param old_selection previous selection
+             * @param style a #PopplerSelectionStyle
+             * @param background_color color to use for the selection background
+             * @param background_opacity opacity to use for the selection background
+             */
+            render_transparent_selection(
+                cairo: cairo.Context,
+                selection: Rectangle,
+                old_selection: Rectangle,
+                style: SelectionStyle | null,
+                background_color: Color,
+                background_opacity: number,
+            ): void;
         }
 
         namespace StructureElement {

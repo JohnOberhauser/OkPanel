@@ -447,6 +447,21 @@ declare module 'gi://GstAllocators?version=1.0' {
         type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
         type ShmAllocatorClass = typeof ShmAllocator;
         namespace PhysMemoryAllocator {
+            /**
+             * Interface for implementing PhysMemoryAllocator.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Implementations shall return the physicall memory address
+                 *    that is backing the provided memory, or 0 if none.
+                 * @param mem
+                 */
+                vfunc_get_phys_addr(mem: Gst.Memory): never;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -456,16 +471,7 @@ declare module 'gi://GstAllocators?version=1.0' {
             $gtype: GObject.GType<PhysMemoryAllocator>;
             prototype: PhysMemoryAllocator;
         }
-        interface PhysMemoryAllocator extends Gst.Allocator {
-            // Virtual methods
-
-            /**
-             * Implementations shall return the physicall memory address
-             *    that is backing the provided memory, or 0 if none.
-             * @param mem
-             */
-            vfunc_get_phys_addr(mem: Gst.Memory): never;
-        }
+        interface PhysMemoryAllocator extends Gst.Allocator, PhysMemoryAllocator.Interface {}
 
         export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace & {
             new (): PhysMemoryAllocator; // This allows `obj instanceof PhysMemoryAllocator`

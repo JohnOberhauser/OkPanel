@@ -1135,7 +1135,7 @@ declare module 'gi://Colord?version=1.0' {
              * Connects to the colord daemon.
              * @param cancellable a #GCancellable or %NULL
              */
-            connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Connects to the colord daemon.
              * @param cancellable a #GCancellable or %NULL
@@ -1150,7 +1150,7 @@ declare module 'gi://Colord?version=1.0' {
             connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             connect(...args: never[]): any;
             /**
              * Gets the result from the asynchronous function.
@@ -1179,7 +1179,7 @@ declare module 'gi://Colord?version=1.0' {
                 scope: ObjectScope | null,
                 properties?: GLib.HashTable<string, string> | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<Device>;
+            ): globalThis.Promise<Device>;
             /**
              * Creates a color device.
              * @param id identifier for the device
@@ -1209,7 +1209,7 @@ declare module 'gi://Colord?version=1.0' {
                 properties?: GLib.HashTable<string, string> | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Device> | void;
+            ): globalThis.Promise<Device> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1245,7 +1245,7 @@ declare module 'gi://Colord?version=1.0' {
                 scope: ObjectScope | null,
                 properties?: GLib.HashTable<string, string> | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<Profile>;
+            ): globalThis.Promise<Profile>;
             /**
              * Creates a color profile.
              * @param id identifier for the profile
@@ -1275,7 +1275,7 @@ declare module 'gi://Colord?version=1.0' {
                 properties?: GLib.HashTable<string, string> | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile> | void;
+            ): globalThis.Promise<Profile> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1292,7 +1292,7 @@ declare module 'gi://Colord?version=1.0' {
                 icc: Icc,
                 scope: ObjectScope | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<Profile>;
+            ): globalThis.Promise<Profile>;
             /**
              * Creates a color profile for an #CdIcc Object.
              * @param icc #CdIcc object
@@ -1318,7 +1318,7 @@ declare module 'gi://Colord?version=1.0' {
                 scope: ObjectScope | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile> | void;
+            ): globalThis.Promise<Profile> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1362,7 +1362,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param device a #CdDevice
              * @param cancellable a #GCancellable, or %NULL
              */
-            delete_device(device: Device, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            delete_device(device: Device, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Deletes a device.
              * @param device a #CdDevice
@@ -1384,7 +1384,7 @@ declare module 'gi://Colord?version=1.0' {
                 device: Device,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1406,7 +1406,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param profile a #CdProfile
              * @param cancellable a #GCancellable, or %NULL
              */
-            delete_profile(profile: Profile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            delete_profile(profile: Profile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Deletes a profile.
              * @param profile a #CdProfile
@@ -1428,7 +1428,7 @@ declare module 'gi://Colord?version=1.0' {
                 profile: Profile,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1450,7 +1450,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param id a device id
              * @param cancellable a #GCancellable, or %NULL
              */
-            find_device(id: string, cancellable?: Gio.Cancellable | null): Promise<Device>;
+            find_device(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Device>;
             /**
              * Finds a device by an ID.
              * @param id a device id
@@ -1472,14 +1472,18 @@ declare module 'gi://Colord?version=1.0' {
                 id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Device> | void;
+            ): globalThis.Promise<Device> | void;
             /**
              * Finds a color device that has a property value.
              * @param key the device property key
              * @param value the device property value
              * @param cancellable a #GCancellable, or %NULL
              */
-            find_device_by_property(key: string, value: string, cancellable?: Gio.Cancellable | null): Promise<Device>;
+            find_device_by_property(
+                key: string,
+                value: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<Device>;
             /**
              * Finds a color device that has a property value.
              * @param key the device property key
@@ -1505,7 +1509,7 @@ declare module 'gi://Colord?version=1.0' {
                 value: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Device> | void;
+            ): globalThis.Promise<Device> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1544,7 +1548,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param id a profile id
              * @param cancellable a #GCancellable, or %NULL
              */
-            find_profile(id: string, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+            find_profile(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Profile>;
             /**
              * Finds a profile by an ID.
              * @param id a profile id
@@ -1566,13 +1570,16 @@ declare module 'gi://Colord?version=1.0' {
                 id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile> | void;
+            ): globalThis.Promise<Profile> | void;
             /**
              * Finds a profile by a filename.
              * @param filename a profile filename
              * @param cancellable a #GCancellable, or %NULL
              */
-            find_profile_by_filename(filename: string, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+            find_profile_by_filename(
+                filename: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<Profile>;
             /**
              * Finds a profile by a filename.
              * @param filename a profile filename
@@ -1594,7 +1601,7 @@ declare module 'gi://Colord?version=1.0' {
                 filename: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile> | void;
+            ): globalThis.Promise<Profile> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1621,7 +1628,7 @@ declare module 'gi://Colord?version=1.0' {
                 key: string,
                 value: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<Profile>;
+            ): globalThis.Promise<Profile>;
             /**
              * Finds a color profile that has a property value.
              * @param key the profile property key
@@ -1647,7 +1654,7 @@ declare module 'gi://Colord?version=1.0' {
                 value: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile> | void;
+            ): globalThis.Promise<Profile> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1686,7 +1693,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param id a sensor id
              * @param cancellable a #GCancellable, or %NULL
              */
-            find_sensor(id: string, cancellable?: Gio.Cancellable | null): Promise<Sensor>;
+            find_sensor(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Sensor>;
             /**
              * Finds a sensor by an ID.
              * @param id a sensor id
@@ -1708,7 +1715,7 @@ declare module 'gi://Colord?version=1.0' {
                 id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Sensor> | void;
+            ): globalThis.Promise<Sensor> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1739,7 +1746,7 @@ declare module 'gi://Colord?version=1.0' {
              * Gets an array of color devices.
              * @param cancellable a #GCancellable, or %NULL
              */
-            get_devices(cancellable?: Gio.Cancellable | null): Promise<Device[]>;
+            get_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<Device[]>;
             /**
              * Gets an array of color devices.
              * @param cancellable a #GCancellable, or %NULL
@@ -1754,13 +1761,16 @@ declare module 'gi://Colord?version=1.0' {
             get_devices(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Device[]> | void;
+            ): globalThis.Promise<Device[]> | void;
             /**
              * Gets an array of color devices.
              * @param kind the type of device.
              * @param cancellable a #GCancellable, or %NULL
              */
-            get_devices_by_kind(kind: DeviceKind | null, cancellable?: Gio.Cancellable | null): Promise<Device[]>;
+            get_devices_by_kind(
+                kind: DeviceKind | null,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<Device[]>;
             /**
              * Gets an array of color devices.
              * @param kind the type of device.
@@ -1782,7 +1792,7 @@ declare module 'gi://Colord?version=1.0' {
                 kind: DeviceKind | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Device[]> | void;
+            ): globalThis.Promise<Device[]> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1825,7 +1835,7 @@ declare module 'gi://Colord?version=1.0' {
              * Gets an array of color profiles.
              * @param cancellable a #GCancellable, or %NULL
              */
-            get_profiles(cancellable?: Gio.Cancellable | null): Promise<Profile[]>;
+            get_profiles(cancellable?: Gio.Cancellable | null): globalThis.Promise<Profile[]>;
             /**
              * Gets an array of color profiles.
              * @param cancellable a #GCancellable, or %NULL
@@ -1840,7 +1850,7 @@ declare module 'gi://Colord?version=1.0' {
             get_profiles(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile[]> | void;
+            ): globalThis.Promise<Profile[]> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1860,7 +1870,7 @@ declare module 'gi://Colord?version=1.0' {
              * Gets an array of color sensors.
              * @param cancellable a #GCancellable, or %NULL
              */
-            get_sensors(cancellable?: Gio.Cancellable | null): Promise<Sensor[]>;
+            get_sensors(cancellable?: Gio.Cancellable | null): globalThis.Promise<Sensor[]>;
             /**
              * Gets an array of color sensors.
              * @param cancellable a #GCancellable, or %NULL
@@ -1875,7 +1885,7 @@ declare module 'gi://Colord?version=1.0' {
             get_sensors(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Sensor[]> | void;
+            ): globalThis.Promise<Sensor[]> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1899,7 +1909,7 @@ declare module 'gi://Colord?version=1.0' {
             get_standard_space(
                 standard_space: StandardSpace | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<Profile>;
+            ): globalThis.Promise<Profile>;
             /**
              * Finds a standard profile space.
              * @param standard_space a profile id
@@ -1921,7 +1931,7 @@ declare module 'gi://Colord?version=1.0' {
                 standard_space: StandardSpace | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile> | void;
+            ): globalThis.Promise<Profile> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1959,7 +1969,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param file a #GFile
              * @param cancellable a #GCancellable, or %NULL
              */
-            import_profile(file: Gio.File, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+            import_profile(file: Gio.File, cancellable?: Gio.Cancellable | null): globalThis.Promise<Profile>;
             /**
              * Imports a color profile into the users home directory.
              *
@@ -1987,7 +1997,7 @@ declare module 'gi://Colord?version=1.0' {
                 file: Gio.File,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile> | void;
+            ): globalThis.Promise<Profile> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2224,7 +2234,7 @@ declare module 'gi://Colord?version=1.0' {
                 relation: DeviceRelation | null,
                 profile: Profile,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Adds a profile to a device.
              * @param relation a #CdDeviceRelation, e.g. #CD_DEVICE_RELATION_HARD
@@ -2250,7 +2260,7 @@ declare module 'gi://Colord?version=1.0' {
                 profile: Profile,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2276,7 +2286,7 @@ declare module 'gi://Colord?version=1.0' {
              * Connects to the object and fills up initial properties.
              * @param cancellable a #GCancellable, or %NULL
              */
-            connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Connects to the object and fills up initial properties.
              * @param cancellable a #GCancellable, or %NULL
@@ -2291,7 +2301,7 @@ declare module 'gi://Colord?version=1.0' {
             connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             connect(...args: never[]): any;
             /**
              * Gets the result from the asynchronous function.
@@ -2402,7 +2412,10 @@ declare module 'gi://Colord?version=1.0' {
              * @param qualifiers a set of qualifiers that can included wildcards
              * @param cancellable a #GCancellable, or %NULL
              */
-            get_profile_for_qualifiers(qualifiers: string, cancellable?: Gio.Cancellable | null): Promise<Profile>;
+            get_profile_for_qualifiers(
+                qualifiers: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<Profile>;
             /**
              * Gets the preferred profile for some qualifiers.
              * @param qualifiers a set of qualifiers that can included wildcards
@@ -2424,7 +2437,7 @@ declare module 'gi://Colord?version=1.0' {
                 qualifiers: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Profile> | void;
+            ): globalThis.Promise<Profile> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2446,7 +2459,10 @@ declare module 'gi://Colord?version=1.0' {
              * @param profile a #CdProfile instance
              * @param cancellable a #GCancellable, or %NULL
              */
-            get_profile_relation(profile: Profile, cancellable?: Gio.Cancellable | null): Promise<DeviceRelation>;
+            get_profile_relation(
+                profile: Profile,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<DeviceRelation>;
             /**
              * Gets the property relationship to the device.
              * @param profile a #CdProfile instance
@@ -2468,7 +2484,7 @@ declare module 'gi://Colord?version=1.0' {
                 profile: Profile,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<DeviceRelation> | void;
+            ): globalThis.Promise<DeviceRelation> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2520,7 +2536,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param profile a #CdProfile instance
              * @param cancellable a #GCancellable, or %NULL
              */
-            make_profile_default(profile: Profile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            make_profile_default(profile: Profile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Makes an already added profile default for a device.
              * @param profile a #CdProfile instance
@@ -2542,7 +2558,7 @@ declare module 'gi://Colord?version=1.0' {
                 profile: Profile,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2564,7 +2580,7 @@ declare module 'gi://Colord?version=1.0' {
              * returned if cd_device_get_profile_for_qualifiers_sync() is used.
              * @param cancellable a #GCancellable, or %NULL
              */
-            profiling_inhibit(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            profiling_inhibit(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Sets up the device for profiling and causes no profiles to be
              * returned if cd_device_get_profile_for_qualifiers_sync() is used.
@@ -2581,7 +2597,7 @@ declare module 'gi://Colord?version=1.0' {
             profiling_inhibit(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2603,7 +2619,7 @@ declare module 'gi://Colord?version=1.0' {
              * returned if cd_device_get_profile_for_qualifiers_sync() is used.
              * @param cancellable a #GCancellable, or %NULL
              */
-            profiling_uninhibit(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            profiling_uninhibit(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Restores the device after profiling and causes normal profiles to be
              * returned if cd_device_get_profile_for_qualifiers_sync() is used.
@@ -2623,7 +2639,7 @@ declare module 'gi://Colord?version=1.0' {
             profiling_uninhibit(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2645,7 +2661,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param profile a #CdProfile instance
              * @param cancellable a #GCancellable, or %NULL
              */
-            remove_profile(profile: Profile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            remove_profile(profile: Profile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Removes a profile from a device.
              * @param profile a #CdProfile instance
@@ -2667,7 +2683,7 @@ declare module 'gi://Colord?version=1.0' {
                 profile: Profile,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2699,7 +2715,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param enabled the enabled state
              * @param cancellable a #GCancellable, or %NULL
              */
-            set_enabled(enabled: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_enabled(enabled: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Enables or disables a device.
              * @param enabled the enabled state
@@ -2721,7 +2737,7 @@ declare module 'gi://Colord?version=1.0' {
                 enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -2779,7 +2795,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param value a property key
              * @param cancellable a #GCancellable, or %NULL
              */
-            set_property(key: string, value: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_property(key: string, value: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Sets a property on the device.
              * @param key a property key
@@ -2805,7 +2821,7 @@ declare module 'gi://Colord?version=1.0' {
                 value: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             // Conflicted with GObject.Object.set_property
             set_property(...args: never[]): any;
             /**
@@ -3957,7 +3973,7 @@ declare module 'gi://Colord?version=1.0' {
              * Connects to the object and fills up initial properties.
              * @param cancellable a #GCancellable, or %NULL
              */
-            connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Connects to the object and fills up initial properties.
              * @param cancellable a #GCancellable, or %NULL
@@ -3972,7 +3988,7 @@ declare module 'gi://Colord?version=1.0' {
             connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             connect(...args: never[]): any;
             /**
              * Gets the result from the asynchronous function.
@@ -4096,7 +4112,7 @@ declare module 'gi://Colord?version=1.0' {
              * Sets the profile system wide.
              * @param cancellable a #GCancellable, or %NULL
              */
-            install_system_wide(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            install_system_wide(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Sets the profile system wide.
              * @param cancellable a #GCancellable, or %NULL
@@ -4114,7 +4130,7 @@ declare module 'gi://Colord?version=1.0' {
             install_system_wide(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -4148,7 +4164,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param value a key value
              * @param cancellable a #GCancellable, or %NULL
              */
-            set_property(key: string, value: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_property(key: string, value: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Deletes a color device.
              * @param key a key name
@@ -4174,7 +4190,7 @@ declare module 'gi://Colord?version=1.0' {
                 value: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             // Conflicted with GObject.Object.set_property
             set_property(...args: never[]): any;
             /**
@@ -4389,7 +4405,7 @@ declare module 'gi://Colord?version=1.0' {
              * Connects to the sensor.
              * @param cancellable a #GCancellable or %NULL
              */
-            connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Connects to the sensor.
              * @param cancellable a #GCancellable or %NULL
@@ -4404,7 +4420,7 @@ declare module 'gi://Colord?version=1.0' {
             connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             connect(...args: never[]): any;
             /**
              * Gets the result from the asynchronous function.
@@ -4504,7 +4520,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param cap a #CdSensorCap
              * @param cancellable a #GCancellable, or %NULL
              */
-            get_sample(cap: SensorCap | null, cancellable?: Gio.Cancellable | null): Promise<ColorXYZ>;
+            get_sample(cap: SensorCap | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<ColorXYZ>;
             /**
              * Gets a color sample from a sensor
              * @param cap a #CdSensorCap
@@ -4526,7 +4542,7 @@ declare module 'gi://Colord?version=1.0' {
                 cap: SensorCap | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<ColorXYZ> | void;
+            ): globalThis.Promise<ColorXYZ> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -4553,7 +4569,7 @@ declare module 'gi://Colord?version=1.0' {
              * @param cap a #CdSensorCap
              * @param cancellable a #GCancellable, or %NULL
              */
-            get_spectrum(cap: SensorCap | null, cancellable?: Gio.Cancellable | null): Promise<Spectrum>;
+            get_spectrum(cap: SensorCap | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<Spectrum>;
             /**
              * Gets a color spectrum from a sensor
              * @param cap a #CdSensorCap
@@ -4575,7 +4591,7 @@ declare module 'gi://Colord?version=1.0' {
                 cap: SensorCap | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Spectrum> | void;
+            ): globalThis.Promise<Spectrum> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -4612,7 +4628,7 @@ declare module 'gi://Colord?version=1.0' {
              * Locks the device so we can use it.
              * @param cancellable a #GCancellable, or %NULL
              */
-            lock(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            lock(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Locks the device so we can use it.
              * @param cancellable a #GCancellable, or %NULL
@@ -4627,7 +4643,7 @@ declare module 'gi://Colord?version=1.0' {
             lock(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -4656,7 +4672,7 @@ declare module 'gi://Colord?version=1.0' {
             set_options(
                 values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Sets options on the sensor device.
              * @param values the options
@@ -4678,7 +4694,7 @@ declare module 'gi://Colord?version=1.0' {
                 values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -4703,7 +4719,7 @@ declare module 'gi://Colord?version=1.0' {
              * Unlocks the sensor for use by other programs.
              * @param cancellable a #GCancellable, or %NULL
              */
-            unlock(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            unlock(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Unlocks the sensor for use by other programs.
              * @param cancellable a #GCancellable, or %NULL
@@ -4718,7 +4734,7 @@ declare module 'gi://Colord?version=1.0' {
             unlock(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult

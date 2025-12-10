@@ -47,7 +47,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
          * @param mtime the mtime
          * @returns TRUE if the thumbnail has the right @uri and @mtime
          */
-        function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: never): boolean;
+        function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: number): boolean;
         /**
          * Returns the filename that a thumbnail of size `size` for `uri` would have.
          * This function is threadsafe and does no blocking I/O.
@@ -170,7 +170,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
             description?: string | null,
             connection?: Gio.DBusConnection | null,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * If the current process is running inside a user systemd instance, then move
          * the launched PID into a transient scope. The given `name` will be used to
@@ -240,7 +240,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
             connection?: Gio.DBusConnection | null,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<string> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to create a transient scope that was
          * started with gnome_start_systemd_scope().
@@ -315,7 +315,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
              * @param mtime the mtime of the file
              * @returns TRUE if the file can be thumbnailed.
              */
-            can_thumbnail(uri: string, mime_type: string, mtime: never): boolean;
+            can_thumbnail(uri: string, mime_type: string, mtime: number): boolean;
             /**
              * Creates a failed thumbnail for the file so that we don't try
              * to re-thumbnail the file later.
@@ -326,7 +326,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
              * @param cancellable a GCancellable object, or NULL
              * @returns TRUE if everything went fine; FALSE if there was an error.
              */
-            create_failed_thumbnail(uri: string, mtime: never, cancellable?: Gio.Cancellable | null): boolean;
+            create_failed_thumbnail(uri: string, mtime: number, cancellable?: Gio.Cancellable | null): boolean;
             /**
              * Asynchronous version of gnome_desktop_thumbnail_factory_create_failed_thumbnail()
              *
@@ -337,9 +337,9 @@ declare module 'gi://GnomeDesktop?version=4.0' {
              */
             create_failed_thumbnail_async(
                 uri: string,
-                original_mtime: never,
+                original_mtime: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronous version of gnome_desktop_thumbnail_factory_create_failed_thumbnail()
              *
@@ -351,7 +351,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
              */
             create_failed_thumbnail_async(
                 uri: string,
-                original_mtime: never,
+                original_mtime: number,
                 cancellable: Gio.Cancellable | null,
                 callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
@@ -366,10 +366,10 @@ declare module 'gi://GnomeDesktop?version=4.0' {
              */
             create_failed_thumbnail_async(
                 uri: string,
-                original_mtime: never,
+                original_mtime: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             create_failed_thumbnail_finish(result: Gio.AsyncResult): boolean;
             /**
              * Tries to generate a thumbnail for the specified file. If it succeeds
@@ -394,7 +394,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
                 uri: string,
                 mime_type: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GdkPixbuf.Pixbuf>;
+            ): globalThis.Promise<GdkPixbuf.Pixbuf>;
             /**
              * Asynchronous version of gnome_desktop_thumbnail_factory_generate_thumbnail()
              *
@@ -424,7 +424,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
                 mime_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GdkPixbuf.Pixbuf> | void;
+            ): globalThis.Promise<GdkPixbuf.Pixbuf> | void;
             generate_thumbnail_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf;
             /**
              * Tries to locate an failed thumbnail for the file specified. Writing
@@ -436,7 +436,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
              * @param mtime the mtime of the file
              * @returns TRUE if there is a failed thumbnail for the file.
              */
-            has_valid_failed_thumbnail(uri: string, mtime: never): boolean;
+            has_valid_failed_thumbnail(uri: string, mtime: number): boolean;
             /**
              * Tries to locate an existing thumbnail for the file specified.
              *
@@ -445,7 +445,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
              * @param mtime the mtime of the file
              * @returns The absolute path of the thumbnail, or %NULL if none exist.
              */
-            lookup(uri: string, mtime: never): string;
+            lookup(uri: string, mtime: number): string;
             /**
              * Saves `thumbnail` at the right place. If the save fails a
              * failed thumbnail is written.
@@ -460,7 +460,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
             save_thumbnail(
                 thumbnail: GdkPixbuf.Pixbuf,
                 uri: string,
-                original_mtime: never,
+                original_mtime: number,
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
@@ -475,9 +475,9 @@ declare module 'gi://GnomeDesktop?version=4.0' {
             save_thumbnail_async(
                 thumbnail: GdkPixbuf.Pixbuf,
                 uri: string,
-                original_mtime: never,
+                original_mtime: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronous version of gnome_desktop_thumbnail_factory_save_thumbnail()
              *
@@ -491,7 +491,7 @@ declare module 'gi://GnomeDesktop?version=4.0' {
             save_thumbnail_async(
                 thumbnail: GdkPixbuf.Pixbuf,
                 uri: string,
-                original_mtime: never,
+                original_mtime: number,
                 cancellable: Gio.Cancellable | null,
                 callback: Gio.AsyncReadyCallback<this> | null,
             ): void;
@@ -508,10 +508,10 @@ declare module 'gi://GnomeDesktop?version=4.0' {
             save_thumbnail_async(
                 thumbnail: GdkPixbuf.Pixbuf,
                 uri: string,
-                original_mtime: never,
+                original_mtime: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             save_thumbnail_finish(result: Gio.AsyncResult): boolean;
         }
 

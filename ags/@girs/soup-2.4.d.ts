@@ -11125,7 +11125,10 @@ declare module 'gi://Soup?version=2.4' {
              * @param io_priority the I/O priority for the request.
              * @param cancellable a #GCancellable.
              */
-            next_part_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream | null>;
+            next_part_async(
+                io_priority: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<Gio.InputStream | null>;
             /**
              * Obtains a #GInputStream for the next request. See
              * soup_multipart_input_stream_next_part() for details on the
@@ -11151,7 +11154,7 @@ declare module 'gi://Soup?version=2.4' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Gio.InputStream | null> | void;
+            ): globalThis.Promise<Gio.InputStream | null> | void;
             /**
              * Finishes an asynchronous request for the next part.
              * @param result a #GAsyncResult.
@@ -11323,7 +11326,7 @@ declare module 'gi://Soup?version=2.4' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional cancellable object
              */
-            close_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            close_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Requests an asynchronous closes of the stream, releasing resources related to it.
              * When the operation is finished `callback` will be called.
@@ -11363,7 +11366,7 @@ declare module 'gi://Soup?version=2.4' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
              * @param result a #GAsyncResult.
@@ -11444,7 +11447,10 @@ declare module 'gi://Soup?version=2.4' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            read_all_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
+            read_all_async(
+                io_priority: number,
+                cancellable?: Gio.Cancellable | null,
+            ): [globalThis.Promise<number>, Uint8Array];
             /**
              * Request an asynchronous read of `count` bytes from the stream into the
              * buffer starting at `buffer`.
@@ -11484,7 +11490,7 @@ declare module 'gi://Soup?version=2.4' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
+            ): [globalThis.Promise<number> | void, Uint8Array];
             /**
              * Finishes an asynchronous stream read operation started with
              * [method`InputStream`.read_all_async].
@@ -11526,7 +11532,10 @@ declare module 'gi://Soup?version=2.4' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [Promise<number>, Uint8Array];
+            read_async(
+                io_priority: number,
+                cancellable?: Gio.Cancellable | null,
+            ): [globalThis.Promise<number>, Uint8Array];
             /**
              * Request an asynchronous read of `count` bytes from the stream into the buffer
              * starting at `buffer`. When the operation is finished `callback` will be called.
@@ -11592,7 +11601,7 @@ declare module 'gi://Soup?version=2.4' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): [Promise<number> | void, Uint8Array];
+            ): [globalThis.Promise<number> | void, Uint8Array];
             /**
              * Like g_input_stream_read(), this tries to read `count` bytes from
              * the stream in a blocking fashion. However, rather than reading into
@@ -11651,7 +11660,7 @@ declare module 'gi://Soup?version=2.4' {
                 count: number,
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Bytes>;
+            ): globalThis.Promise<GLib.Bytes>;
             /**
              * Request an asynchronous read of `count` bytes from the stream into a
              * new #GBytes. When the operation is finished `callback` will be
@@ -11715,7 +11724,7 @@ declare module 'gi://Soup?version=2.4' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Bytes> | void;
+            ): globalThis.Promise<GLib.Bytes> | void;
             /**
              * Finishes an asynchronous stream read-into-#GBytes operation.
              * @param result a #GAsyncResult.
@@ -11783,7 +11792,11 @@ declare module 'gi://Soup?version=2.4' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            skip_async(count: number, io_priority: number, cancellable?: Gio.Cancellable | null): Promise<number>;
+            skip_async(
+                count: number,
+                io_priority: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<number>;
             /**
              * Request an asynchronous skip of `count` bytes from the stream.
              * When the operation is finished `callback` will be called.
@@ -11853,7 +11866,7 @@ declare module 'gi://Soup?version=2.4' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes a stream skip operation.
              * @param result a #GAsyncResult.
@@ -12813,7 +12826,7 @@ declare module 'gi://Soup?version=2.4' {
              * a #SoupSessionSync.
              * @param cancellable a #GCancellable or %NULL
              */
-            send_async(cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+            send_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
             /**
              * Begins an asynchronously request for the URI pointed to by
              * `request`.
@@ -12836,7 +12849,7 @@ declare module 'gi://Soup?version=2.4' {
             send_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Gio.InputStream> | void;
+            ): globalThis.Promise<Gio.InputStream> | void;
             /**
              * Gets the result of a soup_request_send_async().
              * @param result the #GAsyncResult
@@ -17116,7 +17129,7 @@ declare module 'gi://Soup?version=2.4' {
                 uri: URI,
                 cancellable?: Gio.Cancellable | null,
                 progress_callback?: SessionConnectProgressCallback | null,
-            ): Promise<Gio.IOStream>;
+            ): globalThis.Promise<Gio.IOStream>;
             /**
              * Start a connection to `uri`. The operation can be monitored by providing a `progress_callback`
              * and finishes when the connection is done or an error ocurred.
@@ -17148,7 +17161,7 @@ declare module 'gi://Soup?version=2.4' {
                 cancellable?: Gio.Cancellable | null,
                 progress_callback?: SessionConnectProgressCallback | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Gio.IOStream> | void;
+            ): globalThis.Promise<Gio.IOStream> | void;
             /**
              * Gets the #GIOStream created for the connection to communicate with the server.
              * @param result the #GAsyncResult passed to your callback
@@ -17372,7 +17385,7 @@ declare module 'gi://Soup?version=2.4' {
              * @param msg a #SoupMessage
              * @param cancellable a #GCancellable
              */
-            send_async(msg: Message, cancellable?: Gio.Cancellable | null): Promise<Gio.InputStream>;
+            send_async(msg: Message, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
             /**
              * Asynchronously sends `msg` and waits for the beginning of a
              * response. When `callback` is called, then either `msg` has been sent,
@@ -17424,7 +17437,7 @@ declare module 'gi://Soup?version=2.4' {
                 msg: Message,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Gio.InputStream> | void;
+            ): globalThis.Promise<Gio.InputStream> | void;
             /**
              * Gets the response to a soup_session_send_async() call and (if
              * successful), returns a #GInputStream that can be used to read the
@@ -17509,7 +17522,7 @@ declare module 'gi://Soup?version=2.4' {
                 origin?: string | null,
                 protocols?: string[] | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<WebsocketConnection>;
+            ): globalThis.Promise<WebsocketConnection>;
             /**
              * Asynchronously creates a #SoupWebsocketConnection to communicate
              * with a remote server.
@@ -17573,7 +17586,7 @@ declare module 'gi://Soup?version=2.4' {
                 protocols?: string[] | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<WebsocketConnection> | void;
+            ): globalThis.Promise<WebsocketConnection> | void;
             /**
              * Gets the #SoupWebsocketConnection response to a
              * soup_session_websocket_connect_async() call and (if successful),
@@ -20193,7 +20206,7 @@ declare module 'gi://Soup?version=2.4' {
 
             static new_from_string(date_string: string): Date;
 
-            static new_from_time_t(when: never): Date;
+            static new_from_time_t(when: number): Date;
 
             // Methods
 
@@ -20265,7 +20278,7 @@ declare module 'gi://Soup?version=2.4' {
              * expiration dates after "Y2.038k" (2038-01-19T03:14:07Z).)
              * @returns @date as a <type>time_t</type>
              */
-            to_time_t(): never;
+            to_time_t(): number;
             /**
              * Converts `date` to a #GTimeVal.
              */
@@ -21422,6 +21435,24 @@ declare module 'gi://Soup?version=2.4' {
         }
 
         namespace PasswordManager {
+            /**
+             * Interface for implementing PasswordManager.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends SessionFeature.Interface {
+                // Virtual methods
+
+                vfunc_get_passwords_async(
+                    msg: Message,
+                    auth: Auth,
+                    retrying: boolean,
+                    async_context: GLib.MainContext,
+                    cancellable: Gio.Cancellable | null,
+                    callback: PasswordManagerCallback,
+                ): void;
+                vfunc_get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -21431,7 +21462,7 @@ declare module 'gi://Soup?version=2.4' {
             $gtype: GObject.GType<PasswordManager>;
             prototype: PasswordManager;
         }
-        interface PasswordManager extends SessionFeature {
+        interface PasswordManager extends SessionFeature, PasswordManager.Interface {
             // Methods
 
             get_passwords_async(
@@ -21443,18 +21474,6 @@ declare module 'gi://Soup?version=2.4' {
                 callback: PasswordManagerCallback,
             ): void;
             get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
-
-            // Virtual methods
-
-            vfunc_get_passwords_async(
-                msg: Message,
-                auth: Auth,
-                retrying: boolean,
-                async_context: GLib.MainContext,
-                cancellable: Gio.Cancellable | null,
-                callback: PasswordManagerCallback,
-            ): void;
-            vfunc_get_passwords_sync(msg: Message, auth: Auth, cancellable?: Gio.Cancellable | null): void;
         }
 
         export const PasswordManager: PasswordManagerNamespace & {
@@ -21462,6 +21481,22 @@ declare module 'gi://Soup?version=2.4' {
         };
 
         namespace ProxyResolver {
+            /**
+             * Interface for implementing ProxyResolver.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends SessionFeature.Interface {
+                // Virtual methods
+
+                vfunc_get_proxy_async(
+                    msg: Message,
+                    async_context: GLib.MainContext,
+                    cancellable: Gio.Cancellable | null,
+                    callback: ProxyResolverCallback,
+                ): void;
+                vfunc_get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -21471,7 +21506,7 @@ declare module 'gi://Soup?version=2.4' {
             $gtype: GObject.GType<ProxyResolver>;
             prototype: ProxyResolver;
         }
-        interface ProxyResolver extends SessionFeature {
+        interface ProxyResolver extends SessionFeature, ProxyResolver.Interface {
             // Methods
 
             get_proxy_async(
@@ -21481,16 +21516,6 @@ declare module 'gi://Soup?version=2.4' {
                 callback: ProxyResolverCallback,
             ): void;
             get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
-
-            // Virtual methods
-
-            vfunc_get_proxy_async(
-                msg: Message,
-                async_context: GLib.MainContext,
-                cancellable: Gio.Cancellable | null,
-                callback: ProxyResolverCallback,
-            ): void;
-            vfunc_get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
         }
 
         export const ProxyResolver: ProxyResolverNamespace & {
@@ -21498,6 +21523,37 @@ declare module 'gi://Soup?version=2.4' {
         };
 
         namespace ProxyURIResolver {
+            /**
+             * Interface for implementing ProxyURIResolver.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends SessionFeature.Interface {
+                // Virtual methods
+
+                /**
+                 * Asynchronously determines a proxy URI to use for `msg` and calls
+                 * `callback`.
+                 * @param uri the #SoupURI you want a proxy for
+                 * @param async_context the #GMainContext to invoke @callback in
+                 * @param cancellable a #GCancellable, or %NULL
+                 * @param callback callback to invoke with the proxy address
+                 */
+                vfunc_get_proxy_uri_async(
+                    uri: URI,
+                    async_context: GLib.MainContext | null,
+                    cancellable: Gio.Cancellable | null,
+                    callback: ProxyURIResolverCallback,
+                ): void;
+                /**
+                 * Synchronously determines a proxy URI to use for `uri`. If `uri`
+                 * should be sent via proxy, *`proxy_uri` will be set to the URI of the
+                 * proxy, else it will be set to %NULL.
+                 * @param uri the #SoupURI you want a proxy for
+                 * @param cancellable a #GCancellable, or %NULL
+                 */
+                vfunc_get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends SessionFeature.ConstructorProps {}
@@ -21507,7 +21563,7 @@ declare module 'gi://Soup?version=2.4' {
             $gtype: GObject.GType<ProxyURIResolver>;
             prototype: ProxyURIResolver;
         }
-        interface ProxyURIResolver extends SessionFeature {
+        interface ProxyURIResolver extends SessionFeature, ProxyURIResolver.Interface {
             // Methods
 
             /**
@@ -21533,31 +21589,6 @@ declare module 'gi://Soup?version=2.4' {
              * @returns %SOUP_STATUS_OK if successful, or a transport-level error.
              */
             get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
-
-            // Virtual methods
-
-            /**
-             * Asynchronously determines a proxy URI to use for `msg` and calls
-             * `callback`.
-             * @param uri the #SoupURI you want a proxy for
-             * @param async_context the #GMainContext to invoke @callback in
-             * @param cancellable a #GCancellable, or %NULL
-             * @param callback callback to invoke with the proxy address
-             */
-            vfunc_get_proxy_uri_async(
-                uri: URI,
-                async_context: GLib.MainContext | null,
-                cancellable: Gio.Cancellable | null,
-                callback: ProxyURIResolverCallback,
-            ): void;
-            /**
-             * Synchronously determines a proxy URI to use for `uri`. If `uri`
-             * should be sent via proxy, *`proxy_uri` will be set to the URI of the
-             * proxy, else it will be set to %NULL.
-             * @param uri the #SoupURI you want a proxy for
-             * @param cancellable a #GCancellable, or %NULL
-             */
-            vfunc_get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
         }
 
         export const ProxyURIResolver: ProxyURIResolverNamespace & {
@@ -21565,6 +21596,64 @@ declare module 'gi://Soup?version=2.4' {
         };
 
         namespace SessionFeature {
+            /**
+             * Interface for implementing SessionFeature.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Adds a "sub-feature" of type `type` to the base feature `feature`.
+                 * This is used for features that can be extended with multiple
+                 * different types. Eg, the authentication manager can be extended
+                 * with subtypes of #SoupAuth.
+                 * @param type the #GType of a "sub-feature"
+                 */
+                vfunc_add_feature(type: GObject.GType): boolean;
+                /**
+                 * Perform setup when a feature is added to a session
+                 * @param session
+                 */
+                vfunc_attach(session: Session): void;
+                /**
+                 * Perform cleanup when a feature is removed from a session
+                 * @param session
+                 */
+                vfunc_detach(session: Session): void;
+                /**
+                 * Tests if `feature` has a "sub-feature" of type `type`. See
+                 * soup_session_feature_add_feature().
+                 * @param type the #GType of a "sub-feature"
+                 */
+                vfunc_has_feature(type: GObject.GType): boolean;
+                /**
+                 * Removes the "sub-feature" of type `type` from the base feature
+                 * `feature`. See soup_session_feature_add_feature().
+                 * @param type the #GType of a "sub-feature"
+                 */
+                vfunc_remove_feature(type: GObject.GType): boolean;
+                /**
+                 * Proxies the session's #SoupSession::request_queued signal
+                 * @param session
+                 * @param msg
+                 */
+                vfunc_request_queued(session: Session, msg: Message): void;
+                /**
+                 * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
+                 * @param session
+                 * @param msg
+                 * @param socket
+                 */
+                vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
+                /**
+                 * Proxies the session's #SoupSession::request_unqueued signal
+                 * @param session
+                 * @param msg
+                 */
+                vfunc_request_unqueued(session: Session, msg: Message): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21574,7 +21663,7 @@ declare module 'gi://Soup?version=2.4' {
             $gtype: GObject.GType<SessionFeature>;
             prototype: SessionFeature;
         }
-        interface SessionFeature extends GObject.Object {
+        interface SessionFeature extends GObject.Object, SessionFeature.Interface {
             // Methods
 
             /**
@@ -21602,58 +21691,6 @@ declare module 'gi://Soup?version=2.4' {
              * @returns %TRUE if @type was removed from @feature
              */
             remove_feature(type: GObject.GType): boolean;
-
-            // Virtual methods
-
-            /**
-             * Adds a "sub-feature" of type `type` to the base feature `feature`.
-             * This is used for features that can be extended with multiple
-             * different types. Eg, the authentication manager can be extended
-             * with subtypes of #SoupAuth.
-             * @param type the #GType of a "sub-feature"
-             */
-            vfunc_add_feature(type: GObject.GType): boolean;
-            /**
-             * Perform setup when a feature is added to a session
-             * @param session
-             */
-            vfunc_attach(session: Session): void;
-            /**
-             * Perform cleanup when a feature is removed from a session
-             * @param session
-             */
-            vfunc_detach(session: Session): void;
-            /**
-             * Tests if `feature` has a "sub-feature" of type `type`. See
-             * soup_session_feature_add_feature().
-             * @param type the #GType of a "sub-feature"
-             */
-            vfunc_has_feature(type: GObject.GType): boolean;
-            /**
-             * Removes the "sub-feature" of type `type` from the base feature
-             * `feature`. See soup_session_feature_add_feature().
-             * @param type the #GType of a "sub-feature"
-             */
-            vfunc_remove_feature(type: GObject.GType): boolean;
-            /**
-             * Proxies the session's #SoupSession::request_queued signal
-             * @param session
-             * @param msg
-             */
-            vfunc_request_queued(session: Session, msg: Message): void;
-            /**
-             * Proxies the session's #SoupSession::request_started signal. Deprecated 2.50. Use #SoupMessage::starting instead.
-             * @param session
-             * @param msg
-             * @param socket
-             */
-            vfunc_request_started(session: Session, msg: Message, socket: Socket): void;
-            /**
-             * Proxies the session's #SoupSession::request_unqueued signal
-             * @param session
-             * @param msg
-             */
-            vfunc_request_unqueued(session: Session, msg: Message): void;
         }
 
         export const SessionFeature: SessionFeatureNamespace & {

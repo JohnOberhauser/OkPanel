@@ -2772,7 +2772,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_bearer_connect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests activation of a packet data connection with the
              * network using this #MMBearer properties.
@@ -2803,7 +2803,7 @@ declare module 'gi://ModemManager?version=1.0' {
             connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             connect(...args: never[]): any;
             /**
              * Finishes an operation started with mm_bearer_connect().
@@ -2834,7 +2834,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            disconnect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Synchronously requests disconnection and deactivation of the packet data
              * connection.
@@ -2867,7 +2867,7 @@ declare module 'gi://ModemManager?version=1.0' {
             disconnect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             // Conflicted with GObject.Object.disconnect
             disconnect(...args: never[]): any;
             /**
@@ -3249,7 +3249,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -3341,7 +3341,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -3418,7 +3418,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_bearer_call_connect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3441,7 +3441,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_bearer_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_bearer_call_connect().
@@ -3464,7 +3464,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_bearer_call_disconnect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3487,7 +3487,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_disconnect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_bearer_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_bearer_call_disconnect().
@@ -4458,7 +4458,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_call_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to accept the incoming call.
              *
@@ -4491,7 +4491,7 @@ declare module 'gi://ModemManager?version=1.0' {
             accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_call_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_accept().
@@ -4524,7 +4524,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param number new number where the call will be deflected.
              * @param cancellable A #GCancellable or %NULL.
              */
-            deflect(number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            deflect(number: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to deflect the incoming call.
              *
@@ -4566,7 +4566,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 number: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_call_deflect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_deflect().
@@ -4667,7 +4667,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            hangup(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to hangup the call.
              *
@@ -4702,7 +4702,7 @@ declare module 'gi://ModemManager?version=1.0' {
             hangup(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_call_hangup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_hangup().
@@ -4732,7 +4732,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            join_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Synchronously requests to join this call into a multiparty call.
              *
@@ -4763,7 +4763,7 @@ declare module 'gi://ModemManager?version=1.0' {
             join_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_call_join_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_join_multiparty().
@@ -4792,7 +4792,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            leave_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Synchronously requests to make this call private again by leaving the
              * multiparty call.
@@ -4825,7 +4825,7 @@ declare module 'gi://ModemManager?version=1.0' {
             leave_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_call_leave_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_leave_multiparty().
@@ -4868,7 +4868,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param dtmf the DMTF tone.
              * @param cancellable A #GCancellable or %NULL.
              */
-            send_dtmf(dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            send_dtmf(dtmf: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to send a DTMF tone the call.
              *
@@ -4910,7 +4910,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 dtmf: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_call_send_dtmf().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_send_dtmf().
@@ -4942,7 +4942,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_call_start_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            start(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to queue the call.
              *
@@ -4975,7 +4975,7 @@ declare module 'gi://ModemManager?version=1.0' {
             start(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_start().
@@ -5107,7 +5107,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -5199,7 +5199,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -5276,7 +5276,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Accept">Accept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5299,7 +5299,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_accept().
@@ -5323,7 +5323,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_number Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Deflect">Deflect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5353,7 +5353,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_number: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_deflect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_deflect().
@@ -5377,7 +5377,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_hangup_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Hangup">Hangup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5400,7 +5400,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_hangup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_hangup().
@@ -5423,7 +5423,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_join_multiparty_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_join_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.JoinMultiparty">JoinMultiparty()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5449,7 +5449,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_join_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_join_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_join_multiparty().
@@ -5472,7 +5472,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_leave_multiparty_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_leave_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.LeaveMultiparty">LeaveMultiparty()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5498,7 +5498,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_leave_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_leave_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_leave_multiparty().
@@ -5522,7 +5522,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_dtmf Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.SendDtmf">SendDtmf()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5552,7 +5552,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_dtmf: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_send_dtmf().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_send_dtmf().
@@ -5576,7 +5576,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_start_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5599,7 +5599,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_start(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_start().
@@ -6539,7 +6539,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -6631,7 +6631,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -8521,7 +8521,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -8613,7 +8613,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -8809,7 +8809,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_bearer_call_connect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8832,7 +8832,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_bearer_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_bearer_call_connect().
@@ -8855,7 +8855,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_bearer_call_disconnect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8878,7 +8878,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_disconnect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_bearer_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_bearer_call_disconnect().
@@ -9613,7 +9613,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_bearer_call_connect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9636,7 +9636,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_bearer_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_bearer_call_connect().
@@ -9659,7 +9659,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_bearer_call_disconnect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9682,7 +9682,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_disconnect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_bearer_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_bearer_call_disconnect().
@@ -10428,7 +10428,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -10520,7 +10520,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -10716,7 +10716,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Accept">Accept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -10739,7 +10739,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_accept().
@@ -10763,7 +10763,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_number Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Deflect">Deflect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -10793,7 +10793,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_number: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_deflect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_deflect().
@@ -10817,7 +10817,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_hangup_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Hangup">Hangup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -10840,7 +10840,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_hangup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_hangup().
@@ -10863,7 +10863,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_join_multiparty_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_join_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.JoinMultiparty">JoinMultiparty()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -10889,7 +10889,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_join_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_join_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_join_multiparty().
@@ -10912,7 +10912,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_leave_multiparty_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_leave_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.LeaveMultiparty">LeaveMultiparty()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -10938,7 +10938,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_leave_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_leave_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_leave_multiparty().
@@ -10962,7 +10962,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_dtmf Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.SendDtmf">SendDtmf()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -10992,7 +10992,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_dtmf: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_send_dtmf().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_send_dtmf().
@@ -11016,7 +11016,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_start_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -11039,7 +11039,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_start(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_start().
@@ -11784,7 +11784,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Accept">Accept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -11807,7 +11807,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_accept().
@@ -11831,7 +11831,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_number Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Deflect">Deflect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -11861,7 +11861,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_number: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_deflect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_deflect().
@@ -11885,7 +11885,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_hangup_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Hangup">Hangup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -11908,7 +11908,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_hangup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_hangup().
@@ -11931,7 +11931,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_join_multiparty_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_join_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.JoinMultiparty">JoinMultiparty()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -11957,7 +11957,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_join_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_join_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_join_multiparty().
@@ -11980,7 +11980,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_leave_multiparty_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_leave_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.LeaveMultiparty">LeaveMultiparty()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -12006,7 +12006,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_leave_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_leave_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_leave_multiparty().
@@ -12030,7 +12030,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_dtmf Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.SendDtmf">SendDtmf()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -12060,7 +12060,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_dtmf: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_send_dtmf().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_send_dtmf().
@@ -12084,7 +12084,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_start_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -12107,7 +12107,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_start(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_start().
@@ -12909,7 +12909,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -13001,7 +13001,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -14425,7 +14425,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -14517,7 +14517,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -14714,7 +14714,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -14744,7 +14747,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_delete().
@@ -14768,7 +14771,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_profile_manager_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -14791,7 +14794,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_list().
@@ -14818,7 +14821,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set(
                 arg_requested_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Set">Set()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -14848,7 +14851,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_requested_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_set().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_set().
@@ -15480,7 +15483,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -15510,7 +15516,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_delete().
@@ -15534,7 +15540,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_profile_manager_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -15557,7 +15563,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_list().
@@ -15584,7 +15590,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set(
                 arg_requested_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Set">Set()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -15614,7 +15620,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_requested_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_set().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_set().
@@ -16494,7 +16500,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -16586,7 +16592,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -16786,7 +16792,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_disable_facility_lock(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.DisableFacilityLock">DisableFacilityLock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16816,7 +16822,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_disable_facility_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_disable_facility_lock().
@@ -16844,7 +16850,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_operator_id Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Register">Register()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16874,7 +16880,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_operator_id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_register().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_register().
@@ -16898,7 +16904,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_call_scan_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_scan(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_scan(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Scan">Scan()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16921,7 +16927,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_scan(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_scan().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_scan().
@@ -16945,7 +16951,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_data Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_carrier_lock(arg_data: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_carrier_lock(
+                arg_data: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetCarrierLock">SetCarrierLock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16975,7 +16984,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_data: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_carrier_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_carrier_lock().
@@ -17000,7 +17009,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_mode Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_eps_ue_mode_operation(arg_mode: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_eps_ue_mode_operation(
+                arg_mode: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetEpsUeModeOperation">SetEpsUeModeOperation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17030,7 +17042,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_mode: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation().
@@ -17058,7 +17070,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_initial_eps_bearer_settings(
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetInitialEpsBearerSettings">SetInitialEpsBearerSettings()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17088,7 +17100,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings().
@@ -17119,7 +17131,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_nr5g_registration_settings(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetNr5gRegistrationSettings">SetNr5gRegistrationSettings()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17149,7 +17161,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_nr5g_registration_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_nr5g_registration_settings().
@@ -17177,7 +17189,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_state Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_packet_service_state(arg_state: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_packet_service_state(
+                arg_state: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetPacketServiceState">SetPacketServiceState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17207,7 +17222,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_state: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_packet_service_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_packet_service_state().
@@ -18064,7 +18079,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_disable_facility_lock(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.DisableFacilityLock">DisableFacilityLock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18094,7 +18109,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_disable_facility_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_disable_facility_lock().
@@ -18122,7 +18137,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_operator_id Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Register">Register()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18152,7 +18167,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_operator_id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_register().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_register().
@@ -18176,7 +18191,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_call_scan_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_scan(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_scan(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Scan">Scan()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18199,7 +18214,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_scan(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_scan().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_scan().
@@ -18223,7 +18238,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_data Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_carrier_lock(arg_data: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_carrier_lock(
+                arg_data: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetCarrierLock">SetCarrierLock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18253,7 +18271,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_data: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_carrier_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_carrier_lock().
@@ -18278,7 +18296,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_mode Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_eps_ue_mode_operation(arg_mode: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_eps_ue_mode_operation(
+                arg_mode: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetEpsUeModeOperation">SetEpsUeModeOperation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18308,7 +18329,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_mode: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation().
@@ -18336,7 +18357,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_initial_eps_bearer_settings(
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetInitialEpsBearerSettings">SetInitialEpsBearerSettings()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18366,7 +18387,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings().
@@ -18397,7 +18418,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_nr5g_registration_settings(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetNr5gRegistrationSettings">SetNr5gRegistrationSettings()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18427,7 +18448,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_nr5g_registration_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_nr5g_registration_settings().
@@ -18455,7 +18476,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_state Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_packet_service_state(arg_state: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_packet_service_state(
+                arg_state: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetPacketServiceState">SetPacketServiceState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18485,7 +18509,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_state: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_packet_service_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_packet_service_state().
@@ -19284,7 +19308,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -19376,7 +19400,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -19572,7 +19596,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_ussd_call_cancel_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Cancel">Cancel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19595,7 +19619,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_cancel(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_cancel().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_cancel().
@@ -19619,7 +19643,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_command Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Initiate">Initiate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19649,7 +19673,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_command: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_initiate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_initiate().
@@ -19674,7 +19698,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_response Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Respond">Respond()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19704,7 +19728,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_response: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_respond().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_respond().
@@ -20344,7 +20368,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_ussd_call_cancel_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Cancel">Cancel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20367,7 +20391,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_cancel(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_cancel().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_cancel().
@@ -20391,7 +20415,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_command Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Initiate">Initiate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20421,7 +20445,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_command: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_initiate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_initiate().
@@ -20446,7 +20470,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_response Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Respond">Respond()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20476,7 +20500,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_response: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_respond().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_respond().
@@ -21241,7 +21265,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -21333,7 +21357,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -21530,7 +21554,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_carrier_code Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate(arg_carrier_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_activate(arg_carrier_code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.Activate">Activate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -21560,7 +21584,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_carrier_code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cdma_call_activate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate().
@@ -21576,7 +21600,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate_manual(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_activate_manual(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.ActivateManual">ActivateManual()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -21606,7 +21633,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cdma_call_activate_manual().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate_manual().
@@ -22300,7 +22327,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_carrier_code Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate(arg_carrier_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_activate(arg_carrier_code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.Activate">Activate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -22330,7 +22357,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_carrier_code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cdma_call_activate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate().
@@ -22346,7 +22373,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate_manual(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_activate_manual(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.ActivateManual">ActivateManual()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -22376,7 +22406,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cdma_call_activate_manual().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate_manual().
@@ -23111,7 +23141,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -23203,7 +23233,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -23400,7 +23430,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23430,7 +23460,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_delete().
@@ -23454,7 +23484,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_cell_broadcast_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23477,7 +23507,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_list().
@@ -23501,7 +23531,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_channels Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_channels(arg_channels: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_channels(
+                arg_channels: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.SetChannels">SetChannels()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23531,7 +23564,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_channels: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_set_channels().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_set_channels().
@@ -24179,7 +24212,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -24209,7 +24242,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_delete().
@@ -24233,7 +24266,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_cell_broadcast_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -24256,7 +24289,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_list().
@@ -24280,7 +24313,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_channels Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_channels(arg_channels: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_channels(
+                arg_channels: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.SetChannels">SetChannels()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -24310,7 +24346,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_channels: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_set_channels().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_set_channels().
@@ -25032,7 +25068,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -25124,7 +25160,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -25320,7 +25356,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_firmware_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<[string, GLib.Variant | null]>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, GLib.Variant | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25343,7 +25379,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[string, GLib.Variant | null]> | void;
+            ): globalThis.Promise<[string, GLib.Variant | null]> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_firmware_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_list().
@@ -25367,7 +25403,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_uniqueid Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.Select">Select()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25397,7 +25433,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_uniqueid: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_firmware_call_select().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_select().
@@ -26001,7 +26037,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_firmware_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<[string, GLib.Variant | null]>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, GLib.Variant | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -26024,7 +26060,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[string, GLib.Variant | null]> | void;
+            ): globalThis.Promise<[string, GLib.Variant | null]> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_firmware_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_list().
@@ -26048,7 +26084,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_uniqueid Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.Select">Select()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -26078,7 +26114,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_uniqueid: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_firmware_call_select().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_select().
@@ -26852,7 +26888,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -26944,7 +26980,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -27140,7 +27176,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_location_call_get_location_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_location(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_location(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.GetLocation">GetLocation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -27163,7 +27199,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_location(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_get_location().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_get_location().
@@ -27187,7 +27223,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_data Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_inject_assistance_data(arg_data: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_inject_assistance_data(
+                arg_data: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.InjectAssistanceData">InjectAssistanceData()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -27217,7 +27256,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_data: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_inject_assistance_data().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_inject_assistance_data().
@@ -27242,7 +27281,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_rate Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_gps_refresh_rate(arg_rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_gps_refresh_rate(
+                arg_rate: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetGpsRefreshRate">SetGpsRefreshRate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -27272,7 +27314,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_set_gps_refresh_rate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_gps_refresh_rate().
@@ -27297,7 +27339,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_supl Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_supl_server(arg_supl: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_supl_server(arg_supl: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetSuplServer">SetSuplServer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -27327,7 +27369,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_supl: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_set_supl_server().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_supl_server().
@@ -27357,7 +27399,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_sources: number,
                 arg_signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -27391,7 +27433,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_setup().
@@ -28127,7 +28169,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_location_call_get_location_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_location(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_location(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.GetLocation">GetLocation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -28150,7 +28192,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_location(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_get_location().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_get_location().
@@ -28174,7 +28216,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_data Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_inject_assistance_data(arg_data: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_inject_assistance_data(
+                arg_data: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.InjectAssistanceData">InjectAssistanceData()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -28204,7 +28249,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_data: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_inject_assistance_data().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_inject_assistance_data().
@@ -28229,7 +28274,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_rate Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_gps_refresh_rate(arg_rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_gps_refresh_rate(
+                arg_rate: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetGpsRefreshRate">SetGpsRefreshRate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -28259,7 +28307,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_set_gps_refresh_rate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_gps_refresh_rate().
@@ -28284,7 +28332,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_supl Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_supl_server(arg_supl: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_supl_server(arg_supl: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetSuplServer">SetSuplServer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -28314,7 +28362,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_supl: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_set_supl_server().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_supl_server().
@@ -28344,7 +28392,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_sources: number,
                 arg_signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -28378,7 +28426,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_setup().
@@ -29139,7 +29187,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -29231,7 +29279,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -29428,7 +29476,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Create">Create()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -29458,7 +29506,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_create().
@@ -29483,7 +29531,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -29513,7 +29561,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_delete().
@@ -29537,7 +29585,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_messaging_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -29560,7 +29608,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_list().
@@ -29584,7 +29632,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_storage Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_default_storage(arg_storage: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_default_storage(
+                arg_storage: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.SetDefaultStorage">SetDefaultStorage()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -29614,7 +29665,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_storage: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_set_default_storage().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_set_default_storage().
@@ -30293,7 +30344,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Create">Create()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30323,7 +30374,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_create().
@@ -30348,7 +30399,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30378,7 +30429,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_delete().
@@ -30402,7 +30453,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_messaging_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30425,7 +30476,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_list().
@@ -30449,7 +30500,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_storage Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_default_storage(arg_storage: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_default_storage(
+                arg_storage: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.SetDefaultStorage">SetDefaultStorage()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30479,7 +30533,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_storage: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_set_default_storage().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_set_default_storage().
@@ -31255,7 +31309,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -31347,7 +31401,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -31549,7 +31603,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_session_id: number,
                 arg_accept: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.AcceptNetworkInitiatedSession">AcceptNetworkInitiatedSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -31583,7 +31637,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_accept: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_accept_network_initiated_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_accept_network_initiated_session().
@@ -31612,7 +31666,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_oma_call_cancel_session_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel_session(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.CancelSession">CancelSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -31638,7 +31692,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_cancel_session(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_cancel_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_cancel_session().
@@ -31662,7 +31716,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_features Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup(arg_features: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup(arg_features: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -31692,7 +31746,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_features: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_setup().
@@ -31720,7 +31774,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_start_client_initiated_session(
                 arg_session_type: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.StartClientInitiatedSession">StartClientInitiatedSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -31750,7 +31804,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_session_type: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_start_client_initiated_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_start_client_initiated_session().
@@ -32452,7 +32506,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_session_id: number,
                 arg_accept: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.AcceptNetworkInitiatedSession">AcceptNetworkInitiatedSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -32486,7 +32540,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_accept: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_accept_network_initiated_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_accept_network_initiated_session().
@@ -32515,7 +32569,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_oma_call_cancel_session_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel_session(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.CancelSession">CancelSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -32541,7 +32595,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_cancel_session(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_cancel_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_cancel_session().
@@ -32565,7 +32619,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_features Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup(arg_features: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup(arg_features: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -32595,7 +32649,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_features: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_setup().
@@ -32623,7 +32677,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_start_client_initiated_session(
                 arg_session_type: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.StartClientInitiatedSession">StartClientInitiatedSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -32653,7 +32707,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_session_type: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_start_client_initiated_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_start_client_initiated_session().
@@ -33848,7 +33902,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -33940,7 +33994,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -34138,7 +34192,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_timeout Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_command(
+                arg_cmd: string,
+                arg_timeout: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Command">Command()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34172,7 +34230,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_timeout: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_command().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_command().
@@ -34202,7 +34260,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create_bearer(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.CreateBearer">CreateBearer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34232,7 +34293,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_create_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_create_bearer().
@@ -34260,7 +34321,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bearer Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.DeleteBearer">DeleteBearer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34290,7 +34351,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_delete_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_delete_bearer().
@@ -34315,7 +34376,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Enable">Enable()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34345,7 +34406,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_enable().
@@ -34370,7 +34431,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_code Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_factory_reset(arg_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_factory_reset(arg_code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.FactoryReset">FactoryReset()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34400,7 +34461,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_factory_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_factory_reset().
@@ -34424,7 +34485,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_get_cell_info_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_cell_info(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_cell_info(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.GetCellInfo">GetCellInfo()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34450,7 +34511,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_cell_info(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_get_cell_info().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_get_cell_info().
@@ -34473,7 +34534,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_list_bearers_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list_bearers(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list_bearers(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.ListBearers">ListBearers()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34496,7 +34557,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list_bearers(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_list_bearers().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_list_bearers().
@@ -34519,7 +34580,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_reset_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_reset(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_reset(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Reset">Reset()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34542,7 +34603,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_reset(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_reset().
@@ -34566,7 +34627,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bands Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_current_bands(arg_bands: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_current_bands(
+                arg_bands: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentBands">SetCurrentBands()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34596,7 +34660,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bands: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_bands().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_bands().
@@ -34624,7 +34688,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_current_capabilities(
                 arg_capabilities: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentCapabilities">SetCurrentCapabilities()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34654,7 +34718,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_capabilities: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_capabilities().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_capabilities().
@@ -34679,7 +34743,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_modes Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_current_modes(arg_modes: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_current_modes(
+                arg_modes: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentModes">SetCurrentModes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34709,7 +34776,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_modes: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_modes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_modes().
@@ -34734,7 +34801,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_state Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_power_state(arg_state: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_power_state(arg_state: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPowerState">SetPowerState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34764,7 +34831,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_state: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_power_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_power_state().
@@ -34789,7 +34856,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_sim_slot Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_primary_sim_slot(arg_sim_slot: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_primary_sim_slot(
+                arg_sim_slot: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPrimarySimSlot">SetPrimarySimSlot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34819,7 +34889,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_sim_slot: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_primary_sim_slot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_primary_sim_slot().
@@ -35678,7 +35748,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -35770,7 +35840,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -35967,7 +36037,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.Enable">Enable()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -35997,7 +36067,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_sar_call_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_sar_call_enable().
@@ -36022,7 +36092,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_level Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_power_level(arg_level: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_power_level(arg_level: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.SetPowerLevel">SetPowerLevel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -36052,7 +36122,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_level: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_sar_call_set_power_level().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_sar_call_set_power_level().
@@ -36661,7 +36731,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.Enable">Enable()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -36691,7 +36761,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_sar_call_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_sar_call_enable().
@@ -36716,7 +36786,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_level Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_power_level(arg_level: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_power_level(arg_level: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.SetPowerLevel">SetPowerLevel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -36746,7 +36816,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_level: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_sar_call_set_power_level().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_sar_call_set_power_level().
@@ -37506,7 +37576,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -37598,7 +37668,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -37795,7 +37865,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_rate Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup(arg_rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup(arg_rate: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37825,7 +37895,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_signal_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_signal_call_setup().
@@ -37850,7 +37920,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_settings Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup_thresholds(arg_settings: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup_thresholds(
+                arg_settings: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.SetupThresholds">SetupThresholds()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37880,7 +37953,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_signal_call_setup_thresholds().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_signal_call_setup_thresholds().
@@ -38555,7 +38628,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_rate Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup(arg_rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup(arg_rate: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38585,7 +38658,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_signal_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_signal_call_setup().
@@ -38610,7 +38683,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_settings Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup_thresholds(arg_settings: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup_thresholds(
+                arg_settings: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.SetupThresholds">SetupThresholds()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38640,7 +38716,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_signal_call_setup_thresholds().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_signal_call_setup_thresholds().
@@ -39312,7 +39388,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -39404,7 +39480,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -39601,7 +39677,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_connect(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -39631,7 +39710,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_connect().
@@ -39656,7 +39735,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bearer Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -39686,7 +39765,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_disconnect().
@@ -39710,7 +39789,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_simple_call_get_status_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_status(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_status(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.GetStatus">GetStatus()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -39733,7 +39812,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_status(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_get_status().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_get_status().
@@ -40333,7 +40412,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_connect(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -40363,7 +40445,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_connect().
@@ -40388,7 +40470,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bearer Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -40418,7 +40500,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_disconnect().
@@ -40442,7 +40524,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_simple_call_get_status_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_status(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_status(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.GetStatus">GetStatus()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -40465,7 +40547,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_status(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_get_status().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_get_status().
@@ -41528,7 +41610,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_timeout Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_command(
+                arg_cmd: string,
+                arg_timeout: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Command">Command()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41562,7 +41648,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_timeout: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_command().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_command().
@@ -41592,7 +41678,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create_bearer(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.CreateBearer">CreateBearer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41622,7 +41711,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_create_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_create_bearer().
@@ -41650,7 +41739,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bearer Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.DeleteBearer">DeleteBearer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41680,7 +41769,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_delete_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_delete_bearer().
@@ -41705,7 +41794,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Enable">Enable()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41735,7 +41824,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_enable().
@@ -41760,7 +41849,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_code Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_factory_reset(arg_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_factory_reset(arg_code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.FactoryReset">FactoryReset()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41790,7 +41879,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_factory_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_factory_reset().
@@ -41814,7 +41903,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_get_cell_info_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_cell_info(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_cell_info(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.GetCellInfo">GetCellInfo()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41840,7 +41929,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_cell_info(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_get_cell_info().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_get_cell_info().
@@ -41863,7 +41952,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_list_bearers_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list_bearers(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list_bearers(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.ListBearers">ListBearers()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41886,7 +41975,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list_bearers(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_list_bearers().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_list_bearers().
@@ -41909,7 +41998,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_reset_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_reset(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_reset(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Reset">Reset()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41932,7 +42021,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_reset(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_reset().
@@ -41956,7 +42045,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bands Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_current_bands(arg_bands: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_current_bands(
+                arg_bands: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentBands">SetCurrentBands()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41986,7 +42078,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bands: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_bands().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_bands().
@@ -42014,7 +42106,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_current_capabilities(
                 arg_capabilities: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentCapabilities">SetCurrentCapabilities()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -42044,7 +42136,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_capabilities: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_capabilities().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_capabilities().
@@ -42069,7 +42161,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_modes Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_current_modes(arg_modes: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_current_modes(
+                arg_modes: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentModes">SetCurrentModes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -42099,7 +42194,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_modes: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_modes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_modes().
@@ -42124,7 +42219,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_state Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_power_state(arg_state: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_power_state(arg_state: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPowerState">SetPowerState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -42154,7 +42249,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_state: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_power_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_power_state().
@@ -42179,7 +42274,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_sim_slot Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_primary_sim_slot(arg_sim_slot: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_primary_sim_slot(
+                arg_sim_slot: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPrimarySimSlot">SetPrimarySimSlot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -42209,7 +42307,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_sim_slot: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_primary_sim_slot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_primary_sim_slot().
@@ -43060,7 +43158,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -43152,7 +43250,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -43348,7 +43446,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_time_call_get_network_time_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_get_network_time(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Time.GetNetworkTime">GetNetworkTime()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -43374,7 +43472,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_network_time(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_time_call_get_network_time().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_time_call_get_network_time().
@@ -43970,7 +44068,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_time_call_get_network_time_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_get_network_time(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Time.GetNetworkTime">GetNetworkTime()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -43996,7 +44094,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_network_time(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_time_call_get_network_time().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_time_call_get_network_time().
@@ -44689,7 +44787,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -44781,7 +44879,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -44977,7 +45075,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_call_waiting_query_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_call_waiting_query(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingQuery">CallWaitingQuery()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45003,7 +45101,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_call_waiting_query(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_call_waiting_query().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_call_waiting_query().
@@ -45027,7 +45125,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_call_waiting_setup(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_call_waiting_setup(
+                arg_enable: boolean,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingSetup">CallWaitingSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45057,7 +45158,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_call_waiting_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_call_waiting_setup().
@@ -45082,7 +45183,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create_call(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CreateCall">CreateCall()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45112,7 +45216,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_create_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_create_call().
@@ -45140,7 +45244,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.DeleteCall">DeleteCall()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45170,7 +45274,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_delete_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_delete_call().
@@ -45194,7 +45298,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hangup_all_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup_all(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup_all(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAll">HangupAll()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45217,7 +45321,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup_all(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hangup_all().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hangup_all().
@@ -45240,7 +45344,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hangup_and_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAndAccept">HangupAndAccept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45266,7 +45370,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hangup_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hangup_and_accept().
@@ -45289,7 +45393,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hold_and_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hold_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hold_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HoldAndAccept">HoldAndAccept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45315,7 +45419,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hold_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hold_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hold_and_accept().
@@ -45338,7 +45442,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_list_calls_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list_calls(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list_calls(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.ListCalls">ListCalls()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45361,7 +45465,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list_calls(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_list_calls().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_list_calls().
@@ -45384,7 +45488,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_transfer_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_transfer(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_transfer(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.Transfer">Transfer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45407,7 +45511,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_transfer(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_transfer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_transfer().
@@ -46122,7 +46226,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_call_waiting_query_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_call_waiting_query(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingQuery">CallWaitingQuery()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46148,7 +46252,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_call_waiting_query(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_call_waiting_query().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_call_waiting_query().
@@ -46172,7 +46276,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_call_waiting_setup(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_call_waiting_setup(
+                arg_enable: boolean,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingSetup">CallWaitingSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46202,7 +46309,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_call_waiting_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_call_waiting_setup().
@@ -46227,7 +46334,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create_call(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CreateCall">CreateCall()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46257,7 +46367,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_create_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_create_call().
@@ -46285,7 +46395,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.DeleteCall">DeleteCall()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46315,7 +46425,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_delete_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_delete_call().
@@ -46339,7 +46449,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hangup_all_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup_all(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup_all(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAll">HangupAll()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46362,7 +46472,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup_all(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hangup_all().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hangup_all().
@@ -46385,7 +46495,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hangup_and_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAndAccept">HangupAndAccept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46411,7 +46521,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hangup_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hangup_and_accept().
@@ -46434,7 +46544,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hold_and_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hold_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hold_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HoldAndAccept">HoldAndAccept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46460,7 +46570,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hold_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hold_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hold_and_accept().
@@ -46483,7 +46593,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_list_calls_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list_calls(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list_calls(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.ListCalls">ListCalls()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46506,7 +46616,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list_calls(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_list_calls().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_list_calls().
@@ -46529,7 +46639,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_transfer_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_transfer(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_transfer(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.Transfer">Transfer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -46552,7 +46662,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_transfer(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_transfer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_transfer().
@@ -47343,7 +47453,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -47435,7 +47545,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -50037,7 +50147,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -50129,7 +50239,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -50331,7 +50441,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_uid: string,
                 arg_inhibit: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.InhibitDevice">InhibitDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50365,7 +50475,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_inhibit: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device().
@@ -50398,7 +50508,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_report_kernel_event(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ReportKernelEvent">ReportKernelEvent()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50428,7 +50538,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event().
@@ -50452,7 +50562,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_scan_devices(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_scan_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ScanDevices">ScanDevices()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50475,7 +50585,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_scan_devices(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices().
@@ -50499,7 +50609,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_level Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_logging(arg_level: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_logging(arg_level: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.SetLogging">SetLogging()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50529,7 +50639,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_level: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_set_logging().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_set_logging().
@@ -51170,7 +51280,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_uid: string,
                 arg_inhibit: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.InhibitDevice">InhibitDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -51204,7 +51314,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_inhibit: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device().
@@ -51237,7 +51347,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_report_kernel_event(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ReportKernelEvent">ReportKernelEvent()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -51267,7 +51377,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event().
@@ -51291,7 +51401,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_scan_devices(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_scan_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ScanDevices">ScanDevices()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -51314,7 +51424,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_scan_devices(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices().
@@ -51338,7 +51448,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_level Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_logging(arg_level: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_logging(arg_level: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.SetLogging">SetLogging()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -51368,7 +51478,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_level: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_set_logging().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_set_logging().
@@ -52226,7 +52336,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -52318,7 +52428,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -52520,7 +52630,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_old_pin: string,
                 arg_new_pin: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.ChangePin">ChangePin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52554,7 +52664,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_new_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_change_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_change_pin().
@@ -52589,7 +52699,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 arg_enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.EnablePin">EnablePin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52623,7 +52733,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_enable_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_enable_pin().
@@ -52649,7 +52759,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_pin Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_pin(arg_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_pin(arg_pin: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPin">SendPin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52679,7 +52789,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_send_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_pin().
@@ -52705,7 +52815,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_pin Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_puk(arg_puk: string, arg_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_puk(
+                arg_puk: string,
+                arg_pin: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPuk">SendPuk()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52739,7 +52853,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_send_puk().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_puk().
@@ -52768,7 +52882,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_preferred_networks(
                 arg_preferred_networks: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SetPreferredNetworks">SetPreferredNetworks()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52798,7 +52912,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_preferred_networks: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_set_preferred_networks().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_set_preferred_networks().
@@ -53598,7 +53712,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_old_pin: string,
                 arg_new_pin: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.ChangePin">ChangePin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -53632,7 +53746,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_new_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_change_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_change_pin().
@@ -53667,7 +53781,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 arg_enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.EnablePin">EnablePin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -53701,7 +53815,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_enable_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_enable_pin().
@@ -53727,7 +53841,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_pin Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_pin(arg_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_pin(arg_pin: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPin">SendPin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -53757,7 +53871,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_send_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_pin().
@@ -53783,7 +53897,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_pin Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_puk(arg_puk: string, arg_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_puk(
+                arg_puk: string,
+                arg_pin: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPuk">SendPuk()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -53817,7 +53935,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_send_puk().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_puk().
@@ -53846,7 +53964,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_preferred_networks(
                 arg_preferred_networks: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SetPreferredNetworks">SetPreferredNetworks()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -53876,7 +53994,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_preferred_networks: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_set_preferred_networks().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_set_preferred_networks().
@@ -54781,7 +54899,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -54873,7 +54991,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -55069,7 +55187,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_sms_call_send_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Send">Send()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -55092,7 +55210,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_send(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sms_call_send().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sms_call_send().
@@ -55116,7 +55234,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_storage Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_store(arg_storage: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_store(arg_storage: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Store">Store()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -55146,7 +55264,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_storage: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sms_call_store().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sms_call_store().
@@ -55907,7 +56025,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_sms_call_send_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Send">Send()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -55930,7 +56048,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_send(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sms_call_send().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sms_call_send().
@@ -55954,7 +56072,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_storage Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_store(arg_storage: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_store(arg_storage: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Store">Store()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -55984,7 +56102,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_storage: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sms_call_store().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sms_call_store().
@@ -57007,7 +57125,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param uid the unique ID of the physical device.
              * @param cancellable A #GCancellable or %NULL.
              */
-            inhibit_device(uid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            inhibit_device(uid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to add an inhibition on the device identified by
              * `uid`.
@@ -57065,7 +57183,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 uid: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_manager_inhibit_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_manager_inhibit_device().
@@ -57111,7 +57229,7 @@ declare module 'gi://ModemManager?version=1.0' {
             report_kernel_event(
                 properties: KernelEventProperties,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously report kernel event.
              *
@@ -57149,7 +57267,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 properties: KernelEventProperties,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_manager_report_kernel_event().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_manager_report_kernel_event().
@@ -57180,7 +57298,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            scan_devices(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            scan_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to scan looking for devices.
              *
@@ -57211,7 +57329,7 @@ declare module 'gi://ModemManager?version=1.0' {
             scan_devices(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_manager_scan_devices().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_manager_scan_devices().
@@ -57241,7 +57359,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param level the login level to set.
              * @param cancellable A #GCancellable or %NULL.
              */
-            set_logging(level: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_logging(level: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to set the specified logging level in the daemon.
              *
@@ -57279,7 +57397,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 level: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_manager_set_logging().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_manager_set_logging().
@@ -57316,7 +57434,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param uid the unique ID of the physical device.
              * @param cancellable A #GCancellable or %NULL.
              */
-            uninhibit_device(uid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            uninhibit_device(uid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to remove an inhibition on the device identified by
              * `uid`.
@@ -57366,7 +57484,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 uid: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_manager_uninhibit_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_manager_uninhibit_device().
@@ -57431,7 +57549,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -57523,7 +57641,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -58169,7 +58287,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param timeout Maximum time to wait for the response, in seconds.
              * @param cancellable A #GCancellable or %NULL.
              */
-            command(cmd: string, timeout: number, cancellable?: Gio.Cancellable | null): Promise<string>;
+            command(cmd: string, timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously runs an AT command in the modem.
              *
@@ -58211,7 +58329,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 timeout: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_modem_command().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_command().
@@ -58248,7 +58366,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param properties A #MMBearerProperties object with the properties to use.
              * @param cancellable A #GCancellable or %NULL.
              */
-            create_bearer(properties: BearerProperties, cancellable?: Gio.Cancellable | null): Promise<Bearer>;
+            create_bearer(
+                properties: BearerProperties,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<Bearer>;
             /**
              * Asynchronously creates a new packet data bearer in the #MMModem.
              *
@@ -58298,7 +58419,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 properties: BearerProperties,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Bearer> | void;
+            ): globalThis.Promise<Bearer> | void;
             /**
              * Finishes an operation started with mm_modem_create_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_create_bearer().
@@ -58334,7 +58455,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param bearer Path of the bearer to delete.
              * @param cancellable A #GCancellable or %NULL.
              */
-            delete_bearer(bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            delete_bearer(bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously deletes a given bearer from the #MMModem.
              *
@@ -58372,7 +58493,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_delete_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_delete_bearer().
@@ -58402,7 +58523,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            disable(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            disable(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously tries to disable the #MMModem. When disabled, the modem enters
              * low-power state and no network-related operations are available.
@@ -58435,7 +58556,7 @@ declare module 'gi://ModemManager?version=1.0' {
             disable(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_disable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_disable().
@@ -58579,7 +58700,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            enable(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            enable(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously tries to enable the #MMModem. When enabled, the modem's radio
              * is powered on and data sessions, voice calls, location services, and Short
@@ -58614,7 +58735,7 @@ declare module 'gi://ModemManager?version=1.0' {
             enable(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_enable().
@@ -58646,7 +58767,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param code Carrier-supplied code required to reset the modem.
              * @param cancellable A #GCancellable or %NULL.
              */
-            factory_reset(code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            factory_reset(code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously clears the modem's configuration (including persistent
              * configuration and state), and returns the device to a factory-default state.
@@ -58686,7 +58807,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_factory_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_factory_reset().
@@ -58751,7 +58872,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_cell_info(cancellable?: Gio.Cancellable | null): Promise<CellInfo[]>;
+            get_cell_info(cancellable?: Gio.Cancellable | null): globalThis.Promise<CellInfo[]>;
             /**
              * Asynchronously requests to get info about serving and neighboring cells.
              *
@@ -58782,7 +58903,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_cell_info(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<CellInfo[]> | void;
+            ): globalThis.Promise<CellInfo[]> | void;
             /**
              * Finishes an operation started with mm_modem_get_cell_info().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_get_cell_info().
@@ -58998,7 +59119,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_sim(cancellable?: Gio.Cancellable | null): Promise<Sim>;
+            get_sim(cancellable?: Gio.Cancellable | null): globalThis.Promise<Sim>;
             /**
              * Asynchronously gets the #MMSim object managed by this #MMModem.
              *
@@ -59029,7 +59150,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_sim(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Sim> | void;
+            ): globalThis.Promise<Sim> | void;
             /**
              * Finishes an operation started with mm_modem_get_sim().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_get_sim().
@@ -59121,7 +59242,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            list_bearers(cancellable?: Gio.Cancellable | null): Promise<Bearer[]>;
+            list_bearers(cancellable?: Gio.Cancellable | null): globalThis.Promise<Bearer[]>;
             /**
              * Asynchronously lists the packet data bearers in the #MMModem.
              *
@@ -59152,7 +59273,7 @@ declare module 'gi://ModemManager?version=1.0' {
             list_bearers(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Bearer[]> | void;
+            ): globalThis.Promise<Bearer[]> | void;
             /**
              * Finishes an operation started with mm_modem_list_bearers().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_list_bearers().
@@ -59184,7 +59305,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            list_sim_slots(cancellable?: Gio.Cancellable | null): Promise<Sim[]>;
+            list_sim_slots(cancellable?: Gio.Cancellable | null): globalThis.Promise<Sim[]>;
             /**
              * Asynchronously lists the SIM slots available in the #MMModem.
              *
@@ -59223,7 +59344,7 @@ declare module 'gi://ModemManager?version=1.0' {
             list_sim_slots(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Sim[]> | void;
+            ): globalThis.Promise<Sim[]> | void;
             /**
              * Finishes an operation started with mm_modem_list_sim_slots().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_list_sim_slots().
@@ -59300,7 +59421,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            reset(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            reset(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously clears non-persistent configuration and state, and returns the
              * device to a newly-powered-on state.
@@ -59333,7 +59454,7 @@ declare module 'gi://ModemManager?version=1.0' {
             reset(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_reset().
@@ -59369,7 +59490,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 bands: ModemBand | null,
                 n_bands: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously sets the radio frequency and technology bands the device is
              * currently allowed to use when connecting to a network.
@@ -59413,7 +59534,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 n_bands: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_set_current_bands().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_set_current_bands().
@@ -59454,7 +59575,7 @@ declare module 'gi://ModemManager?version=1.0' {
             set_current_capabilities(
                 capabilities: ModemCapability | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously sets the capabilities of the device. A restart of the modem
              * may be required.
@@ -59496,7 +59617,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 capabilities: ModemCapability | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_set_current_capabilities().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_set_current_capabilities().
@@ -59537,7 +59658,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 modes: ModemMode | null,
                 preferred: ModemMode | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously sets the access technologies (e.g. 2G/3G/4G preference) the
              * device is currently allowed to use when connecting to a network.
@@ -59581,7 +59702,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 preferred: ModemMode | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_set_current_modes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_set_current_modes().
@@ -59618,7 +59739,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param state Either %MM_MODEM_POWER_STATE_LOW or %MM_MODEM_POWER_STATE_ON. Every  other #MMModemPowerState value is not allowed.
              * @param cancellable A #GCancellable or %NULL.
              */
-            set_power_state(state: ModemPowerState | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_power_state(
+                state: ModemPowerState | null,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously sets the power state of the device. This method can only be
              * used while the modem is in %MM_MODEM_STATE_DISABLED state.
@@ -59658,7 +59782,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 state: ModemPowerState | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_set_power_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_set_power_state().
@@ -59689,7 +59813,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param sim_slot SIM slot number.
              * @param cancellable A #GCancellable or %NULL.
              */
-            set_primary_sim_slot(sim_slot: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_primary_sim_slot(sim_slot: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to select which SIM slot to be considered as primary.
              *
@@ -59727,7 +59851,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 sim_slot: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_set_primary_sim_slot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_set_primary_sim_slot().
@@ -60215,7 +60339,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -60307,7 +60431,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -60386,7 +60510,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_timeout Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_command(
+                arg_cmd: string,
+                arg_timeout: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Command">Command()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60420,7 +60548,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_timeout: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_command().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_command().
@@ -60450,7 +60578,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create_bearer(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.CreateBearer">CreateBearer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60480,7 +60611,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_create_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_create_bearer().
@@ -60508,7 +60639,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bearer Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.DeleteBearer">DeleteBearer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60538,7 +60669,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_delete_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_delete_bearer().
@@ -60563,7 +60694,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Enable">Enable()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60593,7 +60724,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_enable().
@@ -60618,7 +60749,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_code Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_factory_reset(arg_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_factory_reset(arg_code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.FactoryReset">FactoryReset()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60648,7 +60779,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_factory_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_factory_reset().
@@ -60672,7 +60803,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_get_cell_info_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_cell_info(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_cell_info(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.GetCellInfo">GetCellInfo()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60698,7 +60829,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_cell_info(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_get_cell_info().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_get_cell_info().
@@ -60721,7 +60852,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_list_bearers_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list_bearers(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list_bearers(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.ListBearers">ListBearers()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60744,7 +60875,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list_bearers(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_list_bearers().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_list_bearers().
@@ -60767,7 +60898,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_reset_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_reset(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_reset(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Reset">Reset()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60790,7 +60921,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_reset(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_reset().
@@ -60814,7 +60945,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bands Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_current_bands(arg_bands: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_current_bands(
+                arg_bands: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentBands">SetCurrentBands()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60844,7 +60978,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bands: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_bands().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_bands().
@@ -60872,7 +61006,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_current_capabilities(
                 arg_capabilities: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentCapabilities">SetCurrentCapabilities()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60902,7 +61036,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_capabilities: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_capabilities().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_capabilities().
@@ -60927,7 +61061,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_modes Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_current_modes(arg_modes: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_current_modes(
+                arg_modes: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentModes">SetCurrentModes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60957,7 +61094,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_modes: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_modes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_modes().
@@ -60982,7 +61119,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_state Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_power_state(arg_state: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_power_state(arg_state: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPowerState">SetPowerState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -61012,7 +61149,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_state: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_power_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_power_state().
@@ -61037,7 +61174,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_sim_slot Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_primary_sim_slot(arg_sim_slot: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_primary_sim_slot(
+                arg_sim_slot: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPrimarySimSlot">SetPrimarySimSlot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -61067,7 +61207,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_sim_slot: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_primary_sim_slot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_primary_sim_slot().
@@ -61810,7 +61950,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 facility: Modem3gppFacility | null,
                 control_key: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously disables the modem personalization lock.
              *
@@ -61848,7 +61988,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 control_key: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_disable_facility_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_disable_facility_lock().
@@ -61941,7 +62081,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_initial_eps_bearer(cancellable?: Gio.Cancellable | null): Promise<Bearer>;
+            get_initial_eps_bearer(cancellable?: Gio.Cancellable | null): globalThis.Promise<Bearer>;
             /**
              * Asynchronously gets the initial EPS #MMBearer object exposed by this
              * #MMModem3gpp.
@@ -61979,7 +62119,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_initial_eps_bearer(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Bearer> | void;
+            ): globalThis.Promise<Bearer> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_get_initial_eps_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_get_initial_eps_bearer().
@@ -62137,7 +62277,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param network_id The operator ID to register. An empty string can be used to  register to the home network.
              * @param cancellable A #GCancellable or %NULL.
              */
-            register(network_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            register(network_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests registration with a given mobile network.
              *
@@ -62175,7 +62315,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 network_id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_register().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_register().
@@ -62204,7 +62344,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            scan(cancellable?: Gio.Cancellable | null): Promise<Modem3gppNetwork[]>;
+            scan(cancellable?: Gio.Cancellable | null): globalThis.Promise<Modem3gppNetwork[]>;
             /**
              * Asynchronously requests to scan available 3GPP networks.
              *
@@ -62235,7 +62375,7 @@ declare module 'gi://ModemManager?version=1.0' {
             scan(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Modem3gppNetwork[]> | void;
+            ): globalThis.Promise<Modem3gppNetwork[]> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_scan().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_scan().
@@ -62265,7 +62405,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param data Carrier lock information.
              * @param cancellable A #GCancellable or %NULL.
              */
-            set_carrier_lock(data: Uint8Array | string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_carrier_lock(
+                data: Uint8Array | string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously sends the carrier lock information to the modem.
              *
@@ -62305,7 +62448,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 data: Uint8Array | string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_set_carrier_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_carrier_lock().
@@ -62340,7 +62483,7 @@ declare module 'gi://ModemManager?version=1.0' {
             set_eps_ue_mode_operation(
                 mode: Modem3gppEpsUeModeOperation | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to update the EPS UE mode of operation.
              *
@@ -62382,7 +62525,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 mode: Modem3gppEpsUeModeOperation | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_set_eps_ue_mode_operation().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_set_eps_ue_mode_operation().
@@ -62417,7 +62560,7 @@ declare module 'gi://ModemManager?version=1.0' {
             set_initial_eps_bearer_settings(
                 config: BearerProperties,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously configures the settings for the initial LTE default bearer.
              *
@@ -62451,7 +62594,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 config: BearerProperties,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with
              * mm_modem_3gpp_set_initial_eps_bearer_settings().
@@ -62489,7 +62632,7 @@ declare module 'gi://ModemManager?version=1.0' {
             set_nr5g_registration_settings(
                 settings: Nr5gRegistrationSettings,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously configures the 5GNR registration settings.
              *
@@ -62527,7 +62670,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 settings: Nr5gRegistrationSettings,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_set_nr5g_registration_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_set_nr5g_registration_settings().
@@ -62565,7 +62708,7 @@ declare module 'gi://ModemManager?version=1.0' {
             set_packet_service_state(
                 state: Modem3gppPacketServiceState | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously tries to attach or detach from the packet domain service.
              *
@@ -62605,7 +62748,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 state: Modem3gppPacketServiceState | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_set_packet_service_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_set_packet_service_state().
@@ -62838,7 +62981,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -62930,7 +63073,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -63011,7 +63154,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_disable_facility_lock(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.DisableFacilityLock">DisableFacilityLock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -63041,7 +63184,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_disable_facility_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_disable_facility_lock().
@@ -63069,7 +63212,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_operator_id Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Register">Register()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -63099,7 +63242,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_operator_id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_register().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_register().
@@ -63123,7 +63266,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_call_scan_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_scan(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_scan(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Scan">Scan()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -63146,7 +63289,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_scan(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_scan().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_scan().
@@ -63170,7 +63313,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_data Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_carrier_lock(arg_data: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_carrier_lock(
+                arg_data: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetCarrierLock">SetCarrierLock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -63200,7 +63346,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_data: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_carrier_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_carrier_lock().
@@ -63225,7 +63371,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_mode Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_eps_ue_mode_operation(arg_mode: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_eps_ue_mode_operation(
+                arg_mode: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetEpsUeModeOperation">SetEpsUeModeOperation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -63255,7 +63404,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_mode: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation().
@@ -63283,7 +63432,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_initial_eps_bearer_settings(
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetInitialEpsBearerSettings">SetInitialEpsBearerSettings()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -63313,7 +63462,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings().
@@ -63344,7 +63493,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_nr5g_registration_settings(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetNr5gRegistrationSettings">SetNr5gRegistrationSettings()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -63374,7 +63523,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_nr5g_registration_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_nr5g_registration_settings().
@@ -63402,7 +63551,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_state Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_packet_service_state(arg_state: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_packet_service_state(
+                arg_state: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetPacketServiceState">SetPacketServiceState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -63432,7 +63584,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_state: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_packet_service_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_packet_service_state().
@@ -64095,7 +64247,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param profile A #MM3gppProfile.
              * @param cancellable A #GCancellable or %NULL.
              */
-            ['delete'](profile: __3gppProfile, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            ['delete'](profile: __3gppProfile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously deletes the connection profile.
              *
@@ -64141,7 +64293,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 profile: __3gppProfile,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_profile_manager_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_profile_manager_delete().
@@ -64198,7 +64350,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            list(cancellable?: Gio.Cancellable | null): Promise<__3gppProfile[] | null>;
+            list(cancellable?: Gio.Cancellable | null): globalThis.Promise<__3gppProfile[] | null>;
             /**
              * Asynchronously gets the list of available connection profiles.
              *
@@ -64231,7 +64383,7 @@ declare module 'gi://ModemManager?version=1.0' {
             list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<__3gppProfile[] | null> | void;
+            ): globalThis.Promise<__3gppProfile[] | null> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_profile_manager_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_profile_manager_list().
@@ -64266,7 +64418,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param requested A #MM3gppProfile with the requested settings.
              * @param cancellable A #GCancellable or %NULL.
              */
-            set(requested: __3gppProfile, cancellable?: Gio.Cancellable | null): Promise<__3gppProfile>;
+            set(requested: __3gppProfile, cancellable?: Gio.Cancellable | null): globalThis.Promise<__3gppProfile>;
             /**
              * Asynchronously updates a connection profile with the settings
              * given in `profile`.
@@ -64314,7 +64466,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 requested: __3gppProfile,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<__3gppProfile> | void;
+            ): globalThis.Promise<__3gppProfile> | void;
             // Conflicted with GObject.Object.set
             set(...args: never[]): any;
             /**
@@ -64396,7 +64548,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -64488,7 +64640,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -64566,7 +64718,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64596,7 +64751,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_delete().
@@ -64620,7 +64775,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_profile_manager_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64643,7 +64798,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_list().
@@ -64670,7 +64825,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set(
                 arg_requested_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Set">Set()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64700,7 +64855,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_requested_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_set().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_set().
@@ -65288,7 +65443,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            cancel(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            cancel(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously cancels an ongoing USSD session, either mobile or network
              * initiated.
@@ -65321,7 +65476,7 @@ declare module 'gi://ModemManager?version=1.0' {
             cancel(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_ussd_cancel().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_ussd_cancel().
@@ -65403,7 +65558,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param command The command to start the USSD session with.
              * @param cancellable A #GCancellable or %NULL.
              */
-            initiate(command: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            initiate(command: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously sends a USSD command string to the network initiating a USSD
              * session.
@@ -65451,7 +65606,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 command: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_ussd_initiate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_ussd_initiate().
@@ -65488,7 +65643,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param response The response to network-initiated USSD command, or a response to a  request for further input.
              * @param cancellable A #GCancellable or %NULL.
              */
-            respond(response: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            respond(response: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously responds to a USSD request that is either initiated by the
              * mobile network, or that is awaiting further input after a previous call to
@@ -65530,7 +65685,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 response: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_modem_3gpp_ussd_respond().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_ussd_respond().
@@ -65628,7 +65783,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -65720,7 +65875,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -65797,7 +65952,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_ussd_call_cancel_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Cancel">Cancel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -65820,7 +65975,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_cancel(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_cancel().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_cancel().
@@ -65844,7 +65999,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_command Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Initiate">Initiate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -65874,7 +66029,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_command: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_initiate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_initiate().
@@ -65899,7 +66054,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_response Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Respond">Respond()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -65929,7 +66084,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_response: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_respond().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_respond().
@@ -66516,7 +66671,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param carrier Name of the carrier.
              * @param cancellable A #GCancellable or %NULL.
              */
-            activate(carrier: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            activate(carrier: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to provision the modem for use with a given carrier
              * using the modem's OTA activation functionality, if any.
@@ -66556,7 +66711,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 carrier: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_cdma_activate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_cdma_activate().
@@ -66580,7 +66735,7 @@ declare module 'gi://ModemManager?version=1.0' {
             activate_manual(
                 properties: CdmaManualActivationProperties,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to provision the modem with the given properties.
              *
@@ -66620,7 +66775,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 properties: CdmaManualActivationProperties,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_cdma_activate_manual().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_cdma_activate_manual().
@@ -66847,7 +67002,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -66939,7 +67094,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -67017,7 +67172,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_carrier_code Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate(arg_carrier_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_activate(arg_carrier_code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.Activate">Activate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67047,7 +67202,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_carrier_code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cdma_call_activate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate().
@@ -67063,7 +67218,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate_manual(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_activate_manual(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.ActivateManual">ActivateManual()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67093,7 +67251,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cdma_call_activate_manual().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate_manual().
@@ -67693,7 +67851,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param cbm Path of the #MMCbm to delete.
              * @param cancellable A #GCancellable or %NULL.
              */
-            ['delete'](cbm: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            ['delete'](cbm: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously deletes a given #MMCbm from the modem.
              *
@@ -67731,7 +67889,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 cbm: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_cell_broadcast_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_cell_broadcast_delete().
@@ -67772,7 +67930,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            list(cancellable?: Gio.Cancellable | null): Promise<Cbm[]>;
+            list(cancellable?: Gio.Cancellable | null): globalThis.Promise<Cbm[]>;
             /**
              * Asynchronously lists the #MMCbm objects in the modem.
              *
@@ -67803,7 +67961,7 @@ declare module 'gi://ModemManager?version=1.0' {
             list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Cbm[]> | void;
+            ): globalThis.Promise<Cbm[]> | void;
             /**
              * Finishes an operation started with mm_modem_cell_broadcast_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_cell_broadcast_list().
@@ -67838,7 +67996,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 channels: CellBroadcastChannels,
                 n_channels: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously set the #MMCellbroadcastChannel s in the modem.
              *
@@ -67880,7 +68038,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 n_channels: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_cell_broadcast_set_channels().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_cell_broadcast_set_channels()
@@ -67967,7 +68125,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -68059,7 +68217,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -68137,7 +68295,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68167,7 +68325,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_delete().
@@ -68191,7 +68349,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_cell_broadcast_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68214,7 +68372,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_list().
@@ -68238,7 +68396,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_channels Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_channels(arg_channels: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_channels(
+                arg_channels: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.SetChannels">SetChannels()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68268,7 +68429,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_channels: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_set_channels().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_set_channels().
@@ -68890,7 +69051,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             list(
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[FirmwareProperties | null, FirmwareProperties[] | null]>;
+            ): globalThis.Promise<[FirmwareProperties | null, FirmwareProperties[] | null]>;
             /**
              * Asynchronously gets the list of available firmware images.
              *
@@ -68921,7 +69082,7 @@ declare module 'gi://ModemManager?version=1.0' {
             list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[FirmwareProperties | null, FirmwareProperties[] | null]> | void;
+            ): globalThis.Promise<[FirmwareProperties | null, FirmwareProperties[] | null]> | void;
             /**
              * Finishes an operation started with mm_modem_firmware_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_firmware_list().
@@ -68966,7 +69127,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param unique_id Unique ID of the firmware image to select.
              * @param cancellable A #GCancellable or %NULL.
              */
-            select(unique_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            select(unique_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously selects a firmware image to boot.
              *
@@ -69010,7 +69171,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 unique_id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_firmware_select().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_firmware_select().
@@ -69088,7 +69249,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -69180,7 +69341,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -69257,7 +69418,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_firmware_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<[string, GLib.Variant | null]>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, GLib.Variant | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69280,7 +69441,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[string, GLib.Variant | null]> | void;
+            ): globalThis.Promise<[string, GLib.Variant | null]> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_firmware_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_list().
@@ -69304,7 +69465,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_uniqueid Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.Select">Select()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69334,7 +69495,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_uniqueid: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_firmware_call_select().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_select().
@@ -69923,7 +70084,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_3gpp(cancellable?: Gio.Cancellable | null): Promise<Location3gpp>;
+            get_3gpp(cancellable?: Gio.Cancellable | null): globalThis.Promise<Location3gpp>;
             /**
              * Asynchronously gets the current 3GPP location information.
              *
@@ -69954,7 +70115,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_3gpp(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Location3gpp> | void;
+            ): globalThis.Promise<Location3gpp> | void;
             /**
              * Finishes an operation started with mm_modem_location_get_3gpp().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_location_get_3gpp().
@@ -69998,7 +70159,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_cdma_bs(cancellable?: Gio.Cancellable | null): Promise<LocationCdmaBs>;
+            get_cdma_bs(cancellable?: Gio.Cancellable | null): globalThis.Promise<LocationCdmaBs>;
             /**
              * Asynchronously gets the current CDMA base station location information.
              *
@@ -70029,7 +70190,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_cdma_bs(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<LocationCdmaBs> | void;
+            ): globalThis.Promise<LocationCdmaBs> | void;
             /**
              * Finishes an operation started with mm_modem_location_get_cdma_bs().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_location_get_cdma_bs().
@@ -70064,7 +70225,9 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             get_full(
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null]>;
+            ): globalThis.Promise<
+                [Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null]
+            >;
             /**
              * Asynchronously gets the current location information.
              *
@@ -70095,7 +70258,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_full(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<
+            ): globalThis.Promise<
                 [Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null]
             > | void;
             /**
@@ -70129,7 +70292,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_gps_nmea(cancellable?: Gio.Cancellable | null): Promise<LocationGpsNmea>;
+            get_gps_nmea(cancellable?: Gio.Cancellable | null): globalThis.Promise<LocationGpsNmea>;
             /**
              * Asynchronously gets the current GPS NMEA location information.
              *
@@ -70160,7 +70323,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_gps_nmea(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<LocationGpsNmea> | void;
+            ): globalThis.Promise<LocationGpsNmea> | void;
             /**
              * Finishes an operation started with mm_modem_location_get_gps_nmea().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_location_get_gps_nmea().
@@ -70188,7 +70351,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_gps_raw(cancellable?: Gio.Cancellable | null): Promise<LocationGpsRaw>;
+            get_gps_raw(cancellable?: Gio.Cancellable | null): globalThis.Promise<LocationGpsRaw>;
             /**
              * Asynchronously gets the current GPS raw location information.
              *
@@ -70219,7 +70382,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_gps_raw(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<LocationGpsRaw> | void;
+            ): globalThis.Promise<LocationGpsRaw> | void;
             /**
              * Finishes an operation started with mm_modem_location_get_gps_raw().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_location_get_gps_raw().
@@ -70343,7 +70506,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param data Data to inject.
              * @param cancellable A #GCancellable or %NULL.
              */
-            inject_assistance_data(data: Uint8Array | string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            inject_assistance_data(
+                data: Uint8Array | string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously injects assistance data to the GNSS module.
              *
@@ -70383,7 +70549,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 data: Uint8Array | string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with
              * mm_modem_location_inject_assistance_data().
@@ -70489,7 +70655,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param rate The GPS refresh rate, in seconds.
              * @param cancellable A #GCancellable or %NULL.
              */
-            set_gps_refresh_rate(rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_gps_refresh_rate(rate: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously configures the GPS refresh rate.
              *
@@ -70535,7 +70701,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_location_set_gps_refresh_rate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_location_set_gps_refresh_rate().
@@ -70569,7 +70735,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param supl The SUPL server address, given as IP:PORT or with a full URL.
              * @param cancellable A #GCancellable or %NULL.
              */
-            set_supl_server(supl: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_supl_server(supl: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously configures the address of the SUPL server for A-GPS operation.
              *
@@ -70607,7 +70773,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 supl: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_location_set_supl_server().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_location_set_supl_server().
@@ -70644,7 +70810,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 sources: ModemLocationSource | null,
                 signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously configures the location sources to use when gathering location
              * information. Also enable or disable location information gathering.
@@ -70688,7 +70854,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_location_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_modem_location_setup().
@@ -70839,7 +71005,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -70931,7 +71097,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -71008,7 +71174,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_location_call_get_location_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_location(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_location(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.GetLocation">GetLocation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71031,7 +71197,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_location(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_get_location().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_get_location().
@@ -71055,7 +71221,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_data Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_inject_assistance_data(arg_data: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_inject_assistance_data(
+                arg_data: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.InjectAssistanceData">InjectAssistanceData()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71085,7 +71254,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_data: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_inject_assistance_data().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_inject_assistance_data().
@@ -71110,7 +71279,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_rate Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_gps_refresh_rate(arg_rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_gps_refresh_rate(
+                arg_rate: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetGpsRefreshRate">SetGpsRefreshRate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71140,7 +71312,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_set_gps_refresh_rate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_gps_refresh_rate().
@@ -71165,7 +71337,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_supl Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_supl_server(arg_supl: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_supl_server(arg_supl: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetSuplServer">SetSuplServer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71195,7 +71367,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_supl: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_set_supl_server().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_supl_server().
@@ -71225,7 +71397,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_sources: number,
                 arg_signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71259,7 +71431,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_setup().
@@ -71876,7 +72048,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param properties A ##MMSmsProperties object with the properties to use.
              * @param cancellable A #GCancellable or %NULL.
              */
-            create(properties: SmsProperties, cancellable?: Gio.Cancellable | null): Promise<Sms>;
+            create(properties: SmsProperties, cancellable?: Gio.Cancellable | null): globalThis.Promise<Sms>;
             /**
              * Asynchronously creates a new #MMSms in the modem.
              *
@@ -71914,7 +72086,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 properties: SmsProperties,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Sms> | void;
+            ): globalThis.Promise<Sms> | void;
             /**
              * Finishes an operation started with mm_modem_messaging_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_messaging_create().
@@ -71944,7 +72116,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param sms Path of the #MMSms to delete.
              * @param cancellable A #GCancellable or %NULL.
              */
-            ['delete'](sms: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            ['delete'](sms: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously deletes a given #MMSms from the modem.
              *
@@ -71982,7 +72154,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 sms: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_messaging_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_messaging_delete().
@@ -72032,7 +72204,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            list(cancellable?: Gio.Cancellable | null): Promise<Sms[]>;
+            list(cancellable?: Gio.Cancellable | null): globalThis.Promise<Sms[]>;
             /**
              * Asynchronously lists the #MMSms objects in the modem.
              *
@@ -72063,7 +72235,7 @@ declare module 'gi://ModemManager?version=1.0' {
             list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Sms[]> | void;
+            ): globalThis.Promise<Sms[]> | void;
             /**
              * Finishes an operation started with mm_modem_messaging_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_messaging_list().
@@ -72097,7 +72269,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param storage A #MMSmsStorage to set default storage.
              * @param cancellable A #GCancellable or %NULL.
              */
-            set_default_storage(storage: SmsStorage | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_default_storage(
+                storage: SmsStorage | null,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously set default #MMSmsStorage in the modem.
              *
@@ -72135,7 +72310,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 storage: SmsStorage | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_messaging_set_default_storage().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_messaging_set_default_storage()
@@ -72231,7 +72406,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -72323,7 +72498,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -72401,7 +72576,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Create">Create()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72431,7 +72606,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_create().
@@ -72456,7 +72631,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72486,7 +72661,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_delete().
@@ -72510,7 +72685,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_messaging_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72533,7 +72708,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_list().
@@ -72557,7 +72732,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_storage Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_default_storage(arg_storage: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_default_storage(
+                arg_storage: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.SetDefaultStorage">SetDefaultStorage()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72587,7 +72765,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_storage: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_set_default_storage().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_set_default_storage().
@@ -73211,7 +73389,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 session_id: number,
                 accept: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously accepts a nework-initiated OMA device management session.
              *
@@ -73255,7 +73433,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 accept: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with
              * mm_modem_oma_accept_network_initiated_session().
@@ -73291,7 +73469,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            cancel_session(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            cancel_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously cancels the current OMA device management session.
              *
@@ -73322,7 +73500,7 @@ declare module 'gi://ModemManager?version=1.0' {
             cancel_session(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_oma_cancel_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_oma_cancel_session().
@@ -73387,7 +73565,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param features Mask of #MMOmaFeature values to enable.
              * @param cancellable A #GCancellable or %NULL.
              */
-            setup(features: OmaFeature | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            setup(features: OmaFeature | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously sets up the OMA device management service.
              *
@@ -73425,7 +73603,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 features: OmaFeature | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_oma_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_oma_setup().
@@ -73459,7 +73637,7 @@ declare module 'gi://ModemManager?version=1.0' {
             start_client_initiated_session(
                 session_type: OmaSessionType | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously starts a client-initiated OMA device management session.
              *
@@ -73499,7 +73677,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 session_type: OmaSessionType | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with
              * mm_modem_oma_start_client_initiated_session().
@@ -73614,7 +73792,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -73706,7 +73884,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -73789,7 +73967,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_session_id: number,
                 arg_accept: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.AcceptNetworkInitiatedSession">AcceptNetworkInitiatedSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73823,7 +74001,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_accept: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_accept_network_initiated_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_accept_network_initiated_session().
@@ -73852,7 +74030,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_oma_call_cancel_session_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel_session(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.CancelSession">CancelSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73878,7 +74056,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_cancel_session(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_cancel_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_cancel_session().
@@ -73902,7 +74080,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_features Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup(arg_features: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup(arg_features: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73932,7 +74110,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_features: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_setup().
@@ -73960,7 +74138,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_start_client_initiated_session(
                 arg_session_type: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.StartClientInitiatedSession">StartClientInitiatedSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73990,7 +74168,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_session_type: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_start_client_initiated_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_start_client_initiated_session().
@@ -74621,7 +74799,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param enable %TRUE to enable dynamic SAR and %FALSE to disable it.
              * @param cancellable A #GCancellable or %NULL.
              */
-            enable(enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            enable(enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously enable or disable dynamic SAR.
              *
@@ -74659,7 +74837,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_sar_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_sar_enable().
@@ -74704,7 +74882,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param level Index of the SAR power level mapping table
              * @param cancellable A #GCancellable or %NULL.
              */
-            set_power_level(level: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            set_power_level(level: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously set current dynamic SAR power level.
              *
@@ -74742,7 +74920,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 level: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             set_power_level_finish(res: Gio.AsyncResult): boolean;
             /**
              * Synchronously set current dynamic SAR power level.
@@ -74819,7 +74997,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -74911,7 +75089,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -74989,7 +75167,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.Enable">Enable()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75019,7 +75197,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_sar_call_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_sar_call_enable().
@@ -75044,7 +75222,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_level Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_power_level(arg_level: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_power_level(arg_level: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.SetPowerLevel">SetPowerLevel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75074,7 +75252,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_level: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_sar_call_set_power_level().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_sar_call_set_power_level().
@@ -75791,7 +75969,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param rate Refresh rate to set, in seconds. Use 0 to disable periodic polling.
              * @param cancellable A #GCancellable or %NULL.
              */
-            setup(rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            setup(rate: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously enables or disables the extended signal quality information
              * retrieval via periodic polling.
@@ -75831,7 +76009,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_signal_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_signal_setup().
@@ -75866,7 +76044,7 @@ declare module 'gi://ModemManager?version=1.0' {
             setup_thresholds(
                 properties: SignalThresholdProperties,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously setups thresholds so that the device itself decides when to report the
              * extended signal quality information updates.
@@ -75906,7 +76084,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 properties: SignalThresholdProperties,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_signal_setup_thresholds().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_signal_setup_thresholds().
@@ -76045,7 +76223,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -76137,7 +76315,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -76215,7 +76393,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_rate Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup(arg_rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup(arg_rate: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76245,7 +76423,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_signal_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_signal_call_setup().
@@ -76270,7 +76448,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_settings Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup_thresholds(arg_settings: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup_thresholds(
+                arg_settings: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.SetupThresholds">SetupThresholds()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76300,7 +76481,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_signal_call_setup_thresholds().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_signal_call_setup_thresholds().
@@ -76865,7 +77046,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param properties A #MMSimpleConnectProperties bundle.
              * @param cancellable A #GCancellable or %NULL.
              */
-            connect(properties: SimpleConnectProperties, cancellable?: Gio.Cancellable | null): Promise<Bearer>;
+            connect(
+                properties: SimpleConnectProperties,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<Bearer>;
             /**
              * Asynchronously requests to connect the modem using the given `properties`.
              *
@@ -76903,7 +77087,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 properties: SimpleConnectProperties,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Bearer> | void;
+            ): globalThis.Promise<Bearer> | void;
             connect(...args: never[]): any;
             /**
              * Finishes an operation started with mm_modem_simple_connect().
@@ -76934,7 +77118,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param bearer Path of the bearer to disconnect, or %NULL to  disconnect all connected bearers.
              * @param cancellable A #GCancellable or %NULL.
              */
-            disconnect(bearer?: string | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            disconnect(bearer?: string | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to disconnect the modem.
              *
@@ -76972,7 +77156,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 bearer?: string | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             // Conflicted with GObject.Object.disconnect
             disconnect(...args: never[]): any;
             /**
@@ -77014,7 +77198,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_status(cancellable?: Gio.Cancellable | null): Promise<SimpleStatus>;
+            get_status(cancellable?: Gio.Cancellable | null): globalThis.Promise<SimpleStatus>;
             /**
              * Asynchronously requests a compilation of the status of the modem.
              *
@@ -77045,7 +77229,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_status(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<SimpleStatus> | void;
+            ): globalThis.Promise<SimpleStatus> | void;
             /**
              * Finishes an operation started with mm_modem_simple_get_status().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_simple_connect().
@@ -77103,7 +77287,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -77195,7 +77379,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -77273,7 +77457,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_connect(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -77303,7 +77490,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_connect().
@@ -77328,7 +77515,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bearer Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -77358,7 +77545,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_disconnect().
@@ -77382,7 +77569,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_simple_call_get_status_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_status(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_status(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.GetStatus">GetStatus()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -77405,7 +77592,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_status(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_get_status().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_get_status().
@@ -77984,7 +78171,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            get_network_time(cancellable?: Gio.Cancellable | null): Promise<string>;
+            get_network_time(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously requests the current network time.
              *
@@ -78015,7 +78202,7 @@ declare module 'gi://ModemManager?version=1.0' {
             get_network_time(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_modem_time_get_network_time().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_enable().
@@ -78113,7 +78300,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -78205,7 +78392,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -78282,7 +78469,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_time_call_get_network_time_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_get_network_time(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Time.GetNetworkTime">GetNetworkTime()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -78308,7 +78495,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_network_time(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_time_call_get_network_time().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_time_call_get_network_time().
@@ -78871,7 +79058,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_waiting_query(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously queries the status of the call waiting network service.
              *
@@ -78907,7 +79094,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_waiting_query(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_voice_call_waiting_query().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_call_waiting_query().
@@ -78940,7 +79127,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param enable Whether the call waiting service should be enabled.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_waiting_setup(enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_waiting_setup(enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously enables or disables the call waiting network service.
              *
@@ -78980,7 +79167,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_voice_call_waiting_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_call_waiting_setup().
@@ -79011,7 +79198,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param properties A ##MMCallProperties object with the properties to use.
              * @param cancellable A #GCancellable or %NULL.
              */
-            create_call(properties: CallProperties, cancellable?: Gio.Cancellable | null): Promise<Call>;
+            create_call(properties: CallProperties, cancellable?: Gio.Cancellable | null): globalThis.Promise<Call>;
             /**
              * Asynchronously creates a new #MMCall in the modem.
              *
@@ -79049,7 +79236,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 properties: CallProperties,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Call> | void;
+            ): globalThis.Promise<Call> | void;
             /**
              * Finishes an operation started with mm_modem_voice_create_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_create_call().
@@ -79079,7 +79266,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param call Path of the #MMCall to delete.
              * @param cancellable A #GCancellable or %NULL.
              */
-            delete_call(call: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            delete_call(call: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously deletes a given #MMCall from the modem.
              *
@@ -79117,7 +79304,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 call: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_voice_delete_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_delete_call().
@@ -79162,7 +79349,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            hangup_all(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            hangup_all(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously hangs up all ongoing (active, waiting, held) calls.
              *
@@ -79193,7 +79380,7 @@ declare module 'gi://ModemManager?version=1.0' {
             hangup_all(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_voice_hangup_all().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_hangup_all().
@@ -79222,7 +79409,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            hangup_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            hangup_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously hangs up all active calls and accepts the next waiting or held
              * call.
@@ -79255,7 +79442,7 @@ declare module 'gi://ModemManager?version=1.0' {
             hangup_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_voice_hangup_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_hangup_and_accept().
@@ -79285,7 +79472,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            hold_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            hold_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously puts all active calls on hold and accepts the next waiting or
              * held call.
@@ -79318,7 +79505,7 @@ declare module 'gi://ModemManager?version=1.0' {
             hold_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_voice_hold_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_hold_and_accept().
@@ -79347,7 +79534,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            list_calls(cancellable?: Gio.Cancellable | null): Promise<Call[]>;
+            list_calls(cancellable?: Gio.Cancellable | null): globalThis.Promise<Call[]>;
             /**
              * Asynchronously lists the #MMCall objects in the modem.
              *
@@ -79378,7 +79565,7 @@ declare module 'gi://ModemManager?version=1.0' {
             list_calls(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Call[]> | void;
+            ): globalThis.Promise<Call[]> | void;
             /**
              * Finishes an operation started with mm_modem_voice_list_calls().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_list_calls().
@@ -79406,7 +79593,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            transfer(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            transfer(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously joins all active and held calls, and disconnects from them.
              *
@@ -79437,7 +79624,7 @@ declare module 'gi://ModemManager?version=1.0' {
             transfer(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_modem_voice_transfer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_transfer().
@@ -79518,7 +79705,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -79610,7 +79797,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -79687,7 +79874,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_call_waiting_query_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_call_waiting_query(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingQuery">CallWaitingQuery()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -79713,7 +79900,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_call_waiting_query(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_call_waiting_query().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_call_waiting_query().
@@ -79737,7 +79924,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_call_waiting_setup(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_call_waiting_setup(
+                arg_enable: boolean,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingSetup">CallWaitingSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -79767,7 +79957,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_call_waiting_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_call_waiting_setup().
@@ -79792,7 +79982,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create_call(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CreateCall">CreateCall()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -79822,7 +80015,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_create_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_create_call().
@@ -79850,7 +80043,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.DeleteCall">DeleteCall()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -79880,7 +80073,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_delete_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_delete_call().
@@ -79904,7 +80097,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hangup_all_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup_all(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup_all(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAll">HangupAll()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -79927,7 +80120,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup_all(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hangup_all().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hangup_all().
@@ -79950,7 +80143,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hangup_and_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAndAccept">HangupAndAccept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -79976,7 +80169,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hangup_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hangup_and_accept().
@@ -79999,7 +80192,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hold_and_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hold_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hold_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HoldAndAccept">HoldAndAccept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -80025,7 +80218,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hold_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hold_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hold_and_accept().
@@ -80048,7 +80241,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_list_calls_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list_calls(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list_calls(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.ListCalls">ListCalls()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -80071,7 +80264,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list_calls(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_list_calls().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_list_calls().
@@ -80094,7 +80287,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_transfer_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_transfer(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_transfer(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.Transfer">Transfer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -80117,7 +80310,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_transfer(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_transfer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_transfer().
@@ -82139,7 +82332,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param new_pin The new PIN code to be set.
              * @param cancellable A #GCancellable or %NULL.
              */
-            change_pin(old_pin: string, new_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            change_pin(
+                old_pin: string,
+                new_pin: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously changes the PIN code in the SIM card.
              *
@@ -82181,7 +82378,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 new_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_sim_change_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_change_pin().
@@ -82212,7 +82409,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param pin The PIN code.
              * @param cancellable A #GCancellable or %NULL.
              */
-            disable_pin(pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            disable_pin(pin: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously disables requesting the PIN code in the SIM card.
              *
@@ -82250,7 +82447,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_sim_disable_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_disable_pin().
@@ -82326,7 +82523,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param pin The PIN code.
              * @param cancellable A #GCancellable or %NULL.
              */
-            enable_pin(pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            enable_pin(pin: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously enables requesting the PIN code in the SIM card.
              *
@@ -82364,7 +82561,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_sim_enable_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_enable_pin().
@@ -82492,7 +82689,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param pin The PIN code.
              * @param cancellable A #GCancellable or %NULL.
              */
-            send_pin(pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            send_pin(pin: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously sends the PIN code to the SIM card.
              *
@@ -82530,7 +82727,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_sim_send_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_send_pin().
@@ -82561,7 +82758,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param pin The PIN code.
              * @param cancellable A #GCancellable or %NULL.
              */
-            send_puk(puk: string, pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            send_puk(puk: string, pin: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously sends the PUK code to the SIM card.
              *
@@ -82603,7 +82800,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_sim_send_puk().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_send_puk().
@@ -82635,7 +82832,7 @@ declare module 'gi://ModemManager?version=1.0' {
             set_preferred_networks(
                 preferred_networks: SimPreferredNetwork[],
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously sets the preferred network list of this #MMSim.
              *
@@ -82669,7 +82866,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 preferred_networks: SimPreferredNetwork[],
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_sim_set_preferred_networks().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_set_preferred_networks().
@@ -82879,7 +83076,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -82971,7 +83168,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -83054,7 +83251,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_old_pin: string,
                 arg_new_pin: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.ChangePin">ChangePin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -83088,7 +83285,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_new_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_change_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_change_pin().
@@ -83123,7 +83320,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 arg_enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.EnablePin">EnablePin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -83157,7 +83354,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_enable_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_enable_pin().
@@ -83183,7 +83380,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_pin Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_pin(arg_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_pin(arg_pin: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPin">SendPin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -83213,7 +83410,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_send_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_pin().
@@ -83239,7 +83436,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_pin Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_puk(arg_puk: string, arg_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_puk(
+                arg_puk: string,
+                arg_pin: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPuk">SendPuk()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -83273,7 +83474,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_send_puk().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_puk().
@@ -83302,7 +83503,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_preferred_networks(
                 arg_preferred_networks: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SetPreferredNetworks">SetPreferredNetworks()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -83332,7 +83533,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_preferred_networks: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_set_preferred_networks().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_set_preferred_networks().
@@ -84529,7 +84730,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_sms_send_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            send(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            send(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously requests to queue the message for delivery.
              *
@@ -84562,7 +84763,7 @@ declare module 'gi://ModemManager?version=1.0' {
             send(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_sms_send().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sms_send().
@@ -84594,7 +84795,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param storage A #MMSmsStorage specifying where to store the SMS, or  %MM_SMS_STORAGE_UNKNOWN to use the default.
              * @param cancellable A #GCancellable or %NULL.
              */
-            store(storage: SmsStorage | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            store(storage: SmsStorage | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronoulsy requests to store the message in the device if not already done.
              *
@@ -84634,7 +84835,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 storage: SmsStorage | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_sms_store().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sms_store().
@@ -84859,7 +85060,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -84951,7 +85152,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -85028,7 +85229,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_sms_call_send_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Send">Send()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -85051,7 +85252,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_send(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sms_call_send().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sms_call_send().
@@ -85075,7 +85276,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_storage Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_store(arg_storage: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_store(arg_storage: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Store">Store()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -85105,7 +85306,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_storage: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sms_call_store().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sms_call_store().
@@ -86816,6 +87017,25 @@ declare module 'gi://ModemManager?version=1.0' {
         }
 
         namespace GdbusBearer {
+            /**
+             * Interface for implementing GdbusBearer.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusBearer::handle-connect signal.
+                 * @param invocation
+                 */
+                vfunc_handle_connect(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusBearer::handle-disconnect signal.
+                 * @param invocation
+                 */
+                vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -86858,7 +87078,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusBearer extends GObject.Object {
+        interface GdbusBearer extends GObject.Object, GdbusBearer.Interface {
             // Properties
 
             /**
@@ -87012,7 +87232,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_bearer_call_connect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_connect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_connect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87035,7 +87255,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_connect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_bearer_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_bearer_call_connect().
@@ -87058,7 +87278,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_bearer_call_disconnect_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87081,7 +87301,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_disconnect(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_bearer_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_bearer_call_disconnect().
@@ -87110,19 +87330,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusBearer::handle-connect signal.
-             * @param invocation
-             */
-            vfunc_handle_connect(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusBearer::handle-disconnect signal.
-             * @param invocation
-             */
-            vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation): boolean;
         }
 
         export const GdbusBearer: GdbusBearerNamespace & {
@@ -87130,6 +87337,64 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusCall {
+            /**
+             * Interface for implementing GdbusCall.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusCall::dtmf-received signal.
+                 * @param arg_dtmf
+                 */
+                vfunc_dtmf_received(arg_dtmf: string): void;
+                /**
+                 * Handler for the #MmGdbusCall::handle-accept signal.
+                 * @param invocation
+                 */
+                vfunc_handle_accept(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusCall::handle-deflect signal.
+                 * @param invocation
+                 * @param arg_number
+                 */
+                vfunc_handle_deflect(invocation: Gio.DBusMethodInvocation, arg_number: string): boolean;
+                /**
+                 * Handler for the #MmGdbusCall::handle-hangup signal.
+                 * @param invocation
+                 */
+                vfunc_handle_hangup(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusCall::handle-join-multiparty signal.
+                 * @param invocation
+                 */
+                vfunc_handle_join_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusCall::handle-leave-multiparty signal.
+                 * @param invocation
+                 */
+                vfunc_handle_leave_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusCall::handle-send-dtmf signal.
+                 * @param invocation
+                 * @param arg_dtmf
+                 */
+                vfunc_handle_send_dtmf(invocation: Gio.DBusMethodInvocation, arg_dtmf: string): boolean;
+                /**
+                 * Handler for the #MmGdbusCall::handle-start signal.
+                 * @param invocation
+                 */
+                vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusCall::state-changed signal.
+                 * @param arg_old
+                 * @param arg_new
+                 * @param arg_reason
+                 */
+                vfunc_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -87162,7 +87427,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusCall extends GObject.Object {
+        interface GdbusCall extends GObject.Object, GdbusCall.Interface {
             // Properties
 
             /**
@@ -87246,7 +87511,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Accept">Accept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87269,7 +87534,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_accept().
@@ -87293,7 +87558,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_number Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_deflect(arg_number: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Deflect">Deflect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87323,7 +87588,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_number: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_deflect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_deflect().
@@ -87347,7 +87612,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_hangup_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Hangup">Hangup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87370,7 +87635,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_hangup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_hangup().
@@ -87393,7 +87658,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_join_multiparty_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_join_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_join_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.JoinMultiparty">JoinMultiparty()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87419,7 +87684,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_join_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_join_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_join_multiparty().
@@ -87442,7 +87707,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_leave_multiparty_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_leave_multiparty(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_leave_multiparty(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.LeaveMultiparty">LeaveMultiparty()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87468,7 +87733,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_leave_multiparty(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_leave_multiparty().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_leave_multiparty().
@@ -87492,7 +87757,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_dtmf Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_dtmf(arg_dtmf: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.SendDtmf">SendDtmf()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87522,7 +87787,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_dtmf: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_send_dtmf().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_send_dtmf().
@@ -87546,7 +87811,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_call_call_start_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -87569,7 +87834,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_start(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_call_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_start().
@@ -87645,58 +87910,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_reason Argument to pass with the signal.
              */
             emit_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusCall::dtmf-received signal.
-             * @param arg_dtmf
-             */
-            vfunc_dtmf_received(arg_dtmf: string): void;
-            /**
-             * Handler for the #MmGdbusCall::handle-accept signal.
-             * @param invocation
-             */
-            vfunc_handle_accept(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusCall::handle-deflect signal.
-             * @param invocation
-             * @param arg_number
-             */
-            vfunc_handle_deflect(invocation: Gio.DBusMethodInvocation, arg_number: string): boolean;
-            /**
-             * Handler for the #MmGdbusCall::handle-hangup signal.
-             * @param invocation
-             */
-            vfunc_handle_hangup(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusCall::handle-join-multiparty signal.
-             * @param invocation
-             */
-            vfunc_handle_join_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusCall::handle-leave-multiparty signal.
-             * @param invocation
-             */
-            vfunc_handle_leave_multiparty(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusCall::handle-send-dtmf signal.
-             * @param invocation
-             * @param arg_dtmf
-             */
-            vfunc_handle_send_dtmf(invocation: Gio.DBusMethodInvocation, arg_dtmf: string): boolean;
-            /**
-             * Handler for the #MmGdbusCall::handle-start signal.
-             * @param invocation
-             */
-            vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusCall::state-changed signal.
-             * @param arg_old
-             * @param arg_new
-             * @param arg_reason
-             */
-            vfunc_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
         }
 
         export const GdbusCall: GdbusCallNamespace & {
@@ -87784,6 +87997,105 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModem {
+            /**
+             * Interface for implementing GdbusModem.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModem::handle-command signal.
+                 * @param invocation
+                 * @param arg_cmd
+                 * @param arg_timeout
+                 */
+                vfunc_handle_command(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_cmd: string,
+                    arg_timeout: number,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-create-bearer signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_create_bearer(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-delete-bearer signal.
+                 * @param invocation
+                 * @param arg_bearer
+                 */
+                vfunc_handle_delete_bearer(invocation: Gio.DBusMethodInvocation, arg_bearer: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-enable signal.
+                 * @param invocation
+                 * @param arg_enable
+                 */
+                vfunc_handle_enable(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-factory-reset signal.
+                 * @param invocation
+                 * @param arg_code
+                 */
+                vfunc_handle_factory_reset(invocation: Gio.DBusMethodInvocation, arg_code: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-get-cell-info signal.
+                 * @param invocation
+                 */
+                vfunc_handle_get_cell_info(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-list-bearers signal.
+                 * @param invocation
+                 */
+                vfunc_handle_list_bearers(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-reset signal.
+                 * @param invocation
+                 */
+                vfunc_handle_reset(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-set-current-bands signal.
+                 * @param invocation
+                 * @param arg_bands
+                 */
+                vfunc_handle_set_current_bands(invocation: Gio.DBusMethodInvocation, arg_bands: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-set-current-capabilities signal.
+                 * @param invocation
+                 * @param arg_capabilities
+                 */
+                vfunc_handle_set_current_capabilities(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_capabilities: number,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-set-current-modes signal.
+                 * @param invocation
+                 * @param arg_modes
+                 */
+                vfunc_handle_set_current_modes(invocation: Gio.DBusMethodInvocation, arg_modes: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-set-power-state signal.
+                 * @param invocation
+                 * @param arg_state
+                 */
+                vfunc_handle_set_power_state(invocation: Gio.DBusMethodInvocation, arg_state: number): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::handle-set-primary-sim-slot signal.
+                 * @param invocation
+                 * @param arg_sim_slot
+                 */
+                vfunc_handle_set_primary_sim_slot(invocation: Gio.DBusMethodInvocation, arg_sim_slot: number): boolean;
+                /**
+                 * Handler for the #MmGdbusModem::state-changed signal.
+                 * @param arg_old
+                 * @param arg_new
+                 * @param arg_reason
+                 */
+                vfunc_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -87867,7 +88179,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModem extends GObject.Object {
+        interface GdbusModem extends GObject.Object, GdbusModem.Interface {
             // Properties
 
             /**
@@ -88310,7 +88622,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_timeout Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_command(arg_cmd: string, arg_timeout: number, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_command(
+                arg_cmd: string,
+                arg_timeout: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Command">Command()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88344,7 +88660,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_timeout: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_command().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_command().
@@ -88374,7 +88690,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create_bearer(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create_bearer(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.CreateBearer">CreateBearer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88404,7 +88723,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_create_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_create_bearer().
@@ -88432,7 +88751,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bearer Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete_bearer(arg_bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.DeleteBearer">DeleteBearer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88462,7 +88781,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_delete_bearer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_delete_bearer().
@@ -88487,7 +88806,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Enable">Enable()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88517,7 +88836,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_enable().
@@ -88542,7 +88861,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_code Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_factory_reset(arg_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_factory_reset(arg_code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.FactoryReset">FactoryReset()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88572,7 +88891,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_factory_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_factory_reset().
@@ -88596,7 +88915,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_get_cell_info_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_cell_info(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_cell_info(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.GetCellInfo">GetCellInfo()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88622,7 +88941,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_cell_info(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_get_cell_info().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_get_cell_info().
@@ -88645,7 +88964,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_list_bearers_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list_bearers(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list_bearers(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.ListBearers">ListBearers()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88668,7 +88987,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list_bearers(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_list_bearers().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_list_bearers().
@@ -88691,7 +89010,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_call_reset_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_reset(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_reset(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Reset">Reset()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88714,7 +89033,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_reset(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_reset().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_reset().
@@ -88738,7 +89057,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bands Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_current_bands(arg_bands: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_current_bands(
+                arg_bands: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentBands">SetCurrentBands()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88768,7 +89090,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bands: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_bands().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_bands().
@@ -88796,7 +89118,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_current_capabilities(
                 arg_capabilities: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentCapabilities">SetCurrentCapabilities()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88826,7 +89148,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_capabilities: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_capabilities().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_capabilities().
@@ -88851,7 +89173,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_modes Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_current_modes(arg_modes: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_current_modes(
+                arg_modes: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentModes">SetCurrentModes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88881,7 +89206,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_modes: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_current_modes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_current_modes().
@@ -88906,7 +89231,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_state Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_power_state(arg_state: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_power_state(arg_state: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPowerState">SetPowerState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88936,7 +89261,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_state: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_power_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_power_state().
@@ -88961,7 +89286,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_sim_slot Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_primary_sim_slot(arg_sim_slot: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_primary_sim_slot(
+                arg_sim_slot: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPrimarySimSlot">SetPrimarySimSlot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -88991,7 +89319,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_sim_slot: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_call_set_primary_sim_slot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_set_primary_sim_slot().
@@ -89109,95 +89437,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_reason Argument to pass with the signal.
              */
             emit_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModem::handle-command signal.
-             * @param invocation
-             * @param arg_cmd
-             * @param arg_timeout
-             */
-            vfunc_handle_command(invocation: Gio.DBusMethodInvocation, arg_cmd: string, arg_timeout: number): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-create-bearer signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_create_bearer(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-delete-bearer signal.
-             * @param invocation
-             * @param arg_bearer
-             */
-            vfunc_handle_delete_bearer(invocation: Gio.DBusMethodInvocation, arg_bearer: string): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-enable signal.
-             * @param invocation
-             * @param arg_enable
-             */
-            vfunc_handle_enable(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-factory-reset signal.
-             * @param invocation
-             * @param arg_code
-             */
-            vfunc_handle_factory_reset(invocation: Gio.DBusMethodInvocation, arg_code: string): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-get-cell-info signal.
-             * @param invocation
-             */
-            vfunc_handle_get_cell_info(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-list-bearers signal.
-             * @param invocation
-             */
-            vfunc_handle_list_bearers(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-reset signal.
-             * @param invocation
-             */
-            vfunc_handle_reset(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-set-current-bands signal.
-             * @param invocation
-             * @param arg_bands
-             */
-            vfunc_handle_set_current_bands(invocation: Gio.DBusMethodInvocation, arg_bands: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-set-current-capabilities signal.
-             * @param invocation
-             * @param arg_capabilities
-             */
-            vfunc_handle_set_current_capabilities(
-                invocation: Gio.DBusMethodInvocation,
-                arg_capabilities: number,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-set-current-modes signal.
-             * @param invocation
-             * @param arg_modes
-             */
-            vfunc_handle_set_current_modes(invocation: Gio.DBusMethodInvocation, arg_modes: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-set-power-state signal.
-             * @param invocation
-             * @param arg_state
-             */
-            vfunc_handle_set_power_state(invocation: Gio.DBusMethodInvocation, arg_state: number): boolean;
-            /**
-             * Handler for the #MmGdbusModem::handle-set-primary-sim-slot signal.
-             * @param invocation
-             * @param arg_sim_slot
-             */
-            vfunc_handle_set_primary_sim_slot(invocation: Gio.DBusMethodInvocation, arg_sim_slot: number): boolean;
-            /**
-             * Handler for the #MmGdbusModem::state-changed signal.
-             * @param arg_old
-             * @param arg_new
-             * @param arg_reason
-             */
-            vfunc_state_changed(arg_old: number, arg_new: number, arg_reason: number): void;
         }
 
         export const GdbusModem: GdbusModemNamespace & {
@@ -89205,6 +89444,71 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModem3gpp {
+            /**
+             * Interface for implementing GdbusModem3gpp.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModem3gpp::handle-disable-facility-lock signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_disable_facility_lock(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_properties: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gpp::handle-register signal.
+                 * @param invocation
+                 * @param arg_operator_id
+                 */
+                vfunc_handle_register(invocation: Gio.DBusMethodInvocation, arg_operator_id: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gpp::handle-scan signal.
+                 * @param invocation
+                 */
+                vfunc_handle_scan(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gpp::handle-set-carrier-lock signal.
+                 * @param invocation
+                 * @param arg_data
+                 */
+                vfunc_handle_set_carrier_lock(invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gpp::handle-set-eps-ue-mode-operation signal.
+                 * @param invocation
+                 * @param arg_mode
+                 */
+                vfunc_handle_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation, arg_mode: number): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gpp::handle-set-initial-eps-bearer-settings signal.
+                 * @param invocation
+                 * @param arg_settings
+                 */
+                vfunc_handle_set_initial_eps_bearer_settings(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_settings: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gpp::handle-set-nr5g-registration-settings signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_set_nr5g_registration_settings(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_properties: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gpp::handle-set-packet-service-state signal.
+                 * @param invocation
+                 * @param arg_state
+                 */
+                vfunc_handle_set_packet_service_state(invocation: Gio.DBusMethodInvocation, arg_state: number): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -89251,7 +89555,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModem3gpp extends GObject.Object {
+        interface GdbusModem3gpp extends GObject.Object, GdbusModem3gpp.Interface {
             // Properties
 
             /**
@@ -89437,7 +89741,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_disable_facility_lock(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.DisableFacilityLock">DisableFacilityLock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -89467,7 +89771,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_disable_facility_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_disable_facility_lock().
@@ -89495,7 +89799,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_operator_id Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_register(arg_operator_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Register">Register()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -89525,7 +89829,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_operator_id: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_register().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_register().
@@ -89549,7 +89853,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_call_scan_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_scan(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_scan(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Scan">Scan()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -89572,7 +89876,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_scan(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_scan().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_scan().
@@ -89596,7 +89900,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_data Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_carrier_lock(arg_data: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_carrier_lock(
+                arg_data: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetCarrierLock">SetCarrierLock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -89626,7 +89933,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_data: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_carrier_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_carrier_lock().
@@ -89651,7 +89958,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_mode Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_eps_ue_mode_operation(arg_mode: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_eps_ue_mode_operation(
+                arg_mode: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetEpsUeModeOperation">SetEpsUeModeOperation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -89681,7 +89991,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_mode: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation().
@@ -89709,7 +90019,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_initial_eps_bearer_settings(
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetInitialEpsBearerSettings">SetInitialEpsBearerSettings()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -89739,7 +90049,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings().
@@ -89770,7 +90080,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_nr5g_registration_settings(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetNr5gRegistrationSettings">SetNr5gRegistrationSettings()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -89800,7 +90110,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_nr5g_registration_settings().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_nr5g_registration_settings().
@@ -89828,7 +90138,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_state Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_packet_service_state(arg_state: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_packet_service_state(
+                arg_state: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetPacketServiceState">SetPacketServiceState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -89858,7 +90171,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_state: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_call_set_packet_service_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_set_packet_service_state().
@@ -89931,65 +90244,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_packet_service_state(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModem3gpp::handle-disable-facility-lock signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_disable_facility_lock(
-                invocation: Gio.DBusMethodInvocation,
-                arg_properties: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gpp::handle-register signal.
-             * @param invocation
-             * @param arg_operator_id
-             */
-            vfunc_handle_register(invocation: Gio.DBusMethodInvocation, arg_operator_id: string): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gpp::handle-scan signal.
-             * @param invocation
-             */
-            vfunc_handle_scan(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gpp::handle-set-carrier-lock signal.
-             * @param invocation
-             * @param arg_data
-             */
-            vfunc_handle_set_carrier_lock(invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gpp::handle-set-eps-ue-mode-operation signal.
-             * @param invocation
-             * @param arg_mode
-             */
-            vfunc_handle_set_eps_ue_mode_operation(invocation: Gio.DBusMethodInvocation, arg_mode: number): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gpp::handle-set-initial-eps-bearer-settings signal.
-             * @param invocation
-             * @param arg_settings
-             */
-            vfunc_handle_set_initial_eps_bearer_settings(
-                invocation: Gio.DBusMethodInvocation,
-                arg_settings: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gpp::handle-set-nr5g-registration-settings signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_set_nr5g_registration_settings(
-                invocation: Gio.DBusMethodInvocation,
-                arg_properties: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gpp::handle-set-packet-service-state signal.
-             * @param invocation
-             * @param arg_state
-             */
-            vfunc_handle_set_packet_service_state(invocation: Gio.DBusMethodInvocation, arg_state: number): boolean;
         }
 
         export const GdbusModem3gpp: GdbusModem3gppNamespace & {
@@ -89997,6 +90251,36 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModem3gppProfileManager {
+            /**
+             * Interface for implementing GdbusModem3gppProfileManager.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModem3gppProfileManager::handle-delete signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gppProfileManager::handle-list signal.
+                 * @param invocation
+                 */
+                vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gppProfileManager::handle-set signal.
+                 * @param invocation
+                 * @param arg_requested_properties
+                 */
+                vfunc_handle_set(invocation: Gio.DBusMethodInvocation, arg_requested_properties: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gppProfileManager::updated signal.
+                 */
+                vfunc_updated(): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -90021,7 +90305,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModem3gppProfileManager extends GObject.Object {
+        interface GdbusModem3gppProfileManager extends GObject.Object, GdbusModem3gppProfileManager.Interface {
             // Properties
 
             /**
@@ -90050,7 +90334,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90080,7 +90367,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_delete().
@@ -90104,7 +90391,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_profile_manager_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90127,7 +90414,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_list().
@@ -90154,7 +90441,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set(
                 arg_requested_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Set">Set()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90184,7 +90471,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_requested_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_profile_manager_call_set().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_profile_manager_call_set().
@@ -90230,30 +90517,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * Emits the <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Updated">"Updated"</link> D-Bus signal.
              */
             emit_updated(): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModem3gppProfileManager::handle-delete signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gppProfileManager::handle-list signal.
-             * @param invocation
-             */
-            vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gppProfileManager::handle-set signal.
-             * @param invocation
-             * @param arg_requested_properties
-             */
-            vfunc_handle_set(invocation: Gio.DBusMethodInvocation, arg_requested_properties: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gppProfileManager::updated signal.
-             */
-            vfunc_updated(): void;
         }
 
         export const GdbusModem3gppProfileManager: GdbusModem3gppProfileManagerNamespace & {
@@ -90261,6 +90524,32 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModem3gppUssd {
+            /**
+             * Interface for implementing GdbusModem3gppUssd.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModem3gppUssd::handle-cancel signal.
+                 * @param invocation
+                 */
+                vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gppUssd::handle-initiate signal.
+                 * @param invocation
+                 * @param arg_command
+                 */
+                vfunc_handle_initiate(invocation: Gio.DBusMethodInvocation, arg_command: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModem3gppUssd::handle-respond signal.
+                 * @param invocation
+                 * @param arg_response
+                 */
+                vfunc_handle_respond(invocation: Gio.DBusMethodInvocation, arg_response: string): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -90288,7 +90577,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModem3gppUssd extends GObject.Object {
+        interface GdbusModem3gppUssd extends GObject.Object, GdbusModem3gppUssd.Interface {
             // Properties
 
             /**
@@ -90337,7 +90626,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem3gpp_ussd_call_cancel_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Cancel">Cancel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90360,7 +90649,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_cancel(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_cancel().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_cancel().
@@ -90384,7 +90673,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_command Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_initiate(arg_command: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Initiate">Initiate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90414,7 +90703,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_command: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_initiate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_initiate().
@@ -90439,7 +90728,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_response Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_respond(arg_response: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Respond">Respond()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90469,7 +90758,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_response: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_respond().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_respond().
@@ -90508,26 +90797,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param reply Parameter to return.
              */
             complete_respond(invocation: Gio.DBusMethodInvocation, reply: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModem3gppUssd::handle-cancel signal.
-             * @param invocation
-             */
-            vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gppUssd::handle-initiate signal.
-             * @param invocation
-             * @param arg_command
-             */
-            vfunc_handle_initiate(invocation: Gio.DBusMethodInvocation, arg_command: string): boolean;
-            /**
-             * Handler for the #MmGdbusModem3gppUssd::handle-respond signal.
-             * @param invocation
-             * @param arg_response
-             */
-            vfunc_handle_respond(invocation: Gio.DBusMethodInvocation, arg_response: string): boolean;
         }
 
         export const GdbusModem3gppUssd: GdbusModem3gppUssdNamespace & {
@@ -90535,6 +90804,41 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemCdma {
+            /**
+             * Interface for implementing GdbusModemCdma.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemCdma::activation-state-changed signal.
+                 * @param arg_activation_state
+                 * @param arg_activation_error
+                 * @param arg_status_changes
+                 */
+                vfunc_activation_state_changed(
+                    arg_activation_state: number,
+                    arg_activation_error: number,
+                    arg_status_changes: GLib.Variant,
+                ): void;
+                /**
+                 * Handler for the #MmGdbusModemCdma::handle-activate signal.
+                 * @param invocation
+                 * @param arg_carrier_code
+                 */
+                vfunc_handle_activate(invocation: Gio.DBusMethodInvocation, arg_carrier_code: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModemCdma::handle-activate-manual signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_activate_manual(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_properties: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -90567,7 +90871,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemCdma extends GObject.Object {
+        interface GdbusModemCdma extends GObject.Object, GdbusModemCdma.Interface {
             // Properties
 
             /**
@@ -90652,7 +90956,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_carrier_code Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate(arg_carrier_code: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_activate(arg_carrier_code: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.Activate">Activate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90682,7 +90986,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_carrier_code: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cdma_call_activate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate().
@@ -90698,7 +91002,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate_manual(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_activate_manual(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.ActivateManual">ActivateManual()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90728,7 +91035,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cdma_call_activate_manual().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate_manual().
@@ -90778,32 +91085,6 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_activation_error: number,
                 arg_status_changes: GLib.Variant,
             ): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemCdma::activation-state-changed signal.
-             * @param arg_activation_state
-             * @param arg_activation_error
-             * @param arg_status_changes
-             */
-            vfunc_activation_state_changed(
-                arg_activation_state: number,
-                arg_activation_error: number,
-                arg_status_changes: GLib.Variant,
-            ): void;
-            /**
-             * Handler for the #MmGdbusModemCdma::handle-activate signal.
-             * @param invocation
-             * @param arg_carrier_code
-             */
-            vfunc_handle_activate(invocation: Gio.DBusMethodInvocation, arg_carrier_code: string): boolean;
-            /**
-             * Handler for the #MmGdbusModemCdma::handle-activate-manual signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_activate_manual(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
         }
 
         export const GdbusModemCdma: GdbusModemCdmaNamespace & {
@@ -90811,6 +91092,42 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemCellBroadcast {
+            /**
+             * Interface for implementing GdbusModemCellBroadcast.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemCellBroadcast::added signal.
+                 * @param arg_path
+                 */
+                vfunc_added(arg_path: string): void;
+                /**
+                 * Handler for the #MmGdbusModemCellBroadcast::deleted signal.
+                 * @param arg_path
+                 */
+                vfunc_deleted(arg_path: string): void;
+                /**
+                 * Handler for the #MmGdbusModemCellBroadcast::handle-delete signal.
+                 * @param invocation
+                 * @param arg_path
+                 */
+                vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_path: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModemCellBroadcast::handle-list signal.
+                 * @param invocation
+                 */
+                vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemCellBroadcast::handle-set-channels signal.
+                 * @param invocation
+                 * @param arg_channels
+                 */
+                vfunc_handle_set_channels(invocation: Gio.DBusMethodInvocation, arg_channels: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -90836,7 +91153,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemCellBroadcast extends GObject.Object {
+        interface GdbusModemCellBroadcast extends GObject.Object, GdbusModemCellBroadcast.Interface {
             // Properties
 
             /**
@@ -90872,7 +91189,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90902,7 +91219,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_delete().
@@ -90926,7 +91243,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_cell_broadcast_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -90949,7 +91266,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_list().
@@ -90973,7 +91290,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_channels Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_channels(arg_channels: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_channels(
+                arg_channels: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.SetChannels">SetChannels()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91003,7 +91323,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_channels: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_cell_broadcast_call_set_channels().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cell_broadcast_call_set_channels().
@@ -91051,36 +91371,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the signal.
              */
             emit_deleted(arg_path: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemCellBroadcast::added signal.
-             * @param arg_path
-             */
-            vfunc_added(arg_path: string): void;
-            /**
-             * Handler for the #MmGdbusModemCellBroadcast::deleted signal.
-             * @param arg_path
-             */
-            vfunc_deleted(arg_path: string): void;
-            /**
-             * Handler for the #MmGdbusModemCellBroadcast::handle-delete signal.
-             * @param invocation
-             * @param arg_path
-             */
-            vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_path: string): boolean;
-            /**
-             * Handler for the #MmGdbusModemCellBroadcast::handle-list signal.
-             * @param invocation
-             */
-            vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemCellBroadcast::handle-set-channels signal.
-             * @param invocation
-             * @param arg_channels
-             */
-            vfunc_handle_set_channels(invocation: Gio.DBusMethodInvocation, arg_channels: GLib.Variant): boolean;
         }
 
         export const GdbusModemCellBroadcast: GdbusModemCellBroadcastNamespace & {
@@ -91088,6 +91378,26 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemFirmware {
+            /**
+             * Interface for implementing GdbusModemFirmware.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemFirmware::handle-list signal.
+                 * @param invocation
+                 */
+                vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemFirmware::handle-select signal.
+                 * @param invocation
+                 * @param arg_uniqueid
+                 */
+                vfunc_handle_select(invocation: Gio.DBusMethodInvocation, arg_uniqueid: string): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -91112,7 +91422,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemFirmware extends GObject.Object {
+        interface GdbusModemFirmware extends GObject.Object, GdbusModemFirmware.Interface {
             // Properties
 
             /**
@@ -91140,7 +91450,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_firmware_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<[string, GLib.Variant | null]>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<[string, GLib.Variant | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91163,7 +91473,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[string, GLib.Variant | null]> | void;
+            ): globalThis.Promise<[string, GLib.Variant | null]> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_firmware_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_list().
@@ -91187,7 +91497,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_uniqueid Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_select(arg_uniqueid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.Select">Select()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91217,7 +91527,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_uniqueid: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_firmware_call_select().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_select().
@@ -91249,20 +91559,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_select(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemFirmware::handle-list signal.
-             * @param invocation
-             */
-            vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemFirmware::handle-select signal.
-             * @param invocation
-             * @param arg_uniqueid
-             */
-            vfunc_handle_select(invocation: Gio.DBusMethodInvocation, arg_uniqueid: string): boolean;
         }
 
         export const GdbusModemFirmware: GdbusModemFirmwareNamespace & {
@@ -91270,6 +91566,52 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemLocation {
+            /**
+             * Interface for implementing GdbusModemLocation.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemLocation::handle-get-location signal.
+                 * @param invocation
+                 */
+                vfunc_handle_get_location(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemLocation::handle-inject-assistance-data signal.
+                 * @param invocation
+                 * @param arg_data
+                 */
+                vfunc_handle_inject_assistance_data(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_data: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusModemLocation::handle-set-gps-refresh-rate signal.
+                 * @param invocation
+                 * @param arg_rate
+                 */
+                vfunc_handle_set_gps_refresh_rate(invocation: Gio.DBusMethodInvocation, arg_rate: number): boolean;
+                /**
+                 * Handler for the #MmGdbusModemLocation::handle-set-supl-server signal.
+                 * @param invocation
+                 * @param arg_supl
+                 */
+                vfunc_handle_set_supl_server(invocation: Gio.DBusMethodInvocation, arg_supl: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModemLocation::handle-setup signal.
+                 * @param invocation
+                 * @param arg_sources
+                 * @param arg_signal_location
+                 */
+                vfunc_handle_setup(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_sources: number,
+                    arg_signal_location: boolean,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -91305,7 +91647,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemLocation extends GObject.Object {
+        interface GdbusModemLocation extends GObject.Object, GdbusModemLocation.Interface {
             // Properties
 
             /**
@@ -91410,7 +91752,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_location_call_get_location_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_location(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_location(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.GetLocation">GetLocation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91433,7 +91775,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_location(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_get_location().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_get_location().
@@ -91457,7 +91799,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_data Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_inject_assistance_data(arg_data: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_inject_assistance_data(
+                arg_data: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.InjectAssistanceData">InjectAssistanceData()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91487,7 +91832,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_data: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_inject_assistance_data().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_inject_assistance_data().
@@ -91512,7 +91857,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_rate Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_gps_refresh_rate(arg_rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_gps_refresh_rate(
+                arg_rate: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetGpsRefreshRate">SetGpsRefreshRate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91542,7 +91890,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_set_gps_refresh_rate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_gps_refresh_rate().
@@ -91567,7 +91915,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_supl Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_supl_server(arg_supl: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_supl_server(arg_supl: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetSuplServer">SetSuplServer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91597,7 +91945,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_supl: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_set_supl_server().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_supl_server().
@@ -91627,7 +91975,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_sources: number,
                 arg_signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91661,7 +92009,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_signal_location: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_location_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_setup().
@@ -91718,43 +92066,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_setup(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemLocation::handle-get-location signal.
-             * @param invocation
-             */
-            vfunc_handle_get_location(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemLocation::handle-inject-assistance-data signal.
-             * @param invocation
-             * @param arg_data
-             */
-            vfunc_handle_inject_assistance_data(invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModemLocation::handle-set-gps-refresh-rate signal.
-             * @param invocation
-             * @param arg_rate
-             */
-            vfunc_handle_set_gps_refresh_rate(invocation: Gio.DBusMethodInvocation, arg_rate: number): boolean;
-            /**
-             * Handler for the #MmGdbusModemLocation::handle-set-supl-server signal.
-             * @param invocation
-             * @param arg_supl
-             */
-            vfunc_handle_set_supl_server(invocation: Gio.DBusMethodInvocation, arg_supl: string): boolean;
-            /**
-             * Handler for the #MmGdbusModemLocation::handle-setup signal.
-             * @param invocation
-             * @param arg_sources
-             * @param arg_signal_location
-             */
-            vfunc_handle_setup(
-                invocation: Gio.DBusMethodInvocation,
-                arg_sources: number,
-                arg_signal_location: boolean,
-            ): boolean;
         }
 
         export const GdbusModemLocation: GdbusModemLocationNamespace & {
@@ -91762,6 +92073,49 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemMessaging {
+            /**
+             * Interface for implementing GdbusModemMessaging.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemMessaging::added signal.
+                 * @param arg_path
+                 * @param arg_received
+                 */
+                vfunc_added(arg_path: string, arg_received: boolean): void;
+                /**
+                 * Handler for the #MmGdbusModemMessaging::deleted signal.
+                 * @param arg_path
+                 */
+                vfunc_deleted(arg_path: string): void;
+                /**
+                 * Handler for the #MmGdbusModemMessaging::handle-create signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_create(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModemMessaging::handle-delete signal.
+                 * @param invocation
+                 * @param arg_path
+                 */
+                vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_path: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModemMessaging::handle-list signal.
+                 * @param invocation
+                 */
+                vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemMessaging::handle-set-default-storage signal.
+                 * @param invocation
+                 * @param arg_storage
+                 */
+                vfunc_handle_set_default_storage(invocation: Gio.DBusMethodInvocation, arg_storage: number): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -91789,7 +92143,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemMessaging extends GObject.Object {
+        interface GdbusModemMessaging extends GObject.Object, GdbusModemMessaging.Interface {
             // Properties
 
             /**
@@ -91839,7 +92193,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Create">Create()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91869,7 +92223,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_create().
@@ -91894,7 +92248,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91924,7 +92278,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_delete().
@@ -91948,7 +92302,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_messaging_call_list_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.List">List()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -91971,7 +92325,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_list().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_list().
@@ -91995,7 +92349,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_storage Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_default_storage(arg_storage: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_default_storage(
+                arg_storage: number,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.SetDefaultStorage">SetDefaultStorage()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92025,7 +92382,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_storage: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_messaging_call_set_default_storage().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_set_default_storage().
@@ -92082,43 +92439,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the signal.
              */
             emit_deleted(arg_path: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemMessaging::added signal.
-             * @param arg_path
-             * @param arg_received
-             */
-            vfunc_added(arg_path: string, arg_received: boolean): void;
-            /**
-             * Handler for the #MmGdbusModemMessaging::deleted signal.
-             * @param arg_path
-             */
-            vfunc_deleted(arg_path: string): void;
-            /**
-             * Handler for the #MmGdbusModemMessaging::handle-create signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_create(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModemMessaging::handle-delete signal.
-             * @param invocation
-             * @param arg_path
-             */
-            vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_path: string): boolean;
-            /**
-             * Handler for the #MmGdbusModemMessaging::handle-list signal.
-             * @param invocation
-             */
-            vfunc_handle_list(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemMessaging::handle-set-default-storage signal.
-             * @param invocation
-             * @param arg_storage
-             */
-            vfunc_handle_set_default_storage(invocation: Gio.DBusMethodInvocation, arg_storage: number): boolean;
         }
 
         export const GdbusModemMessaging: GdbusModemMessagingNamespace & {
@@ -92126,6 +92446,57 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemOma {
+            /**
+             * Interface for implementing GdbusModemOma.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemOma::handle-accept-network-initiated-session signal.
+                 * @param invocation
+                 * @param arg_session_id
+                 * @param arg_accept
+                 */
+                vfunc_handle_accept_network_initiated_session(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_session_id: number,
+                    arg_accept: boolean,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusModemOma::handle-cancel-session signal.
+                 * @param invocation
+                 */
+                vfunc_handle_cancel_session(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemOma::handle-setup signal.
+                 * @param invocation
+                 * @param arg_features
+                 */
+                vfunc_handle_setup(invocation: Gio.DBusMethodInvocation, arg_features: number): boolean;
+                /**
+                 * Handler for the #MmGdbusModemOma::handle-start-client-initiated-session signal.
+                 * @param invocation
+                 * @param arg_session_type
+                 */
+                vfunc_handle_start_client_initiated_session(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_session_type: number,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusModemOma::session-state-changed signal.
+                 * @param arg_old_session_state
+                 * @param arg_new_session_state
+                 * @param arg_session_state_failed_reason
+                 */
+                vfunc_session_state_changed(
+                    arg_old_session_state: number,
+                    arg_new_session_state: number,
+                    arg_session_state_failed_reason: number,
+                ): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -92155,7 +92526,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemOma extends GObject.Object {
+        interface GdbusModemOma extends GObject.Object, GdbusModemOma.Interface {
             // Properties
 
             /**
@@ -92224,7 +92595,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_session_id: number,
                 arg_accept: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.AcceptNetworkInitiatedSession">AcceptNetworkInitiatedSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92258,7 +92629,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_accept: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_accept_network_initiated_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_accept_network_initiated_session().
@@ -92287,7 +92658,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_oma_call_cancel_session_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel_session(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel_session(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.CancelSession">CancelSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92313,7 +92684,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_cancel_session(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_cancel_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_cancel_session().
@@ -92337,7 +92708,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_features Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup(arg_features: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup(arg_features: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92367,7 +92738,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_features: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_setup().
@@ -92395,7 +92766,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_start_client_initiated_session(
                 arg_session_type: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.StartClientInitiatedSession">StartClientInitiatedSession()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92425,7 +92796,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_session_type: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_oma_call_start_client_initiated_session().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_oma_call_start_client_initiated_session().
@@ -92483,51 +92854,6 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_new_session_state: number,
                 arg_session_state_failed_reason: number,
             ): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemOma::handle-accept-network-initiated-session signal.
-             * @param invocation
-             * @param arg_session_id
-             * @param arg_accept
-             */
-            vfunc_handle_accept_network_initiated_session(
-                invocation: Gio.DBusMethodInvocation,
-                arg_session_id: number,
-                arg_accept: boolean,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusModemOma::handle-cancel-session signal.
-             * @param invocation
-             */
-            vfunc_handle_cancel_session(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemOma::handle-setup signal.
-             * @param invocation
-             * @param arg_features
-             */
-            vfunc_handle_setup(invocation: Gio.DBusMethodInvocation, arg_features: number): boolean;
-            /**
-             * Handler for the #MmGdbusModemOma::handle-start-client-initiated-session signal.
-             * @param invocation
-             * @param arg_session_type
-             */
-            vfunc_handle_start_client_initiated_session(
-                invocation: Gio.DBusMethodInvocation,
-                arg_session_type: number,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusModemOma::session-state-changed signal.
-             * @param arg_old_session_state
-             * @param arg_new_session_state
-             * @param arg_session_state_failed_reason
-             */
-            vfunc_session_state_changed(
-                arg_old_session_state: number,
-                arg_new_session_state: number,
-                arg_session_state_failed_reason: number,
-            ): void;
         }
 
         export const GdbusModemOma: GdbusModemOmaNamespace & {
@@ -92535,6 +92861,27 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemSar {
+            /**
+             * Interface for implementing GdbusModemSar.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemSar::handle-enable signal.
+                 * @param invocation
+                 * @param arg_enable
+                 */
+                vfunc_handle_enable(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
+                /**
+                 * Handler for the #MmGdbusModemSar::handle-set-power-level signal.
+                 * @param invocation
+                 * @param arg_level
+                 */
+                vfunc_handle_set_power_level(invocation: Gio.DBusMethodInvocation, arg_level: number): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -92560,7 +92907,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemSar extends GObject.Object {
+        interface GdbusModemSar extends GObject.Object, GdbusModemSar.Interface {
             // Properties
 
             /**
@@ -92596,7 +92943,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.Enable">Enable()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92626,7 +92973,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_sar_call_enable().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_sar_call_enable().
@@ -92651,7 +92998,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_level Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_power_level(arg_level: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_power_level(arg_level: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.SetPowerLevel">SetPowerLevel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92681,7 +93028,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_level: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_sar_call_set_power_level().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_sar_call_set_power_level().
@@ -92711,21 +93058,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_power_level(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemSar::handle-enable signal.
-             * @param invocation
-             * @param arg_enable
-             */
-            vfunc_handle_enable(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
-            /**
-             * Handler for the #MmGdbusModemSar::handle-set-power-level signal.
-             * @param invocation
-             * @param arg_level
-             */
-            vfunc_handle_set_power_level(invocation: Gio.DBusMethodInvocation, arg_level: number): boolean;
         }
 
         export const GdbusModemSar: GdbusModemSarNamespace & {
@@ -92733,6 +93065,30 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemSignal {
+            /**
+             * Interface for implementing GdbusModemSignal.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemSignal::handle-setup signal.
+                 * @param invocation
+                 * @param arg_rate
+                 */
+                vfunc_handle_setup(invocation: Gio.DBusMethodInvocation, arg_rate: number): boolean;
+                /**
+                 * Handler for the #MmGdbusModemSignal::handle-setup-thresholds signal.
+                 * @param invocation
+                 * @param arg_settings
+                 */
+                vfunc_handle_setup_thresholds(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_settings: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -92766,7 +93122,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemSignal extends GObject.Object {
+        interface GdbusModemSignal extends GObject.Object, GdbusModemSignal.Interface {
             // Properties
 
             /**
@@ -92858,7 +93214,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_rate Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup(arg_rate: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup(arg_rate: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.Setup">Setup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92888,7 +93244,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_rate: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_signal_call_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_signal_call_setup().
@@ -92913,7 +93269,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_settings Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_setup_thresholds(arg_settings: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_setup_thresholds(
+                arg_settings: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.SetupThresholds">SetupThresholds()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -92943,7 +93302,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_settings: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_signal_call_setup_thresholds().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_signal_call_setup_thresholds().
@@ -92973,21 +93332,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_setup_thresholds(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemSignal::handle-setup signal.
-             * @param invocation
-             * @param arg_rate
-             */
-            vfunc_handle_setup(invocation: Gio.DBusMethodInvocation, arg_rate: number): boolean;
-            /**
-             * Handler for the #MmGdbusModemSignal::handle-setup-thresholds signal.
-             * @param invocation
-             * @param arg_settings
-             */
-            vfunc_handle_setup_thresholds(invocation: Gio.DBusMethodInvocation, arg_settings: GLib.Variant): boolean;
         }
 
         export const GdbusModemSignal: GdbusModemSignalNamespace & {
@@ -92995,6 +93339,32 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemSimple {
+            /**
+             * Interface for implementing GdbusModemSimple.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemSimple::handle-connect signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_connect(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModemSimple::handle-disconnect signal.
+                 * @param invocation
+                 * @param arg_bearer
+                 */
+                vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_bearer: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModemSimple::handle-get-status signal.
+                 * @param invocation
+                 */
+                vfunc_handle_get_status(invocation: Gio.DBusMethodInvocation): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -93016,7 +93386,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemSimple extends GObject.Object {
+        interface GdbusModemSimple extends GObject.Object, GdbusModemSimple.Interface {
             // Methods
 
             /**
@@ -93028,7 +93398,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_connect(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_connect(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93058,7 +93431,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_connect().
@@ -93083,7 +93456,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_bearer Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(arg_bearer: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93113,7 +93486,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_bearer: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_disconnect().
@@ -93137,7 +93510,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_simple_call_get_status_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_status(cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_get_status(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.GetStatus">GetStatus()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93160,7 +93533,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_status(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_simple_call_get_status().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_get_status().
@@ -93198,26 +93571,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param properties Parameter to return.
              */
             complete_get_status(invocation: Gio.DBusMethodInvocation, properties: GLib.Variant): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemSimple::handle-connect signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_connect(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModemSimple::handle-disconnect signal.
-             * @param invocation
-             * @param arg_bearer
-             */
-            vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_bearer: string): boolean;
-            /**
-             * Handler for the #MmGdbusModemSimple::handle-get-status signal.
-             * @param invocation
-             */
-            vfunc_handle_get_status(invocation: Gio.DBusMethodInvocation): boolean;
         }
 
         export const GdbusModemSimple: GdbusModemSimpleNamespace & {
@@ -93225,6 +93578,25 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemTime {
+            /**
+             * Interface for implementing GdbusModemTime.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemTime::handle-get-network-time signal.
+                 * @param invocation
+                 */
+                vfunc_handle_get_network_time(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemTime::network-time-changed signal.
+                 * @param arg_time
+                 */
+                vfunc_network_time_changed(arg_time: string): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -93249,7 +93621,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemTime extends GObject.Object {
+        interface GdbusModemTime extends GObject.Object, GdbusModemTime.Interface {
             // Properties
 
             /**
@@ -93277,7 +93649,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_time_call_get_network_time_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_get_network_time(cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_get_network_time(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Time.GetNetworkTime">GetNetworkTime()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93303,7 +93675,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_get_network_time(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_time_call_get_network_time().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_time_call_get_network_time().
@@ -93331,19 +93703,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_time Argument to pass with the signal.
              */
             emit_network_time_changed(arg_time: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemTime::handle-get-network-time signal.
-             * @param invocation
-             */
-            vfunc_handle_get_network_time(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemTime::network-time-changed signal.
-             * @param arg_time
-             */
-            vfunc_network_time_changed(arg_time: string): void;
         }
 
         export const GdbusModemTime: GdbusModemTimeNamespace & {
@@ -93351,6 +93710,73 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusModemVoice {
+            /**
+             * Interface for implementing GdbusModemVoice.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusModemVoice::call-added signal.
+                 * @param arg_path
+                 */
+                vfunc_call_added(arg_path: string): void;
+                /**
+                 * Handler for the #MmGdbusModemVoice::call-deleted signal.
+                 * @param arg_path
+                 */
+                vfunc_call_deleted(arg_path: string): void;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-call-waiting-query signal.
+                 * @param invocation
+                 */
+                vfunc_handle_call_waiting_query(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-call-waiting-setup signal.
+                 * @param invocation
+                 * @param arg_enable
+                 */
+                vfunc_handle_call_waiting_setup(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-create-call signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_create_call(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-delete-call signal.
+                 * @param invocation
+                 * @param arg_path
+                 */
+                vfunc_handle_delete_call(invocation: Gio.DBusMethodInvocation, arg_path: string): boolean;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-hangup-all signal.
+                 * @param invocation
+                 */
+                vfunc_handle_hangup_all(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-hangup-and-accept signal.
+                 * @param invocation
+                 */
+                vfunc_handle_hangup_and_accept(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-hold-and-accept signal.
+                 * @param invocation
+                 */
+                vfunc_handle_hold_and_accept(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-list-calls signal.
+                 * @param invocation
+                 */
+                vfunc_handle_list_calls(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusModemVoice::handle-transfer signal.
+                 * @param invocation
+                 */
+                vfunc_handle_transfer(invocation: Gio.DBusMethodInvocation): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -93376,7 +93802,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusModemVoice extends GObject.Object {
+        interface GdbusModemVoice extends GObject.Object, GdbusModemVoice.Interface {
             // Properties
 
             /**
@@ -93411,7 +93837,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_call_waiting_query_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_call_waiting_query(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_call_waiting_query(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingQuery">CallWaitingQuery()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93437,7 +93863,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_call_waiting_query(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_call_waiting_query().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_call_waiting_query().
@@ -93461,7 +93887,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_call_waiting_setup(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_call_waiting_setup(
+                arg_enable: boolean,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingSetup">CallWaitingSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93491,7 +93920,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_call_waiting_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_call_waiting_setup().
@@ -93516,7 +93945,10 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_properties Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_create_call(arg_properties: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_create_call(
+                arg_properties: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CreateCall">CreateCall()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93546,7 +93978,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_create_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_create_call().
@@ -93574,7 +94006,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete_call(arg_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.DeleteCall">DeleteCall()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93604,7 +94036,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_delete_call().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_delete_call().
@@ -93628,7 +94060,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hangup_all_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup_all(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup_all(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAll">HangupAll()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93651,7 +94083,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup_all(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hangup_all().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hangup_all().
@@ -93674,7 +94106,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hangup_and_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hangup_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hangup_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAndAccept">HangupAndAccept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93700,7 +94132,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hangup_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hangup_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hangup_and_accept().
@@ -93723,7 +94155,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_hold_and_accept_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_hold_and_accept(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_hold_and_accept(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HoldAndAccept">HoldAndAccept()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93749,7 +94181,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_hold_and_accept(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_hold_and_accept().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_hold_and_accept().
@@ -93772,7 +94204,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_list_calls_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_list_calls(cancellable?: Gio.Cancellable | null): Promise<string[] | null>;
+            call_list_calls(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.ListCalls">ListCalls()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93795,7 +94227,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_list_calls(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_list_calls().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_list_calls().
@@ -93818,7 +94250,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_modem_voice_call_transfer_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_transfer(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_transfer(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.Transfer">Transfer()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -93841,7 +94273,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_transfer(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_modem_voice_call_transfer().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_transfer().
@@ -93932,67 +94364,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_path Argument to pass with the signal.
              */
             emit_call_deleted(arg_path: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusModemVoice::call-added signal.
-             * @param arg_path
-             */
-            vfunc_call_added(arg_path: string): void;
-            /**
-             * Handler for the #MmGdbusModemVoice::call-deleted signal.
-             * @param arg_path
-             */
-            vfunc_call_deleted(arg_path: string): void;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-call-waiting-query signal.
-             * @param invocation
-             */
-            vfunc_handle_call_waiting_query(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-call-waiting-setup signal.
-             * @param invocation
-             * @param arg_enable
-             */
-            vfunc_handle_call_waiting_setup(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-create-call signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_create_call(invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant): boolean;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-delete-call signal.
-             * @param invocation
-             * @param arg_path
-             */
-            vfunc_handle_delete_call(invocation: Gio.DBusMethodInvocation, arg_path: string): boolean;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-hangup-all signal.
-             * @param invocation
-             */
-            vfunc_handle_hangup_all(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-hangup-and-accept signal.
-             * @param invocation
-             */
-            vfunc_handle_hangup_and_accept(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-hold-and-accept signal.
-             * @param invocation
-             */
-            vfunc_handle_hold_and_accept(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-list-calls signal.
-             * @param invocation
-             */
-            vfunc_handle_list_calls(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusModemVoice::handle-transfer signal.
-             * @param invocation
-             */
-            vfunc_handle_transfer(invocation: Gio.DBusMethodInvocation): boolean;
         }
 
         export const GdbusModemVoice: GdbusModemVoiceNamespace & {
@@ -94322,6 +94693,46 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusOrgFreedesktopModemManager1 {
+            /**
+             * Interface for implementing GdbusOrgFreedesktopModemManager1.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusOrgFreedesktopModemManager1::handle-inhibit-device signal.
+                 * @param invocation
+                 * @param arg_uid
+                 * @param arg_inhibit
+                 */
+                vfunc_handle_inhibit_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_uid: string,
+                    arg_inhibit: boolean,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusOrgFreedesktopModemManager1::handle-report-kernel-event signal.
+                 * @param invocation
+                 * @param arg_properties
+                 */
+                vfunc_handle_report_kernel_event(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_properties: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusOrgFreedesktopModemManager1::handle-scan-devices signal.
+                 * @param invocation
+                 */
+                vfunc_handle_scan_devices(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusOrgFreedesktopModemManager1::handle-set-logging signal.
+                 * @param invocation
+                 * @param arg_level
+                 */
+                vfunc_handle_set_logging(invocation: Gio.DBusMethodInvocation, arg_level: string): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -94345,7 +94756,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusOrgFreedesktopModemManager1 extends GObject.Object {
+        interface GdbusOrgFreedesktopModemManager1 extends GObject.Object, GdbusOrgFreedesktopModemManager1.Interface {
             // Properties
 
             /**
@@ -94372,7 +94783,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_uid: string,
                 arg_inhibit: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.InhibitDevice">InhibitDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -94406,7 +94817,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_inhibit: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device().
@@ -94439,7 +94850,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_report_kernel_event(
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ReportKernelEvent">ReportKernelEvent()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -94469,7 +94880,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_properties: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event().
@@ -94493,7 +94904,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_scan_devices(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_scan_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ScanDevices">ScanDevices()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -94516,7 +94927,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_scan_devices(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices().
@@ -94540,7 +94951,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_level Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_set_logging(arg_level: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_set_logging(arg_level: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.SetLogging">SetLogging()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -94570,7 +94981,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_level: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_set_logging().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_set_logging().
@@ -94614,40 +95025,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_logging(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusOrgFreedesktopModemManager1::handle-inhibit-device signal.
-             * @param invocation
-             * @param arg_uid
-             * @param arg_inhibit
-             */
-            vfunc_handle_inhibit_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_uid: string,
-                arg_inhibit: boolean,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusOrgFreedesktopModemManager1::handle-report-kernel-event signal.
-             * @param invocation
-             * @param arg_properties
-             */
-            vfunc_handle_report_kernel_event(
-                invocation: Gio.DBusMethodInvocation,
-                arg_properties: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusOrgFreedesktopModemManager1::handle-scan-devices signal.
-             * @param invocation
-             */
-            vfunc_handle_scan_devices(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusOrgFreedesktopModemManager1::handle-set-logging signal.
-             * @param invocation
-             * @param arg_level
-             */
-            vfunc_handle_set_logging(invocation: Gio.DBusMethodInvocation, arg_level: string): boolean;
         }
 
         export const GdbusOrgFreedesktopModemManager1: GdbusOrgFreedesktopModemManager1Namespace & {
@@ -94655,6 +95032,59 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusSim {
+            /**
+             * Interface for implementing GdbusSim.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusSim::handle-change-pin signal.
+                 * @param invocation
+                 * @param arg_old_pin
+                 * @param arg_new_pin
+                 */
+                vfunc_handle_change_pin(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_old_pin: string,
+                    arg_new_pin: string,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusSim::handle-enable-pin signal.
+                 * @param invocation
+                 * @param arg_pin
+                 * @param arg_enabled
+                 */
+                vfunc_handle_enable_pin(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_pin: string,
+                    arg_enabled: boolean,
+                ): boolean;
+                /**
+                 * Handler for the #MmGdbusSim::handle-send-pin signal.
+                 * @param invocation
+                 * @param arg_pin
+                 */
+                vfunc_handle_send_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string): boolean;
+                /**
+                 * Handler for the #MmGdbusSim::handle-send-puk signal.
+                 * @param invocation
+                 * @param arg_puk
+                 * @param arg_pin
+                 */
+                vfunc_handle_send_puk(invocation: Gio.DBusMethodInvocation, arg_puk: string, arg_pin: string): boolean;
+                /**
+                 * Handler for the #MmGdbusSim::handle-set-preferred-networks signal.
+                 * @param invocation
+                 * @param arg_preferred_networks
+                 */
+                vfunc_handle_set_preferred_networks(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_preferred_networks: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -94697,7 +95127,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusSim extends GObject.Object {
+        interface GdbusSim extends GObject.Object, GdbusSim.Interface {
             // Properties
 
             /**
@@ -94857,7 +95287,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_old_pin: string,
                 arg_new_pin: string,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.ChangePin">ChangePin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -94891,7 +95321,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_new_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_change_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_change_pin().
@@ -94926,7 +95356,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 arg_enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.EnablePin">EnablePin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -94960,7 +95390,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_enabled: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_enable_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_enable_pin().
@@ -94986,7 +95416,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_pin Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_pin(arg_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_pin(arg_pin: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPin">SendPin()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -95016,7 +95446,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_send_pin().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_pin().
@@ -95042,7 +95472,11 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_pin Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send_puk(arg_puk: string, arg_pin: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send_puk(
+                arg_puk: string,
+                arg_pin: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPuk">SendPuk()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -95076,7 +95510,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_pin: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_send_puk().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_puk().
@@ -95105,7 +95539,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_set_preferred_networks(
                 arg_preferred_networks: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SetPreferredNetworks">SetPreferredNetworks()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -95135,7 +95569,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_preferred_networks: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sim_call_set_preferred_networks().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_set_preferred_networks().
@@ -95189,53 +95623,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_preferred_networks(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusSim::handle-change-pin signal.
-             * @param invocation
-             * @param arg_old_pin
-             * @param arg_new_pin
-             */
-            vfunc_handle_change_pin(
-                invocation: Gio.DBusMethodInvocation,
-                arg_old_pin: string,
-                arg_new_pin: string,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusSim::handle-enable-pin signal.
-             * @param invocation
-             * @param arg_pin
-             * @param arg_enabled
-             */
-            vfunc_handle_enable_pin(
-                invocation: Gio.DBusMethodInvocation,
-                arg_pin: string,
-                arg_enabled: boolean,
-            ): boolean;
-            /**
-             * Handler for the #MmGdbusSim::handle-send-pin signal.
-             * @param invocation
-             * @param arg_pin
-             */
-            vfunc_handle_send_pin(invocation: Gio.DBusMethodInvocation, arg_pin: string): boolean;
-            /**
-             * Handler for the #MmGdbusSim::handle-send-puk signal.
-             * @param invocation
-             * @param arg_puk
-             * @param arg_pin
-             */
-            vfunc_handle_send_puk(invocation: Gio.DBusMethodInvocation, arg_puk: string, arg_pin: string): boolean;
-            /**
-             * Handler for the #MmGdbusSim::handle-set-preferred-networks signal.
-             * @param invocation
-             * @param arg_preferred_networks
-             */
-            vfunc_handle_set_preferred_networks(
-                invocation: Gio.DBusMethodInvocation,
-                arg_preferred_networks: GLib.Variant,
-            ): boolean;
         }
 
         export const GdbusSim: GdbusSimNamespace & {
@@ -95243,6 +95630,26 @@ declare module 'gi://ModemManager?version=1.0' {
         };
 
         namespace GdbusSms {
+            /**
+             * Interface for implementing GdbusSms.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #MmGdbusSms::handle-send signal.
+                 * @param invocation
+                 */
+                vfunc_handle_send(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #MmGdbusSms::handle-store signal.
+                 * @param invocation
+                 * @param arg_storage
+                 */
+                vfunc_handle_store(invocation: Gio.DBusMethodInvocation, arg_storage: number): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -95288,7 +95695,7 @@ declare module 'gi://ModemManager?version=1.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface GdbusSms extends GObject.Object {
+        interface GdbusSms extends GObject.Object, GdbusSms.Interface {
             // Properties
 
             /**
@@ -95463,7 +95870,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * See mm_gdbus_sms_call_send_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_send(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_send(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Send">Send()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -95486,7 +95893,7 @@ declare module 'gi://ModemManager?version=1.0' {
             call_send(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sms_call_send().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sms_call_send().
@@ -95510,7 +95917,7 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param arg_storage Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_store(arg_storage: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_store(arg_storage: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Store">Store()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -95540,7 +95947,7 @@ declare module 'gi://ModemManager?version=1.0' {
                 arg_storage: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with mm_gdbus_sms_call_store().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sms_call_store().
@@ -95570,20 +95977,6 @@ declare module 'gi://ModemManager?version=1.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_store(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #MmGdbusSms::handle-send signal.
-             * @param invocation
-             */
-            vfunc_handle_send(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #MmGdbusSms::handle-store signal.
-             * @param invocation
-             * @param arg_storage
-             */
-            vfunc_handle_store(invocation: Gio.DBusMethodInvocation, arg_storage: number): boolean;
         }
 
         export const GdbusSms: GdbusSmsNamespace & {

@@ -312,7 +312,7 @@ declare module 'gi://UPowerGlib?version=1.0' {
              * Asynchronously fetches the list of #UpDevice objects.
              * @param cancellable a #GCancellable or %NULL
              */
-            get_devices_async(cancellable?: Gio.Cancellable | null): Promise<Device[]>;
+            get_devices_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Device[]>;
             /**
              * Asynchronously fetches the list of #UpDevice objects.
              * @param cancellable a #GCancellable or %NULL
@@ -327,7 +327,7 @@ declare module 'gi://UPowerGlib?version=1.0' {
             get_devices_async(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Device[]> | void;
+            ): globalThis.Promise<Device[]> | void;
             /**
              * Finishes an operation started with up_client_get_devices_async().
              * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed     to up_client_get_devices_async()
@@ -396,7 +396,7 @@ declare module 'gi://UPowerGlib?version=1.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -488,7 +488,7 @@ declare module 'gi://UPowerGlib?version=1.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -1086,6 +1086,7 @@ declare module 'gi://UPowerGlib?version=1.0' {
             interface SignalSignatures extends GObject.Object.SignalSignatures {
                 'notify::battery-level': (pspec: GObject.ParamSpec) => void;
                 'notify::capacity': (pspec: GObject.ParamSpec) => void;
+                'notify::capacity-level': (pspec: GObject.ParamSpec) => void;
                 'notify::charge-cycles': (pspec: GObject.ParamSpec) => void;
                 'notify::charge-end-threshold': (pspec: GObject.ParamSpec) => void;
                 'notify::charge-start-threshold': (pspec: GObject.ParamSpec) => void;
@@ -1117,6 +1118,8 @@ declare module 'gi://UPowerGlib?version=1.0' {
                 'notify::update-time': (pspec: GObject.ParamSpec) => void;
                 'notify::vendor': (pspec: GObject.ParamSpec) => void;
                 'notify::voltage': (pspec: GObject.ParamSpec) => void;
+                'notify::voltage-max-design': (pspec: GObject.ParamSpec) => void;
+                'notify::voltage-min-design': (pspec: GObject.ParamSpec) => void;
                 'notify::warning-level': (pspec: GObject.ParamSpec) => void;
             }
 
@@ -1126,6 +1129,8 @@ declare module 'gi://UPowerGlib?version=1.0' {
                 battery_level: number;
                 batteryLevel: number;
                 capacity: number;
+                capacity_level: string;
+                capacityLevel: string;
                 charge_cycles: number;
                 chargeCycles: number;
                 charge_end_threshold: number;
@@ -1176,6 +1181,10 @@ declare module 'gi://UPowerGlib?version=1.0' {
                 updateTime: number;
                 vendor: string;
                 voltage: number;
+                voltage_max_design: number;
+                voltageMaxDesign: number;
+                voltage_min_design: number;
+                voltageMinDesign: number;
                 warning_level: number;
                 warningLevel: number;
             }
@@ -1206,6 +1215,18 @@ declare module 'gi://UPowerGlib?version=1.0' {
              */
             get capacity(): number;
             set capacity(val: number);
+            /**
+             * Coarse representation of battery capacity. The value is one of the following:
+             * Unknown, Critical, Low, Normal, High, and Full.
+             */
+            get capacity_level(): string;
+            set capacity_level(val: string);
+            /**
+             * Coarse representation of battery capacity. The value is one of the following:
+             * Unknown, Critical, Low, Normal, High, and Full.
+             */
+            get capacityLevel(): string;
+            set capacityLevel(val: string);
             /**
              * The number of charge cycles for the battery, or -1 if unknown
              * or non-applicable.
@@ -1470,6 +1491,14 @@ declare module 'gi://UPowerGlib?version=1.0' {
              */
             get voltage(): number;
             set voltage(val: number);
+            get voltage_max_design(): number;
+            set voltage_max_design(val: number);
+            get voltageMaxDesign(): number;
+            set voltageMaxDesign(val: number);
+            get voltage_min_design(): number;
+            set voltage_min_design(val: number);
+            get voltageMinDesign(): number;
+            set voltageMinDesign(val: number);
             /**
              * The warning level e.g. %UP_DEVICE_LEVEL_CRITICAL.
              */

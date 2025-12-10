@@ -381,7 +381,11 @@ declare module 'gi://GnomeBluetooth?version=3.0' {
              * @param connect Whether try to connect or disconnect from services on a device
              * @param cancellable optional #GCancellable object, %NULL to ignore
              */
-            connect_service(path: string, connect: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            connect_service(
+                path: string,
+                connect: boolean,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * This will start the process of connecting to one of the known-connectable
              * services on the device. This means that it could connect to all the audio
@@ -427,7 +431,7 @@ declare module 'gi://GnomeBluetooth?version=3.0' {
                 connect: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes the connection operation. See bluetooth_client_connect_service().
              * @param res a #GAsyncResult

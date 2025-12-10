@@ -55,6 +55,7 @@ declare module 'gi://Gtk4SessionLock?version=1.0' {
             interface SignalSignatures extends GObject.Object.SignalSignatures {
                 failed: () => void;
                 locked: () => void;
+                monitor: (arg0: Gdk.Monitor) => void;
                 unlocked: () => void;
             }
 
@@ -108,9 +109,10 @@ declare module 'gi://Gtk4SessionLock?version=1.0' {
             // Methods
 
             /**
-             * This must be called with a different window once for each monitor, immediately after calling
+             * This must be called with a different unrealized window once for each monitor immediately after calling
              * gtk_session_lock_lock(). Hiding a window that is active on a monitor or not letting a window be resized by the
-             * library is not allowed (may result in a Wayland protocol error).
+             * library is not allowed (may result in a Wayland protocol error). The window will be unmapped and gtk_window_destroy()
+             * called on it when the current lock ends.
              * @param window The GTK Window to use as a lock surface
              * @param monitor The monitor to show it on
              */

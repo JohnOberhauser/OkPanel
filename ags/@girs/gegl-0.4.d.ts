@@ -5064,6 +5064,78 @@ declare module 'gi://Gegl?version=0.4' {
 
         type TileSourceClass = typeof TileSource;
         namespace Metadata {
+            /**
+             * Interface for implementing Metadata.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Retrieve resolution from the application image metadata.  Intended for use
+                 * by the image file writer.  If resolution is not supported by the application
+                 * or if the operation fails %FALSE is returned and the resolution values are
+                 * not updated.
+                 * @param unit #GeglResolutionUnit return location
+                 * @param x X resolution return location
+                 * @param y Y resolution return location
+                 */
+                vfunc_get_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
+                /**
+                 * Retrieve image file metadata from the application.  Intended for use by the
+                 * image file writer. If the operation fails it returns %FALSE and `value` is
+                 * not updated.
+                 * @param iter #GeglMetadataIter referencing the value to get
+                 * @param value Value to set in the interface
+                 */
+                vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
+                /**
+                 * Initialise an iterator to find all supported metadata keys.
+                 * @param iter #GeglMetadataIter to be initialised
+                 */
+                vfunc_iter_init(iter: MetadataIter): void;
+                /**
+                 * Look up the specified key and initialise an iterator to reference the
+                 * associated metadata. The iterator is used in conjunction with
+                 * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
+                 * iterator is not valid for gegl_metadata_iter_next().
+                 * @param iter #GeglMetadataIter to be initialised
+                 * @param key Name of the value look up
+                 */
+                vfunc_iter_lookup(iter: MetadataIter, key: string): boolean;
+                /**
+                 * Move the iterator to the next metadata item
+                 * @param iter #GeglMetadataIter to be updated
+                 */
+                vfunc_iter_next(iter: MetadataIter): string;
+                /**
+                 * Set application data retrieved from image file's metadata.  Intended for use
+                 * by the image file reader.  If the operation fails it returns %FALSE and
+                 * `value` is ignored.
+                 * @param iter #GeglMetadataIter referencing the value to set
+                 * @param value Value to set in the interface
+                 */
+                vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
+                /**
+                 * Set the name of the file module and pass an array of mappings from
+                 * file-format specific metadata names to those used by Gegl. A GValue
+                 * transformation function may be supplied, e.g. to parse or format timestamps.
+                 * @param file_module String identifying the file module, e.g, `"gegl:png-save"`
+                 * @param flags Flags specifying capabilities of underlying file format
+                 * @param map Array of mappings from file module metadata              names to Gegl well-known names.
+                 */
+                vfunc_register_map(file_module: string, flags: number, map: MetadataMap[]): void;
+                /**
+                 * Set resolution retrieved from image file's metadata.  Intended for use by
+                 * the image file reader.  If resolution is not supported by the application or
+                 * if the operation fails %FALSE is returned and the values are ignored.
+                 * @param unit Specify #GeglResolutionUnit
+                 * @param x X resolution
+                 * @param y Y resolution
+                 */
+                vfunc_set_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5073,7 +5145,7 @@ declare module 'gi://Gegl?version=0.4' {
             $gtype: GObject.GType<Metadata>;
             prototype: Metadata;
         }
-        interface Metadata extends GObject.Object {
+        interface Metadata extends GObject.Object, Metadata.Interface {
             // Methods
 
             /**
@@ -5151,72 +5223,6 @@ declare module 'gi://Gegl?version=0.4' {
              * completes operations.
              */
             unregister_map(): void;
-
-            // Virtual methods
-
-            /**
-             * Retrieve resolution from the application image metadata.  Intended for use
-             * by the image file writer.  If resolution is not supported by the application
-             * or if the operation fails %FALSE is returned and the resolution values are
-             * not updated.
-             * @param unit #GeglResolutionUnit return location
-             * @param x X resolution return location
-             * @param y Y resolution return location
-             */
-            vfunc_get_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
-            /**
-             * Retrieve image file metadata from the application.  Intended for use by the
-             * image file writer. If the operation fails it returns %FALSE and `value` is
-             * not updated.
-             * @param iter #GeglMetadataIter referencing the value to get
-             * @param value Value to set in the interface
-             */
-            vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
-            /**
-             * Initialise an iterator to find all supported metadata keys.
-             * @param iter #GeglMetadataIter to be initialised
-             */
-            vfunc_iter_init(iter: MetadataIter): void;
-            /**
-             * Look up the specified key and initialise an iterator to reference the
-             * associated metadata. The iterator is used in conjunction with
-             * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
-             * iterator is not valid for gegl_metadata_iter_next().
-             * @param iter #GeglMetadataIter to be initialised
-             * @param key Name of the value look up
-             */
-            vfunc_iter_lookup(iter: MetadataIter, key: string): boolean;
-            /**
-             * Move the iterator to the next metadata item
-             * @param iter #GeglMetadataIter to be updated
-             */
-            vfunc_iter_next(iter: MetadataIter): string;
-            /**
-             * Set application data retrieved from image file's metadata.  Intended for use
-             * by the image file reader.  If the operation fails it returns %FALSE and
-             * `value` is ignored.
-             * @param iter #GeglMetadataIter referencing the value to set
-             * @param value Value to set in the interface
-             */
-            vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
-            /**
-             * Set the name of the file module and pass an array of mappings from
-             * file-format specific metadata names to those used by Gegl. A GValue
-             * transformation function may be supplied, e.g. to parse or format timestamps.
-             * @param file_module String identifying the file module, e.g, `"gegl:png-save"`
-             * @param flags Flags specifying capabilities of underlying file format
-             * @param map Array of mappings from file module metadata              names to Gegl well-known names.
-             */
-            vfunc_register_map(file_module: string, flags: number, map: MetadataMap[]): void;
-            /**
-             * Set resolution retrieved from image file's metadata.  Intended for use by
-             * the image file reader.  If resolution is not supported by the application or
-             * if the operation fails %FALSE is returned and the values are ignored.
-             * @param unit Specify #GeglResolutionUnit
-             * @param x X resolution
-             * @param y Y resolution
-             */
-            vfunc_set_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         }
 
         export const Metadata: MetadataNamespace & {

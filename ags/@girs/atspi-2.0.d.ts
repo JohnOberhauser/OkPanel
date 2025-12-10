@@ -2026,6 +2026,7 @@ declare module 'gi://Atspi?version=2.0' {
          */
         const LOCALE_TYPE_COUNT: number;
         const MATCHTYPES_COUNT: number;
+        const MAX_CHILDREN: number;
         /**
          * One higher than the highest valid value of #AtspiModifierType.
          */
@@ -2270,7 +2271,7 @@ declare module 'gi://Atspi?version=2.0' {
             (event: Event): void;
         }
         interface GenerateMouseEventCB {
-            (): void;
+            (user_data?: any | null): void;
         }
         interface KeyCallback {
             (
@@ -2886,7 +2887,7 @@ declare module 'gi://Atspi?version=2.0' {
              * @param rule An #AtspiMatchRule describing the match criteria.
              * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
              * @param count The maximum number of results to return, or 0 for no limit.
-             * @param traverse Not supported.
+             * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
              * @returns All          #AtspiAccessible objects matching the given match rule.
              */
             get_matches(
@@ -2903,7 +2904,7 @@ declare module 'gi://Atspi?version=2.0' {
              * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
              * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
              * @param count The maximum number of results to return, or 0 for no limit.
-             * @param traverse Not supported.
+             * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
              * @returns All          #AtspiAccessible objects matching the given match rule that preceed          @current_object.
              */
             get_matches_from(
@@ -2923,7 +2924,7 @@ declare module 'gi://Atspi?version=2.0' {
              * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
              * @param limit_scope If #TRUE, only descendants of @current_object's parent          will be returned. Otherwise (if #FALSE), any accessible may be          returned if it would preceed @current_object in a flattened          hierarchy.
              * @param count The maximum number of results to return, or 0 for no limit.
-             * @param traverse Not supported.
+             * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
              * @returns All          #AtspiAccessible objects matching the given match rule after          @current_object.
              */
             get_matches_to(
@@ -4422,6 +4423,7 @@ declare module 'gi://Atspi?version=2.0' {
              * @param callback the   function to call when the given key is pressed.
              */
             add_key_watcher(callback: KeyCallback): void;
+            clear_key_grabs(): void;
             /**
              * Synthesizes a mouse event at a specific screen coordinate.
              * Most AT clients should use the #AccessibleAction interface when
@@ -5762,7 +5764,7 @@ declare module 'gi://Atspi?version=2.0' {
              * @param rule An #AtspiMatchRule describing the match criteria.
              * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
              * @param count The maximum number of results to return, or 0 for no limit.
-             * @param traverse Not supported.
+             * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
              * @returns All          #AtspiAccessible objects matching the given match rule.
              */
             get_matches(
@@ -5779,7 +5781,7 @@ declare module 'gi://Atspi?version=2.0' {
              * @param sortby An #AtspiCollectionSortOrder specifying the way the results are to          be sorted.
              * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
              * @param count The maximum number of results to return, or 0 for no limit.
-             * @param traverse Not supported.
+             * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
              * @returns All          #AtspiAccessible objects matching the given match rule that preceed          @current_object.
              */
             get_matches_from(
@@ -5799,7 +5801,7 @@ declare module 'gi://Atspi?version=2.0' {
              * @param tree An #AtspiCollectionTreeTraversalType specifying restrictions on          the objects to be traversed.
              * @param limit_scope If #TRUE, only descendants of @current_object's parent          will be returned. Otherwise (if #FALSE), any accessible may be          returned if it would preceed @current_object in a flattened          hierarchy.
              * @param count The maximum number of results to return, or 0 for no limit.
-             * @param traverse Not supported.
+             * @param traverse Whether to traverse the accessible subtree (in case         of #TRUE) or only the direct children (on case of #FALSE).
              * @returns All          #AtspiAccessible objects matching the given match rule after          @current_object.
              */
             get_matches_to(

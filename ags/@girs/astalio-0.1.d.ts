@@ -84,7 +84,7 @@ declare module 'gi://AstalIO?version=0.1' {
          * Read the socket of an Astal.Application instance.
          * @param conn
          */
-        function read_sock(conn: Gio.SocketConnection): Promise<string>;
+        function read_sock(conn: Gio.SocketConnection): globalThis.Promise<string>;
         /**
          * Read the socket of an Astal.Application instance.
          * @param conn
@@ -102,14 +102,14 @@ declare module 'gi://AstalIO?version=0.1' {
         function read_sock(
             conn: Gio.SocketConnection,
             _callback_?: Gio.AsyncReadyCallback<Gio.SocketConnection> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         function read_sock_finish(_res_: Gio.AsyncResult): string;
         /**
          * Write the socket of an Astal.Application instance.
          * @param conn
          * @param response
          */
-        function write_sock(conn: Gio.SocketConnection, response: string): Promise<void>;
+        function write_sock(conn: Gio.SocketConnection, response: string): globalThis.Promise<void>;
         /**
          * Write the socket of an Astal.Application instance.
          * @param conn
@@ -131,7 +131,7 @@ declare module 'gi://AstalIO?version=0.1' {
             conn: Gio.SocketConnection,
             response: string,
             _callback_?: Gio.AsyncReadyCallback<Gio.SocketConnection> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         function write_sock_finish(_res_: Gio.AsyncResult): void;
         /**
          * Read the contents of a file synchronously.
@@ -142,7 +142,7 @@ declare module 'gi://AstalIO?version=0.1' {
          * Read the contents of a file asynchronously.
          * @param path
          */
-        function read_file_async(path: string): Promise<string>;
+        function read_file_async(path: string): globalThis.Promise<string>;
         /**
          * Read the contents of a file asynchronously.
          * @param path
@@ -157,7 +157,7 @@ declare module 'gi://AstalIO?version=0.1' {
         function read_file_async(
             path: string,
             _callback_?: Gio.AsyncReadyCallback<string> | null,
-        ): Promise<string> | void;
+        ): globalThis.Promise<string> | void;
         function read_file_finish(_res_: Gio.AsyncResult): string;
         /**
          * Write content to a file synchronously.
@@ -170,7 +170,7 @@ declare module 'gi://AstalIO?version=0.1' {
          * @param path
          * @param content
          */
-        function write_file_async(path: string, content: string): Promise<void>;
+        function write_file_async(path: string, content: string): globalThis.Promise<void>;
         /**
          * Write content to a file asynchronously.
          * @param path
@@ -192,7 +192,7 @@ declare module 'gi://AstalIO?version=0.1' {
             path: string,
             content: string,
             _callback_?: Gio.AsyncReadyCallback<string> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         function write_file_finish(_res_: Gio.AsyncResult): void;
         /**
          * Monitor a file for changes. If the path is a directory, monitor it recursively. The callback will be called passed two parameters: the path of
@@ -856,7 +856,7 @@ declare module 'gi://AstalIO?version=0.1' {
              * Write a line to the subprocess' stdin asynchronously.
              * @param _in String to be written to stdin
              */
-            write_async(_in: string): Promise<void>;
+            write_async(_in: string): globalThis.Promise<void>;
             /**
              * Write a line to the subprocess' stdin asynchronously.
              * @param _in String to be written to stdin
@@ -868,7 +868,7 @@ declare module 'gi://AstalIO?version=0.1' {
              * @param _in String to be written to stdin
              * @param _callback_
              */
-            write_async(_in: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+            write_async(_in: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
             write_finish(_res_: Gio.AsyncResult): void;
             get_argv(): string[];
         }
@@ -1141,6 +1141,22 @@ declare module 'gi://AstalIO?version=0.1' {
 
         type ApplicationIface = typeof Application;
         namespace Application {
+            /**
+             * Interface for implementing Application.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                vfunc_quit(): void;
+                vfunc_inspector(): void;
+                vfunc_toggle_window(window: string): void;
+                vfunc_acquire_socket(): void;
+                vfunc_request(request: string, conn: Gio.SocketConnection): void;
+                vfunc_get_instance_name(): string;
+                vfunc_set_instance_name(value: string): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1153,7 +1169,7 @@ declare module 'gi://AstalIO?version=0.1' {
             $gtype: GObject.GType<Application>;
             prototype: Application;
         }
-        interface Application extends GObject.Object {
+        interface Application extends GObject.Object, Application.Interface {
             // Properties
 
             get instance_name(): string;
@@ -1170,16 +1186,6 @@ declare module 'gi://AstalIO?version=0.1' {
             request(request: string, conn: Gio.SocketConnection): void;
             get_instance_name(): string;
             set_instance_name(value: string): void;
-
-            // Virtual methods
-
-            vfunc_quit(): void;
-            vfunc_inspector(): void;
-            vfunc_toggle_window(window: string): void;
-            vfunc_acquire_socket(): void;
-            vfunc_request(request: string, conn: Gio.SocketConnection): void;
-            vfunc_get_instance_name(): string;
-            vfunc_set_instance_name(value: string): void;
         }
 
         export const Application: ApplicationNamespace & {

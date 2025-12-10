@@ -2401,6 +2401,36 @@ declare module 'gi://OsmGpsMap?version=1.0' {
         }
 
         namespace MapLayer {
+            /**
+             * Interface for implementing MapLayer.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Check whether layer is busy (eg drawing an animation)
+                 */
+                vfunc_busy(): boolean;
+                /**
+                 * Handle button event
+                 * @param map a #OsmGpsMap widget
+                 * @param event a #GdkEventButton event
+                 */
+                vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;
+                /**
+                 * Draw layer on map
+                 * @param map a #OsmGpsMap widget
+                 * @param cr a cairo context to draw to
+                 */
+                vfunc_draw(map: Map, cr: cairo.Context): void;
+                /**
+                 * Render layer on map
+                 * @param map a #OsmGpsMap widget
+                 */
+                vfunc_render(map: Map): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2410,7 +2440,7 @@ declare module 'gi://OsmGpsMap?version=1.0' {
             $gtype: GObject.GType<MapLayer>;
             prototype: MapLayer;
         }
-        interface MapLayer extends GObject.Object {
+        interface MapLayer extends GObject.Object, MapLayer.Interface {
             // Methods
 
             /**
@@ -2436,30 +2466,6 @@ declare module 'gi://OsmGpsMap?version=1.0' {
              * @param map a #OsmGpsMap widget
              */
             render(map: Map): void;
-
-            // Virtual methods
-
-            /**
-             * Check whether layer is busy (eg drawing an animation)
-             */
-            vfunc_busy(): boolean;
-            /**
-             * Handle button event
-             * @param map a #OsmGpsMap widget
-             * @param event a #GdkEventButton event
-             */
-            vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;
-            /**
-             * Draw layer on map
-             * @param map a #OsmGpsMap widget
-             * @param cr a cairo context to draw to
-             */
-            vfunc_draw(map: Map, cr: cairo.Context): void;
-            /**
-             * Render layer on map
-             * @param map a #OsmGpsMap widget
-             */
-            vfunc_render(map: Map): void;
         }
 
         export const MapLayer: MapLayerNamespace & {

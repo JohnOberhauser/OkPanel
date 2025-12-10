@@ -683,7 +683,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -775,7 +775,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -2469,7 +2469,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -2561,7 +2561,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -2763,7 +2763,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.AddConfigurationItem">AddConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -2797,7 +2797,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_add_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_add_configuration_item().
@@ -2832,7 +2832,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.Format">Format()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -2866,7 +2866,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_format().
@@ -2899,7 +2899,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_secret_configuration(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.GetSecretConfiguration">GetSecretConfiguration()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -2929,7 +2929,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_block_call_get_secret_configuration().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_get_secret_configuration().
@@ -2964,7 +2964,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenDevice">OpenDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3002,7 +3002,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_device().
@@ -3039,7 +3039,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForBackup">OpenForBackup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3073,7 +3073,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_backup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_backup().
@@ -3108,7 +3108,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForBenchmark">OpenForBenchmark()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3142,7 +3142,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_benchmark().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_benchmark().
@@ -3177,7 +3177,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForRestore">OpenForRestore()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3211,7 +3211,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_restore().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_restore().
@@ -3246,7 +3246,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RemoveConfigurationItem">RemoveConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3280,7 +3280,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_remove_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_remove_configuration_item().
@@ -3310,7 +3310,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_rescan(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_rescan(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.Rescan">Rescan()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3340,7 +3340,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_rescan().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_rescan().
@@ -3357,6 +3357,75 @@ declare module 'gi://UDisks?version=2.0' {
              */
             call_rescan_sync(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_block_call_restore_encrypted_header().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_restore_encrypted_header().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_restore_encrypted_header_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_block_call_restore_encrypted_header() for the asynchronous version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_restore_encrypted_header_sync(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_block_call_update_configuration_item_finish() to get the result of the operation.
@@ -3372,7 +3441,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3410,7 +3479,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_update_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_update_configuration_item().
@@ -3522,6 +3591,13 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_rescan(invocation: Gio.DBusMethodInvocation): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_restore_encrypted_header(invocation: Gio.DBusMethodInvocation): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -3622,6 +3698,17 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options
              */
             vfunc_handle_rescan(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            /**
+             * Handler for the #UDisksBlock::handle-restore-encrypted-header signal.
+             * @param invocation
+             * @param arg_backup_file
+             * @param arg_options
+             */
+            vfunc_handle_restore_encrypted_header(
+                invocation: Gio.DBusMethodInvocation,
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+            ): boolean;
             /**
              * Handler for the #UDisksBlock::handle-update-configuration-item signal.
              * @param invocation
@@ -4508,7 +4595,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.AddConfigurationItem">AddConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -4542,7 +4629,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_add_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_add_configuration_item().
@@ -4577,7 +4664,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.Format">Format()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -4611,7 +4698,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_format().
@@ -4644,7 +4731,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_secret_configuration(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.GetSecretConfiguration">GetSecretConfiguration()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -4674,7 +4761,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_block_call_get_secret_configuration().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_get_secret_configuration().
@@ -4709,7 +4796,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenDevice">OpenDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -4747,7 +4834,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_device().
@@ -4784,7 +4871,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForBackup">OpenForBackup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -4818,7 +4905,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_backup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_backup().
@@ -4853,7 +4940,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForBenchmark">OpenForBenchmark()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -4887,7 +4974,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_benchmark().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_benchmark().
@@ -4922,7 +5009,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForRestore">OpenForRestore()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -4956,7 +5043,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_restore().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_restore().
@@ -4991,7 +5078,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RemoveConfigurationItem">RemoveConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5025,7 +5112,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_remove_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_remove_configuration_item().
@@ -5055,7 +5142,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_rescan(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_rescan(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.Rescan">Rescan()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5085,7 +5172,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_rescan().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_rescan().
@@ -5102,6 +5189,75 @@ declare module 'gi://UDisks?version=2.0' {
              */
             call_rescan_sync(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_block_call_restore_encrypted_header().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_restore_encrypted_header().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_restore_encrypted_header_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_block_call_restore_encrypted_header() for the asynchronous version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_restore_encrypted_header_sync(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_block_call_update_configuration_item_finish() to get the result of the operation.
@@ -5117,7 +5273,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5155,7 +5311,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_update_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_update_configuration_item().
@@ -5267,6 +5423,13 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_rescan(invocation: Gio.DBusMethodInvocation): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_restore_encrypted_header(invocation: Gio.DBusMethodInvocation): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -5367,6 +5530,17 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options
              */
             vfunc_handle_rescan(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            /**
+             * Handler for the #UDisksBlock::handle-restore-encrypted-header signal.
+             * @param invocation
+             * @param arg_backup_file
+             * @param arg_options
+             */
+            vfunc_handle_restore_encrypted_header(
+                invocation: Gio.DBusMethodInvocation,
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+            ): boolean;
             /**
              * Handler for the #UDisksBlock::handle-update-configuration-item signal.
              * @param invocation
@@ -6139,13 +6313,13 @@ declare module 'gi://UDisks?version=2.0' {
             /**
              * Gets the #UDisksPartitionTable corresponding to `partition`.
              * @param partition A #UDisksPartition.
-             * @returns A #UDisksPartitionTable. Free with g_object_unref().
+             * @returns A #UDisksPartitionTable or %NULL if there is no #UDisksPartitionTable for @partition. Free with g_object_unref().
              */
             get_partition_table(partition: Partition): PartitionTable;
             /**
              * Gets a human readable localized string for `partition_table_type` and `partition_table_subtype`.
              * @param partition_table_type A partition table type e.g. 'dos' or 'gpt'.
-             * @param partition_table_subtype A partition table type e.g. 'dos' or 'gpt'.
+             * @param partition_table_subtype A partition table subtype e.g. 'generic' or 'linux'.
              * @returns A description of @partition_table_type and @partition_table_subtype or %NULL.
              */
             get_partition_table_subtype_for_display(
@@ -6280,7 +6454,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -6372,7 +6546,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -7529,7 +7703,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -7621,7 +7795,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -7818,7 +7992,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_get_state(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<number>;
+            call_pm_get_state(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<number>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmGetState">PmGetState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -7848,7 +8025,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_get_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_get_state().
@@ -7873,7 +8050,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_standby(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_pm_standby(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmStandby">PmStandby()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -7903,7 +8083,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_standby().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_standby().
@@ -7928,7 +8108,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_wakeup(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_pm_wakeup(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmWakeup">PmWakeup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -7958,7 +8141,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_wakeup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_wakeup().
@@ -7983,7 +8166,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_security_erase_unit(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_security_erase_unit(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SecurityEraseUnit">SecurityEraseUnit()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8013,7 +8199,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_security_erase_unit().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_security_erase_unit().
@@ -8041,7 +8227,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_get_attributes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartGetAttributes">SmartGetAttributes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8071,7 +8257,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_get_attributes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_get_attributes().
@@ -8102,7 +8288,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_selftest_abort(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSelftestAbort">SmartSelftestAbort()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8132,7 +8318,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_selftest_abort().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_selftest_abort().
@@ -8162,7 +8348,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSelftestStart">SmartSelftestStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8196,7 +8382,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_selftest_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_selftest_start().
@@ -8231,7 +8417,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSetEnabled">SmartSetEnabled()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8265,7 +8451,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_set_enabled().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_set_enabled().
@@ -8295,7 +8481,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_smart_update(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_smart_update(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartUpdate">SmartUpdate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8325,7 +8514,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_update().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_update().
@@ -9389,7 +9578,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_get_state(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<number>;
+            call_pm_get_state(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<number>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmGetState">PmGetState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9419,7 +9611,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_get_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_get_state().
@@ -9444,7 +9636,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_standby(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_pm_standby(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmStandby">PmStandby()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9474,7 +9669,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_standby().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_standby().
@@ -9499,7 +9694,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_wakeup(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_pm_wakeup(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmWakeup">PmWakeup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9529,7 +9727,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_wakeup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_wakeup().
@@ -9554,7 +9752,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_security_erase_unit(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_security_erase_unit(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SecurityEraseUnit">SecurityEraseUnit()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9584,7 +9785,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_security_erase_unit().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_security_erase_unit().
@@ -9612,7 +9813,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_get_attributes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartGetAttributes">SmartGetAttributes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9642,7 +9843,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_get_attributes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_get_attributes().
@@ -9673,7 +9874,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_selftest_abort(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSelftestAbort">SmartSelftestAbort()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9703,7 +9904,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_selftest_abort().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_selftest_abort().
@@ -9733,7 +9934,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSelftestStart">SmartSelftestStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9767,7 +9968,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_selftest_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_selftest_start().
@@ -9802,7 +10003,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSetEnabled">SmartSetEnabled()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9836,7 +10037,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_set_enabled().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_set_enabled().
@@ -9866,7 +10067,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_smart_update(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_smart_update(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartUpdate">SmartUpdate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9896,7 +10100,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_update().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_update().
@@ -11015,7 +11219,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -11107,7 +11311,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -11304,7 +11508,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_eject(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_eject(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.Eject">Eject()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -11334,7 +11538,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_eject().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_eject().
@@ -11359,7 +11563,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_power_off(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_power_off(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.PowerOff">PowerOff()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -11389,7 +11596,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_power_off().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_power_off().
@@ -11419,7 +11626,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.SetConfiguration">SetConfiguration()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -11453,7 +11660,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_set_configuration().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_set_configuration().
@@ -12404,7 +12611,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_eject(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_eject(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.Eject">Eject()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -12434,7 +12641,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_eject().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_eject().
@@ -12459,7 +12666,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_power_off(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_power_off(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.PowerOff">PowerOff()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -12489,7 +12699,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_power_off().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_power_off().
@@ -12519,7 +12729,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.SetConfiguration">SetConfiguration()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -12553,7 +12763,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_set_configuration().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_set_configuration().
@@ -13308,7 +13518,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -13400,7 +13610,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -13604,7 +13814,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_passphrase: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.ChangePassphrase">ChangePassphrase()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -13642,7 +13852,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_change_passphrase().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_change_passphrase().
@@ -13666,6 +13876,144 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_encrypted_call_convert().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_convert().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_convert_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_encrypted_call_convert() for the asynchronous version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_convert_sync(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_encrypted_call_header_backup().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_header_backup().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_header_backup_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_encrypted_call_header_backup() for the asynchronous version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_header_backup_sync(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_encrypted_call_lock_finish() to get the result of the operation.
@@ -13674,7 +14022,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_lock(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_lock(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -13704,7 +14052,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_lock().
@@ -13734,7 +14082,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -13768,7 +14116,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_resize().
@@ -13803,7 +14151,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_passphrase: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Unlock">Unlock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -13837,7 +14185,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_unlock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_unlock().
@@ -13865,6 +14213,20 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_change_passphrase(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_convert(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_header_backup(invocation: Gio.DBusMethodInvocation): void;
             /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
@@ -13898,6 +14260,28 @@ declare module 'gi://UDisks?version=2.0' {
                 invocation: Gio.DBusMethodInvocation,
                 arg_passphrase: string,
                 arg_new_passphrase: string,
+                arg_options: GLib.Variant,
+            ): boolean;
+            /**
+             * Handler for the #UDisksEncrypted::handle-convert signal.
+             * @param invocation
+             * @param arg_target_version
+             * @param arg_options
+             */
+            vfunc_handle_convert(
+                invocation: Gio.DBusMethodInvocation,
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+            ): boolean;
+            /**
+             * Handler for the #UDisksEncrypted::handle-header-backup signal.
+             * @param invocation
+             * @param arg_backup_file
+             * @param arg_options
+             */
+            vfunc_handle_header_backup(
+                invocation: Gio.DBusMethodInvocation,
+                arg_backup_file: string,
                 arg_options: GLib.Variant,
             ): boolean;
             /**
@@ -14539,7 +14923,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_passphrase: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.ChangePassphrase">ChangePassphrase()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -14577,7 +14961,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_change_passphrase().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_change_passphrase().
@@ -14601,6 +14985,144 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_encrypted_call_convert().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_convert().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_convert_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_encrypted_call_convert() for the asynchronous version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_convert_sync(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_encrypted_call_header_backup().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_header_backup().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_header_backup_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_encrypted_call_header_backup() for the asynchronous version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_header_backup_sync(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_encrypted_call_lock_finish() to get the result of the operation.
@@ -14609,7 +15131,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_lock(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_lock(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -14639,7 +15161,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_lock().
@@ -14669,7 +15191,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -14703,7 +15225,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_resize().
@@ -14738,7 +15260,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_passphrase: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Unlock">Unlock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -14772,7 +15294,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_unlock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_unlock().
@@ -14800,6 +15322,20 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_change_passphrase(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_convert(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_header_backup(invocation: Gio.DBusMethodInvocation): void;
             /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
@@ -14833,6 +15369,28 @@ declare module 'gi://UDisks?version=2.0' {
                 invocation: Gio.DBusMethodInvocation,
                 arg_passphrase: string,
                 arg_new_passphrase: string,
+                arg_options: GLib.Variant,
+            ): boolean;
+            /**
+             * Handler for the #UDisksEncrypted::handle-convert signal.
+             * @param invocation
+             * @param arg_target_version
+             * @param arg_options
+             */
+            vfunc_handle_convert(
+                invocation: Gio.DBusMethodInvocation,
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+            ): boolean;
+            /**
+             * Handler for the #UDisksEncrypted::handle-header-backup signal.
+             * @param invocation
+             * @param arg_backup_file
+             * @param arg_options
+             */
+            vfunc_handle_header_backup(
+                invocation: Gio.DBusMethodInvocation,
+                arg_backup_file: string,
                 arg_options: GLib.Variant,
             ): boolean;
             /**
@@ -15534,7 +16092,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -15626,7 +16184,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -15828,7 +16386,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -15862,7 +16420,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_add_device().
@@ -15901,7 +16459,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_ro: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.CreateSnapshot">CreateSnapshot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -15943,7 +16501,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_create_snapshot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_create_snapshot().
@@ -15982,7 +16540,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.CreateSubvolume">CreateSubvolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16016,7 +16574,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_create_subvolume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_create_subvolume().
@@ -16038,6 +16596,67 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<number>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<number> | void;
+            /**
+             * Finishes an operation started with udisks_filesystem_btrfs_call_get_default_subvolume_id().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_get_default_subvolume_id().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_default_subvolume_id_finish(res: Gio.AsyncResult): [boolean, number];
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_default_subvolume_id_sync(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): [boolean, number];
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_filesystem_btrfs_call_get_subvolumes_finish() to get the result of the operation.
@@ -16051,7 +16670,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_snapshots_only: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, number]>;
+            ): globalThis.Promise<[GLib.Variant | null, number]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16085,7 +16704,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, number]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, number]> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_get_subvolumes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_get_subvolumes().
@@ -16120,7 +16739,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16154,7 +16773,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_remove_device().
@@ -16189,7 +16808,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.RemoveSubvolume">RemoveSubvolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16223,7 +16842,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_remove_subvolume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_remove_subvolume().
@@ -16253,7 +16872,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16283,7 +16902,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_repair().
@@ -16313,7 +16932,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16347,7 +16966,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_resize().
@@ -16369,6 +16988,75 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_filesystem_btrfs_call_set_default_subvolume_id().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_set_default_subvolume_id().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_default_subvolume_id_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id() for the asynchronous version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_default_subvolume_id_sync(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_filesystem_btrfs_call_set_label_finish() to get the result of the operation.
@@ -16382,7 +17070,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -16416,7 +17104,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_set_label().
@@ -16459,6 +17147,14 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_create_subvolume(invocation: Gio.DBusMethodInvocation): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             * @param id Parameter to return.
+             */
+            complete_get_default_subvolume_id(invocation: Gio.DBusMethodInvocation, id: number): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -16499,6 +17195,13 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_resize(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_set_default_subvolume_id(invocation: Gio.DBusMethodInvocation): void;
             /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
@@ -16541,6 +17244,15 @@ declare module 'gi://UDisks?version=2.0' {
             vfunc_handle_create_subvolume(
                 invocation: Gio.DBusMethodInvocation,
                 arg_name: string,
+                arg_options: GLib.Variant,
+            ): boolean;
+            /**
+             * Handler for the #UDisksFilesystemBTRFS::handle-get-default-subvolume-id signal.
+             * @param invocation
+             * @param arg_options
+             */
+            vfunc_handle_get_default_subvolume_id(
+                invocation: Gio.DBusMethodInvocation,
                 arg_options: GLib.Variant,
             ): boolean;
             /**
@@ -16591,6 +17303,17 @@ declare module 'gi://UDisks?version=2.0' {
             vfunc_handle_resize(
                 invocation: Gio.DBusMethodInvocation,
                 arg_size: number,
+                arg_options: GLib.Variant,
+            ): boolean;
+            /**
+             * Handler for the #UDisksFilesystemBTRFS::handle-set-default-subvolume-id signal.
+             * @param invocation
+             * @param arg_id
+             * @param arg_options
+             */
+            vfunc_handle_set_default_subvolume_id(
+                invocation: Gio.DBusMethodInvocation,
+                arg_id: number,
                 arg_options: GLib.Variant,
             ): boolean;
             /**
@@ -17192,7 +17915,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17226,7 +17949,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_add_device().
@@ -17265,7 +17988,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_ro: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.CreateSnapshot">CreateSnapshot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17307,7 +18030,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_create_snapshot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_create_snapshot().
@@ -17346,7 +18069,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.CreateSubvolume">CreateSubvolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17380,7 +18103,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_create_subvolume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_create_subvolume().
@@ -17402,6 +18125,67 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<number>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<number> | void;
+            /**
+             * Finishes an operation started with udisks_filesystem_btrfs_call_get_default_subvolume_id().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_get_default_subvolume_id().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_default_subvolume_id_finish(res: Gio.AsyncResult): [boolean, number];
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_default_subvolume_id_sync(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): [boolean, number];
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_filesystem_btrfs_call_get_subvolumes_finish() to get the result of the operation.
@@ -17415,7 +18199,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_snapshots_only: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, number]>;
+            ): globalThis.Promise<[GLib.Variant | null, number]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17449,7 +18233,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, number]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, number]> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_get_subvolumes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_get_subvolumes().
@@ -17484,7 +18268,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17518,7 +18302,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_remove_device().
@@ -17553,7 +18337,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.RemoveSubvolume">RemoveSubvolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17587,7 +18371,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_remove_subvolume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_remove_subvolume().
@@ -17617,7 +18401,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17647,7 +18431,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_repair().
@@ -17677,7 +18461,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17711,7 +18495,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_resize().
@@ -17733,6 +18517,75 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_filesystem_btrfs_call_set_default_subvolume_id().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_set_default_subvolume_id().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_default_subvolume_id_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id() for the asynchronous version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_default_subvolume_id_sync(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_filesystem_btrfs_call_set_label_finish() to get the result of the operation.
@@ -17746,7 +18599,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -17780,7 +18633,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_set_label().
@@ -17823,6 +18676,14 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_create_subvolume(invocation: Gio.DBusMethodInvocation): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             * @param id Parameter to return.
+             */
+            complete_get_default_subvolume_id(invocation: Gio.DBusMethodInvocation, id: number): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -17863,6 +18724,13 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_resize(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_set_default_subvolume_id(invocation: Gio.DBusMethodInvocation): void;
             /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
@@ -17905,6 +18773,15 @@ declare module 'gi://UDisks?version=2.0' {
             vfunc_handle_create_subvolume(
                 invocation: Gio.DBusMethodInvocation,
                 arg_name: string,
+                arg_options: GLib.Variant,
+            ): boolean;
+            /**
+             * Handler for the #UDisksFilesystemBTRFS::handle-get-default-subvolume-id signal.
+             * @param invocation
+             * @param arg_options
+             */
+            vfunc_handle_get_default_subvolume_id(
+                invocation: Gio.DBusMethodInvocation,
                 arg_options: GLib.Variant,
             ): boolean;
             /**
@@ -17955,6 +18832,17 @@ declare module 'gi://UDisks?version=2.0' {
             vfunc_handle_resize(
                 invocation: Gio.DBusMethodInvocation,
                 arg_size: number,
+                arg_options: GLib.Variant,
+            ): boolean;
+            /**
+             * Handler for the #UDisksFilesystemBTRFS::handle-set-default-subvolume-id signal.
+             * @param invocation
+             * @param arg_id
+             * @param arg_options
+             */
+            vfunc_handle_set_default_subvolume_id(
+                invocation: Gio.DBusMethodInvocation,
+                arg_id: number,
                 arg_options: GLib.Variant,
             ): boolean;
             /**
@@ -18623,7 +19511,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -18715,7 +19603,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -18912,7 +19800,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_check(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_check(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Check">Check()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18942,7 +19830,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_check().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_check().
@@ -18967,7 +19855,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_mount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_mount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Mount">Mount()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -18997,7 +19885,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_mount().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_mount().
@@ -19022,7 +19910,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19052,7 +19940,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_repair().
@@ -19082,7 +19970,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19116,7 +20004,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_resize().
@@ -19151,7 +20039,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19185,7 +20073,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_set_label().
@@ -19220,7 +20108,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19254,7 +20142,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_set_uuid().
@@ -19284,7 +20172,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_take_ownership(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_take_ownership(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.TakeOwnership">TakeOwnership()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19314,7 +20205,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_take_ownership().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_take_ownership().
@@ -19339,7 +20230,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_unmount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_unmount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Unmount">Unmount()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -19369,7 +20260,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_unmount().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_unmount().
@@ -20074,7 +20965,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_check(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_check(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Check">Check()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20104,7 +20995,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_check().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_check().
@@ -20129,7 +21020,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_mount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_mount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Mount">Mount()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20159,7 +21050,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_mount().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_mount().
@@ -20184,7 +21075,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20214,7 +21105,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_repair().
@@ -20244,7 +21135,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20278,7 +21169,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_resize().
@@ -20313,7 +21204,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20347,7 +21238,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_set_label().
@@ -20382,7 +21273,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20416,7 +21307,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_set_uuid().
@@ -20446,7 +21337,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_take_ownership(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_take_ownership(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.TakeOwnership">TakeOwnership()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20476,7 +21370,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_take_ownership().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_take_ownership().
@@ -20501,7 +21395,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_unmount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_unmount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Unmount">Unmount()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -20531,7 +21425,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_unmount().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_unmount().
@@ -21407,7 +22301,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -21499,7 +22393,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -21696,7 +22590,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Job.Cancel">Cancel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -21726,7 +22620,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_job_call_cancel().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_job_call_cancel().
@@ -22417,7 +23311,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Job.Cancel">Cancel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -22447,7 +23341,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_job_call_cancel().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_job_call_cancel().
@@ -23289,7 +24183,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -23381,7 +24275,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -23578,7 +24472,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_activate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Activate">Activate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23608,7 +24502,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_activate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_activate().
@@ -23638,7 +24532,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_cache_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheAttach">CacheAttach()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23672,7 +24566,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_attach().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_attach().
@@ -23702,7 +24596,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cache_detach(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cache_detach(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheDetach">CacheDetach()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23732,7 +24629,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_detach().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_detach().
@@ -23757,7 +24654,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cache_split(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cache_split(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheSplit">CacheSplit()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23787,7 +24687,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_split().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_split().
@@ -23819,7 +24719,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CreateSnapshot">CreateSnapshot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23857,7 +24757,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_create_snapshot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_create_snapshot().
@@ -23889,7 +24789,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_deactivate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_deactivate(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Deactivate">Deactivate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23919,7 +24822,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_deactivate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_deactivate().
@@ -23944,7 +24847,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -23974,7 +24877,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_delete().
@@ -24004,7 +24907,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Rename">Rename()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -24038,7 +24941,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_rename().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_rename().
@@ -24073,7 +24976,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pvs: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -24107,7 +25010,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_repair().
@@ -24138,7 +25041,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -24172,7 +25075,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_resize().
@@ -25066,7 +25969,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_activate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Activate">Activate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25096,7 +25999,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_activate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_activate().
@@ -25126,7 +26029,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_cache_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheAttach">CacheAttach()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25160,7 +26063,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_attach().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_attach().
@@ -25190,7 +26093,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cache_detach(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cache_detach(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheDetach">CacheDetach()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25220,7 +26126,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_detach().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_detach().
@@ -25245,7 +26151,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cache_split(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cache_split(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheSplit">CacheSplit()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25275,7 +26184,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_split().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_split().
@@ -25307,7 +26216,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CreateSnapshot">CreateSnapshot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25345,7 +26254,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_create_snapshot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_create_snapshot().
@@ -25377,7 +26286,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_deactivate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_deactivate(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Deactivate">Deactivate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25407,7 +26319,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_deactivate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_deactivate().
@@ -25432,7 +26344,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25462,7 +26374,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_delete().
@@ -25492,7 +26404,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Rename">Rename()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25526,7 +26438,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_rename().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_rename().
@@ -25561,7 +26473,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pvs: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25595,7 +26507,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_repair().
@@ -25626,7 +26538,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -25660,7 +26572,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_resize().
@@ -26509,7 +27421,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -26601,7 +27513,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -26798,7 +27710,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -26828,7 +27740,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_loop_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_delete().
@@ -26858,7 +27770,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetAutoclear">SetAutoclear()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -26892,7 +27804,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_loop_call_set_autoclear().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_set_autoclear().
@@ -26914,6 +27826,64 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_loop_call_set_capacity().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_set_capacity().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_capacity_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_loop_call_set_capacity() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_capacity_sync(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.Delete">Delete()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -26927,6 +27897,13 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_autoclear(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_set_capacity(invocation: Gio.DBusMethodInvocation): void;
             /**
              * Handler for the #UDisksLoop::handle-delete signal.
              * @param invocation
@@ -26944,6 +27921,12 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: boolean,
                 arg_options: GLib.Variant,
             ): boolean;
+            /**
+             * Handler for the #UDisksLoop::handle-set-capacity signal.
+             * @param invocation
+             * @param arg_options
+             */
+            vfunc_handle_set_capacity(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
             /**
              * Creates a binding between `source_property` on `source` and `target_property`
              * on `target`.
@@ -27524,7 +28507,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -27554,7 +28537,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_loop_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_delete().
@@ -27584,7 +28567,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetAutoclear">SetAutoclear()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -27618,7 +28601,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_loop_call_set_autoclear().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_set_autoclear().
@@ -27640,6 +28623,64 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_loop_call_set_capacity().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_set_capacity().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_capacity_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_loop_call_set_capacity() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_capacity_sync(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.Delete">Delete()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -27653,6 +28694,13 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_autoclear(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_set_capacity(invocation: Gio.DBusMethodInvocation): void;
             /**
              * Handler for the #UDisksLoop::handle-delete signal.
              * @param invocation
@@ -27670,6 +28718,12 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: boolean,
                 arg_options: GLib.Variant,
             ): boolean;
+            /**
+             * Handler for the #UDisksLoop::handle-set-capacity signal.
+             * @param invocation
+             * @param arg_options
+             */
+            vfunc_handle_set_capacity(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
             /**
              * Creates a binding between `source_property` on `source` and `target_property`
              * on `target`.
@@ -28127,6 +29181,7 @@ declare module 'gi://UDisks?version=2.0' {
                 'notify::bitmap-location': (pspec: GObject.ParamSpec) => void;
                 'notify::child-configuration': (pspec: GObject.ParamSpec) => void;
                 'notify::chunk-size': (pspec: GObject.ParamSpec) => void;
+                'notify::consistency-policy': (pspec: GObject.ParamSpec) => void;
                 'notify::degraded': (pspec: GObject.ParamSpec) => void;
                 'notify::level': (pspec: GObject.ParamSpec) => void;
                 'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -28330,6 +29385,20 @@ declare module 'gi://UDisks?version=2.0' {
             get chunkSize(): number;
             set chunkSize(val: number);
             /**
+             * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.ConsistencyPolicy">"ConsistencyPolicy"</link>.
+             *
+             * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+             */
+            get consistency_policy(): string;
+            set consistency_policy(val: string);
+            /**
+             * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.ConsistencyPolicy">"ConsistencyPolicy"</link>.
+             *
+             * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+             */
+            get consistencyPolicy(): string;
+            set consistencyPolicy(val: string);
+            /**
              * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.Degraded">"Degraded"</link>.
              *
              * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
@@ -28483,7 +29552,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -28575,7 +29644,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -28777,7 +29846,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -28811,7 +29880,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_add_device().
@@ -28841,7 +29910,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -28871,7 +29940,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_delete().
@@ -28901,7 +29970,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -28935,7 +30004,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_remove_device().
@@ -28970,7 +30039,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_sync_action: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RequestSyncAction">RequestSyncAction()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -29004,7 +30073,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_request_sync_action().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_request_sync_action().
@@ -29039,7 +30108,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.SetBitmapLocation">SetBitmapLocation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -29073,7 +30142,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_set_bitmap_location().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_set_bitmap_location().
@@ -29103,7 +30172,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -29133,7 +30202,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_start().
@@ -29158,7 +30227,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Stop">Stop()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -29188,7 +30257,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_stop().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_stop().
@@ -29764,6 +30833,7 @@ declare module 'gi://UDisks?version=2.0' {
                 'notify::bitmap-location': (pspec: GObject.ParamSpec) => void;
                 'notify::child-configuration': (pspec: GObject.ParamSpec) => void;
                 'notify::chunk-size': (pspec: GObject.ParamSpec) => void;
+                'notify::consistency-policy': (pspec: GObject.ParamSpec) => void;
                 'notify::degraded': (pspec: GObject.ParamSpec) => void;
                 'notify::level': (pspec: GObject.ParamSpec) => void;
                 'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -29883,6 +30953,20 @@ declare module 'gi://UDisks?version=2.0' {
              */
             get chunkSize(): number;
             set chunkSize(val: number);
+            /**
+             * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.ConsistencyPolicy">"ConsistencyPolicy"</link>.
+             *
+             * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+             */
+            get consistency_policy(): string;
+            set consistency_policy(val: string);
+            /**
+             * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.ConsistencyPolicy">"ConsistencyPolicy"</link>.
+             *
+             * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+             */
+            get consistencyPolicy(): string;
+            set consistencyPolicy(val: string);
             /**
              * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.Degraded">"Degraded"</link>.
              *
@@ -30045,7 +31129,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30079,7 +31163,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_add_device().
@@ -30109,7 +31193,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30139,7 +31223,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_delete().
@@ -30169,7 +31253,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30203,7 +31287,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_remove_device().
@@ -30238,7 +31322,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_sync_action: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RequestSyncAction">RequestSyncAction()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30272,7 +31356,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_request_sync_action().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_request_sync_action().
@@ -30307,7 +31391,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.SetBitmapLocation">SetBitmapLocation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30341,7 +31425,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_set_bitmap_location().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_set_bitmap_location().
@@ -30371,7 +31455,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30401,7 +31485,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_start().
@@ -30426,7 +31510,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Stop">Stop()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -30456,7 +31540,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_stop().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_stop().
@@ -31213,7 +32297,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -31305,7 +32389,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -31513,7 +32597,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_md_level: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-BTRFS.CreateVolume">CreateVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -31559,7 +32643,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_btrfs_call_create_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_btrfs_call_create_volume().
@@ -32163,7 +33247,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_md_level: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-BTRFS.CreateVolume">CreateVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -32209,7 +33293,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_btrfs_call_create_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_btrfs_call_create_volume().
@@ -32890,7 +33974,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -32982,7 +34066,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -33186,7 +34270,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_blocks: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-LVM2.VolumeGroupCreate">VolumeGroupCreate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -33224,7 +34308,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_lvm2_call_volume_group_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_lvm2_call_volume_group_create().
@@ -33817,7 +34901,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_blocks: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-LVM2.VolumeGroupCreate">VolumeGroupCreate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -33855,7 +34939,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_lvm2_call_volume_group_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_lvm2_call_volume_group_create().
@@ -34561,7 +35645,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -34653,7 +35737,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -34859,7 +35943,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_transport_addr: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34901,7 +35985,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_connect().
@@ -34940,7 +36024,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_hostid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.SetHostID">SetHostID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -34974,7 +36058,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_set_host_id().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_set_host_id().
@@ -35009,7 +36093,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_hostnqn: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.SetHostNQN">SetHostNQN()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -35043,7 +36127,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_set_host_nqn().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_set_host_nqn().
@@ -35706,7 +36790,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_transport_addr: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -35748,7 +36832,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_connect().
@@ -35787,7 +36871,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_hostid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.SetHostID">SetHostID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -35821,7 +36905,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_set_host_id().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_set_host_id().
@@ -35856,7 +36940,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_hostnqn: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.SetHostNQN">SetHostNQN()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -35890,7 +36974,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_set_host_nqn().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_set_host_nqn().
@@ -36653,7 +37737,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -36745,7 +37829,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -36942,7 +38026,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_check(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_check(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanCheck">CanCheck()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -36972,7 +38059,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_check().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_check().
@@ -36997,7 +38084,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_format(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_format(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanFormat">CanFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37027,7 +38117,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_format().
@@ -37055,7 +38145,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_repair(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_repair(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanRepair">CanRepair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37085,7 +38178,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_repair().
@@ -37113,7 +38206,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_resize(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_resize(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanResize">CanResize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37143,7 +38239,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_resize().
@@ -37176,7 +38272,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModule">EnableModule()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37210,7 +38306,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_call_enable_module().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_enable_module().
@@ -37240,7 +38336,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable_modules(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable_modules(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModules">EnableModules()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37270,7 +38366,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_call_enable_modules().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_enable_modules().
@@ -37298,7 +38394,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_block_devices(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string[] | null>;
+            ): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetBlockDevices">GetBlockDevices()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37328,7 +38424,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_get_block_devices().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_get_block_devices().
@@ -37348,6 +38444,67 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): [boolean, string[] | null];
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string[] | null>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<string[] | null> | void;
+            /**
+             * Finishes an operation started with udisks_manager_call_get_drives().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_get_drives().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_drives_finish(res: Gio.AsyncResult): [boolean, string[] | null];
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_manager_call_get_drives() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_drives_sync(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): [boolean, string[] | null];
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_manager_call_loop_setup_finish() to get the result of the operation.
@@ -37363,7 +38520,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[string, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[string, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37401,7 +38558,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[string, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[string, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_manager_call_loop_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_loop_setup().
@@ -37444,7 +38601,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_chunk: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.MDRaidCreate">MDRaidCreate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37490,7 +38647,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_call_mdraid_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_mdraid_create().
@@ -37531,7 +38688,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_devspec: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string[] | null>;
+            ): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.ResolveDevice">ResolveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -37565,7 +38722,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_resolve_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_resolve_device().
@@ -37640,6 +38797,14 @@ declare module 'gi://UDisks?version=2.0' {
              * @param block_objects Parameter to return.
              */
             complete_get_block_devices(invocation: Gio.DBusMethodInvocation, block_objects: string): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             * @param drive_objects Parameter to return.
+             */
+            complete_get_drives(invocation: Gio.DBusMethodInvocation, drive_objects: string): void;
             /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
@@ -37716,6 +38881,12 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options
              */
             vfunc_handle_get_block_devices(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            /**
+             * Handler for the #UDisksManager::handle-get-drives signal.
+             * @param invocation
+             * @param arg_options
+             */
+            vfunc_handle_get_drives(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
             /**
              * Handler for the #UDisksManager::handle-loop-setup signal.
              * @param invocation
@@ -38354,7 +39525,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_check(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_check(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanCheck">CanCheck()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38384,7 +39558,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_check().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_check().
@@ -38409,7 +39583,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_format(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_format(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanFormat">CanFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38439,7 +39616,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_format().
@@ -38467,7 +39644,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_repair(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_repair(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanRepair">CanRepair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38497,7 +39677,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_repair().
@@ -38525,7 +39705,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_resize(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_resize(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanResize">CanResize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38555,7 +39738,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_resize().
@@ -38588,7 +39771,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModule">EnableModule()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38622,7 +39805,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_call_enable_module().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_enable_module().
@@ -38652,7 +39835,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable_modules(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable_modules(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModules">EnableModules()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38682,7 +39865,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_call_enable_modules().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_enable_modules().
@@ -38710,7 +39893,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_block_devices(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string[] | null>;
+            ): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetBlockDevices">GetBlockDevices()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38740,7 +39923,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_get_block_devices().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_get_block_devices().
@@ -38760,6 +39943,67 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): [boolean, string[] | null];
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string[] | null>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<string[] | null> | void;
+            /**
+             * Finishes an operation started with udisks_manager_call_get_drives().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_get_drives().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_drives_finish(res: Gio.AsyncResult): [boolean, string[] | null];
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_manager_call_get_drives() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_drives_sync(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): [boolean, string[] | null];
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_manager_call_loop_setup_finish() to get the result of the operation.
@@ -38775,7 +40019,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[string, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[string, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38813,7 +40057,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[string, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[string, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_manager_call_loop_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_loop_setup().
@@ -38856,7 +40100,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_chunk: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.MDRaidCreate">MDRaidCreate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38902,7 +40146,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_call_mdraid_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_mdraid_create().
@@ -38943,7 +40187,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_devspec: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string[] | null>;
+            ): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.ResolveDevice">ResolveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -38977,7 +40221,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_resolve_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_resolve_device().
@@ -39052,6 +40296,14 @@ declare module 'gi://UDisks?version=2.0' {
              * @param block_objects Parameter to return.
              */
             complete_get_block_devices(invocation: Gio.DBusMethodInvocation, block_objects: string): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             * @param drive_objects Parameter to return.
+             */
+            complete_get_drives(invocation: Gio.DBusMethodInvocation, drive_objects: string): void;
             /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
@@ -39128,6 +40380,12 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options
              */
             vfunc_handle_get_block_devices(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            /**
+             * Handler for the #UDisksManager::handle-get-drives signal.
+             * @param invocation
+             * @param arg_options
+             */
+            vfunc_handle_get_drives(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
             /**
              * Handler for the #UDisksManager::handle-loop-setup signal.
              * @param invocation
@@ -39997,7 +41255,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -40089,7 +41347,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -40291,7 +41549,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_action: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SanitizeStart">SanitizeStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -40325,7 +41583,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_sanitize_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_sanitize_start().
@@ -40358,7 +41616,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_get_attributes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartGetAttributes">SmartGetAttributes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -40388,7 +41646,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_get_attributes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_get_attributes().
@@ -40419,7 +41677,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_selftest_abort(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartSelftestAbort">SmartSelftestAbort()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -40449,7 +41707,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_selftest_abort().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_selftest_abort().
@@ -40479,7 +41737,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartSelftestStart">SmartSelftestStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -40513,7 +41771,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_selftest_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_selftest_start().
@@ -40543,7 +41801,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_smart_update(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_smart_update(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartUpdate">SmartUpdate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -40573,7 +41834,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_update().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_update().
@@ -41410,7 +42671,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_action: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SanitizeStart">SanitizeStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41444,7 +42705,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_sanitize_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_sanitize_start().
@@ -41477,7 +42738,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_get_attributes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartGetAttributes">SmartGetAttributes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41507,7 +42768,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_get_attributes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_get_attributes().
@@ -41538,7 +42799,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_selftest_abort(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartSelftestAbort">SmartSelftestAbort()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41568,7 +42829,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_selftest_abort().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_selftest_abort().
@@ -41598,7 +42859,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartSelftestStart">SmartSelftestStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41632,7 +42893,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_selftest_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_selftest_start().
@@ -41662,7 +42923,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_smart_update(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_smart_update(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartUpdate">SmartUpdate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -41692,7 +42956,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_update().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_update().
@@ -42469,7 +43733,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -42561,7 +43825,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -42758,7 +44022,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Fabrics.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -42788,7 +44055,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_fabrics_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_fabrics_call_disconnect().
@@ -43414,7 +44681,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Fabrics.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -43444,7 +44714,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_fabrics_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_fabrics_call_disconnect().
@@ -44228,7 +45498,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -44320,7 +45590,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -44517,7 +45787,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_format_namespace(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_format_namespace(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Namespace.FormatNamespace">FormatNamespace()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -44547,7 +45820,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_namespace_call_format_namespace().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_namespace_call_format_namespace().
@@ -45243,7 +46516,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_format_namespace(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_format_namespace(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Namespace.FormatNamespace">FormatNamespace()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -45273,7 +46549,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_namespace_call_format_namespace().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_namespace_call_format_namespace().
@@ -46066,7 +47342,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -46158,7 +47434,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -49126,7 +50402,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -49218,7 +50494,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -49415,7 +50691,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -49445,7 +50721,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_delete().
@@ -49475,7 +50751,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -49509,7 +50785,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_resize().
@@ -49544,7 +50820,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_flags: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetFlags">SetFlags()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -49578,7 +50854,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_flags().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_flags().
@@ -49613,7 +50889,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetName">SetName()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -49647,7 +50923,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_name().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_name().
@@ -49682,7 +50958,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetType">SetType()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -49716,7 +50992,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_type().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_type().
@@ -49751,7 +51027,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -49785,7 +51061,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_uuid().
@@ -50547,7 +51823,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50577,7 +51853,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_delete().
@@ -50607,7 +51883,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50641,7 +51917,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_resize().
@@ -50676,7 +51952,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_flags: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetFlags">SetFlags()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50710,7 +51986,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_flags().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_flags().
@@ -50745,7 +52021,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetName">SetName()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50779,7 +52055,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_name().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_name().
@@ -50814,7 +52090,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetType">SetType()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50848,7 +52124,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_type().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_type().
@@ -50883,7 +52159,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -50917,7 +52193,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_uuid().
@@ -51689,7 +52965,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -51781,7 +53057,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -51989,7 +53265,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartition">CreatePartition()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52035,7 +53311,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52060,7 +53336,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_format_type: string,
                 arg_format_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52114,7 +53390,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_format_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_partition_table_call_create_partition_and_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_table_call_create_partition_and_format().
@@ -52796,7 +54072,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartition">CreatePartition()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52842,7 +54118,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52867,7 +54143,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_format_type: string,
                 arg_format_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -52921,7 +54197,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_format_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_partition_table_call_create_partition_and_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_table_call_create_partition_and_format().
@@ -53702,7 +54978,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -53794,7 +55070,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -55193,7 +56469,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -55285,7 +56561,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -55487,7 +56763,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -55521,7 +56797,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_set_label().
@@ -55556,7 +56832,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -55590,7 +56866,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_set_uuid().
@@ -55620,7 +56896,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -55650,7 +56926,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_start().
@@ -55675,7 +56951,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.Stop">Stop()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -55705,7 +56981,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_stop().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_stop().
@@ -56340,7 +57616,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -56374,7 +57650,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_set_label().
@@ -56409,7 +57685,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -56443,7 +57719,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_set_uuid().
@@ -56473,7 +57749,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -56503,7 +57779,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_start().
@@ -56528,7 +57804,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.Stop">Stop()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -56558,7 +57834,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_stop().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_stop().
@@ -57357,7 +58633,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -57449,7 +58725,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -57651,7 +58927,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableCompression">EnableCompression()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -57685,7 +58961,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_enable_compression().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_enable_compression().
@@ -57720,7 +58996,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableDeduplication">EnableDeduplication()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -57754,7 +59030,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_enable_deduplication().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_enable_deduplication().
@@ -57787,7 +59063,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_statistics(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -57817,7 +59093,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_get_statistics().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_get_statistics().
@@ -57850,7 +59126,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.ResizeLogical">ResizeLogical()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -57884,7 +59160,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_resize_logical().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_resize_logical().
@@ -57919,7 +59195,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.ResizePhysical">ResizePhysical()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -57953,7 +59229,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_resize_physical().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_resize_physical().
@@ -58700,7 +59976,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableCompression">EnableCompression()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -58734,7 +60010,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_enable_compression().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_enable_compression().
@@ -58769,7 +60045,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableDeduplication">EnableDeduplication()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -58803,7 +60079,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_enable_deduplication().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_enable_deduplication().
@@ -58836,7 +60112,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_statistics(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -58866,7 +60142,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_get_statistics().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_get_statistics().
@@ -58899,7 +60175,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.ResizeLogical">ResizeLogical()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -58933,7 +60209,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_resize_logical().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_resize_logical().
@@ -58968,7 +60244,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.ResizePhysical">ResizePhysical()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -59002,7 +60278,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_resize_physical().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_resize_physical().
@@ -59825,7 +61101,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
              * @param cancellable optional #GCancellable object, %NULL to ignore.
              */
-            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Starts asynchronous initialization of the object implementing the
              * interface. This must be done before any real use of the object after
@@ -59917,7 +61193,7 @@ declare module 'gi://UDisks?version=2.0' {
                 io_priority: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes asynchronous initialization and returns the result.
              * See g_async_initable_init_async().
@@ -60119,7 +61395,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_block: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60153,7 +61429,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_add_device().
@@ -60190,7 +61466,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreatePlainVolume">CreatePlainVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60228,7 +61504,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_plain_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_plain_volume().
@@ -60271,7 +61547,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pvs: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreatePlainVolumeWithLayout">CreatePlainVolumeWithLayout()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60317,7 +61593,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_plain_volume_with_layout().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_plain_volume_with_layout().
@@ -60360,7 +61636,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateThinPoolVolume">CreateThinPoolVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60398,7 +61674,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_thin_pool_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_thin_pool_volume().
@@ -60439,7 +61715,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pool: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateThinVolume">CreateThinVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60481,7 +61757,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_thin_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_thin_volume().
@@ -60534,7 +61810,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_write_policy: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateVDOVolume">CreateVDOVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60596,7 +61872,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_vdo_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_vdo_volume().
@@ -60645,7 +61921,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_wipe: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60679,7 +61955,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_delete().
@@ -60714,7 +61990,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_block: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.EmptyDevice">EmptyDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60748,7 +62024,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_empty_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_empty_device().
@@ -60777,7 +62053,7 @@ declare module 'gi://UDisks?version=2.0' {
              * See udisks_volume_group_call_poll_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_poll(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_poll(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Poll">Poll()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60800,7 +62076,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_poll(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_poll().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_poll().
@@ -60831,7 +62107,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_wipe: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60869,7 +62145,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_remove_device().
@@ -60904,7 +62180,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_remove_missing_physical_volumes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.RemoveMissingPhysicalVolumes">RemoveMissingPhysicalVolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -60934,7 +62210,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_remove_missing_physical_volumes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_remove_missing_physical_volumes().
@@ -60967,7 +62243,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Rename">Rename()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -61001,7 +62277,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_rename().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_rename().
@@ -61899,7 +63175,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_block: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -61933,7 +63209,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_add_device().
@@ -61970,7 +63246,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreatePlainVolume">CreatePlainVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62008,7 +63284,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_plain_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_plain_volume().
@@ -62051,7 +63327,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pvs: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreatePlainVolumeWithLayout">CreatePlainVolumeWithLayout()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62097,7 +63373,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_plain_volume_with_layout().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_plain_volume_with_layout().
@@ -62140,7 +63416,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateThinPoolVolume">CreateThinPoolVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62178,7 +63454,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_thin_pool_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_thin_pool_volume().
@@ -62219,7 +63495,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pool: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateThinVolume">CreateThinVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62261,7 +63537,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_thin_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_thin_volume().
@@ -62314,7 +63590,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_write_policy: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateVDOVolume">CreateVDOVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62376,7 +63652,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_vdo_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_vdo_volume().
@@ -62425,7 +63701,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_wipe: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62459,7 +63735,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_delete().
@@ -62494,7 +63770,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_block: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.EmptyDevice">EmptyDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62528,7 +63804,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_empty_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_empty_device().
@@ -62557,7 +63833,7 @@ declare module 'gi://UDisks?version=2.0' {
              * See udisks_volume_group_call_poll_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_poll(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_poll(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Poll">Poll()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62580,7 +63856,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_poll(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_poll().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_poll().
@@ -62611,7 +63887,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_wipe: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62649,7 +63925,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_remove_device().
@@ -62684,7 +63960,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_remove_missing_physical_volumes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.RemoveMissingPhysicalVolumes">RemoveMissingPhysicalVolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62714,7 +63990,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_remove_missing_physical_volumes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_remove_missing_physical_volumes().
@@ -62747,7 +64023,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Rename">Rename()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -62781,7 +64057,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_rename().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_rename().
@@ -64004,6 +65280,133 @@ declare module 'gi://UDisks?version=2.0' {
         }
 
         namespace Block {
+            /**
+             * Interface for implementing Block.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksBlock::handle-add-configuration-item signal.
+                 * @param invocation
+                 * @param arg_item
+                 * @param arg_options
+                 */
+                vfunc_handle_add_configuration_item(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_item: GLib.Variant,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-format signal.
+                 * @param invocation
+                 * @param arg_type
+                 * @param arg_options
+                 */
+                vfunc_handle_format(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_type: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-get-secret-configuration signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_get_secret_configuration(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-open-device signal.
+                 * @param invocation
+                 * @param fd_list
+                 * @param arg_mode
+                 * @param arg_options
+                 */
+                vfunc_handle_open_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    fd_list: Gio.UnixFDList,
+                    arg_mode: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-open-for-backup signal.
+                 * @param invocation
+                 * @param fd_list
+                 * @param arg_options
+                 */
+                vfunc_handle_open_for_backup(
+                    invocation: Gio.DBusMethodInvocation,
+                    fd_list: Gio.UnixFDList,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-open-for-benchmark signal.
+                 * @param invocation
+                 * @param fd_list
+                 * @param arg_options
+                 */
+                vfunc_handle_open_for_benchmark(
+                    invocation: Gio.DBusMethodInvocation,
+                    fd_list: Gio.UnixFDList,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-open-for-restore signal.
+                 * @param invocation
+                 * @param fd_list
+                 * @param arg_options
+                 */
+                vfunc_handle_open_for_restore(
+                    invocation: Gio.DBusMethodInvocation,
+                    fd_list: Gio.UnixFDList,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-remove-configuration-item signal.
+                 * @param invocation
+                 * @param arg_item
+                 * @param arg_options
+                 */
+                vfunc_handle_remove_configuration_item(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_item: GLib.Variant,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-rescan signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_rescan(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-restore-encrypted-header signal.
+                 * @param invocation
+                 * @param arg_backup_file
+                 * @param arg_options
+                 */
+                vfunc_handle_restore_encrypted_header(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_backup_file: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksBlock::handle-update-configuration-item signal.
+                 * @param invocation
+                 * @param arg_old_item
+                 * @param arg_new_item
+                 * @param arg_options
+                 */
+                vfunc_handle_update_configuration_item(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_old_item: GLib.Variant,
+                    arg_new_item: GLib.Variant,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -64069,7 +65472,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Block extends GObject.Object {
+        interface Block extends GObject.Object, Block.Interface {
             // Properties
 
             /**
@@ -64390,7 +65793,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.AddConfigurationItem">AddConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64424,7 +65827,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_add_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_add_configuration_item().
@@ -64459,7 +65862,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.Format">Format()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64493,7 +65896,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_format().
@@ -64526,7 +65929,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_secret_configuration(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.GetSecretConfiguration">GetSecretConfiguration()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64556,7 +65959,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_block_call_get_secret_configuration().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_get_secret_configuration().
@@ -64591,7 +65994,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenDevice">OpenDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64629,7 +66032,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_device().
@@ -64666,7 +66069,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForBackup">OpenForBackup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64700,7 +66103,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_backup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_backup().
@@ -64735,7 +66138,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForBenchmark">OpenForBenchmark()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64769,7 +66172,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_benchmark().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_benchmark().
@@ -64804,7 +66207,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForRestore">OpenForRestore()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64838,7 +66241,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_block_call_open_for_restore().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_open_for_restore().
@@ -64873,7 +66276,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RemoveConfigurationItem">RemoveConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64907,7 +66310,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_remove_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_remove_configuration_item().
@@ -64937,7 +66340,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_rescan(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_rescan(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.Rescan">Rescan()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -64967,7 +66370,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_rescan().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_rescan().
@@ -64984,6 +66387,75 @@ declare module 'gi://UDisks?version=2.0' {
              */
             call_rescan_sync(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_block_call_restore_encrypted_header_finish() to get the result of the operation.
+             *
+             * See udisks_block_call_restore_encrypted_header_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_restore_encrypted_header(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_block_call_restore_encrypted_header().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_restore_encrypted_header().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_restore_encrypted_header_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_block_call_restore_encrypted_header() for the asynchronous version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_restore_encrypted_header_sync(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_block_call_update_configuration_item_finish() to get the result of the operation.
@@ -64999,7 +66471,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_item: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -65037,7 +66509,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_block_call_update_configuration_item().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_update_configuration_item().
@@ -65149,122 +66621,19 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_rescan(invocation: Gio.DBusMethodInvocation): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_restore_encrypted_header(invocation: Gio.DBusMethodInvocation): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_update_configuration_item(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksBlock::handle-add-configuration-item signal.
-             * @param invocation
-             * @param arg_item
-             * @param arg_options
-             */
-            vfunc_handle_add_configuration_item(
-                invocation: Gio.DBusMethodInvocation,
-                arg_item: GLib.Variant,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-format signal.
-             * @param invocation
-             * @param arg_type
-             * @param arg_options
-             */
-            vfunc_handle_format(
-                invocation: Gio.DBusMethodInvocation,
-                arg_type: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-get-secret-configuration signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_get_secret_configuration(
-                invocation: Gio.DBusMethodInvocation,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-open-device signal.
-             * @param invocation
-             * @param fd_list
-             * @param arg_mode
-             * @param arg_options
-             */
-            vfunc_handle_open_device(
-                invocation: Gio.DBusMethodInvocation,
-                fd_list: Gio.UnixFDList,
-                arg_mode: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-open-for-backup signal.
-             * @param invocation
-             * @param fd_list
-             * @param arg_options
-             */
-            vfunc_handle_open_for_backup(
-                invocation: Gio.DBusMethodInvocation,
-                fd_list: Gio.UnixFDList,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-open-for-benchmark signal.
-             * @param invocation
-             * @param fd_list
-             * @param arg_options
-             */
-            vfunc_handle_open_for_benchmark(
-                invocation: Gio.DBusMethodInvocation,
-                fd_list: Gio.UnixFDList,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-open-for-restore signal.
-             * @param invocation
-             * @param fd_list
-             * @param arg_options
-             */
-            vfunc_handle_open_for_restore(
-                invocation: Gio.DBusMethodInvocation,
-                fd_list: Gio.UnixFDList,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-remove-configuration-item signal.
-             * @param invocation
-             * @param arg_item
-             * @param arg_options
-             */
-            vfunc_handle_remove_configuration_item(
-                invocation: Gio.DBusMethodInvocation,
-                arg_item: GLib.Variant,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-rescan signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_rescan(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksBlock::handle-update-configuration-item signal.
-             * @param invocation
-             * @param arg_old_item
-             * @param arg_new_item
-             * @param arg_options
-             */
-            vfunc_handle_update_configuration_item(
-                invocation: Gio.DBusMethodInvocation,
-                arg_old_item: GLib.Variant,
-                arg_new_item: GLib.Variant,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const Block: BlockNamespace & {
@@ -65320,6 +66689,38 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace Drive {
+            /**
+             * Interface for implementing Drive.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksDrive::handle-eject signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_eject(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksDrive::handle-power-off signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_power_off(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksDrive::handle-set-configuration signal.
+                 * @param invocation
+                 * @param arg_value
+                 * @param arg_options
+                 */
+                vfunc_handle_set_configuration(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_value: GLib.Variant,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -65387,7 +66788,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Drive extends GObject.Object {
+        interface Drive extends GObject.Object, Drive.Interface {
             // Properties
 
             /**
@@ -65717,7 +67118,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_eject(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_eject(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.Eject">Eject()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -65747,7 +67148,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_eject().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_eject().
@@ -65772,7 +67173,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_power_off(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_power_off(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.PowerOff">PowerOff()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -65802,7 +67206,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_power_off().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_power_off().
@@ -65832,7 +67236,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.SetConfiguration">SetConfiguration()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -65866,7 +67270,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_call_set_configuration().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_call_set_configuration().
@@ -65908,32 +67312,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_configuration(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksDrive::handle-eject signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_eject(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksDrive::handle-power-off signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_power_off(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksDrive::handle-set-configuration signal.
-             * @param invocation
-             * @param arg_value
-             * @param arg_options
-             */
-            vfunc_handle_set_configuration(
-                invocation: Gio.DBusMethodInvocation,
-                arg_value: GLib.Variant,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const Drive: DriveNamespace & {
@@ -65941,6 +67319,88 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace DriveAta {
+            /**
+             * Interface for implementing DriveAta.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksDriveAta::handle-pm-get-state signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_pm_get_state(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksDriveAta::handle-pm-standby signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_pm_standby(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksDriveAta::handle-pm-wakeup signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_pm_wakeup(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksDriveAta::handle-security-erase-unit signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_security_erase_unit(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksDriveAta::handle-smart-get-attributes signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_get_attributes(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksDriveAta::handle-smart-selftest-abort signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_selftest_abort(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksDriveAta::handle-smart-selftest-start signal.
+                 * @param invocation
+                 * @param arg_type
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_selftest_start(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_type: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksDriveAta::handle-smart-set-enabled signal.
+                 * @param invocation
+                 * @param arg_value
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_set_enabled(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_value: boolean,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksDriveAta::handle-smart-update signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -66013,7 +67473,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface DriveAta extends GObject.Object {
+        interface DriveAta extends GObject.Object, DriveAta.Interface {
             // Properties
 
             /**
@@ -66378,7 +67838,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_get_state(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<number>;
+            call_pm_get_state(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<number>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmGetState">PmGetState()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66408,7 +67871,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_get_state().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_get_state().
@@ -66433,7 +67896,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_standby(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_pm_standby(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmStandby">PmStandby()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66463,7 +67929,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_standby().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_standby().
@@ -66488,7 +67954,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_pm_wakeup(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_pm_wakeup(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmWakeup">PmWakeup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66518,7 +67987,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_pm_wakeup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_pm_wakeup().
@@ -66543,7 +68012,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_security_erase_unit(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_security_erase_unit(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SecurityEraseUnit">SecurityEraseUnit()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66573,7 +68045,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_security_erase_unit().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_security_erase_unit().
@@ -66601,7 +68073,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_get_attributes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartGetAttributes">SmartGetAttributes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66631,7 +68103,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_get_attributes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_get_attributes().
@@ -66662,7 +68134,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_selftest_abort(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSelftestAbort">SmartSelftestAbort()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66692,7 +68164,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_selftest_abort().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_selftest_abort().
@@ -66722,7 +68194,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSelftestStart">SmartSelftestStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66756,7 +68228,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_selftest_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_selftest_start().
@@ -66791,7 +68263,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSetEnabled">SmartSetEnabled()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66825,7 +68297,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_set_enabled().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_set_enabled().
@@ -66855,7 +68327,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_smart_update(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_smart_update(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartUpdate">SmartUpdate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -66885,7 +68360,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_drive_ata_call_smart_update().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_update().
@@ -66966,73 +68441,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_smart_update(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksDriveAta::handle-pm-get-state signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_pm_get_state(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksDriveAta::handle-pm-standby signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_pm_standby(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksDriveAta::handle-pm-wakeup signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_pm_wakeup(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksDriveAta::handle-security-erase-unit signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_security_erase_unit(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksDriveAta::handle-smart-get-attributes signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_smart_get_attributes(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksDriveAta::handle-smart-selftest-abort signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_smart_selftest_abort(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksDriveAta::handle-smart-selftest-start signal.
-             * @param invocation
-             * @param arg_type
-             * @param arg_options
-             */
-            vfunc_handle_smart_selftest_start(
-                invocation: Gio.DBusMethodInvocation,
-                arg_type: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksDriveAta::handle-smart-set-enabled signal.
-             * @param invocation
-             * @param arg_value
-             * @param arg_options
-             */
-            vfunc_handle_smart_set_enabled(
-                invocation: Gio.DBusMethodInvocation,
-                arg_value: boolean,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksDriveAta::handle-smart-update signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         }
 
         export const DriveAta: DriveAtaNamespace & {
@@ -67040,6 +68448,78 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace Encrypted {
+            /**
+             * Interface for implementing Encrypted.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksEncrypted::handle-change-passphrase signal.
+                 * @param invocation
+                 * @param arg_passphrase
+                 * @param arg_new_passphrase
+                 * @param arg_options
+                 */
+                vfunc_handle_change_passphrase(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_passphrase: string,
+                    arg_new_passphrase: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksEncrypted::handle-convert signal.
+                 * @param invocation
+                 * @param arg_target_version
+                 * @param arg_options
+                 */
+                vfunc_handle_convert(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_target_version: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksEncrypted::handle-header-backup signal.
+                 * @param invocation
+                 * @param arg_backup_file
+                 * @param arg_options
+                 */
+                vfunc_handle_header_backup(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_backup_file: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksEncrypted::handle-lock signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_lock(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksEncrypted::handle-resize signal.
+                 * @param invocation
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_resize(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksEncrypted::handle-unlock signal.
+                 * @param invocation
+                 * @param arg_passphrase
+                 * @param arg_options
+                 */
+                vfunc_handle_unlock(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_passphrase: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -67070,7 +68550,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Encrypted extends GObject.Object {
+        interface Encrypted extends GObject.Object, Encrypted.Interface {
             // Properties
 
             /**
@@ -67148,7 +68628,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_passphrase: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.ChangePassphrase">ChangePassphrase()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67186,7 +68666,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_change_passphrase().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_change_passphrase().
@@ -67210,6 +68690,144 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_convert_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_convert_sync() for the synchronous, blocking version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_convert(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_encrypted_call_convert().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_convert().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_convert_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_encrypted_call_convert() for the asynchronous version of this method.
+             * @param arg_target_version Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_convert_sync(
+                arg_target_version: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_encrypted_call_header_backup_finish() to get the result of the operation.
+             *
+             * See udisks_encrypted_call_header_backup_sync() for the synchronous, blocking version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_header_backup(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_encrypted_call_header_backup().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_header_backup().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_header_backup_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_encrypted_call_header_backup() for the asynchronous version of this method.
+             * @param arg_backup_file Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_header_backup_sync(
+                arg_backup_file: string,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_encrypted_call_lock_finish() to get the result of the operation.
@@ -67218,7 +68836,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_lock(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_lock(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67248,7 +68866,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_lock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_lock().
@@ -67278,7 +68896,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67312,7 +68930,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_resize().
@@ -67347,7 +68965,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_passphrase: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Unlock">Unlock()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67381,7 +68999,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_encrypted_call_unlock().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_unlock().
@@ -67410,6 +69028,20 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_change_passphrase(invocation: Gio.DBusMethodInvocation): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_convert(invocation: Gio.DBusMethodInvocation): void;
+            /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_header_backup(invocation: Gio.DBusMethodInvocation): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -67431,50 +69063,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param cleartext_device Parameter to return.
              */
             complete_unlock(invocation: Gio.DBusMethodInvocation, cleartext_device: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksEncrypted::handle-change-passphrase signal.
-             * @param invocation
-             * @param arg_passphrase
-             * @param arg_new_passphrase
-             * @param arg_options
-             */
-            vfunc_handle_change_passphrase(
-                invocation: Gio.DBusMethodInvocation,
-                arg_passphrase: string,
-                arg_new_passphrase: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksEncrypted::handle-lock signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_lock(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksEncrypted::handle-resize signal.
-             * @param invocation
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_resize(
-                invocation: Gio.DBusMethodInvocation,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksEncrypted::handle-unlock signal.
-             * @param invocation
-             * @param arg_passphrase
-             * @param arg_options
-             */
-            vfunc_handle_unlock(
-                invocation: Gio.DBusMethodInvocation,
-                arg_passphrase: string,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const Encrypted: EncryptedNamespace & {
@@ -67482,6 +69070,78 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace Filesystem {
+            /**
+             * Interface for implementing Filesystem.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksFilesystem::handle-check signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_check(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksFilesystem::handle-mount signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_mount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksFilesystem::handle-repair signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksFilesystem::handle-resize signal.
+                 * @param invocation
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_resize(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystem::handle-set-label signal.
+                 * @param invocation
+                 * @param arg_label
+                 * @param arg_options
+                 */
+                vfunc_handle_set_label(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_label: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystem::handle-set-uuid signal.
+                 * @param invocation
+                 * @param arg_uuid
+                 * @param arg_options
+                 */
+                vfunc_handle_set_uuid(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_uuid: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystem::handle-take-ownership signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_take_ownership(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksFilesystem::handle-unmount signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_unmount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -67507,7 +69167,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Filesystem extends GObject.Object {
+        interface Filesystem extends GObject.Object, Filesystem.Interface {
             // Properties
 
             /**
@@ -67543,7 +69203,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_check(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_check(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Check">Check()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67573,7 +69233,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_check().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_check().
@@ -67598,7 +69258,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_mount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_mount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Mount">Mount()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67628,7 +69288,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_mount().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_mount().
@@ -67653,7 +69313,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67683,7 +69343,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_repair().
@@ -67713,7 +69373,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67747,7 +69407,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_resize().
@@ -67782,7 +69442,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67816,7 +69476,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_set_label().
@@ -67851,7 +69511,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67885,7 +69545,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_set_uuid().
@@ -67915,7 +69575,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_take_ownership(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_take_ownership(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.TakeOwnership">TakeOwnership()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -67945,7 +69608,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_take_ownership().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_take_ownership().
@@ -67970,7 +69633,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_unmount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_unmount(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Unmount">Unmount()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68000,7 +69663,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_call_unmount().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_unmount().
@@ -68075,72 +69738,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_unmount(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksFilesystem::handle-check signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_check(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksFilesystem::handle-mount signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_mount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksFilesystem::handle-repair signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksFilesystem::handle-resize signal.
-             * @param invocation
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_resize(
-                invocation: Gio.DBusMethodInvocation,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystem::handle-set-label signal.
-             * @param invocation
-             * @param arg_label
-             * @param arg_options
-             */
-            vfunc_handle_set_label(
-                invocation: Gio.DBusMethodInvocation,
-                arg_label: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystem::handle-set-uuid signal.
-             * @param invocation
-             * @param arg_uuid
-             * @param arg_options
-             */
-            vfunc_handle_set_uuid(
-                invocation: Gio.DBusMethodInvocation,
-                arg_uuid: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystem::handle-take-ownership signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_take_ownership(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksFilesystem::handle-unmount signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_unmount(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         }
 
         export const Filesystem: FilesystemNamespace & {
@@ -68148,6 +69745,133 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace FilesystemBTRFS {
+            /**
+             * Interface for implementing FilesystemBTRFS.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-add-device signal.
+                 * @param invocation
+                 * @param arg_device
+                 * @param arg_options
+                 */
+                vfunc_handle_add_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_device: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-create-snapshot signal.
+                 * @param invocation
+                 * @param arg_source
+                 * @param arg_dest
+                 * @param arg_ro
+                 * @param arg_options
+                 */
+                vfunc_handle_create_snapshot(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_source: string,
+                    arg_dest: string,
+                    arg_ro: boolean,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-create-subvolume signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_options
+                 */
+                vfunc_handle_create_subvolume(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-get-default-subvolume-id signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_get_default_subvolume_id(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-get-subvolumes signal.
+                 * @param invocation
+                 * @param arg_snapshots_only
+                 * @param arg_options
+                 */
+                vfunc_handle_get_subvolumes(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_snapshots_only: boolean,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-remove-device signal.
+                 * @param invocation
+                 * @param arg_device
+                 * @param arg_options
+                 */
+                vfunc_handle_remove_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_device: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-remove-subvolume signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_options
+                 */
+                vfunc_handle_remove_subvolume(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-repair signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-resize signal.
+                 * @param invocation
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_resize(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-set-default-subvolume-id signal.
+                 * @param invocation
+                 * @param arg_id
+                 * @param arg_options
+                 */
+                vfunc_handle_set_default_subvolume_id(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_id: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksFilesystemBTRFS::handle-set-label signal.
+                 * @param invocation
+                 * @param arg_label
+                 * @param arg_options
+                 */
+                vfunc_handle_set_label(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_label: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -68175,7 +69899,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface FilesystemBTRFS extends GObject.Object {
+        interface FilesystemBTRFS extends GObject.Object, FilesystemBTRFS.Interface {
             // Properties
 
             /**
@@ -68230,7 +69954,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68264,7 +69988,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_add_device().
@@ -68303,7 +70027,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_ro: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.CreateSnapshot">CreateSnapshot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68345,7 +70069,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_create_snapshot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_create_snapshot().
@@ -68384,7 +70108,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.CreateSubvolume">CreateSubvolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68418,7 +70142,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_create_subvolume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_create_subvolume().
@@ -68440,6 +70164,67 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<number>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_get_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_default_subvolume_id(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<number> | void;
+            /**
+             * Finishes an operation started with udisks_filesystem_btrfs_call_get_default_subvolume_id().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_get_default_subvolume_id().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_default_subvolume_id_finish(res: Gio.AsyncResult): [boolean, number];
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_filesystem_btrfs_call_get_default_subvolume_id() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_default_subvolume_id_sync(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): [boolean, number];
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_filesystem_btrfs_call_get_subvolumes_finish() to get the result of the operation.
@@ -68453,7 +70238,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_snapshots_only: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[GLib.Variant | null, number]>;
+            ): globalThis.Promise<[GLib.Variant | null, number]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68487,7 +70272,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[GLib.Variant | null, number]> | void;
+            ): globalThis.Promise<[GLib.Variant | null, number]> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_get_subvolumes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_get_subvolumes().
@@ -68522,7 +70307,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68556,7 +70341,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_remove_device().
@@ -68591,7 +70376,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.RemoveSubvolume">RemoveSubvolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68625,7 +70410,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_remove_subvolume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_remove_subvolume().
@@ -68655,7 +70440,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_repair(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68685,7 +70470,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_repair().
@@ -68715,7 +70500,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68749,7 +70534,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_resize().
@@ -68771,6 +70556,75 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_filesystem_btrfs_call_set_default_subvolume_id_finish() to get the result of the operation.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id_sync() for the synchronous, blocking version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_default_subvolume_id(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_filesystem_btrfs_call_set_default_subvolume_id().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_set_default_subvolume_id().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_default_subvolume_id_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_filesystem_btrfs_call_set_default_subvolume_id() for the asynchronous version of this method.
+             * @param arg_id Argument to pass with the method invocation.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_default_subvolume_id_sync(
+                arg_id: number,
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): boolean;
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_filesystem_btrfs_call_set_label_finish() to get the result of the operation.
@@ -68784,7 +70638,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -68818,7 +70672,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_filesystem_btrfs_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_btrfs_call_set_label().
@@ -68861,6 +70715,14 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_create_subvolume(invocation: Gio.DBusMethodInvocation): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             * @param id Parameter to return.
+             */
+            complete_get_default_subvolume_id(invocation: Gio.DBusMethodInvocation, id: number): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -68902,113 +70764,19 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_resize(invocation: Gio.DBusMethodInvocation): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             */
+            complete_set_default_subvolume_id(invocation: Gio.DBusMethodInvocation): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_label(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-add-device signal.
-             * @param invocation
-             * @param arg_device
-             * @param arg_options
-             */
-            vfunc_handle_add_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_device: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-create-snapshot signal.
-             * @param invocation
-             * @param arg_source
-             * @param arg_dest
-             * @param arg_ro
-             * @param arg_options
-             */
-            vfunc_handle_create_snapshot(
-                invocation: Gio.DBusMethodInvocation,
-                arg_source: string,
-                arg_dest: string,
-                arg_ro: boolean,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-create-subvolume signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_options
-             */
-            vfunc_handle_create_subvolume(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-get-subvolumes signal.
-             * @param invocation
-             * @param arg_snapshots_only
-             * @param arg_options
-             */
-            vfunc_handle_get_subvolumes(
-                invocation: Gio.DBusMethodInvocation,
-                arg_snapshots_only: boolean,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-remove-device signal.
-             * @param invocation
-             * @param arg_device
-             * @param arg_options
-             */
-            vfunc_handle_remove_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_device: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-remove-subvolume signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_options
-             */
-            vfunc_handle_remove_subvolume(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-repair signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_repair(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-resize signal.
-             * @param invocation
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_resize(
-                invocation: Gio.DBusMethodInvocation,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksFilesystemBTRFS::handle-set-label signal.
-             * @param invocation
-             * @param arg_label
-             * @param arg_options
-             */
-            vfunc_handle_set_label(
-                invocation: Gio.DBusMethodInvocation,
-                arg_label: string,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const FilesystemBTRFS: FilesystemBTRFSNamespace & {
@@ -69016,6 +70784,27 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace Job {
+            /**
+             * Interface for implementing Job.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksJob::completed signal.
+                 * @param arg_success
+                 * @param arg_message
+                 */
+                vfunc_completed(arg_success: boolean, arg_message: string): void;
+                /**
+                 * Handler for the #UDisksJob::handle-cancel signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -69052,7 +70841,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Job extends GObject.Object {
+        interface Job extends GObject.Object, Job.Interface {
             // Properties
 
             /**
@@ -69165,7 +70954,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cancel(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cancel(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Job.Cancel">Cancel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69195,7 +70984,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_job_call_cancel().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_job_call_cancel().
@@ -69224,21 +71013,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_message Argument to pass with the signal.
              */
             emit_completed(arg_success: boolean, arg_message: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksJob::completed signal.
-             * @param arg_success
-             * @param arg_message
-             */
-            vfunc_completed(arg_success: boolean, arg_message: string): void;
-            /**
-             * Handler for the #UDisksJob::handle-cancel signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_cancel(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         }
 
         export const Job: JobNamespace & {
@@ -69246,6 +71020,102 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace LogicalVolume {
+            /**
+             * Interface for implementing LogicalVolume.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-activate signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_activate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-cache-attach signal.
+                 * @param invocation
+                 * @param arg_cache_name
+                 * @param arg_options
+                 */
+                vfunc_handle_cache_attach(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_cache_name: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-cache-detach signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_cache_detach(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-cache-split signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_cache_split(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-create-snapshot signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_create_snapshot(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-deactivate signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_deactivate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-delete signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-rename signal.
+                 * @param invocation
+                 * @param arg_new_name
+                 * @param arg_options
+                 */
+                vfunc_handle_rename(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_new_name: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-repair signal.
+                 * @param invocation
+                 * @param arg_pvs
+                 * @param arg_options
+                 */
+                vfunc_handle_repair(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_pvs: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksLogicalVolume::handle-resize signal.
+                 * @param invocation
+                 * @param arg_new_size
+                 * @param arg_options
+                 */
+                vfunc_handle_resize(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_new_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -69290,7 +71160,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface LogicalVolume extends GObject.Object {
+        interface LogicalVolume extends GObject.Object, LogicalVolume.Interface {
             // Properties
 
             /**
@@ -69459,7 +71329,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_activate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<string>;
+            call_activate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Activate">Activate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69489,7 +71359,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_activate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_activate().
@@ -69519,7 +71389,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_cache_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheAttach">CacheAttach()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69553,7 +71423,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_attach().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_attach().
@@ -69583,7 +71453,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cache_detach(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cache_detach(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheDetach">CacheDetach()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69613,7 +71486,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_detach().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_detach().
@@ -69638,7 +71511,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_cache_split(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_cache_split(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheSplit">CacheSplit()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69668,7 +71544,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_cache_split().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_cache_split().
@@ -69700,7 +71576,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CreateSnapshot">CreateSnapshot()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69738,7 +71614,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_create_snapshot().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_create_snapshot().
@@ -69770,7 +71646,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_deactivate(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_deactivate(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Deactivate">Deactivate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69800,7 +71679,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_deactivate().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_deactivate().
@@ -69825,7 +71704,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69855,7 +71734,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_delete().
@@ -69885,7 +71764,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Rename">Rename()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69919,7 +71798,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_rename().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_rename().
@@ -69954,7 +71833,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pvs: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Repair">Repair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -69988,7 +71867,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_repair().
@@ -70019,7 +71898,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -70053,7 +71932,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_logical_volume_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_logical_volume_call_resize().
@@ -70147,96 +72026,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_resize(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-activate signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_activate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-cache-attach signal.
-             * @param invocation
-             * @param arg_cache_name
-             * @param arg_options
-             */
-            vfunc_handle_cache_attach(
-                invocation: Gio.DBusMethodInvocation,
-                arg_cache_name: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-cache-detach signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_cache_detach(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-cache-split signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_cache_split(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-create-snapshot signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_create_snapshot(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-deactivate signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_deactivate(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-delete signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-rename signal.
-             * @param invocation
-             * @param arg_new_name
-             * @param arg_options
-             */
-            vfunc_handle_rename(
-                invocation: Gio.DBusMethodInvocation,
-                arg_new_name: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-repair signal.
-             * @param invocation
-             * @param arg_pvs
-             * @param arg_options
-             */
-            vfunc_handle_repair(
-                invocation: Gio.DBusMethodInvocation,
-                arg_pvs: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksLogicalVolume::handle-resize signal.
-             * @param invocation
-             * @param arg_new_size
-             * @param arg_options
-             */
-            vfunc_handle_resize(
-                invocation: Gio.DBusMethodInvocation,
-                arg_new_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const LogicalVolume: LogicalVolumeNamespace & {
@@ -70244,6 +72033,38 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace Loop {
+            /**
+             * Interface for implementing Loop.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksLoop::handle-delete signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksLoop::handle-set-autoclear signal.
+                 * @param invocation
+                 * @param arg_value
+                 * @param arg_options
+                 */
+                vfunc_handle_set_autoclear(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_value: boolean,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksLoop::handle-set-capacity signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_set_capacity(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -70271,7 +72092,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Loop extends GObject.Object {
+        interface Loop extends GObject.Object, Loop.Interface {
             // Properties
 
             /**
@@ -70321,7 +72142,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -70351,7 +72172,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_loop_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_delete().
@@ -70381,7 +72202,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetAutoclear">SetAutoclear()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -70415,7 +72236,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_loop_call_set_autoclear().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_set_autoclear().
@@ -70437,6 +72258,64 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): boolean;
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_loop_call_set_capacity_finish() to get the result of the operation.
+             *
+             * See udisks_loop_call_set_capacity_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_set_capacity(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<boolean> | void;
+            /**
+             * Finishes an operation started with udisks_loop_call_set_capacity().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_loop_call_set_capacity().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_capacity_finish(res: Gio.AsyncResult): boolean;
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_loop_call_set_capacity() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_set_capacity_sync(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.Delete">Delete()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -70450,26 +72329,13 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_autoclear(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
             /**
-             * Handler for the #UDisksLoop::handle-delete signal.
-             * @param invocation
-             * @param arg_options
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
              */
-            vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksLoop::handle-set-autoclear signal.
-             * @param invocation
-             * @param arg_value
-             * @param arg_options
-             */
-            vfunc_handle_set_autoclear(
-                invocation: Gio.DBusMethodInvocation,
-                arg_value: boolean,
-                arg_options: GLib.Variant,
-            ): boolean;
+            complete_set_capacity(invocation: Gio.DBusMethodInvocation): void;
         }
 
         export const Loop: LoopNamespace & {
@@ -70477,6 +72343,77 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace MDRaid {
+            /**
+             * Interface for implementing MDRaid.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksMDRaid::handle-add-device signal.
+                 * @param invocation
+                 * @param arg_device
+                 * @param arg_options
+                 */
+                vfunc_handle_add_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_device: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksMDRaid::handle-delete signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksMDRaid::handle-remove-device signal.
+                 * @param invocation
+                 * @param arg_device
+                 * @param arg_options
+                 */
+                vfunc_handle_remove_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_device: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksMDRaid::handle-request-sync-action signal.
+                 * @param invocation
+                 * @param arg_sync_action
+                 * @param arg_options
+                 */
+                vfunc_handle_request_sync_action(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_sync_action: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksMDRaid::handle-set-bitmap-location signal.
+                 * @param invocation
+                 * @param arg_value
+                 * @param arg_options
+                 */
+                vfunc_handle_set_bitmap_location(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_value: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksMDRaid::handle-start signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksMDRaid::handle-stop signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -70488,6 +72425,8 @@ declare module 'gi://UDisks?version=2.0' {
                 childConfiguration: GLib.Variant;
                 chunk_size: number;
                 chunkSize: number;
+                consistency_policy: string;
+                consistencyPolicy: string;
                 degraded: number;
                 level: string;
                 name: string;
@@ -70523,7 +72462,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface MDRaid extends GObject.Object {
+        interface MDRaid extends GObject.Object, MDRaid.Interface {
             // Properties
 
             /**
@@ -70582,6 +72521,20 @@ declare module 'gi://UDisks?version=2.0' {
              */
             get chunkSize(): number;
             set chunkSize(val: number);
+            /**
+             * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.ConsistencyPolicy">"ConsistencyPolicy"</link>.
+             *
+             * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+             */
+            get consistency_policy(): string;
+            set consistency_policy(val: string);
+            /**
+             * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.ConsistencyPolicy">"ConsistencyPolicy"</link>.
+             *
+             * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+             */
+            get consistencyPolicy(): string;
+            set consistencyPolicy(val: string);
             /**
              * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UDisks2-MDRaid.Degraded">"Degraded"</link>.
              *
@@ -70711,7 +72664,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -70745,7 +72698,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_add_device().
@@ -70775,7 +72728,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -70805,7 +72758,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_delete().
@@ -70835,7 +72788,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_device: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -70869,7 +72822,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_remove_device().
@@ -70904,7 +72857,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_sync_action: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RequestSyncAction">RequestSyncAction()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -70938,7 +72891,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_request_sync_action().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_request_sync_action().
@@ -70973,7 +72926,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_value: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.SetBitmapLocation">SetBitmapLocation()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71007,7 +72960,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_set_bitmap_location().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_set_bitmap_location().
@@ -71037,7 +72990,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71067,7 +73020,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_start().
@@ -71092,7 +73045,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Stop">Stop()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71122,7 +73075,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_mdraid_call_stop().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_stop().
@@ -71187,71 +73140,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_stop(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksMDRaid::handle-add-device signal.
-             * @param invocation
-             * @param arg_device
-             * @param arg_options
-             */
-            vfunc_handle_add_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_device: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksMDRaid::handle-delete signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksMDRaid::handle-remove-device signal.
-             * @param invocation
-             * @param arg_device
-             * @param arg_options
-             */
-            vfunc_handle_remove_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_device: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksMDRaid::handle-request-sync-action signal.
-             * @param invocation
-             * @param arg_sync_action
-             * @param arg_options
-             */
-            vfunc_handle_request_sync_action(
-                invocation: Gio.DBusMethodInvocation,
-                arg_sync_action: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksMDRaid::handle-set-bitmap-location signal.
-             * @param invocation
-             * @param arg_value
-             * @param arg_options
-             */
-            vfunc_handle_set_bitmap_location(
-                invocation: Gio.DBusMethodInvocation,
-                arg_value: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksMDRaid::handle-start signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksMDRaid::handle-stop signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         }
 
         export const MDRaid: MDRaidNamespace & {
@@ -71259,6 +73147,112 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace Manager {
+            /**
+             * Interface for implementing Manager.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksManager::handle-can-check signal.
+                 * @param invocation
+                 * @param arg_type
+                 */
+                vfunc_handle_can_check(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-can-format signal.
+                 * @param invocation
+                 * @param arg_type
+                 */
+                vfunc_handle_can_format(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-can-repair signal.
+                 * @param invocation
+                 * @param arg_type
+                 */
+                vfunc_handle_can_repair(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-can-resize signal.
+                 * @param invocation
+                 * @param arg_type
+                 */
+                vfunc_handle_can_resize(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-enable-module signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_enable
+                 */
+                vfunc_handle_enable_module(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_enable: boolean,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-enable-modules signal.
+                 * @param invocation
+                 * @param arg_enable
+                 */
+                vfunc_handle_enable_modules(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-get-block-devices signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_get_block_devices(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-get-drives signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_get_drives(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-loop-setup signal.
+                 * @param invocation
+                 * @param fd_list
+                 * @param arg_fd
+                 * @param arg_options
+                 */
+                vfunc_handle_loop_setup(
+                    invocation: Gio.DBusMethodInvocation,
+                    fd_list: Gio.UnixFDList,
+                    arg_fd: GLib.Variant,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-mdraid-create signal.
+                 * @param invocation
+                 * @param arg_blocks
+                 * @param arg_level
+                 * @param arg_name
+                 * @param arg_chunk
+                 * @param arg_options
+                 */
+                vfunc_handle_mdraid_create(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_blocks: string,
+                    arg_level: string,
+                    arg_name: string,
+                    arg_chunk: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksManager::handle-resolve-device signal.
+                 * @param invocation
+                 * @param arg_devspec
+                 * @param arg_options
+                 */
+                vfunc_handle_resolve_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_devspec: GLib.Variant,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -71288,7 +73282,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Manager extends GObject.Object {
+        interface Manager extends GObject.Object, Manager.Interface {
             // Properties
 
             /**
@@ -71352,7 +73346,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_check(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_check(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanCheck">CanCheck()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71382,7 +73379,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_check().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_check().
@@ -71407,7 +73404,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_format(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_format(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanFormat">CanFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71437,7 +73437,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_format().
@@ -71465,7 +73465,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_repair(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_repair(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanRepair">CanRepair()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71495,7 +73498,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_repair().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_repair().
@@ -71523,7 +73526,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_type Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_can_resize(arg_type: string, cancellable?: Gio.Cancellable | null): Promise<GLib.Variant | null>;
+            call_can_resize(
+                arg_type: string,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanResize">CanResize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71553,7 +73559,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_can_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_can_resize().
@@ -71586,7 +73592,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModule">EnableModule()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71620,7 +73626,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_call_enable_module().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_enable_module().
@@ -71650,7 +73656,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_enable Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_enable_modules(arg_enable: boolean, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_enable_modules(arg_enable: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModules">EnableModules()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71680,7 +73686,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_call_enable_modules().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_enable_modules().
@@ -71708,7 +73714,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_block_devices(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string[] | null>;
+            ): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetBlockDevices">GetBlockDevices()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71738,7 +73744,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_get_block_devices().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_get_block_devices().
@@ -71758,6 +73764,67 @@ declare module 'gi://UDisks?version=2.0' {
                 cancellable?: Gio.Cancellable | null,
             ): [boolean, string[] | null];
             /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<string[] | null>;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable: Gio.Cancellable | null,
+                callback: Gio.AsyncReadyCallback<this> | null,
+            ): void;
+            /**
+             * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`.
+             * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
+             * You can then call udisks_manager_call_get_drives_finish() to get the result of the operation.
+             *
+             * See udisks_manager_call_get_drives_sync() for the synchronous, blocking version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+             */
+            call_get_drives(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+                callback?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<string[] | null> | void;
+            /**
+             * Finishes an operation started with udisks_manager_call_get_drives().
+             * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_get_drives().
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_drives_finish(res: Gio.AsyncResult): [boolean, string[] | null];
+            /**
+             * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
+             *
+             * See udisks_manager_call_get_drives() for the asynchronous version of this method.
+             * @param arg_options Argument to pass with the method invocation.
+             * @param cancellable A #GCancellable or %NULL.
+             * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+             */
+            call_get_drives_sync(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): [boolean, string[] | null];
+            /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
              * You can then call udisks_manager_call_loop_setup_finish() to get the result of the operation.
@@ -71773,7 +73840,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[string, Gio.UnixFDList | null]>;
+            ): globalThis.Promise<[string, Gio.UnixFDList | null]>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71811,7 +73878,7 @@ declare module 'gi://UDisks?version=2.0' {
                 fd_list?: Gio.UnixFDList | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[string, Gio.UnixFDList | null]> | void;
+            ): globalThis.Promise<[string, Gio.UnixFDList | null]> | void;
             /**
              * Finishes an operation started with udisks_manager_call_loop_setup().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_loop_setup().
@@ -71854,7 +73921,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_chunk: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.MDRaidCreate">MDRaidCreate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71900,7 +73967,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_call_mdraid_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_mdraid_create().
@@ -71941,7 +74008,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_devspec: GLib.Variant,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string[] | null>;
+            ): globalThis.Promise<string[] | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.ResolveDevice">ResolveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -71975,7 +74042,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string[] | null> | void;
+            ): globalThis.Promise<string[] | null> | void;
             /**
              * Finishes an operation started with udisks_manager_call_resolve_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_resolve_device().
@@ -72051,6 +74118,14 @@ declare module 'gi://UDisks?version=2.0' {
              */
             complete_get_block_devices(invocation: Gio.DBusMethodInvocation, block_objects: string): void;
             /**
+             * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+             *
+             * This method will free `invocation,` you cannot use it afterwards.
+             * @param invocation A #GDBusMethodInvocation.
+             * @param drive_objects Parameter to return.
+             */
+            complete_get_drives(invocation: Gio.DBusMethodInvocation, drive_objects: string): void;
+            /**
              * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
              *
              * This method will free `invocation,` you cannot use it afterwards.
@@ -72079,97 +74154,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param devices Parameter to return.
              */
             complete_resolve_device(invocation: Gio.DBusMethodInvocation, devices: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksManager::handle-can-check signal.
-             * @param invocation
-             * @param arg_type
-             */
-            vfunc_handle_can_check(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-can-format signal.
-             * @param invocation
-             * @param arg_type
-             */
-            vfunc_handle_can_format(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-can-repair signal.
-             * @param invocation
-             * @param arg_type
-             */
-            vfunc_handle_can_repair(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-can-resize signal.
-             * @param invocation
-             * @param arg_type
-             */
-            vfunc_handle_can_resize(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-enable-module signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_enable
-             */
-            vfunc_handle_enable_module(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_enable: boolean,
-            ): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-enable-modules signal.
-             * @param invocation
-             * @param arg_enable
-             */
-            vfunc_handle_enable_modules(invocation: Gio.DBusMethodInvocation, arg_enable: boolean): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-get-block-devices signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_get_block_devices(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-loop-setup signal.
-             * @param invocation
-             * @param fd_list
-             * @param arg_fd
-             * @param arg_options
-             */
-            vfunc_handle_loop_setup(
-                invocation: Gio.DBusMethodInvocation,
-                fd_list: Gio.UnixFDList,
-                arg_fd: GLib.Variant,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-mdraid-create signal.
-             * @param invocation
-             * @param arg_blocks
-             * @param arg_level
-             * @param arg_name
-             * @param arg_chunk
-             * @param arg_options
-             */
-            vfunc_handle_mdraid_create(
-                invocation: Gio.DBusMethodInvocation,
-                arg_blocks: string,
-                arg_level: string,
-                arg_name: string,
-                arg_chunk: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksManager::handle-resolve-device signal.
-             * @param invocation
-             * @param arg_devspec
-             * @param arg_options
-             */
-            vfunc_handle_resolve_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_devspec: GLib.Variant,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const Manager: ManagerNamespace & {
@@ -72177,6 +74161,32 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace ManagerBTRFS {
+            /**
+             * Interface for implementing ManagerBTRFS.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksManagerBTRFS::handle-create-volume signal.
+                 * @param invocation
+                 * @param arg_devices
+                 * @param arg_label
+                 * @param arg_data_level
+                 * @param arg_md_level
+                 * @param arg_options
+                 */
+                vfunc_handle_create_volume(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_devices: string,
+                    arg_label: string,
+                    arg_data_level: string,
+                    arg_md_level: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -72198,7 +74208,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface ManagerBTRFS extends GObject.Object {
+        interface ManagerBTRFS extends GObject.Object, ManagerBTRFS.Interface {
             // Methods
 
             /**
@@ -72221,7 +74231,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_md_level: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-BTRFS.CreateVolume">CreateVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72267,7 +74277,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_btrfs_call_create_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_btrfs_call_create_volume().
@@ -72301,26 +74311,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_create_volume(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksManagerBTRFS::handle-create-volume signal.
-             * @param invocation
-             * @param arg_devices
-             * @param arg_label
-             * @param arg_data_level
-             * @param arg_md_level
-             * @param arg_options
-             */
-            vfunc_handle_create_volume(
-                invocation: Gio.DBusMethodInvocation,
-                arg_devices: string,
-                arg_label: string,
-                arg_data_level: string,
-                arg_md_level: string,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const ManagerBTRFS: ManagerBTRFSNamespace & {
@@ -72328,6 +74318,28 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace ManagerLVM2 {
+            /**
+             * Interface for implementing ManagerLVM2.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksManagerLVM2::handle-volume-group-create signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_blocks
+                 * @param arg_options
+                 */
+                vfunc_handle_volume_group_create(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_blocks: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -72349,7 +74361,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface ManagerLVM2 extends GObject.Object {
+        interface ManagerLVM2 extends GObject.Object, ManagerLVM2.Interface {
             // Methods
 
             /**
@@ -72368,7 +74380,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_blocks: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-LVM2.VolumeGroupCreate">VolumeGroupCreate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72406,7 +74418,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_lvm2_call_volume_group_create().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_lvm2_call_volume_group_create().
@@ -72437,22 +74449,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param result Parameter to return.
              */
             complete_volume_group_create(invocation: Gio.DBusMethodInvocation, result: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksManagerLVM2::handle-volume-group-create signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_blocks
-             * @param arg_options
-             */
-            vfunc_handle_volume_group_create(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_blocks: string,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const ManagerLVM2: ManagerLVM2Namespace & {
@@ -72460,6 +74456,52 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace ManagerNVMe {
+            /**
+             * Interface for implementing ManagerNVMe.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksManagerNVMe::handle-connect signal.
+                 * @param invocation
+                 * @param arg_subsysnqn
+                 * @param arg_transport
+                 * @param arg_transport_addr
+                 * @param arg_options
+                 */
+                vfunc_handle_connect(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_subsysnqn: string,
+                    arg_transport: string,
+                    arg_transport_addr: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksManagerNVMe::handle-set-host-id signal.
+                 * @param invocation
+                 * @param arg_hostid
+                 * @param arg_options
+                 */
+                vfunc_handle_set_host_id(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_hostid: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksManagerNVMe::handle-set-host-nqn signal.
+                 * @param invocation
+                 * @param arg_hostnqn
+                 * @param arg_options
+                 */
+                vfunc_handle_set_host_nqn(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_hostnqn: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -72486,7 +74528,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface ManagerNVMe extends GObject.Object {
+        interface ManagerNVMe extends GObject.Object, ManagerNVMe.Interface {
             // Properties
 
             /**
@@ -72538,7 +74580,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_transport_addr: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.Connect">Connect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72580,7 +74622,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_connect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_connect().
@@ -72619,7 +74661,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_hostid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.SetHostID">SetHostID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72653,7 +74695,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_set_host_id().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_set_host_id().
@@ -72688,7 +74730,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_hostnqn: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.SetHostNQN">SetHostNQN()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -72722,7 +74764,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_manager_nvme_call_set_host_nqn().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_nvme_call_set_host_nqn().
@@ -72765,46 +74807,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_host_nqn(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksManagerNVMe::handle-connect signal.
-             * @param invocation
-             * @param arg_subsysnqn
-             * @param arg_transport
-             * @param arg_transport_addr
-             * @param arg_options
-             */
-            vfunc_handle_connect(
-                invocation: Gio.DBusMethodInvocation,
-                arg_subsysnqn: string,
-                arg_transport: string,
-                arg_transport_addr: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksManagerNVMe::handle-set-host-id signal.
-             * @param invocation
-             * @param arg_hostid
-             * @param arg_options
-             */
-            vfunc_handle_set_host_id(
-                invocation: Gio.DBusMethodInvocation,
-                arg_hostid: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksManagerNVMe::handle-set-host-nqn signal.
-             * @param invocation
-             * @param arg_hostnqn
-             * @param arg_options
-             */
-            vfunc_handle_set_host_nqn(
-                invocation: Gio.DBusMethodInvocation,
-                arg_hostnqn: string,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const ManagerNVMe: ManagerNVMeNamespace & {
@@ -72812,6 +74814,61 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace NVMeController {
+            /**
+             * Interface for implementing NVMeController.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksNVMeController::handle-sanitize-start signal.
+                 * @param invocation
+                 * @param arg_action
+                 * @param arg_options
+                 */
+                vfunc_handle_sanitize_start(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_action: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksNVMeController::handle-smart-get-attributes signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_get_attributes(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksNVMeController::handle-smart-selftest-abort signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_selftest_abort(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksNVMeController::handle-smart-selftest-start signal.
+                 * @param invocation
+                 * @param arg_type
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_selftest_start(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_type: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksNVMeController::handle-smart-update signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -72860,7 +74917,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface NVMeController extends GObject.Object {
+        interface NVMeController extends GObject.Object, NVMeController.Interface {
             // Properties
 
             /**
@@ -73062,7 +75119,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_action: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SanitizeStart">SanitizeStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73096,7 +75153,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_sanitize_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_sanitize_start().
@@ -73129,7 +75186,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_get_attributes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartGetAttributes">SmartGetAttributes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73159,7 +75216,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_get_attributes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_get_attributes().
@@ -73190,7 +75247,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_smart_selftest_abort(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartSelftestAbort">SmartSelftestAbort()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73220,7 +75277,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_selftest_abort().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_selftest_abort().
@@ -73250,7 +75307,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartSelftestStart">SmartSelftestStart()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73284,7 +75341,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_selftest_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_selftest_start().
@@ -73314,7 +75371,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_smart_update(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_smart_update(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartUpdate">SmartUpdate()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73344,7 +75404,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_controller_call_smart_update().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_controller_call_smart_update().
@@ -73396,49 +75456,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_smart_update(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksNVMeController::handle-sanitize-start signal.
-             * @param invocation
-             * @param arg_action
-             * @param arg_options
-             */
-            vfunc_handle_sanitize_start(
-                invocation: Gio.DBusMethodInvocation,
-                arg_action: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksNVMeController::handle-smart-get-attributes signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_smart_get_attributes(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksNVMeController::handle-smart-selftest-abort signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_smart_selftest_abort(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksNVMeController::handle-smart-selftest-start signal.
-             * @param invocation
-             * @param arg_type
-             * @param arg_options
-             */
-            vfunc_handle_smart_selftest_start(
-                invocation: Gio.DBusMethodInvocation,
-                arg_type: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksNVMeController::handle-smart-update signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_smart_update(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         }
 
         export const NVMeController: NVMeControllerNamespace & {
@@ -73446,6 +75463,21 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace NVMeFabrics {
+            /**
+             * Interface for implementing NVMeFabrics.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksNVMeFabrics::handle-disconnect signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -73475,7 +75507,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface NVMeFabrics extends GObject.Object {
+        interface NVMeFabrics extends GObject.Object, NVMeFabrics.Interface {
             // Properties
 
             /**
@@ -73539,7 +75571,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_disconnect(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_disconnect(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Fabrics.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73569,7 +75604,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_fabrics_call_disconnect().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_fabrics_call_disconnect().
@@ -73592,15 +75627,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_disconnect(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksNVMeFabrics::handle-disconnect signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_disconnect(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         }
 
         export const NVMeFabrics: NVMeFabricsNamespace & {
@@ -73608,6 +75634,21 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace NVMeNamespace {
+            /**
+             * Interface for implementing NVMeNamespace.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksNVMeNamespace::handle-format-namespace signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_format_namespace(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -73646,7 +75687,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface NVMeNamespace extends GObject.Object {
+        interface NVMeNamespace extends GObject.Object, NVMeNamespace.Interface {
             // Properties
 
             /**
@@ -73773,7 +75814,10 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_format_namespace(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_format_namespace(
+                arg_options: GLib.Variant,
+                cancellable?: Gio.Cancellable | null,
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Namespace.FormatNamespace">FormatNamespace()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -73803,7 +75847,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_nvme_namespace_call_format_namespace().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_nvme_namespace_call_format_namespace().
@@ -73826,15 +75870,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_format_namespace(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksNVMeNamespace::handle-format-namespace signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_format_namespace(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         }
 
         export const NVMeNamespace: NVMeNamespaceNamespace & {
@@ -74289,6 +76324,76 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace Partition {
+            /**
+             * Interface for implementing Partition.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksPartition::handle-delete signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksPartition::handle-resize signal.
+                 * @param invocation
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_resize(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksPartition::handle-set-flags signal.
+                 * @param invocation
+                 * @param arg_flags
+                 * @param arg_options
+                 */
+                vfunc_handle_set_flags(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_flags: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksPartition::handle-set-name signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_options
+                 */
+                vfunc_handle_set_name(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksPartition::handle-set-type signal.
+                 * @param invocation
+                 * @param arg_type
+                 * @param arg_options
+                 */
+                vfunc_handle_set_type(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_type: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksPartition::handle-set-uuid signal.
+                 * @param invocation
+                 * @param arg_uuid
+                 * @param arg_options
+                 */
+                vfunc_handle_set_uuid(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_uuid: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -74323,7 +76428,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Partition extends GObject.Object {
+        interface Partition extends GObject.Object, Partition.Interface {
             // Properties
 
             /**
@@ -74422,7 +76527,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_delete(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -74452,7 +76557,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_delete().
@@ -74482,7 +76587,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Resize">Resize()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -74516,7 +76621,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_resize().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_resize().
@@ -74551,7 +76656,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_flags: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetFlags">SetFlags()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -74585,7 +76690,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_flags().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_flags().
@@ -74620,7 +76725,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetName">SetName()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -74654,7 +76759,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_name().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_name().
@@ -74689,7 +76794,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_type: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetType">SetType()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -74723,7 +76828,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_type().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_type().
@@ -74758,7 +76863,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -74792,7 +76897,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_partition_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_uuid().
@@ -74855,70 +76960,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_set_uuid(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksPartition::handle-delete signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_delete(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksPartition::handle-resize signal.
-             * @param invocation
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_resize(
-                invocation: Gio.DBusMethodInvocation,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksPartition::handle-set-flags signal.
-             * @param invocation
-             * @param arg_flags
-             * @param arg_options
-             */
-            vfunc_handle_set_flags(
-                invocation: Gio.DBusMethodInvocation,
-                arg_flags: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksPartition::handle-set-name signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_options
-             */
-            vfunc_handle_set_name(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksPartition::handle-set-type signal.
-             * @param invocation
-             * @param arg_type
-             * @param arg_options
-             */
-            vfunc_handle_set_type(
-                invocation: Gio.DBusMethodInvocation,
-                arg_type: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksPartition::handle-set-uuid signal.
-             * @param invocation
-             * @param arg_uuid
-             * @param arg_options
-             */
-            vfunc_handle_set_uuid(
-                invocation: Gio.DBusMethodInvocation,
-                arg_uuid: string,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const Partition: PartitionNamespace & {
@@ -74926,6 +76967,53 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace PartitionTable {
+            /**
+             * Interface for implementing PartitionTable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksPartitionTable::handle-create-partition signal.
+                 * @param invocation
+                 * @param arg_offset
+                 * @param arg_size
+                 * @param arg_type
+                 * @param arg_name
+                 * @param arg_options
+                 */
+                vfunc_handle_create_partition(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_offset: number,
+                    arg_size: number,
+                    arg_type: string,
+                    arg_name: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksPartitionTable::handle-create-partition-and-format signal.
+                 * @param invocation
+                 * @param arg_offset
+                 * @param arg_size
+                 * @param arg_type
+                 * @param arg_name
+                 * @param arg_options
+                 * @param arg_format_type
+                 * @param arg_format_options
+                 */
+                vfunc_handle_create_partition_and_format(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_offset: number,
+                    arg_size: number,
+                    arg_type: string,
+                    arg_name: string,
+                    arg_options: GLib.Variant,
+                    arg_format_type: string,
+                    arg_format_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -74950,7 +77038,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface PartitionTable extends GObject.Object {
+        interface PartitionTable extends GObject.Object, PartitionTable.Interface {
             // Properties
 
             /**
@@ -74990,7 +77078,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartition">CreatePartition()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75036,7 +77124,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75061,7 +77149,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_format_type: string,
                 arg_format_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75115,7 +77203,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_format_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_partition_table_call_create_partition_and_format().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_table_call_create_partition_and_format().
@@ -75188,47 +77276,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param created_partition Parameter to return.
              */
             complete_create_partition_and_format(invocation: Gio.DBusMethodInvocation, created_partition: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksPartitionTable::handle-create-partition signal.
-             * @param invocation
-             * @param arg_offset
-             * @param arg_size
-             * @param arg_type
-             * @param arg_name
-             * @param arg_options
-             */
-            vfunc_handle_create_partition(
-                invocation: Gio.DBusMethodInvocation,
-                arg_offset: number,
-                arg_size: number,
-                arg_type: string,
-                arg_name: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksPartitionTable::handle-create-partition-and-format signal.
-             * @param invocation
-             * @param arg_offset
-             * @param arg_size
-             * @param arg_type
-             * @param arg_name
-             * @param arg_options
-             * @param arg_format_type
-             * @param arg_format_options
-             */
-            vfunc_handle_create_partition_and_format(
-                invocation: Gio.DBusMethodInvocation,
-                arg_offset: number,
-                arg_size: number,
-                arg_type: string,
-                arg_name: string,
-                arg_options: GLib.Variant,
-                arg_format_type: string,
-                arg_format_options: GLib.Variant,
-            ): boolean;
         }
 
         export const PartitionTable: PartitionTableNamespace & {
@@ -75308,6 +77355,49 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace Swapspace {
+            /**
+             * Interface for implementing Swapspace.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksSwapspace::handle-set-label signal.
+                 * @param invocation
+                 * @param arg_label
+                 * @param arg_options
+                 */
+                vfunc_handle_set_label(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_label: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksSwapspace::handle-set-uuid signal.
+                 * @param invocation
+                 * @param arg_uuid
+                 * @param arg_options
+                 */
+                vfunc_handle_set_uuid(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_uuid: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksSwapspace::handle-start signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksSwapspace::handle-stop signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -75331,7 +77421,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface Swapspace extends GObject.Object {
+        interface Swapspace extends GObject.Object, Swapspace.Interface {
             // Properties
 
             /**
@@ -75358,7 +77448,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_label: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetLabel">SetLabel()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75392,7 +77482,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_set_label().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_set_label().
@@ -75427,7 +77517,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_uuid: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetUUID">SetUUID()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75461,7 +77551,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_set_uuid().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_set_uuid().
@@ -75491,7 +77581,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_start(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.Start">Start()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75521,7 +77611,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_start().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_start().
@@ -75546,7 +77636,7 @@ declare module 'gi://UDisks?version=2.0' {
              * @param arg_options Argument to pass with the method invocation.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_stop(arg_options: GLib.Variant, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.Stop">Stop()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75576,7 +77666,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_swapspace_call_stop().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_swapspace_call_stop().
@@ -75620,43 +77710,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_stop(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksSwapspace::handle-set-label signal.
-             * @param invocation
-             * @param arg_label
-             * @param arg_options
-             */
-            vfunc_handle_set_label(
-                invocation: Gio.DBusMethodInvocation,
-                arg_label: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksSwapspace::handle-set-uuid signal.
-             * @param invocation
-             * @param arg_uuid
-             * @param arg_options
-             */
-            vfunc_handle_set_uuid(
-                invocation: Gio.DBusMethodInvocation,
-                arg_uuid: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksSwapspace::handle-start signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_start(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksSwapspace::handle-stop signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_stop(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
         }
 
         export const Swapspace: SwapspaceNamespace & {
@@ -75664,6 +77717,65 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace VDOVolume {
+            /**
+             * Interface for implementing VDOVolume.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksVDOVolume::handle-enable-compression signal.
+                 * @param invocation
+                 * @param arg_enable
+                 * @param arg_options
+                 */
+                vfunc_handle_enable_compression(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_enable: boolean,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVDOVolume::handle-enable-deduplication signal.
+                 * @param invocation
+                 * @param arg_enable
+                 * @param arg_options
+                 */
+                vfunc_handle_enable_deduplication(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_enable: boolean,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVDOVolume::handle-get-statistics signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
+                /**
+                 * Handler for the #UDisksVDOVolume::handle-resize-logical signal.
+                 * @param invocation
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_resize_logical(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVDOVolume::handle-resize-physical signal.
+                 * @param invocation
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_resize_physical(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -75698,7 +77810,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface VDOVolume extends GObject.Object {
+        interface VDOVolume extends GObject.Object, VDOVolume.Interface {
             // Properties
 
             /**
@@ -75802,7 +77914,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableCompression">EnableCompression()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75836,7 +77948,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_enable_compression().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_enable_compression().
@@ -75871,7 +77983,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_enable: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableDeduplication">EnableDeduplication()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75905,7 +78017,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_enable_deduplication().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_enable_deduplication().
@@ -75938,7 +78050,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_get_statistics(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GLib.Variant | null>;
+            ): globalThis.Promise<GLib.Variant | null>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -75968,7 +78080,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GLib.Variant | null> | void;
+            ): globalThis.Promise<GLib.Variant | null> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_get_statistics().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_get_statistics().
@@ -76001,7 +78113,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.ResizeLogical">ResizeLogical()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76035,7 +78147,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_resize_logical().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_resize_logical().
@@ -76070,7 +78182,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.ResizePhysical">ResizePhysical()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76104,7 +78216,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_vdo_volume_call_resize_physical().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_vdo_volume_call_resize_physical().
@@ -76161,59 +78273,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param invocation A #GDBusMethodInvocation.
              */
             complete_resize_physical(invocation: Gio.DBusMethodInvocation): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksVDOVolume::handle-enable-compression signal.
-             * @param invocation
-             * @param arg_enable
-             * @param arg_options
-             */
-            vfunc_handle_enable_compression(
-                invocation: Gio.DBusMethodInvocation,
-                arg_enable: boolean,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVDOVolume::handle-enable-deduplication signal.
-             * @param invocation
-             * @param arg_enable
-             * @param arg_options
-             */
-            vfunc_handle_enable_deduplication(
-                invocation: Gio.DBusMethodInvocation,
-                arg_enable: boolean,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVDOVolume::handle-get-statistics signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant): boolean;
-            /**
-             * Handler for the #UDisksVDOVolume::handle-resize-logical signal.
-             * @param invocation
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_resize_logical(
-                invocation: Gio.DBusMethodInvocation,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVDOVolume::handle-resize-physical signal.
-             * @param invocation
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_resize_physical(
-                invocation: Gio.DBusMethodInvocation,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const VDOVolume: VDOVolumeNamespace & {
@@ -76221,6 +78280,169 @@ declare module 'gi://UDisks?version=2.0' {
         };
 
         namespace VolumeGroup {
+            /**
+             * Interface for implementing VolumeGroup.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-add-device signal.
+                 * @param invocation
+                 * @param arg_block
+                 * @param arg_options
+                 */
+                vfunc_handle_add_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_block: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-create-plain-volume signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_create_plain_volume(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-create-plain-volume-with-layout signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_size
+                 * @param arg_layout
+                 * @param arg_pvs
+                 * @param arg_options
+                 */
+                vfunc_handle_create_plain_volume_with_layout(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_size: number,
+                    arg_layout: string,
+                    arg_pvs: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-create-thin-pool-volume signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_size
+                 * @param arg_options
+                 */
+                vfunc_handle_create_thin_pool_volume(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_size: number,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-create-thin-volume signal.
+                 * @param invocation
+                 * @param arg_name
+                 * @param arg_size
+                 * @param arg_pool
+                 * @param arg_options
+                 */
+                vfunc_handle_create_thin_volume(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_name: string,
+                    arg_size: number,
+                    arg_pool: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-create-vdo-volume signal.
+                 * @param invocation
+                 * @param arg_lv_name
+                 * @param arg_pool_name
+                 * @param arg_data_size
+                 * @param arg_virtual_size
+                 * @param arg_index_memory
+                 * @param arg_compression
+                 * @param arg_deduplication
+                 * @param arg_write_policy
+                 * @param arg_options
+                 */
+                vfunc_handle_create_vdo_volume(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_lv_name: string,
+                    arg_pool_name: string,
+                    arg_data_size: number,
+                    arg_virtual_size: number,
+                    arg_index_memory: number,
+                    arg_compression: boolean,
+                    arg_deduplication: boolean,
+                    arg_write_policy: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-delete signal.
+                 * @param invocation
+                 * @param arg_wipe
+                 * @param arg_options
+                 */
+                vfunc_handle_delete(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_wipe: boolean,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-empty-device signal.
+                 * @param invocation
+                 * @param arg_block
+                 * @param arg_options
+                 */
+                vfunc_handle_empty_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_block: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-poll signal.
+                 * @param invocation
+                 */
+                vfunc_handle_poll(invocation: Gio.DBusMethodInvocation): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-remove-device signal.
+                 * @param invocation
+                 * @param arg_block
+                 * @param arg_wipe
+                 * @param arg_options
+                 */
+                vfunc_handle_remove_device(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_block: string,
+                    arg_wipe: boolean,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-remove-missing-physical-volumes signal.
+                 * @param invocation
+                 * @param arg_options
+                 */
+                vfunc_handle_remove_missing_physical_volumes(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_options: GLib.Variant,
+                ): boolean;
+                /**
+                 * Handler for the #UDisksVolumeGroup::handle-rename signal.
+                 * @param invocation
+                 * @param arg_new_name
+                 * @param arg_options
+                 */
+                vfunc_handle_rename(
+                    invocation: Gio.DBusMethodInvocation,
+                    arg_new_name: string,
+                    arg_options: GLib.Variant,
+                ): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -76254,7 +78476,7 @@ declare module 'gi://UDisks?version=2.0' {
              */
             override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
         }
-        interface VolumeGroup extends GObject.Object {
+        interface VolumeGroup extends GObject.Object, VolumeGroup.Interface {
             // Properties
 
             /**
@@ -76351,7 +78573,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_block: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.AddDevice">AddDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76385,7 +78607,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_add_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_add_device().
@@ -76422,7 +78644,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreatePlainVolume">CreatePlainVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76460,7 +78682,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_plain_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_plain_volume().
@@ -76503,7 +78725,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pvs: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreatePlainVolumeWithLayout">CreatePlainVolumeWithLayout()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76549,7 +78771,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_plain_volume_with_layout().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_plain_volume_with_layout().
@@ -76592,7 +78814,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_size: number,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateThinPoolVolume">CreateThinPoolVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76630,7 +78852,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_thin_pool_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_thin_pool_volume().
@@ -76671,7 +78893,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_pool: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateThinVolume">CreateThinVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76713,7 +78935,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_thin_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_thin_volume().
@@ -76766,7 +78988,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_write_policy: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateVDOVolume">CreateVDOVolume()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76828,7 +79050,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_create_vdo_volume().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_create_vdo_volume().
@@ -76877,7 +79099,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_wipe: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Delete">Delete()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76911,7 +79133,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_delete().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_delete().
@@ -76946,7 +79168,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_block: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.EmptyDevice">EmptyDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -76980,7 +79202,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_empty_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_empty_device().
@@ -77009,7 +79231,7 @@ declare module 'gi://UDisks?version=2.0' {
              * See udisks_volume_group_call_poll_sync() for the synchronous, blocking version of this method.
              * @param cancellable A #GCancellable or %NULL.
              */
-            call_poll(cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            call_poll(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Poll">Poll()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -77032,7 +79254,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_poll(
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_poll().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_poll().
@@ -77063,7 +79285,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_wipe: boolean,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.RemoveDevice">RemoveDevice()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -77101,7 +79323,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_remove_device().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_remove_device().
@@ -77136,7 +79358,7 @@ declare module 'gi://UDisks?version=2.0' {
             call_remove_missing_physical_volumes(
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.RemoveMissingPhysicalVolumes">RemoveMissingPhysicalVolumes()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -77166,7 +79388,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_remove_missing_physical_volumes().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_remove_missing_physical_volumes().
@@ -77199,7 +79421,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_new_name: string,
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<string>;
+            ): globalThis.Promise<string>;
             /**
              * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Rename">Rename()</link> D-Bus method on `proxy`.
              * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -77233,7 +79455,7 @@ declare module 'gi://UDisks?version=2.0' {
                 arg_options: GLib.Variant,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<string> | void;
+            ): globalThis.Promise<string> | void;
             /**
              * Finishes an operation started with udisks_volume_group_call_rename().
              * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_volume_group_call_rename().
@@ -77344,163 +79566,6 @@ declare module 'gi://UDisks?version=2.0' {
              * @param result Parameter to return.
              */
             complete_rename(invocation: Gio.DBusMethodInvocation, result: string): void;
-
-            // Virtual methods
-
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-add-device signal.
-             * @param invocation
-             * @param arg_block
-             * @param arg_options
-             */
-            vfunc_handle_add_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_block: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-create-plain-volume signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_create_plain_volume(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-create-plain-volume-with-layout signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_size
-             * @param arg_layout
-             * @param arg_pvs
-             * @param arg_options
-             */
-            vfunc_handle_create_plain_volume_with_layout(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_size: number,
-                arg_layout: string,
-                arg_pvs: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-create-thin-pool-volume signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_size
-             * @param arg_options
-             */
-            vfunc_handle_create_thin_pool_volume(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_size: number,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-create-thin-volume signal.
-             * @param invocation
-             * @param arg_name
-             * @param arg_size
-             * @param arg_pool
-             * @param arg_options
-             */
-            vfunc_handle_create_thin_volume(
-                invocation: Gio.DBusMethodInvocation,
-                arg_name: string,
-                arg_size: number,
-                arg_pool: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-create-vdo-volume signal.
-             * @param invocation
-             * @param arg_lv_name
-             * @param arg_pool_name
-             * @param arg_data_size
-             * @param arg_virtual_size
-             * @param arg_index_memory
-             * @param arg_compression
-             * @param arg_deduplication
-             * @param arg_write_policy
-             * @param arg_options
-             */
-            vfunc_handle_create_vdo_volume(
-                invocation: Gio.DBusMethodInvocation,
-                arg_lv_name: string,
-                arg_pool_name: string,
-                arg_data_size: number,
-                arg_virtual_size: number,
-                arg_index_memory: number,
-                arg_compression: boolean,
-                arg_deduplication: boolean,
-                arg_write_policy: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-delete signal.
-             * @param invocation
-             * @param arg_wipe
-             * @param arg_options
-             */
-            vfunc_handle_delete(
-                invocation: Gio.DBusMethodInvocation,
-                arg_wipe: boolean,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-empty-device signal.
-             * @param invocation
-             * @param arg_block
-             * @param arg_options
-             */
-            vfunc_handle_empty_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_block: string,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-poll signal.
-             * @param invocation
-             */
-            vfunc_handle_poll(invocation: Gio.DBusMethodInvocation): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-remove-device signal.
-             * @param invocation
-             * @param arg_block
-             * @param arg_wipe
-             * @param arg_options
-             */
-            vfunc_handle_remove_device(
-                invocation: Gio.DBusMethodInvocation,
-                arg_block: string,
-                arg_wipe: boolean,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-remove-missing-physical-volumes signal.
-             * @param invocation
-             * @param arg_options
-             */
-            vfunc_handle_remove_missing_physical_volumes(
-                invocation: Gio.DBusMethodInvocation,
-                arg_options: GLib.Variant,
-            ): boolean;
-            /**
-             * Handler for the #UDisksVolumeGroup::handle-rename signal.
-             * @param invocation
-             * @param arg_new_name
-             * @param arg_options
-             */
-            vfunc_handle_rename(
-                invocation: Gio.DBusMethodInvocation,
-                arg_new_name: string,
-                arg_options: GLib.Variant,
-            ): boolean;
         }
 
         export const VolumeGroup: VolumeGroupNamespace & {

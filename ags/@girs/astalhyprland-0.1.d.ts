@@ -370,23 +370,26 @@ declare module 'gi://AstalHyprland?version=0.1' {
             get_monitor_by_name(name: string): Monitor | null;
             get_workspace_by_name(name: string): Workspace | null;
             message(message: string): string;
-            message_async(message: string): Promise<string>;
+            message_async(message: string): globalThis.Promise<string>;
             message_async(message: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-            message_async(message: string, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<string> | void;
+            message_async(
+                message: string,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<string> | void;
             message_finish(_res_: Gio.AsyncResult): string;
             dispatch(dispatcher: string, args: string): void;
             move_cursor(x: number, y: number): void;
-            sync_monitors(): Promise<void>;
+            sync_monitors(): globalThis.Promise<void>;
             sync_monitors(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-            sync_monitors(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+            sync_monitors(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
             sync_monitors_finish(_res_: Gio.AsyncResult): void;
-            sync_workspaces(): Promise<void>;
+            sync_workspaces(): globalThis.Promise<void>;
             sync_workspaces(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-            sync_workspaces(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+            sync_workspaces(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
             sync_workspaces_finish(_res_: Gio.AsyncResult): void;
-            sync_clients(): Promise<void>;
+            sync_clients(): globalThis.Promise<void>;
             sync_clients(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-            sync_clients(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+            sync_clients(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
             sync_clients_finish(_res_: Gio.AsyncResult): void;
             get_monitors(): Monitor[];
             get_workspaces(): Workspace[];

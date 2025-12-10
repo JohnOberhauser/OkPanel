@@ -1,6 +1,6 @@
+/// <reference path="./glib-2.0.d.ts" />
 /// <reference path="./gio-2.0.d.ts" />
 /// <reference path="./gobject-2.0.d.ts" />
-/// <reference path="./glib-2.0.d.ts" />
 /// <reference path="./gmodule-2.0.d.ts" />
 /// <reference path="./gdkpixbuf-2.0.d.ts" />
 
@@ -15,9 +15,9 @@
 
 declare module 'gi://AstalTray?version=0.1' {
     // Module dependencies
+    import type GLib from 'gi://GLib?version=2.0';
     import type Gio from 'gi://Gio?version=2.0';
     import type GObject from 'gi://GObject?version=2.0';
-    import type GLib from 'gi://GLib?version=2.0';
     import type GModule from 'gi://GModule?version=2.0';
     import type GdkPixbuf from 'gi://GdkPixbuf?version=2.0';
 
@@ -58,83 +58,6 @@ declare module 'gi://AstalTray?version=0.1' {
          * Get the singleton instance of [class`AstalTray`.Tray]
          */
         function get_default(): Tray;
-        namespace Tray {
-            // Signal signatures
-            interface SignalSignatures extends GObject.Object.SignalSignatures {
-                'item-added': (arg0: string) => void;
-                'item-removed': (arg0: string) => void;
-                'notify::items': (pspec: GObject.ParamSpec) => void;
-            }
-
-            // Constructor properties interface
-
-            interface ConstructorProps extends GObject.Object.ConstructorProps {
-                items: TrayItem[];
-            }
-        }
-
-        class Tray extends GObject.Object {
-            static $gtype: GObject.GType<Tray>;
-
-            // Properties
-
-            /**
-             * List of currently registered tray items
-             */
-            get items(): TrayItem[];
-
-            /**
-             * Compile-time signal type information.
-             *
-             * This instance property is generated only for TypeScript type checking.
-             * It is not defined at runtime and should not be accessed in JS code.
-             * @internal
-             */
-            $signals: Tray.SignalSignatures;
-
-            // Constructors
-
-            constructor(properties?: Partial<Tray.ConstructorProps>, ...args: any[]);
-
-            _init(...args: any[]): void;
-
-            static ['new'](): Tray;
-
-            // Signals
-
-            connect<K extends keyof Tray.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, Tray.SignalSignatures[K]>,
-            ): number;
-            connect(signal: string, callback: (...args: any[]) => any): number;
-            connect_after<K extends keyof Tray.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, Tray.SignalSignatures[K]>,
-            ): number;
-            connect_after(signal: string, callback: (...args: any[]) => any): number;
-            emit<K extends keyof Tray.SignalSignatures>(
-                signal: K,
-                ...args: GObject.GjsParameters<Tray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-            ): void;
-            emit(signal: string, ...args: any[]): void;
-
-            // Static methods
-
-            /**
-             * Get the singleton instance of [class`AstalTray`.Tray]
-             */
-            static get_default(): Tray;
-
-            // Methods
-
-            /**
-             * gets the TrayItem with the given item-id.
-             * @param item_id
-             */
-            get_item(item_id: string): TrayItem;
-            get_items(): TrayItem[];
-        }
-
         namespace TrayItem {
             // Signal signatures
             interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -405,18 +328,107 @@ declare module 'gi://AstalTray?version=0.1' {
             get_action_group(): Gio.ActionGroup | null;
         }
 
-        type TrayClass = typeof Tray;
-        abstract class TrayPrivate {
-            static $gtype: GObject.GType<TrayPrivate>;
+        namespace Tray {
+            // Signal signatures
+            interface SignalSignatures extends GObject.Object.SignalSignatures {
+                'item-added': (arg0: string) => void;
+                'item-removed': (arg0: string) => void;
+                'notify::items': (pspec: GObject.ParamSpec) => void;
+                'notify::items-model': (pspec: GObject.ParamSpec) => void;
+            }
+
+            // Constructor properties interface
+
+            interface ConstructorProps extends GObject.Object.ConstructorProps {
+                items: TrayItem[];
+                items_model: Gio.ListModel;
+                itemsModel: Gio.ListModel;
+            }
+        }
+
+        class Tray extends GObject.Object {
+            static $gtype: GObject.GType<Tray>;
+
+            // Properties
+
+            /**
+             * List of currently registered tray items
+             */
+            get items(): TrayItem[];
+            /**
+             * ListModel containing the currently registered tray items.
+             */
+            get items_model(): Gio.ListModel;
+            /**
+             * ListModel containing the currently registered tray items.
+             */
+            get itemsModel(): Gio.ListModel;
+
+            /**
+             * Compile-time signal type information.
+             *
+             * This instance property is generated only for TypeScript type checking.
+             * It is not defined at runtime and should not be accessed in JS code.
+             * @internal
+             */
+            $signals: Tray.SignalSignatures;
+
+            // Constructors
+
+            constructor(properties?: Partial<Tray.ConstructorProps>, ...args: any[]);
+
+            _init(...args: any[]): void;
+
+            static ['new'](): Tray;
+
+            // Signals
+
+            connect<K extends keyof Tray.SignalSignatures>(
+                signal: K,
+                callback: GObject.SignalCallback<this, Tray.SignalSignatures[K]>,
+            ): number;
+            connect(signal: string, callback: (...args: any[]) => any): number;
+            connect_after<K extends keyof Tray.SignalSignatures>(
+                signal: K,
+                callback: GObject.SignalCallback<this, Tray.SignalSignatures[K]>,
+            ): number;
+            connect_after(signal: string, callback: (...args: any[]) => any): number;
+            emit<K extends keyof Tray.SignalSignatures>(
+                signal: K,
+                ...args: GObject.GjsParameters<Tray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+            ): void;
+            emit(signal: string, ...args: any[]): void;
+
+            // Static methods
+
+            /**
+             * Get the singleton instance of [class`AstalTray`.Tray]
+             */
+            static get_default(): Tray;
+
+            // Methods
+
+            /**
+             * gets the TrayItem with the given item-id.
+             * @param item_id
+             */
+            get_item(item_id: string): TrayItem;
+            get_items(): TrayItem[];
+            get_items_model(): Gio.ListModel;
+        }
+
+        type TrayItemClass = typeof TrayItem;
+        abstract class TrayItemPrivate {
+            static $gtype: GObject.GType<TrayItemPrivate>;
 
             // Constructors
 
             _init(...args: any[]): void;
         }
 
-        type TrayItemClass = typeof TrayItem;
-        abstract class TrayItemPrivate {
-            static $gtype: GObject.GType<TrayItemPrivate>;
+        type TrayClass = typeof Tray;
+        abstract class TrayPrivate {
+            static $gtype: GObject.GType<TrayPrivate>;
 
             // Constructors
 

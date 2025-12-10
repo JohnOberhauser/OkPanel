@@ -101071,7 +101071,7 @@ declare module 'gi://Gtk?version=2.0' {
 
             // Properties
 
-            // This accessor conflicts with a property or field in a parent class or interface.
+            // This accessor conflicts with a field or function name in a parent class or interface.
             draw: boolean | any;
 
             /**
@@ -144259,7 +144259,7 @@ declare module 'gi://Gtk?version=2.0' {
              * was added to the recently used resources list.
              * @returns the number of seconds elapsed from system's Epoch when   the resource was added to the list, or -1 on failure.
              */
-            get_added(): never;
+            get_added(): number;
             /**
              * Gets the number of days elapsed since the last update of the resource
              * pointed by `info`.
@@ -144275,7 +144275,7 @@ declare module 'gi://Gtk?version=2.0' {
              * @param app_name the name of the application that has registered this item
              * @returns %TRUE if an application with @app_name has registered this   resource inside the recently used list, or %FALSE otherwise. The   @app_exec string is owned by the #GtkRecentInfo and should not be   modified or freed
              */
-            get_application_info(app_name: string): [boolean, string, number, never];
+            get_application_info(app_name: string): [boolean, string, number, number];
             /**
              * Retrieves the list of applications that have registered this resource.
              * @returns a newly allocated %NULL-terminated array of strings.     Use g_strfreev() to free it.
@@ -144315,7 +144315,7 @@ declare module 'gi://Gtk?version=2.0' {
              * was last modified.
              * @returns the number of seconds elapsed from system's Epoch when   the resource was last modified, or -1 on failure.
              */
-            get_modified(): never;
+            get_modified(): number;
             /**
              * Gets the value of the "private" flag.  Resources in the recently used
              * list that have this flag set to %TRUE should only be displayed by the
@@ -144347,7 +144347,7 @@ declare module 'gi://Gtk?version=2.0' {
              * was last visited.
              * @returns the number of seconds elapsed from system's Epoch when   the resource was last visited, or -1 on failure.
              */
-            get_visited(): never;
+            get_visited(): number;
             /**
              * Checks whether an application registered this resource using `app_name`.
              * @param app_name a string containing an application name
@@ -146372,6 +146372,31 @@ declare module 'gi://Gtk?version=2.0' {
         }
 
         namespace Activatable {
+            /**
+             * Interface for implementing Activatable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * This is called to update the activatable completely, this is called
+                 * internally when the #GtkActivatable::related-action property is set
+                 * or unset and by the implementing class when
+                 * #GtkActivatable::use-action-appearance changes.
+                 * @param action the related #GtkAction or %NULL
+                 */
+                vfunc_sync_action_properties(action?: Action | null): void;
+                /**
+                 * Called to update the activatable when its related action's properties change.
+                 * You must check the #GtkActivatable:use-action-appearance property only apply action
+                 * properties that are meant to effect the appearance accordingly.
+                 * @param action
+                 * @param property_name
+                 */
+                vfunc_update(action: Action, property_name: string): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -146386,7 +146411,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<Activatable>;
             prototype: Activatable;
         }
-        interface Activatable extends GObject.Object {
+        interface Activatable extends GObject.Object, Activatable.Interface {
             // Properties
 
             /**
@@ -146495,25 +146520,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @param action the related #GtkAction or %NULL
              */
             sync_action_properties(action?: Action | null): void;
-
-            // Virtual methods
-
-            /**
-             * This is called to update the activatable completely, this is called
-             * internally when the #GtkActivatable::related-action property is set
-             * or unset and by the implementing class when
-             * #GtkActivatable::use-action-appearance changes.
-             * @param action the related #GtkAction or %NULL
-             */
-            vfunc_sync_action_properties(action?: Action | null): void;
-            /**
-             * Called to update the activatable when its related action's properties change.
-             * You must check the #GtkActivatable:use-action-appearance property only apply action
-             * properties that are meant to effect the appearance accordingly.
-             * @param action
-             * @param property_name
-             */
-            vfunc_update(action: Action, property_name: string): void;
         }
 
         export const Activatable: ActivatableNamespace & {
@@ -146521,6 +146527,106 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace Buildable {
+            /**
+             * Interface for implementing Buildable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Adds a child to `buildable`. `type` is an optional string
+                 * describing how the child should be added.
+                 * @param builder a #GtkBuilder
+                 * @param child child to add
+                 * @param type kind of child or %NULL
+                 */
+                vfunc_add_child(builder: Builder, child: GObject.Object, type?: string | null): void;
+                /**
+                 * Constructs a child of `buildable` with the name `name`.
+                 *
+                 * #GtkBuilder calls this function if a "constructor" has been
+                 * specified in the UI definition.
+                 * @param builder #GtkBuilder used to construct this object
+                 * @param name name of child to construct
+                 */
+                vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
+                /**
+                 * This is similar to gtk_buildable_parser_finished() but is
+                 * called once for each custom tag handled by the `buildable`.
+                 * @param builder a #GtkBuilder
+                 * @param child child object or %NULL for non-child tags
+                 * @param tagname the name of the tag
+                 * @param data user data created in custom_tag_start
+                 */
+                vfunc_custom_finished(
+                    builder: Builder,
+                    child: GObject.Object | null,
+                    tagname: string,
+                    data?: any | null,
+                ): void;
+                /**
+                 * This is called at the end of each custom element handled by
+                 * the buildable.
+                 * @param builder #GtkBuilder used to construct this object
+                 * @param child child object or %NULL for non-child tags
+                 * @param tagname name of tag
+                 * @param data user data that will be passed in to parser functions
+                 */
+                vfunc_custom_tag_end(
+                    builder: Builder,
+                    child: GObject.Object | null,
+                    tagname: string,
+                    data?: any | null,
+                ): void;
+                /**
+                 * This is called for each unknown element under &lt;child&gt;.
+                 * @param builder a #GtkBuilder used to construct this object
+                 * @param child child object or %NULL for non-child tags
+                 * @param tagname name of tag
+                 */
+                vfunc_custom_tag_start(
+                    builder: Builder,
+                    child: GObject.Object | null,
+                    tagname: string,
+                ): [boolean, GLib.MarkupParser, any];
+                /**
+                 * Get the internal child called `childname` of the `buildable` object.
+                 * @param builder a #GtkBuilder
+                 * @param childname name of child
+                 */
+                vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
+                /**
+                 * Gets the name of the `buildable` object.
+                 *
+                 * #GtkBuilder sets the name based on the the
+                 * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
+                 * used to construct the `buildable`.
+                 */
+                vfunc_get_name(): string;
+                /**
+                 * Called when the builder finishes the parsing of a
+                 * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>.
+                 * Note that this will be called once for each time
+                 * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+                 * is called on a builder.
+                 * @param builder a #GtkBuilder
+                 */
+                vfunc_parser_finished(builder: Builder): void;
+                /**
+                 * Sets the property name `name` to `value` on the `buildable` object.
+                 * @param builder a #GtkBuilder
+                 * @param name name of property
+                 * @param value value of property
+                 */
+                vfunc_set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
+                /**
+                 * Sets the name of the `buildable` object.
+                 * @param name name to set
+                 */
+                vfunc_set_name(name: string): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -146530,7 +146636,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<Buildable>;
             prototype: Buildable;
         }
-        interface Buildable extends GObject.Object {
+        interface Buildable extends GObject.Object, Buildable.Interface {
             // Methods
 
             /**
@@ -146618,100 +146724,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @param name name to set
              */
             set_name(name: string): void;
-
-            // Virtual methods
-
-            /**
-             * Adds a child to `buildable`. `type` is an optional string
-             * describing how the child should be added.
-             * @param builder a #GtkBuilder
-             * @param child child to add
-             * @param type kind of child or %NULL
-             */
-            vfunc_add_child(builder: Builder, child: GObject.Object, type?: string | null): void;
-            /**
-             * Constructs a child of `buildable` with the name `name`.
-             *
-             * #GtkBuilder calls this function if a "constructor" has been
-             * specified in the UI definition.
-             * @param builder #GtkBuilder used to construct this object
-             * @param name name of child to construct
-             */
-            vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
-            /**
-             * This is similar to gtk_buildable_parser_finished() but is
-             * called once for each custom tag handled by the `buildable`.
-             * @param builder a #GtkBuilder
-             * @param child child object or %NULL for non-child tags
-             * @param tagname the name of the tag
-             * @param data user data created in custom_tag_start
-             */
-            vfunc_custom_finished(
-                builder: Builder,
-                child: GObject.Object | null,
-                tagname: string,
-                data?: any | null,
-            ): void;
-            /**
-             * This is called at the end of each custom element handled by
-             * the buildable.
-             * @param builder #GtkBuilder used to construct this object
-             * @param child child object or %NULL for non-child tags
-             * @param tagname name of tag
-             * @param data user data that will be passed in to parser functions
-             */
-            vfunc_custom_tag_end(
-                builder: Builder,
-                child: GObject.Object | null,
-                tagname: string,
-                data?: any | null,
-            ): void;
-            /**
-             * This is called for each unknown element under &lt;child&gt;.
-             * @param builder a #GtkBuilder used to construct this object
-             * @param child child object or %NULL for non-child tags
-             * @param tagname name of tag
-             */
-            vfunc_custom_tag_start(
-                builder: Builder,
-                child: GObject.Object | null,
-                tagname: string,
-            ): [boolean, GLib.MarkupParser, any];
-            /**
-             * Get the internal child called `childname` of the `buildable` object.
-             * @param builder a #GtkBuilder
-             * @param childname name of child
-             */
-            vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
-            /**
-             * Gets the name of the `buildable` object.
-             *
-             * #GtkBuilder sets the name based on the the
-             * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
-             * used to construct the `buildable`.
-             */
-            vfunc_get_name(): string;
-            /**
-             * Called when the builder finishes the parsing of a
-             * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>.
-             * Note that this will be called once for each time
-             * gtk_builder_add_from_file() or gtk_builder_add_from_string()
-             * is called on a builder.
-             * @param builder a #GtkBuilder
-             */
-            vfunc_parser_finished(builder: Builder): void;
-            /**
-             * Sets the property name `name` to `value` on the `buildable` object.
-             * @param builder a #GtkBuilder
-             * @param name name of property
-             * @param value value of property
-             */
-            vfunc_set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
-            /**
-             * Sets the name of the `buildable` object.
-             * @param name name to set
-             */
-            vfunc_set_name(name: string): void;
         }
 
         export const Buildable: BuildableNamespace & {
@@ -146719,6 +146731,30 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace CellEditable {
+            /**
+             * Interface for implementing CellEditable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Emits the #GtkCellEditable::editing-done signal.
+                 */
+                vfunc_editing_done(): void;
+                /**
+                 * Emits the #GtkCellEditable::remove-widget signal.
+                 */
+                vfunc_remove_widget(): void;
+                /**
+                 * Begins editing on a `cell_editable`. `event` is the #GdkEvent that began
+                 * the editing process. It may be %NULL, in the instance that editing was
+                 * initiated through programatic means.
+                 * @param event A #GdkEvent, or %NULL
+                 */
+                vfunc_start_editing(event?: Gdk.Event | null): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Widget.ConstructorProps {
@@ -146731,7 +146767,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<CellEditable>;
             prototype: CellEditable;
         }
-        interface CellEditable extends Widget {
+        interface CellEditable extends Widget, CellEditable.Interface {
             // Properties
 
             /**
@@ -146762,24 +146798,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @param event A #GdkEvent, or %NULL
              */
             start_editing(event?: Gdk.Event | null): void;
-
-            // Virtual methods
-
-            /**
-             * Emits the #GtkCellEditable::editing-done signal.
-             */
-            vfunc_editing_done(): void;
-            /**
-             * Emits the #GtkCellEditable::remove-widget signal.
-             */
-            vfunc_remove_widget(): void;
-            /**
-             * Begins editing on a `cell_editable`. `event` is the #GdkEvent that began
-             * the editing process. It may be %NULL, in the instance that editing was
-             * initiated through programatic means.
-             * @param event A #GdkEvent, or %NULL
-             */
-            vfunc_start_editing(event?: Gdk.Event | null): void;
         }
 
         export const CellEditable: CellEditableNamespace & {
@@ -146787,6 +146805,77 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace CellLayout {
+            /**
+             * Interface for implementing CellLayout.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Adds an attribute mapping to the list in `cell_layout`. The `column` is the
+                 * column of the model to get a value from, and the `attribute` is the
+                 * parameter on `cell` to be set from the value. So for example if column 2
+                 * of the model contains strings, you could have the "text" attribute of a
+                 * #GtkCellRendererText get its values from column 2.
+                 * @param cell A #GtkCellRenderer.
+                 * @param attribute An attribute on the renderer.
+                 * @param column The column position on the model to get the attribute from.
+                 */
+                vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
+                /**
+                 * Unsets all the mappings on all renderers on `cell_layout` and
+                 * removes all renderers from `cell_layout`.
+                 */
+                vfunc_clear(): void;
+                /**
+                 * Clears all existing attributes previously set with
+                 * gtk_cell_layout_set_attributes().
+                 * @param cell A #GtkCellRenderer to clear the attribute mapping on.
+                 */
+                vfunc_clear_attributes(cell: CellRenderer): void;
+                /**
+                 * Returns the cell renderers which have been added to `cell_layout`.
+                 */
+                vfunc_get_cells(): CellRenderer[];
+                /**
+                 * Adds the `cell` to the end of `cell_layout`. If `expand` is %FALSE, then the
+                 * `cell` is allocated no more space than it needs. Any unused space is
+                 * divided evenly between cells for which `expand` is %TRUE.
+                 *
+                 * Note that reusing the same cell renderer is not supported.
+                 * @param cell A #GtkCellRenderer.
+                 * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout.
+                 */
+                vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
+                /**
+                 * Packs the `cell` into the beginning of `cell_layout`. If `expand` is %FALSE,
+                 * then the `cell` is allocated no more space than it needs. Any unused space
+                 * is divided evenly between cells for which `expand` is %TRUE.
+                 *
+                 * Note that reusing the same cell renderer is not supported.
+                 * @param cell A #GtkCellRenderer.
+                 * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout.
+                 */
+                vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
+                /**
+                 * Re-inserts `cell` at `position`. Note that `cell` has already to be packed
+                 * into `cell_layout` for this to function properly.
+                 * @param cell A #GtkCellRenderer to reorder.
+                 * @param position New position to insert @cell at.
+                 */
+                vfunc_reorder(cell: CellRenderer, position: number): void;
+                /**
+                 * Sets the #GtkCellLayoutDataFunc to use for `cell_layout`. This function
+                 * is used instead of the standard attributes mapping for setting the
+                 * column value, and should set the value of `cell_layout'`s cell renderer(s)
+                 * as appropriate. `func` may be %NULL to remove and older one.
+                 * @param cell A #GtkCellRenderer.
+                 * @param func The #GtkCellLayoutDataFunc to use.
+                 */
+                vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -146796,7 +146885,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<CellLayout>;
             prototype: CellLayout;
         }
-        interface CellLayout extends GObject.Object {
+        interface CellLayout extends GObject.Object, CellLayout.Interface {
             // Methods
 
             /**
@@ -146862,71 +146951,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @param func The #GtkCellLayoutDataFunc to use.
              */
             set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
-
-            // Virtual methods
-
-            /**
-             * Adds an attribute mapping to the list in `cell_layout`. The `column` is the
-             * column of the model to get a value from, and the `attribute` is the
-             * parameter on `cell` to be set from the value. So for example if column 2
-             * of the model contains strings, you could have the "text" attribute of a
-             * #GtkCellRendererText get its values from column 2.
-             * @param cell A #GtkCellRenderer.
-             * @param attribute An attribute on the renderer.
-             * @param column The column position on the model to get the attribute from.
-             */
-            vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
-            /**
-             * Unsets all the mappings on all renderers on `cell_layout` and
-             * removes all renderers from `cell_layout`.
-             */
-            vfunc_clear(): void;
-            /**
-             * Clears all existing attributes previously set with
-             * gtk_cell_layout_set_attributes().
-             * @param cell A #GtkCellRenderer to clear the attribute mapping on.
-             */
-            vfunc_clear_attributes(cell: CellRenderer): void;
-            /**
-             * Returns the cell renderers which have been added to `cell_layout`.
-             */
-            vfunc_get_cells(): CellRenderer[];
-            /**
-             * Adds the `cell` to the end of `cell_layout`. If `expand` is %FALSE, then the
-             * `cell` is allocated no more space than it needs. Any unused space is
-             * divided evenly between cells for which `expand` is %TRUE.
-             *
-             * Note that reusing the same cell renderer is not supported.
-             * @param cell A #GtkCellRenderer.
-             * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout.
-             */
-            vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
-            /**
-             * Packs the `cell` into the beginning of `cell_layout`. If `expand` is %FALSE,
-             * then the `cell` is allocated no more space than it needs. Any unused space
-             * is divided evenly between cells for which `expand` is %TRUE.
-             *
-             * Note that reusing the same cell renderer is not supported.
-             * @param cell A #GtkCellRenderer.
-             * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout.
-             */
-            vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
-            /**
-             * Re-inserts `cell` at `position`. Note that `cell` has already to be packed
-             * into `cell_layout` for this to function properly.
-             * @param cell A #GtkCellRenderer to reorder.
-             * @param position New position to insert @cell at.
-             */
-            vfunc_reorder(cell: CellRenderer, position: number): void;
-            /**
-             * Sets the #GtkCellLayoutDataFunc to use for `cell_layout`. This function
-             * is used instead of the standard attributes mapping for setting the
-             * column value, and should set the value of `cell_layout'`s cell renderer(s)
-             * as appropriate. `func` may be %NULL to remove and older one.
-             * @param cell A #GtkCellRenderer.
-             * @param func The #GtkCellLayoutDataFunc to use.
-             */
-            vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
         }
 
         export const CellLayout: CellLayoutNamespace & {
@@ -147752,6 +147776,42 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace PrintOperationPreview {
+            /**
+             * Interface for implementing PrintOperationPreview.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Ends a preview.
+                 *
+                 * This function must be called to finish a custom print preview.
+                 */
+                vfunc_end_preview(): void;
+                vfunc_got_page_size(context: PrintContext, page_setup: PageSetup): void;
+                /**
+                 * Returns whether the given page is included in the set of pages that
+                 * have been selected for printing.
+                 * @param page_nr a page number
+                 */
+                vfunc_is_selected(page_nr: number): boolean;
+                vfunc_ready(context: PrintContext): void;
+                /**
+                 * Renders a page to the preview, using the print context that
+                 * was passed to the #GtkPrintOperation::preview handler together
+                 * with `preview`.
+                 *
+                 * A custom iprint preview should use this function in its ::expose
+                 * handler to render the currently selected page.
+                 *
+                 * Note that this function requires a suitable cairo context to
+                 * be associated with the print context.
+                 * @param page_nr the page to render
+                 */
+                vfunc_render_page(page_nr: number): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -147761,7 +147821,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<PrintOperationPreview>;
             prototype: PrintOperationPreview;
         }
-        interface PrintOperationPreview extends GObject.Object {
+        interface PrintOperationPreview extends GObject.Object, PrintOperationPreview.Interface {
             // Methods
 
             /**
@@ -147790,36 +147850,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @param page_nr the page to render
              */
             render_page(page_nr: number): void;
-
-            // Virtual methods
-
-            /**
-             * Ends a preview.
-             *
-             * This function must be called to finish a custom print preview.
-             */
-            vfunc_end_preview(): void;
-            vfunc_got_page_size(context: PrintContext, page_setup: PageSetup): void;
-            /**
-             * Returns whether the given page is included in the set of pages that
-             * have been selected for printing.
-             * @param page_nr a page number
-             */
-            vfunc_is_selected(page_nr: number): boolean;
-            vfunc_ready(context: PrintContext): void;
-            /**
-             * Renders a page to the preview, using the print context that
-             * was passed to the #GtkPrintOperation::preview handler together
-             * with `preview`.
-             *
-             * A custom iprint preview should use this function in its ::expose
-             * handler to render the currently selected page.
-             *
-             * Note that this function requires a suitable cairo context to
-             * be associated with the print context.
-             * @param page_nr the page to render
-             */
-            vfunc_render_page(page_nr: number): void;
         }
 
         export const PrintOperationPreview: PrintOperationPreviewNamespace & {
@@ -147827,6 +147857,81 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace RecentChooser {
+            /**
+             * Interface for implementing RecentChooser.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Adds `filter` to the list of #GtkRecentFilter objects held by `chooser`.
+                 *
+                 * If no previous filter objects were defined, this function will call
+                 * gtk_recent_chooser_set_filter().
+                 * @param filter a #GtkRecentFilter
+                 */
+                vfunc_add_filter(filter: RecentFilter): void;
+                /**
+                 * Gets the URI currently selected by `chooser`.
+                 */
+                vfunc_get_current_uri(): string;
+                /**
+                 * Gets the list of recently used resources in form of #GtkRecentInfo objects.
+                 *
+                 * The return value of this function is affected by the "sort-type" and
+                 * "limit" properties of `chooser`.
+                 */
+                vfunc_get_items(): RecentInfo[];
+                vfunc_item_activated(): void;
+                /**
+                 * Gets the #GtkRecentFilter objects held by `chooser`.
+                 */
+                vfunc_list_filters(): RecentFilter[];
+                /**
+                 * Removes `filter` from the list of #GtkRecentFilter objects held by `chooser`.
+                 * @param filter a #GtkRecentFilter
+                 */
+                vfunc_remove_filter(filter: RecentFilter): void;
+                /**
+                 * Selects all the items inside `chooser,` if the `chooser` supports
+                 * multiple selection.
+                 */
+                vfunc_select_all(): void;
+                /**
+                 * Selects `uri` inside `chooser`.
+                 * @param uri a URI
+                 */
+                vfunc_select_uri(uri: string): boolean;
+                vfunc_selection_changed(): void;
+                /**
+                 * Sets `uri` as the current URI for `chooser`.
+                 * @param uri a URI
+                 */
+                vfunc_set_current_uri(uri: string): boolean;
+                /**
+                 * Sets the comparison function used when sorting to be `sort_func`.  If
+                 * the `chooser` has the sort type set to #GTK_RECENT_SORT_CUSTOM then
+                 * the chooser will sort using this function.
+                 *
+                 * To the comparison function will be passed two #GtkRecentInfo structs and
+                 * `sort_data;`  `sort_func` should return a positive integer if the first
+                 * item comes before the second, zero if the two items are equal and
+                 * a negative integer if the first item comes after the second.
+                 * @param sort_func the comparison function
+                 */
+                vfunc_set_sort_func(sort_func: RecentSortFunc): void;
+                /**
+                 * Unselects all the items inside `chooser`.
+                 */
+                vfunc_unselect_all(): void;
+                /**
+                 * Unselects `uri` inside `chooser`.
+                 * @param uri a URI
+                 */
+                vfunc_unselect_uri(uri: string): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -147855,7 +147960,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<RecentChooser>;
             prototype: RecentChooser;
         }
-        interface RecentChooser extends GObject.Object {
+        interface RecentChooser extends GObject.Object, RecentChooser.Interface {
             // Properties
 
             /**
@@ -148161,75 +148266,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @param uri a URI
              */
             unselect_uri(uri: string): void;
-
-            // Virtual methods
-
-            /**
-             * Adds `filter` to the list of #GtkRecentFilter objects held by `chooser`.
-             *
-             * If no previous filter objects were defined, this function will call
-             * gtk_recent_chooser_set_filter().
-             * @param filter a #GtkRecentFilter
-             */
-            vfunc_add_filter(filter: RecentFilter): void;
-            /**
-             * Gets the URI currently selected by `chooser`.
-             */
-            vfunc_get_current_uri(): string;
-            /**
-             * Gets the list of recently used resources in form of #GtkRecentInfo objects.
-             *
-             * The return value of this function is affected by the "sort-type" and
-             * "limit" properties of `chooser`.
-             */
-            vfunc_get_items(): RecentInfo[];
-            vfunc_item_activated(): void;
-            /**
-             * Gets the #GtkRecentFilter objects held by `chooser`.
-             */
-            vfunc_list_filters(): RecentFilter[];
-            /**
-             * Removes `filter` from the list of #GtkRecentFilter objects held by `chooser`.
-             * @param filter a #GtkRecentFilter
-             */
-            vfunc_remove_filter(filter: RecentFilter): void;
-            /**
-             * Selects all the items inside `chooser,` if the `chooser` supports
-             * multiple selection.
-             */
-            vfunc_select_all(): void;
-            /**
-             * Selects `uri` inside `chooser`.
-             * @param uri a URI
-             */
-            vfunc_select_uri(uri: string): boolean;
-            vfunc_selection_changed(): void;
-            /**
-             * Sets `uri` as the current URI for `chooser`.
-             * @param uri a URI
-             */
-            vfunc_set_current_uri(uri: string): boolean;
-            /**
-             * Sets the comparison function used when sorting to be `sort_func`.  If
-             * the `chooser` has the sort type set to #GTK_RECENT_SORT_CUSTOM then
-             * the chooser will sort using this function.
-             *
-             * To the comparison function will be passed two #GtkRecentInfo structs and
-             * `sort_data;`  `sort_func` should return a positive integer if the first
-             * item comes before the second, zero if the two items are equal and
-             * a negative integer if the first item comes after the second.
-             * @param sort_func the comparison function
-             */
-            vfunc_set_sort_func(sort_func: RecentSortFunc): void;
-            /**
-             * Unselects all the items inside `chooser`.
-             */
-            vfunc_unselect_all(): void;
-            /**
-             * Unselects `uri` inside `chooser`.
-             * @param uri a URI
-             */
-            vfunc_unselect_uri(uri: string): void;
         }
 
         export const RecentChooser: RecentChooserNamespace & {
@@ -148237,6 +148273,69 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace ToolShell {
+            /**
+             * Interface for implementing ToolShell.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Retrieves the current ellipsize mode for the tool shell. Tool items must not
+                 * call this function directly, but rely on gtk_tool_item_get_ellipsize_mode()
+                 * instead.
+                 */
+                vfunc_get_ellipsize_mode(): Pango.EllipsizeMode;
+                /**
+                 * mandatory implementation of gtk_tool_shell_get_icon_size().
+                 */
+                vfunc_get_icon_size(): IconSize;
+                /**
+                 * Retrieves the current orientation for the tool shell. Tool items must not
+                 * call this function directly, but rely on gtk_tool_item_get_orientation()
+                 * instead.
+                 */
+                vfunc_get_orientation(): Orientation;
+                /**
+                 * Returns the relief style of buttons on `shell`. Tool items must not call this
+                 * function directly, but rely on gtk_tool_item_get_relief_style() instead.
+                 */
+                vfunc_get_relief_style(): ReliefStyle;
+                /**
+                 * Retrieves whether the tool shell has text, icons, or both. Tool items must
+                 * not call this function directly, but rely on gtk_tool_item_get_style()
+                 * instead.
+                 */
+                vfunc_get_style(): ToolbarStyle;
+                /**
+                 * Retrieves the current text alignment for the tool shell. Tool items must not
+                 * call this function directly, but rely on gtk_tool_item_get_text_alignment()
+                 * instead.
+                 */
+                vfunc_get_text_alignment(): number;
+                /**
+                 * Retrieves the current text orientation for the tool shell. Tool items must not
+                 * call this function directly, but rely on gtk_tool_item_get_text_orientation()
+                 * instead.
+                 */
+                vfunc_get_text_orientation(): Orientation;
+                /**
+                 * Retrieves the current text size group for the tool shell. Tool items must not
+                 * call this function directly, but rely on gtk_tool_item_get_text_size_group()
+                 * instead.
+                 */
+                vfunc_get_text_size_group(): SizeGroup;
+                /**
+                 * Calling this function signals the tool shell that the overflow menu item for
+                 * tool items have changed. If there is an overflow menu and if it is visible
+                 * when this function it called, the menu will be rebuilt.
+                 *
+                 * Tool items must not call this function directly, but rely on
+                 * gtk_tool_item_rebuild_menu() instead.
+                 */
+                vfunc_rebuild_menu(): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Widget.ConstructorProps {}
@@ -148246,7 +148345,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<ToolShell>;
             prototype: ToolShell;
         }
-        interface ToolShell extends Widget {
+        interface ToolShell extends Widget, ToolShell.Interface {
             // Methods
 
             /**
@@ -148314,63 +148413,6 @@ declare module 'gi://Gtk?version=2.0' {
              * gtk_tool_item_rebuild_menu() instead.
              */
             rebuild_menu(): void;
-
-            // Virtual methods
-
-            /**
-             * Retrieves the current ellipsize mode for the tool shell. Tool items must not
-             * call this function directly, but rely on gtk_tool_item_get_ellipsize_mode()
-             * instead.
-             */
-            vfunc_get_ellipsize_mode(): Pango.EllipsizeMode;
-            /**
-             * mandatory implementation of gtk_tool_shell_get_icon_size().
-             */
-            vfunc_get_icon_size(): IconSize;
-            /**
-             * Retrieves the current orientation for the tool shell. Tool items must not
-             * call this function directly, but rely on gtk_tool_item_get_orientation()
-             * instead.
-             */
-            vfunc_get_orientation(): Orientation;
-            /**
-             * Returns the relief style of buttons on `shell`. Tool items must not call this
-             * function directly, but rely on gtk_tool_item_get_relief_style() instead.
-             */
-            vfunc_get_relief_style(): ReliefStyle;
-            /**
-             * Retrieves whether the tool shell has text, icons, or both. Tool items must
-             * not call this function directly, but rely on gtk_tool_item_get_style()
-             * instead.
-             */
-            vfunc_get_style(): ToolbarStyle;
-            /**
-             * Retrieves the current text alignment for the tool shell. Tool items must not
-             * call this function directly, but rely on gtk_tool_item_get_text_alignment()
-             * instead.
-             */
-            vfunc_get_text_alignment(): number;
-            /**
-             * Retrieves the current text orientation for the tool shell. Tool items must not
-             * call this function directly, but rely on gtk_tool_item_get_text_orientation()
-             * instead.
-             */
-            vfunc_get_text_orientation(): Orientation;
-            /**
-             * Retrieves the current text size group for the tool shell. Tool items must not
-             * call this function directly, but rely on gtk_tool_item_get_text_size_group()
-             * instead.
-             */
-            vfunc_get_text_size_group(): SizeGroup;
-            /**
-             * Calling this function signals the tool shell that the overflow menu item for
-             * tool items have changed. If there is an overflow menu and if it is visible
-             * when this function it called, the menu will be rebuilt.
-             *
-             * Tool items must not call this function directly, but rely on
-             * gtk_tool_item_rebuild_menu() instead.
-             */
-            vfunc_rebuild_menu(): void;
         }
 
         export const ToolShell: ToolShellNamespace & {
@@ -148378,6 +148420,36 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace TreeDragDest {
+            /**
+             * Interface for implementing TreeDragDest.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Asks the #GtkTreeDragDest to insert a row before the path `dest,`
+                 * deriving the contents of the row from `selection_data`. If `dest` is
+                 * outside the tree so that inserting before it is impossible, %FALSE
+                 * will be returned. Also, %FALSE may be returned if the new row is
+                 * not created for some model-specific reason.  Should robustly handle
+                 * a `dest` no longer found in the model!
+                 * @param dest row to drop in front of
+                 * @param selection_data data to drop
+                 */
+                vfunc_drag_data_received(dest: TreePath, selection_data: SelectionData): boolean;
+                /**
+                 * Determines whether a drop is possible before the given `dest_path,`
+                 * at the same depth as `dest_path`. i.e., can we drop the data in
+                 * `selection_data` at that location. `dest_path` does not have to
+                 * exist; the return value will almost certainly be %FALSE if the
+                 * parent of `dest_path` doesn't exist, though.
+                 * @param dest_path destination row
+                 * @param selection_data the data being dragged
+                 */
+                vfunc_row_drop_possible(dest_path: TreePath, selection_data: SelectionData): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -148387,7 +148459,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<TreeDragDest>;
             prototype: TreeDragDest;
         }
-        interface TreeDragDest extends GObject.Object {
+        interface TreeDragDest extends GObject.Object, TreeDragDest.Interface {
             // Methods
 
             /**
@@ -148413,30 +148485,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @returns %TRUE if a drop is possible before @dest_path
              */
             row_drop_possible(dest_path: TreePath, selection_data: SelectionData): boolean;
-
-            // Virtual methods
-
-            /**
-             * Asks the #GtkTreeDragDest to insert a row before the path `dest,`
-             * deriving the contents of the row from `selection_data`. If `dest` is
-             * outside the tree so that inserting before it is impossible, %FALSE
-             * will be returned. Also, %FALSE may be returned if the new row is
-             * not created for some model-specific reason.  Should robustly handle
-             * a `dest` no longer found in the model!
-             * @param dest row to drop in front of
-             * @param selection_data data to drop
-             */
-            vfunc_drag_data_received(dest: TreePath, selection_data: SelectionData): boolean;
-            /**
-             * Determines whether a drop is possible before the given `dest_path,`
-             * at the same depth as `dest_path`. i.e., can we drop the data in
-             * `selection_data` at that location. `dest_path` does not have to
-             * exist; the return value will almost certainly be %FALSE if the
-             * parent of `dest_path` doesn't exist, though.
-             * @param dest_path destination row
-             * @param selection_data the data being dragged
-             */
-            vfunc_row_drop_possible(dest_path: TreePath, selection_data: SelectionData): boolean;
         }
 
         export const TreeDragDest: TreeDragDestNamespace & {
@@ -148444,6 +148492,39 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace TreeDragSource {
+            /**
+             * Interface for implementing TreeDragSource.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Asks the #GtkTreeDragSource to delete the row at `path,` because
+                 * it was moved somewhere else via drag-and-drop. Returns %FALSE
+                 * if the deletion fails because `path` no longer exists, or for
+                 * some model-specific reason. Should robustly handle a `path` no
+                 * longer found in the model!
+                 * @param path row that was being dragged
+                 */
+                vfunc_drag_data_delete(path: TreePath): boolean;
+                /**
+                 * Asks the #GtkTreeDragSource to fill in `selection_data` with a
+                 * representation of the row at `path`. `selection_data->`target gives
+                 * the required type of the data.  Should robustly handle a `path` no
+                 * longer found in the model!
+                 * @param path row that was dragged
+                 */
+                vfunc_drag_data_get(path: TreePath): [boolean, SelectionData];
+                /**
+                 * Asks the #GtkTreeDragSource whether a particular row can be used as
+                 * the source of a DND operation. If the source doesn't implement
+                 * this interface, the row is assumed draggable.
+                 * @param path row on which user is initiating a drag
+                 */
+                vfunc_row_draggable(path: TreePath): boolean;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -148453,7 +148534,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<TreeDragSource>;
             prototype: TreeDragSource;
         }
-        interface TreeDragSource extends GObject.Object {
+        interface TreeDragSource extends GObject.Object, TreeDragSource.Interface {
             // Methods
 
             /**
@@ -148483,33 +148564,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @returns %TRUE if the row can be dragged
              */
             row_draggable(path: TreePath): boolean;
-
-            // Virtual methods
-
-            /**
-             * Asks the #GtkTreeDragSource to delete the row at `path,` because
-             * it was moved somewhere else via drag-and-drop. Returns %FALSE
-             * if the deletion fails because `path` no longer exists, or for
-             * some model-specific reason. Should robustly handle a `path` no
-             * longer found in the model!
-             * @param path row that was being dragged
-             */
-            vfunc_drag_data_delete(path: TreePath): boolean;
-            /**
-             * Asks the #GtkTreeDragSource to fill in `selection_data` with a
-             * representation of the row at `path`. `selection_data->`target gives
-             * the required type of the data.  Should robustly handle a `path` no
-             * longer found in the model!
-             * @param path row that was dragged
-             */
-            vfunc_drag_data_get(path: TreePath): [boolean, SelectionData];
-            /**
-             * Asks the #GtkTreeDragSource whether a particular row can be used as
-             * the source of a DND operation. If the source doesn't implement
-             * this interface, the row is assumed draggable.
-             * @param path row on which user is initiating a drag
-             */
-            vfunc_row_draggable(path: TreePath): boolean;
         }
 
         export const TreeDragSource: TreeDragSourceNamespace & {
@@ -148517,6 +148571,155 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace TreeModel {
+            /**
+             * Interface for implementing TreeModel.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Returns the type of the column.
+                 * @param index_ The column index.
+                 */
+                vfunc_get_column_type(index_: number): GObject.GType;
+                /**
+                 * Returns a set of flags supported by this interface.  The flags are a bitwise
+                 * combination of #GtkTreeModelFlags.  The flags supported should not change
+                 * during the lifecycle of the `tree_model`.
+                 */
+                vfunc_get_flags(): TreeModelFlags;
+                /**
+                 * Sets `iter` to a valid iterator pointing to `path`.
+                 * @param path The #GtkTreePath.
+                 */
+                vfunc_get_iter(path: TreePath): [boolean, TreeIter];
+                /**
+                 * Returns the number of columns supported by `tree_model`.
+                 */
+                vfunc_get_n_columns(): number;
+                /**
+                 * Returns a newly-created #GtkTreePath referenced by `iter`.  This path should
+                 * be freed with gtk_tree_path_free().
+                 * @param iter The #GtkTreeIter.
+                 */
+                vfunc_get_path(iter: TreeIter): TreePath;
+                /**
+                 * Initializes and sets `value` to that at `column`.
+                 * When done with `value,` g_value_unset() needs to be called
+                 * to free any allocated memory.
+                 * @param iter The #GtkTreeIter.
+                 * @param column The column to lookup the value at.
+                 */
+                vfunc_get_value(iter: TreeIter, column: number): unknown;
+                /**
+                 * Sets `iter` to point to the first child of `parent`.  If `parent` has no
+                 * children, %FALSE is returned and `iter` is set to be invalid.  `parent`
+                 * will remain a valid node after this function has been called.
+                 *
+                 * If `parent` is %NULL returns the first node, equivalent to
+                 * <literal>gtk_tree_model_get_iter_first (tree_model, iter);</literal>
+                 * @param parent The #GtkTreeIter, or %NULL
+                 */
+                vfunc_iter_children(parent?: TreeIter | null): [boolean, TreeIter];
+                /**
+                 * Returns %TRUE if `iter` has children, %FALSE otherwise.
+                 * @param iter The #GtkTreeIter to test for children.
+                 */
+                vfunc_iter_has_child(iter: TreeIter): boolean;
+                /**
+                 * Returns the number of children that `iter` has.  As a special case, if `iter`
+                 * is %NULL, then the number of toplevel nodes is returned.
+                 * @param iter The #GtkTreeIter, or %NULL.
+                 */
+                vfunc_iter_n_children(iter?: TreeIter | null): number;
+                /**
+                 * Sets `iter` to point to the node following it at the current level.  If there
+                 * is no next `iter,` %FALSE is returned and `iter` is set to be invalid.
+                 * @param iter The #GtkTreeIter.
+                 */
+                vfunc_iter_next(iter: TreeIter): boolean;
+                /**
+                 * Sets `iter` to be the child of `parent,` using the given index.  The first
+                 * index is 0.  If `n` is too big, or `parent` has no children, `iter` is set
+                 * to an invalid iterator and %FALSE is returned.  `parent` will remain a valid
+                 * node after this function has been called.  As a special case, if `parent` is
+                 * %NULL, then the `n<`!-- -->th root node is set.
+                 * @param parent The #GtkTreeIter to get the child from, or %NULL.
+                 * @param n Then index of the desired child.
+                 */
+                vfunc_iter_nth_child(parent: TreeIter | null, n: number): [boolean, TreeIter];
+                /**
+                 * Sets `iter` to be the parent of `child`.  If `child` is at the toplevel, and
+                 * doesn't have a parent, then `iter` is set to an invalid iterator and %FALSE
+                 * is returned.  `child` will remain a valid node after this function has been
+                 * called.
+                 * @param child The #GtkTreeIter.
+                 */
+                vfunc_iter_parent(child: TreeIter): [boolean, TreeIter];
+                /**
+                 * Lets the tree ref the node.  This is an optional method for models to
+                 * implement.  To be more specific, models may ignore this call as it exists
+                 * primarily for performance reasons.
+                 *
+                 * This function is primarily meant as a way for views to let caching model
+                 * know when nodes are being displayed (and hence, whether or not to cache that
+                 * node.)  For example, a file-system based model would not want to keep the
+                 * entire file-hierarchy in memory, just the sections that are currently being
+                 * displayed by every current view.
+                 *
+                 * A model should be expected to be able to get an iter independent of its
+                 * reffed state.
+                 * @param iter The #GtkTreeIter.
+                 */
+                vfunc_ref_node(iter: TreeIter): void;
+                /**
+                 * Emits the "row-changed" signal on `tree_model`.
+                 * @param path A #GtkTreePath pointing to the changed row
+                 * @param iter A valid #GtkTreeIter pointing to the changed row
+                 */
+                vfunc_row_changed(path: TreePath, iter: TreeIter): void;
+                /**
+                 * Emits the "row-deleted" signal on `tree_model`.  This should be called by
+                 * models after a row has been removed.  The location pointed to by `path`
+                 * should be the location that the row previously was at.  It may not be a
+                 * valid location anymore.
+                 * @param path A #GtkTreePath pointing to the previous location of the deleted row.
+                 */
+                vfunc_row_deleted(path: TreePath): void;
+                /**
+                 * Emits the "row-has-child-toggled" signal on `tree_model`.  This should be
+                 * called by models after the child state of a node changes.
+                 * @param path A #GtkTreePath pointing to the changed row
+                 * @param iter A valid #GtkTreeIter pointing to the changed row
+                 */
+                vfunc_row_has_child_toggled(path: TreePath, iter: TreeIter): void;
+                /**
+                 * Emits the "row-inserted" signal on `tree_model`
+                 * @param path A #GtkTreePath pointing to the inserted row
+                 * @param iter A valid #GtkTreeIter pointing to the inserted row
+                 */
+                vfunc_row_inserted(path: TreePath, iter: TreeIter): void;
+                /**
+                 * Emits the "rows-reordered" signal on `tree_model`.  This should be called by
+                 * models when their rows have been reordered.
+                 * @param path A #GtkTreePath pointing to the tree node whose children have been      reordered
+                 * @param iter A valid #GtkTreeIter pointing to the node whose children have been      reordered, or %NULL if the depth of @path is 0.
+                 * @param new_order an array of integers mapping the current position of each child      to its old position before the re-ordering,      i.e. @new_order<literal>[newpos] = oldpos</literal>.
+                 */
+                vfunc_rows_reordered(path: TreePath, iter: TreeIter, new_order: number): void;
+                /**
+                 * Lets the tree unref the node.  This is an optional method for models to
+                 * implement.  To be more specific, models may ignore this call as it exists
+                 * primarily for performance reasons.
+                 *
+                 * For more information on what this means, see gtk_tree_model_ref_node().
+                 * Please note that nodes that are deleted are not unreffed.
+                 * @param iter The #GtkTreeIter.
+                 */
+                vfunc_unref_node(iter: TreeIter): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -148526,7 +148729,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<TreeModel>;
             prototype: TreeModel;
         }
-        interface TreeModel extends GObject.Object {
+        interface TreeModel extends GObject.Object, TreeModel.Interface {
             // Methods
 
             /**
@@ -148720,149 +148923,6 @@ declare module 'gi://Gtk?version=2.0' {
              * @param iter The #GtkTreeIter.
              */
             unref_node(iter: TreeIter): void;
-
-            // Virtual methods
-
-            /**
-             * Returns the type of the column.
-             * @param index_ The column index.
-             */
-            vfunc_get_column_type(index_: number): GObject.GType;
-            /**
-             * Returns a set of flags supported by this interface.  The flags are a bitwise
-             * combination of #GtkTreeModelFlags.  The flags supported should not change
-             * during the lifecycle of the `tree_model`.
-             */
-            vfunc_get_flags(): TreeModelFlags;
-            /**
-             * Sets `iter` to a valid iterator pointing to `path`.
-             * @param path The #GtkTreePath.
-             */
-            vfunc_get_iter(path: TreePath): [boolean, TreeIter];
-            /**
-             * Returns the number of columns supported by `tree_model`.
-             */
-            vfunc_get_n_columns(): number;
-            /**
-             * Returns a newly-created #GtkTreePath referenced by `iter`.  This path should
-             * be freed with gtk_tree_path_free().
-             * @param iter The #GtkTreeIter.
-             */
-            vfunc_get_path(iter: TreeIter): TreePath;
-            /**
-             * Initializes and sets `value` to that at `column`.
-             * When done with `value,` g_value_unset() needs to be called
-             * to free any allocated memory.
-             * @param iter The #GtkTreeIter.
-             * @param column The column to lookup the value at.
-             */
-            vfunc_get_value(iter: TreeIter, column: number): unknown;
-            /**
-             * Sets `iter` to point to the first child of `parent`.  If `parent` has no
-             * children, %FALSE is returned and `iter` is set to be invalid.  `parent`
-             * will remain a valid node after this function has been called.
-             *
-             * If `parent` is %NULL returns the first node, equivalent to
-             * <literal>gtk_tree_model_get_iter_first (tree_model, iter);</literal>
-             * @param parent The #GtkTreeIter, or %NULL
-             */
-            vfunc_iter_children(parent?: TreeIter | null): [boolean, TreeIter];
-            /**
-             * Returns %TRUE if `iter` has children, %FALSE otherwise.
-             * @param iter The #GtkTreeIter to test for children.
-             */
-            vfunc_iter_has_child(iter: TreeIter): boolean;
-            /**
-             * Returns the number of children that `iter` has.  As a special case, if `iter`
-             * is %NULL, then the number of toplevel nodes is returned.
-             * @param iter The #GtkTreeIter, or %NULL.
-             */
-            vfunc_iter_n_children(iter?: TreeIter | null): number;
-            /**
-             * Sets `iter` to point to the node following it at the current level.  If there
-             * is no next `iter,` %FALSE is returned and `iter` is set to be invalid.
-             * @param iter The #GtkTreeIter.
-             */
-            vfunc_iter_next(iter: TreeIter): boolean;
-            /**
-             * Sets `iter` to be the child of `parent,` using the given index.  The first
-             * index is 0.  If `n` is too big, or `parent` has no children, `iter` is set
-             * to an invalid iterator and %FALSE is returned.  `parent` will remain a valid
-             * node after this function has been called.  As a special case, if `parent` is
-             * %NULL, then the `n<`!-- -->th root node is set.
-             * @param parent The #GtkTreeIter to get the child from, or %NULL.
-             * @param n Then index of the desired child.
-             */
-            vfunc_iter_nth_child(parent: TreeIter | null, n: number): [boolean, TreeIter];
-            /**
-             * Sets `iter` to be the parent of `child`.  If `child` is at the toplevel, and
-             * doesn't have a parent, then `iter` is set to an invalid iterator and %FALSE
-             * is returned.  `child` will remain a valid node after this function has been
-             * called.
-             * @param child The #GtkTreeIter.
-             */
-            vfunc_iter_parent(child: TreeIter): [boolean, TreeIter];
-            /**
-             * Lets the tree ref the node.  This is an optional method for models to
-             * implement.  To be more specific, models may ignore this call as it exists
-             * primarily for performance reasons.
-             *
-             * This function is primarily meant as a way for views to let caching model
-             * know when nodes are being displayed (and hence, whether or not to cache that
-             * node.)  For example, a file-system based model would not want to keep the
-             * entire file-hierarchy in memory, just the sections that are currently being
-             * displayed by every current view.
-             *
-             * A model should be expected to be able to get an iter independent of its
-             * reffed state.
-             * @param iter The #GtkTreeIter.
-             */
-            vfunc_ref_node(iter: TreeIter): void;
-            /**
-             * Emits the "row-changed" signal on `tree_model`.
-             * @param path A #GtkTreePath pointing to the changed row
-             * @param iter A valid #GtkTreeIter pointing to the changed row
-             */
-            vfunc_row_changed(path: TreePath, iter: TreeIter): void;
-            /**
-             * Emits the "row-deleted" signal on `tree_model`.  This should be called by
-             * models after a row has been removed.  The location pointed to by `path`
-             * should be the location that the row previously was at.  It may not be a
-             * valid location anymore.
-             * @param path A #GtkTreePath pointing to the previous location of the deleted row.
-             */
-            vfunc_row_deleted(path: TreePath): void;
-            /**
-             * Emits the "row-has-child-toggled" signal on `tree_model`.  This should be
-             * called by models after the child state of a node changes.
-             * @param path A #GtkTreePath pointing to the changed row
-             * @param iter A valid #GtkTreeIter pointing to the changed row
-             */
-            vfunc_row_has_child_toggled(path: TreePath, iter: TreeIter): void;
-            /**
-             * Emits the "row-inserted" signal on `tree_model`
-             * @param path A #GtkTreePath pointing to the inserted row
-             * @param iter A valid #GtkTreeIter pointing to the inserted row
-             */
-            vfunc_row_inserted(path: TreePath, iter: TreeIter): void;
-            /**
-             * Emits the "rows-reordered" signal on `tree_model`.  This should be called by
-             * models when their rows have been reordered.
-             * @param path A #GtkTreePath pointing to the tree node whose children have been      reordered
-             * @param iter A valid #GtkTreeIter pointing to the node whose children have been      reordered, or %NULL if the depth of @path is 0.
-             * @param new_order an array of integers mapping the current position of each child      to its old position before the re-ordering,      i.e. @new_order<literal>[newpos] = oldpos</literal>.
-             */
-            vfunc_rows_reordered(path: TreePath, iter: TreeIter, new_order: number): void;
-            /**
-             * Lets the tree unref the node.  This is an optional method for models to
-             * implement.  To be more specific, models may ignore this call as it exists
-             * primarily for performance reasons.
-             *
-             * For more information on what this means, see gtk_tree_model_ref_node().
-             * Please note that nodes that are deleted are not unreffed.
-             * @param iter The #GtkTreeIter.
-             */
-            vfunc_unref_node(iter: TreeIter): void;
         }
 
         export const TreeModel: TreeModelNamespace & {
@@ -148870,6 +148930,80 @@ declare module 'gi://Gtk?version=2.0' {
         };
 
         namespace TreeSortable {
+            /**
+             * Interface for implementing TreeSortable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface extends TreeModel.Interface {
+                // Virtual methods
+
+                /**
+                 * Fills in `sort_column_id` and `order` with the current sort column and the
+                 * order. It returns %TRUE unless the `sort_column_id` is
+                 * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID or
+                 * %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
+                 * @param sort_column_id The sort column id to be filled in
+                 * @param order The #GtkSortType to be filled in
+                 */
+                vfunc_get_sort_column_id(sort_column_id: number, order: SortType): boolean;
+                /**
+                 * Returns %TRUE if the model has a default sort function. This is used
+                 * primarily by GtkTreeViewColumns in order to determine if a model can
+                 * go back to the default state, or not.
+                 */
+                vfunc_has_default_sort_func(): boolean;
+                /**
+                 * Sets the default comparison function used when sorting to be `sort_func`.
+                 * If the current sort column id of `sortable` is
+                 * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, then the model will sort using
+                 * this function.
+                 *
+                 * If `sort_func` is %NULL, then there will be no default comparison function.
+                 * This means that once the model  has been sorted, it can't go back to the
+                 * default state. In this case, when the current sort column id of `sortable`
+                 * is %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, the model will be unsorted.
+                 * @param func
+                 * @param destroy Destroy notifier of @user_data, or %NULL
+                 */
+                vfunc_set_default_sort_func(func: TreeIterCompareFunc, destroy?: GLib.DestroyNotify | null): void;
+                /**
+                 * Sets the current sort column to be `sort_column_id`. The `sortable` will
+                 * resort itself to reflect this change, after emitting a
+                 * #GtkTreeSortable::sort-column-changed signal. `sort_column_id` may either be
+                 * a regular column id, or one of the following special values:
+                 * <variablelist>
+                 * <varlistentry>
+                 *   <term>%GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID</term>
+                 *   <listitem>the default sort function will be used, if it is set</listitem>
+                 * </varlistentry>
+                 * <varlistentry>
+                 *   <term>%GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID</term>
+                 *   <listitem>no sorting will occur</listitem>
+                 * </varlistentry>
+                 * </variablelist>
+                 * @param sort_column_id the sort column id to set
+                 * @param order The sort order of the column
+                 */
+                vfunc_set_sort_column_id(sort_column_id: number, order: SortType): void;
+                /**
+                 * Sets the comparison function used when sorting to be `sort_func`. If the
+                 * current sort column id of `sortable` is the same as `sort_column_id,` then
+                 * the model will sort using this function.
+                 * @param sort_column_id the sort column id to set the function for
+                 * @param func
+                 * @param destroy Destroy notifier of @user_data, or %NULL
+                 */
+                vfunc_set_sort_func(
+                    sort_column_id: number,
+                    func: TreeIterCompareFunc,
+                    destroy?: GLib.DestroyNotify | null,
+                ): void;
+                /**
+                 * Emits a #GtkTreeSortable::sort-column-changed signal on `sortable`.
+                 */
+                vfunc_sort_column_changed(): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends TreeModel.ConstructorProps {}
@@ -148879,7 +149013,7 @@ declare module 'gi://Gtk?version=2.0' {
             $gtype: GObject.GType<TreeSortable>;
             prototype: TreeSortable;
         }
-        interface TreeSortable extends TreeModel {
+        interface TreeSortable extends TreeModel, TreeSortable.Interface {
             // Methods
 
             /**
@@ -148949,74 +149083,6 @@ declare module 'gi://Gtk?version=2.0' {
              * Emits a #GtkTreeSortable::sort-column-changed signal on `sortable`.
              */
             sort_column_changed(): void;
-
-            // Virtual methods
-
-            /**
-             * Fills in `sort_column_id` and `order` with the current sort column and the
-             * order. It returns %TRUE unless the `sort_column_id` is
-             * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID or
-             * %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
-             * @param sort_column_id The sort column id to be filled in
-             * @param order The #GtkSortType to be filled in
-             */
-            vfunc_get_sort_column_id(sort_column_id: number, order: SortType): boolean;
-            /**
-             * Returns %TRUE if the model has a default sort function. This is used
-             * primarily by GtkTreeViewColumns in order to determine if a model can
-             * go back to the default state, or not.
-             */
-            vfunc_has_default_sort_func(): boolean;
-            /**
-             * Sets the default comparison function used when sorting to be `sort_func`.
-             * If the current sort column id of `sortable` is
-             * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, then the model will sort using
-             * this function.
-             *
-             * If `sort_func` is %NULL, then there will be no default comparison function.
-             * This means that once the model  has been sorted, it can't go back to the
-             * default state. In this case, when the current sort column id of `sortable`
-             * is %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, the model will be unsorted.
-             * @param func
-             * @param destroy Destroy notifier of @user_data, or %NULL
-             */
-            vfunc_set_default_sort_func(func: TreeIterCompareFunc, destroy?: GLib.DestroyNotify | null): void;
-            /**
-             * Sets the current sort column to be `sort_column_id`. The `sortable` will
-             * resort itself to reflect this change, after emitting a
-             * #GtkTreeSortable::sort-column-changed signal. `sort_column_id` may either be
-             * a regular column id, or one of the following special values:
-             * <variablelist>
-             * <varlistentry>
-             *   <term>%GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID</term>
-             *   <listitem>the default sort function will be used, if it is set</listitem>
-             * </varlistentry>
-             * <varlistentry>
-             *   <term>%GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID</term>
-             *   <listitem>no sorting will occur</listitem>
-             * </varlistentry>
-             * </variablelist>
-             * @param sort_column_id the sort column id to set
-             * @param order The sort order of the column
-             */
-            vfunc_set_sort_column_id(sort_column_id: number, order: SortType): void;
-            /**
-             * Sets the comparison function used when sorting to be `sort_func`. If the
-             * current sort column id of `sortable` is the same as `sort_column_id,` then
-             * the model will sort using this function.
-             * @param sort_column_id the sort column id to set the function for
-             * @param func
-             * @param destroy Destroy notifier of @user_data, or %NULL
-             */
-            vfunc_set_sort_func(
-                sort_column_id: number,
-                func: TreeIterCompareFunc,
-                destroy?: GLib.DestroyNotify | null,
-            ): void;
-            /**
-             * Emits a #GtkTreeSortable::sort-column-changed signal on `sortable`.
-             */
-            vfunc_sort_column_changed(): void;
         }
 
         export const TreeSortable: TreeSortableNamespace & {

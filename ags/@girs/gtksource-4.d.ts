@@ -4390,7 +4390,7 @@ declare module 'gi://GtkSource?version=4' {
                 cancellable?: Gio.Cancellable | null,
                 progress_callback?: Gio.FileProgressCallback | null,
                 progress_callback_notify?: GLib.DestroyNotify | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Loads asynchronously the file or input stream contents into the
              * #GtkSourceBuffer. See the #GAsyncResult documentation to know how to use this
@@ -4424,7 +4424,7 @@ declare module 'gi://GtkSource?version=4' {
                 progress_callback?: Gio.FileProgressCallback | null,
                 progress_callback_notify?: GLib.DestroyNotify | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes a file loading started with gtk_source_file_loader_load_async().
              *
@@ -4593,7 +4593,7 @@ declare module 'gi://GtkSource?version=4' {
                 cancellable?: Gio.Cancellable | null,
                 progress_callback?: Gio.FileProgressCallback | null,
                 progress_callback_notify?: GLib.DestroyNotify | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Saves asynchronously the buffer into the file. See the #GAsyncResult
              * documentation to know how to use this function.
@@ -4625,7 +4625,7 @@ declare module 'gi://GtkSource?version=4' {
                 progress_callback?: Gio.FileProgressCallback | null,
                 progress_callback_notify?: GLib.DestroyNotify | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Finishes a file saving started with gtk_source_file_saver_save_async().
              *
@@ -7536,7 +7536,7 @@ declare module 'gi://GtkSource?version=4' {
             backward_async(
                 iter: Gtk.TextIter,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
+            ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
             /**
              * The asynchronous version of gtk_source_search_context_backward().
              *
@@ -7576,7 +7576,7 @@ declare module 'gi://GtkSource?version=4' {
                 iter: Gtk.TextIter,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
+            ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
             /**
              * Finishes a backward search started with
              * gtk_source_search_context_backward_async().
@@ -7619,7 +7619,7 @@ declare module 'gi://GtkSource?version=4' {
             forward_async(
                 iter: Gtk.TextIter,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
+            ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
             /**
              * The asynchronous version of gtk_source_search_context_forward().
              *
@@ -7659,7 +7659,7 @@ declare module 'gi://GtkSource?version=4' {
                 iter: Gtk.TextIter,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
+            ): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
             /**
              * Finishes a forward search started with
              * gtk_source_search_context_forward_async().
@@ -15251,6 +15251,75 @@ declare module 'gi://GtkSource?version=4' {
         }
 
         namespace CompletionProposal {
+            /**
+             * Interface for implementing CompletionProposal.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Emits the "changed" signal on `proposal`. This should be called by
+                 * implementations whenever the name, icon or info of the proposal has
+                 * changed.
+                 */
+                vfunc_changed(): void;
+                /**
+                 * Get whether two proposal objects are the same.  This is used to (together
+                 * with gtk_source_completion_proposal_hash()) to match proposals in the
+                 * completion model. By default, it uses direct equality (g_direct_equal()).
+                 * @param other a #GtkSourceCompletionProposal.
+                 */
+                vfunc_equal(other: CompletionProposal): boolean;
+                /**
+                 * Gets the #GIcon for the icon of `proposal`.
+                 */
+                vfunc_get_gicon(): Gio.Icon | null;
+                /**
+                 * Gets the #GdkPixbuf for the icon of `proposal`.
+                 */
+                vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
+                /**
+                 * Gets the icon name of `proposal`.
+                 */
+                vfunc_get_icon_name(): string | null;
+                /**
+                 * Gets extra information associated to the proposal. This information will be
+                 * used to present the user with extra, detailed information about the
+                 * selected proposal. The returned string must be freed with g_free().
+                 */
+                vfunc_get_info(): string | null;
+                /**
+                 * Gets the label of `proposal`. The label is shown in the list of proposals as
+                 * plain text. If you need any markup (such as bold or italic text), you have
+                 * to implement gtk_source_completion_proposal_get_markup(). The returned string
+                 * must be freed with g_free().
+                 */
+                vfunc_get_label(): string;
+                /**
+                 * Gets the label of `proposal` with markup. The label is shown in the list of
+                 * proposals and may contain markup. This will be used instead of
+                 * gtk_source_completion_proposal_get_label() if implemented. The returned string
+                 * must be freed with g_free().
+                 */
+                vfunc_get_markup(): string;
+                /**
+                 * Gets the text of `proposal`. The text that is inserted into
+                 * the text buffer when the proposal is activated by the default activation.
+                 * You are free to implement a custom activation handler in the provider and
+                 * not implement this function. For more information, see
+                 * gtk_source_completion_provider_activate_proposal(). The returned string must
+                 * be freed with g_free().
+                 */
+                vfunc_get_text(): string;
+                /**
+                 * Get the hash value of `proposal`. This is used to (together with
+                 * gtk_source_completion_proposal_equal()) to match proposals in the completion
+                 * model. By default, it uses a direct hash (g_direct_hash()).
+                 */
+                vfunc_hash(): number;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -15260,7 +15329,7 @@ declare module 'gi://GtkSource?version=4' {
             $gtype: GObject.GType<CompletionProposal>;
             prototype: CompletionProposal;
         }
-        interface CompletionProposal extends GObject.Object {
+        interface CompletionProposal extends GObject.Object, CompletionProposal.Interface {
             // Methods
 
             /**
@@ -15332,69 +15401,6 @@ declare module 'gi://GtkSource?version=4' {
              * @returns The hash value of @proposal.
              */
             hash(): number;
-
-            // Virtual methods
-
-            /**
-             * Emits the "changed" signal on `proposal`. This should be called by
-             * implementations whenever the name, icon or info of the proposal has
-             * changed.
-             */
-            vfunc_changed(): void;
-            /**
-             * Get whether two proposal objects are the same.  This is used to (together
-             * with gtk_source_completion_proposal_hash()) to match proposals in the
-             * completion model. By default, it uses direct equality (g_direct_equal()).
-             * @param other a #GtkSourceCompletionProposal.
-             */
-            vfunc_equal(other: CompletionProposal): boolean;
-            /**
-             * Gets the #GIcon for the icon of `proposal`.
-             */
-            vfunc_get_gicon(): Gio.Icon | null;
-            /**
-             * Gets the #GdkPixbuf for the icon of `proposal`.
-             */
-            vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
-            /**
-             * Gets the icon name of `proposal`.
-             */
-            vfunc_get_icon_name(): string | null;
-            /**
-             * Gets extra information associated to the proposal. This information will be
-             * used to present the user with extra, detailed information about the
-             * selected proposal. The returned string must be freed with g_free().
-             */
-            vfunc_get_info(): string | null;
-            /**
-             * Gets the label of `proposal`. The label is shown in the list of proposals as
-             * plain text. If you need any markup (such as bold or italic text), you have
-             * to implement gtk_source_completion_proposal_get_markup(). The returned string
-             * must be freed with g_free().
-             */
-            vfunc_get_label(): string;
-            /**
-             * Gets the label of `proposal` with markup. The label is shown in the list of
-             * proposals and may contain markup. This will be used instead of
-             * gtk_source_completion_proposal_get_label() if implemented. The returned string
-             * must be freed with g_free().
-             */
-            vfunc_get_markup(): string;
-            /**
-             * Gets the text of `proposal`. The text that is inserted into
-             * the text buffer when the proposal is activated by the default activation.
-             * You are free to implement a custom activation handler in the provider and
-             * not implement this function. For more information, see
-             * gtk_source_completion_provider_activate_proposal(). The returned string must
-             * be freed with g_free().
-             */
-            vfunc_get_text(): string;
-            /**
-             * Get the hash value of `proposal`. This is used to (together with
-             * gtk_source_completion_proposal_equal()) to match proposals in the completion
-             * model. By default, it uses a direct hash (g_direct_hash()).
-             */
-            vfunc_hash(): number;
         }
 
         export const CompletionProposal: CompletionProposalNamespace & {
@@ -15402,6 +15408,125 @@ declare module 'gi://GtkSource?version=4' {
         };
 
         namespace CompletionProvider {
+            /**
+             * Interface for implementing CompletionProvider.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Activate `proposal` at `iter`. When this functions returns %FALSE, the default
+                 * activation of `proposal` will take place which replaces the word at `iter`
+                 * with the text of `proposal` (see gtk_source_completion_proposal_get_text()).
+                 *
+                 * Here is how the default activation selects the boundaries of the word to
+                 * replace. The end of the word is `iter`. For the start of the word, it depends
+                 * on whether a start iter is defined for `proposal` (see
+                 * gtk_source_completion_provider_get_start_iter()). If a start iter is defined,
+                 * the start of the word is the start iter. Else, the word (as long as possible)
+                 * will contain only alphanumerical and the "_" characters.
+                 * @param proposal a #GtkSourceCompletionProposal.
+                 * @param iter a #GtkTextIter.
+                 */
+                vfunc_activate_proposal(proposal: CompletionProposal, iter: Gtk.TextIter): boolean;
+                /**
+                 * Get with what kind of activation the provider should be activated.
+                 */
+                vfunc_get_activation(): CompletionActivation;
+                /**
+                 * Gets the #GIcon for the icon of `provider`.
+                 */
+                vfunc_get_gicon(): Gio.Icon | null;
+                /**
+                 * Get the #GdkPixbuf for the icon of the `provider`.
+                 */
+                vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
+                /**
+                 * Gets the icon name of `provider`.
+                 */
+                vfunc_get_icon_name(): string | null;
+                /**
+                 * Get a customized info widget to show extra information of a proposal.
+                 * This allows for customized widgets on a proposal basis, although in general
+                 * providers will have the same custom widget for all their proposals and
+                 * `proposal` can be ignored. The implementation of this function is optional.
+                 *
+                 * If this function is not implemented, the default widget is a #GtkLabel. The
+                 * return value of gtk_source_completion_proposal_get_info() is used as the
+                 * content of the #GtkLabel.
+                 *
+                 * <note>
+                 *   <para>
+                 *     If implemented, gtk_source_completion_provider_update_info()
+                 *     <emphasis>must</emphasis> also be implemented.
+                 *   </para>
+                 * </note>
+                 * @param proposal a currently selected #GtkSourceCompletionProposal.
+                 */
+                vfunc_get_info_widget(proposal: CompletionProposal): Gtk.Widget | null;
+                /**
+                 * Get the delay in milliseconds before starting interactive completion for
+                 * this provider. A value of -1 indicates to use the default value as set
+                 * by the #GtkSourceCompletion:auto-complete-delay property.
+                 */
+                vfunc_get_interactive_delay(): number;
+                /**
+                 * Get the name of the provider. This should be a translatable name for
+                 * display to the user. For example: _("Document word completion provider"). The
+                 * returned string must be freed with g_free().
+                 */
+                vfunc_get_name(): string;
+                /**
+                 * Get the provider priority. The priority determines the order in which
+                 * proposals appear in the completion popup. Higher priorities are sorted
+                 * before lower priorities. The default priority is 0.
+                 */
+                vfunc_get_priority(): number;
+                /**
+                 * Get the #GtkTextIter at which the completion for `proposal` starts. When
+                 * implemented, this information is used to position the completion window
+                 * accordingly when a proposal is selected in the completion window. The
+                 * `proposal` text inside the completion window is aligned on `iter`.
+                 *
+                 * If this function is not implemented, the word boundary is taken to position
+                 * the completion window. See gtk_source_completion_provider_activate_proposal()
+                 * for an explanation on the word boundaries.
+                 *
+                 * When the `proposal` is activated, the default handler uses `iter` as the start
+                 * of the word to replace. See
+                 * gtk_source_completion_provider_activate_proposal() for more information.
+                 * @param context a #GtkSourceCompletionContext.
+                 * @param proposal a #GtkSourceCompletionProposal.
+                 */
+                vfunc_get_start_iter(context: CompletionContext, proposal: CompletionProposal): [boolean, Gtk.TextIter];
+                /**
+                 * Get whether the provider match the context of completion detailed in
+                 * `context`.
+                 * @param context a #GtkSourceCompletionContext.
+                 */
+                vfunc_match(context: CompletionContext): boolean;
+                /**
+                 * Populate `context` with proposals from `provider` added with the
+                 * gtk_source_completion_context_add_proposals() function.
+                 * @param context a #GtkSourceCompletionContext.
+                 */
+                vfunc_populate(context: CompletionContext): void;
+                /**
+                 * Update extra information shown in `info` for `proposal`.
+                 *
+                 * <note>
+                 *   <para>
+                 *     This function <emphasis>must</emphasis> be implemented when
+                 *     gtk_source_completion_provider_get_info_widget() is implemented.
+                 *   </para>
+                 * </note>
+                 * @param proposal a #GtkSourceCompletionProposal.
+                 * @param info a #GtkSourceCompletionInfo.
+                 */
+                vfunc_update_info(proposal: CompletionProposal, info: CompletionInfo): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -15411,7 +15536,7 @@ declare module 'gi://GtkSource?version=4' {
             $gtype: GObject.GType<CompletionProvider>;
             prototype: CompletionProvider;
         }
-        interface CompletionProvider extends GObject.Object {
+        interface CompletionProvider extends GObject.Object, CompletionProvider.Interface {
             // Methods
 
             /**
@@ -15535,119 +15660,6 @@ declare module 'gi://GtkSource?version=4' {
              * @param info a #GtkSourceCompletionInfo.
              */
             update_info(proposal: CompletionProposal, info: CompletionInfo): void;
-
-            // Virtual methods
-
-            /**
-             * Activate `proposal` at `iter`. When this functions returns %FALSE, the default
-             * activation of `proposal` will take place which replaces the word at `iter`
-             * with the text of `proposal` (see gtk_source_completion_proposal_get_text()).
-             *
-             * Here is how the default activation selects the boundaries of the word to
-             * replace. The end of the word is `iter`. For the start of the word, it depends
-             * on whether a start iter is defined for `proposal` (see
-             * gtk_source_completion_provider_get_start_iter()). If a start iter is defined,
-             * the start of the word is the start iter. Else, the word (as long as possible)
-             * will contain only alphanumerical and the "_" characters.
-             * @param proposal a #GtkSourceCompletionProposal.
-             * @param iter a #GtkTextIter.
-             */
-            vfunc_activate_proposal(proposal: CompletionProposal, iter: Gtk.TextIter): boolean;
-            /**
-             * Get with what kind of activation the provider should be activated.
-             */
-            vfunc_get_activation(): CompletionActivation;
-            /**
-             * Gets the #GIcon for the icon of `provider`.
-             */
-            vfunc_get_gicon(): Gio.Icon | null;
-            /**
-             * Get the #GdkPixbuf for the icon of the `provider`.
-             */
-            vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
-            /**
-             * Gets the icon name of `provider`.
-             */
-            vfunc_get_icon_name(): string | null;
-            /**
-             * Get a customized info widget to show extra information of a proposal.
-             * This allows for customized widgets on a proposal basis, although in general
-             * providers will have the same custom widget for all their proposals and
-             * `proposal` can be ignored. The implementation of this function is optional.
-             *
-             * If this function is not implemented, the default widget is a #GtkLabel. The
-             * return value of gtk_source_completion_proposal_get_info() is used as the
-             * content of the #GtkLabel.
-             *
-             * <note>
-             *   <para>
-             *     If implemented, gtk_source_completion_provider_update_info()
-             *     <emphasis>must</emphasis> also be implemented.
-             *   </para>
-             * </note>
-             * @param proposal a currently selected #GtkSourceCompletionProposal.
-             */
-            vfunc_get_info_widget(proposal: CompletionProposal): Gtk.Widget | null;
-            /**
-             * Get the delay in milliseconds before starting interactive completion for
-             * this provider. A value of -1 indicates to use the default value as set
-             * by the #GtkSourceCompletion:auto-complete-delay property.
-             */
-            vfunc_get_interactive_delay(): number;
-            /**
-             * Get the name of the provider. This should be a translatable name for
-             * display to the user. For example: _("Document word completion provider"). The
-             * returned string must be freed with g_free().
-             */
-            vfunc_get_name(): string;
-            /**
-             * Get the provider priority. The priority determines the order in which
-             * proposals appear in the completion popup. Higher priorities are sorted
-             * before lower priorities. The default priority is 0.
-             */
-            vfunc_get_priority(): number;
-            /**
-             * Get the #GtkTextIter at which the completion for `proposal` starts. When
-             * implemented, this information is used to position the completion window
-             * accordingly when a proposal is selected in the completion window. The
-             * `proposal` text inside the completion window is aligned on `iter`.
-             *
-             * If this function is not implemented, the word boundary is taken to position
-             * the completion window. See gtk_source_completion_provider_activate_proposal()
-             * for an explanation on the word boundaries.
-             *
-             * When the `proposal` is activated, the default handler uses `iter` as the start
-             * of the word to replace. See
-             * gtk_source_completion_provider_activate_proposal() for more information.
-             * @param context a #GtkSourceCompletionContext.
-             * @param proposal a #GtkSourceCompletionProposal.
-             */
-            vfunc_get_start_iter(context: CompletionContext, proposal: CompletionProposal): [boolean, Gtk.TextIter];
-            /**
-             * Get whether the provider match the context of completion detailed in
-             * `context`.
-             * @param context a #GtkSourceCompletionContext.
-             */
-            vfunc_match(context: CompletionContext): boolean;
-            /**
-             * Populate `context` with proposals from `provider` added with the
-             * gtk_source_completion_context_add_proposals() function.
-             * @param context a #GtkSourceCompletionContext.
-             */
-            vfunc_populate(context: CompletionContext): void;
-            /**
-             * Update extra information shown in `info` for `proposal`.
-             *
-             * <note>
-             *   <para>
-             *     This function <emphasis>must</emphasis> be implemented when
-             *     gtk_source_completion_provider_get_info_widget() is implemented.
-             *   </para>
-             * </note>
-             * @param proposal a #GtkSourceCompletionProposal.
-             * @param info a #GtkSourceCompletionInfo.
-             */
-            vfunc_update_info(proposal: CompletionProposal, info: CompletionInfo): void;
         }
 
         export const CompletionProvider: CompletionProviderNamespace & {
@@ -15655,6 +15667,24 @@ declare module 'gi://GtkSource?version=4' {
         };
 
         namespace StyleSchemeChooser {
+            /**
+             * Interface for implementing StyleSchemeChooser.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the currently-selected scheme.
+                 */
+                vfunc_get_style_scheme(): StyleScheme;
+                /**
+                 * Sets the scheme.
+                 * @param scheme a #GtkSourceStyleScheme
+                 */
+                vfunc_set_style_scheme(scheme: StyleScheme): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15667,7 +15697,7 @@ declare module 'gi://GtkSource?version=4' {
             $gtype: GObject.GType<StyleSchemeChooser>;
             prototype: StyleSchemeChooser;
         }
-        interface StyleSchemeChooser extends GObject.Object {
+        interface StyleSchemeChooser extends GObject.Object, StyleSchemeChooser.Interface {
             // Properties
 
             /**
@@ -15697,18 +15727,6 @@ declare module 'gi://GtkSource?version=4' {
              * @param scheme a #GtkSourceStyleScheme
              */
             set_style_scheme(scheme: StyleScheme): void;
-
-            // Virtual methods
-
-            /**
-             * Gets the currently-selected scheme.
-             */
-            vfunc_get_style_scheme(): StyleScheme;
-            /**
-             * Sets the scheme.
-             * @param scheme a #GtkSourceStyleScheme
-             */
-            vfunc_set_style_scheme(scheme: StyleScheme): void;
         }
 
         export const StyleSchemeChooser: StyleSchemeChooserNamespace & {
@@ -15716,6 +15734,53 @@ declare module 'gi://GtkSource?version=4' {
         };
 
         namespace UndoManager {
+            /**
+             * Interface for implementing UndoManager.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Begin a not undoable action on the buffer. All changes between this call
+                 * and the call to gtk_source_undo_manager_end_not_undoable_action() cannot
+                 * be undone. This function should be re-entrant.
+                 */
+                vfunc_begin_not_undoable_action(): void;
+                /**
+                 * Get whether there are redo operations available.
+                 */
+                vfunc_can_redo(): boolean;
+                /**
+                 * Emits the #GtkSourceUndoManager::can-redo-changed signal.
+                 */
+                vfunc_can_redo_changed(): void;
+                /**
+                 * Get whether there are undo operations available.
+                 */
+                vfunc_can_undo(): boolean;
+                /**
+                 * Emits the #GtkSourceUndoManager::can-undo-changed signal.
+                 */
+                vfunc_can_undo_changed(): void;
+                /**
+                 * Ends a not undoable action on the buffer.
+                 */
+                vfunc_end_not_undoable_action(): void;
+                /**
+                 * Perform a single redo. Calling this function when there are no redo operations
+                 * available is an error. Use gtk_source_undo_manager_can_redo() to find out
+                 * if there are redo operations available.
+                 */
+                vfunc_redo(): void;
+                /**
+                 * Perform a single undo. Calling this function when there are no undo operations
+                 * available is an error. Use gtk_source_undo_manager_can_undo() to find out
+                 * if there are undo operations available.
+                 */
+                vfunc_undo(): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -15725,7 +15790,7 @@ declare module 'gi://GtkSource?version=4' {
             $gtype: GObject.GType<UndoManager>;
             prototype: UndoManager;
         }
-        interface UndoManager extends GObject.Object {
+        interface UndoManager extends GObject.Object, UndoManager.Interface {
             // Methods
 
             /**
@@ -15768,47 +15833,6 @@ declare module 'gi://GtkSource?version=4' {
              * if there are undo operations available.
              */
             undo(): void;
-
-            // Virtual methods
-
-            /**
-             * Begin a not undoable action on the buffer. All changes between this call
-             * and the call to gtk_source_undo_manager_end_not_undoable_action() cannot
-             * be undone. This function should be re-entrant.
-             */
-            vfunc_begin_not_undoable_action(): void;
-            /**
-             * Get whether there are redo operations available.
-             */
-            vfunc_can_redo(): boolean;
-            /**
-             * Emits the #GtkSourceUndoManager::can-redo-changed signal.
-             */
-            vfunc_can_redo_changed(): void;
-            /**
-             * Get whether there are undo operations available.
-             */
-            vfunc_can_undo(): boolean;
-            /**
-             * Emits the #GtkSourceUndoManager::can-undo-changed signal.
-             */
-            vfunc_can_undo_changed(): void;
-            /**
-             * Ends a not undoable action on the buffer.
-             */
-            vfunc_end_not_undoable_action(): void;
-            /**
-             * Perform a single redo. Calling this function when there are no redo operations
-             * available is an error. Use gtk_source_undo_manager_can_redo() to find out
-             * if there are redo operations available.
-             */
-            vfunc_redo(): void;
-            /**
-             * Perform a single undo. Calling this function when there are no undo operations
-             * available is an error. Use gtk_source_undo_manager_can_undo() to find out
-             * if there are undo operations available.
-             */
-            vfunc_undo(): void;
         }
 
         export const UndoManager: UndoManagerNamespace & {

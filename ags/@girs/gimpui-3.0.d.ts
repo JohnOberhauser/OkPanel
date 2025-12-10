@@ -12,6 +12,7 @@
 /// <reference path="./gdk-3.0.d.ts" />
 /// <reference path="./gdkpixbuf-2.0.d.ts" />
 /// <reference path="./atk-1.0.d.ts" />
+/// <reference path="./giounix-2.0.d.ts" />
 /// <reference path="./gimp-3.0.d.ts" />
 /// <reference path="./gegl-0.4.d.ts" />
 /// <reference path="./babl-0.1.d.ts" />
@@ -40,6 +41,7 @@ declare module 'gi://GimpUi?version=3.0' {
     import type Gdk from 'gi://Gdk?version=3.0';
     import type GdkPixbuf from 'gi://GdkPixbuf?version=2.0';
     import type Atk from 'gi://Atk?version=1.0';
+    import type GioUnix from 'gi://GioUnix?version=2.0';
     import type Gimp from 'gi://Gimp?version=3.0';
     import type Gegl from 'gi://Gegl?version=0.4';
     import type Babl from 'gi://Babl?version=0.1';
@@ -1699,6 +1701,24 @@ declare module 'gi://GimpUi?version=3.0' {
          * @returns A new #GtkTextBuffer.
          */
         function prop_text_buffer_new(config: GObject.Object, property_name: string, max_len: number): Gtk.TextBuffer;
+        /**
+         * Creates a [class`Gtk`.ToggleButton] that sets the specified boolean
+         * property.
+         *
+         * If `icon_name` is %NULL, `label` will be used. If `label` is %NULL too,
+         * the `property_name'`s nick will be used as label.
+         * @param config Object to which property is attached.
+         * @param property_name Name of boolean property controlled by the toggle button.
+         * @param icon_name Icon to display in the toggle.
+         * @param label Label to give the toggle (including mnemonic).
+         * @returns The newly #GtkToggleButton.
+         */
+        function prop_toggle_new(
+            config: GObject.Object,
+            property_name: string,
+            icon_name: string,
+            label: string,
+        ): [Gtk.Widget, Gtk.Widget | null];
         /**
          * Creates a #GimpUnitComboBox to set and display the value of a Unit
          * property.  See gimp_unit_combo_box_new() for more information.
@@ -14384,7 +14404,7 @@ declare module 'gi://GimpUi?version=3.0' {
 
             /**
              * Allows dragging the color displayed with buttons identified by
-             * `drag_mask`. The drag supports targets of type "application/x-color".
+             * `drag_mask`. The drag supports targets of type "application/x-geglcolor".
              *
              * Note that setting a `drag_mask` of 0 disables the drag ability.
              * @param drag_mask The bitmask of buttons that can start the drag.
@@ -89794,7 +89814,7 @@ declare module 'gi://GimpUi?version=3.0' {
              * - %G_TYPE_PARAM_BOOLEAN:
              *     * %GTK_TYPE_CHECK_BUTTON (default)
              *     * %GTK_TYPE_SWITCH
-             * - %G_TYPE_PARAM_INT or %G_TYPE_PARAM_DOUBLE:
+             * - %G_TYPE_PARAM_INT, %G_TYPE_PARAM_UINT, or %G_TYPE_PARAM_DOUBLE:
              *     * %GIMP_TYPE_LABEL_SPIN (default): a spin button with a label.
              *     * %GIMP_TYPE_SCALE_ENTRY: a scale entry with label.
              *     * %GIMP_TYPE_SPIN_SCALE: a spin scale with label embedded.
@@ -89803,8 +89823,8 @@ declare module 'gi://GimpUi?version=3.0' {
              *     * %GIMP_TYPE_LABEL_ENTRY (default): an entry with a label.
              *     * %GTK_TYPE_ENTRY: an entry with no label.
              *     * %GTK_TYPE_TEXT_VIEW: a text view with no label.
-             * - %GIMP_TYPE_CHOICE:
-             *     * %GTK_TYPE_COMBO_BOX (default): a combo box displaying every
+             * - %GIMP_TYPE_CHOICE (default will depend on the number of choices):
+             *     * %GTK_TYPE_COMBO_BOX: a combo box displaying every
              *       choice.
              *     * %GIMP_TYPE_INT_RADIO_FRAME: a frame with radio buttons.
              * - %GEGL_TYPE_COLOR:

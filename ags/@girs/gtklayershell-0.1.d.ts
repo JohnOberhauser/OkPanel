@@ -162,6 +162,7 @@ declare module 'gi://GtkLayerShell?version=0.1' {
          * @returns version of the zwlr_layer_shell_v1 protocol supported by the compositor or 0 if the protocol is not supported.
          */
         function get_protocol_version(): number;
+        function get_respect_close(window: Gtk.Window): boolean;
         function get_zwlr_layer_surface_v1(window: Gtk.Window): any | null;
         /**
          * Set the `window` up to be a layer surface once it is mapped. this must be called before
@@ -256,6 +257,17 @@ declare module 'gi://GtkLayerShell?version=0.1' {
          * @param name_space The namespace of this layer surface.
          */
         function set_namespace(window: Gtk.Window, name_space: string): void;
+        /**
+         * Compositors may send the `zwlr_layer_surface_v1.closed` event in some cases (such as
+         * when an output is destroyed). Prior to v0.10 this always triggered a GTK `delete-event`
+         * signal, which would destroy the window if not intercepted by application code. In v0.10+
+         * this behavior is disabled by default, and can be turned back on by calling this
+         * function with %TRUE. To handle the `.closed` event without destroying your window
+         * turn respect_close on and connect a `delete-event` listener that returns %TRUE.
+         * @param window A layer surface.
+         * @param respect_close If to forward the .closed event to GTK.
+         */
+        function set_respect_close(window: Gtk.Window, respect_close: boolean): void;
         /**
          * Commits a surface state if there's no pending commit scheduled by the GTK.
          * You almost never need to call this; the only known case is when the surface is in a state

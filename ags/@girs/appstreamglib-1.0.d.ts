@@ -6308,7 +6308,7 @@ declare module 'gi://AppStreamGlib?version=1.0' {
              * @param flags #AsStoreLoadFlags, e.g. %AS_STORE_LOAD_FLAG_APP_INFO_SYSTEM
              * @param cancellable a #GCancellable.
              */
-            load_async(flags: StoreLoadFlags | null, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            load_async(flags: StoreLoadFlags | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously loads the store from the default locations.
              * @param flags #AsStoreLoadFlags, e.g. %AS_STORE_LOAD_FLAG_APP_INFO_SYSTEM
@@ -6330,7 +6330,7 @@ declare module 'gi://AppStreamGlib?version=1.0' {
                 flags: StoreLoadFlags | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Retrieve the result of as_store_load_async().
              * @param result A #GAsyncResult
@@ -6349,7 +6349,7 @@ declare module 'gi://AppStreamGlib?version=1.0' {
              * @param path A path to load
              * @param cancellable a #GCancellable.
              */
-            load_path_async(path: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
+            load_path_async(path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
             /**
              * Asynchronously loads the store from a specific path.
              * @param path A path to load
@@ -6371,7 +6371,7 @@ declare module 'gi://AppStreamGlib?version=1.0' {
                 path: string,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Retrieve the result of as_store_load_path_async().
              * @param result A #GAsyncResult

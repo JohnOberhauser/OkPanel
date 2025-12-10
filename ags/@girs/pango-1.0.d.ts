@@ -544,6 +544,31 @@ declare module 'gi://Pango?version=1.0' {
             END,
         }
         /**
+         * Specifies whether a font should or should not have color glyphs.
+         */
+
+        /**
+         * Specifies whether a font should or should not have color glyphs.
+         */
+        export namespace FontColor {
+            export const $gtype: GObject.GType<FontColor>;
+        }
+
+        enum FontColor {
+            /**
+             * The font should not have color glyphs
+             */
+            FORBIDDEN,
+            /**
+             * The font should have color glyphs
+             */
+            REQUIRED,
+            /**
+             * The font may or may not use color
+             */
+            DONT_CARE,
+        }
+        /**
          * An enumeration that affects font sizes for superscript
          * and subscript positioning and for (emulated) Small Caps.
          */
@@ -2180,6 +2205,9 @@ declare module 'gi://Pango?version=1.0' {
          * "Not-Rotated", "South", "Upside-Down", "North", "Rotated-Left",
          * "East", "Rotated-Right", "West".
          *
+         * The following words are understood as color values:
+         * "With-Color", "Without-Color".
+         *
          * VARIATIONS is a comma-separated list of font variations
          * of the form `‍`axis1=value,axis2=value,...
          *
@@ -2923,7 +2951,7 @@ declare module 'gi://Pango?version=1.0' {
          */
         function version_string(): string;
         interface AttrDataCopyFunc {
-            (): any | null;
+            (user_data?: any | null): any | null;
         }
         interface AttrFilterFunc {
             (attribute: Attribute): boolean;
@@ -2981,6 +3009,10 @@ declare module 'gi://Pango?version=1.0' {
              * OpenType font features are specified.
              */
             FEATURES,
+            /**
+             * Font color is specified.
+             */
+            COLOR,
         }
         /**
          * Flags that influence the behavior of [func`Pango`.Layout.deserialize].
@@ -7539,6 +7571,9 @@ declare module 'gi://Pango?version=1.0' {
              * "Not-Rotated", "South", "Upside-Down", "North", "Rotated-Left",
              * "East", "Rotated-Right", "West".
              *
+             * The following words are understood as color values:
+             * "With-Color", "Without-Color".
+             *
              * VARIATIONS is a comma-separated list of font variations
              * of the form `‍`axis1=value,axis2=value,...
              *
@@ -7609,6 +7644,13 @@ declare module 'gi://Pango?version=1.0' {
              * Frees a font description.
              */
             free(): void;
+            /**
+             * Returns the color field of the font description.
+             *
+             * This field determines whether the font description should
+             * match fonts that have color glyphs, or fonts that don't.
+             */
+            get_color(): FontColor;
             /**
              * Gets the family name field of a font description.
              *
@@ -7727,6 +7769,14 @@ declare module 'gi://Pango?version=1.0' {
              * @param size the new size, in Pango units. There are %PANGO_SCALE Pango units   in one device unit. For an output backend where a device unit is a pixel,   a @size value of 10 * PANGO_SCALE gives a 10 pixel font.
              */
             set_absolute_size(size: number): void;
+            /**
+             * Sets the color field of a font description.
+             *
+             * This field determines whether the font description should
+             * match fonts that have color glyphs, or fonts that don't.
+             * @param color the `PangoFontColor` value
+             */
+            set_color(color: FontColor | null): void;
             /**
              * Sets the family name field of a font description.
              *

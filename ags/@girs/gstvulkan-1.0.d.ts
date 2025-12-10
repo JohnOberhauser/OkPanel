@@ -1147,10 +1147,11 @@ declare module 'gi://GstVulkan?version=1.0' {
              * Execute `compare_func` over the list of windows stored by `display`.  The
              * first argument to `compare_func` is the #GstVulkanWindow being checked and the
              * second argument is `data`.
+             * @param data some data to pass to @compare_func
              * @param compare_func a comparison function to run
              * @returns The first #GstVulkanWindow that                                      @compare_func matches, or %NULL
              */
-            find_window(compare_func: GLib.CompareFunc): VulkanWindow | null;
+            find_window(data: any | null, compare_func: GLib.CompareFunc): VulkanWindow | null;
             get_handle(): any | null;
             get_handle_type(): VulkanDisplayType;
             remove_window(window: VulkanWindow): boolean;

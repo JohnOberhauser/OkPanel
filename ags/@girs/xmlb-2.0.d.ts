@@ -1975,7 +1975,8 @@ declare module 'gi://Xmlb?version=2.0' {
              *
              * ```c
              * XbNodeAttrIter iter;
-             * const gchar *attr_name, *attr_value;
+             * const gchar *attr_name;
+             * const gchar *attr_value;
              *
              * xb_node_attr_iter_init (&iter, node);
              * while (xb_node_attr_iter_next (&iter, &attr_name, &attr_value)) {

@@ -1278,7 +1278,7 @@ declare module 'gi://ColordGtk?version=1.0' {
              * @param widget a #GtkWidget
              * @param cancellable a #GCancellable or %NULL
              */
-            get_profile(widget: Gtk.Widget, cancellable?: Gio.Cancellable | null): Promise<Colord.Profile>;
+            get_profile(widget: Gtk.Widget, cancellable?: Gio.Cancellable | null): globalThis.Promise<Colord.Profile>;
             /**
              * Gets the screen profile that should be used for the widget,
              * which corresponds to the screen output the widget most covers.
@@ -1314,7 +1314,7 @@ declare module 'gi://ColordGtk?version=1.0' {
                 widget: Gtk.Widget,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<Colord.Profile> | void;
+            ): globalThis.Promise<Colord.Profile> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult

@@ -337,6 +337,20 @@ declare module 'gi://Notify?version=0.7' {
              */
             close(): boolean;
             /**
+             * Gets an application launch context for the notification action
+             * activation.
+             *
+             * If an an action is currently being activated, gets a
+             * a [class`Gio`.AppLaunchContext] that can be used to launch applications using
+             * the current activation token (see [method`Notification`.get_activation_token]).
+             *
+             * This function is intended to be used in a [callback`ActionCallback]` to get
+             * the launch context for the activated action, if the notification daemon
+             * supports it.
+             * @returns The [class@Gio.AppLaunchContext] for  the current activation token, or %NULL if unset
+             */
+            get_activation_app_launch_context(): Gio.AppLaunchContext | null;
+            /**
              * Gets the activation token of the notification.
              *
              * If an an action is currently being activated, return the activation token.

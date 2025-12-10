@@ -1575,7 +1575,7 @@ declare module 'gi://ICal?version=3.0' {
         function icalproperty_string_to_method(str: string): property_method;
         function icalproperty_string_to_status(string: string): property_status;
         function icalproperty_value_kind_to_kind(kind: value_kind | null): property_kind;
-        function icalrecur_expand_recurrence(rule: string, start: never, count: number, array: never): number;
+        function icalrecur_expand_recurrence(rule: string, start: number, count: number, array: number): number;
         function icalrecur_freq_to_string(kind: recurrencetype_frequency | null): string;
         function icalrecur_iterator_free(arg0: recur_iterator): void;
         function icalrecur_iterator_next(arg0: recur_iterator): any | null;
@@ -1603,8 +1603,8 @@ declare module 'gi://ICal?version=3.0' {
         function icaltime_adjust(tt: any | null, days: number, hours: number, minutes: number, seconds: number): void;
         function icaltime_as_ical_string(tt?: any | null): string;
         function icaltime_as_ical_string_r(tt?: any | null): string;
-        function icaltime_as_timet(arg0?: any | null): never;
-        function icaltime_as_timet_with_zone(tt: any | null, zone: timezone): never;
+        function icaltime_as_timet(arg0?: any | null): number;
+        function icaltime_as_timet_with_zone(tt: any | null, zone: timezone): number;
         function icaltime_compare(a?: any | null, b?: any | null): number;
         function icaltime_compare_date_only(a?: any | null, b?: any | null): number;
         function icaltime_compare_date_only_tz(a: any | null, b: any | null, tz: timezone): number;
@@ -1677,7 +1677,7 @@ declare module 'gi://ICal?version=3.0' {
          * @param str
          */
         function icaltime_from_string(str: string): any | null;
-        function icaltime_from_timet_with_zone(tm: never, is_date: number, zone: timezone): any | null;
+        function icaltime_from_timet_with_zone(tm: number, is_date: number, zone: timezone): any | null;
         function icaltime_get_timezone(t?: any | null): timezone;
         function icaltime_get_tzid(t?: any | null): string;
         function icaltime_is_date(t?: any | null): number;
@@ -2193,12 +2193,19 @@ declare module 'gi://ICal?version=3.0' {
 
             // Fields
 
-            start: never;
-            end: never;
+            start: number;
+            end: number;
             is_busy: number;
 
             // Constructors
 
+            constructor(
+                properties?: Partial<{
+                    start: number;
+                    end: number;
+                    is_busy: number;
+                }>,
+            );
             _init(...args: any[]): void;
         }
 

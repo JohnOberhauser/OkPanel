@@ -899,7 +899,7 @@ declare module 'gi://GstGL?version=1.0' {
             (params?: any | null): void;
         }
         interface GLAsyncDebugLogGetMessage {
-            (): string;
+            (user_data?: any | null): string;
         }
         interface GLBaseMemoryAllocatorAllocFunction {
             (allocator: GLBaseMemoryAllocator, params: GLAllocationParams): GLBaseMemory | null;
@@ -2315,10 +2315,11 @@ declare module 'gi://GstGL?version=1.0' {
              * Execute `compare_func` over the list of windows stored by `display`.  The
              * first argument to `compare_func` is the #GstGLWindow being checked and the
              * second argument is `data`.
+             * @param data some data to pass to @compare_func
              * @param compare_func a comparison function to run
              * @returns The first #GstGLWindow that causes a match          from @compare_func
              */
-            find_window(compare_func: GLib.CompareFunc): GLWindow | null;
+            find_window(data: any | null, compare_func: GLib.CompareFunc): GLWindow | null;
             /**
              * see gst_gl_display_filter_gl_api() for what the returned value represents
              * @returns the #GstGLAPI configured for @display
@@ -2338,10 +2339,11 @@ declare module 'gi://GstGL?version=1.0' {
              * Execute `compare_func` over the list of windows stored by `display`.  The
              * first argument to `compare_func` is the #GstGLWindow being checked and the
              * second argument is `data`.
+             * @param data some data to pass to @compare_func
              * @param compare_func a comparison function to run
              * @returns The first #GstGLWindow that causes a match          from @compare_func
              */
-            retrieve_window(compare_func: GLib.CompareFunc): GLWindow | null;
+            retrieve_window(data: any | null, compare_func: GLib.CompareFunc): GLWindow | null;
         }
 
         namespace GLFilter {

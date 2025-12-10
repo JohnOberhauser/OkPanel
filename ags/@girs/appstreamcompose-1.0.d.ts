@@ -2,7 +2,6 @@
 /// <reference path="./gobject-2.0.d.ts" />
 /// <reference path="./glib-2.0.d.ts" />
 /// <reference path="./gmodule-2.0.d.ts" />
-/// <reference path="./gdkpixbuf-2.0.d.ts" />
 /// <reference path="./appstream-1.0.d.ts" />
 
 /**
@@ -20,48 +19,12 @@ declare module 'gi://AppStreamCompose?version=1.0' {
     import type GObject from 'gi://GObject?version=2.0';
     import type GLib from 'gi://GLib?version=2.0';
     import type GModule from 'gi://GModule?version=2.0';
-    import type GdkPixbuf from 'gi://GdkPixbuf?version=2.0';
     import type AppStream from 'gi://AppStream?version=1.0';
 
     export namespace AppStreamCompose {
         /**
          * AppStreamCompose-1.0
          */
-
-        /**
-         * A drawing error.
-         */
-        class CanvasError extends GLib.Error {
-            static $gtype: GObject.GType<CanvasError>;
-
-            // Static fields
-
-            /**
-             * Generic failure.
-             */
-            static FAILED: number;
-            /**
-             * Drawing operation failed.
-             */
-            static DRAWING: number;
-            /**
-             * Issue with font or font selection.
-             */
-            static FONT: number;
-            /**
-             * The requested action was not supported.
-             */
-            static UNSUPPORTED: number;
-
-            // Constructors
-
-            constructor(options: { message: string; code: number });
-            _init(...args: any[]): void;
-
-            // Static methods
-
-            static quark(): GLib.Quark;
-        }
 
         /**
          * A metadata composition error.
@@ -163,13 +126,17 @@ declare module 'gi://AppStreamCompose?version=1.0' {
              */
             PNG,
             /**
-             * JPEG format
+             * JPEG-XL format
              */
-            JPEG,
+            JXL,
             /**
-             * GIF format
+             * AVIF format
              */
-            GIF,
+            AVIF,
+            /**
+             * WebP format
+             */
+            WEBP,
             /**
              * SVG format
              */
@@ -179,13 +146,13 @@ declare module 'gi://AppStreamCompose?version=1.0' {
              */
             SVGZ,
             /**
-             * WebP format
+             * JPEG format
              */
-            WEBP,
+            JPEG,
             /**
-             * AVIF format
+             * GIF format
              */
-            AVIF,
+            GIF,
             /**
              * XPM format
              */
@@ -203,7 +170,6 @@ declare module 'gi://AppStreamCompose?version=1.0' {
          * @param checksum a MD5 hashsum as string generated from the component's combined metadata.
          */
         function build_component_global_id(component_id: string, checksum: string): string;
-        function canvas_error_quark(): GLib.Quark;
         function compose_error_quark(): GLib.Quark;
         /**
          * Generate a filename from a web-URL that can be used to store the
@@ -323,13 +289,21 @@ declare module 'gi://AppStreamCompose?version=1.0' {
          */
         function image_format_to_string(format: ImageFormat | null): string;
         /**
-         * Optimizes a PNG graphic for size with optipng, if its binary
-         * is available and this feature is enabled.
-         * @param fname Filename of the PNG image to optimize.
+         * Renders SVG data from a stream to a file in a specific format.
+         * @param stream Input stream with SVG data.
+         * @param width Target width.
+         * @param height Target height.
+         * @param format Target image format, e.g. %ASC_IMAGE_FORMAT_PNG
+         * @param filename Filename to write to.
+         * @returns %TRUE for success
          */
-        function optimize_png(fname: string): boolean;
-        function pixbuf_blur(src: GdkPixbuf.Pixbuf, radius: number, iterations: number): void;
-        function pixbuf_sharpen(src: GdkPixbuf.Pixbuf, radius: number, amount: number): void;
+        function render_svg_to_file(
+            stream: Gio.InputStream,
+            width: number,
+            height: number,
+            format: ImageFormat | null,
+            filename: string,
+        ): boolean;
         interface CheckMetadataEarlyFn {
             (cres: Result, unit: Unit): void;
         }
@@ -416,75 +390,6 @@ declare module 'gi://AppStreamCompose?version=1.0' {
              */
             BLUR,
         }
-        namespace Canvas {
-            // Signal signatures
-            interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-            // Constructor properties interface
-
-            interface ConstructorProps extends GObject.Object.ConstructorProps {}
-        }
-
-        class Canvas extends GObject.Object {
-            static $gtype: GObject.GType<Canvas>;
-
-            /**
-             * Compile-time signal type information.
-             *
-             * This instance property is generated only for TypeScript type checking.
-             * It is not defined at runtime and should not be accessed in JS code.
-             * @internal
-             */
-            $signals: Canvas.SignalSignatures;
-
-            // Constructors
-
-            constructor(properties?: Partial<Canvas.ConstructorProps>, ...args: any[]);
-
-            _init(...args: any[]): void;
-
-            static ['new'](width: number, height: number): Canvas;
-
-            // Signals
-
-            connect<K extends keyof Canvas.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
-            ): number;
-            connect(signal: string, callback: (...args: any[]) => any): number;
-            connect_after<K extends keyof Canvas.SignalSignatures>(
-                signal: K,
-                callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
-            ): number;
-            connect_after(signal: string, callback: (...args: any[]) => any): number;
-            emit<K extends keyof Canvas.SignalSignatures>(
-                signal: K,
-                ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-            ): void;
-            emit(signal: string, ...args: any[]): void;
-
-            // Methods
-
-            /**
-             * Gets the canvas height.
-             */
-            get_height(): number;
-            /**
-             * Gets the canvas width.
-             */
-            get_width(): number;
-            /**
-             * Render an SVG graphic from the SVG data provided.
-             * @param stream SVG data input stream.
-             */
-            render_svg(stream: Gio.InputStream): boolean;
-            /**
-             * Save canvas to PNG file.
-             * @param fname Filename to save to.
-             */
-            save_png(fname: string): boolean;
-        }
-
         namespace Compose {
             // Signal signatures
             interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -716,6 +621,9 @@ declare module 'gi://AppStreamCompose?version=1.0' {
              * This may be useful in case a special language pack layout is used,
              * but is generally not necessary to be set explicitly, as locale
              * will be found in the unit where the metadata is by default.
+             *
+             * Do not forget to open the locale unit, before running compose
+             * actions with it!
              * @param locale_unit the unit used for locale processing.
              */
             set_locale_unit(locale_unit: Unit): void;
@@ -1018,12 +926,13 @@ declare module 'gi://AppStreamCompose?version=1.0' {
             static new_from_data(
                 data: any | null,
                 len: number,
-                dest_size: number,
-                compressed: boolean,
+                dest_width: number,
+                dest_height: number,
                 flags: ImageLoadFlags,
+                format_hint: ImageFormat,
             ): Image;
 
-            static new_from_file(fname: string, dest_size: number, flags: ImageLoadFlags): Image;
+            static new_from_file(fname: string, dest_width: number, dest_height: number, flags: ImageLoadFlags): Image;
 
             // Signals
 
@@ -1058,25 +967,22 @@ declare module 'gi://AppStreamCompose?version=1.0' {
              */
             get_height(): number;
             /**
-             * Gets the image pixbuf if set.
-             * @returns the #GdkPixbuf, or %NULL
-             */
-            get_pixbuf(): GdkPixbuf.Pixbuf;
-            /**
              * Gets the image width.
              */
             get_width(): number;
             /**
              * Reads an image from a file.
              * @param filename filename to read from
-             * @param dest_size The size of the constructed pixbuf, or 0 for the native size
-             * @param src_size_min The smallest source size allowed, or 0 for none
+             * @param dest_width The suggested width of the constructed pixbuf, or 0 for the native size
+             * @param dest_height The suggested height of the constructed pixbuf, or 0 for the native size
+             * @param src_size_min The smallest source size (width or height) allowed, or 0 for no limit
              * @param flags a #AscImageLoadFlags, e.g. %ASC_IMAGE_LOAD_FLAG_NONE
              * @returns %TRUE for success
              */
             load_filename(
                 filename: string,
-                dest_size: number,
+                dest_width: number,
+                dest_height: number,
                 src_size_min: number,
                 flags: ImageLoadFlags | null,
             ): boolean;
@@ -1089,14 +995,6 @@ declare module 'gi://AppStreamCompose?version=1.0' {
              * @returns %TRUE for success
              */
             save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags | null): boolean;
-            /**
-             * Resamples a pixbuf to a specific size.
-             * @param width target width, or 0 for default
-             * @param height target height, or 0 for default
-             * @param flags some #AscImageSaveFlags values, e.g. %ASC_IMAGE_SAVE_FLAG_PAD_16_9
-             * @returns A #GdkPixbuf of the specified size
-             */
-            save_pixbuf(width: number, height: number, flags: ImageSaveFlags | null): GdkPixbuf.Pixbuf;
             /**
              * Scale the image to the given size.
              * @param new_width The new width.
@@ -1121,11 +1019,6 @@ declare module 'gi://AppStreamCompose?version=1.0' {
              * @param new_width The new width.
              */
             scale_to_width(new_width: number): void;
-            /**
-             * Sets the image pixbuf.
-             * @param pixbuf the #GdkPixbuf, or %NULL
-             */
-            set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
         }
 
         namespace Result {
@@ -1483,7 +1376,6 @@ declare module 'gi://AppStreamCompose?version=1.0' {
             set_user_data(user_data?: any | null): void;
         }
 
-        type CanvasClass = typeof Canvas;
         type ComposeClass = typeof Compose;
         type DirectoryUnitClass = typeof DirectoryUnit;
         type HintClass = typeof Hint;

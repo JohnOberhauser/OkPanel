@@ -1660,7 +1660,7 @@ declare module 'gi://Colorhug?version=1.0' {
             buffer_out: number,
             buffer_out_len: number,
             cancellable?: Gio.Cancellable | null,
-        ): Promise<boolean>;
+        ): globalThis.Promise<boolean>;
         /**
          * Sends a message to the device and waits for a reply.
          * @param device A #GUsbDevice
@@ -1702,7 +1702,7 @@ declare module 'gi://Colorhug?version=1.0' {
             buffer_out_len: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<GUsb.Device> | null,
-        ): Promise<boolean> | void;
+        ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
          * @param device a #GUsbDevice instance.
@@ -1813,14 +1813,10 @@ declare module 'gi://Colorhug?version=1.0' {
             BLUE,
         }
         namespace DeviceQueue {
-            // Signal callback interfaces
-
-            interface DeviceFailed {
-                (object: GObject.Object, p0: string): void;
-            }
-
-            interface ProgressChanged {
-                (object: number): void;
+            // Signal signatures
+            interface SignalSignatures extends GObject.Object.SignalSignatures {
+                'device-failed': (arg0: GObject.Object, arg1: string) => void;
+                'progress-changed': (arg0: number) => void;
             }
 
             // Constructor properties interface
@@ -1830,6 +1826,15 @@ declare module 'gi://Colorhug?version=1.0' {
 
         class DeviceQueue extends GObject.Object {
             static $gtype: GObject.GType<DeviceQueue>;
+
+            /**
+             * Compile-time signal type information.
+             *
+             * This instance property is generated only for TypeScript type checking.
+             * It is not defined at runtime and should not be accessed in JS code.
+             * @internal
+             */
+            $signals: DeviceQueue.SignalSignatures;
 
             // Constructors
 
@@ -1841,21 +1846,21 @@ declare module 'gi://Colorhug?version=1.0' {
 
             // Signals
 
-            connect(id: string, callback: (...args: any[]) => any): number;
-            connect_after(id: string, callback: (...args: any[]) => any): number;
-            emit(id: string, ...args: any[]): void;
-            connect(
-                signal: 'device-failed',
-                callback: (_source: this, object: GObject.Object, p0: string) => void,
+            connect<K extends keyof DeviceQueue.SignalSignatures>(
+                signal: K,
+                callback: GObject.SignalCallback<this, DeviceQueue.SignalSignatures[K]>,
             ): number;
-            connect_after(
-                signal: 'device-failed',
-                callback: (_source: this, object: GObject.Object, p0: string) => void,
+            connect(signal: string, callback: (...args: any[]) => any): number;
+            connect_after<K extends keyof DeviceQueue.SignalSignatures>(
+                signal: K,
+                callback: GObject.SignalCallback<this, DeviceQueue.SignalSignatures[K]>,
             ): number;
-            emit(signal: 'device-failed', object: GObject.Object, p0: string): void;
-            connect(signal: 'progress-changed', callback: (_source: this, object: number) => void): number;
-            connect_after(signal: 'progress-changed', callback: (_source: this, object: number) => void): number;
-            emit(signal: 'progress-changed', object: number): void;
+            connect_after(signal: string, callback: (...args: any[]) => any): number;
+            emit<K extends keyof DeviceQueue.SignalSignatures>(
+                signal: K,
+                ...args: GObject.GjsParameters<DeviceQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+            ): void;
+            emit(signal: string, ...args: any[]): void;
 
             // Virtual methods
 
@@ -2108,7 +2113,7 @@ declare module 'gi://Colorhug?version=1.0' {
             process_async(
                 process_flags: DeviceQueueProcessFlags | null,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Processes all commands in the command queue.
              * @param process_flags
@@ -2130,7 +2135,7 @@ declare module 'gi://Colorhug?version=1.0' {
                 process_flags: DeviceQueueProcessFlags | null,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult

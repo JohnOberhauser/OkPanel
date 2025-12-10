@@ -6297,7 +6297,7 @@ declare module 'gi://Handy?version=1' {
                 size: number,
                 scale_factor: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<GdkPixbuf.Pixbuf>;
+            ): globalThis.Promise<GdkPixbuf.Pixbuf>;
             /**
              * Renders asynchronously `self` into a pixbuf at `size` and `scale_factor`.
              *
@@ -6327,7 +6327,7 @@ declare module 'gi://Handy?version=1' {
                 scale_factor: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<GdkPixbuf.Pixbuf> | void;
+            ): globalThis.Promise<GdkPixbuf.Pixbuf> | void;
             /**
              * Finishes an asynchronous draw of an avatar to a pixbuf.
              * @param async_result a [iface@Gio.AsyncResult]
@@ -55903,6 +55903,65 @@ declare module 'gi://Handy?version=1' {
         type WindowClass = typeof Window;
         type WindowHandleClass = typeof WindowHandle;
         namespace Swipeable {
+            /**
+             * Interface for implementing Swipeable.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * Gets the progress `self` will snap back to after the gesture is canceled.
+                 */
+                vfunc_get_cancel_progress(): number;
+                /**
+                 * Gets the swipe distance of `self`.
+                 *
+                 * This corresponds to how many pixels 1 unit represents.
+                 */
+                vfunc_get_distance(): number;
+                /**
+                 * Gets the current progress of `self`.
+                 */
+                vfunc_get_progress(): number;
+                /**
+                 * Gets the snap points of `self`.
+                 *
+                 * Each snap point represents a progress value that is considered acceptable to
+                 * end the swipe on.
+                 */
+                vfunc_get_snap_points(): number[];
+                /**
+                 * Gets the area `self` can start a swipe from for the given direction and
+                 * gesture type.
+                 *
+                 * This can be used to restrict swipes to only be possible from a certain area,
+                 * for example, to only allow edge swipes, or to have a draggable element and
+                 * ignore swipes elsewhere.
+                 *
+                 * Swipe area is only considered for direct swipes (as in, not initiated by
+                 * [class`SwipeGroup]`).
+                 *
+                 * If not implemented, the default implementation returns the allocation of
+                 * `self,` allowing swipes from anywhere.
+                 * @param navigation_direction the direction of the swipe
+                 * @param is_drag whether the swipe is caused by a dragging gesture
+                 */
+                vfunc_get_swipe_area(navigation_direction: NavigationDirection, is_drag: boolean): Gdk.Rectangle;
+                /**
+                 * Gets the [class`SwipeTracker]` used by this swipeable widget.
+                 */
+                vfunc_get_swipe_tracker(): SwipeTracker;
+                /**
+                 * Switches to child with index `index`.
+                 *
+                 * See [signal`Swipeable:`:child-switched].
+                 * @param index the index of the child to switch to
+                 * @param duration animation duration, in milliseconds
+                 */
+                vfunc_switch_child(index: number, duration: number): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -55912,7 +55971,7 @@ declare module 'gi://Handy?version=1' {
             $gtype: GObject.GType<Swipeable>;
             prototype: Swipeable;
         }
-        interface Swipeable extends Gtk.Widget {
+        interface Swipeable extends Gtk.Widget, Swipeable.Interface {
             // Methods
 
             /**
@@ -55980,59 +56039,6 @@ declare module 'gi://Handy?version=1' {
              * @param duration animation duration, in milliseconds
              */
             switch_child(index: number, duration: number): void;
-
-            // Virtual methods
-
-            /**
-             * Gets the progress `self` will snap back to after the gesture is canceled.
-             */
-            vfunc_get_cancel_progress(): number;
-            /**
-             * Gets the swipe distance of `self`.
-             *
-             * This corresponds to how many pixels 1 unit represents.
-             */
-            vfunc_get_distance(): number;
-            /**
-             * Gets the current progress of `self`.
-             */
-            vfunc_get_progress(): number;
-            /**
-             * Gets the snap points of `self`.
-             *
-             * Each snap point represents a progress value that is considered acceptable to
-             * end the swipe on.
-             */
-            vfunc_get_snap_points(): number[];
-            /**
-             * Gets the area `self` can start a swipe from for the given direction and
-             * gesture type.
-             *
-             * This can be used to restrict swipes to only be possible from a certain area,
-             * for example, to only allow edge swipes, or to have a draggable element and
-             * ignore swipes elsewhere.
-             *
-             * Swipe area is only considered for direct swipes (as in, not initiated by
-             * [class`SwipeGroup]`).
-             *
-             * If not implemented, the default implementation returns the allocation of
-             * `self,` allowing swipes from anywhere.
-             * @param navigation_direction the direction of the swipe
-             * @param is_drag whether the swipe is caused by a dragging gesture
-             */
-            vfunc_get_swipe_area(navigation_direction: NavigationDirection, is_drag: boolean): Gdk.Rectangle;
-            /**
-             * Gets the [class`SwipeTracker]` used by this swipeable widget.
-             */
-            vfunc_get_swipe_tracker(): SwipeTracker;
-            /**
-             * Switches to child with index `index`.
-             *
-             * See [signal`Swipeable:`:child-switched].
-             * @param index the index of the child to switch to
-             * @param duration animation duration, in milliseconds
-             */
-            vfunc_switch_child(index: number, duration: number): void;
         }
 
         export const Swipeable: SwipeableNamespace & {

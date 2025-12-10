@@ -7,6 +7,7 @@
 /// <reference path="./freetype2-2.0.d.ts" />
 /// <reference path="./gio-2.0.d.ts" />
 /// <reference path="./gmodule-2.0.d.ts" />
+/// <reference path="./giounix-2.0.d.ts" />
 /// <reference path="./gegl-0.4.d.ts" />
 /// <reference path="./babl-0.1.d.ts" />
 /// <reference path="./gdkpixbuf-2.0.d.ts" />
@@ -30,6 +31,7 @@ declare module 'gi://Gimp?version=3.0' {
     import type freetype2 from 'gi://freetype2?version=2.0';
     import type Gio from 'gi://Gio?version=2.0';
     import type GModule from 'gi://GModule?version=2.0';
+    import type GioUnix from 'gi://GioUnix?version=2.0';
     import type Gegl from 'gi://Gegl?version=0.4';
     import type Babl from 'gi://Babl?version=0.1';
     import type GdkPixbuf from 'gi://GdkPixbuf?version=2.0';
@@ -2322,6 +2324,31 @@ declare module 'gi://Gimp?version=3.0' {
             PAINT_METHOD,
         }
         /**
+         * Extracted from app/core/core-enums.h
+         */
+
+        /**
+         * Extracted from app/core/core-enums.h
+         */
+        export namespace TRCType {
+            export const $gtype: GObject.GType<TRCType>;
+        }
+
+        enum TRCType {
+            /**
+             * GIMP_TRC_LINEAR
+             */
+            LINEAR,
+            /**
+             * GIMP_TRC_NON_LINEAR
+             */
+            NON_LINEAR,
+            /**
+             * GIMP_TRC_PERCEPTUAL
+             */
+            PERCEPTUAL,
+        }
+        /**
          * Text directions.
          */
 
@@ -2681,7 +2708,18 @@ declare module 'gi://Gimp?version=3.0' {
         const PARASITE_GRANDPARENT_UNDOABLE: number;
         const PARASITE_PARENT_PERSISTENT: number;
         const PARASITE_PARENT_UNDOABLE: number;
+        /**
+         * A persistent parasite will be saved to XCF and can be used again after
+         * reloading. A non persistent parasite will only be available during the
+         * current session.
+         * See [struct`Gimp`.Parasite].
+         */
         const PARASITE_PERSISTENT: number;
+        /**
+         * An undoable parasite that was added, can be removed using the Undo action.
+         * If this flag is not set, undoing will not change the parasite.
+         * See [struct`Gimp`.Parasite].
+         */
         const PARASITE_UNDOABLE: number;
         const PIXPIPE_MAXDIM: number;
         /**
@@ -7062,13 +7100,13 @@ declare module 'gi://Gimp?version=3.0' {
             (min: number, max: number, current: number): void;
         }
         interface ProgressVtableEndFunc {
-            (): void;
+            (user_data?: any | null): void;
         }
         interface ProgressVtableGetWindowFunc {
-            (): GLib.Bytes;
+            (user_data?: any | null): GLib.Bytes;
         }
         interface ProgressVtablePulseFunc {
-            (): void;
+            (user_data?: any | null): void;
         }
         interface ProgressVtableSetTextFunc {
             (message: string): void;
@@ -13977,7 +14015,7 @@ declare module 'gi://Gimp?version=3.0' {
              * This procedure renders the item's outline into the current selection
              * of the image the item belongs to. What exactly the item's outline is
              * depends on the item type: for layers, it's the layer's alpha
-             * channel, for vectors the vector's shape.
+             * channel, for paths the path's shape.
              *
              * This procedure is affected by the following context setters:
              * gimp_context_set_antialias(), gimp_context_set_feather(),
@@ -24364,6 +24402,10 @@ declare module 'gi://Gimp?version=3.0' {
              * @returns parasite's data.
              */
             get_data(): number[];
+            /**
+             * Get the flags of the parasite.
+             * @returns @parasite flags.
+             */
             get_flags(): number;
             get_name(): string;
             has_flag(flag: number): boolean;
@@ -24974,6 +25016,50 @@ declare module 'gi://Gimp?version=3.0' {
 
         type VectorLoadProcedureClass = typeof VectorLoadProcedure;
         namespace ColorManaged {
+            /**
+             * Interface for implementing ColorManaged.
+             * Contains only the virtual methods that need to be implemented.
+             */
+            interface Interface {
+                // Virtual methods
+
+                /**
+                 * This function always returns a #GimpColorProfile and falls back to
+                 * gimp_color_profile_new_rgb_srgb() if the method is not implemented.
+                 */
+                vfunc_get_color_profile(): ColorProfile;
+                vfunc_get_icc_profile(): Uint8Array;
+                /**
+                 * This function always returns a gboolean representing whether
+                 * Black Point Compensation is enabled
+                 */
+                vfunc_get_simulation_bpc(): boolean;
+                /**
+                 * This function always returns a #GimpColorRenderingIntent
+                 */
+                vfunc_get_simulation_intent(): ColorRenderingIntent;
+                /**
+                 * This function always returns a #GimpColorProfile
+                 */
+                vfunc_get_simulation_profile(): ColorProfile;
+                /**
+                 * Emits the "profile-changed" signal.
+                 */
+                vfunc_profile_changed(): void;
+                /**
+                 * Emits the "simulation-bpc-changed" signal.
+                 */
+                vfunc_simulation_bpc_changed(): void;
+                /**
+                 * Emits the "simulation-intent-changed" signal.
+                 */
+                vfunc_simulation_intent_changed(): void;
+                /**
+                 * Emits the "simulation-profile-changed" signal.
+                 */
+                vfunc_simulation_profile_changed(): void;
+            }
+
             // Constructor properties interface
 
             interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24983,7 +25069,7 @@ declare module 'gi://Gimp?version=3.0' {
             $gtype: GObject.GType<ColorManaged>;
             prototype: ColorManaged;
         }
-        interface ColorManaged extends GObject.Object {
+        interface ColorManaged extends GObject.Object, ColorManaged.Interface {
             // Methods
 
             /**
@@ -25025,44 +25111,6 @@ declare module 'gi://Gimp?version=3.0' {
              * Emits the "simulation-profile-changed" signal.
              */
             simulation_profile_changed(): void;
-
-            // Virtual methods
-
-            /**
-             * This function always returns a #GimpColorProfile and falls back to
-             * gimp_color_profile_new_rgb_srgb() if the method is not implemented.
-             */
-            vfunc_get_color_profile(): ColorProfile;
-            vfunc_get_icc_profile(): Uint8Array;
-            /**
-             * This function always returns a gboolean representing whether
-             * Black Point Compensation is enabled
-             */
-            vfunc_get_simulation_bpc(): boolean;
-            /**
-             * This function always returns a #GimpColorRenderingIntent
-             */
-            vfunc_get_simulation_intent(): ColorRenderingIntent;
-            /**
-             * This function always returns a #GimpColorProfile
-             */
-            vfunc_get_simulation_profile(): ColorProfile;
-            /**
-             * Emits the "profile-changed" signal.
-             */
-            vfunc_profile_changed(): void;
-            /**
-             * Emits the "simulation-bpc-changed" signal.
-             */
-            vfunc_simulation_bpc_changed(): void;
-            /**
-             * Emits the "simulation-intent-changed" signal.
-             */
-            vfunc_simulation_intent_changed(): void;
-            /**
-             * Emits the "simulation-profile-changed" signal.
-             */
-            vfunc_simulation_profile_changed(): void;
         }
 
         export const ColorManaged: ColorManagedNamespace & {

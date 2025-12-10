@@ -1148,7 +1148,7 @@ declare module 'gi://GUsb?version=1.0' {
                 data: Uint8Array | string,
                 timeout: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Do an async bulk transfer
              * @param endpoint the address of a valid endpoint to communicate with
@@ -1178,7 +1178,7 @@ declare module 'gi://GUsb?version=1.0' {
                 timeout: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1249,7 +1249,7 @@ declare module 'gi://GUsb?version=1.0' {
                 data: Uint8Array | string,
                 timeout: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Do an async control transfer
              * @param direction
@@ -1299,7 +1299,7 @@ declare module 'gi://GUsb?version=1.0' {
                 timeout: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult
@@ -1556,7 +1556,7 @@ declare module 'gi://GUsb?version=1.0' {
                 data: Uint8Array | string,
                 timeout: number,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<number>;
+            ): globalThis.Promise<number>;
             /**
              * Do an async interrupt transfer
              * @param endpoint the address of a valid endpoint to communicate with
@@ -1586,7 +1586,7 @@ declare module 'gi://GUsb?version=1.0' {
                 timeout: number,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<number> | void;
+            ): globalThis.Promise<number> | void;
             /**
              * Gets the result from the asynchronous function.
              * @param res the #GAsyncResult

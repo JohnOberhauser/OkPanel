@@ -183,6 +183,10 @@ declare module 'gi://AstalNetwork?version=0.1' {
              */
             $signals: AccessPoint.SignalSignatures;
 
+            // Fields
+
+            ap: NM.AccessPoint;
+
             // Constructors
 
             constructor(properties?: Partial<AccessPoint.ConstructorProps>, ...args: any[]);
@@ -216,7 +220,7 @@ declare module 'gi://AstalNetwork?version=0.1' {
              * Returns whether the connection is the new active connection.
              * @param password
              */
-            activate(password?: string | null): Promise<void>;
+            activate(password?: string | null): globalThis.Promise<void>;
             /**
              * Activates the first connection associated with this AccessPoint or creates a new SimpleConnection using "wpa-psk" and activates it.
              * Returns whether the connection is the new active connection.
@@ -230,7 +234,10 @@ declare module 'gi://AstalNetwork?version=0.1' {
              * @param password
              * @param _callback_
              */
-            activate(password?: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+            activate(
+                password?: string | null,
+                _callback_?: Gio.AsyncReadyCallback<this> | null,
+            ): globalThis.Promise<void> | void;
             activate_finish(_res_: Gio.AsyncResult): void;
             get_bandwidth(): number;
             get_bssid(): string;
@@ -338,6 +345,8 @@ declare module 'gi://AstalNetwork?version=0.1' {
         namespace Wifi {
             // Signal signatures
             interface SignalSignatures extends GObject.Object.SignalSignatures {
+                'access-point-added': (arg0: AccessPoint) => void;
+                'access-point-removed': (arg0: AccessPoint) => void;
                 'state-changed': (arg0: DeviceState, arg1: DeviceState, arg2: NM.DeviceStateReason) => void;
                 'notify::device': (pspec: GObject.ParamSpec) => void;
                 'notify::active-connection': (pspec: GObject.ParamSpec) => void;
@@ -458,9 +467,9 @@ declare module 'gi://AstalNetwork?version=0.1' {
             // Methods
 
             scan(): void;
-            deactivate_connection(): Promise<void>;
+            deactivate_connection(): globalThis.Promise<void>;
             deactivate_connection(_callback_: Gio.AsyncReadyCallback<this> | null): void;
-            deactivate_connection(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<void> | void;
+            deactivate_connection(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
             deactivate_connection_finish(_res_: Gio.AsyncResult): void;
             get_device(): NM.DeviceWifi;
             set_device(value: NM.DeviceWifi): void;

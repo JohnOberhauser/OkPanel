@@ -72,7 +72,7 @@ declare module 'gi://AstalGreet?version=0.1' {
          * @param password Password of the user
          * @param cmd Command to start the session with
          */
-        function login(username: string, password: string, cmd: string): Promise<void>;
+        function login(username: string, password: string, cmd: string): globalThis.Promise<void>;
         /**
          * Shorthand for creating a session, posting the password, and starting the session with the given `cmd` which is parsed with [func@
          * GLib.shell_parse_argv].
@@ -100,7 +100,7 @@ declare module 'gi://AstalGreet?version=0.1' {
             password: string,
             cmd: string,
             _callback_?: Gio.AsyncReadyCallback<string> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         function login_finish(_res_: Gio.AsyncResult): void;
         /**
          * Same as [func`AstalGreet`.login] but allow for setting additonal env in the form of `name=value` pairs.
@@ -109,7 +109,12 @@ declare module 'gi://AstalGreet?version=0.1' {
          * @param cmd Command to start the session with
          * @param env Additonal env vars to set for the session
          */
-        function login_with_env(username: string, password: string, cmd: string, env: string[]): Promise<void>;
+        function login_with_env(
+            username: string,
+            password: string,
+            cmd: string,
+            env: string[],
+        ): globalThis.Promise<void>;
         /**
          * Same as [func`AstalGreet`.login] but allow for setting additonal env in the form of `name=value` pairs.
          * @param username User to login to
@@ -139,7 +144,7 @@ declare module 'gi://AstalGreet?version=0.1' {
             cmd: string,
             env: string[],
             _callback_?: Gio.AsyncReadyCallback<string> | null,
-        ): Promise<void> | void;
+        ): globalThis.Promise<void> | void;
         function login_with_env_finish(_res_: Gio.AsyncResult): void;
         namespace Request {
             // Signal signatures
@@ -208,7 +213,7 @@ declare module 'gi://AstalGreet?version=0.1' {
             /**
              * Send this request to greetd.
              */
-            send(): Promise<Response>;
+            send(): globalThis.Promise<Response>;
             /**
              * Send this request to greetd.
              * @param _callback_
@@ -218,7 +223,7 @@ declare module 'gi://AstalGreet?version=0.1' {
              * Send this request to greetd.
              * @param _callback_
              */
-            send(_callback_?: Gio.AsyncReadyCallback<this> | null): Promise<Response> | void;
+            send(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Response> | void;
             send_finish(_res_: Gio.AsyncResult): Response;
             get_type_name(): string;
         }

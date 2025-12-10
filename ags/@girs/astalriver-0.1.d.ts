@@ -46,6 +46,84 @@ declare module 'gi://AstalRiver?version=0.1' {
         interface CommandCallback {
             (success: boolean, msg: string): void;
         }
+        interface LayoutDemandCallback {
+            (self: Layout, output: Output, view_count: number, usable_width: number, usable_height: number): void;
+        }
+        namespace Layout {
+            // Signal signatures
+            interface SignalSignatures extends GObject.Object.SignalSignatures {
+                'namespace-in-use': (arg0: Output) => void;
+                'user-command': (arg0: string, arg1: Output) => void;
+                'notify::namespace': (pspec: GObject.ParamSpec) => void;
+            }
+
+            // Constructor properties interface
+
+            interface ConstructorProps extends GObject.Object.ConstructorProps {
+                namespace: string;
+            }
+        }
+
+        /**
+         * handles the layout of windows.
+         */
+        class Layout extends GObject.Object {
+            static $gtype: GObject.GType<Layout>;
+
+            // Properties
+
+            /**
+             * The namespace of this layout
+             */
+            get namespace(): string;
+
+            /**
+             * Compile-time signal type information.
+             *
+             * This instance property is generated only for TypeScript type checking.
+             * It is not defined at runtime and should not be accessed in JS code.
+             * @internal
+             */
+            $signals: Layout.SignalSignatures;
+
+            // Constructors
+
+            constructor(properties?: Partial<Layout.ConstructorProps>, ...args: any[]);
+
+            _init(...args: any[]): void;
+
+            // Signals
+
+            connect<K extends keyof Layout.SignalSignatures>(
+                signal: K,
+                callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>,
+            ): number;
+            connect(signal: string, callback: (...args: any[]) => any): number;
+            connect_after<K extends keyof Layout.SignalSignatures>(
+                signal: K,
+                callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>,
+            ): number;
+            connect_after(signal: string, callback: (...args: any[]) => any): number;
+            emit<K extends keyof Layout.SignalSignatures>(
+                signal: K,
+                ...args: GObject.GjsParameters<Layout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+            ): void;
+            emit(signal: string, ...args: any[]): void;
+
+            // Methods
+
+            /**
+             * the namespace of the layout
+             * @returns the namespace of the layout
+             */
+            get_namespace(): string | null;
+            /**
+             * Sets the callback to be called when a layout demand is made.
+             * @param callback the callback to be called when a layout demand is made
+             */
+            set_layout_demand_callback(callback: LayoutDemandCallback): void;
+        }
+
         namespace Output {
             // Signal signatures
             interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -218,7 +296,7 @@ declare module 'gi://AstalRiver?version=0.1' {
             /**
              * the description of the output
              */
-            get_description(): string;
+            get_description(): string | null;
             /**
              * the focused tags of the output
              * @returns the focused tags of the output
@@ -246,11 +324,11 @@ declare module 'gi://AstalRiver?version=0.1' {
             /**
              * the make of the output
              */
-            get_make(): string;
+            get_make(): string | null;
             /**
              * the model of the output
              */
-            get_model(): string;
+            get_model(): string | null;
             /**
              * the name of the output
              * @returns the name of the output
@@ -428,6 +506,12 @@ declare module 'gi://AstalRiver?version=0.1' {
              * @returns a list of all outputs
              */
             get_outputs(): Output[];
+            /**
+             * creates a new [class`AstalRiver`.Layout] object for this river instance.
+             * @param namespace the namespace of the layout
+             * @returns a newly created AstalRiverLayout object
+             */
+            new_layout(namespace: string): Layout;
             /**
              * Sends a given command to the compositor and calls the callback after it was executed.
              * @param cmd the command to execute
@@ -962,6 +1046,45 @@ declare module 'gi://AstalRiver?version=0.1' {
             stop_emission_by_name(detailedName: string): void;
         }
 
+        class Geometry {
+            static $gtype: GObject.GType<Geometry>;
+
+            // Fields
+
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+
+            // Constructors
+
+            constructor(
+                properties?: Partial<{
+                    x: number;
+                    y: number;
+                    width: number;
+                    height: number;
+                }>,
+            );
+            _init(...args: any[]): void;
+
+            static ['new'](x: number, y: number, width: number, height: number): Geometry;
+
+            static new_zero(): Geometry;
+
+            // Methods
+
+            /**
+             * Creates a copy of the given AstalRiverGeometry.
+             */
+            copy(): Geometry;
+            /**
+             * Frees the given AstalRiverGeometry.
+             */
+            free(): void;
+        }
+
+        type LayoutClass = typeof Layout;
         type OutputClass = typeof Output;
         type RiverClass = typeof River;
         /**

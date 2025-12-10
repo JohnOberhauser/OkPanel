@@ -274,6 +274,7 @@ declare module 'gi://BlockDev?version=3.0' {
             DEVICES,
             SHARED,
             CONFIG,
+            VG_CFG_BACKUP_RESTORE,
         }
 
         export namespace LVMVDOCompressionState {
@@ -1169,6 +1170,13 @@ declare module 'gi://BlockDev?version=3.0' {
          */
         function crypto_luks_resume(luks_device: string, context?: CryptoKeyslotContext | null): boolean;
         function crypto_luks_set_label(device: string, label?: string | null, subsystem?: string | null): boolean;
+        /**
+         * Note: This function is valid only for LUKS2.
+         * @param device a LUKS device to set the persistent flags on
+         * @param flags flags to set
+         * @returns whether the given @flags were successfully set or not Tech category: %BD_CRYPTO_TECH_LUKS-%BD_CRYPTO_TECH_MODE_MODIFY
+         */
+        function crypto_luks_set_persistent_flags(device: string, flags: CryptoLUKSPersistentFlags | null): boolean;
         function crypto_luks_set_uuid(device: string, uuid?: string | null): boolean;
         function crypto_luks_status(luks_device: string): string;
         function crypto_luks_suspend(luks_device: string): boolean;
@@ -1659,6 +1667,13 @@ declare module 'gi://BlockDev?version=3.0' {
         function loop_info(loop: string): LoopInfo;
         function loop_is_tech_avail(tech: LoopTech | null, mode: number): boolean;
         function loop_set_autoclear(loop: string, autoclear: boolean): boolean;
+        /**
+         * Force the loop driver to reread the size of the file associated with the
+         * specified `loop` device.
+         * @param loop path or name of the loop device
+         * @returns whether the LOOP_SET_CAPACITY ioctl was successfully issued or not. Tech category: %BD_LOOP_TECH_LOOP-%BD_LOOP_TECH_MODE_MODIFY
+         */
+        function loop_set_capacity(loop: string): boolean;
         function loop_setup(
             file: string,
             offset: number,
@@ -1935,6 +1950,24 @@ declare module 'gi://BlockDev?version=3.0' {
         function lvm_vdo_resize(vg_name: string, lv_name: string, size: number, extra?: ExtraArg[] | null): boolean;
         function lvm_vdolvpoolname(vg_name: string, lv_name: string): string;
         function lvm_vgactivate(vg_name: string, extra?: ExtraArg[] | null): boolean;
+        /**
+         * Note: This function does not back up the data content of LVs. See `vgcfbackup(8)` man page
+         *       for more information.
+         * @param vg_name name of the VG to backup configuration
+         * @param backup_file file to save the backup to or %NULL for using the default backup file                           in /etc/lvm/backup
+         * @param extra extra options for the vgcfgbackup command                                               (just passed to LVM as is)
+         * @returns Whether the backup was successfully created or not. Tech category: %BD_LVM_TECH_VG_CFG_BACKUP_RESTORE no mode (it is ignored)
+         */
+        function lvm_vgcfgbackup(vg_name: string, backup_file?: string | null, extra?: ExtraArg[] | null): boolean;
+        /**
+         * Note: This function restores VG configuration created by %bd_lvm_vgcfgbackup from given
+         *       `backup_file` or from the latest backup in /etc/lvm/backup.
+         * @param vg_name name of the VG to restore configuration
+         * @param backup_file file to restore VG configuration from to or %NULL for using the                           latest backup in /etc/lvm/backup
+         * @param extra extra options for the vgcfgrestore command                                               (just passed to LVM as is)
+         * @returns Whether the configuration was successfully restored or not. Tech category: %BD_LVM_TECH_VG_CFG_BACKUP_RESTORE no mode (it is ignored)
+         */
+        function lvm_vgcfgrestore(vg_name: string, backup_file?: string | null, extra?: ExtraArg[] | null): boolean;
         function lvm_vgcreate(name: string, pv_list: string[], pe_size: number, extra?: ExtraArg[] | null): boolean;
         function lvm_vgdeactivate(vg_name: string, extra?: ExtraArg[] | null): boolean;
         function lvm_vgextend(vg_name: string, device: string, extra?: ExtraArg[] | null): boolean;
@@ -2078,7 +2111,7 @@ declare module 'gi://BlockDev?version=3.0' {
          * @param subsysnqn The name for the NVMe subsystem to connect to.
          * @param transport The network fabric used for a NVMe-over-Fabrics network.
          * @param transport_addr The network address of the Controller. For transports using IP addressing (e.g. `rdma`) this should be an IP-based address.
-         * @param transport_svcid The transport service id.  For transports using IP addressing (e.g. `rdma`) this field is the port number. By default, the IP port number for the `RDMA` transport is `4420`.
+         * @param transport_svcid The transport service ID.  For transports using IP addressing (e.g. `tcp`, `rdma`) this field is the port number. The default port number for the `tcp` and `rdma` transports is `4420` and `8009` respectively when the well-known Discovery NQN is specified.
          * @param host_traddr The network address used on the host to connect to the Controller. For TCP, this sets the source address on the socket.
          * @param host_iface The network interface used on the host to connect to the Controller (e.g. IP `eth1`, `enp2s0`). This forces the connection to be made on a specific interface instead of letting the system decide.
          * @param host_nqn Overrides the default Host NQN that identifies the NVMe Host. If this option is %NULL, the default is read from `/etc/nvme/hostnqn` first.                        If that does not exist, the autogenerated NQN value from the NVMe Host kernel module is used next. The Host NQN uniquely identifies the NVMe Host.
@@ -2530,6 +2563,20 @@ declare module 'gi://BlockDev?version=3.0' {
             RECALCULATE,
             RECALCULATE_RESET,
             ALLOW_DISCARDS,
+        }
+
+        export namespace CryptoLUKSPersistentFlags {
+            export const $gtype: GObject.GType<CryptoLUKSPersistentFlags>;
+        }
+
+        enum CryptoLUKSPersistentFlags {
+            ALLOW_DISCARDS,
+            SAME_CPU_CRYPT,
+            SUBMIT_FROM_CRYPT_CPUS,
+            NO_JOURNAL,
+            NO_READ_WORKQUEUE,
+            NO_WRITE_WORKQUEUE,
+            HIGH_PRIORITY,
         }
 
         export namespace CryptoTechMode {

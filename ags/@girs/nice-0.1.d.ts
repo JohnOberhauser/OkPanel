@@ -626,6 +626,11 @@ declare module 'gi://Nice?version=0.1' {
              * Use bytestream mode for reliable TCP connections. (Since: 0.1.20)
              */
             BYTESTREAM_TCP,
+            /**
+             * When removing TURN port allocations on TURN server,
+             * don't do retransmissions and don't wait for a response. (Since: 0.1.23)
+             */
+            CLOSE_FORCED,
         }
         namespace Agent {
             // Signal signatures
@@ -642,6 +647,7 @@ declare module 'gi://Nice?version=0.1' {
                 'reliable-transport-writable': (arg0: number, arg1: number) => void;
                 'streams-removed': (arg0: number[]) => void;
                 'notify::bytestream-tcp': (pspec: GObject.ParamSpec) => void;
+                'notify::close-forced': (pspec: GObject.ParamSpec) => void;
                 'notify::compatibility': (pspec: GObject.ParamSpec) => void;
                 'notify::consent-freshness': (pspec: GObject.ParamSpec) => void;
                 'notify::controlling-mode': (pspec: GObject.ParamSpec) => void;
@@ -677,6 +683,8 @@ declare module 'gi://Nice?version=0.1' {
             interface ConstructorProps extends GObject.Object.ConstructorProps {
                 bytestream_tcp: boolean;
                 bytestreamTcp: boolean;
+                close_forced: boolean;
+                closeForced: boolean;
                 compatibility: number;
                 consent_freshness: boolean;
                 consentFreshness: boolean;
@@ -781,6 +789,18 @@ declare module 'gi://Nice?version=0.1' {
             get bytestreamTcp(): boolean;
             set bytestreamTcp(val: boolean);
             /**
+             * Whether to omit performing retransmissions and wait for a response for the 0-lifetime
+             * refresh request that is sent by nice_agent_close_async(). This favors a quick shutdown of
+             * the agent at the risk of lingering TURN server port allocations.
+             */
+            get close_forced(): boolean;
+            /**
+             * Whether to omit performing retransmissions and wait for a response for the 0-lifetime
+             * refresh request that is sent by nice_agent_close_async(). This favors a quick shutdown of
+             * the agent at the risk of lingering TURN server port allocations.
+             */
+            get closeForced(): boolean;
+            /**
              * The Nice agent can work in various compatibility modes depending on
              * what the application/peer needs.
              * <para> See also: #NiceCompatibility</para>
@@ -797,6 +817,7 @@ declare module 'gi://Nice?version=0.1' {
              * be %TRUE as well.
              */
             get consent_freshness(): boolean;
+            set consent_freshness(val: boolean);
             /**
              * Whether to perform periodic consent freshness checks as specified in
              * RFC 7675.  When %TRUE, the agent will periodically send binding requests
@@ -808,6 +829,7 @@ declare module 'gi://Nice?version=0.1' {
              * be %TRUE as well.
              */
             get consentFreshness(): boolean;
+            set consentFreshness(val: boolean);
             /**
              * Whether the agent has the controlling role. This property should
              * be modified before gathering candidates, any modification occuring

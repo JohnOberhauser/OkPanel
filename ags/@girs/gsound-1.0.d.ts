@@ -436,7 +436,7 @@ declare module 'gi://GSound?version=1.0' {
             play_full(
                 attrs: { [key: string]: any } | GLib.HashTable<string, string>,
                 cancellable?: Gio.Cancellable | null,
-            ): Promise<boolean>;
+            ): globalThis.Promise<boolean>;
             /**
              * Asynchronously request a sound to be played. When playback is finished
              * (or if an error occurs) then `callback` will be called, following the
@@ -478,7 +478,7 @@ declare module 'gi://GSound?version=1.0' {
                 attrs: { [key: string]: any } | GLib.HashTable<string, string>,
                 cancellable?: Gio.Cancellable | null,
                 callback?: Gio.AsyncReadyCallback<this> | null,
-            ): Promise<boolean> | void;
+            ): globalThis.Promise<boolean> | void;
             /**
              * The basic "fire-and-forget" play command. This function will not block, and
              * just sends a request to the sound server before immediately returning.

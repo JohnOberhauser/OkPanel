@@ -191,7 +191,7 @@ declare module 'gi://GstAnalytics?version=1.0' {
             init_params: RelationMetaInitParams,
         ): RelationMeta | null;
         /**
-         * Adds a #GstTensorMeta to a buffer or returns the existing one
+         * Adds a #GstTensorMeta to a buffer
          * @param buffer A writable #GstBuffer
          * @returns The new #GstTensorMeta
          */

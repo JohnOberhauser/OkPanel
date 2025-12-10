@@ -1108,7 +1108,7 @@ declare module 'gi://ICalGLib?version=3.0' {
          * @param count The number of elements to be filled up in the @array
          * @returns If successful, return the array. NULL if failed.
          */
-        function recur_expand_recurrence(rule: string, start: never, count: number): never[];
+        function recur_expand_recurrence(rule: string, start: number, count: number): number[];
         /**
          * Returns the code for a request status.
          * @param stat The #ICalRequestStatus to be queried
@@ -5121,7 +5121,7 @@ declare module 'gi://ICalGLib?version=3.0' {
 
             static new_from_string(str: string): Time;
 
-            static new_from_timet_with_zone(v: never, is_date: number, zone?: Timezone | null): Time;
+            static new_from_timet_with_zone(v: number, is_date: number, zone?: Timezone | null): Time;
 
             static new_null_date(): Time;
 
@@ -5198,13 +5198,13 @@ declare module 'gi://ICalGLib?version=3.0' {
              * Returns the time as seconds past the UNIX epoch.
              * @returns The time as seconds past the UNIX epoch
              */
-            as_timet(): never;
+            as_timet(): number;
             /**
              * Returns the time as seconds past the UNIX epoch, using timezones.
              * @param zone The timezone
              * @returns The time as seconds past the UNIX epoch
              */
-            as_timet_with_zone(zone?: Timezone | null): never;
+            as_timet_with_zone(zone?: Timezone | null): number;
             /**
              * Creates a new #ICalTime, copy of `timetype`.
              * @returns The newly created #ICalTime, copy of @timetype.
@@ -5458,7 +5458,7 @@ declare module 'gi://ICalGLib?version=3.0' {
 
             static ['new'](dtstart: Time, dtend: Time, is_busy: number): TimeSpan;
 
-            static new_timet(start: never, end: never, is_busy: boolean): TimeSpan;
+            static new_timet(start: number, end: number, is_busy: boolean): TimeSpan;
 
             // Signals
 
@@ -5495,7 +5495,7 @@ declare module 'gi://ICalGLib?version=3.0' {
              * Gets the end of #ICalTimeSpan.
              * @returns The end.
              */
-            get_end(): never;
+            get_end(): number;
             /**
              * Gets the is_busy of #ICalTimeSpan.
              * @returns The is_busy.
@@ -5505,7 +5505,7 @@ declare module 'gi://ICalGLib?version=3.0' {
              * Gets the start of #ICalTimeSpan.
              * @returns The start.
              */
-            get_start(): never;
+            get_start(): number;
             /**
              * Checks whether two spans overlap.
              * @param s2 The second #ICalTimeSpan
@@ -5516,7 +5516,7 @@ declare module 'gi://ICalGLib?version=3.0' {
              * Sets the end of #ICalTimeSpan.
              * @param end The end
              */
-            set_end(end: never): void;
+            set_end(end: number): void;
             /**
              * Sets the is_busy of #ICalTimeSpan.
              * @param is_busy The is_busy
@@ -5526,7 +5526,7 @@ declare module 'gi://ICalGLib?version=3.0' {
              * Sets the start of #ICalTimeSpan.
              * @param start The start
              */
-            set_start(start: never): void;
+            set_start(start: number): void;
         }
 
         namespace Timezone {
