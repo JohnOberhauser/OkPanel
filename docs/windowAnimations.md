@@ -19,14 +19,26 @@ okpanel-alerts
 ## Example rule set
 
 ```
-layerrule = blur, okpanel-frame
-layerrule = blur, okpanel-notifications
-layerrule = blur, okpanel-alerts
+layerrule {
+  name = layerrule-1
+  blur = on
+  ignore_alpha = 0
+  match:namespace = okpanel-frame
+}
 
-layerrule = ignorezero, okpanel-frame
-layerrule = ignorezero, okpanel-notifications
-layerrule = ignorezero, okpanel-alerts
+layerrule {
+  name = layerrule-2
+  blur = on
+  ignore_alpha = 0
+  match:namespace = okpanel-notifications
+}
 
-layerrule = animation slide left, okpanel-alerts
+layerrule {
+  name = layerrule-3
+  blur = on
+  ignore_alpha = 0
+  animation = slide left
+  match:namespace = okpanel-alerts
+}
 
 ```
