@@ -1,7 +1,7 @@
 import {Astal, Gtk} from "ags/gtk4";
 import App from "ags/gtk4/app";
 import {variableConfig} from "../../config/config";
-import {createComputed, createState, onCleanup} from "ags";
+import {createComputed, createState, onCleanup, Setter} from "ags";
 import LeftBar from "./bars/LeftBar";
 import IntegratedMenu from "../systemMenu/IntegratedMenu";
 import TopBar from "./bars/TopBar";
@@ -21,9 +21,6 @@ import {BoxWithResize} from "../common/BoxWithResize";
 export const frameWindowName = "frame"
 
 export let frameWindow: Astal.Window
-
-export const [leftGroupWidth, leftGroupWidthSetter] = createState(0)
-export const [rightGroupWidth, rightGroupWidthSetter] = createState(0)
 
 function getLeftAndRightSides(
     leftBar: Gtk.Widget,
@@ -137,7 +134,13 @@ function BottomGroup() {
 }
 
 function LeftGroup(
-    {widgetContainer}: {widgetContainer: Gtk.Box}
+    {
+        widgetContainer,
+        leftGroupWidthSetter,
+    }: {
+        widgetContainer: Gtk.Box,
+        leftGroupWidthSetter: Setter<number>
+    }
 ) {
     return <box
         $={(self) => {
@@ -175,7 +178,13 @@ function LeftGroup(
 }
 
 function RightGroup(
-    {widgetContainer}: {widgetContainer: Gtk.Box}
+    {
+        widgetContainer,
+        rightGroupWidthSetter,
+    }: {
+        widgetContainer: Gtk.Box,
+        rightGroupWidthSetter: Setter<number>
+    }
 ) {
     return <box
         $={(self) => {
@@ -222,6 +231,9 @@ export default function (): Astal.Window {
     const screenshotPositon = variableConfig.frame.screenshotTool.position.asAccessor()
     const appLauncherPosition = variableConfig.frame.appLauncher.position.asAccessor()
     const screensharePosition = variableConfig.frame.screenshare.position.asAccessor()
+
+    const [leftGroupWidth, leftGroupWidthSetter] = createState(0)
+    const [rightGroupWidth, rightGroupWidthSetter] = createState(0)
 
     let integratedMenu = <IntegratedMenu/> as Gtk.Widget
     let integratedCalendar = <IntegratedCalendar/> as Gtk.Widget
@@ -330,15 +342,21 @@ export default function (): Astal.Window {
                             vexpand={true}
                             hexpand={true}
                             orientation={Gtk.Orientation.HORIZONTAL}>
-                            <LeftGroup widgetContainer={leftGroupWidgetContainer}/>
+                            <LeftGroup
+                                widgetContainer={leftGroupWidgetContainer}
+                                leftGroupWidthSetter={leftGroupWidthSetter}/>
                             <box hexpand/>
-                            <RightGroup widgetContainer={rightGroupWidgetContainer}/>
+                            <RightGroup
+                                widgetContainer={rightGroupWidgetContainer}
+                                rightGroupWidthSetter={rightGroupWidthSetter}/>
                         </box>
                         <BottomGroup/>
                     </box> as Gtk.Box
                 )
             }}>
-            <FrameDrawing/>
+            <FrameDrawing
+                leftGroupWidth={leftGroupWidth}
+                rightGroupWidth={rightGroupWidth}/>
         </overlay>
     </window> as Astal.Window
 }
