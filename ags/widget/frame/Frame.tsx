@@ -22,22 +22,20 @@ export const frameWindowName = "frame"
 
 export let frameWindow: Astal.Window
 
-let leftGroup: Gtk.Box
-let rightGroup: Gtk.Box
-let integratedMenu: Gtk.Widget
-let leftBar: Gtk.Widget
-let rightBar: Gtk.Widget
-let integratedCalendar: Gtk.Widget
-let integratedClipboardManager: Gtk.Widget
-let integratedNotificationHistory: Gtk.Widget
-let integratedScreenshotTool: Gtk.Widget
-let integratedAppLauncher: Gtk.Widget
-let integratedScreenshare: Gtk.Widget
-
 export const [leftGroupWidth, leftGroupWidthSetter] = createState(0)
 export const [rightGroupWidth, rightGroupWidthSetter] = createState(0)
 
-function getLeftAndRightSides() {
+function getLeftAndRightSides(
+    leftBar: Gtk.Widget,
+    rightBar: Gtk.Widget,
+    integratedMenu: Gtk.Widget,
+    integratedCalendar: Gtk.Widget,
+    integratedClipboardManager: Gtk.Widget,
+    integratedNotificationHistory: Gtk.Widget,
+    integratedAppLauncher: Gtk.Widget,
+    integratedScreenshare: Gtk.Widget,
+    integratedScreenshotTool: Gtk.Widget,
+) {
     const menuPosition = variableConfig.frame.menu.position.asAccessor()
     const calendarPosition = variableConfig.frame.calendar.position.asAccessor()
     const clipboardManagerPosition = variableConfig.frame.clipboardManager.position.asAccessor()
@@ -138,7 +136,9 @@ function BottomGroup() {
     </box>
 }
 
-function LeftGroup() {
+function LeftGroup(
+    {widgetContainer}: {widgetContainer: Gtk.Box}
+) {
     return <box
         $={(self) => {
             ghostWhenTooNarrow(
@@ -168,25 +168,15 @@ function LeftGroup() {
             marginTop={variableConfig.leftBar.marginTop.asAccessor()}
             marginBottom={variableConfig.leftBar.marginBottom.asAccessor()}
             cssClasses={["frameLeftGroup"]}>
-            <box
-                marginStart={variableConfig.leftBar.paddingStart.asAccessor()}
-                marginEnd={variableConfig.leftBar.paddingEnd.asAccessor()}
-                marginTop={variableConfig.leftBar.paddingTop.asAccessor()}
-                marginBottom={variableConfig.leftBar.paddingBottom.asAccessor()}
-                orientation={Gtk.Orientation.HORIZONTAL}
-                $={(self) => {
-                    leftGroup = self
-
-                    const [leftSideWidgets, _] = getLeftAndRightSides()
-
-                    appendChildren(leftGroup, leftSideWidgets)
-                }}/>
+            {widgetContainer}
         </BoxWithResize>
         <box vexpand={variableConfig.leftBar.expanded.asAccessor().as((e) => !e)}/>
     </box>
 }
 
-function RightGroup() {
+function RightGroup(
+    {widgetContainer}: {widgetContainer: Gtk.Box}
+) {
     return <box
         $={(self) => {
             ghostWhenTooNarrow(
@@ -217,19 +207,7 @@ function RightGroup() {
             marginTop={variableConfig.rightBar.marginTop.asAccessor()}
             marginBottom={variableConfig.rightBar.marginBottom.asAccessor()}
             cssClasses={["frameRightGroup"]}>
-            <box
-                marginStart={variableConfig.rightBar.paddingStart.asAccessor()}
-                marginEnd={variableConfig.rightBar.paddingEnd.asAccessor()}
-                marginTop={variableConfig.rightBar.paddingTop.asAccessor()}
-                marginBottom={variableConfig.rightBar.paddingBottom.asAccessor()}
-                orientation={Gtk.Orientation.HORIZONTAL}
-                $={(self) => {
-                    rightGroup = self
-
-                    const [_, rightSideWidgets] = getLeftAndRightSides()
-
-                    appendChildren(rightGroup, rightSideWidgets)
-                }}/>
+            {widgetContainer}
         </BoxWithResize>
         <box vexpand={variableConfig.rightBar.expanded.asAccessor().as((e) => !e)}/>
     </box>
@@ -245,6 +223,16 @@ export default function (): Astal.Window {
     const appLauncherPosition = variableConfig.frame.appLauncher.position.asAccessor()
     const screensharePosition = variableConfig.frame.screenshare.position.asAccessor()
 
+    let integratedMenu = <IntegratedMenu/> as Gtk.Widget
+    let integratedCalendar = <IntegratedCalendar/> as Gtk.Widget
+    let integratedClipboardManager = <IntegratedClipboardManager/> as Gtk.Widget
+    let integratedNotificationHistory = <IntegratedNotificationHistory/> as Gtk.Widget
+    let integratedScreenshotTool = <IntegratedScreenshot/> as Gtk.Widget
+    let integratedAppLauncher = <IntegratedAppLauncher/> as Gtk.Widget
+    let integratedScreenshare = <IntegratedScreenshare/> as Gtk.Widget
+    let leftBar = <LeftBar/> as Gtk.Widget
+    let rightBar = <RightBar/> as Gtk.Widget
+
     const unsub = createComputed([
         menuPosition,
         calendarPosition,
@@ -254,25 +242,69 @@ export default function (): Astal.Window {
         appLauncherPosition,
         screensharePosition,
     ]).subscribe(() => {
-        removeAllChildren(leftGroup)
-        removeAllChildren(rightGroup)
+        removeAllChildren(leftGroupWidgetContainer)
+        removeAllChildren(rightGroupWidgetContainer)
 
-        const [leftSideWidgets, rightSideWidgets] = getLeftAndRightSides()
+        const [leftSideWidgets, rightSideWidgets] = getLeftAndRightSides(
+            leftBar,
+            rightBar,
+            integratedMenu,
+            integratedCalendar,
+            integratedClipboardManager,
+            integratedNotificationHistory,
+            integratedAppLauncher,
+            integratedScreenshare,
+            integratedScreenshotTool,
+        )
 
-        appendChildren(leftGroup, leftSideWidgets)
-        appendChildren(rightGroup, rightSideWidgets)
+        appendChildren(leftGroupWidgetContainer, leftSideWidgets)
+        appendChildren(rightGroupWidgetContainer, rightSideWidgets)
     })
     onCleanup(unsub)
 
-    integratedMenu = <IntegratedMenu/> as Gtk.Widget
-    integratedCalendar = <IntegratedCalendar/> as Gtk.Widget
-    integratedClipboardManager = <IntegratedClipboardManager/> as Gtk.Widget
-    integratedNotificationHistory = <IntegratedNotificationHistory/> as Gtk.Widget
-    integratedScreenshotTool = <IntegratedScreenshot/> as Gtk.Widget
-    integratedAppLauncher = <IntegratedAppLauncher/> as Gtk.Widget
-    integratedScreenshare = <IntegratedScreenshare/> as Gtk.Widget
-    leftBar = <LeftBar/> as Gtk.Widget
-    rightBar = <RightBar/> as Gtk.Widget
+    let leftGroupWidgetContainer = <box
+        marginStart={variableConfig.leftBar.paddingStart.asAccessor()}
+        marginEnd={variableConfig.leftBar.paddingEnd.asAccessor()}
+        marginTop={variableConfig.leftBar.paddingTop.asAccessor()}
+        marginBottom={variableConfig.leftBar.paddingBottom.asAccessor()}
+        orientation={Gtk.Orientation.HORIZONTAL}
+        $={(self) => {
+            const [leftSideWidgets, _] = getLeftAndRightSides(
+                leftBar,
+                rightBar,
+                integratedMenu,
+                integratedCalendar,
+                integratedClipboardManager,
+                integratedNotificationHistory,
+                integratedAppLauncher,
+                integratedScreenshare,
+                integratedScreenshotTool,
+            )
+
+            appendChildren(self, leftSideWidgets)
+        }}/> as Gtk.Box
+
+    let rightGroupWidgetContainer = <box
+        marginStart={variableConfig.rightBar.paddingStart.asAccessor()}
+        marginEnd={variableConfig.rightBar.paddingEnd.asAccessor()}
+        marginTop={variableConfig.rightBar.paddingTop.asAccessor()}
+        marginBottom={variableConfig.rightBar.paddingBottom.asAccessor()}
+        orientation={Gtk.Orientation.HORIZONTAL}
+        $={(self) => {
+            const [_, rightSideWidgets] = getLeftAndRightSides(
+                leftBar,
+                rightBar,
+                integratedMenu,
+                integratedCalendar,
+                integratedClipboardManager,
+                integratedNotificationHistory,
+                integratedAppLauncher,
+                integratedScreenshare,
+                integratedScreenshotTool,
+            )
+
+            appendChildren(self, rightSideWidgets)
+        }}/> as Gtk.Box
 
     return <window
         $={(self) => {
@@ -298,9 +330,9 @@ export default function (): Astal.Window {
                             vexpand={true}
                             hexpand={true}
                             orientation={Gtk.Orientation.HORIZONTAL}>
-                            <LeftGroup/>
+                            <LeftGroup widgetContainer={leftGroupWidgetContainer}/>
                             <box hexpand/>
-                            <RightGroup/>
+                            <RightGroup widgetContainer={rightGroupWidgetContainer}/>
                         </box>
                         <BottomGroup/>
                     </box> as Gtk.Box
