@@ -18,9 +18,10 @@ import {
 } from "./utils";
 import ScreenshotButton from "./ScreenshotButton";
 
+const [delay, delaySetter] = createState(0)
+const [saveType, saveTypeSetter] = createState(SaveType.BOTH)
+
 export default function () {
-    const [delay, delaySetter] = createState(0)
-    const [saveType, saveTypeSetter] = createState(SaveType.BOTH)
     let delayRevealedSetter: Setter<boolean> | null = null
     let saveTypeRevealedSetter: Setter<boolean> | null = null
 

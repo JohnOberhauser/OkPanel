@@ -20,12 +20,12 @@ import ScreenshotButton from "./ScreenshotButton";
 
 export const [isRecording, isRecordingSetter] = createState(false)
 
-export default function() {
-    const [selectedAudio, selectedAudioSetter] = createState<AudioSource | null>(null)
-    const [selectedCodec, selectedCodecSetter] = createState(codecs[0])
-    const [selectedEncodingPreset, selectedEncodingPresetSetter] = createState("medium")
-    const [selectedCrfQuality, selectedCrfQualitySetter] = createState(20)
+const [selectedAudio, selectedAudioSetter] = createState<AudioSource | null>(null)
+const [selectedCodec, selectedCodecSetter] = createState(codecs[0])
+const [selectedEncodingPreset, selectedEncodingPresetSetter] = createState("medium")
+const [selectedCrfQuality, selectedCrfQualitySetter] = createState(20)
 
+export default function() {
     let audioRevealedSetter: Setter<boolean> | null = null
     let codecRevealedSetter: Setter<boolean> | null = null
     let encodingRevealedSetter: Setter<boolean> | null = null
