@@ -3,6 +3,7 @@ import {execAsync} from "ags/process";
 type HyprMonitorRaw = {
     id: number | string;
     name?: string;
+    description?: string;
     width?: number;
     height?: number;
     // ...other fields ignored
@@ -11,13 +12,14 @@ type HyprMonitorRaw = {
 export type HyprMonitorInfo = {
     id: number;
     name: string;
+    description: string;
     width: number;   // device pixels from hyprctl
     height: number;  // device pixels from hyprctl
 };
 
 /**
  * Get Hyprland monitor info by numeric ID.
- * Returns { id, name, width, height } or null if not found/invalid.
+ * Returns { id, name, description, width, height } or null if not found/invalid.
  */
 export async function getHyprMonitorInfoById(id: number | string): Promise<HyprMonitorInfo | null> {
     try {
@@ -28,13 +30,13 @@ export async function getHyprMonitorInfoById(id: number | string): Promise<HyprM
 
         const targetId = Number(id);
         const m = (data as HyprMonitorRaw[]).find(mon => Number(mon.id) === targetId);
-        if (!m || typeof m.name !== "string") return null;
+        if (!m || typeof m.name !== "string" || typeof m.description !== "string") return null;
 
         // Guard DPMS/transient 0×0 reports; clamp to at least 1
         const w = Math.max(1, Number(m.width ?? 0));
         const h = Math.max(1, Number(m.height ?? 0));
 
-        return { id: targetId, name: m.name, width: w, height: h };
+        return { id: targetId, name: m.name, description: m.description, width: w, height: h };
     } catch (e) {
         console.error("getHyprMonitorInfoById error:", e);
         return null;

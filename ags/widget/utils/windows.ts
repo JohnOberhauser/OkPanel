@@ -11,6 +11,8 @@ import SpacerTop from "../frame/backgroundSpacers/SpacerTop";
 import SpacerRight from "../frame/backgroundSpacers/SpacerRight";
 import SpacerLeft from "../frame/backgroundSpacers/SpacerLeft";
 import {getHyprMonitorsInfo, HyprMonitorInfo} from "./monitors";
+import {variableConfig} from "../../config/config";
+import AstalHyprland from "gi://AstalHyprland?version=0.1";
 
 const openedOneOffWindows: Astal.Window[] = []
 
@@ -51,21 +53,30 @@ export function spawnMonitorWindows(
         console.log("Monitor already has windows")
         return
     }
-    console.log(`Creating windows for monitor: ${hyprMonitorInfo.name}`)
+    console.log(`Creating windows for monitor:`)
+    console.log(hyprMonitorInfo.id)
+    console.log(hyprMonitorInfo.name)
+    console.log(hyprMonitorInfo.description)
 
     createRoot((dispose) => {
-        const windows = [
-            Frame(hyprMonitorInfo.id),
-            SpacerBottom(hyprMonitorInfo.id),
-            SpacerTop(hyprMonitorInfo.id),
-            SpacerRight(hyprMonitorInfo.id),
-            SpacerLeft(hyprMonitorInfo.id),
+        let windows = [
             Wallpaper(hyprMonitorInfo.id, hyprMonitorInfo.width, hyprMonitorInfo.height),
             VolumeAlert(hyprMonitorInfo.id),
             BrightnessAlert(hyprMonitorInfo.id),
             NotificationPopups(hyprMonitorInfo.id),
             Scrim(hyprMonitorInfo.id),
         ]
+
+        if (framedWindowsContainsMonitor(hyprMonitorInfo)) {
+            console.log("adding frame")
+            windows.push(...[
+                Frame(hyprMonitorInfo.id),
+                SpacerBottom(hyprMonitorInfo.id),
+                SpacerTop(hyprMonitorInfo.id),
+                SpacerRight(hyprMonitorInfo.id),
+                SpacerLeft(hyprMonitorInfo.id),
+            ])
+        }
 
         windows.forEach((window) => {
             App.add_window(window)
@@ -126,8 +137,51 @@ export function killOldMonitorWindows() {
         })
 }
 
+export function recreateWindows() {
+    App.get_windows().forEach((window) => {
+        console.log(`Closing window ${window.name}`)
+        window.close()
+        App.remove_window(window)
+    })
+
+    windowsByMonitor.clear()
+
+    disposeByMonitor.forEach((dispose) => {
+        dispose()
+    })
+
+    disposeByMonitor.clear()
+
+    const hyprland = AstalHyprland.get_default()
+
+    hyprland.monitors.forEach((monitor) => {
+        spawnMonitorWindows({
+            id: monitor.id,
+            name: monitor.name,
+            description: monitor.description,
+            width: monitor.width,
+            height: monitor.height,
+        })
+    })
+}
+
 function logOpenedWindows() {
     console.log(`All opened windows:\n${App.get_windows()
         .map(w => w.name ?? '(unnamed)')
         .join('\n')}`)
+}
+
+function framedWindowsContainsMonitor(hyprMonitorInfo: HyprMonitorInfo): boolean {
+    // @ts-ignore
+    const framedWindows: string[] = variableConfig.framedMonitors.asAccessor().peek();
+
+    const id = hyprMonitorInfo.id.toString();
+    const name = hyprMonitorInfo.name;
+    const desc = hyprMonitorInfo.description;
+
+    return framedWindows.some(framedWindow =>
+        framedWindow === id ||
+        framedWindow === name ||
+        framedWindow === desc
+    );
 }

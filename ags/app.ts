@@ -19,8 +19,9 @@ import {
 } from "./widget/notification/IntegratedNotificationHistory";
 import {customWidgetLabelSetters} from "./widget/barWidgets/CustomWidget";
 import {setWallpaper} from "./widget/wallpaper/setWallpaper";
-import {killOldMonitorWindows, spawnMonitorWindows} from "./widget/utils/windows";
+import {killOldMonitorWindows, recreateWindows, spawnMonitorWindows} from "./widget/utils/windows";
 import {getHyprMonitorInfoById} from "./widget/utils/monitors";
+import {variableConfig} from "./config/config";
 
 export let projectDir = ""
 
@@ -35,14 +36,7 @@ App.start({
 
         ChargingAlertSound()
 
-        hyprland.monitors.forEach((monitor) => {
-            spawnMonitorWindows({
-                id: monitor.id,
-                name: monitor.name,
-                width: monitor.width,
-                height: monitor.height,
-            })
-        })
+        recreateWindows()
 
         hyprland.connect("monitor-added", (_: any, monitor: Hyprland.Monitor) => {
             if (monitor === undefined || monitor === null) return
@@ -59,6 +53,10 @@ App.start({
             console.log(`Monitor removed`)
             killOldMonitorWindows();
         });
+
+        variableConfig.framedMonitors.asAccessor().subscribe(() => {
+            recreateWindows()
+        })
     },
     requestHandler(request: string[], res: (response: any) => void) {
         const command = request[0] ?? ""

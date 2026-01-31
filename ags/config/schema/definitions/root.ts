@@ -45,10 +45,14 @@ export const CONFIG_SCHEMA = [
         required: false,
     },
     {
-        name: 'mainMonitor',
-        type: 'number',
-        default: 0,
-        description: 'Index of the primary monitor (0‑based as reported by Hyprland).',
+        name: 'framedMonitors',
+        type: 'array',
+        default: ["0"],
+        item: {
+            name: 'value',
+            type: 'string'
+        },
+        description: 'A list of monitors that should show the frame.  Values can be a monitor index, name, or description.  For example, "0" or "DP-1" or "LG Electronics LG ULTRAGEAR+ 303NTRL72662".'
     },
     {
         name: "clockFormat24h",
