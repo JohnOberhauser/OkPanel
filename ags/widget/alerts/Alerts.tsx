@@ -10,9 +10,6 @@ import Astal from "gi://Astal?version=4.0";
 import Gtk from "gi://Gtk?version=4.0";
 import {variableConfig} from "../../config/config";
 
-const VolumeAlertName = "volumeAlert"
-const BrightnessAlertName = "brightnessAlert"
-
 export function AlertWindow(
     {
         enabled,
@@ -107,7 +104,7 @@ export function VolumeAlert(monitorId: number): Astal.Window {
         enabled={variableConfig.osd.soundOSDEnabled.asAccessor()}
         iconLabel={speakerVar(() => getVolumeIcon(defaultSpeaker))}
         sliderValue={createBinding(defaultSpeaker, "volume")}
-        windowName={VolumeAlertName}
+        windowName={`volumeAlert_${monitorId}`}
         showVariable={showVariable}
         monitorId={monitorId}/> as Astal.Window
 }
@@ -125,7 +122,7 @@ export function BrightnessAlert(monitorId: number): Astal.Window {
             return getBrightnessIcon(brightness)
         })}
         sliderValue={createBinding(brightness, "screen")}
-        windowName={BrightnessAlertName}
+        windowName={`brightnessAlert_${monitorId}`}
         showVariable={showVariable}
         monitorId={monitorId}/> as  Astal.Window
 }

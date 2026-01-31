@@ -41,6 +41,7 @@ export function addWindowOneOff(createWindow: () => Astal.Window) {
 // ========================== Permanent windows per monitor ================================
 
 export const windowsByMonitor = new Map<string, Astal.Window[]>();
+const disposeByMonitor = new Map<string, () => void>()
 
 // Create all per-monitor windows and register them
 export function spawnMonitorWindows(
@@ -52,16 +53,7 @@ export function spawnMonitorWindows(
     }
     console.log(`Creating windows for monitor: ${hyprMonitorInfo.name}`)
 
-    createRoot(() => {
-        // if (App.get_window(frameWindowNamePrefix) === undefined) {
-        //     console.log("Creating frame")
-        //     Frame(hyprMonitorInfo.id)
-        //     SpacerBottom(hyprMonitorInfo.id)
-        //     SpacerTop(hyprMonitorInfo.id)
-        //     SpacerRight(hyprMonitorInfo.id)
-        //     SpacerLeft(hyprMonitorInfo.id)
-        // }
-
+    createRoot((dispose) => {
         const windows = [
             Frame(hyprMonitorInfo.id),
             SpacerBottom(hyprMonitorInfo.id),
@@ -80,6 +72,7 @@ export function spawnMonitorWindows(
         })
 
         windowsByMonitor.set(hyprMonitorInfo.name, windows)
+        disposeByMonitor.set(hyprMonitorInfo.name, dispose)
 
         logOpenedWindows()
     })
@@ -94,6 +87,9 @@ export function killOldMonitorWindows() {
             const orphanedWindows: Astal.Window[] = [...windowsByMonitor.entries()]
                 .filter(([name]) => !activeNames.has(name))
                 .flatMap(([_, wins]) => wins)
+            const disposeFunctions: (() => void)[] = [...disposeByMonitor.entries()]
+                .filter(([name]) => !activeNames.has(name))
+                .flatMap(([_, functions]) => functions)
 
             orphanedWindows.forEach((window: Astal.Window) => {
                 console.log(`Closing window ${window.name}`)
@@ -107,6 +103,11 @@ export function killOldMonitorWindows() {
                     windowsByMonitor.delete(name)
                 }
             }
+            for (const name of disposeByMonitor.keys()) {
+                if (!activeNames.has(name)) {
+                    disposeByMonitor.delete(name)
+                }
+            }
 
             if (monitors.length === 0) {
                 console.log("Closing all windows")
@@ -116,6 +117,10 @@ export function killOldMonitorWindows() {
                     App.remove_window(window)
                 })
             }
+
+            disposeFunctions.forEach((dispose) => {
+                dispose()
+            })
 
             logOpenedWindows()
         })

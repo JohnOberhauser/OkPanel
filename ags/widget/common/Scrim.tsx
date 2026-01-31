@@ -10,7 +10,7 @@ export default function (monitorId: number): Astal.Window {
     return <window
         namespace={"okpanel-scrim"}
         monitor={monitorId}
-        name={"Scrim"}
+        name={`Scrim_${monitorId}`}
         anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT | Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.TOP}
         exclusivity={Astal.Exclusivity.IGNORE}
         layer={Astal.Layer.OVERLAY}

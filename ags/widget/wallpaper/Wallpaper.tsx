@@ -60,7 +60,7 @@ export default function (
     monitorHeight: number,
 ): Astal.Window {
     return <window
-        name={"wallpaper"}
+        name={`wallpaper_${monitorId}`}
         monitor={monitorId}
         cssClasses={["windowBackground"]}
         layer={Astal.Layer.BACKGROUND}

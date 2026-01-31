@@ -50,7 +50,7 @@ export default function (
     return <window
         defaultWidth={1} // necessary or resizing doesn't work
         cssClasses={["mostlyTransparentBackground"]}
-        name={"SpacerRight"}
+        name={`SpacerRight_${monitorId}`}
         monitor={monitorId}
         layer={Astal.Layer.BACKGROUND}
         namespace={"okpanel-frame-spacer"}

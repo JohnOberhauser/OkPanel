@@ -30,7 +30,7 @@ export default function (
 
     return <window
         defaultHeight={1} // necessary or resizing doesn't work
-        name={"SpacerBottom"}
+        name={`SpacerBottom_${monitorId}`}
         monitor={monitorId}
         cssClasses={["mostlyTransparentBackground"]}
         layer={Astal.Layer.BACKGROUND}

@@ -74,7 +74,7 @@ export default function NotificationPopups(monitorId: number): Astal.Window {
 
     return <window
         defaultHeight={1}
-        name={"notificationPopups"}
+        name={`notificationPopups_${monitorId}`}
         namespace={"okpanel-notifications"}
         visible={visible}
         cssClasses={["NotificationPopups"]}
