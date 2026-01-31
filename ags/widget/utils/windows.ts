@@ -53,16 +53,21 @@ export function spawnMonitorWindows(
     console.log(`Creating windows for monitor: ${hyprMonitorInfo.name}`)
 
     createRoot(() => {
-        if (App.get_window("frame") === undefined) {
-            console.log("Creating frame")
-            Frame()
-            SpacerBottom()
-            SpacerTop()
-            SpacerRight()
-            SpacerLeft()
-        }
+        // if (App.get_window(frameWindowNamePrefix) === undefined) {
+        //     console.log("Creating frame")
+        //     Frame(hyprMonitorInfo.id)
+        //     SpacerBottom(hyprMonitorInfo.id)
+        //     SpacerTop(hyprMonitorInfo.id)
+        //     SpacerRight(hyprMonitorInfo.id)
+        //     SpacerLeft(hyprMonitorInfo.id)
+        // }
 
         const windows = [
+            Frame(hyprMonitorInfo.id),
+            SpacerBottom(hyprMonitorInfo.id),
+            SpacerTop(hyprMonitorInfo.id),
+            SpacerRight(hyprMonitorInfo.id),
+            SpacerLeft(hyprMonitorInfo.id),
             Wallpaper(hyprMonitorInfo.id, hyprMonitorInfo.width, hyprMonitorInfo.height),
             VolumeAlert(hyprMonitorInfo.id),
             BrightnessAlert(hyprMonitorInfo.id),

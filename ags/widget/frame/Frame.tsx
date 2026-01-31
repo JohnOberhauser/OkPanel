@@ -18,7 +18,7 @@ import IntegratedScreenshare from "../screenshare/IntegratedScreenshare";
 import FrameDrawing from "./FrameDrawing";
 import {BoxWithResize} from "../common/BoxWithResize";
 
-export const frameWindowName = "frame"
+export const frameWindowNamePrefix = "frame"
 
 function getLeftAndRightSides(
     leftBar: Gtk.Widget,
@@ -220,7 +220,9 @@ function RightGroup(
     </box>
 }
 
-export default function (): Astal.Window {
+export default function (
+    monitorId: number,
+): Astal.Window {
 
     const menuPosition = variableConfig.frame.menu.position.asAccessor()
     const calendarPosition = variableConfig.frame.calendar.position.asAccessor()
@@ -234,7 +236,8 @@ export default function (): Astal.Window {
     const [rightGroupWidth, rightGroupWidthSetter] = createState(0)
 
     let frameWindow = <window
-        name={frameWindowName}
+        name={`${frameWindowNamePrefix}_${monitorId}`}
+        monitor={monitorId}
         cssClasses={["transparentBackground"]}
         layer={Astal.Layer.TOP}
         namespace={"okpanel-frame"}

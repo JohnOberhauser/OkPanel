@@ -18,7 +18,9 @@ import {integratedScreenshotRevealed, integratedScreenshotWidth} from "../../scr
 import {integratedAppLauncherRevealed, integratedAppLauncherWidth} from "../../appLauncher/IntegratedAppLauncher";
 import {integratedScreenshareRevealed, integratedScreenshareWidth} from "../../screenshare/IntegratedScreenshare";
 
-export default function (): Astal.Window {
+export default function (
+    monitorId: number,
+): Astal.Window {
     const size = createComputed([
         rightBarWidth,
         variableConfig.frame.rightThickness.asAccessor(),
@@ -49,6 +51,7 @@ export default function (): Astal.Window {
         defaultWidth={1} // necessary or resizing doesn't work
         cssClasses={["mostlyTransparentBackground"]}
         name={"SpacerRight"}
+        monitor={monitorId}
         layer={Astal.Layer.BACKGROUND}
         namespace={"okpanel-frame-spacer"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
