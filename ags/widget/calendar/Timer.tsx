@@ -28,8 +28,6 @@ export const timerTextVisible = createComputed([
 
 let timerStartingValue = 0
 
-let entry: Gtk.Entry
-
 const pad2 = (n: number) => n.toString().padStart(2, "0");
 
 function digitsToHMS(digits: string) {
@@ -97,7 +95,7 @@ export function millisecondsToHMS(totalMilliSeconds: number): string {
     return `${pad2(hours)}:${pad2(minutes)}:${pad2(seconds)}`;
 }
 
-function getTimerSecondsFromEntry() {
+function getTimerSecondsFromEntry(entry: Gtk.Entry) {
     const digits = entry.get_text().replace(/\D/g, "");
     if (!digits) return timerValueSetter(0);
     const { h, m, s } = digitsToHMS(digits);
@@ -136,8 +134,8 @@ function stopTimer() {
     timerSetter(null)
 }
 
-function activateTimer() {
-    getTimerSecondsFromEntry()
+function activateTimer(entry: Gtk.Entry) {
+    getTimerSecondsFromEntry(entry)
     timerEntryVisibleSetter(false)
     timerSetter(createTimer())
 }
@@ -214,7 +212,6 @@ export function TimerDelete(
             stopTimer()
             player.stop()
             timerEntryVisibleSetter(true)
-            entry.set_text("")
             timerStartingValue = 0
             timerValueSetter(0)
         }}
@@ -228,6 +225,32 @@ export default function (
         frameWindow: Astal.Window,
     }
 ) {
+    const entry = <entry
+        marginTop={8}
+        marginStart={30}
+        cssClasses={["timerEntry", "labelXL"]}
+        widthRequest={1}
+        widthChars={8}
+        hexpand={false}
+        halign={Gtk.Align.CENTER}
+        visible={timerEntryVisible}
+        placeholderText="00:00:00"
+        onActivate={() => {
+            activateTimer(entry)
+        }}
+        inputPurpose={Gtk.InputPurpose.DIGITS}
+        $={(self) => {
+            attachTimerFormatter(self)
+            wireEntryFocus(self, frameWindow)
+        }}
+    /> as Gtk.Entry
+
+    timerEntryVisible.subscribe(() => {
+        if (timerEntryVisible.peek()) {
+            entry.set_text("")
+        }
+    })
+
     return <box
         hexpand={true}
         orientation={Gtk.Orientation.VERTICAL}
@@ -244,26 +267,7 @@ export default function (
                         hexpand={true}
                         orientation={Gtk.Orientation.VERTICAL}
                         halign={Gtk.Align.CENTER}>
-                        <entry
-                            marginTop={8}
-                            marginStart={30}
-                            cssClasses={["timerEntry", "labelXL"]}
-                            widthRequest={1}
-                            widthChars={8}
-                            hexpand={false}
-                            halign={Gtk.Align.CENTER}
-                            visible={timerEntryVisible}
-                            placeholderText="00:00:00"
-                            onActivate={() => {
-                                activateTimer()
-                            }}
-                            inputPurpose={Gtk.InputPurpose.DIGITS}
-                            $={(self) => {
-                                entry = self
-                                attachTimerFormatter(self)
-                                wireEntryFocus(self, frameWindow)
-                            }}
-                        />
+                        {entry}
                         <OkButton
                             labelCss={["labelXL"]}
                             visible={timerTextVisible}
