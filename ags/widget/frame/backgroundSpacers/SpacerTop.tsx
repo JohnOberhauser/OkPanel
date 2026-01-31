@@ -5,7 +5,9 @@ import {variableConfig} from "../../../config/config";
 import {createComputed} from "ags";
 import {topBarHeight} from "../bars/TopBar";
 
-export default function (): Astal.Window {
+export default function (
+    monitorId: number,
+): Astal.Window {
     const size = createComputed([
         topBarHeight,
         variableConfig.frame.topThickness.asAccessor(),
@@ -29,7 +31,8 @@ export default function (): Astal.Window {
     return <window
         defaultHeight={1} // necessary or resizing doesn't work
         cssClasses={["mostlyTransparentBackground"]}
-        name={"SpacerTop"}
+        name={`SpacerTop_${monitorId}`}
+        monitor={monitorId}
         layer={Astal.Layer.BACKGROUND}
         namespace={"okpanel-frame-spacer"}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}

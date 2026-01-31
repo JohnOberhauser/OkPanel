@@ -1,4 +1,4 @@
-import {Gtk} from "ags/gtk4";
+import {Astal, Gtk} from "ags/gtk4";
 import {createState, With} from "ags";
 import Weather from "./Weather";
 import Calendar from "./Calendar";
@@ -16,7 +16,13 @@ export function closeIntegratedCalendar() {
     integratedCalendarRevealedSetting(false)
 }
 
-export default function () {
+export default function (
+    {
+        frameWindow,
+    }: {
+        frameWindow: Astal.Window,
+    }
+) {
     return <revealer
         hexpand={false}
         transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
@@ -40,7 +46,7 @@ export default function () {
                 </box>
                 <Weather/>
                 <box marginTop={40}/>
-                <Timer/>
+                <Timer frameWindow={frameWindow}/>
             </box>
         </Gtk.ScrolledWindow>
     </revealer>

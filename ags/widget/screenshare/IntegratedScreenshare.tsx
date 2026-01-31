@@ -1,4 +1,4 @@
-import {Gtk} from "ags/gtk4";
+import {Astal, Gtk} from "ags/gtk4";
 import {createState} from "ags";
 import Screenshare from "./Screenshare";
 
@@ -14,7 +14,13 @@ export function closeIntegratedScreenshare() {
     integratedScreenshareRevealedSetting(false)
 }
 
-export default function () {
+export default function (
+    {
+        frameWindow,
+    }: {
+        frameWindow: Astal.Window,
+    }
+) {
     return <revealer
         hexpand={false}
         transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
@@ -24,7 +30,7 @@ export default function () {
             vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
             propagateNaturalHeight={true}
             widthRequest={integratedScreenshareWidth}>
-            <Screenshare/>
+            <Screenshare frameWindow={frameWindow}/>
         </Gtk.ScrolledWindow>
     </revealer>
 }

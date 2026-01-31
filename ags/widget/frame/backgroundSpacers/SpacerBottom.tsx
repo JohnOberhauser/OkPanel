@@ -5,7 +5,9 @@ import {variableConfig} from "../../../config/config";
 import {createComputed} from "ags";
 import {bottomBarHeight} from "../bars/BottomBar";
 
-export default function (): Astal.Window {
+export default function (
+    monitorId: number,
+): Astal.Window {
     const size = createComputed([
         bottomBarHeight,
         variableConfig.frame.bottomThickness.asAccessor(),
@@ -28,7 +30,8 @@ export default function (): Astal.Window {
 
     return <window
         defaultHeight={1} // necessary or resizing doesn't work
-        name={"SpacerBottom"}
+        name={`SpacerBottom_${monitorId}`}
+        monitor={monitorId}
         cssClasses={["mostlyTransparentBackground"]}
         layer={Astal.Layer.BACKGROUND}
         namespace={"okpanel-frame-spacer"}

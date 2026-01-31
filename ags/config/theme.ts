@@ -3,7 +3,7 @@ import {execAsync} from "ags/process";
 import {projectDir} from "../app";
 import {BarWidget} from "./schema/definitions/barWidgets";
 import App from "ags/gtk4/app"
-import {frameWindowName} from "../widget/frame/Frame";
+import {frameWindowNamePrefix} from "../widget/frame/Frame";
 
 export function setTheme(onFinished: () => void) {
     execAsync(`bash -c '
@@ -22,8 +22,12 @@ fi
         console.error(error)
     }).finally(() => {
         App.apply_css("/tmp/OkPanel/style.css", true)
-        App.get_window(frameWindowName)?.add_css_class("__style")
-        App.get_window(frameWindowName)?.remove_css_class("__style")
+        App.get_windows().forEach((window) => {
+            if (window.name.startsWith(frameWindowNamePrefix)) {
+                window.add_css_class("__style")
+                window.remove_css_class("__style")
+            }
+        })
         console.log(`Theme applied: ${config.theme.name}`)
         onFinished()
     })
@@ -39,8 +43,12 @@ ${compileThemeBashScript()}
         console.error(error)
     }).finally(() => {
         App.apply_css("/tmp/OkPanel/style.css", true)
-        App.get_window(frameWindowName)?.add_css_class("__style")
-        App.get_window(frameWindowName)?.remove_css_class("__style")
+        App.get_windows().forEach((window) => {
+            if (window.name.startsWith(frameWindowNamePrefix)) {
+                window.add_css_class("__style")
+                window.remove_css_class("__style")
+            }
+        })
     })
 }
 
