@@ -1,6 +1,6 @@
 import AstalNetwork from "gi://AstalNetwork"
 import {getAccessPointIcon, getNetworkIconBinding} from "../../utils/network";
-import {Gtk} from "ags/gtk4"
+import {Astal, Gtk} from "ags/gtk4"
 import {execAsync} from "ags/process"
 import Pango from "gi://Pango?version=1.0";
 import RevealerRow from "../../common/RevealerRow";
@@ -219,11 +219,13 @@ function connectVpn(name: string, isConnectingSetter: Setter<boolean>) {
 
 function PasswordEntry(
     {
+        frameWindow,
         accessPoint,
-        passwordEntryRevealed
+        passwordEntryRevealed,
     }: {
+        frameWindow: Astal.Window
         accessPoint: AstalNetwork.AccessPoint,
-        passwordEntryRevealed: State<boolean>
+        passwordEntryRevealed: State<boolean>,
     }
 ) {
     const [text, textSetter] = createState("")
@@ -273,7 +275,7 @@ function PasswordEntry(
                 onActivate={() => connect()}
                 $={(self) => {
                     self.connect('changed', () => textSetter(self.text))
-                    wireEntryFocus(self)
+                    wireEntryFocus(self, frameWindow)
                 }}/>
         </box>}
         <revealer
@@ -374,7 +376,13 @@ function WifiConnections() {
     </box>
 }
 
-function WifiScannedConnections() {
+function WifiScannedConnections(
+    {
+        frameWindow,
+    }: {
+        frameWindow: Astal.Window,
+    }
+) {
     const network = AstalNetwork.get_default()
 
     return <box
@@ -421,6 +429,7 @@ function WifiScannedConnections() {
                                 transitionDuration={200}
                                 transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}>
                                 <PasswordEntry
+                                    frameWindow={frameWindow}
                                     accessPoint={accessPoint}
                                     passwordEntryRevealed={[passwordEntryRevealed, passwordEntryRevealedSetter]}/>
                             </revealer>
@@ -575,7 +584,13 @@ function VpnConnections() {
     </box>
 }
 
-export default function () {
+export default function (
+    {
+        frameWindow,
+    }: {
+        frameWindow: Astal.Window,
+    }
+) {
     const network = AstalNetwork.get_default()
 
     updateConnections()
@@ -636,7 +651,7 @@ export default function () {
                 <VpnActiveConnections/>
                 <VpnConnections/>
                 {network.wifi && <WifiConnections/>}
-                {network.wifi && <WifiScannedConnections/>}
+                {network.wifi && <WifiScannedConnections frameWindow={frameWindow}/>}
             </box>
         }
         setup={(revealed) => {

@@ -1,9 +1,8 @@
 import {variableConfig} from "../../config/config";
 import {Accessor, createComputed, createState, onCleanup} from "ags";
-import {Gtk} from "ags/gtk4";
+import {Astal, Gtk} from "ags/gtk4";
 import {hexToRgba} from "../utils/strings";
 import Cairo from 'gi://cairo';
-import {frameWindow} from "./Frame";
 import {isFraction} from "../utils/numbers";
 import AstalHyprland from "gi://AstalHyprland?version=0.1";
 import {topBarHeight} from "./bars/TopBar";
@@ -24,9 +23,11 @@ function roundedRect(ctx: any, x: number, y: number, w: number, h: number, r: nu
 
 export default function (
     {
+        frameWindow,
         leftGroupWidth,
         rightGroupWidth,
     }: {
+        frameWindow: Astal.Window,
         leftGroupWidth: Accessor<number>,
         rightGroupWidth: Accessor<number>,
     }

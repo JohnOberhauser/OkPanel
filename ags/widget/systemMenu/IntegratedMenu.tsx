@@ -1,4 +1,4 @@
-import {Gtk} from "ags/gtk4";
+import {Astal, Gtk} from "ags/gtk4";
 import {variableConfig} from "../../config/config";
 import {createBinding, createState, onCleanup} from "ags";
 import EndpointControls from "./widgets/EndpointControls";
@@ -43,8 +43,11 @@ let clock: Gtk.Widget
 let quickActions1: Gtk.Widget
 let quickActions2: Gtk.Widget
 
-function createSystemWidgets() {
-    network = <NetworkControls/> as Gtk.Widget
+function createSystemWidgets(
+    frameWindow: Astal.Window,
+) {
+    network = <NetworkControls
+        frameWindow={frameWindow}/> as Gtk.Widget
     bluetooth = <BluetoothControls/> as Gtk.Widget
     audioOut = <EndpointControls
         defaultEndpoint={audio.default_speaker}
@@ -102,7 +105,13 @@ function getListOfWidgets(
     )]
 }
 
-export default function () {
+export default function (
+    {
+        frameWindow,
+    }: {
+        frameWindow: Astal.Window,
+    }
+) {
     const unsub = variableConfig.systemMenu.widgets.asAccessor().subscribe(() => {
         removeAllChildren(mainBox)
         appendChildren(mainBox, getListOfWidgets(variableConfig.systemMenu.widgets.get()))
@@ -128,7 +137,7 @@ export default function () {
                 $={(self) => {
                     mainBox = self
 
-                    createSystemWidgets()
+                    createSystemWidgets(frameWindow)
 
                     appendChildren(self, getListOfWidgets(variableConfig.systemMenu.widgets.get()))
                 }}/>

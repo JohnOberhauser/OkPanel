@@ -20,8 +20,6 @@ import {BoxWithResize} from "../common/BoxWithResize";
 
 export const frameWindowName = "frame"
 
-export let frameWindow: Astal.Window
-
 function getLeftAndRightSides(
     leftBar: Gtk.Widget,
     rightBar: Gtk.Widget,
@@ -235,13 +233,27 @@ export default function (): Astal.Window {
     const [leftGroupWidth, leftGroupWidthSetter] = createState(0)
     const [rightGroupWidth, rightGroupWidthSetter] = createState(0)
 
-    let integratedMenu = <IntegratedMenu/> as Gtk.Widget
-    let integratedCalendar = <IntegratedCalendar/> as Gtk.Widget
+    let frameWindow = <window
+        name={frameWindowName}
+        cssClasses={["transparentBackground"]}
+        layer={Astal.Layer.TOP}
+        namespace={"okpanel-frame"}
+        exclusivity={Astal.Exclusivity.IGNORE}
+        anchor={Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
+        visible={true}
+        application={App}/> as Astal.Window
+
+    let integratedMenu = <IntegratedMenu
+        frameWindow={frameWindow}/> as Gtk.Widget
+    let integratedCalendar = <IntegratedCalendar
+        frameWindow={frameWindow}/> as Gtk.Widget
     let integratedClipboardManager = <IntegratedClipboardManager/> as Gtk.Widget
     let integratedNotificationHistory = <IntegratedNotificationHistory/> as Gtk.Widget
     let integratedScreenshotTool = <IntegratedScreenshot/> as Gtk.Widget
-    let integratedAppLauncher = <IntegratedAppLauncher/> as Gtk.Widget
-    let integratedScreenshare = <IntegratedScreenshare/> as Gtk.Widget
+    let integratedAppLauncher = <IntegratedAppLauncher
+        frameWindow={frameWindow}/> as Gtk.Widget
+    let integratedScreenshare = <IntegratedScreenshare
+        frameWindow={frameWindow}/> as Gtk.Widget
     let leftBar = <LeftBar/> as Gtk.Widget
     let rightBar = <RightBar/> as Gtk.Widget
 
@@ -318,45 +330,35 @@ export default function (): Astal.Window {
             appendChildren(self, rightSideWidgets)
         }}/> as Gtk.Box
 
-    return <window
-        $={(self) => {
-            frameWindow = self
-        }}
-        name={frameWindowName}
-        cssClasses={["transparentBackground"]}
-        layer={Astal.Layer.TOP}
-        namespace={"okpanel-frame"}
-        exclusivity={Astal.Exclusivity.IGNORE}
-        anchor={Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
-        visible={true}
-        application={App}>
-        <overlay
-            $={(overlay) => {
-                overlay.add_overlay(
+    frameWindow.child = <overlay
+        $={(overlay) => {
+            overlay.add_overlay(
+                <box
+                    vexpand={true}
+                    hexpand={true}
+                    orientation={Gtk.Orientation.VERTICAL}>
+                    <TopGroup/>
                     <box
                         vexpand={true}
                         hexpand={true}
-                        orientation={Gtk.Orientation.VERTICAL}>
-                        <TopGroup/>
-                        <box
-                            vexpand={true}
-                            hexpand={true}
-                            orientation={Gtk.Orientation.HORIZONTAL}>
-                            <LeftGroup
-                                widgetContainer={leftGroupWidgetContainer}
-                                leftGroupWidthSetter={leftGroupWidthSetter}/>
-                            <box hexpand/>
-                            <RightGroup
-                                widgetContainer={rightGroupWidgetContainer}
-                                rightGroupWidthSetter={rightGroupWidthSetter}/>
-                        </box>
-                        <BottomGroup/>
-                    </box> as Gtk.Box
-                )
-            }}>
-            <FrameDrawing
-                leftGroupWidth={leftGroupWidth}
-                rightGroupWidth={rightGroupWidth}/>
-        </overlay>
-    </window> as Astal.Window
+                        orientation={Gtk.Orientation.HORIZONTAL}>
+                        <LeftGroup
+                            widgetContainer={leftGroupWidgetContainer}
+                            leftGroupWidthSetter={leftGroupWidthSetter}/>
+                        <box hexpand/>
+                        <RightGroup
+                            widgetContainer={rightGroupWidgetContainer}
+                            rightGroupWidthSetter={rightGroupWidthSetter}/>
+                    </box>
+                    <BottomGroup/>
+                </box> as Gtk.Box
+            )
+        }}>
+        <FrameDrawing
+            frameWindow={frameWindow}
+            leftGroupWidth={leftGroupWidth}
+            rightGroupWidth={rightGroupWidth}/>
+    </overlay> as Gtk.Overlay
+
+    return frameWindow
 }

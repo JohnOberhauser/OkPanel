@@ -1,5 +1,5 @@
 import {Accessor, createComputed, createState, With} from "ags";
-import {Gtk} from "ags/gtk4";
+import {Astal, Gtk} from "ags/gtk4";
 import GLib from "gi://GLib?version=2.0";
 import OkButton, {OkButtonHorizontalPadding, OkButtonVerticalPadding} from "../common/OkButton";
 import {interval, Timer} from "ags/time";
@@ -221,7 +221,13 @@ export function TimerDelete(
         label={""}/>
 }
 
-export default function () {
+export default function (
+    {
+        frameWindow,
+    }: {
+        frameWindow: Astal.Window,
+    }
+) {
     return <box
         hexpand={true}
         orientation={Gtk.Orientation.VERTICAL}
@@ -255,7 +261,7 @@ export default function () {
                             $={(self) => {
                                 entry = self
                                 attachTimerFormatter(self)
-                                wireEntryFocus(self)
+                                wireEntryFocus(self, frameWindow)
                             }}
                         />
                         <OkButton

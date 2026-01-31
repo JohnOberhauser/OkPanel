@@ -1,7 +1,9 @@
 import {Astal, Gtk} from "ags/gtk4";
-import {frameWindow} from "./Frame";
 
-export function wireEntryFocus(entry: Gtk.Entry) {
+export function wireEntryFocus(
+    entry: Gtk.Entry,
+    frameWindow: Astal.Window,
+) {
     const fc = new Gtk.EventControllerFocus();
 
     fc.connect("enter", () => {

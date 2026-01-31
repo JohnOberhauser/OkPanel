@@ -1,7 +1,6 @@
 import {Astal, Gtk} from "ags/gtk4";
 import {createState, onCleanup} from "ags";
 import AppLauncher from "./AppLauncher";
-import {frameWindow} from "../frame/Frame";
 
 export const integratedAppLauncherWidth = 500
 
@@ -15,7 +14,13 @@ export function closeIntegratedAppLauncher() {
     integratedAppLauncherRevealedSetting(false)
 }
 
-export default function () {
+export default function (
+    {
+        frameWindow
+    }: {
+        frameWindow: Astal.Window,
+    }
+) {
     const unsub = integratedAppLauncherRevealed.subscribe(() => {
         if (integratedAppLauncherRevealed.get()) {
             frameWindow.keymode = Astal.Keymode.EXCLUSIVE

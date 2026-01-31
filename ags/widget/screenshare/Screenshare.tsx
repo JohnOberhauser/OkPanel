@@ -8,7 +8,6 @@ import {createBinding, createState, For, onCleanup} from "ags";
 import {integratedScreenshareRevealed, toggleIntegratedScreenshare} from "./IntegratedScreenshare";
 import {timeout} from "ags/time";
 import {truncateString} from "../utils/strings";
-import {frameWindow} from "../frame/Frame";
 
 let response: (response: any) => void = () => {}
 
@@ -242,7 +241,13 @@ function Region() {
     />
 }
 
-export default function () {
+export default function (
+    {
+        frameWindow,
+    }: {
+        frameWindow: Astal.Window,
+    }
+) {
     return <box
         $={(self) => {
             const shortcutController = new Gtk.ShortcutController()
