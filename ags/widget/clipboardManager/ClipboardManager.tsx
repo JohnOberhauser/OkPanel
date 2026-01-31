@@ -59,20 +59,34 @@ export function startCliphist() {
     watchForUpdates()
 }
 
+let monitor: Gio.FileMonitor | null = null
+
 function watchForUpdates() {
+    if (monitor !== null) return
+    console.log("creating clipboard file monitor")
     const dbPath =
         GLib.getenv("CLIPHIST_DB_PATH") ||
         `${GLib.getenv("XDG_CACHE_HOME") ?? `${GLib.get_home_dir()}/.cache`}/cliphist/db`;
 
     let debounceTimer: Timer | null = null
 
-    monitorFile(dbPath, (file, event) => {
+    monitor = monitorFile(dbPath, (file, event) => {
         if (event === Gio.FileMonitorEvent.CHANGED) {
+            console.log("clipboard entries changed")
             if (debounceTimer) debounceTimer.cancel()
 
             debounceTimer = timeout(200, () => {
                 debounceTimer = null
                 updateClipboardEntries()
+            })
+        }
+        // For some reason when wiping, cliphist "renames" the file.  Probably then deletes it and creates a new one.
+        // Just reset to fix the issue
+        if (event === Gio.FileMonitorEvent.RENAMED) {
+            monitor?.cancel()
+            monitor = null
+            timeout(200, () => {
+                watchForUpdates()
             })
         }
     })
@@ -205,6 +219,7 @@ export function ClipboardManagerContent() {
                     </box>
                     <Divider
                         visible={clipboardEntries.as((entries) => {
+                            if (entries.length === 0) return false
                             return entries[entries.length - 1].number !== entry.number
                         })}
                         marginTop={10}
