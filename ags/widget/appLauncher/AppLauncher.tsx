@@ -60,12 +60,14 @@ function AppButton({ app, isSelected }: AppButtonProps) {
     </button>
 }
 
+const [selectedIndex, selectedIndexSetter] = createState(0)
+const [text, textSetter] = createState("")
+const textBuffer = new Gtk.EntryBuffer()
+
 export default function () {
     const { CENTER } = Gtk.Align
     let apps = new Apps.Apps()
 
-    const [selectedIndex, selectedIndexSetter] = createState(0)
-    const [text, textSetter] = createState("")
     const list = text(text => {
         let listApps = apps
             .exact_query(text)
@@ -193,6 +195,7 @@ export default function () {
                     placeholderText="Search"
                     onActivate={onEnter}
                     hexpand={true}
+                    buffer={textBuffer}
                     $={(self) => {
                         textEntryBox = self
                         self.connect('changed', () => textSetter(self.text))
