@@ -354,6 +354,24 @@
   border-style: solid;
 }
 
+.barDockForeground {
+  color: vars.$barDockForeground;
+}
+
+.barDockBackground {
+  background-color: vars.$barDockBackground;
+  border-radius: vars.$barDockBorderRadius;
+  border-width: vars.$barDockBorderWidth;
+  border-color: vars.$barDockBorderColor;
+  border-style: solid;
+  @include fun.hoverLighten(vars.$barDockBackground);
+}
+
+.barDockSelected {
+  background-color: vars.$barDockSelectedColor;
+  @include fun.hoverLighten(vars.$barDockSelectedColor);
+}
+
 // ---- barCustom ----
 .barCustom1Foreground {
   color: vars.$barCustom1Foreground;

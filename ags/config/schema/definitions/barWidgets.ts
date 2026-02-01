@@ -10,6 +10,7 @@ export enum BarWidget {
     CLIPBOARD_MANAGER = "clipboardManager",
     CLOCK = "clock",
     COLOR_PICKER = "colorPicker",
+    DOCK = "dock",
     LOCK = "lock",
     LOGOUT = "logout",
     MENU = "menu",
@@ -385,6 +386,21 @@ export const barWidgetsSchema = {
             type: "object",
             description: "Configuration for the color picker bar widget.",
             children: [...widgetCommons()],
+        },
+        {
+            name: BarWidget.DOCK,
+            type: "object",
+            description: "Configuration for the dock bar widget.",
+            children: [
+                ...widgetCommons(),
+                {
+                    name: 'selectedBackground',
+                    type: 'color',
+                    default: {from: 'theme.colors.buttonPrimary'},
+                    description: 'Background color of the widget when selected.',
+                    reactive: false,
+                },
+            ],
         },
         {
             name: BarWidget.LOCK,

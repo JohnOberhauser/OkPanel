@@ -135,6 +135,8 @@ cat > "$BUILD_DIR/variables.scss" <<EOFVARS
 \\$frameRightGroupBorderRadius: ${config.rightBar.borderRadius}px;
 \\$frameRightGroupBorderWidth: ${config.rightBar.borderWidth}px;
 
+\\$barDockSelectedColor: ${config.barWidgets.dock.selectedBackground};
+
 \\$barShortcut1SelectedColor: ${config.barWidgets.shortcut1.selectedBackground};
 \\$barShortcut2SelectedColor: ${config.barWidgets.shortcut2.selectedBackground};
 \\$barShortcut3SelectedColor: ${config.barWidgets.shortcut3.selectedBackground};
