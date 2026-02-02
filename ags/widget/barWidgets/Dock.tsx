@@ -278,16 +278,8 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
     return <box
         orientation={vertical ? Gtk.Orientation.VERTICAL : Gtk.Orientation.HORIZONTAL}>
         <For each={classes} id={(it) => it}>
-            {(clazz, index) => {
+            {(clazz) => {
                 const app = getApp(clazz)
-
-                const indicator: Accessor<Indicator> = createBinding(hyprland, "clients").as(() => {
-                    const clients = hyprland.clients.filter((it) => it.class === clazz)
-                    return {
-                        visible: clients.length > 0,
-                        size: clients.length === 1 ? 4 : 8
-                    }
-                })
 
                 const indicatorCount = createBinding(hyprland, "clients").as(() => {
                     const clients = hyprland.clients.filter((it) => it.class === clazz)
