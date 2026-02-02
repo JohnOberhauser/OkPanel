@@ -400,6 +400,26 @@ export const barWidgetsSchema = {
                     description: 'Background color of the widget when selected.',
                     reactive: false,
                 },
+                {
+                    name: 'pinnedApps',
+                    type: 'array',
+                    default: [],
+                    item: {
+                        name: 'value',
+                        type: 'string'
+                    },
+                    description: 'A list of pinned apps in the dock. Each value should be a hyprland client class name.  Use hyprctl clients to view open clients to find the name.'
+                },
+                {
+                    name: 'glyphOverride',
+                    type: 'array',
+                    default: [],
+                    item: {
+                        name: 'value',
+                        type: 'string',
+                    },
+                    description: 'A list of glyph overrides for apps in the dock. Each item should be in the format "{hyprland client name}|{glyph}".  For example: "steam|".'
+                }
             ],
         },
         {

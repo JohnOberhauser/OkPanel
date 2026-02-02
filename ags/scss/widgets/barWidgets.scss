@@ -372,6 +372,11 @@
   @include fun.hoverLighten(vars.$barDockSelectedColor);
 }
 
+.barDockIndicator {
+  border-radius: 90px;
+  background-color: vars.$barDockForeground;
+}
+
 // ---- barCustom ----
 .barCustom1Foreground {
   color: vars.$barCustom1Foreground;

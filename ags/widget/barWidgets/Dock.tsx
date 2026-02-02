@@ -2,7 +2,7 @@ import Apps from "gi://AstalApps"
 import {Bar} from "../../config/bar";
 import {Gdk, Gtk} from "ags/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
-import {createBinding, createRoot, createState, For, onCleanup} from "ags";
+import {Accessor, createBinding, createComputed, createRoot, createState, For, onCleanup} from "ags";
 import OkButton from "../common/OkButton";
 import {getHPadding, getVPadding} from "./BarWidgets";
 import {readFile} from "ags/file";
@@ -13,8 +13,38 @@ import {launchApp, launchDesktopApp} from "../utils/launch";
 import Gio from "gi://Gio?version=2.0";
 import GLib from "gi://GLib?version=2.0";
 import {uniqueBy} from "../utils/filter";
+import {variableConfig} from "../../config/config";
 
 const hyprland = AstalHyprland.get_default()
+
+type Indicator = {
+    visible: boolean
+    size: number
+};
+
+function getIndicatorHAlign(bar: Bar) {
+    switch (bar) {
+        case Bar.LEFT:
+            return Gtk.Align.START
+        case Bar.RIGHT:
+            return Gtk.Align.END
+        case Bar.TOP:
+        case Bar.BOTTOM:
+            return Gtk.Align.CENTER
+    }
+}
+
+function getIndicatorVAlign(bar: Bar) {
+    switch (bar) {
+        case Bar.LEFT:
+        case Bar.RIGHT:
+            return Gtk.Align.CENTER
+        case Bar.TOP:
+            return Gtk.Align.START
+        case Bar.BOTTOM:
+            return Gtk.Align.END
+    }
+}
 
 function addLaunchToMenu(
     menu: Gio.Menu,
@@ -146,11 +176,6 @@ function getAppGlyph(
         }
     )
 
-    result.slice(0, 10).forEach((res) => {
-        console.log(`result: ${res.key}`)
-        console.log(`result value: ${res.value}`)
-    })
-
     if (result.length === 0) return "󰘔"
     const cleaned = result[0].value.trim().replace(/^0x/i, "").replace(/^u\+/i, "");
     const codePoint = Number.parseInt(cleaned, 16);
@@ -160,15 +185,36 @@ function getAppGlyph(
 export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
     const nerdFontMap = JSON.parse(readFile(`${projectDir}/assets/nerd_font_map.json`))
 
-    const classes = createBinding(hyprland, "clients").as((clients) => {
-        return uniqueBy(clients.reverse(), (client) => client.class).flatMap((it) => it.class)
+    const openedClients = createBinding(hyprland, "clients")
+    const pinnedAppsAccessor = variableConfig.barWidgets.dock.pinnedApps.asAccessor()
+
+    const classes = createComputed(() => {
+        // @ts-ignore
+        const pinnedApps: string[] = pinnedAppsAccessor()
+        const openedClasses = openedClients().flatMap((it) => it.class)
+        const combinedClasses = [...pinnedApps, ...openedClasses.reverse()]
+        return uniqueBy(combinedClasses, (it) => it)
     })
+
+    // const classes = createBinding(hyprland, "clients").as((clients) => {
+    //     const openedClasses = clients.flatMap((it) => it.class)
+    //     const pinnedApps =
+    //     return uniqueBy(clients.reverse(), (client) => client.class).flatMap((it) => it.class)
+    // })
 
     return <box
         orientation={vertical ? Gtk.Orientation.VERTICAL : Gtk.Orientation.HORIZONTAL}>
         <For each={classes} id={(it) => it}>
             {(clazz, index) => {
                 const app = getApp(clazz)
+
+                const indicator: Accessor<Indicator> = createBinding(hyprland, "clients").as(() => {
+                    const clients = hyprland.clients.filter((it) => it.class === clazz)
+                    return {
+                        visible: clients.length > 0,
+                        size: clients.length === 1 ? 4 : 8
+                    }
+                })
 
                 const [selected, selectedSet] = createState(hyprland.focusedClient?.class === clazz)
 
@@ -187,97 +233,139 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
 
                 onCleanup(dispose1)
 
-                return <OkButton
-                    hpadding={getHPadding(bar)}
-                    vpadding={getVPadding(bar)}
-                    selected={selected}
-                    selectedCss={[`barDockSelected`]}
-                    labelCss={[`barDockForeground`]}
-                    backgroundCss={[`barDockBackground`]}
-                    label={getAppGlyph(nerdFontMap, clazz)}
-                    clickHandlers={{
-                        onLeftClick: () => {
-                            let clients = hyprland
-                                .clients
-                                .filter((it) => it.class === clazz)
-                                .sort((a, b) => a.focusHistoryId - b.focusHistoryId)
-
-                            if (clients.length === 0) {
-                                if (app !== null) {
-                                    launchDesktopApp(app)
+                return <overlay
+                    $={(self) => {
+                        self.add_overlay(
+                            <box
+                                canTarget={false}
+                                canFocus={false}
+                                hexpand={false}
+                                vexpand={false}
+                                visible={indicator.as((it) => it.visible)}
+                                cssClasses={[`barDockIndicator`]}
+                                halign={getIndicatorHAlign(bar)}
+                                valign={getIndicatorVAlign(bar)}
+                                widthRequest={4}
+                                heightRequest={4}
+                                marginStart={6}
+                                marginBottom={4}
+                                marginEnd={6}
+                                marginTop={4}
+                            /> as Gtk.Box
+                        )
+                    }}>
+                    <OkButton
+                        hpadding={getHPadding(bar)}
+                        vpadding={getVPadding(bar)}
+                        selected={selected}
+                        selectedCss={[`barDockSelected`]}
+                        labelCss={[`barDockForeground`]}
+                        backgroundCss={[`barDockBackground`]}
+                        label={variableConfig.barWidgets.dock.glyphOverride.asAccessor().as((overrideList) => {
+                            let glyph: string | null = null
+                            overrideList.forEach((overrideItem) => {
+                                // @ts-ignore
+                                const overrideString: string = overrideItem
+                                console.log(overrideString)
+                                console.log(clazz)
+                                if (overrideString.includes("|")) {
+                                    const overrideClass = overrideString.split("|")[0]
+                                    const overrideGlyph = overrideString.split("|")[1]
+                                    if (overrideClass === clazz) {
+                                        glyph = overrideGlyph
+                                        return
+                                    }
                                 }
-                            } else {
+                            })
+                            if (glyph !== null) {
+                                return glyph
+                            }
+                            return getAppGlyph(nerdFontMap, clazz)
+                        })}
+                        clickHandlers={{
+                            onLeftClick: () => {
+                                let clients = hyprland
+                                    .clients
+                                    .filter((it) => it.class === clazz)
+                                    .sort((a, b) => a.focusHistoryId - b.focusHistoryId)
 
-                                const currentFocusedClient = hyprland.get_focused_client()
-                                const focusedWorkspace = hyprland.get_focused_workspace()
+                                if (clients.length === 0) {
+                                    if (app !== null) {
+                                        launchDesktopApp(app)
+                                    }
+                                } else {
 
-                                // If we are already focused on the class, focus the next client
-                                if (currentFocusedClient !== null && currentFocusedClient.class === clazz) {
-                                    const nextClients = clients
-                                        .filter((it) => it.focusHistoryId > currentFocusedClient.focusHistoryId)
+                                    const currentFocusedClient = hyprland.get_focused_client()
+                                    const focusedWorkspace = hyprland.get_focused_workspace()
 
-                                    const clientToFocus = nextClients.length === 0 ? clients[0] : nextClients[0]
+                                    // If we are already focused on the class, focus the next client
+                                    if (currentFocusedClient !== null && currentFocusedClient.class === clazz) {
+                                        const nextClients = clients
+                                            .filter((it) => it.focusHistoryId > currentFocusedClient.focusHistoryId)
+
+                                        const clientToFocus = nextClients.length === 0 ? clients[0] : nextClients[0]
+                                        const clientToFocusWorkspace = clientToFocus.workspace
+                                        if (clientToFocusWorkspace.id !== focusedWorkspace.id) {
+                                            clientToFocus.workspace.focus()
+                                        }
+                                        clientToFocus.focus()
+                                        return
+                                    }
+
+                                    // Focus on a client in this workspace if one exists, otherwise a client elsewhere
+                                    const clientsOnFocusedWorkspace = clients.filter((it) => it.workspace === focusedWorkspace)
+                                    const clientToFocus = clientsOnFocusedWorkspace.length === 0 ? clients[0] : clientsOnFocusedWorkspace[0]
                                     const clientToFocusWorkspace = clientToFocus.workspace
                                     if (clientToFocusWorkspace.id !== focusedWorkspace.id) {
                                         clientToFocus.workspace.focus()
                                     }
                                     clientToFocus.focus()
-                                    return
                                 }
+                            },
+                            onMiddleClick: () => {
 
-                                // Focus on a client in this workspace if one exists, otherwise a client elsewhere
-                                const clientsOnFocusedWorkspace = clients.filter((it) => it.workspace === focusedWorkspace)
-                                const clientToFocus = clientsOnFocusedWorkspace.length === 0 ? clients[0] : clientsOnFocusedWorkspace[0]
-                                const clientToFocusWorkspace = clientToFocus.workspace
-                                if (clientToFocusWorkspace.id !== focusedWorkspace.id) {
-                                    clientToFocus.workspace.focus()
-                                }
-                                clientToFocus.focus()
-                            }
-                        },
-                        onMiddleClick: () => {
+                            },
+                            onRightClick: ({self, x, y}) => {
+                                createRoot((dispose) => {
+                                    let clients = hyprland
+                                        .clients
+                                        .filter((it) => it.class === clazz)
 
-                        },
-                        onRightClick: ({self, x, y}) => {
-                            createRoot((dispose) => {
-                                let clients = hyprland
-                                    .clients
-                                    .filter((it) => it.class === clazz)
+                                    const pop = new Gtk.PopoverMenu()
+                                    pop.set_has_arrow(false)
+                                    pop.add_css_class("ok-popover")
 
-                                const pop = new Gtk.PopoverMenu()
-                                pop.set_has_arrow(false)
-                                pop.add_css_class("ok-popover")
+                                    const actionGroup = new Gio.SimpleActionGroup()
+                                    const menu = new Gio.Menu()
 
-                                const actionGroup = new Gio.SimpleActionGroup()
-                                const menu = new Gio.Menu()
-
-                                if (clients.length === 0) {
-                                    if (app !== null) {
-                                        addLaunchToMenu(menu, actionGroup, pop, app)
+                                    if (clients.length === 0) {
+                                        if (app !== null) {
+                                            addLaunchToMenu(menu, actionGroup, pop, app)
+                                        }
+                                    } else {
+                                        addMoveFocusedClientToMenu(menu, actionGroup, pop, clazz)
+                                        addCloseFocusedToMenu(menu, actionGroup, pop, clazz)
+                                        addQuitToMenu(menu, actionGroup, pop, clazz)
                                     }
-                                } else {
-                                    addMoveFocusedClientToMenu(menu, actionGroup, pop, clazz)
-                                    addCloseFocusedToMenu(menu, actionGroup, pop, clazz)
-                                    addQuitToMenu(menu, actionGroup, pop, clazz)
-                                }
 
-                                pop.set_menu_model(menu)
-                                pop.insert_action_group?.("main", actionGroup)
+                                    pop.set_menu_model(menu)
+                                    pop.insert_action_group?.("main", actionGroup)
 
-                                pop.set_parent(self)
+                                    pop.set_parent(self)
 
-                                const rect = new Gdk.Rectangle({ x: Math.round(x), y: Math.round(y), width: 1, height: 1 })
-                                pop.set_pointing_to?.(rect)
+                                    const rect = new Gdk.Rectangle({ x: Math.round(x), y: Math.round(y), width: 1, height: 1 })
+                                    pop.set_pointing_to?.(rect)
 
-                                pop.connect("closed", () => {
-                                    dispose()
-                                })
+                                    pop.connect("closed", () => {
+                                        dispose()
+                                    })
 
-                                pop.popup()
-                            });
-                        }
-                    }}
-                />
+                                    pop.popup()
+                                });
+                            }
+                        }}
+                    />
+                </overlay>
             }}
         </For>
     </box>
