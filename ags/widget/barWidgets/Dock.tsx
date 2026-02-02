@@ -46,6 +46,17 @@ function getIndicatorVAlign(bar: Bar) {
     }
 }
 
+function getIndicatorOrientation(bar: Bar) {
+    switch (bar) {
+        case Bar.LEFT:
+        case Bar.RIGHT:
+            return Gtk.Orientation.VERTICAL
+        case Bar.TOP:
+        case Bar.BOTTOM:
+            return Gtk.Orientation.HORIZONTAL
+    }
+}
+
 function addLaunchToMenu(
     menu: Gio.Menu,
     actionGroup: Gio.SimpleActionGroup,
@@ -182,6 +193,74 @@ function getAppGlyph(
     return String.fromCodePoint(codePoint)
 }
 
+function IndicatorDot(
+    {
+        visible,
+        bar,
+    }: {
+        visible: Accessor<boolean>,
+        bar: Bar,
+    }
+) {
+    return <box
+        canTarget={false}
+        canFocus={false}
+        hexpand={false}
+        vexpand={false}
+        visible={visible}
+        cssClasses={[`barDockIndicator`]}
+        halign={getIndicatorHAlign(bar)}
+        valign={getIndicatorVAlign(bar)}
+        widthRequest={4}
+        heightRequest={4}
+        marginStart={1}
+        marginBottom={1}
+        marginEnd={1}
+        marginTop={1}
+    />
+}
+
+function IndicatorLine(
+    {
+        visible,
+        bar,
+    }: {
+        visible: Accessor<boolean>,
+        bar: Bar,
+    }
+) {
+    let width = 0
+    let height = 0
+    switch (bar) {
+        case Bar.RIGHT:
+        case Bar.LEFT:
+            width = 4
+            height = 16
+            break
+        case Bar.BOTTOM:
+        case Bar.TOP:
+            width = 16
+            height = 4
+            break
+    }
+    return <box
+        canTarget={false}
+        canFocus={false}
+        hexpand={false}
+        vexpand={false}
+        visible={visible}
+        cssClasses={[`barDockIndicator`]}
+        halign={getIndicatorHAlign(bar)}
+        valign={getIndicatorVAlign(bar)}
+        widthRequest={width}
+        heightRequest={height}
+        marginStart={1}
+        marginBottom={1}
+        marginEnd={1}
+        marginTop={1}
+    />
+}
+
 export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
     const nerdFontMap = JSON.parse(readFile(`${projectDir}/assets/nerd_font_map.json`))
 
@@ -196,12 +275,6 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
         return uniqueBy(combinedClasses, (it) => it)
     })
 
-    // const classes = createBinding(hyprland, "clients").as((clients) => {
-    //     const openedClasses = clients.flatMap((it) => it.class)
-    //     const pinnedApps =
-    //     return uniqueBy(clients.reverse(), (client) => client.class).flatMap((it) => it.class)
-    // })
-
     return <box
         orientation={vertical ? Gtk.Orientation.VERTICAL : Gtk.Orientation.HORIZONTAL}>
         <For each={classes} id={(it) => it}>
@@ -214,6 +287,11 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                         visible: clients.length > 0,
                         size: clients.length === 1 ? 4 : 8
                     }
+                })
+
+                const indicatorCount = createBinding(hyprland, "clients").as(() => {
+                    const clients = hyprland.clients.filter((it) => it.class === clazz)
+                    return clients.length
                 })
 
                 const [selected, selectedSet] = createState(hyprland.focusedClient?.class === clazz)
@@ -237,21 +315,30 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                     $={(self) => {
                         self.add_overlay(
                             <box
+                                orientation={getIndicatorOrientation(bar)}
                                 canTarget={false}
                                 canFocus={false}
-                                hexpand={false}
-                                vexpand={false}
-                                visible={indicator.as((it) => it.visible)}
-                                cssClasses={[`barDockIndicator`]}
+                                hexpand={true}
+                                vexpand={true}
                                 halign={getIndicatorHAlign(bar)}
                                 valign={getIndicatorVAlign(bar)}
-                                widthRequest={4}
-                                heightRequest={4}
                                 marginStart={6}
                                 marginBottom={4}
                                 marginEnd={6}
-                                marginTop={4}
-                            /> as Gtk.Box
+                                marginTop={4}>
+                                <IndicatorDot
+                                    visible={indicatorCount.as((it) => it > 0 && it <= 3)}
+                                    bar={bar}/>
+                                <IndicatorDot
+                                    visible={indicatorCount.as((it) => it > 1 && it <= 3)}
+                                    bar={bar}/>
+                                <IndicatorDot
+                                    visible={indicatorCount.as((it) => it > 2 && it <= 3)}
+                                    bar={bar}/>
+                                <IndicatorLine
+                                    visible={indicatorCount.as((it) => it > 3)}
+                                    bar={bar}/>
+                            </box> as Gtk.Box
                         )
                     }}>
                     <OkButton
@@ -266,8 +353,6 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                             overrideList.forEach((overrideItem) => {
                                 // @ts-ignore
                                 const overrideString: string = overrideItem
-                                console.log(overrideString)
-                                console.log(clazz)
                                 if (overrideString.includes("|")) {
                                     const overrideClass = overrideString.split("|")[0]
                                     const overrideGlyph = overrideString.split("|")[1]
@@ -294,7 +379,6 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                         launchDesktopApp(app)
                                     }
                                 } else {
-
                                     const currentFocusedClient = hyprland.get_focused_client()
                                     const focusedWorkspace = hyprland.get_focused_workspace()
 
@@ -323,7 +407,9 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                 }
                             },
                             onMiddleClick: () => {
-
+                                if (app !== null) {
+                                    launchDesktopApp(app)
+                                }
                             },
                             onRightClick: ({self, x, y}) => {
                                 createRoot((dispose) => {
