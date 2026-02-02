@@ -30,6 +30,7 @@ import ColorPickerButton from "./ColorPickerButton";
 import TimerInBar from "./TimerInBar";
 import CustomWidget from "./CustomWidget";
 import Shortcut from "./Shortcut";
+import Dock from "./Dock";
 
 export function getHPadding(bar: Bar) {
     switch (bar) {
@@ -140,6 +141,8 @@ function getWidget(widget: BarWidget, isVertical: boolean, bar: Bar) {
             return <ColorPickerButton bar={bar}/>
         case BarWidget.TIMER:
             return <TimerInBar vertical={isVertical} bar={bar}/>
+        case BarWidget.DOCK:
+            return <Dock vertical={isVertical} bar={bar}/>
 
         case BarWidget.CUSTOM1:
             return <CustomWidget customNumber={1} bar={bar}/>

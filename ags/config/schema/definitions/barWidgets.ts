@@ -10,6 +10,7 @@ export enum BarWidget {
     CLIPBOARD_MANAGER = "clipboardManager",
     CLOCK = "clock",
     COLOR_PICKER = "colorPicker",
+    DOCK = "dock",
     LOCK = "lock",
     LOGOUT = "logout",
     MENU = "menu",
@@ -385,6 +386,41 @@ export const barWidgetsSchema = {
             type: "object",
             description: "Configuration for the color picker bar widget.",
             children: [...widgetCommons()],
+        },
+        {
+            name: BarWidget.DOCK,
+            type: "object",
+            description: "Configuration for the dock bar widget.",
+            children: [
+                ...widgetCommons(),
+                {
+                    name: 'selectedBackground',
+                    type: 'color',
+                    default: {from: 'theme.colors.buttonPrimary'},
+                    description: 'Background color of the widget when selected.',
+                    reactive: false,
+                },
+                {
+                    name: 'pinnedApps',
+                    type: 'array',
+                    default: [],
+                    item: {
+                        name: 'value',
+                        type: 'string'
+                    },
+                    description: 'A list of pinned apps in the dock. Each value should be a hyprland client class name.  Use hyprctl clients to view open clients to find the name.'
+                },
+                {
+                    name: 'glyphOverride',
+                    type: 'array',
+                    default: [],
+                    item: {
+                        name: 'value',
+                        type: 'string',
+                    },
+                    description: 'A list of glyph overrides for apps in the dock. Each item should be in the format "{hyprland client name}|{glyph}".  For example: "steam|".'
+                }
+            ],
         },
         {
             name: BarWidget.LOCK,
