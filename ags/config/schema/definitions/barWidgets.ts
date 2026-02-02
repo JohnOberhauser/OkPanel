@@ -418,7 +418,7 @@ export const barWidgetsSchema = {
                         name: 'value',
                         type: 'string',
                     },
-                    description: 'A list of glyph overrides for apps in the dock. Each item should be in the format "{hyprland client name}|{glyph}".  For example: "steam|".'
+                    description: 'A list of glyph overrides for apps in the dock. Each item should be in the format "{hyprland client name}|{glyph}|{glyph offset}".  For example: "steam||2".'
                 }
             ],
         },

@@ -348,17 +348,44 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                         selectedCss={[`barDockSelected`]}
                         labelCss={[`barDockForeground`]}
                         backgroundCss={[`barDockBackground`]}
+                        offset={
+                            variableConfig.barWidgets.dock.glyphOverride.asAccessor().as((overrideList) => {
+                                let offset: number | null = null
+                                overrideList.forEach((overrideItem) => {
+                                    // @ts-ignore
+                                    const overrideString: string = overrideItem
+                                    if (overrideString.includes("|")) {
+                                        const parts = overrideString.split("|")
+                                        if (parts.length >= 3) {
+                                            const overrideClass = parts[0]
+                                            const overrideOffset = Number(parts[2])
+                                            if (overrideClass === clazz && !Number.isNaN(overrideOffset)) {
+                                                offset = overrideOffset
+                                                return
+                                            }
+                                        }
+                                    }
+                                })
+                                if (offset !== null) {
+                                    return offset
+                                }
+                                return 0
+                            })
+                        }
                         label={variableConfig.barWidgets.dock.glyphOverride.asAccessor().as((overrideList) => {
                             let glyph: string | null = null
                             overrideList.forEach((overrideItem) => {
                                 // @ts-ignore
                                 const overrideString: string = overrideItem
                                 if (overrideString.includes("|")) {
-                                    const overrideClass = overrideString.split("|")[0]
-                                    const overrideGlyph = overrideString.split("|")[1]
-                                    if (overrideClass === clazz) {
-                                        glyph = overrideGlyph
-                                        return
+                                    const parts = overrideString.split("|")
+                                    if (parts.length >= 2) {
+                                        const overrideClass = parts[0]
+                                        const overrideGlyph = parts[1]
+                                        if (overrideClass === clazz) {
+                                            glyph = overrideGlyph
+                                            return
+                                        }
                                     }
                                 }
                             })
