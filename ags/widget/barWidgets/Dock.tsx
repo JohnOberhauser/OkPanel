@@ -457,9 +457,9 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                     return
                                 }
                             })
-                            // if (glyph !== null) {
-                            //     return glyph
-                            // }
+                            if (glyph !== null) {
+                                return glyph
+                            }
                             return getAppGlyph(nerdFontMap, clazz)
                         })}
                         clickHandlers={{
