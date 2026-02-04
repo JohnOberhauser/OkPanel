@@ -156,13 +156,7 @@ bottomBar:
   marginEnd: 5
   leftWidgets:
     - menu
-    - shortcut1
-    - shortcut2
-    - shortcut3
-    - shortcut4
-    - shortcut5
-    - shortcut6
-    - shortcut7
+    - dock
   centerWidgets:
     - workspaces
   rightWidgets:
@@ -186,39 +180,6 @@ barWidgets:
   clock:
     marginEnd: 4
     background: "#55504D"
-  shortcut1:
-    icon: ""
-    iconOffset: 2
-    launch: "kitty -d ~/"
-    newWindow: "kitty -d ~/"
-    class: "kitty"
-  shortcut2:
-    icon: "󰈹"
-    iconOffset: 2
-    launch: "/home/john/.local/share/firefox-nightly/firefox"
-    newWindow: "/home/john/.local/share/firefox-nightly/firefox"
-    class: "firefox-nightly"
-  shortcut3:
-    icon: ""
-    iconOffset: 3
-    launch: "/home/john/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea"
-    class: "jetbrains-idea"
-  shortcut4:
-    icon: "󰀴"
-    launch: "/home/john/.local/share/JetBrains/Toolbox/apps/android-studio/bin/studio.sh"
-    class: "jetbrains-studio"
-  shortcut5:
-    icon: "󰭹"
-    launch: "flatpak run org.signal.Signal"
-    class: "org.signal.Signal"
-  shortcut6:
-    icon: "󰄄"
-    launch: "darktable"
-    class: "Darktable"
-  shortcut7:
-    icon: ""
-    launch: "steam"
-    class: "steam"
 
 theme:
   name: desertpower
@@ -260,10 +221,7 @@ topBar:
     - colorPicker
     - workspaces
   centerWidgets:
-    - shortcut1
-    - shortcut2
-    - shortcut3
-    - shortcut4
+    - dock
     - clock
     - logout
     - lock
@@ -294,27 +252,6 @@ barWidgets:
     borderRadius: 90
     foreground: "#1E2326"
     background: "#7A8478"
-   shortcut1:
-    icon: ""
-    iconOffset: 2
-    launch: "kitty -d ~/"
-    newWindow: "kitty -d ~/"
-    class: "kitty"
-  shortcut2:
-    icon: "󰈹"
-    iconOffset: 2
-    launch: "/home/john/.local/share/firefox-nightly/firefox"
-    newWindow: "/home/john/.local/share/firefox-nightly/firefox"
-    class: "firefox-nightly"
-  shortcut3:
-    icon: ""
-    iconOffset: 3
-    launch: "/home/john/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea"
-    class: "jetbrains-idea"
-  shortcut4:
-    icon: "󰀴"
-    launch: "/home/john/.local/share/JetBrains/Toolbox/apps/android-studio/bin/studio.sh"
-    class: "jetbrains-studio"
 
 systemMenu:
   widgets:

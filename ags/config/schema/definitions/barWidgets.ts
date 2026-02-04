@@ -49,27 +49,6 @@ export enum BarWidget {
     CUSTOM18 = "custom18",
     CUSTOM19 = "custom19",
     CUSTOM20 = "custom20",
-
-    SHORTCUT1 = "shortcut1",
-    SHORTCUT2 = "shortcut2",
-    SHORTCUT3 = "shortcut3",
-    SHORTCUT4 = "shortcut4",
-    SHORTCUT5 = "shortcut5",
-    SHORTCUT6 = "shortcut6",
-    SHORTCUT7 = "shortcut7",
-    SHORTCUT8 = "shortcut8",
-    SHORTCUT9 = "shortcut9",
-    SHORTCUT10 = "shortcut10",
-    SHORTCUT11 = "shortcut11",
-    SHORTCUT12 = "shortcut12",
-    SHORTCUT13 = "shortcut13",
-    SHORTCUT14 = "shortcut14",
-    SHORTCUT15 = "shortcut15",
-    SHORTCUT16 = "shortcut16",
-    SHORTCUT17 = "shortcut17",
-    SHORTCUT18 = "shortcut18",
-    SHORTCUT19 = "shortcut19",
-    SHORTCUT20 = "shortcut20",
 }
 export const BAR_WIDGET_VALUES = Object.values(BarWidget) as readonly BarWidget[]
 
@@ -183,47 +162,6 @@ function customWidgetCommons() { return [
         type: 'string',
         default: '',
         description: 'The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.',
-    },
-    ...widgetCommons()
-] as const satisfies Field[] }
-
-function shortcutWidgetCommons() { return [
-    {
-        name: 'icon',
-        type: 'icon',
-        default: '󰘔',
-        description: 'The icon for the shortcut widget.',
-    },
-    {
-        name: 'iconOffset',
-        type: 'number',
-        default: 0,
-        description: 'Offset for the icon.'
-    },
-    {
-        name: 'launch',
-        type: 'string',
-        default: '',
-        description: 'The command to execute when launching the program.',
-    },
-    {
-        name: 'newWindow',
-        type: 'string',
-        default: '',
-        description: 'The command to execute when launching a new window.',
-    },
-    {
-        name: 'class',
-        type: 'string',
-        default: '',
-        description: 'The window class of the program.  You can find this by running hyprctl clients',
-    },
-    {
-        name: 'selectedBackground',
-        type: 'color',
-        default: {from: 'theme.colors.buttonPrimary'},
-        description: 'Background color of the widget when selected.',
-        reactive: false,
     },
     ...widgetCommons()
 ] as const satisfies Field[] }
@@ -781,126 +719,6 @@ export const barWidgetsSchema = {
             type: "object",
             description: "Configuration for the custom bar widget.",
             children: [...customWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT1,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT2,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT3,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT4,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT5,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT6,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT7,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT8,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT9,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT10,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT11,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT12,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT13,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT14,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT15,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT16,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT17,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT18,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT19,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
-        },
-        {
-            name: BarWidget.SHORTCUT20,
-            type: "object",
-            description: "Configuration for the shortcut bar widget.",
-            children: [...shortcutWidgetCommons()],
         },
     ],
 } as const satisfies Field

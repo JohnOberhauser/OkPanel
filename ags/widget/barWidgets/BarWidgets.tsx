@@ -29,7 +29,6 @@ import NotificationButton from "./NotificationButton";
 import ColorPickerButton from "./ColorPickerButton";
 import TimerInBar from "./TimerInBar";
 import CustomWidget from "./CustomWidget";
-import Shortcut from "./Shortcut";
 import Dock from "./Dock";
 
 export function getHPadding(bar: Bar) {
@@ -184,46 +183,5 @@ function getWidget(widget: BarWidget, isVertical: boolean, bar: Bar) {
             return <CustomWidget customNumber={19} bar={bar}/>
         case BarWidget.CUSTOM20:
             return <CustomWidget customNumber={20} bar={bar}/>
-
-        case BarWidget.SHORTCUT1:
-            return <Shortcut shortcutNumber={1} bar={bar}/>
-        case BarWidget.SHORTCUT2:
-            return <Shortcut shortcutNumber={2} bar={bar}/>
-        case BarWidget.SHORTCUT3:
-            return <Shortcut shortcutNumber={3} bar={bar}/>
-        case BarWidget.SHORTCUT4:
-            return <Shortcut shortcutNumber={4} bar={bar}/>
-        case BarWidget.SHORTCUT5:
-            return <Shortcut shortcutNumber={5} bar={bar}/>
-        case BarWidget.SHORTCUT6:
-            return <Shortcut shortcutNumber={6} bar={bar}/>
-        case BarWidget.SHORTCUT7:
-            return <Shortcut shortcutNumber={7} bar={bar}/>
-        case BarWidget.SHORTCUT8:
-            return <Shortcut shortcutNumber={8} bar={bar}/>
-        case BarWidget.SHORTCUT9:
-            return <Shortcut shortcutNumber={9} bar={bar}/>
-        case BarWidget.SHORTCUT10:
-            return <Shortcut shortcutNumber={10} bar={bar}/>
-        case BarWidget.SHORTCUT11:
-            return <Shortcut shortcutNumber={11} bar={bar}/>
-        case BarWidget.SHORTCUT12:
-            return <Shortcut shortcutNumber={12} bar={bar}/>
-        case BarWidget.SHORTCUT13:
-            return <Shortcut shortcutNumber={13} bar={bar}/>
-        case BarWidget.SHORTCUT14:
-            return <Shortcut shortcutNumber={14} bar={bar}/>
-        case BarWidget.SHORTCUT15:
-            return <Shortcut shortcutNumber={15} bar={bar}/>
-        case BarWidget.SHORTCUT16:
-            return <Shortcut shortcutNumber={16} bar={bar}/>
-        case BarWidget.SHORTCUT17:
-            return <Shortcut shortcutNumber={17} bar={bar}/>
-        case BarWidget.SHORTCUT18:
-            return <Shortcut shortcutNumber={18} bar={bar}/>
-        case BarWidget.SHORTCUT19:
-            return <Shortcut shortcutNumber={19} bar={bar}/>
-        case BarWidget.SHORTCUT20:
-            return <Shortcut shortcutNumber={20} bar={bar}/>
     }
 }

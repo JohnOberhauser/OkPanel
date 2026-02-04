@@ -137,27 +137,6 @@ cat > "$BUILD_DIR/variables.scss" <<EOFVARS
 
 \\$barDockSelectedColor: ${config.barWidgets.dock.selectedBackground};
 
-\\$barShortcut1SelectedColor: ${config.barWidgets.shortcut1.selectedBackground};
-\\$barShortcut2SelectedColor: ${config.barWidgets.shortcut2.selectedBackground};
-\\$barShortcut3SelectedColor: ${config.barWidgets.shortcut3.selectedBackground};
-\\$barShortcut4SelectedColor: ${config.barWidgets.shortcut4.selectedBackground};
-\\$barShortcut5SelectedColor: ${config.barWidgets.shortcut5.selectedBackground};
-\\$barShortcut6SelectedColor: ${config.barWidgets.shortcut6.selectedBackground};
-\\$barShortcut7SelectedColor: ${config.barWidgets.shortcut7.selectedBackground};
-\\$barShortcut8SelectedColor: ${config.barWidgets.shortcut8.selectedBackground};
-\\$barShortcut9SelectedColor: ${config.barWidgets.shortcut9.selectedBackground};
-\\$barShortcut10SelectedColor: ${config.barWidgets.shortcut10.selectedBackground};
-\\$barShortcut11SelectedColor: ${config.barWidgets.shortcut11.selectedBackground};
-\\$barShortcut12SelectedColor: ${config.barWidgets.shortcut12.selectedBackground};
-\\$barShortcut13SelectedColor: ${config.barWidgets.shortcut13.selectedBackground};
-\\$barShortcut14SelectedColor: ${config.barWidgets.shortcut14.selectedBackground};
-\\$barShortcut15SelectedColor: ${config.barWidgets.shortcut15.selectedBackground};
-\\$barShortcut16SelectedColor: ${config.barWidgets.shortcut16.selectedBackground};
-\\$barShortcut17SelectedColor: ${config.barWidgets.shortcut17.selectedBackground};
-\\$barShortcut18SelectedColor: ${config.barWidgets.shortcut18.selectedBackground};
-\\$barShortcut19SelectedColor: ${config.barWidgets.shortcut19.selectedBackground};
-\\$barShortcut20SelectedColor: ${config.barWidgets.shortcut20.selectedBackground};
-
 ${widgetLines}
 
 EOFVARS
