@@ -38,6 +38,14 @@ type VariableWrappedPrimitiveByKind<K extends PrimitiveType> =
     K extends 'icon' ? Variable<string> :
     never
 
+type VariableWrappedPrimitiveListByKind<K extends PrimitiveType> =
+    K extends 'string' ? Variable<string[]> :
+    K extends 'number' ? Variable<number[]> :
+    K extends 'boolean' ? Variable<boolean[]> :
+    K extends 'color' ? Variable<string[]> :
+    K extends 'icon' ? Variable<string[]> :
+    never
+
 type VariableFieldToProp<F extends Field> =
     F['reactive'] extends false
         ? FieldToProp<F>
@@ -52,7 +60,7 @@ type VariableFieldToProp<F extends Field> =
                                 ? Variable<E[]>
                                 : Variable<string[]>
                             : F['item']['type'] extends PrimitiveType
-                                ? Variable<VariableWrappedPrimitiveByKind<F['item']['type']>[]>
+                                ? VariableWrappedPrimitiveListByKind<F['item']['type']>
                                 : never
                     : never
                 : F['type'] extends 'enum'

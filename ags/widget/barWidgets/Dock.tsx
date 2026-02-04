@@ -9,18 +9,13 @@ import {readFile} from "ags/file";
 import {projectDir} from "../../app";
 import {fuzzyQuery, StringObject} from "../utils/query";
 import {timeout, Timer} from "ags/time";
-import {launchApp, launchDesktopApp} from "../utils/launch";
+import {launchDesktopApp} from "../utils/launch";
 import Gio from "gi://Gio?version=2.0";
 import GLib from "gi://GLib?version=2.0";
 import {uniqueBy} from "../utils/filter";
 import {variableConfig} from "../../config/config";
 
 const hyprland = AstalHyprland.get_default()
-
-type Indicator = {
-    visible: boolean
-    size: number
-};
 
 function getIndicatorHAlign(bar: Bar) {
     switch (bar) {
@@ -268,7 +263,6 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
     const pinnedAppsAccessor = variableConfig.barWidgets.dock.pinnedApps.asAccessor()
 
     const classes = createComputed(() => {
-        // @ts-ignore
         const pinnedApps: string[] = pinnedAppsAccessor()
         const openedClasses = openedClients().flatMap((it) => it.class)
         const combinedClasses = [...pinnedApps, ...openedClasses.reverse()]
@@ -344,7 +338,6 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                             variableConfig.barWidgets.dock.glyphOverride.asAccessor().as((overrideList) => {
                                 let offset: number | null = null
                                 overrideList.forEach((overrideItem) => {
-                                    // @ts-ignore
                                     const overrideString: string = overrideItem
                                     if (overrideString.includes("|")) {
                                         const parts = overrideString.split("|")
@@ -367,7 +360,6 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                         label={variableConfig.barWidgets.dock.glyphOverride.asAccessor().as((overrideList) => {
                             let glyph: string | null = null
                             overrideList.forEach((overrideItem) => {
-                                // @ts-ignore
                                 const overrideString: string = overrideItem
                                 if (overrideString.includes("|")) {
                                     const parts = overrideString.split("|")

@@ -104,19 +104,13 @@ function VerticalLabelInternal(
     onCleanup(unsub)
 
     area.set_draw_func((widget, cr, width, height) => {
-        // @ts-ignore
         cr.save()
-        // @ts-ignore
         cr.translate(realFlipped ? width / 4 : width * 3/4, (height / 2) - 8)
-        // @ts-ignore
         cr.rotate(realFlipped ? Math.PI / 2 : -Math.PI / 2) // 90 degrees counterclockwise
-        // @ts-ignore
         cr.setSourceRGBA(r, g, b, a)
-        // @ts-ignore
-        cr.selectFontFace(font, Cairo.FontSlant.NORMAL, bold ? Cairo.FontWeight.BOLD : Cairo.FontWeight.NORMAL)// @ts-ignore
+        cr.selectFontFace(font, Cairo.FontSlant.NORMAL, bold ? Cairo.FontWeight.BOLD : Cairo.FontWeight.NORMAL)
         cr.setFontSize(fontSize)
 
-        // @ts-ignore
         const extents = cr.textExtents(realText)
         const textWidth = extents.width
         const textHeight = extents.height
@@ -132,12 +126,8 @@ function VerticalLabelInternal(
         }
 
         const x = (width - textHeight) / 2
-        // @ts-ignore
         cr.moveTo(y, x)
-
-        // @ts-ignore
         cr.showText(realText)
-        // @ts-ignore
         cr.restore()
 
         // textWidth is height when rotated
