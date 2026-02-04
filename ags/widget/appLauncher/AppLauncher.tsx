@@ -4,7 +4,6 @@ import {Gdk, Gtk} from "ags/gtk4";
 import {createComputed, createState, For, Accessor, onCleanup} from "ags";
 import {integratedAppLauncherRevealed, toggleIntegratedAppLauncher} from "./IntegratedAppLauncher";
 import {launchDesktopApp} from "../utils/launch";
-import {variableConfig} from "../../config/config";
 import {getAppGlyph} from "../utils/applications";
 
 interface AppButtonProps {

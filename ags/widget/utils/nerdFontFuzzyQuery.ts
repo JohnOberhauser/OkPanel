@@ -24,7 +24,7 @@ const IGNORED_TOKENS = new Set([
     "hardwaresettings", "networksettings",
 
     // helper/meta
-    "helper", "viewer", "frontend", "backend", "service",
+    "helper", "viewer", "frontend", "backend", "service", "view",
     "daemon", "applet", "trayicon",
 
     // misc noise

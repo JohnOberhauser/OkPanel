@@ -62,6 +62,7 @@ function loadGlyph(
     let appDescription: string = ""
     let appCategories: string = ""
     let appKeywords: string[] = []
+    let appIcon: string = ""
     if (app.name !== null) {
         appName = app.name
     }
@@ -78,12 +79,15 @@ function loadGlyph(
         if (keywords !== null) {
             appKeywords = keywords
         }
+        if (app.iconName !== null) {
+            appIcon = app.iconName
+        }
     }
 
     const result = nerdFontFuzzyQuery(
         {
             primary: [appName],
-            secondary: [appDescription, appCategories, ...appKeywords],
+            secondary: [appDescription, appCategories, ...appKeywords, appIcon],
         }
     )
 
@@ -92,6 +96,7 @@ function loadGlyph(
     //     + `appDescription: ${appDescription}\n`
     //     + `appCategories: ${appCategories}\n`
     //     + `appKeywords: ${appKeywords}\n`
+    //     + `appIcon: ${appIcon}\n`
     //     + `results: \n${result.slice(0, 10).map((it) => `${it.key}\n`)}`
     // )
 
