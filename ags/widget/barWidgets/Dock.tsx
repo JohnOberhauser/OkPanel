@@ -493,9 +493,17 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
 
                                     if (clients.length === 0) {
                                         if (app !== null) {
-                                            addLaunchToMenu(menu, actionGroup, pop, app)
-                                            addCopyClassToMenu(menu, actionGroup, pop, clazz)
+                                            const appActionsSection = new Gio.Menu()
+                                            addAppActionsToMenu(appActionsSection, actionGroup, pop, app)
+                                            menu.append_section(null, appActionsSection)
                                         }
+
+                                        const generalSection = new Gio.Menu()
+                                        if (app !== null) {
+                                            addLaunchToMenu(generalSection, actionGroup, pop, app)
+                                        }
+                                        addCopyClassToMenu(generalSection, actionGroup, pop, clazz)
+                                        menu.append_section(null, generalSection)
                                     } else {
                                         const detailsSection = new Gio.Menu()
                                         addWindowDetailsToMenu(detailsSection, actionGroup, pop, clazz)
