@@ -6,7 +6,7 @@ import type { Accessor, Setter } from "ags";
  */
 export class StateWrapper<T> {
     private readonly acc: Accessor<T>;
-    private readonly setter?: Setter<T>;
+    private readonly setter: Setter<T>;
 
     constructor(initial: T) {
         const [acc, setAcc] = createState(initial);
@@ -18,11 +18,8 @@ export class StateWrapper<T> {
         return this.acc.peek()
     }
 
-    set(next: T | ((prev: T) => T)): void {
-        if (!this.setter) {
-            throw new Error("This Variable is read-only (no setter available).");
-        }
-        this.setter(next as any);
+    set(newValue: T): void {
+        this.setter(newValue);
     }
 
     asAccessor(): Accessor<T> {
