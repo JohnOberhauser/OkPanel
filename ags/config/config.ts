@@ -30,12 +30,12 @@ let defaultConfigValues: Config | undefined = ((): Config | undefined => {
 })()
 
 export let config: Config = ((): Config => {
-    if (selectedConfig.get() === undefined) {
+    if (selectedConfig.peek() === undefined) {
         console.log(`Loading initial config from default schema values`)
         return validateAndApplyDefaults({}, CONFIG_SCHEMA)
     }
-    console.log(`Loading initial config from: ${selectedConfig.get()?.fileName}`)
-    return loadConfig(`${homePath}/.config/OkPanel/${selectedConfig.get()?.fileName}`, defaultConfigValues)
+    console.log(`Loading initial config from: ${selectedConfig.peek()?.fileName}`)
+    return loadConfig(`${homePath}/.config/OkPanel/${selectedConfig.peek()?.fileName}`, defaultConfigValues)
 })()
 
 export const variableConfig: VariableConfig = ((): VariableConfig => {
@@ -57,7 +57,7 @@ function monitorAvailableConfigs() {
                     break
                 }
                 const newConfig = loadConfig(`${homePath}/.config/OkPanel/${fileName}`)
-                availableConfigs.set(availableConfigs.get().concat({
+                availableConfigs.set(availableConfigs.peek().concat({
                     fileName: fileName,
                     icon: newConfig.icon,
                     pixelOffset: newConfig.iconOffset
@@ -72,12 +72,12 @@ function monitorAvailableConfigs() {
                     disableDefaultsConfigMonitor()
                     break
                 }
-                availableConfigs.set(availableConfigs.get().filter((conf) => conf.fileName !== fileName))
+                availableConfigs.set(availableConfigs.peek().filter((conf) => conf.fileName !== fileName))
                 break
             case Gio.FileMonitorEvent.CHANGED:
                 console.log(`Available config file changed: ${fileName}`)
                 const newC = loadConfig(`${homePath}/.config/OkPanel/${fileName}`)
-                availableConfigs.set(availableConfigs.get()
+                availableConfigs.set(availableConfigs.peek()
                     .filter((conf) => conf.fileName !== fileName)
                     .concat({
                         fileName: fileName,
@@ -104,7 +104,7 @@ function monitorSelectedConfig() {
         return
     }
     let debounceTimer: Timer | null = null;
-    selectedConfigFileMonitor = monitorFile(`${homePath}/.config/OkPanel/${selectedConfig.get()?.fileName}`, (file, event) => {
+    selectedConfigFileMonitor = monitorFile(`${homePath}/.config/OkPanel/${selectedConfig.peek()?.fileName}`, (file, event) => {
         const fileName = GLib.path_get_basename(file)
         switch (event) {
             case Gio.FileMonitorEvent.CHANGED:
@@ -208,19 +208,19 @@ export function saveConfig(name: string) {
 function getSelectedConfig(): ConfigFile | undefined {
     if (GLib.file_test(`${homePath}/.cache/OkPanel/config`, GLib.FileTest.EXISTS)) {
         const savedConfigString = readFile(`${GLib.get_home_dir()}/.cache/OkPanel/config`).trim()
-        const savedConfig = availableConfigs.get().find((config) => config.fileName === savedConfigString)
+        const savedConfig = availableConfigs.peek().find((config) => config.fileName === savedConfigString)
         if (savedConfig !== undefined) {
             console.log(`Selected config from cache: ${savedConfig.fileName}`)
             return savedConfig
         }
     }
-    if (availableConfigs.get().length === 0) {
+    if (availableConfigs.peek().length === 0) {
         console.log(`No available configs`)
         return undefined
     }
-    console.log(`Selected config: ${availableConfigs.get()[0].fileName}`)
-    saveConfig(availableConfigs.get()[0].fileName)
-    return availableConfigs.get()[0]
+    console.log(`Selected config: ${availableConfigs.peek()[0].fileName}`)
+    saveConfig(availableConfigs.peek()[0].fileName)
+    return availableConfigs.peek()[0]
 }
 
 export function setNewConfig(configFile: ConfigFile, onFinished: () => void) {
@@ -247,12 +247,12 @@ function updateDefaultValues() {
             defaultConfigValues = undefined
         }
         // updated in use config
-        if (selectedConfig.get() === undefined) {
+        if (selectedConfig.peek() === undefined) {
             console.log("Selected config undefined")
             config = validateAndApplyDefaults({}, CONFIG_SCHEMA, defaultConfigValues)
         } else {
-            console.log(`Loading selected config: ${selectedConfig.get()?.fileName}`)
-            config = loadConfig(`${homePath}/.config/OkPanel/${selectedConfig.get()?.fileName}`, defaultConfigValues)
+            console.log(`Loading selected config: ${selectedConfig.peek()?.fileName}`)
+            config = loadConfig(`${homePath}/.config/OkPanel/${selectedConfig.peek()?.fileName}`, defaultConfigValues)
         }
         console.log(`Updating variables`)
         updateVariablesFromConfig(CONFIG_SCHEMA, variableConfig, config)

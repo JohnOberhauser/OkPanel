@@ -6,7 +6,7 @@ import GLib from "gi://GLib?version=2.0";
 export default function () {
     const weekday = createPoll("", 1000, () => {
         const text = GLib.DateTime.new_now_local().format("%A")! // Full weekday name
-        if (variableConfig.systemMenu.clock.dayAllCaps.get()) {
+        if (variableConfig.systemMenu.clock.dayAllCaps.peek()) {
             return text.toUpperCase()
         }
         return text
@@ -17,7 +17,7 @@ export default function () {
     );
 
     const time = createPoll("", 1000, () => {
-        if (variableConfig.clockFormat24h.get()) {
+        if (variableConfig.clockFormat24h.peek()) {
             return GLib.DateTime.new_now_local().format("%H:%M")!
         } else {
             return GLib.DateTime.new_now_local().format("%-I:%M %p")!

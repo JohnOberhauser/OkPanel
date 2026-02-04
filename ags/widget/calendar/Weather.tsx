@@ -61,13 +61,13 @@ function updateWeather() {
     lastWeatherUpdate = now;
 
     const url = "https://api.open-meteo.com/v1/forecast" +
-        `?latitude=${variableConfig.weather.latitude.get()}&longitude=${variableConfig.weather.longitude.get()}` +
+        `?latitude=${variableConfig.weather.latitude.peek()}&longitude=${variableConfig.weather.longitude.peek()}` +
         "&daily=weather_code,temperature_2m_max,temperature_2m_min" +
         "&hourly=temperature_2m,uv_index,is_day,weather_code" +
         "&current=temperature_2m,uv_index,weather_code,is_day,relative_humidity_2m,wind_speed_10m" +
         "&timezone=GMT" +
-        `${variableConfig.weather.speedUnit.get() === SpeedUnits.MPH ? "&wind_speed_unit=mph" : ""}` +
-        `${variableConfig.weather.temperatureUnit.get() === TemperatureUnits.F ? "&temperature_unit=fahrenheit" : ""}`;
+        `${variableConfig.weather.speedUnit.peek() === SpeedUnits.MPH ? "&wind_speed_unit=mph" : ""}` +
+        `${variableConfig.weather.temperatureUnit.peek() === TemperatureUnits.F ? "&temperature_unit=fahrenheit" : ""}`;
 
     console.log("Getting weather...")
 
@@ -284,7 +284,7 @@ export default function() {
                     cssClasses={["labelMedium"]}
                     label={weather.as((weather) => {
                         const wind = weather?.current?.windSpeed;
-                        const unit = variableConfig.weather.speedUnit.get() === SpeedUnits.MPH ? "m/h" : "k/h";
+                        const unit = variableConfig.weather.speedUnit.peek() === SpeedUnits.MPH ? "m/h" : "k/h";
                         return wind != null ? `  ${wind} ${unit}` : "N/A";
                     })}
                 />
@@ -317,7 +317,7 @@ export default function() {
                             cssClasses={["labelSmall"]}
                             label={
                                 hourly.temperature != null
-                                    ? `${hourly.temperature}${variableConfig.weather.temperatureUnit.get() === TemperatureUnits.F ? "F" : "C"}`
+                                    ? `${hourly.temperature}${variableConfig.weather.temperatureUnit.peek() === TemperatureUnits.F ? "F" : "C"}`
                                     : "N/A"
                             }
                         />
@@ -355,7 +355,7 @@ export default function() {
                             cssClasses={["labelSmall"]}
                             label={
                                 daily.maxTemp != null
-                                    ? `${daily.maxTemp}${variableConfig.weather.temperatureUnit.get() === TemperatureUnits.F ? "F" : "C"}`
+                                    ? `${daily.maxTemp}${variableConfig.weather.temperatureUnit.peek() === TemperatureUnits.F ? "F" : "C"}`
                                     : "N/A"
                             }
                         />
@@ -363,7 +363,7 @@ export default function() {
                             cssClasses={["labelSmall"]}
                             label={
                                 daily.minTemp != null
-                                    ? `${daily.minTemp}${variableConfig.weather.temperatureUnit.get() === TemperatureUnits.F ? "F" : "C"}`
+                                    ? `${daily.minTemp}${variableConfig.weather.temperatureUnit.peek() === TemperatureUnits.F ? "F" : "C"}`
                                     : "N/A"
                             }
                         />

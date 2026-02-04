@@ -80,7 +80,7 @@ export function updateVariablesFromConfig<T extends readonly Field[]>(
                 `${path}${name}.`,
             );
         } else if (field.type === 'array' && field.item) {
-            const currentValue = (wrappedValue as StateWrapper<any>).get();
+            const currentValue = (wrappedValue as StateWrapper<any>).peek();
 
             if (field.item.type === 'object') {
                 // Always set because we regenerate wrapped objects
@@ -96,7 +96,7 @@ export function updateVariablesFromConfig<T extends readonly Field[]>(
                 }
             }
         } else {
-            const currentValue = (wrappedValue as StateWrapper<any>).get();
+            const currentValue = (wrappedValue as StateWrapper<any>).peek();
             if (currentValue !== newValue) {
                 console.log(`== Reactive == variable changed: ${path}${name}`)
                 reactiveVariablesChanged += 1;

@@ -14,7 +14,7 @@ export class StateWrapper<T> {
         this.setter = setAcc;
     }
 
-    get(): T {
+    peek(): T {
         return this.acc.peek()
     }
 

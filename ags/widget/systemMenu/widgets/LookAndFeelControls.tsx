@@ -44,7 +44,7 @@ function chunkIntoColumns<T>(arr: T[], numCols: number): T[][] {
 }
 
 function updateFiles() {
-    const dir = variableConfig.wallpaper.wallpaperDir.get()
+    const dir = variableConfig.wallpaper.wallpaperDir.peek()
     if (dir === "") {
         return
     }
@@ -289,7 +289,7 @@ function WallpaperColumn(
 
 export default function () {
     const unsub = selectedConfig.asAccessor().subscribe(() => {
-        if (selectedConfig.get() != undefined) {
+        if (selectedConfig.peek() != undefined) {
             updateFiles()
         }
     })

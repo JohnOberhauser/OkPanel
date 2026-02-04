@@ -106,34 +106,34 @@ export default function (
             sensitive={false}
             $={(da: Gtk.DrawingArea) => {
                 da.set_draw_func((_area, ctx: any, w: number, h: number) => {
-                    const innerRadius     = variableConfig.frame.borderRadius.get();
-                    const [fr, fg, fb, fa]    = hexToRgba(variableConfig.frame.backgroundColor.get());
-                    const [br, bg, bb, ba]  = hexToRgba(variableConfig.frame.borderColor.get());
-                    const innerBorderWidth  = variableConfig.frame.borderWidth.get();
+                    const innerRadius     = variableConfig.frame.borderRadius.peek();
+                    const [fr, fg, fb, fa]    = hexToRgba(variableConfig.frame.backgroundColor.peek());
+                    const [br, bg, bb, ba]  = hexToRgba(variableConfig.frame.borderColor.peek());
+                    const innerBorderWidth  = variableConfig.frame.borderWidth.peek();
 
                     const leftThickness =
-                        variableConfig.frame.leftThickness.get() +
-                        variableConfig.leftBar.marginStart.get() +
-                        variableConfig.leftBar.marginEnd.get() +
-                        variableConfig.leftBar.borderWidth.get() * 2 +
+                        variableConfig.frame.leftThickness.peek() +
+                        variableConfig.leftBar.marginStart.peek() +
+                        variableConfig.leftBar.marginEnd.peek() +
+                        variableConfig.leftBar.borderWidth.peek() * 2 +
                         leftGroupWidth.get()
                     const rightThickness =
-                        variableConfig.frame.rightThickness.get() +
-                        variableConfig.rightBar.marginStart.get() +
-                        variableConfig.rightBar.marginEnd.get() +
-                        variableConfig.rightBar.borderWidth.get() * 2 +
+                        variableConfig.frame.rightThickness.peek() +
+                        variableConfig.rightBar.marginStart.peek() +
+                        variableConfig.rightBar.marginEnd.peek() +
+                        variableConfig.rightBar.borderWidth.peek() * 2 +
                         rightGroupWidth.get()
                     const topThickness =
-                        variableConfig.frame.topThickness.get() +
-                        variableConfig.topBar.marginTop.get() +
-                        variableConfig.topBar.marginBottom.get() +
-                        variableConfig.topBar.borderWidth.get() * 2 +
+                        variableConfig.frame.topThickness.peek() +
+                        variableConfig.topBar.marginTop.peek() +
+                        variableConfig.topBar.marginBottom.peek() +
+                        variableConfig.topBar.borderWidth.peek() * 2 +
                         topBarHeight.get()
                     const bottomThickness =
-                        variableConfig.frame.bottomThickness.get() +
-                        variableConfig.bottomBar.marginTop.get() +
-                        variableConfig.bottomBar.marginBottom.get() +
-                        variableConfig.bottomBar.borderWidth.get() * 2 +
+                        variableConfig.frame.bottomThickness.peek() +
+                        variableConfig.bottomBar.marginTop.peek() +
+                        variableConfig.bottomBar.marginBottom.peek() +
+                        variableConfig.bottomBar.borderWidth.peek() * 2 +
                         bottomBarHeight.get()
 
                     // Inner hole geometry
@@ -146,7 +146,7 @@ export default function (
 
                     ctx.setAntialias(Cairo.Antialias.BEST);
 
-                    if (variableConfig.frame.drawFrame.get()) {
+                    if (variableConfig.frame.drawFrame.peek()) {
                         // Frame: square outer edges
                         ctx.setOperator(Cairo.Operator.OVER);
                         ctx.setSourceRGBA(fr, fg, fb, fa);
@@ -224,12 +224,12 @@ export default function (
                     leftScalingFixVisibleSetter(
                         isFractionalScaling
                         && !(rightThickness === 0 && innerBorderWidth === 0)
-                        && variableConfig.frame.drawFrame.get()
+                        && variableConfig.frame.drawFrame.peek()
                     )
                     bottomScalingFixVisibleSetter(
                         isFractionalScaling
                         && !(bottomThickness === 0 && innerBorderWidth === 0)
-                        && variableConfig.frame.drawFrame.get()
+                        && variableConfig.frame.drawFrame.peek()
                     )
                 });
 

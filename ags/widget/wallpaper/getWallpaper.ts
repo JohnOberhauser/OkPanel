@@ -3,7 +3,7 @@ import Gio from "gi://Gio";
 import {config, selectedConfig} from "../../config/config";
 
 export function resolveWallpaper(): string | null {
-    const cacheFilePath = `${GLib.get_home_dir()}/.cache/OkPanel/wallpaper/${selectedConfig.get()?.fileName ?? ""}`;
+    const cacheFilePath = `${GLib.get_home_dir()}/.cache/OkPanel/wallpaper/${selectedConfig.peek()?.fileName ?? ""}`;
     const cacheFile = Gio.File.new_for_path(cacheFilePath);
 
     let wallpaper: string | null = null;

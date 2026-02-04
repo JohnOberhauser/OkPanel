@@ -15,7 +15,7 @@ ${compileThemeBashScript()}
 # if the set config script exists
 if [[ -f "${config.configUpdateScript}" ]]; then
     # call the external update theme/config
-    ${config.configUpdateScript} ${config.theme.name} ${selectedConfig.get()?.fileName}
+    ${config.configUpdateScript} ${config.theme.name} ${selectedConfig.peek()?.fileName}
 fi
     '`).catch((error) => {
         console.log("setTheme error")
