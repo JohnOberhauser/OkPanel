@@ -72,7 +72,6 @@ function watchForUpdates() {
 
     monitor = monitorFile(dbPath, (file, event) => {
         if (event === Gio.FileMonitorEvent.CHANGED) {
-            console.log("clipboard entries changed")
             if (debounceTimer) debounceTimer.cancel()
 
             debounceTimer = timeout(200, () => {

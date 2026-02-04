@@ -77,7 +77,6 @@ function addAppActionsToMenu(
     pop: Gtk.PopoverMenu,
     app: Apps.Application,
 ) {
-    console.log(app.entry)
     const desktopAppInfo = GioUnix.DesktopAppInfo.new(app.entry)
     const actions = desktopAppInfo.list_actions()
 
