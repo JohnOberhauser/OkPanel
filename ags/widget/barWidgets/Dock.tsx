@@ -5,9 +5,6 @@ import AstalHyprland from "gi://AstalHyprland";
 import {Accessor, createBinding, createComputed, createRoot, createState, For, onCleanup} from "ags";
 import OkButton from "../common/OkButton";
 import {getHPadding, getVPadding} from "./BarWidgets";
-import {readFile} from "ags/file";
-import {projectDir} from "../../app";
-import {fuzzyQuery, StringObject} from "../utils/query";
 import {timeout, Timer} from "ags/time";
 import {launchDesktopApp} from "../utils/launch";
 import Gio from "gi://Gio?version=2.0";
@@ -17,6 +14,7 @@ import {variableConfig} from "../../config/config";
 import {execAsync} from "ags/process";
 import {truncateString} from "../utils/strings";
 import GioUnix from "gi://GioUnix?version=2.0";
+import {getApp, getAppGlyph} from "../utils/applications";
 
 const hyprland = AstalHyprland.get_default()
 
@@ -216,68 +214,6 @@ function addWindowDetailsToMenu(
     })
 }
 
-function getApp(clientClass: string) {
-    const apps = new Apps.Apps().fuzzy_query(clientClass)
-    if (apps.length > 0) {
-        return apps[0]
-    } else {
-        return null
-    }
-}
-
-function getAppGlyph(
-    nerdFontMap: StringObject,
-    clientClass: string,
-) {
-    const apps = new Apps.Apps().fuzzy_query(clientClass)
-    let appName: string = ""
-    let appDescription: string = ""
-    let appCategories: string = ""
-    let appKeywords: string[] = []
-    if (apps.length > 0) {
-        if (apps[0].name !== null) {
-            appName = apps[0].name
-        }
-        if (apps[0].description !== null) {
-            appDescription = apps[0].description
-        }
-        if (apps[0].entry !== null) {
-            const appInfo = GioUnix.DesktopAppInfo.new(apps[0].entry)
-            const categories = appInfo.get_categories()
-            if (categories !== null) {
-                appCategories = categories
-            }
-            const keywords = appInfo.get_keywords()
-            if (keywords !== null) {
-                appKeywords = keywords
-            }
-        }
-    }
-
-    const result = fuzzyQuery(
-        nerdFontMap,
-        {
-            primary: [clientClass, appName],
-            secondary: [appDescription, appCategories, ...appKeywords],
-        }
-    )
-
-    // console.log("=================\n"
-    //     + `class: ${clientClass}\n`
-    //     + `appName: ${appName}\n`
-    //     + `appDescription: ${appDescription}\n`
-    //     + `appCategories: ${appCategories}\n`
-    //     + `appKeywords: ${appKeywords}\n`
-    //     + `results: \n${result.slice(0, 10).map((it) => `${it.key}\n`)}`
-    // )
-
-    if (result.length === 0) return "󰘔"
-    const cleaned = result[0].value.trim().replace(/^0x/i, "").replace(/^u\+/i, "");
-    const codePoint = Number.parseInt(cleaned, 16);
-
-    return String.fromCodePoint(codePoint)
-}
-
 function IndicatorDot(
     {
         visible,
@@ -347,8 +283,6 @@ function IndicatorLine(
 }
 
 export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
-    const nerdFontMap = JSON.parse(readFile(`${projectDir}/assets/nerd_font_map.json`))
-
     const openedClients = createBinding(hyprland, "clients")
     const pinnedAppsAccessor = variableConfig.barWidgets.dock.pinnedApps.asAccessor()
     const onlyShowPinnedApps = variableConfig.barWidgets.dock.onlyShowPinnedApps.asAccessor()
@@ -460,7 +394,7 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                             if (glyph !== null) {
                                 return glyph
                             }
-                            return getAppGlyph(nerdFontMap, clazz)
+                            return getAppGlyph(app)
                         })}
                         clickHandlers={{
                             onLeftClick: () => {

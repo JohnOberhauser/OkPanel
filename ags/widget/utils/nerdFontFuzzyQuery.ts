@@ -1,3 +1,6 @@
+import {readFile} from "ags/file";
+import {projectDir} from "../../app";
+
 export type StringObject = Record<string, string>;
 
 export type FuzzyResult = { key: string; value: string };
@@ -73,10 +76,15 @@ function iconSetRank(key: string): number {
     }
 }
 
-export function fuzzyQuery(
-    obj: StringObject,
+let nerdFontMap: StringObject
+
+export function nerdFontFuzzyQuery(
     queries: TieredQueries,
 ): FuzzyResult[] {
+    if (nerdFontMap === undefined) {
+        nerdFontMap = JSON.parse(readFile(`${projectDir}/assets/nerd_font_map.json`))
+    }
+
     const scored: Array<FuzzyResult & { _score: number }> = [];
 
     const primaryTokens = toTokens(queries.primary);
@@ -88,7 +96,7 @@ export function fuzzyQuery(
     const PRIMARY_WEIGHT = 10;
     const SECONDARY_WEIGHT = 2;
 
-    for (const [key, value] of Object.entries(obj)) {
+    for (const [key, value] of Object.entries(nerdFontMap)) {
         const keyTokens = key.toLowerCase().split(/[-_\s]+/).filter(Boolean);
 
         const primaryHits = scoreExactTokenHits(keyTokens, primaryTokens);
