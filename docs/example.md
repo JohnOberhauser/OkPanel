@@ -252,6 +252,13 @@ barWidgets:
     borderRadius: 90
     foreground: "#1E2326"
     background: "#7A8478"
+  dock:
+    onlyShowPinnedApps: true
+    pinnedApps:
+      - kitty
+      - firefox-nightly
+      - jetbrains-idea
+      - jetbrains-studio
 
 systemMenu:
   widgets:
