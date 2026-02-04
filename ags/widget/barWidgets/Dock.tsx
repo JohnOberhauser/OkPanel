@@ -328,11 +328,17 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
 
     const openedClients = createBinding(hyprland, "clients")
     const pinnedAppsAccessor = variableConfig.barWidgets.dock.pinnedApps.asAccessor()
+    const onlyShowPinnedApps = variableConfig.barWidgets.dock.onlyShowPinnedApps.asAccessor()
 
     const classes = createComputed(() => {
         const pinnedApps: string[] = pinnedAppsAccessor()
         const openedClasses = openedClients().flatMap((it) => it.class)
-        const combinedClasses = [...pinnedApps, ...openedClasses.reverse()]
+        let combinedClasses: string[]
+        if (onlyShowPinnedApps()) {
+            combinedClasses = [...pinnedApps]
+        } else {
+            combinedClasses = [...pinnedApps, ...openedClasses.reverse()]
+        }
         return uniqueBy(combinedClasses, (it) => it)
     })
 

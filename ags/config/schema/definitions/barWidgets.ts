@@ -401,6 +401,12 @@ export const barWidgetsSchema = {
                     reactive: false,
                 },
                 {
+                    name: 'onlyShowPinnedApps',
+                    type: 'boolean',
+                    default: false,
+                    description: 'If only pinned apps should show in the dock.'
+                },
+                {
                     name: 'pinnedApps',
                     type: 'array',
                     default: [],
