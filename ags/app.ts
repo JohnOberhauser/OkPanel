@@ -22,6 +22,7 @@ import {setWallpaper} from "./widget/wallpaper/setWallpaper";
 import {killOldMonitorWindows, recreateWindows, spawnMonitorWindows} from "./widget/utils/windows";
 import {getHyprMonitorInfoById} from "./widget/utils/monitors";
 import {variableConfig} from "./config/config";
+import {populateGlyphCache} from "./widget/utils/applications";
 
 export let projectDir = ""
 
@@ -30,6 +31,7 @@ App.start({
     css: "/tmp/OkPanel/style.css",
     main(...args: Array<string>) {
         projectDir = args[0]
+        populateGlyphCache()
         setThemeBasic()
 
         const hyprland = Hyprland.get_default()

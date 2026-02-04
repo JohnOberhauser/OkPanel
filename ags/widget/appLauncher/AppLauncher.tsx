@@ -46,10 +46,9 @@ function AppButton({ app, isSelected }: AppButtonProps) {
                 valign={Gtk.Align.CENTER}
                 orientation={Gtk.Orientation.HORIZONTAL}
             >
-                <image
-                    visible={variableConfig.appLauncher.showAppIcons.asAccessor()}
+                <label
                     marginEnd={12}
-                    iconName={app.iconName}/>
+                    label={getAppGlyph(app).as((it) => it.glyph)}/>
                 <label
                     cssClasses={["name"]}
                     xalign={0}

@@ -327,6 +327,8 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
 
                 onCleanup(dispose1)
 
+                const appGlyph = getAppGlyph(app)
+
                 return <overlay
                     $={(self) => {
                         self.add_overlay(
@@ -364,38 +366,8 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                         selectedCss={[`barDockSelected`]}
                         labelCss={[`barDockForeground`]}
                         backgroundCss={[`barDockBackground`]}
-                        offset={
-                            variableConfig.barWidgets.dock.glyphOverride.asAccessor().as((overrideList) => {
-                                let offset: number | null = null
-                                overrideList.forEach((overrideItem) => {
-                                    const overrideClass: string = overrideItem.class
-                                    const overrideOffset: number = overrideItem.offset
-                                    if (overrideClass === clazz) {
-                                        offset = overrideOffset
-                                        return
-                                    }
-                                })
-                                if (offset !== null) {
-                                    return offset
-                                }
-                                return 0
-                            })
-                        }
-                        label={variableConfig.barWidgets.dock.glyphOverride.asAccessor().as((overrideList) => {
-                            let glyph: string | null = null
-                            overrideList.forEach((overrideItem) => {
-                                const overrideClass: string = overrideItem.class
-                                const overrideGlyph: string = overrideItem.glyph
-                                if (overrideClass === clazz) {
-                                    glyph = overrideGlyph
-                                    return
-                                }
-                            })
-                            if (glyph !== null) {
-                                return glyph
-                            }
-                            return getAppGlyph(app)
-                        })}
+                        offset={appGlyph().offset}
+                        label={appGlyph().glyph}
                         clickHandlers={{
                             onLeftClick: () => {
                                 let clients = hyprland

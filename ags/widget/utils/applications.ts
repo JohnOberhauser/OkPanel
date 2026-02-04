@@ -1,6 +1,8 @@
 import AstalApps from "gi://AstalApps";
 import GioUnix from "gi://GioUnix";
 import {nerdFontFuzzyQuery} from "./nerdFontFuzzyQuery";
+import {variableConfig} from "../../config/config";
+import {Accessor} from "ags";
 
 export function getApp(clientClass: string) {
     const apps = new AstalApps.Apps()
@@ -21,12 +23,41 @@ export function getApp(clientClass: string) {
     }
 }
 
+export type AppGlyph = { glyph: string; offset: number };
+
+const glyphCache: Map<string, AppGlyph> = new Map()
+
 export function getAppGlyph(
     app: AstalApps.Application | null,
-) {
-    if (app === null) {
-        return "󰘔"
-    }
+): Accessor<AppGlyph> {
+    return variableConfig.applicationIcons.glyphOverride.asAccessor().as((overrideList) => {
+        if (app === null) {
+            return {
+                glyph: "󰘔",
+                offset: 0,
+            }
+        }
+        for (const override of overrideList) {
+            if (app.name.toLowerCase().includes(override.appName.toLowerCase())) {
+                return {
+                    glyph: override.glyph,
+                    offset: override.offset
+                }
+            }
+        }
+
+        const cachedValue = glyphCache.get(app.name)
+        if (cachedValue !== undefined) {
+            return cachedValue
+        }
+
+        return loadGlyph(app)
+    })
+}
+
+function loadGlyph(
+    app: AstalApps.Application
+): AppGlyph {
     let appName: string = ""
     let appDescription: string = ""
     let appCategories: string = ""
@@ -56,17 +87,41 @@ export function getAppGlyph(
         }
     )
 
-    console.log("=================\n"
-        + `appName: ${appName}\n`
-        + `appDescription: ${appDescription}\n`
-        + `appCategories: ${appCategories}\n`
-        + `appKeywords: ${appKeywords}\n`
-        + `results: \n${result.slice(0, 10).map((it) => `${it.key}\n`)}`
-    )
+    // console.log("=================\n"
+    //     + `appName: ${appName}\n`
+    //     + `appDescription: ${appDescription}\n`
+    //     + `appCategories: ${appCategories}\n`
+    //     + `appKeywords: ${appKeywords}\n`
+    //     + `results: \n${result.slice(0, 10).map((it) => `${it.key}\n`)}`
+    // )
 
-    if (result.length === 0) return "󰘔"
+    if (result.length === 0) {
+        const appGlyph = {
+            glyph: "󰘔",
+            offset: 0,
+        }
+        glyphCache.set(
+            app.name,
+            appGlyph,
+        )
+        return appGlyph
+    }
     const cleaned = result[0].value.trim().replace(/^0x/i, "").replace(/^u\+/i, "");
     const codePoint = Number.parseInt(cleaned, 16);
 
-    return String.fromCodePoint(codePoint)
+    const appGlyph = {
+        glyph: String.fromCodePoint(codePoint),
+        offset: 0,
+    }
+    glyphCache.set(
+        app.name,
+        appGlyph,
+    )
+    return appGlyph
+}
+
+export function populateGlyphCache() {
+    new AstalApps.Apps().list.forEach((app) => {
+        loadGlyph(app)
+    })
 }

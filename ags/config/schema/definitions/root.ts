@@ -15,7 +15,7 @@ import {weatherSchema} from "./weather";
 import {barWidgetsSchema} from "./barWidgets";
 import {wallpaperSchema} from "./wallpaper";
 import {osdSchema} from "./osd";
-import {appLauncherSchema} from "./appLauncher";
+import {applicationIcons} from "./applicationIcons";
 
 export const CONFIG_SCHEMA = [
     {
@@ -74,5 +74,5 @@ export const CONFIG_SCHEMA = [
     leftBarSchema,
     rightBarSchema,
     wallpaperSchema,
-    appLauncherSchema,
+    applicationIcons,
 ] as const satisfies Field[]
