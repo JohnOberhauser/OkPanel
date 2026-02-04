@@ -1,4 +1,4 @@
-import {Variable} from "./Variable";
+import {StateWrapper} from "./StateWrapper";
 import {loadConfig, validateAndApplyDefaults} from "./parser/configLoader";
 import {Config, VariableConfig} from "./types/derivedTypes";
 import {updateVariablesFromConfig, wrapConfigInVariables} from "./parser/variableWrapper";
@@ -10,17 +10,15 @@ import {setTheme, setThemeBasic} from "./theme";
 import {integratedMenuRevealedSetting} from "../widget/systemMenu/IntegratedMenu";
 import GLib from "gi://GLib?version=2.0";
 import {timeout, Timer} from "ags/time";
-import {resolveWallpaper} from "../widget/wallpaper/getWallpaper";
-import {setWallpaper} from "../widget/wallpaper/setWallpaper";
 import {refreshWallpaper} from "../widget/wallpaper/refreshWallpaper";
 
 const homePath = GLib.get_home_dir()
 const globalConfigFile = "okpanel.yaml"
 
 // Order matters for these variables.  No touchy
-export const availableConfigs = new Variable(getAvailableConfigs())
+export const availableConfigs = new StateWrapper(getAvailableConfigs())
 
-export const selectedConfig = new Variable(getSelectedConfig())
+export const selectedConfig = new StateWrapper(getSelectedConfig())
 
 let defaultConfigValues: Config | undefined = ((): Config | undefined => {
     if (GLib.file_test(`${homePath}/.config/OkPanel/${globalConfigFile}`, GLib.FileTest.EXISTS)) {

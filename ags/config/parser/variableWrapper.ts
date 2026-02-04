@@ -1,6 +1,6 @@
 import {Field} from "../schema/primitiveDefinitions";
 import {SchemaToType, VariableSchemaToType} from "../types/typeGeneration";
-import {Variable} from "../Variable";
+import {StateWrapper} from "../StateWrapper";
 
 /**
  * This function will take a Schema object and turn it into a new, nearly identical object,
@@ -18,7 +18,7 @@ export function wrapConfigInVariables<T extends readonly Field[]>(
         } else if (field.type === 'array' && field.item) {
             if (field.item.type === 'object') {
                 if (field.reactive === true || field.reactive === undefined) {
-                    result[field.name] = new Variable(value);
+                    result[field.name] = new StateWrapper(value);
                 } else {
                     result[field.name] = (value as any[]).map(item =>
                         wrapConfigInVariables(field.item!.children!, item)
@@ -26,14 +26,14 @@ export function wrapConfigInVariables<T extends readonly Field[]>(
                 }
             } else {
                 if (field.reactive === true || field.reactive === undefined) {
-                    result[field.name] = new Variable(value);
+                    result[field.name] = new StateWrapper(value);
                 } else {
                     result[field.name] = value;
                 }
             }
         } else {
             if (field.reactive === true || field.reactive === undefined) {
-                result[field.name] = new Variable(value);
+                result[field.name] = new StateWrapper(value);
             } else {
                 result[field.name] = value;
             }
@@ -80,27 +80,27 @@ export function updateVariablesFromConfig<T extends readonly Field[]>(
                 `${path}${name}.`,
             );
         } else if (field.type === 'array' && field.item) {
-            const currentValue = (wrappedValue as Variable<any>).get();
+            const currentValue = (wrappedValue as StateWrapper<any>).get();
 
             if (field.item.type === 'object') {
                 // Always set because we regenerate wrapped objects
                 console.log(`== Reactive == variable changed: ${path}${name}`)
                 reactiveVariablesChanged += 1;
-                (wrappedValue as Variable<any>).set(newValue);
+                (wrappedValue as StateWrapper<any>).set(newValue);
             } else {
                 // Shallow array equality check
                 if (!arraysEqual(currentValue, newValue)) {
                     console.log(`== Reactive == variable changed: ${path}${name}`);
                     reactiveVariablesChanged += 1;
-                    (wrappedValue as Variable<any>).set(newValue);
+                    (wrappedValue as StateWrapper<any>).set(newValue);
                 }
             }
         } else {
-            const currentValue = (wrappedValue as Variable<any>).get();
+            const currentValue = (wrappedValue as StateWrapper<any>).get();
             if (currentValue !== newValue) {
                 console.log(`== Reactive == variable changed: ${path}${name}`)
                 reactiveVariablesChanged += 1;
-                (wrappedValue as Variable<any>).set(newValue);
+                (wrappedValue as StateWrapper<any>).set(newValue);
             }
         }
     }

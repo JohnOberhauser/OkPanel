@@ -2,7 +2,7 @@
 //  Type‑generation helpers – compile‑time only
 // ───────────────────────────────────────────────
 import {Field, PrimitiveType} from "../schema/primitiveDefinitions";
-import {Variable} from "../Variable";
+import {StateWrapper} from "../StateWrapper";
 
 type PrimitiveByKind<K extends PrimitiveType> =
     K extends 'string' ? string :
@@ -31,19 +31,19 @@ export type SchemaToType<S extends readonly Field[] | undefined> =
 //  Type‑generation helpers for leafs wrapped in Variables
 // ───────────────────────────────────────────────
 type VariableWrappedPrimitiveByKind<K extends PrimitiveType> =
-    K extends 'string' ? Variable<string> :
-    K extends 'number' ? Variable<number> :
-    K extends 'boolean' ? Variable<boolean> :
-    K extends 'color' ? Variable<string> :
-    K extends 'icon' ? Variable<string> :
+    K extends 'string' ? StateWrapper<string> :
+    K extends 'number' ? StateWrapper<number> :
+    K extends 'boolean' ? StateWrapper<boolean> :
+    K extends 'color' ? StateWrapper<string> :
+    K extends 'icon' ? StateWrapper<string> :
     never
 
 type VariableWrappedPrimitiveListByKind<K extends PrimitiveType> =
-    K extends 'string' ? Variable<string[]> :
-    K extends 'number' ? Variable<number[]> :
-    K extends 'boolean' ? Variable<boolean[]> :
-    K extends 'color' ? Variable<string[]> :
-    K extends 'icon' ? Variable<string[]> :
+    K extends 'string' ? StateWrapper<string[]> :
+    K extends 'number' ? StateWrapper<number[]> :
+    K extends 'boolean' ? StateWrapper<boolean[]> :
+    K extends 'color' ? StateWrapper<string[]> :
+    K extends 'icon' ? StateWrapper<string[]> :
     never
 
 type VariableFieldToProp<F extends Field> =
@@ -54,19 +54,19 @@ type VariableFieldToProp<F extends Field> =
             : F['type'] extends 'array'
                 ? F['item'] extends Field
                     ? F['item']['type'] extends 'object'
-                        ? Variable<SchemaToType<F['item']['children']>[]>
+                        ? StateWrapper<SchemaToType<F['item']['children']>[]>
                         : F['item']['type'] extends 'enum'
                             ? F['item']['enumValues'] extends readonly (infer E)[]
-                                ? Variable<E[]>
-                                : Variable<string[]>
+                                ? StateWrapper<E[]>
+                                : StateWrapper<string[]>
                             : F['item']['type'] extends PrimitiveType
                                 ? VariableWrappedPrimitiveListByKind<F['item']['type']>
                                 : never
                     : never
                 : F['type'] extends 'enum'
                     ? (F['enumValues'] extends readonly (infer E)[]
-                        ? Variable<E>
-                        : Variable<string>)
+                        ? StateWrapper<E>
+                        : StateWrapper<string>)
                     : F['type'] extends PrimitiveType
                         ? VariableWrappedPrimitiveByKind<F['type']>
                         : never
