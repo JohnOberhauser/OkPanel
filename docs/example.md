@@ -30,10 +30,19 @@ barWidgets:
       - Darktable
       - steam
     glyphOverride:
-      - "kitty|"
-      - "jetbrains-idea|"
-      - "org.signal.Signal|󰭹"
-      - "Darktable|󰄄"
+      - class: kitty
+        glyph: 
+        offset: 2
+      - class: firefox-nightly
+        glyph: 󰈹
+        offset: 2
+      - class: jetbrains-idea
+        glyph: 
+        offset: 3
+      - class: org.signal.Signal
+        glyph: 󰭹
+      - class: Darktable
+        glyph: 󰄄
 ```
 
 ## Example Config 1

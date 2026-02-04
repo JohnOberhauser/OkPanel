@@ -416,9 +416,29 @@ export const barWidgetsSchema = {
                     default: [],
                     item: {
                         name: 'value',
-                        type: 'string',
+                        type: 'object',
+                        children: [
+                            {
+                                name: 'class',
+                                type: 'string',
+                                default: '',
+                                description: 'The hyprland client class name of the glyph to be overridden.',
+                            },
+                            {
+                                name: 'glyph',
+                                type: 'icon',
+                                default: '󰘔',
+                                description: 'The glyph to override with.',
+                            },
+                            {
+                                name: 'offset',
+                                type: 'number',
+                                default: 0,
+                                description: 'The pixel offset of the glyph.',
+                            }
+                        ]
                     },
-                    description: 'A list of glyph overrides for apps in the dock. Each item should be in the format "{hyprland client name}|{glyph}|{glyph offset}".  For example: "steam||2".'
+                    description: 'A list of glyph overrides for apps in the dock.'
                 }
             ],
         },

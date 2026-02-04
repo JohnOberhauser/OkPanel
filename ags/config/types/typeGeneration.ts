@@ -54,7 +54,7 @@ type VariableFieldToProp<F extends Field> =
             : F['type'] extends 'array'
                 ? F['item'] extends Field
                     ? F['item']['type'] extends 'object'
-                        ? Variable<VariableSchemaToType<F['item']['children']>[]>
+                        ? Variable<SchemaToType<F['item']['children']>[]>
                         : F['item']['type'] extends 'enum'
                             ? F['item']['enumValues'] extends readonly (infer E)[]
                                 ? Variable<E[]>

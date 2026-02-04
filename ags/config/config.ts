@@ -238,24 +238,28 @@ export function setNewConfig(configFile: ConfigFile, onFinished: () => void) {
 }
 
 function updateDefaultValues() {
-    console.log("Updating default values")
-    // update default values
-    if (GLib.file_test(`${homePath}/.config/OkPanel/${globalConfigFile}`, GLib.FileTest.EXISTS)) {
-        console.log("Loading default config")
-        defaultConfigValues = loadConfig(`${homePath}/.config/OkPanel/${globalConfigFile}`, undefined, false)
-    } else {
-        console.log("Default config undefined")
-        defaultConfigValues = undefined
+    try {
+        console.log("Updating default values")
+        // update default values
+        if (GLib.file_test(`${homePath}/.config/OkPanel/${globalConfigFile}`, GLib.FileTest.EXISTS)) {
+            console.log("Loading default config")
+            defaultConfigValues = loadConfig(`${homePath}/.config/OkPanel/${globalConfigFile}`, undefined, false)
+        } else {
+            console.log("Default config undefined")
+            defaultConfigValues = undefined
+        }
+        // updated in use config
+        if (selectedConfig.get() === undefined) {
+            console.log("Selected config undefined")
+            config = validateAndApplyDefaults({}, CONFIG_SCHEMA, defaultConfigValues)
+        } else {
+            console.log(`Loading selected config: ${selectedConfig.get()?.fileName}`)
+            config = loadConfig(`${homePath}/.config/OkPanel/${selectedConfig.get()?.fileName}`, defaultConfigValues)
+        }
+        console.log(`Updating variables`)
+        updateVariablesFromConfig(CONFIG_SCHEMA, variableConfig, config)
+    } catch (e) {
+        console.log(e)
     }
-    // updated in use config
-    if (selectedConfig.get() === undefined) {
-        console.log("Selected config undefined")
-        config = validateAndApplyDefaults({}, CONFIG_SCHEMA, defaultConfigValues)
-    } else {
-        console.log(`Loading selected config: ${selectedConfig.get()?.fileName}`)
-        config = loadConfig(`${homePath}/.config/OkPanel/${selectedConfig.get()?.fileName}`, defaultConfigValues)
-    }
-    console.log(`Updating variables: ${config.theme.windows.borderColor}`)
-    updateVariablesFromConfig(CONFIG_SCHEMA, variableConfig, config)
 }
 

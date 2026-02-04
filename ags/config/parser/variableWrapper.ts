@@ -18,11 +18,7 @@ export function wrapConfigInVariables<T extends readonly Field[]>(
         } else if (field.type === 'array' && field.item) {
             if (field.item.type === 'object') {
                 if (field.reactive === true || field.reactive === undefined) {
-                    result[field.name] = new Variable(
-                        (value as any[]).map(item =>
-                            wrapConfigInVariables(field.item!.children!, item)
-                        )
-                    );
+                    result[field.name] = new Variable(value);
                 } else {
                     result[field.name] = (value as any[]).map(item =>
                         wrapConfigInVariables(field.item!.children!, item)
@@ -88,12 +84,9 @@ export function updateVariablesFromConfig<T extends readonly Field[]>(
 
             if (field.item.type === 'object') {
                 // Always set because we regenerate wrapped objects
-                const arr = (newValue as any[]).map(item =>
-                    wrapConfigInVariables(field.item!.children!, item)
-                );
                 console.log(`== Reactive == variable changed: ${path}${name}`)
                 reactiveVariablesChanged += 1;
-                (wrappedValue as Variable<any>).set(arr);
+                (wrappedValue as Variable<any>).set(newValue);
             } else {
                 // Shallow array equality check
                 if (!arraysEqual(currentValue, newValue)) {
