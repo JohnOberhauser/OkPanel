@@ -232,6 +232,8 @@ function getAppGlyph(
     const apps = new Apps.Apps().fuzzy_query(clientClass)
     let appName: string = ""
     let appDescription: string = ""
+    let appCategories: string = ""
+    let appKeywords: string[] = []
     if (apps.length > 0) {
         if (apps[0].name !== null) {
             appName = apps[0].name
@@ -239,19 +241,40 @@ function getAppGlyph(
         if (apps[0].description !== null) {
             appDescription = apps[0].description
         }
+        if (apps[0].entry !== null) {
+            const appInfo = GioUnix.DesktopAppInfo.new(apps[0].entry)
+            const categories = appInfo.get_categories()
+            if (categories !== null) {
+                appCategories = categories
+            }
+            const keywords = appInfo.get_keywords()
+            if (keywords !== null) {
+                appKeywords = keywords
+            }
+        }
     }
 
     const result = fuzzyQuery(
         nerdFontMap,
         {
             primary: [clientClass, appName],
-            secondary: [appDescription],
+            secondary: [appDescription, appCategories, ...appKeywords],
         }
     )
+
+    // console.log("=================\n"
+    //     + `class: ${clientClass}\n`
+    //     + `appName: ${appName}\n`
+    //     + `appDescription: ${appDescription}\n`
+    //     + `appCategories: ${appCategories}\n`
+    //     + `appKeywords: ${appKeywords}\n`
+    //     + `results: \n${result.slice(0, 10).map((it) => `${it.key}\n`)}`
+    // )
 
     if (result.length === 0) return "󰘔"
     const cleaned = result[0].value.trim().replace(/^0x/i, "").replace(/^u\+/i, "");
     const codePoint = Number.parseInt(cleaned, 16);
+
     return String.fromCodePoint(codePoint)
 }
 
@@ -434,9 +457,9 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                     return
                                 }
                             })
-                            if (glyph !== null) {
-                                return glyph
-                            }
+                            // if (glyph !== null) {
+                            //     return glyph
+                            // }
                             return getAppGlyph(nerdFontMap, clazz)
                         })}
                         clickHandlers={{

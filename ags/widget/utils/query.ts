@@ -7,10 +7,44 @@ export type TieredQueries = {
     secondary?: readonly string[]; // low weight (description/hints)
 };
 
+const IGNORED_TOKENS = new Set([
+    // toolkits / tech
+    "gtk", "qt", "kde", "gnome", "xfce", "lxqt", "motif",
+    "electron", "java", "wayland", "x11",
+
+    // generic buckets
+    "utility", "utilities", "system", "application", "applications",
+    "core", "base",
+
+    // menu organization
+    "settings", "desktopsettings", "systemsettings",
+    "hardwaresettings", "networksettings",
+
+    // helper/meta
+    "helper", "viewer", "frontend", "backend", "service",
+    "daemon", "applet", "trayicon",
+
+    // misc noise
+    "tools", "tool", "monitor", "digital", "raw", "signal", "access",
+    "up", "down", "left", "right",
+    "and", "from", "to", "for"
+]);
+
 function toTokens(parts: readonly string[]): string[] {
     return parts
-        .flatMap(s => s.toLowerCase().split(/[-_\s]+/))
-        .filter(Boolean);
+        .filter((it) => it)
+        .flatMap(s => {
+            const normalized = s
+                // Insert space before Uppercase+lowercase word starts
+                .replace(/([A-Z])([a-z])/g, " $1$2")
+                .toLowerCase();
+
+            // Split on anything that isn't a letter
+            return normalized.split(/[^a-zA-Z]+/);
+        })
+        .filter(Boolean)
+        .filter(t => t.length > 2)
+        .filter(t => !IGNORED_TOKENS.has(t));
 }
 
 function scoreExactTokenHits(keyTokens: readonly string[], queryTokens: readonly string[]): number {
@@ -47,6 +81,9 @@ export function fuzzyQuery(
 
     const primaryTokens = toTokens(queries.primary);
     const secondaryTokens = toTokens(queries.secondary ?? []);
+
+    // console.log(primaryTokens)
+    // console.log(secondaryTokens)
 
     const PRIMARY_WEIGHT = 10;
     const SECONDARY_WEIGHT = 2;
