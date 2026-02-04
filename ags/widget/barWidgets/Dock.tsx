@@ -14,6 +14,9 @@ import Gio from "gi://Gio?version=2.0";
 import GLib from "gi://GLib?version=2.0";
 import {uniqueBy} from "../utils/filter";
 import {variableConfig} from "../../config/config";
+import {execAsync} from "ags/process";
+import {truncateString} from "../utils/strings";
+import GioUnix from "gi://GioUnix?version=2.0";
 
 const hyprland = AstalHyprland.get_default()
 
@@ -66,6 +69,30 @@ function addLaunchToMenu(
     actionGroup.add_action(newWindowAction)
 
     menu.append("Launch", "main.launch")
+}
+
+function addAppActionsToMenu(
+    menu: Gio.Menu,
+    actionGroup: Gio.SimpleActionGroup,
+    pop: Gtk.PopoverMenu,
+    app: Apps.Application,
+) {
+    console.log(app.entry)
+    const desktopAppInfo = GioUnix.DesktopAppInfo.new(app.entry)
+    const actions = desktopAppInfo.list_actions()
+
+    actions.forEach((action, index) => {
+        const actionAction = new Gio.SimpleAction({name: `action${index}`})
+        actionAction.connect("activate", () => {
+            pop.popdown()
+            desktopAppInfo.launch_action(action, null)
+        })
+        actionGroup.add_action(actionAction)
+
+        const label = desktopAppInfo.get_action_name(action) ?? action
+
+        menu.append(label, `main.action${index}`)
+    })
 }
 
 function addMoveFocusedClientToMenu(
@@ -147,6 +174,47 @@ function addQuitToMenu(
     actionGroup.add_action(quitAction)
 
     menu.append("Quit", "main.quit")
+}
+
+function addCopyClassToMenu(
+    menu: Gio.Menu,
+    actionGroup: Gio.SimpleActionGroup,
+    pop: Gtk.PopoverMenu,
+    clazz: string,
+) {
+    const copyClassAction = new Gio.SimpleAction({name: "copyClass"})
+    copyClassAction.connect("activate", () => {
+        pop.popdown()
+        execAsync([
+            "bash",
+            "-c",
+            `wl-copy ${clazz}`,
+        ]).catch((e) => {
+            console.log(e)
+        })
+    })
+    actionGroup.add_action(copyClassAction)
+
+    menu.append("Copy window class", "main.copyClass")
+}
+
+function addWindowDetailsToMenu(
+    menu: Gio.Menu,
+    actionGroup: Gio.SimpleActionGroup,
+    pop: Gtk.PopoverMenu,
+    clazz: string,
+) {
+    const clients = hyprland.clients.filter((it) => it.class === clazz)
+    clients.forEach((client, index) => {
+        const detailsAction = new Gio.SimpleAction({name: `details${index}`})
+        detailsAction.connect("activate", () => {
+            pop.popdown()
+            client.focus()
+        })
+        actionGroup.add_action(detailsAction)
+
+        menu.append(truncateString(client.title, 25), `main.details${index}`)
+    })
 }
 
 function getApp(clientClass: string) {
@@ -426,11 +494,31 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                     if (clients.length === 0) {
                                         if (app !== null) {
                                             addLaunchToMenu(menu, actionGroup, pop, app)
+                                            addCopyClassToMenu(menu, actionGroup, pop, clazz)
                                         }
                                     } else {
-                                        addMoveFocusedClientToMenu(menu, actionGroup, pop, clazz)
-                                        addCloseFocusedToMenu(menu, actionGroup, pop, clazz)
-                                        addQuitToMenu(menu, actionGroup, pop, clazz)
+                                        const detailsSection = new Gio.Menu()
+                                        addWindowDetailsToMenu(detailsSection, actionGroup, pop, clazz)
+                                        menu.append_section(null, detailsSection)
+
+                                        const focusedClient = hyprland.get_focused_client()
+                                        if (focusedClient !== null && focusedClient.class === clazz) {
+                                            const focusedSection = new Gio.Menu()
+                                            addMoveFocusedClientToMenu(focusedSection, actionGroup, pop, clazz)
+                                            addCloseFocusedToMenu(focusedSection, actionGroup, pop, clazz)
+                                            menu.append_section(null, focusedSection)
+                                        }
+
+                                        if (app !== null) {
+                                            const appActionsSection = new Gio.Menu()
+                                            addAppActionsToMenu(appActionsSection, actionGroup, pop, app)
+                                            menu.append_section(null, appActionsSection)
+                                        }
+
+                                        const generalSection = new Gio.Menu()
+                                        addCopyClassToMenu(generalSection, actionGroup, pop, clazz)
+                                        addQuitToMenu(generalSection, actionGroup, pop, clazz)
+                                        menu.append_section(null, generalSection)
                                     }
 
                                     pop.set_menu_model(menu)
