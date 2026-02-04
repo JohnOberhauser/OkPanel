@@ -7,7 +7,7 @@ export const integratedAppLauncherWidth = 500
 export const [integratedAppLauncherRevealed, integratedAppLauncherRevealedSetting] = createState(false)
 
 export function toggleIntegratedAppLauncher() {
-    integratedAppLauncherRevealedSetting(!integratedAppLauncherRevealed.get())
+    integratedAppLauncherRevealedSetting(!integratedAppLauncherRevealed.peek())
 }
 
 export function closeIntegratedAppLauncher() {
@@ -22,7 +22,7 @@ export default function (
     }
 ) {
     const unsub = integratedAppLauncherRevealed.subscribe(() => {
-        if (integratedAppLauncherRevealed.get()) {
+        if (integratedAppLauncherRevealed.peek()) {
             frameWindow.keymode = Astal.Keymode.EXCLUSIVE
         } else {
             frameWindow.keymode = Astal.Keymode.NONE

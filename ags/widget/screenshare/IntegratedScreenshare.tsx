@@ -7,7 +7,7 @@ export const integratedScreenshareWidth = 410
 export const [integratedScreenshareRevealed, integratedScreenshareRevealedSetting] = createState(false)
 
 export function toggleIntegratedScreenshare() {
-    integratedScreenshareRevealedSetting(!integratedScreenshareRevealed.get())
+    integratedScreenshareRevealedSetting(!integratedScreenshareRevealed.peek())
 }
 
 export function closeIntegratedScreenshare() {

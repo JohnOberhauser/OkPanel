@@ -16,7 +16,7 @@ export default function () {
     return <RevealerRow
         setup={(revealed) => {
             const unsub = integratedMenuRevealed.subscribe(() => {
-                if (!integratedMenuRevealed.get()) {
+                if (!integratedMenuRevealed.peek()) {
                     revealed[1](false)
                 }
             })

@@ -58,13 +58,13 @@ function MediaPlayer({ player }: { player: Player }) {
                 cssClasses={["seek"]}
                 hexpand={true}
                 onChangeValue={({value}) => {
-                    if (player.trackLength[0].get() > STREAMING_TRACK_LENGTH) {
+                    if (player.trackLength[0].peek() > STREAMING_TRACK_LENGTH) {
                         return
                     }
-                    player.setPosition(value * player.trackLength[0].get())
+                    player.setPosition(value * player.trackLength[0].peek())
                 }}
                 value={player.position[0]((position) => {
-                    return player.trackLength[0].get() > 0 ? position / player.trackLength[0].get() : 0
+                    return player.trackLength[0].peek() > 0 ? position / player.trackLength[0].peek() : 0
                 })}
             />
             <label

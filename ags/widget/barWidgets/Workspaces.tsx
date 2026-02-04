@@ -46,9 +46,9 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                             $={(self) => {
                                 attachHoverScroll(self, ({dy}) => {
                                     if (dy < 0) {
-                                        hypr.dispatch("workspace", variableConfig.barWidgets.workspaces.scrollUpCommand.get())
+                                        hypr.dispatch("workspace", variableConfig.barWidgets.workspaces.scrollUpCommand.peek())
                                     } else if (dy > 0) {
-                                        hypr.dispatch("workspace", variableConfig.barWidgets.workspaces.scrollDownCommand.get())
+                                        hypr.dispatch("workspace", variableConfig.barWidgets.workspaces.scrollDownCommand.peek())
                                     }
                                 })
                             }}
@@ -96,7 +96,7 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                 })
 
                                 return <OkButton
-                                    labelCss={labelCss.get()}
+                                    labelCss={labelCss.peek()}
                                     backgroundCss={["barWorkspaceButtonBackground"]}
                                     offset={offset}
                                     hpadding={getHPadding(bar)}

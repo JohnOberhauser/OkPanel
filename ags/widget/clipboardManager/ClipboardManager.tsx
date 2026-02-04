@@ -4,9 +4,8 @@ import Divider from "../common/Divider";
 import OkButton, {OkButtonHorizontalPadding} from "../common/OkButton";
 import AsyncClipboardPicture from "./AsyncClipboardPicture";
 import AsyncClipboardLabel from "./AsyncClipboardLabel";
-
 import {projectDir} from "../../app";
-import {createState, For, onCleanup} from "ags";
+import {createState} from "ags";
 import GLib from "gi://GLib?version=2.0";
 import Gio from "gi://Gio?version=2.0";
 import {monitorFile} from "ags/file";

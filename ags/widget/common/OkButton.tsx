@@ -272,7 +272,7 @@ export default function(
 
     const buttonClasses = buildButtonCssClasses(
         backgroundCss,
-        realSize.get(),
+        realSize.peek(),
         primary,
         menuButtonContent,
         selected,

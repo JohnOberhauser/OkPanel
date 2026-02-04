@@ -30,7 +30,7 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                             visible={createBinding(tray, "items").as((items) => items.length > 0)}
                             label={"󱊔"}
                             onClicked={() => {
-                                revealedSetter(!revealed.get())
+                                revealedSetter(!revealed.peek())
                             }}/>
                     </box>
                 } else {

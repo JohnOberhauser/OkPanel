@@ -1,4 +1,4 @@
-import {Astal, Gdk, Gtk} from "ags/gtk4"
+import {Astal, Gtk} from "ags/gtk4"
 import Hyprland from "gi://AstalHyprland"
 import {execAsync} from "ags/process"
 import Pango from "gi://Pango?version=1.0";
@@ -263,7 +263,7 @@ export default function (
             }))
 
             const unsub = integratedScreenshareRevealed.subscribe(() => {
-                if (integratedScreenshareRevealed.get()) {
+                if (integratedScreenshareRevealed.peek()) {
                     if (!shortcutController.get_widget()) {
                         console.log("adding")
                         self.add_controller(shortcutController)

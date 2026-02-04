@@ -2,11 +2,7 @@ import {Bar} from "../../config/bar";
 import OkButton from "../common/OkButton";
 import {variableConfig} from "../../config/config";
 import {getHPadding, getVPadding} from "./BarWidgets";
-import {
-    integratedMenuRevealed,
-    integratedMenuRevealedSetting,
-    toggleIntegratedMenu
-} from "../systemMenu/IntegratedMenu";
+import {toggleIntegratedMenu} from "../systemMenu/IntegratedMenu";
 
 export default function ({bar}: { bar: Bar }) {
     return <OkButton

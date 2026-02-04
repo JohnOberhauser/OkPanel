@@ -107,30 +107,30 @@ function getTimerSecondsFromEntry(entry: Gtk.Entry) {
 function createTimer(): Timer {
     let skippedFirst = false
     return interval(100, () => {
-        if (!skippedFirst && timerValue.get() !== 0) {
+        if (!skippedFirst && timerValue.peek() !== 0) {
             skippedFirst = true
-        } else if (timerValue.get() <= 100 && timerValue.get() !== 0) {
-            timerValueSetter(timerValue.get() - 100)
+        } else if (timerValue.peek() <= 100 && timerValue.peek() !== 0) {
+            timerValueSetter(timerValue.peek() - 100)
             onTimerFinished()
-        } else if (timerValue.get() <= 0) {
+        } else if (timerValue.peek() <= 0) {
             onTimerFinished()
         } else {
-            timerValueSetter(timerValue.get() - 100)
+            timerValueSetter(timerValue.peek() - 100)
         }
     })
 }
 
 function onTimerFinished() {
     stopTimer()
-    let path = variableConfig.sounds.timerSoundPath.get() !== ""
-        ? variableConfig.sounds.timerSoundPath.get()
+    let path = variableConfig.sounds.timerSoundPath.peek() !== ""
+        ? variableConfig.sounds.timerSoundPath.peek()
         : `${projectDir}/sounds/timer.ogg`
     player.start(path)
 }
 
 function stopTimer() {
     console.log("time done")
-    timer.get()?.cancel()
+    timer.peek()?.cancel()
     timerSetter(null)
 }
 
@@ -165,10 +165,10 @@ export function TimerPlayPauseStop(
         backgroundCss={backgroundCss}
         visible={timerTextVisible}
         onClicked={() => {
-            if (player.isRunning.get()) {
+            if (player.isRunning.peek()) {
                 player.stop()
                 timerValueSetter(timerStartingValue)
-            } else if (timer.get() === null) {
+            } else if (timer.peek() === null) {
                 resumeTimer()
             } else {
                 stopTimer()
@@ -289,7 +289,7 @@ export default function (
                         size={200}
                         color={color}
                         progress={timerValue.as(() => {
-                            return timerValue.get() / timerStartingValue
+                            return timerValue.peek() / timerStartingValue
                         })}/>
                 }
             </With>

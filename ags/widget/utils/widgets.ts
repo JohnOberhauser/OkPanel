@@ -54,7 +54,7 @@ export function ghostWhenTooNarrow(
         const h = widget.get_height()
         if (w > 0 || h > 0) {
             const bonusThreshold = accessorThresholdBonus
-                .map((it) => it.get())
+                .map((it) => it.peek())
                 .reduce((acc, val) => {
                     return acc + val
                 }, 0)

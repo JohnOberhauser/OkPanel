@@ -22,7 +22,7 @@ export const integratedMenuWidth = 430
 export const [integratedMenuRevealed, integratedMenuRevealedSetting] = createState(false)
 
 export function toggleIntegratedMenu() {
-    integratedMenuRevealedSetting(!integratedMenuRevealed.get())
+    integratedMenuRevealedSetting(!integratedMenuRevealed.peek())
 }
 
 export function closeIntegratedMenu() {

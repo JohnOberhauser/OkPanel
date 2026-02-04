@@ -7,7 +7,7 @@ export const integratedClipboardManagerWidth = 410
 export const [integratedClipboardManagerRevealed, integratedClipboardManagerRevealedSetting] = createState(false)
 
 export function toggleIntegratedClipboardManager() {
-    integratedClipboardManagerRevealedSetting(!integratedClipboardManagerRevealed.get())
+    integratedClipboardManagerRevealedSetting(!integratedClipboardManagerRevealed.peek())
 }
 
 export function closeIntegratedClipboardManager() {

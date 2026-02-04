@@ -50,10 +50,10 @@ export function AnimatedFor<Item, El extends JSX.Element, Key>({
 
     function update() {
         const eachMap = new Map<Key, Item>()
-        const newRendered = new Map<Key, Item>(rendered.get())
-        const newExiting = new Map<Key, Item>(exiting.get())
+        const newRendered = new Map<Key, Item>(rendered.peek())
+        const newExiting = new Map<Key, Item>(exiting.peek())
 
-        for (const item of each.get()) {
+        for (const item of each.peek()) {
             const k = id(item)
             eachMap.set(k, item)
             newRendered.set(k, item)
@@ -78,8 +78,8 @@ export function AnimatedFor<Item, El extends JSX.Element, Key>({
     onCleanup(unsub)
 
     function removeItem(key: Key) {
-        const cur = new Map(rendered.get())
-        const exit = new Map(exiting.get())
+        const cur = new Map(rendered.peek())
+        const exit = new Map(exiting.peek())
 
         exit.delete(key)
         cur.delete(key)
@@ -121,7 +121,7 @@ export function AnimatedFor<Item, El extends JSX.Element, Key>({
                         })
 
                         isClosing.subscribe(() => {
-                            if (isClosing.get()) {
+                            if (isClosing.peek()) {
                                 revealedSet(false)
                                 timeout(300, () => {
                                     removeItem(key)

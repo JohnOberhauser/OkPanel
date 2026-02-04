@@ -74,11 +74,11 @@ function VerticalLabelInternal(
     let realText = ""
     if (isAccessor(text)) {
         const unsub = text.subscribe(() => {
-            realText = text.get()
+            realText = text.peek()
             area.queue_draw()
         })
         onCleanup(unsub)
-        realText = text.get()
+        realText = text.peek()
     } else {
         realText = text
     }
@@ -86,19 +86,19 @@ function VerticalLabelInternal(
     let realFlipped = false
     if (isAccessor(flipped)) {
         const unsub = flipped.subscribe(() => {
-            realFlipped = flipped.get()
+            realFlipped = flipped.peek()
             area.queue_draw()
         })
         onCleanup(unsub)
-        realFlipped = flipped.get()
+        realFlipped = flipped.peek()
     } else {
         realFlipped = flipped
     }
 
-    let [r, g, b, a] = hexToRgba(foregroundColor.get())
+    let [r, g, b, a] = hexToRgba(foregroundColor.peek())
 
     const unsub = foregroundColor.subscribe(() => {
-        [r, g, b, a] = hexToRgba(foregroundColor.get())
+        [r, g, b, a] = hexToRgba(foregroundColor.peek())
         area.queue_draw()
     })
     onCleanup(unsub)

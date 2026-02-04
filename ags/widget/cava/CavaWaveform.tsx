@@ -175,10 +175,10 @@ function CavaWaveformInternal(
         cava.set_active(false)
     })
 
-    let [r, g, b, a] = hexToRgba(color.get())
+    let [r, g, b, a] = hexToRgba(color.peek())
 
     const unsub = color.subscribe(() => {
-        [r, g, b, a] = hexToRgba(color.get())
+        [r, g, b, a] = hexToRgba(color.peek())
     })
     onCleanup(unsub)
 
@@ -199,7 +199,7 @@ function CavaWaveformInternal(
         const drawSize = vertical ? drawWidth : drawHeight
         let flip: boolean
         if (isAccessor(flipStart)) {
-            flip = flipStart.get()
+            flip = flipStart.peek()
         } else {
             flip = flipStart
         }

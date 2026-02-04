@@ -32,7 +32,7 @@ export default function() {
     let crfRevealedSetter: Setter<boolean> | null = null
 
     const unsub = integratedScreenshotRevealed.subscribe(() => {
-        if (integratedScreenshotRevealed.get()) {
+        if (integratedScreenshotRevealed.peek()) {
             selectedAudioSetter(null)
             selectedCodecSetter(codecs[0])
             selectedEncodingPresetSetter("medium")
@@ -246,8 +246,8 @@ export default function() {
                         isRecordingSetter(true)
                         const time = GLib.DateTime.new_now_local().format("%Y_%m_%d_%H_%M_%S")!
                         const path = `${screenRecordingDir}/${time}_record.mp4`
-                        const audioParam = selectedAudio.get() !== null ? `--audio=${selectedAudio.get()!.name}` : ""
-                        const command = `wf-recorder --file=${path} ${audioParam} -p preset=${selectedEncodingPreset.get()} -p crf=${selectedCrfQuality.get()} -c ${selectedCodec.get().lib}`
+                        const audioParam = selectedAudio.peek() !== null ? `--audio=${selectedAudio.peek()!.name}` : ""
+                        const command = `wf-recorder --file=${path} ${audioParam} -p preset=${selectedEncodingPreset.peek()} -p crf=${selectedCrfQuality.peek()} -c ${selectedCodec.peek().lib}`
                         console.log(command)
                         toggleIntegratedScreenshot()
                         execAsync(
@@ -274,8 +274,8 @@ export default function() {
                         isRecordingSetter(true)
                         const time = GLib.DateTime.new_now_local().format("%Y_%m_%d_%H_%M_%S")!
                         const path = `${screenRecordingDir}/${time}_record.mp4`
-                        const audioParam = selectedAudio.get() !== null ? `--audio=${selectedAudio.get()!.name}` : ""
-                        const command = `wf-recorder --file=${path} -g "$(slurp -o)" ${audioParam} -p preset=${selectedEncodingPreset.get()} -p crf=${selectedCrfQuality.get()} -c ${selectedCodec.get().lib}`
+                        const audioParam = selectedAudio.peek() !== null ? `--audio=${selectedAudio.peek()!.name}` : ""
+                        const command = `wf-recorder --file=${path} -g "$(slurp -o)" ${audioParam} -p preset=${selectedEncodingPreset.peek()} -p crf=${selectedCrfQuality.peek()} -c ${selectedCodec.peek().lib}`
                         console.log(command)
                         toggleIntegratedScreenshot()
                         execAsync(
@@ -305,8 +305,8 @@ export default function() {
                         isRecordingSetter(true)
                         const time = GLib.DateTime.new_now_local().format("%Y_%m_%d_%H_%M_%S")!
                         const path = `${screenRecordingDir}/${time}_record.mp4`
-                        const audioParam = selectedAudio.get() !== null ? `--audio=${selectedAudio.get()!.name}` : ""
-                        const command = `wf-recorder --file=${path} -g "$(${projectDir}/shellScripts/grabWindow)" ${audioParam} -p preset=${selectedEncodingPreset.get()} -p crf=${selectedCrfQuality.get()} -c ${selectedCodec.get().lib}`
+                        const audioParam = selectedAudio.peek() !== null ? `--audio=${selectedAudio.peek()!.name}` : ""
+                        const command = `wf-recorder --file=${path} -g "$(${projectDir}/shellScripts/grabWindow)" ${audioParam} -p preset=${selectedEncodingPreset.peek()} -p crf=${selectedCrfQuality.peek()} -c ${selectedCodec.peek().lib}`
                         console.log(command)
                         toggleIntegratedScreenshot()
                         execAsync(
@@ -332,8 +332,8 @@ export default function() {
                         isRecordingSetter(true)
                         const time = GLib.DateTime.new_now_local().format("%Y_%m_%d_%H_%M_%S")!
                         const path = `${screenRecordingDir}/${time}_record.mp4`
-                        const audioParam = selectedAudio.get() !== null ? `--audio=${selectedAudio.get()!.name}` : ""
-                        const command = `wf-recorder --file=${path} -g "$(slurp)" ${audioParam} -p preset=${selectedEncodingPreset.get()} -p crf=${selectedCrfQuality.get()} -c ${selectedCodec.get().lib}`
+                        const audioParam = selectedAudio.peek() !== null ? `--audio=${selectedAudio.peek()!.name}` : ""
+                        const command = `wf-recorder --file=${path} -g "$(slurp)" ${audioParam} -p preset=${selectedEncodingPreset.peek()} -p crf=${selectedCrfQuality.peek()} -c ${selectedCodec.peek().lib}`
                         console.log(command)
                         toggleIntegratedScreenshot()
                         execAsync(

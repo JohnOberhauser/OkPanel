@@ -2,7 +2,7 @@ import Notifd from "gi://AstalNotifd"
 import Notification from "./Notification"
 import {Gtk} from "ags/gtk4"
 import OkButton from "../common/OkButton";
-import {createBinding, For, With} from "ags";
+import {createBinding} from "ags";
 import {integratedNotificationHistoryRevealedSetting} from "./IntegratedNotificationHistory";
 import {AnimatedFor} from "../common/AnimatedFor";
 

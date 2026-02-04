@@ -3,7 +3,7 @@ import Notification from "./Notification"
 import {variableConfig} from "../../config/config";
 import {NotificationsPosition} from "../../config/schema/definitions/notifications";
 import GLib from "gi://GLib?version=2.0";
-import {Accessor, createBinding, createComputed, createState, For, onCleanup} from "ags";
+import {Accessor, createBinding, createComputed, createState, onCleanup} from "ags";
 import AstalNotifd from "gi://AstalNotifd?version=0.1";
 import {AnimatedFor} from "../common/AnimatedFor";
 
@@ -12,11 +12,11 @@ const TIMEOUT_DELAY = 7_000
 
 /** Delay only the transition from true -> false by `delayMs`. */
 function withHideDelay(src: Accessor<boolean>, delayMs = 200): Accessor<boolean> {
-    const [out, outSet] = createState<boolean>(src.get())
+    const [out, outSet] = createState<boolean>(src.peek())
     let timerId: number | null = null
 
     const unsub = src.subscribe(() => {
-        if (src.get()) {
+        if (src.peek()) {
             // cancel pending hide and show immediately
             if (timerId !== null) { GLib.Source.remove(timerId); timerId = null }
             outSet(true)
@@ -24,7 +24,7 @@ function withHideDelay(src: Accessor<boolean>, delayMs = 200): Accessor<boolean>
             // schedule hide
             if (timerId !== null) GLib.Source.remove(timerId)
             timerId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, delayMs, () => {
-                if (!src.get()) outSet(false)        // still false? then commit
+                if (!src.peek()) outSet(false)        // still false? then commit
                 timerId = null
                 return GLib.SOURCE_REMOVE
             })
@@ -49,7 +49,7 @@ export default function NotificationPopups(monitorId: number): Astal.Window {
     const notifiedHandler = notifd.connect("notified", (_, id, replaced) => {
         const notification = notifd.get_notification(id)
 
-        if (replaced && notifications.get().some((n) => n.id === id)) {
+        if (replaced && notifications.peek().some((n) => n.id === id)) {
             setNotifications((ns) => ns.map((n) => (n.id === id ? notification : n)))
         } else {
             setNotifications((ns) => [notification, ...ns])

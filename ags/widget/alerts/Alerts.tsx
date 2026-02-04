@@ -46,11 +46,11 @@ export function AlertWindow(
                 if (!canShow) {
                     // for some reason, getting the variable here prevents it from being needlessly
                     // emitted a second time on startup
-                    showVariable.get()
+                    showVariable.peek()
                     canShow = true
                     return
                 }
-                if (!enabled.get()) return
+                if (!enabled.peek()) return
                 if (windowVisibilityTimeout != null) {
                     windowVisibilityTimeout.destroy()
                 }
@@ -142,7 +142,7 @@ export function ChargingAlertSound() {
             }
         )
         const unsub = pluggedIn.subscribe(() => {
-            if (pluggedIn.get()) {
+            if (pluggedIn.peek()) {
                 playPowerPlug()
             } else {
                 playPowerUnplug()

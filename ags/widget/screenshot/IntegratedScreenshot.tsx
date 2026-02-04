@@ -11,7 +11,7 @@ export const integratedScreenshotWidth = 410
 export const [integratedScreenshotRevealed, integratedScreenshotRevealedSetting] = createState(false)
 
 export function toggleIntegratedScreenshot() {
-    integratedScreenshotRevealedSetting(!integratedScreenshotRevealed.get())
+    integratedScreenshotRevealedSetting(!integratedScreenshotRevealed.peek())
 }
 
 export function closeIntegratedScreenshot() {
@@ -23,7 +23,7 @@ export default function () {
     updateScreenshotAudioOptions()
 
     const unsub = integratedScreenshotRevealed.subscribe(() => {
-        if (integratedScreenshotRevealed.get()) {
+        if (integratedScreenshotRevealed.peek()) {
             updateScreenshotAudioOptions()
         }
     })

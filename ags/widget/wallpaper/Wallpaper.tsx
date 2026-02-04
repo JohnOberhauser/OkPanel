@@ -29,10 +29,10 @@ function applyWallpaper(
         // add as a named child so Stack can animate between pages
         wallpaperStack.add_named(pic, name);
 
-        const duration = variableConfig.wallpaper.transitionDuration.get()
+        const duration = variableConfig.wallpaper.transitionDuration.peek()
 
         // configure crossfade and flip
-        wallpaperStack.transition_type = toGtkTransition(variableConfig.wallpaper.transitionType.get())
+        wallpaperStack.transition_type = toGtkTransition(variableConfig.wallpaper.transitionType.peek())
         wallpaperStack.transition_duration = duration;
         wallpaperStack.set_visible_child_name(name);
 
@@ -84,7 +84,7 @@ export default function (
                 }
 
                 const unsub = wallpaperPathState.subscribe(() => {
-                    applyWallpaper(wallpaperPathState.get(), self)
+                    applyWallpaper(wallpaperPathState.peek(), self)
                 })
                 onCleanup(unsub)
             }}

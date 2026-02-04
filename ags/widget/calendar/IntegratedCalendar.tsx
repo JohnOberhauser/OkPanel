@@ -9,7 +9,7 @@ export const integratedCalendarWidth = 410
 export const [integratedCalendarRevealed, integratedCalendarRevealedSetting] = createState(false)
 
 export function toggleIntegratedCalendar() {
-    integratedCalendarRevealedSetting(!integratedCalendarRevealed.get())
+    integratedCalendarRevealedSetting(!integratedCalendarRevealed.peek())
 }
 
 export function closeIntegratedCalendar() {

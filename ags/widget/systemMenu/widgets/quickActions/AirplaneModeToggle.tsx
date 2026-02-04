@@ -8,7 +8,7 @@ export default function () {
         offset={0}
         selected={airplaneModeEnabled}
         onClicked={() => {
-            if (airplaneModeEnabled.get()) {
+            if (airplaneModeEnabled.peek()) {
                 disableAirplaneMode()
             } else {
                 enableAirplaneMode()

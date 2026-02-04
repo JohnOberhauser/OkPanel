@@ -45,7 +45,7 @@ function BluetoothDevices() {
                         label={`  ${device.name}`}
                         labelHalign={Gtk.Align.START}
                         onClicked={() => {
-                            buttonsRevealedSetter(!buttonsRevealed.get())
+                            buttonsRevealedSetter(!buttonsRevealed.peek())
                         }}/>
                     <revealer
                         revealChild={buttonsRevealed}
@@ -125,7 +125,7 @@ export default function () {
     return <RevealerRow
         setup={(revealed) => {
             const unsub = integratedMenuRevealed.subscribe(() => {
-                if (!integratedMenuRevealed.get()) {
+                if (!integratedMenuRevealed.peek()) {
                     revealed[1](false)
                 }
             })

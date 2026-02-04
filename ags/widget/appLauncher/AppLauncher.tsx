@@ -90,7 +90,7 @@ export default function () {
                     return 1
                 }
             })
-        if (listApps.length - 1 < selectedIndex.get()) {
+        if (listApps.length - 1 < selectedIndex.peek()) {
             if (listApps.length === 0) {
                 selectedIndexSetter(0)
             } else {
@@ -100,8 +100,8 @@ export default function () {
         return listApps
     })
     const onEnter = () => {
-        if (list.get().length > 0) {
-            const app = list.get()?.[selectedIndex.get()]
+        if (list.peek().length > 0) {
+            const app = list.peek()?.[selectedIndex.peek()]
             if (app !== null) {
                 launchDesktopApp(app)
             }
@@ -146,7 +146,7 @@ export default function () {
     ) as Gtk.ScrolledWindow
 
     const unsub = integratedAppLauncherRevealed.subscribe(() => {
-        if (integratedAppLauncherRevealed.get()) {
+        if (integratedAppLauncherRevealed.peek()) {
             apps = new Apps.Apps()
             textSetter("")
             selectedIndexSetter(0)
@@ -166,13 +166,13 @@ export default function () {
             keyController.connect("key-pressed", (_, key) => {
                 if (key === Gdk.KEY_Escape) {
                     toggleIntegratedAppLauncher()
-                } else if (key === Gdk.KEY_Down && list.get().length - 1 > selectedIndex.get()) {
-                    selectedIndexSetter(selectedIndex.get() + 1)
-                    ensureChildVisible(scrolledWindow, selectedIndex.get())
+                } else if (key === Gdk.KEY_Down && list.peek().length - 1 > selectedIndex.peek()) {
+                    selectedIndexSetter(selectedIndex.peek() + 1)
+                    ensureChildVisible(scrolledWindow, selectedIndex.peek())
                     return true
-                } else if (key === Gdk.KEY_Up && selectedIndex.get() != 0) {
-                    selectedIndexSetter(selectedIndex.get() - 1)
-                    ensureChildVisible(scrolledWindow, selectedIndex.get())
+                } else if (key === Gdk.KEY_Up && selectedIndex.peek() != 0) {
+                    selectedIndexSetter(selectedIndex.peek() - 1)
+                    ensureChildVisible(scrolledWindow, selectedIndex.peek())
                     return true
                 }
                 return false

@@ -14,7 +14,8 @@ import {
     getSaveTypeLabel,
     SaveType,
     saveTypeValues,
-    screenshotDir, setDirectories, showScreenshotNotification, updateScreenshotAudioOptions
+    screenshotDir,
+    showScreenshotNotification
 } from "./utils";
 import ScreenshotButton from "./ScreenshotButton";
 
@@ -129,20 +130,20 @@ export default function () {
                         const dir = screenshotDir
                         const fileName = generateFileName()
                         const path = `${dir}/${fileName}`
-                        const allDelay = Math.max(1, delay.get())
+                        const allDelay = Math.max(1, delay.peek())
                         execAsync(
                             [
                                 "bash",
                                 "-c",
                                 `
-                                        ${projectDir}/shellScripts/hyprshot -m all -o ${dir} -f ${fileName} -D ${allDelay} --save-type ${saveType.get()}
+                                        ${projectDir}/shellScripts/hyprshot -m all -o ${dir} -f ${fileName} -D ${allDelay} --save-type ${saveType.peek()}
                                 `
                             ]
                         ).catch((error) => {
                             console.error(error)
                         }).finally(() => {
                             playCameraShutter()
-                            showScreenshotNotification(path, saveType.get())
+                            showScreenshotNotification(path, saveType.peek())
                         })
                     }}/>
                 <ScreenshotButton
@@ -159,7 +160,7 @@ export default function () {
                                 "bash",
                                 "-c",
                                 `
-                                        ${projectDir}/shellScripts/hyprshot -m output -o ${dir} -f ${fileName} -D ${delay.get()} --save-type ${saveType.get().valueOf()}
+                                        ${projectDir}/shellScripts/hyprshot -m output -o ${dir} -f ${fileName} -D ${delay.peek()} --save-type ${saveType.peek().valueOf()}
                                 `
                             ]
                         ).catch((error) => {
@@ -171,7 +172,7 @@ export default function () {
                         }).finally(() => {
                             if (!canceled) {
                                 playCameraShutter()
-                                showScreenshotNotification(path, saveType.get())
+                                showScreenshotNotification(path, saveType.peek())
                             }
                         })
                     }}/>
@@ -193,7 +194,7 @@ export default function () {
                                 "bash",
                                 "-c",
                                 `
-                                        ${projectDir}/shellScripts/hyprshot -m window -o ${dir} -f ${fileName} -D ${delay.get()} --save-type ${saveType.get().valueOf()}
+                                        ${projectDir}/shellScripts/hyprshot -m window -o ${dir} -f ${fileName} -D ${delay.peek()} --save-type ${saveType.peek().valueOf()}
                                 `
                             ]
                         ).catch((error) => {
@@ -205,7 +206,7 @@ export default function () {
                         }).finally(() => {
                             if (!canceled) {
                                 playCameraShutter()
-                                showScreenshotNotification(path, saveType.get())
+                                showScreenshotNotification(path, saveType.peek())
                             }
                         })
                     }}/>
@@ -223,7 +224,7 @@ export default function () {
                                 "bash",
                                 "-c",
                                 `
-                                        ${projectDir}/shellScripts/hyprshot -m region -o ${dir} -f ${fileName} -D ${delay.get()} --save-type ${saveType.get().valueOf()}
+                                        ${projectDir}/shellScripts/hyprshot -m region -o ${dir} -f ${fileName} -D ${delay.peek()} --save-type ${saveType.peek().valueOf()}
                                 `
                             ]
                         ).catch((error) => {
@@ -235,7 +236,7 @@ export default function () {
                         }).finally(() => {
                             if (!canceled) {
                                 playCameraShutter()
-                                showScreenshotNotification(path, saveType.get())
+                                showScreenshotNotification(path, saveType.peek())
                             }
                         })
                     }}/>

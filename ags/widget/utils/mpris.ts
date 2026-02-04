@@ -543,7 +543,7 @@ export class Player {
                 }
             }
         );
-        this.playbackStatus[1](this.playbackStatus[0].get() === PlaybackStatus.Playing ? PlaybackStatus.Paused : PlaybackStatus.Playing)
+        this.playbackStatus[1](this.playbackStatus[0].peek() === PlaybackStatus.Playing ? PlaybackStatus.Paused : PlaybackStatus.Playing)
     }
 
     public setPosition(newPosition: number): void {
@@ -632,7 +632,7 @@ export class Mpris {
     }
 
     public rotatePrimaryPlayer(): void {
-        const players = this.players[0].get();
+        const players = this.players[0].peek();
 
         // Don't rotate if 0 or 1 player
         if (players.length <= 1) return;
@@ -708,11 +708,11 @@ export class Mpris {
     }
 
     private _addPlayer(busName: string): void {
-        if (!this.players[0].get().find((player) => player.busName === busName)) {
+        if (!this.players[0].peek().find((player) => player.busName === busName)) {
             log("Adding player: " + busName);
             try {
                 let player = new Player(busName, this.players[0].length === 0);
-                this.players[1](this.players[0].get().concat(player))
+                this.players[1](this.players[0].peek().concat(player))
             } catch (e) {
                 console.error(e, "Failed to add player: " + busName)
             }
@@ -721,9 +721,9 @@ export class Mpris {
 
     private _removePlayer(busName: string): void {
         log("Removing player: " + busName)
-        const player = this.players[0].get().find((player) => player.busName === busName)
+        const player = this.players[0].peek().find((player) => player.busName === busName)
         player?.destroy()
-        const newList = this.players[0].get().filter((player) => player.busName !== busName)
+        const newList = this.players[0].peek().filter((player) => player.busName !== busName)
         if (newList.length !== 0 && player?.isPrimaryPlayer) {
             newList[0].isPrimaryPlayer = true
         }

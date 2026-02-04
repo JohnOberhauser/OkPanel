@@ -67,7 +67,7 @@ export default function (
                     }
                 })}
                 onClicked={() => {
-                    revealedSetter(!revealed.get())
+                    revealedSetter(!revealed.peek())
                 }}/>
         </box>
         <revealer

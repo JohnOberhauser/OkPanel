@@ -7,7 +7,7 @@ export const integratedNotificationHistoryWidth = 410
 export const [integratedNotificationHistoryRevealed, integratedNotificationHistoryRevealedSetting] = createState(false)
 
 export function toggleIntegratedNotificationHistory() {
-    integratedNotificationHistoryRevealedSetting(!integratedNotificationHistoryRevealed.get())
+    integratedNotificationHistoryRevealedSetting(!integratedNotificationHistoryRevealed.peek())
 }
 
 export function closeIntegratedNotificationsHistory() {

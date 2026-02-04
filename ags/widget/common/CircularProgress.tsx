@@ -27,7 +27,7 @@ export default function ({
             $={(area: Gtk.DrawingArea) => {
                 const fgColor = hexToRgba(color)
                 const draw = (_: Gtk.DrawingArea, cr: any, w: number, h: number) => {
-                    const p = Math.max(0, Math.min(1, progress.get()));
+                    const p = Math.max(0, Math.min(1, progress.peek()));
                     const cx = w / 2, cy = h / 2;
                     const r = Math.min(w, h) / 2 - stroke / 2;
                     const start = -Math.PI / 2;              // top

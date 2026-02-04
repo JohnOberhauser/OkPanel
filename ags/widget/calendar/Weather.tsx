@@ -238,7 +238,7 @@ export default function() {
                 const code = weather?.current?.weatherCode;
                 const isDay = weather?.current?.isDay;
                 const temp = weather?.current?.temperature;
-                const unit = variableConfig.weather.temperatureUnit.asAccessor().get();
+                const unit = variableConfig.weather.temperatureUnit.peek();
 
                 if (code == null || isDay == null || temp == null) {
                     return "N/A";

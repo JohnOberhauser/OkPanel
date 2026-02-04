@@ -116,25 +116,25 @@ export default function (
                         variableConfig.leftBar.marginStart.peek() +
                         variableConfig.leftBar.marginEnd.peek() +
                         variableConfig.leftBar.borderWidth.peek() * 2 +
-                        leftGroupWidth.get()
+                        leftGroupWidth.peek()
                     const rightThickness =
                         variableConfig.frame.rightThickness.peek() +
                         variableConfig.rightBar.marginStart.peek() +
                         variableConfig.rightBar.marginEnd.peek() +
                         variableConfig.rightBar.borderWidth.peek() * 2 +
-                        rightGroupWidth.get()
+                        rightGroupWidth.peek()
                     const topThickness =
                         variableConfig.frame.topThickness.peek() +
                         variableConfig.topBar.marginTop.peek() +
                         variableConfig.topBar.marginBottom.peek() +
                         variableConfig.topBar.borderWidth.peek() * 2 +
-                        topBarHeight.get()
+                        topBarHeight.peek()
                     const bottomThickness =
                         variableConfig.frame.bottomThickness.peek() +
                         variableConfig.bottomBar.marginTop.peek() +
                         variableConfig.bottomBar.marginBottom.peek() +
                         variableConfig.bottomBar.borderWidth.peek() * 2 +
-                        bottomBarHeight.get()
+                        bottomBarHeight.peek()
 
                     // Inner hole geometry
                     let x, y, iw, ih

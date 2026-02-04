@@ -37,7 +37,7 @@ export default function (
             hpadding={hpadding}
             vpadding={vpadding}
             onClicked={() => {
-                if (player.shuffleStatus[0].get() === ShuffleStatus.Enabled) {
+                if (player.shuffleStatus[0].peek() === ShuffleStatus.Enabled) {
                     player.setShuffleStatus(ShuffleStatus.Disabled)
                 } else {
                     player.setShuffleStatus(ShuffleStatus.Enabled)
@@ -87,9 +87,9 @@ export default function (
             hpadding={hpadding}
             vpadding={vpadding}
             onClicked={() => {
-                if (player.loopStatus[0].get() === LoopStatus.None) {
+                if (player.loopStatus[0].peek() === LoopStatus.None) {
                     player.setLoopStatus(LoopStatus.Playlist)
-                } else if (player.loopStatus[0].get() === LoopStatus.Playlist) {
+                } else if (player.loopStatus[0].peek() === LoopStatus.Playlist) {
                     player.setLoopStatus(LoopStatus.Track)
                 } else {
                     player.setLoopStatus(LoopStatus.None)

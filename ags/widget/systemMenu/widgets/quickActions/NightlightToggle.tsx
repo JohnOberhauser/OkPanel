@@ -30,7 +30,7 @@ export default function () {
         offset={0}
         selected={nightLightEnabled}
         onClicked={() => {
-            if (nightLightEnabled.get()) {
+            if (nightLightEnabled.peek()) {
                 disableNightLight()
             } else {
                 enableNightLight()
