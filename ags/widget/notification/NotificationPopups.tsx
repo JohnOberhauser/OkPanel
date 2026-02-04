@@ -50,9 +50,17 @@ export default function NotificationPopups(monitorId: number): Astal.Window {
         const notification = notifd.get_notification(id)
 
         if (replaced && notifications.peek().some((n) => n.id === id)) {
-            setNotifications((ns) => ns.map((n) => (n.id === id ? notification : n)))
+            setNotifications(
+                (ns) =>
+                    ns
+                        .map((n) => n.id === id ? notification : n)
+                        .filter((it) => it !== null)
+            )
         } else {
-            setNotifications((ns) => [notification, ...ns])
+            setNotifications(
+                (ns) =>
+                    [notification, ...ns]
+                        .filter((it) => it !== null))
         }
     })
 
