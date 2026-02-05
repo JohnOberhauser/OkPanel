@@ -1,9 +1,5 @@
 @use "../variables" as vars;
 
-.lockScreenWallpaper {
-  //filter: blur(20px);
-}
-
 .lockScreenEntry {
   box-shadow: none;
   color: vars.$lockScreenEntryForegroundColor;
@@ -22,11 +18,17 @@
 }
 
 .lockScreenClock {
+  color: vars.$lockScreenTimeForegroundColor;
   font-size: 100px;
   font-weight: bold;
 }
 
 .lockScreenDate {
+  color: vars.$lockScreenDateForegroundColor;
   font-size: 20px;
   font-weight: bold;
+}
+
+.lockScreenVisibilityButton {
+  color: vars.$lockScreenEntryForegroundColor;
 }

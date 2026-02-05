@@ -142,6 +142,9 @@ cat > "$BUILD_DIR/variables.scss" <<EOFVARS
 \\$lockScreenEntryBorderColor: ${config.lockScreen.entryBorderColor};
 \\$lockScreenEntryBorderWidth: ${config.lockScreen.entryBorderWidth}px;
 \\$lockScreenEntryBorderRadius: ${config.lockScreen.entryBorderRadius}px;
+
+\\$lockScreenDateForegroundColor: ${config.lockScreen.dateForeground};
+\\$lockScreenTimeForegroundColor: ${config.lockScreen.timeForeground};
 ${widgetLines}
 
 EOFVARS

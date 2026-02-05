@@ -39,5 +39,17 @@ export const lockScreen = {
             description: 'Color of the lock screen text entry.',
             reactive: false,
         },
+        {
+            name: 'dateForeground',
+            type: 'color',
+            default: {from: 'theme.colors.foreground'},
+            description: 'Foreground color of the lock screen date',
+        },
+        {
+            name: 'timeForeground',
+            type: 'color',
+            default: {from: 'theme.colors.foreground'},
+            description: 'Foreground color of the lock screen time',
+        },
     ],
 } as const satisfies Field

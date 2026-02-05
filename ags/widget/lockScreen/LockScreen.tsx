@@ -2,7 +2,7 @@ import {Astal, Gdk, Gtk} from "ags/gtk4";
 import Gtk4SessionLock from "gi://Gtk4SessionLock";
 import {createRoot, createState, onCleanup} from "ags";
 import AstalAuth from "gi://AstalAuth?version=0.1";
-import {createPoll, idle, timeout} from "ags/time";
+import {createPoll, timeout} from "ags/time";
 import {resolveWallpaper} from "../wallpaper/getWallpaper";
 import {createScaledTexture} from "../utils/images";
 import {variableConfig} from "../../config/config";
@@ -13,11 +13,12 @@ import CircularInfiniteSpinner from "../common/CircularInfiniteSpinner";
 const animationDuration = 400
 
 export default function () {
+    const pam = new AstalAuth.Pam()
+
     createRoot((dispose) => {
         const windows = new Map<Gdk.Monitor, Gtk.Window>();
 
         const textBuffer = new Gtk.EntryBuffer()
-        const [text, textSetter] = createState("")
         const [entryCharactersVisible, entryCharactersVisibleSetter] = createState(false)
         const [screenRevealed, screenRevealedSetter] = createState(false)
         const [isAttemptingLogin, isAttemptingLoginSetter] = createState(false)
@@ -87,12 +88,13 @@ export default function () {
                                                 visibility={entryCharactersVisible}
                                                 cssClasses={["lockScreenEntry"]}
                                                 onActivate={() => {
-                                                    unlockScreen()
+                                                    isAttemptingLoginSetter(true)
+                                                    pam.supply_secret(textBuffer.text)
                                                 }}
                                                 hexpand={false}
                                                 buffer={textBuffer}
                                                 $={(self) => {
-                                                    self.connect('changed', () => textSetter(self.text))
+                                                    self.set_alignment(0.5)
                                                     timeout(200, () => {
                                                         self.grab_focus()
                                                     })
@@ -105,6 +107,7 @@ export default function () {
                                                     onCleanup(dispose)
                                                 }}/>
                                             <OkButton
+                                                labelCss={["lockScreenVisibilityButton"]}
                                                 size={OkButtonSize.MEDIUM}
                                                 offset={2}
                                                 label={entryCharactersVisible.as((visible) => {
@@ -128,7 +131,6 @@ export default function () {
                             )
                         }}>
                         <Gtk.Picture
-                            cssClasses={["lockScreenWallpaper"]}
                             contentFit={Gtk.ContentFit.COVER}
                             $={(self) => {
                                 if (wallpaperPath !== null) {
@@ -187,25 +189,32 @@ export default function () {
             console.log("locking")
         }
 
-        function unlockScreen() {
-            isAttemptingLoginSetter(true)
-            AstalAuth.Pam.authenticate(text.peek(), (_, task) => {
-                try {
-                    AstalAuth.Pam.authenticate_finish(task)
-                    console.log("unlocking")
-                    screenRevealedSetter(false)
-                    timeout(animationDuration, () => {
-                        dispose()
-                        lock.unlock()
-                    })
-                } catch (e) {
-                    console.log(e)
-                    textBuffer.set_text("", -1)
-                    isAttemptingLoginSetter(false)
-                }
+        pam.connect("auth-prompt-visible", (auth, msg) => {
+            console.log(`visible: ${msg}`)
+        })
+
+        pam.connect("auth-prompt-hidden", (auth, msg) => {
+            console.log(`hidden: ${msg}`)
+        })
+
+        pam.connect("success", () => {
+            console.log("success")
+            screenRevealedSetter(false)
+            timeout(animationDuration, () => {
+                dispose()
+                lock.unlock()
             })
-        }
+        })
+
+        pam.connect("fail", (auth, msg) => {
+            console.log(`fail: ${msg}`)
+            textBuffer.set_text("", -1)
+            isAttemptingLoginSetter(false)
+            pam.start_authenticate()
+        })
 
         lockScreen()
+
+        pam.start_authenticate()
     })
 }
