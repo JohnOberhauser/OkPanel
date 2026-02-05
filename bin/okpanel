@@ -22,6 +22,7 @@ Commands:
 			      (1–20). <string> is the new label.
 	wallpaper <path>
 				  Set the wallpaper to the file at the path.
+	lock		  Lock the session
 	help          Show this help message.
 
 Global Options:
@@ -121,6 +122,7 @@ main() {
 		volume-down)  ags request -i "OkPanel" "volume-down";;
 		mute)         ags request -i "OkPanel" "mute";;
 		closeAll)	  ags request -i "OkPanel" "closeAll";;
+		lock)		  ags request -i "OkPanel" "lock";;
 		custom)       shift; custom_command "$@";;
 		wallpaper)	  shift; wallpaper "$@";;
 		help|-h|--help) print_help;;

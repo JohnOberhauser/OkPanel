@@ -20,7 +20,7 @@ export const systemCommandsSchema = {
         {
             name: 'lock',
             type: 'string',
-            default: 'uwsm app -- hyprlock',
+            default: 'okpanel lock',
             description: 'Command to lock the screen.',
         },
         {

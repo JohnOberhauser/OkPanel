@@ -1,0 +1,32 @@
+@use "../variables" as vars;
+
+.lockScreenWallpaper {
+  //filter: blur(20px);
+}
+
+.lockScreenEntry {
+  box-shadow: none;
+  color: vars.$lockScreenEntryForegroundColor;
+  background-color: vars.$lockScreenEntryBackgroundColor;
+  border-radius: vars.$lockScreenEntryBorderRadius;
+  font-size: 20px;
+}
+
+.lockScreenEntryWrapper {
+  padding: 4px;
+  background-color: vars.$lockScreenEntryBackgroundColor;
+  border-style: solid;
+  border-width: vars.$lockScreenEntryBorderWidth;
+  border-color: vars.$lockScreenEntryBorderColor;
+  border-radius: vars.$lockScreenEntryBorderRadius;
+}
+
+.lockScreenClock {
+  font-size: 100px;
+  font-weight: bold;
+}
+
+.lockScreenDate {
+  font-size: 20px;
+  font-weight: bold;
+}

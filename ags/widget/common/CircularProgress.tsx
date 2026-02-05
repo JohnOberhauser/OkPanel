@@ -9,6 +9,7 @@ type Props = {
     stroke?: number;              // px
     trackAlpha?: number;          // 0..1 (only used if no trackColor)
     cssClasses?: string[];
+    visible?: boolean | Accessor<boolean>;
 };
 
 export default function ({
@@ -18,9 +19,11 @@ export default function ({
     stroke = 3,
     trackAlpha = 0.25,
     cssClasses = [],
+    visible = true,
 }: Props) {
     return (
         <drawingarea
+            visible={visible}
             cssClasses={cssClasses}
             widthRequest={size}
             heightRequest={size}

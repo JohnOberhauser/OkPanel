@@ -137,6 +137,11 @@ cat > "$BUILD_DIR/variables.scss" <<EOFVARS
 
 \\$barDockSelectedColor: ${config.barWidgets.dock.selectedBackground};
 
+\\$lockScreenEntryBackgroundColor: ${config.lockScreen.entryBackground};
+\\$lockScreenEntryForegroundColor: ${config.lockScreen.entryForeground};
+\\$lockScreenEntryBorderColor: ${config.lockScreen.entryBorderColor};
+\\$lockScreenEntryBorderWidth: ${config.lockScreen.entryBorderWidth}px;
+\\$lockScreenEntryBorderRadius: ${config.lockScreen.entryBorderRadius}px;
 ${widgetLines}
 
 EOFVARS
