@@ -213,6 +213,10 @@ export default function () {
             pam.start_authenticate()
         })
 
+        pam.connect("auth-error", (auth, msg) => {
+            console.log(`error: ${msg}`)
+        })
+
         lockScreen()
 
         pam.start_authenticate()
