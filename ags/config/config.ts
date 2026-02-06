@@ -35,7 +35,11 @@ export let config: Config = ((): Config => {
         return validateAndApplyDefaults({}, CONFIG_SCHEMA)
     }
     console.log(`Loading initial config from: ${selectedConfig.peek()?.fileName}`)
-    return loadConfig(`${homePath}/.config/OkPanel/${selectedConfig.peek()?.fileName}`, defaultConfigValues)
+    const c = loadConfig(`${homePath}/.config/OkPanel/${selectedConfig.peek()?.fileName}`, defaultConfigValues)
+
+    console.log("Initial config loaded.")
+
+    return c
 })()
 
 export const variableConfig: VariableConfig = ((): VariableConfig => {
