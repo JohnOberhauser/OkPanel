@@ -9,6 +9,7 @@ import {variableConfig} from "../../config/config";
 import GLib from "gi://GLib?version=2.0";
 import OkButton, {OkButtonSize} from "../common/OkButton";
 import CircularInfiniteSpinner from "../common/CircularInfiniteSpinner";
+import Gio from "gi://Gio?version=2.0";
 
 const animationDuration = 400
 
@@ -16,6 +17,28 @@ export let isSessionLocked = false
 
 export default function () {
     const pam = new AstalAuth.Pam()
+
+    const bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, null)
+
+    // When the system wakes up, sometimes it messes up fingerprint login.
+    // Detect wakeup and reset the auth process.
+    const sleepId = bus.signal_subscribe(
+        "org.freedesktop.login1",
+        "org.freedesktop.login1.Manager",
+        "PrepareForSleep",
+        "/org/freedesktop/login1",
+        null,
+        Gio.DBusSignalFlags.NONE,
+        (_conn, _sender, _path, _iface, _signal, params) => {
+            const isWakingUp = !params.get_child_value(0).get_boolean()
+
+            if (isWakingUp) {
+                console.log("System woke up")
+                pam.start_authenticate()
+                console.log("auth reset")
+            }
+        }
+    )
 
     createRoot((dispose) => {
         const windows = new Map<Gdk.Monitor, Gtk.Window>();
@@ -208,6 +231,7 @@ export default function () {
                 dispose()
                 lock.unlock()
                 isSessionLocked = false
+                bus.signal_unsubscribe(sleepId)
             })
         })
 
