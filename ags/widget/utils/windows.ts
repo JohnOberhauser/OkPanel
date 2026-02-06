@@ -13,6 +13,8 @@ import SpacerLeft from "../frame/backgroundSpacers/SpacerLeft";
 import {getHyprMonitorsInfo, HyprMonitorInfo} from "./monitors";
 import {variableConfig} from "../../config/config";
 import AstalHyprland from "gi://AstalHyprland?version=0.1";
+import GLib from "gi://GLib?version=2.0";
+import {getScope} from "gnim";
 
 const openedOneOffWindows: Astal.Window[] = []
 
@@ -60,38 +62,55 @@ export function spawnMonitorWindows(
         `${hyprMonitorInfo.description}`
     )
 
+    // Wallpaper gets created first
+    // Then the frame
+    // Then everything else
     createRoot((dispose) => {
+        const scope = getScope()
         const windows: Astal.Window[] = []
 
         console.log("adding wallpaper")
         windows.push(Wallpaper(hyprMonitorInfo.id, hyprMonitorInfo.width, hyprMonitorInfo.height))
 
-        if (framedWindowsContainsMonitor(hyprMonitorInfo)) {
-            console.log("adding frame")
-            windows.push(Frame(hyprMonitorInfo.id))
-            console.log("adding spacer bottom")
-            windows.push(SpacerBottom(hyprMonitorInfo.id))
-            console.log("adding spacer top")
-            windows.push(SpacerTop(hyprMonitorInfo.id))
-            console.log("adding spacer right")
-            windows.push(SpacerRight(hyprMonitorInfo.id))
-            console.log("adding spacer left")
-            windows.push(SpacerLeft(hyprMonitorInfo.id))
-        }
+        GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+            const addFrame = framedWindowsContainsMonitor(hyprMonitorInfo)
+            scope.run(() => {
+                if (addFrame) {
+                    console.log("adding frame")
+                    windows.push(Frame(hyprMonitorInfo.id))
+                }
+                GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+                    scope.run(() => {
+                        if (addFrame) {
+                            console.log("adding spacer bottom")
+                            windows.push(SpacerBottom(hyprMonitorInfo.id))
+                            console.log("adding spacer top")
+                            windows.push(SpacerTop(hyprMonitorInfo.id))
+                            console.log("adding spacer right")
+                            windows.push(SpacerRight(hyprMonitorInfo.id))
+                            console.log("adding spacer left")
+                            windows.push(SpacerLeft(hyprMonitorInfo.id))
+                        }
 
-        console.log("adding volume OSD")
-        windows.push(VolumeAlert(hyprMonitorInfo.id))
-        console.log("adding brightness OSD")
-        windows.push(BrightnessAlert(hyprMonitorInfo.id))
-        console.log("adding notification popups")
-        windows.push(NotificationPopups(hyprMonitorInfo.id))
-        console.log("adding scrim")
-        windows.push(Scrim(hyprMonitorInfo.id))
+                        console.log("adding volume OSD")
+                        windows.push(VolumeAlert(hyprMonitorInfo.id))
+                        console.log("adding brightness OSD")
+                        windows.push(BrightnessAlert(hyprMonitorInfo.id))
+                        console.log("adding notification popups")
+                        windows.push(NotificationPopups(hyprMonitorInfo.id))
+                        console.log("adding scrim")
+                        windows.push(Scrim(hyprMonitorInfo.id))
 
-        windowsByMonitor.set(hyprMonitorInfo.name, windows)
-        disposeByMonitor.set(hyprMonitorInfo.name, dispose)
+                        windowsByMonitor.set(hyprMonitorInfo.name, windows)
+                        disposeByMonitor.set(hyprMonitorInfo.name, dispose)
 
-        logOpenedWindows()
+                        logOpenedWindows()
+                    })
+                    return GLib.SOURCE_REMOVE
+                })
+            })
+            return GLib.SOURCE_REMOVE
+        })
     })
 }
 
