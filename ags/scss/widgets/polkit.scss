@@ -1,0 +1,13 @@
+@use "../variables" as vars;
+
+.polkitEntry {
+  box-shadow: none;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+.polkitIcon {
+  color: vars.$fg;
+  font-size: 50px;
+  font-weight: bold;
+}

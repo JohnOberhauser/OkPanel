@@ -61,6 +61,13 @@ export const CONFIG_SCHEMA = [
         default: false,
         description: "If true, use 24-hour format. If false, use 12-hour format with AM/PM",
     },
+    {
+        name: "enablePolkitAgent",
+        type: "boolean",
+        default: true,
+        reactive: false,
+        description: "If true, OkPanel will register as a polkit agent.  This field is non-reactive.  If you change it, you should restart OkPanel."
+    },
     soundsSchema,
     osdSchema,
     weatherSchema,

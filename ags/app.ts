@@ -21,9 +21,10 @@ import {customWidgetLabelSetters} from "./widget/barWidgets/CustomWidget";
 import {setWallpaper} from "./widget/wallpaper/setWallpaper";
 import {killOldMonitorWindows, recreateWindows, spawnMonitorWindows} from "./widget/utils/windows";
 import {getHyprMonitorInfoById} from "./widget/utils/monitors";
-import {variableConfig} from "./config/config";
+import {config, variableConfig} from "./config/config";
 import {populateGlyphCache} from "./widget/utils/applications";
 import lockScreen, {isSessionLocked} from "./widget/lockScreen/LockScreen";
+import {registerPolkitAgent} from "./widget/polkit/polkit";
 
 export let projectDir = ""
 
@@ -60,6 +61,10 @@ App.start({
         variableConfig.framedMonitors.asAccessor().subscribe(() => {
             recreateWindows()
         })
+
+        if (config.enablePolkitAgent) {
+            registerPolkitAgent()
+        }
     },
     requestHandler(request: string[], res: (response: any) => void) {
         const command = request[0] ?? ""
