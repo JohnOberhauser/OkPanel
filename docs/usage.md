@@ -109,3 +109,17 @@ okpanel custom <n> <string>
 ```
 
 ---
+
+### Locking the screen
+
+You can lock the screen with this:
+
+```
+okpanel lock
+```
+
+You can check if the screen is locked through okpanel. This useful in conjunction with hypridle. It will return either "locked" or "unlocked"
+
+```
+okpanel checkLock
+```
