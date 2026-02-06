@@ -130,3 +130,15 @@ The OSD shows automatically when changing volume or brightness.
 The screen share portal only works with Hyprland's XDPH.  See the usage page for more info.
 
 ![screenshot](https://raw.githubusercontent.com/JohnOberhauser/OkPanelScreenshots/refs/heads/main/screenshare.png)
+
+## Lock screen
+
+Set the hyprland config
+
+```
+misc:session_lock_xray = true
+```
+
+for a better locking animation
+
+![screenshot](https://raw.githubusercontent.com/JohnOberhauser/OkPanelScreenshots/refs/heads/main/lock_screen.png)
