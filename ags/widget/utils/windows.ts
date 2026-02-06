@@ -53,34 +53,40 @@ export function spawnMonitorWindows(
         console.log("Monitor already has windows")
         return
     }
-    console.log(`Creating windows for monitor:`)
-    console.log(hyprMonitorInfo.id)
-    console.log(hyprMonitorInfo.name)
-    console.log(hyprMonitorInfo.description)
+    console.log(
+        `Creating windows for monitor:\n` +
+        `${hyprMonitorInfo.id}\n` +
+        `${hyprMonitorInfo.name}\n` +
+        `${hyprMonitorInfo.description}`
+    )
 
     createRoot((dispose) => {
-        let windows = [
-            Wallpaper(hyprMonitorInfo.id, hyprMonitorInfo.width, hyprMonitorInfo.height),
-            VolumeAlert(hyprMonitorInfo.id),
-            BrightnessAlert(hyprMonitorInfo.id),
-            NotificationPopups(hyprMonitorInfo.id),
-            Scrim(hyprMonitorInfo.id),
-        ]
+        const windows: Astal.Window[] = []
+
+        console.log("adding wallpaper")
+        windows.push(Wallpaper(hyprMonitorInfo.id, hyprMonitorInfo.width, hyprMonitorInfo.height))
 
         if (framedWindowsContainsMonitor(hyprMonitorInfo)) {
             console.log("adding frame")
-            windows.push(...[
-                Frame(hyprMonitorInfo.id),
-                SpacerBottom(hyprMonitorInfo.id),
-                SpacerTop(hyprMonitorInfo.id),
-                SpacerRight(hyprMonitorInfo.id),
-                SpacerLeft(hyprMonitorInfo.id),
-            ])
+            windows.push(Frame(hyprMonitorInfo.id))
+            console.log("adding spacer bottom")
+            windows.push(SpacerBottom(hyprMonitorInfo.id))
+            console.log("adding spacer top")
+            windows.push(SpacerTop(hyprMonitorInfo.id))
+            console.log("adding spacer right")
+            windows.push(SpacerRight(hyprMonitorInfo.id))
+            console.log("adding spacer left")
+            windows.push(SpacerLeft(hyprMonitorInfo.id))
         }
 
-        windows.forEach((window) => {
-            App.add_window(window)
-        })
+        console.log("adding volume OSD")
+        windows.push(VolumeAlert(hyprMonitorInfo.id))
+        console.log("adding brightness OSD")
+        windows.push(BrightnessAlert(hyprMonitorInfo.id))
+        console.log("adding notification popups")
+        windows.push(NotificationPopups(hyprMonitorInfo.id))
+        console.log("adding scrim")
+        windows.push(Scrim(hyprMonitorInfo.id))
 
         windowsByMonitor.set(hyprMonitorInfo.name, windows)
         disposeByMonitor.set(hyprMonitorInfo.name, dispose)
@@ -106,6 +112,7 @@ export function killOldMonitorWindows() {
                 console.log(`Closing window ${window.name}`)
                 window.close()
                 App.remove_window(window)
+                window.destroy()
             })
 
             // Remove all stale entries from the map
@@ -126,6 +133,7 @@ export function killOldMonitorWindows() {
                     console.log(`Closing window ${window.name}`)
                     window.close()
                     App.remove_window(window)
+                    window.destroy()
                 })
             }
 
@@ -142,6 +150,7 @@ export function recreateWindows() {
         console.log(`Closing window ${window.name}`)
         window.close()
         App.remove_window(window)
+        window.destroy()
     })
 
     windowsByMonitor.clear()

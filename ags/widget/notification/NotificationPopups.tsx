@@ -6,6 +6,7 @@ import GLib from "gi://GLib?version=2.0";
 import {Accessor, createBinding, createComputed, createState, onCleanup} from "ags";
 import AstalNotifd from "gi://AstalNotifd?version=0.1";
 import {AnimatedFor} from "../common/AnimatedFor";
+import App from "ags/gtk4/app";
 
 // see comment below in constructor
 const TIMEOUT_DELAY = 7_000
@@ -103,7 +104,8 @@ export default function NotificationPopups(monitorId: number): Astal.Window {
             } else {
                 return Astal.WindowAnchor.TOP
             }
-        })}>
+        })}
+        application={App}>
         <box
             orientation={Gtk.Orientation.VERTICAL}>
             <AnimatedFor
