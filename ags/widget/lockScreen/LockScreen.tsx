@@ -34,8 +34,10 @@ export default function () {
 
             if (isWakingUp) {
                 console.log("System woke up")
-                pam.start_authenticate()
-                console.log("auth reset")
+                timeout(400, () => {
+                    pam.start_authenticate()
+                    console.log("auth reset")
+                })
             }
         }
     )
