@@ -12,6 +12,8 @@ import CircularInfiniteSpinner from "../common/CircularInfiniteSpinner";
 
 const animationDuration = 400
 
+export let isSessionLocked = false
+
 export default function () {
     const pam = new AstalAuth.Pam()
 
@@ -180,6 +182,7 @@ export default function () {
             });
 
             lock.lock()
+            isSessionLocked = true
             windows.forEach((window, monitor) => {
                 lock.assign_window_to_monitor(window, monitor)
                 window.show()
@@ -204,6 +207,7 @@ export default function () {
             timeout(animationDuration, () => {
                 dispose()
                 lock.unlock()
+                isSessionLocked = false
             })
         })
 

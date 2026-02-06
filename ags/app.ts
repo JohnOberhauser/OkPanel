@@ -23,7 +23,7 @@ import {killOldMonitorWindows, recreateWindows, spawnMonitorWindows} from "./wid
 import {getHyprMonitorInfoById} from "./widget/utils/monitors";
 import {variableConfig} from "./config/config";
 import {populateGlyphCache} from "./widget/utils/applications";
-import lockScreen from "./widget/lockScreen/LockScreen";
+import lockScreen, {isSessionLocked} from "./widget/lockScreen/LockScreen";
 
 export let projectDir = ""
 
@@ -121,6 +121,12 @@ App.start({
                 .finally(() => {
                     res("wallpaper set")
                 })
+        } else if (command.startsWith("checkLock")) {
+            if (isSessionLocked) {
+                res("locked")
+            } else {
+                res("unlocked")
+            }
         } else if (command.startsWith("lock")) {
             lockScreen()
             res("locked")

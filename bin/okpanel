@@ -23,6 +23,7 @@ Commands:
 	wallpaper <path>
 				  Set the wallpaper to the file at the path.
 	lock		  Lock the session
+	checkLock     Checks if the session is locked via okpanel.  Returns "locked" or "unlocked".
 	help          Show this help message.
 
 Global Options:
@@ -123,6 +124,7 @@ main() {
 		mute)         ags request -i "OkPanel" "mute";;
 		closeAll)	  ags request -i "OkPanel" "closeAll";;
 		lock)		  ags request -i "OkPanel" "lock";;
+		checkLock)    ags request -i "OkPanel" "checkLock";;
 		custom)       shift; custom_command "$@";;
 		wallpaper)	  shift; wallpaper "$@";;
 		help|-h|--help) print_help;;
