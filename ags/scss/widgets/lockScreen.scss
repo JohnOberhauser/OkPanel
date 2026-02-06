@@ -1,5 +1,9 @@
 @use "../variables" as vars;
 
+.lockScreenWindow {
+  background-color: transparent;
+}
+
 .lockScreenEntry {
   box-shadow: none;
   color: vars.$lockScreenEntryForegroundColor;

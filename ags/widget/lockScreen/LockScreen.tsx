@@ -44,6 +44,7 @@ export default function () {
             monitor: Gdk.Monitor,
         ): Gtk.Window {
             return <window
+                cssClasses={["lockScreenWindow"]}
                 gdkmonitor={monitor}
                 hexpand={true}
                 vexpand={true}
@@ -55,15 +56,15 @@ export default function () {
                 <box
                     hexpand={true}
                     vexpand={true}>
-                    <overlay
-                        $={(self) => {
-                            self.add_overlay(
-                                <revealer
-                                    hexpand={true}
-                                    vexpand={true}
-                                    transitionDuration={animationDuration}
-                                    transitionType={Gtk.RevealerTransitionType.CROSSFADE}
-                                    revealChild={screenRevealed}>
+                    <revealer
+                        hexpand={true}
+                        vexpand={true}
+                        transitionDuration={animationDuration}
+                        transitionType={Gtk.RevealerTransitionType.CROSSFADE}
+                        revealChild={screenRevealed}>
+                        <overlay
+                            $={(self) => {
+                                self.add_overlay(
                                     <box
                                         halign={Gtk.Align.CENTER}
                                         hexpand={false}
@@ -126,21 +127,21 @@ export default function () {
                                             trackAlpha={0}
                                             color={variableConfig.lockScreen.entryForeground.peek()}
                                             visible={isAttemptingLogin}/>
-                                    </box>
-                                </revealer> as Gtk.Revealer
-                            )
-                        }}>
-                        <Gtk.Picture
-                            contentFit={Gtk.ContentFit.COVER}
-                            $={(self) => {
-                                if (wallpaperPath !== null) {
-                                    const geometry = monitor.geometry
-                                    createScaledTexture(geometry.width, geometry.height, wallpaperPath).then((texture) => {
-                                        self.set_paintable(texture)
-                                    })
-                                }
-                            }}/>
-                    </overlay>
+                                    </box> as Gtk.Box
+                                )
+                            }}>
+                            <Gtk.Picture
+                                contentFit={Gtk.ContentFit.COVER}
+                                $={(self) => {
+                                    if (wallpaperPath !== null) {
+                                        const geometry = monitor.geometry
+                                        createScaledTexture(geometry.width, geometry.height, wallpaperPath).then((texture) => {
+                                            self.set_paintable(texture)
+                                        })
+                                    }
+                                }}/>
+                        </overlay>
+                    </revealer>
                 </box>
             </window> as Astal.Window
         }
