@@ -21,3 +21,11 @@
 .ok-popover arrow {
   margin: 0 8px 0 0;
 }
+
+.ok-popover label.title {
+  all: unset;
+  margin: 4px;
+  color: vars.$primary;
+  font-size: 20px;
+  opacity: 1;
+}

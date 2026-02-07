@@ -18,6 +18,8 @@ import {getApp, getAppGlyph} from "../utils/applications";
 
 const hyprland = AstalHyprland.get_default()
 
+const maxMenuItemLength = 25
+
 function getIndicatorHAlign(bar: Bar) {
     switch (bar) {
         case Bar.LEFT:
@@ -73,9 +75,8 @@ function addAppActionsToMenu(
     menu: Gio.Menu,
     actionGroup: Gio.SimpleActionGroup,
     pop: Gtk.PopoverMenu,
-    app: Apps.Application,
+    desktopAppInfo: GioUnix.DesktopAppInfo,
 ) {
-    const desktopAppInfo = GioUnix.DesktopAppInfo.new(app.entry)
     const actions = desktopAppInfo.list_actions()
 
     actions.forEach((action, index) => {
@@ -210,7 +211,7 @@ function addWindowDetailsToMenu(
         })
         actionGroup.add_action(detailsAction)
 
-        menu.append(truncateString(client.title, 25), `main.details${index}`)
+        menu.append(truncateString(client.title, maxMenuItemLength), `main.details${index}`)
     })
 }
 
@@ -425,11 +426,23 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                     const actionGroup = new Gio.SimpleActionGroup()
                                     const menu = new Gio.Menu()
 
+                                    let menuTitle: string | null = null
+                                    if (app !== null) {
+                                        menuTitle = truncateString(app.name, maxMenuItemLength)
+                                    }
+
                                     if (clients.length === 0) {
+                                        let generalSectionTitle: string | null = null
                                         if (app !== null) {
                                             const appActionsSection = new Gio.Menu()
-                                            addAppActionsToMenu(appActionsSection, actionGroup, pop, app)
-                                            menu.append_section(null, appActionsSection)
+                                            const desktopAppInfo = GioUnix.DesktopAppInfo.new(app.entry)
+                                            const actions = desktopAppInfo.list_actions()
+                                            if (actions.length === 0) {
+                                                generalSectionTitle = menuTitle
+                                            } else {
+                                                addAppActionsToMenu(appActionsSection, actionGroup, pop, desktopAppInfo)
+                                                menu.append_section(menuTitle, appActionsSection)
+                                            }
                                         }
 
                                         const generalSection = new Gio.Menu()
@@ -437,11 +450,11 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                             addLaunchToMenu(generalSection, actionGroup, pop, app)
                                         }
                                         addCopyClassToMenu(generalSection, actionGroup, pop, clazz)
-                                        menu.append_section(null, generalSection)
+                                        menu.append_section(generalSectionTitle, generalSection)
                                     } else {
                                         const detailsSection = new Gio.Menu()
                                         addWindowDetailsToMenu(detailsSection, actionGroup, pop, clazz)
-                                        menu.append_section(null, detailsSection)
+                                        menu.append_section(menuTitle, detailsSection)
 
                                         const focusedClient = hyprland.get_focused_client()
                                         if (focusedClient !== null && focusedClient.class === clazz) {
@@ -453,7 +466,8 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
 
                                         if (app !== null) {
                                             const appActionsSection = new Gio.Menu()
-                                            addAppActionsToMenu(appActionsSection, actionGroup, pop, app)
+                                            const desktopAppInfo = GioUnix.DesktopAppInfo.new(app.entry)
+                                            addAppActionsToMenu(appActionsSection, actionGroup, pop, desktopAppInfo)
                                             menu.append_section(null, appActionsSection)
                                         }
 
