@@ -1,26 +1,43 @@
 import OkButton, {OkButtonSize} from "../../../common/OkButton";
-import {execAsync} from "ags/process";
 import {createState} from "ags";
 import {variableConfig} from "../../../../config/config";
+import Gio from "gi://Gio?version=2.0";
 
 export const [nightLightEnabled, nightLightEnabledSet] = createState(false)
 
+let proc: Gio.Subprocess | null = null
+
 export function enableNightLight() {
-    execAsync(`hyprctl hyprsunset temperature ${variableConfig.theme.nightLightTemperature}`)
-        .catch((error) => {
-            console.error(error)
-        }).then(() => {
-        nightLightEnabledSet(true)
-    })
+    if (proc)
+        return;
+
+    proc = Gio.Subprocess.new(
+        ["bash", "-c", `hyprsunset --temperature ${variableConfig.theme.nightLightTemperature}`],
+        Gio.SubprocessFlags.NONE
+    );
+
+    nightLightEnabledSet(true)
+
+    proc.wait_async(null, (p, res) => {
+        try {
+            p?.wait_finish(res);
+            log("Process exited");
+        } catch (e) {
+            logError(e);
+        } finally {
+            proc = null;
+        }
+    });
 }
 
 export function disableNightLight() {
-    execAsync("hyprctl hyprsunset identity")
-        .catch((error) => {
-            console.error(error)
-        }).then(() => {
-        nightLightEnabledSet(false)
-    })
+    if (!proc)
+        return;
+
+    nightLightEnabledSet(false)
+    log("Killing process");
+    proc.force_exit();   // SIGKILL
+    proc = null;
 }
 
 export default function () {

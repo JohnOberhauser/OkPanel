@@ -75,13 +75,6 @@ run_run_command() {
 		nohup astal-tray -d >/dev/null 2>&1 &
 	fi
 
-	# Start hyprsunset if not already running
-	if ! pgrep -x "hyprsunset" > /dev/null; then
-		echo "Starting hyprsunset..."
-		nohup hyprsunset -i >/dev/null 2>&1 &
-	fi
-
-
 	if [ ! -f ~/.config/cliphist/config ]; then
 		echo "Setting cliphist defaults in ~/.config/cliphist/config"
 		mkdir -p ~/.config/cliphist
@@ -95,12 +88,7 @@ run_run_command() {
 	ags run -g 4 -d $dir $dir/app.ts $dir
 }
 
-cleanup() {
-	pkill -9 -f hyprsunset
-}
-
 quit() {
-	cleanup
 	ags quit -i "OkPanel"
 }
 
