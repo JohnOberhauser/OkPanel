@@ -43,7 +43,6 @@ export default function () {
         }
         revealedContent={
             <box
-                marginTop={10}
                 orientation={Gtk.Orientation.VERTICAL}>
                 {profiles.map((profile) => {
                     return <OkButton

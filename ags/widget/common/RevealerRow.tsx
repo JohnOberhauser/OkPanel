@@ -72,11 +72,15 @@ export default function (
         </box>
         <revealer
             marginStart={10}
-            marginEnd={10}
             revealChild={revealed}
             transitionDuration={200}
             transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}>
-            {revealedContent}
+            <box
+                marginTop={4}
+                cssClasses={["revealerRowContent"]}>
+                {revealedContent}
+            </box>
+
         </revealer>
     </box>
 }

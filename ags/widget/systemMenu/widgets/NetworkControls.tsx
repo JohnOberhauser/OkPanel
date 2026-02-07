@@ -629,7 +629,6 @@ export default function (
         }
         revealedContent={
             <box
-                marginTop={10}
                 orientation={Gtk.Orientation.VERTICAL}
                 spacing={12}>
                 {network.wifi && <With value={createBinding(network.wifi, "activeAccessPoint")}>

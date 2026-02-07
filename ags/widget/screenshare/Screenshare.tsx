@@ -97,8 +97,6 @@ function Monitors() {
         }
         revealedContent={
             <box
-                marginTop={8}
-                marginBottom={8}
                 orientation={Gtk.Orientation.VERTICAL}
                 spacing={12}>
                 <For each={createBinding(hyprland, "monitors")}>
@@ -140,8 +138,6 @@ function Windows() {
         }
         revealedContent={
             <box
-                marginTop={8}
-                marginBottom={8}
                 orientation={Gtk.Orientation.VERTICAL}
                 spacing={12}>
                 <For each={screenShareWindows}>
@@ -204,33 +200,29 @@ function Region() {
                 cssClasses={["labelLargeBold"]}/>
         }
         revealedContent={
-            <box
-                marginTop={8}
-                marginBottom={8}>
-                <OkButton
-                    size={OkButtonSize.MEDIUM}
-                    bold={true}
-                    primary={true}
-                    hexpand={true}
-                    labelHalign={Gtk.Align.START}
-                    label="Region"
-                    onClicked={() => {
-                        toggleIntegratedScreenshare()
-                        execAsync("slurp -f \"%o %x %y %w %h\"")
-                            .catch((error) => {
-                                console.error(error)
+            <OkButton
+                size={OkButtonSize.MEDIUM}
+                bold={true}
+                primary={true}
+                hexpand={true}
+                labelHalign={Gtk.Align.START}
+                label="Region"
+                onClicked={() => {
+                    toggleIntegratedScreenshare()
+                    execAsync("slurp -f \"%o %x %y %w %h\"")
+                        .catch((error) => {
+                            console.error(error)
+                            response(`[SELECTION]/region:`)
+                        })
+                        .then((value) => {
+                            if (typeof value === "string") {
+                                const [name, x, y, w, h] = value.split(" ")
+                                response(`[SELECTION]/region:${name}@${x},${y},${w},${h}`)
+                            } else {
                                 response(`[SELECTION]/region:`)
-                            })
-                            .then((value) => {
-                                if (typeof value === "string") {
-                                    const [name, x, y, w, h] = value.split(" ")
-                                    response(`[SELECTION]/region:${name}@${x},${y},${w},${h}`)
-                                } else {
-                                    response(`[SELECTION]/region:`)
-                                }
-                            })
-                    }}/>
-            </box>
+                            }
+                        })
+                }}/>
         }
         setup={(revealed) => {
             const unsub = integratedScreenshareRevealed.subscribe(() => {

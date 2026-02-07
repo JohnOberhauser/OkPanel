@@ -317,7 +317,6 @@ export default function () {
         }
         revealedContent={
             <box
-                marginTop={10}
                 orientation={Gtk.Orientation.VERTICAL}>
                 <box>
                     <With value={availableConfigs.asAccessor()}>

@@ -143,7 +143,6 @@ export default function () {
         }
         revealedContent={
             <box
-                marginTop={10}
                 orientation={Gtk.Orientation.VERTICAL}>
                 <box
                     orientation={Gtk.Orientation.HORIZONTAL}>

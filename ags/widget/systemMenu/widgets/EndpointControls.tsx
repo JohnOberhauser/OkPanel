@@ -65,7 +65,6 @@ export default function (
         }
         revealedContent={
             <box
-                marginTop={10}
                 orientation={Gtk.Orientation.VERTICAL}>
                 <For each={endpointsBinding}>
                     {(endpoint) => {
