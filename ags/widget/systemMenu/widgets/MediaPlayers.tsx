@@ -101,6 +101,7 @@ function MediaPlayer({ player }: { player: Player }) {
 
 export default function () {
     return <box
+        marginStart={10}
         orientation={Gtk.Orientation.VERTICAL}>
         <For each={mpris.players[0]} id={(it) => it.busName}>
             {(player) => (
