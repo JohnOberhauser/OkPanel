@@ -81,9 +81,6 @@ run_run_command() {
         echo -e "max-items 25\npreview-width 500" > ~/.config/cliphist/config
     fi
 
-	# listen for interruptions so we can cleanup properly
-	trap cleanup SIGINT SIGTERM
-
 	echo "Starting ags..."
 	ags run -g 4 -d $dir $dir/app.ts $dir
 }
