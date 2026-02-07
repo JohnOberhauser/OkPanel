@@ -113,7 +113,7 @@ export default function () {
                                             cssClasses={["lockScreenEntryWrapper"]}
                                             orientation={Gtk.Orientation.HORIZONTAL}>
                                             <entry
-                                                widthRequest={400}
+                                                widthRequest={variableConfig.lockScreen.entryWidth}
                                                 visibility={entryCharactersVisible}
                                                 cssClasses={["lockScreenEntry"]}
                                                 onActivate={() => {
@@ -123,7 +123,7 @@ export default function () {
                                                 hexpand={false}
                                                 buffer={textBuffer}
                                                 $={(self) => {
-                                                    self.set_alignment(0.5)
+                                                    self.set_alignment(variableConfig.lockScreen.entryAlignment)
                                                     timeout(200, () => {
                                                         self.grab_focus()
                                                     })

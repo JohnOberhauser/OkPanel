@@ -7,8 +7,7 @@
 .lockScreenEntry {
   box-shadow: none;
   color: vars.$lockScreenEntryForegroundColor;
-  background-color: vars.$lockScreenEntryBackgroundColor;
-  border-radius: vars.$lockScreenEntryBorderRadius;
+  background-color: transparent;
   font-size: 20px;
   caret-color: transparent;
 }

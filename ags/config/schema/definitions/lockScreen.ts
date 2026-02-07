@@ -40,6 +40,22 @@ export const lockScreen = {
             reactive: false,
         },
         {
+            name: 'entryWidth',
+            type: 'number',
+            default: 300,
+            description: 'Lock screen text entry width (px).',
+            reactive: false,
+        },
+        {
+            name: 'entryAlignment',
+            type: 'number',
+            default: 0,
+            withinConstraints: (it) => it >= 0 && it <= 1,
+            constraintDescription: 'Must be between 0 and 1.',
+            description: 'Lock screen text entry alignment. Number between 0 and 1.',
+            reactive: false,
+        },
+        {
             name: 'dateForeground',
             type: 'color',
             default: {from: 'theme.colors.foreground'},
