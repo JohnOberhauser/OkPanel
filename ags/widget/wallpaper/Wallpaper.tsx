@@ -1,6 +1,6 @@
 import App from "ags/gtk4/app";
-import {Astal, Gtk} from "ags/gtk4";
-import {createScaledTexture} from "../utils/images";
+import {Astal, Gdk, Gtk} from "ags/gtk4";
+// import {createScaledTexture} from "../utils/images";
 import {resolveWallpaper} from "./getWallpaper";
 import GLib from "gi://GLib?version=2.0";
 import {createState, onCleanup} from "ags";
@@ -19,8 +19,9 @@ function applyWallpaper(
     const w = Math.max(1, wallpaperStack.get_allocated_width());
     const h = Math.max(1, wallpaperStack.get_allocated_height());
 
-    createScaledTexture(w, h, path).then((texture) => {
-        const pic = Gtk.Picture.new_for_paintable(texture);
+    // createScaledTexture(w, h, path).then((texture) => {
+    //     const pic = Gtk.Picture.new_for_paintable(texture);
+        const pic = Gtk.Picture.new_for_filename(path)
         pic.contentFit = Gtk.ContentFit.COVER;
         pic.hexpand = true;
         pic.vexpand = true;
@@ -49,9 +50,9 @@ function applyWallpaper(
             }
             return GLib.SOURCE_REMOVE;
         });
-    }).catch((e) => {
-        console.error("applyWallpaper failed:", e);
-    });
+    // }).catch((e) => {
+    //     console.error("applyWallpaper failed:", e);
+    // });
 }
 
 export default function (
@@ -59,6 +60,12 @@ export default function (
     monitorWidth: number,
     monitorHeight: number,
 ): Astal.Window {
+    const wallpaperPath = resolveWallpaper()
+    // let initialTexture: Promise<Gdk.Texture | null>
+    // if (wallpaperPath !== null) {
+    //     initialTexture = createScaledTexture(monitorWidth, monitorHeight, wallpaperPath)
+    // }
+
     return <window
         name={`wallpaper_${monitorId}`}
         monitor={monitorId}
@@ -71,17 +78,21 @@ export default function (
         application={App}>
         <stack
             $={(self) => {
-                const wallpaperPath = resolveWallpaper()
+                // if (initialTexture !== undefined && initialTexture !== null) {
+                //     initialTexture.then((texture) => {
+                //         const picture = Gtk.Picture.new_for_paintable(texture)
+                //         picture.contentFit = Gtk.ContentFit.COVER
+                //
+                //         self.add_named(picture, "initial");
+                //         self.set_visible_child_name("initial");
+                //     })
+                // }
 
-                if (wallpaperPath !== null) {
-                    createScaledTexture(monitorWidth, monitorHeight, wallpaperPath).then((texture) => {
-                        const picture = Gtk.Picture.new_for_paintable(texture)
-                        picture.contentFit = Gtk.ContentFit.COVER
+                const picture = Gtk.Picture.new_for_filename(wallpaperPath)
+                picture.contentFit = Gtk.ContentFit.COVER
 
-                        self.add_named(picture, "initial");
-                        self.set_visible_child_name("initial");
-                    })
-                }
+                self.add_named(picture, "initial");
+                self.set_visible_child_name("initial");
 
                 const unsub = wallpaperPathState.subscribe(() => {
                     applyWallpaper(wallpaperPathState.peek(), self)

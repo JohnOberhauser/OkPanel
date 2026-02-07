@@ -161,10 +161,11 @@ export default function () {
                                 contentFit={Gtk.ContentFit.COVER}
                                 $={(self) => {
                                     if (wallpaperPath !== null) {
-                                        const geometry = monitor.geometry
-                                        createScaledTexture(geometry.width, geometry.height, wallpaperPath).then((texture) => {
-                                            self.set_paintable(texture)
-                                        })
+                                        self.set_filename(wallpaperPath)
+                                        // const geometry = monitor.geometry
+                                        // createScaledTexture(geometry.width, geometry.height, wallpaperPath).then((texture) => {
+                                        //     self.set_paintable(texture)
+                                        // })
                                     }
                                 }}/>
                         </overlay>
