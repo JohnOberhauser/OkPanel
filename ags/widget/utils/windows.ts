@@ -70,7 +70,7 @@ export function spawnMonitorWindows(
         const windows: Astal.Window[] = []
 
         console.log("adding wallpaper")
-        windows.push(Wallpaper(hyprMonitorInfo.id, hyprMonitorInfo.width, hyprMonitorInfo.height))
+        windows.push(Wallpaper(hyprMonitorInfo.id))
 
         GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
             const addFrame = framedWindowsContainsMonitor(hyprMonitorInfo)

@@ -1,6 +1,5 @@
 import App from "ags/gtk4/app";
-import {Astal, Gdk, Gtk} from "ags/gtk4";
-// import {createScaledTexture} from "../utils/images";
+import {Astal, Gtk} from "ags/gtk4";
 import {resolveWallpaper} from "./getWallpaper";
 import GLib from "gi://GLib?version=2.0";
 import {createState, onCleanup} from "ags";
@@ -19,52 +18,41 @@ function applyWallpaper(
     const w = Math.max(1, wallpaperStack.get_allocated_width());
     const h = Math.max(1, wallpaperStack.get_allocated_height());
 
-    // createScaledTexture(w, h, path).then((texture) => {
-    //     const pic = Gtk.Picture.new_for_paintable(texture);
-        const pic = Gtk.Picture.new_for_filename(path)
-        pic.contentFit = Gtk.ContentFit.COVER;
-        pic.hexpand = true;
-        pic.vexpand = true;
+    const pic = Gtk.Picture.new_for_filename(path)
+    pic.contentFit = Gtk.ContentFit.COVER;
+    pic.hexpand = true;
+    pic.vexpand = true;
 
-        const name = `wp-${Date.now()}`;
-        // add as a named child so Stack can animate between pages
-        wallpaperStack.add_named(pic, name);
+    const name = `wp-${Date.now()}`;
+    // add as a named child so Stack can animate between pages
+    wallpaperStack.add_named(pic, name);
 
-        const duration = variableConfig.wallpaper.transitionDuration.peek()
+    const duration = variableConfig.wallpaper.transitionDuration.peek()
 
-        // configure crossfade and flip
-        wallpaperStack.transition_type = toGtkTransition(variableConfig.wallpaper.transitionType.peek())
-        wallpaperStack.transition_duration = duration;
-        wallpaperStack.set_visible_child_name(name);
+    // configure crossfade and flip
+    wallpaperStack.transition_type = toGtkTransition(variableConfig.wallpaper.transitionType.peek())
+    wallpaperStack.transition_duration = duration;
+    wallpaperStack.set_visible_child_name(name);
 
-        // cleanup: after the fade, remove any non-visible children (pause videos if you add support)
-        GLib.timeout_add(GLib.PRIORITY_DEFAULT, duration + 40, () => {
-            const keep = wallpaperStack.get_visible_child();
-            let child = wallpaperStack.get_first_child();
-            while (child) {
-                const next = child.get_next_sibling();
-                if (child !== keep) {
-                    wallpaperStack.remove(child);
-                }
-                child = next;
+    // cleanup: after the fade, remove any non-visible children (pause videos if you add support)
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, duration + 40, () => {
+        const keep = wallpaperStack.get_visible_child();
+        let child = wallpaperStack.get_first_child();
+        while (child) {
+            const next = child.get_next_sibling();
+            if (child !== keep) {
+                wallpaperStack.remove(child);
             }
-            return GLib.SOURCE_REMOVE;
-        });
-    // }).catch((e) => {
-    //     console.error("applyWallpaper failed:", e);
-    // });
+            child = next;
+        }
+        return GLib.SOURCE_REMOVE;
+    });
 }
 
 export default function (
     monitorId: number,
-    monitorWidth: number,
-    monitorHeight: number,
 ): Astal.Window {
     const wallpaperPath = resolveWallpaper()
-    // let initialTexture: Promise<Gdk.Texture | null>
-    // if (wallpaperPath !== null) {
-    //     initialTexture = createScaledTexture(monitorWidth, monitorHeight, wallpaperPath)
-    // }
 
     return <window
         name={`wallpaper_${monitorId}`}
@@ -78,16 +66,6 @@ export default function (
         application={App}>
         <stack
             $={(self) => {
-                // if (initialTexture !== undefined && initialTexture !== null) {
-                //     initialTexture.then((texture) => {
-                //         const picture = Gtk.Picture.new_for_paintable(texture)
-                //         picture.contentFit = Gtk.ContentFit.COVER
-                //
-                //         self.add_named(picture, "initial");
-                //         self.set_visible_child_name("initial");
-                //     })
-                // }
-
                 const picture = Gtk.Picture.new_for_filename(wallpaperPath)
                 picture.contentFit = Gtk.ContentFit.COVER
 

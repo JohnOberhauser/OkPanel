@@ -4,7 +4,6 @@ import {createRoot, createState, onCleanup} from "ags";
 import AstalAuth from "gi://AstalAuth?version=0.1";
 import {createPoll, timeout} from "ags/time";
 import {resolveWallpaper} from "../wallpaper/getWallpaper";
-import {createScaledTexture} from "../utils/images";
 import {variableConfig} from "../../config/config";
 import GLib from "gi://GLib?version=2.0";
 import OkButton, {OkButtonSize} from "../common/OkButton";
@@ -162,10 +161,6 @@ export default function () {
                                 $={(self) => {
                                     if (wallpaperPath !== null) {
                                         self.set_filename(wallpaperPath)
-                                        // const geometry = monitor.geometry
-                                        // createScaledTexture(geometry.width, geometry.height, wallpaperPath).then((texture) => {
-                                        //     self.set_paintable(texture)
-                                        // })
                                     }
                                 }}/>
                         </overlay>
