@@ -112,7 +112,7 @@ export default function () {
                                             cssClasses={["lockScreenEntryWrapper"]}
                                             orientation={Gtk.Orientation.HORIZONTAL}>
                                             <entry
-                                                widthRequest={500}
+                                                widthRequest={400}
                                                 visibility={entryCharactersVisible}
                                                 cssClasses={["lockScreenEntry"]}
                                                 onActivate={() => {
