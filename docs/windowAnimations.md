@@ -14,6 +14,8 @@ These are the namespace names of the available windows and bars.
 okpanel-frame
 okpanel-notifications
 okpanel-alerts
+okpanel-polkit
+okpanel-wallpaper
 ```
 
 ## Example rule set

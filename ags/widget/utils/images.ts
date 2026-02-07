@@ -33,15 +33,33 @@ export async function createScaledTexture(width: number, height: number, path: s
     const originalWidth = pixbuf.get_width();
     const originalHeight = pixbuf.get_height();
 
-    const scaleFactor = Math.max(width / originalWidth, height / originalHeight);
-    const newWidth = Math.ceil(originalWidth * scaleFactor);
-    const newHeight = Math.ceil(originalHeight * scaleFactor);
+    const srcAspect = originalWidth / originalHeight;
+    const dstAspect = width / height;
 
-    const scaled = pixbuf.scale_simple(newWidth, newHeight, GdkPixbuf.InterpType.BILINEAR)!;
+    let cropX = 0;
+    let cropY = 0;
+    let cropW = originalWidth;
+    let cropH = originalHeight;
 
-    const xOffset = Math.floor((newWidth - width) / 2);
-    const yOffset = Math.floor((newHeight - height) / 2);
-    const cropped = scaled.new_subpixbuf(xOffset, yOffset, width, height);
+    if (srcAspect > dstAspect) {
+        // wider than target → crop left/right
+        cropW = Math.floor(originalHeight * dstAspect);
+        cropX = Math.floor((originalWidth - cropW) / 2);
+    } else if (srcAspect < dstAspect) {
+        // taller than target → crop top/bottom
+        cropH = Math.floor(originalWidth / dstAspect);
+        cropY = Math.floor((originalHeight - cropH) / 2);
+    }
 
-    return Gdk.Texture.new_for_pixbuf(cropped);
+    const cropped = pixbuf.new_subpixbuf(cropX, cropY, cropW, cropH);
+
+    // ---- THEN scale exactly to target size ----
+
+    const scaled = cropped.scale_simple(
+        width,
+        height,
+        GdkPixbuf.InterpType.BILINEAR,
+    )!;
+
+    return Gdk.Texture.new_for_pixbuf(scaled);
 }
