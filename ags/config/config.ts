@@ -151,6 +151,7 @@ function monitorDefaultsConfig() {
                 debounceTimer = timeout(200, () => {
                     console.log(`defaults config file changed`)
                     updateDefaultValues()
+                    setThemeBasic()
                     debounceTimer = null
                 })
                 break
