@@ -2,7 +2,7 @@ import {Astal, Gdk, Gtk} from "ags/gtk4";
 import Gtk4SessionLock from "gi://Gtk4SessionLock";
 import {createRoot, createState, onCleanup} from "ags";
 import AstalAuth from "gi://AstalAuth?version=0.1";
-import {createPoll, timeout} from "ags/time";
+import {createPoll, timeout, Timer} from "ags/time";
 import {resolveWallpaper} from "../wallpaper/getWallpaper";
 import {variableConfig} from "../../config/config";
 import GLib from "gi://GLib?version=2.0";
@@ -18,6 +18,7 @@ export default function () {
     const pam = new AstalAuth.Pam()
 
     const bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, null)
+    let timer: Timer | null = null
 
     // When the system wakes up, sometimes it messes up fingerprint login.
     // Detect wakeup and reset the auth process.
@@ -34,7 +35,7 @@ export default function () {
             if (isWakingUp) {
                 console.log("System woke up")
                 // delay to give time for fingerprint to be ready
-                timeout(1000, () => {
+                timer = timeout(3000, () => {
                     pam.start_authenticate()
                     console.log("auth reset")
                 })
@@ -224,6 +225,7 @@ export default function () {
         })
 
         pam.connect("success", () => {
+            timer?.cancel()
             console.log("success")
             screenRevealedSetter(false)
             timeout(animationDuration, () => {
