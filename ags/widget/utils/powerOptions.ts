@@ -42,7 +42,7 @@ export function lock() {
     } else {
         // Hide the integrated menu before locking
         integratedMenuRevealedSetting(false)
-        execAsync(['bash', '-c', `sleep 0.3 && ${variableConfig.systemCommands.lock.peek()}`])
+        execAsync(['bash', '-c', `sleep 0.25 && ${variableConfig.systemCommands.lock.peek()}`])
             .catch((error) => {
                 console.error(error)
             })
