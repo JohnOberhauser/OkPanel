@@ -33,7 +33,8 @@ export default function () {
 
             if (isWakingUp) {
                 console.log("System woke up")
-                timeout(400, () => {
+                // delay to give time for fingerprint to be ready
+                timeout(1000, () => {
                     pam.start_authenticate()
                     console.log("auth reset")
                 })
