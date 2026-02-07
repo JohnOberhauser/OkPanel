@@ -59,25 +59,6 @@ function updateFiles() {
     )
 }
 
-function updateFade(
-    adjustment: Gtk.Adjustment,
-    leftGradient: Gtk.Box,
-    rightGradient: Gtk.Box,
-) {
-    let leftDistance = adjustment.get_value() * 2
-    if (leftDistance > 100) {
-        leftDistance = 100
-    }
-    leftGradient.opacity = leftDistance / 100
-
-    const maxScroll = adjustment.get_upper() - adjustment.get_page_size();
-    let rightDistance = (maxScroll - adjustment.get_value()) * 2
-    if (rightDistance > 100) {
-        rightDistance = 100
-    }
-    rightGradient.opacity = rightDistance / 100
-}
-
 let scrollAnimationId: number | null = null
 
 function animateScroll(
@@ -105,8 +86,6 @@ function animateScroll(
         const eased = progress * (2 - progress); // easeOutQuad
 
         adjustment.set_value(start + delta * eased);
-
-        updateFade(adjustment, leftGradient, rightGradient);
 
         if (progress < 1) {
             return GLib.SOURCE_CONTINUE;
@@ -138,8 +117,9 @@ function ThemeOptions() {
         vscrollbar_policy: Gtk.PolicyType.NEVER,
         heightRequest: 50,
         child: <box
-            marginStart={22}
-            marginEnd={22}
+            halign={Gtk.Align.CENTER}
+            marginStart={60}
+            marginEnd={60}
             orientation={Gtk.Orientation.HORIZONTAL}
             spacing={10}>
             <For each={availableConfigs.asAccessor()} id={(it) => it.fileName}>
@@ -168,7 +148,6 @@ function ThemeOptions() {
             } else {
                 const newValue = hadj.get_value() + dy * 5;
                 hadj.set_value(newValue);
-                updateFade(hadj, leftGradient, rightGradient);
             }
             return true
         }
@@ -186,7 +165,6 @@ function ThemeOptions() {
             } else {
                 const newValue = hadj.get_value() + dx * 5;
                 hadj.set_value(newValue);
-                updateFade(hadj, leftGradient, rightGradient);
             }
             return true
 
@@ -206,7 +184,6 @@ function ThemeOptions() {
         <box
             canTarget={false}
             canFocus={false}
-            opacity={0}
             widthRequest={50}
             halign={Gtk.Align.START}
             hexpand={false}
