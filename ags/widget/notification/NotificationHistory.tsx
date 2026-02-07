@@ -6,10 +6,17 @@ import {createBinding} from "ags";
 import {integratedNotificationHistoryRevealedSetting} from "./IntegratedNotificationHistory";
 import {AnimatedFor} from "../common/AnimatedFor";
 
-export default function() {
+export default function(
+    {
+        marginStart = 0
+    }: {
+        marginStart?: number
+    }
+) {
     const notifications = Notifd.get_default()
 
     return <box
+        marginStart={marginStart}
         orientation={Gtk.Orientation.VERTICAL}>
         <box
             orientation={Gtk.Orientation.HORIZONTAL}>

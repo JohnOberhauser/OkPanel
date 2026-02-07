@@ -60,7 +60,7 @@ function createSystemWidgets(
     powerProfile = <PowerProfileControls/> as Gtk.Widget
     lookAndFeel = <LookAndFeelControls/> as Gtk.Widget
     mpris = <MediaPlayers/> as Gtk.Widget
-    notificationHistory = <NotificationHistory/> as Gtk.Widget
+    notificationHistory = <NotificationHistory marginStart={10}/> as Gtk.Widget
     clock = <Clock/> as Gtk.Widget
     quickActions1 = <QuickActions
         actions={variableConfig.systemMenu.quickActions1.actions.asAccessor()}
