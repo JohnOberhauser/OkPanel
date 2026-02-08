@@ -439,7 +439,7 @@ function WifiScannedConnections(
                     return <box
                         orientation={Gtk.Orientation.VERTICAL}>
                         <label
-                            halign={Gtk.Align.START}
+                            halign={Gtk.Align.CENTER}
                             cssClasses={["labelLargeBold"]}
                             label="Available networks"/>
                         {accessPointsUi}
@@ -636,7 +636,12 @@ export default function (
                     {(activeAccessPoint: AstalNetwork.AccessPoint) => {
                         return <box
                             hexpand={true}
-                            marginBottom={8}>
+                            marginBottom={8}
+                            spacing={8}>
+                            <label
+                                halign={Gtk.Align.CENTER}
+                                cssClasses={["labelLargeBold"]}
+                                label="Wifi Connection"/>
                             <OkButton
                                 hexpand={true}
                                 visible={activeAccessPoint !== null}
