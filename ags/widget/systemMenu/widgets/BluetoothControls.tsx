@@ -52,10 +52,9 @@ function BluetoothDevices() {
                         transitionDuration={200}
                         transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}>
                         <box
+                            cssClasses={["systemMenuInnerRevealedContent"]}
                             orientation={Gtk.Orientation.VERTICAL}
-                            marginTop={4}
-                            marginBottom={4}
-                            spacing={4}>
+                            spacing={10}>
                             <OkButton
                                 primary={true}
                                 hexpand={true}
@@ -147,6 +146,7 @@ export default function () {
                 <box
                     orientation={Gtk.Orientation.HORIZONTAL}>
                     <label
+                        marginStart={20}
                         halign={Gtk.Align.START}
                         hexpand={true}
                         label="Devices"
