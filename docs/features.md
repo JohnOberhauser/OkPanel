@@ -1,13 +1,48 @@
 # Features
 
-## Bar and Frame
+## The Frame
 
-Bars can be configured with various widgets.  The frame can be hidden if you would rather have a normal bar.  You can have a top, bottom, right and/or left bar.
+The frame is drawn around the outer edge of the screen and contains bars and menus.
+The frame can be hidden if you would rather the bars not appear to be connected to each other.
 
-![screenshot](https://raw.githubusercontent.com/JohnOberhauser/OkPanelScreenshots/refs/heads/main/examples/simple_frame.png)
+![screenshot](https://raw.githubusercontent.com/JohnOberhauser/OkPanelScreenshots/refs/heads/main/frame.png)
 
-![screenshot](https://raw.githubusercontent.com/JohnOberhauser/OkPanelScreenshots/refs/heads/main/examples/simple_bar.png)
+![screenshot](https://raw.githubusercontent.com/JohnOberhauser/OkPanelScreenshots/refs/heads/main/no_frame.png)
 
+## Bars
+
+Bars can be configured with various widgets.
+You can have a top, bottom, right and/or left bar.
+
+### Available widgets
+
+App launcher   
+Audio in indicator  
+Audio out indicator  
+Battery indicator  
+Bluetooth indicator  
+Cava waveform  
+Clipboard manager shortcut  
+Clock  
+Color picker  
+Dock  
+Lock button  
+Logout button  
+Menu shortcut  
+Mpris audio widgets  
+Network indicator  
+Notification shortcut  
+Power profiles indicator  
+Recording indicator  
+Restart button  
+Screenshot shortcut  
+Shutdown button  
+Timer indicator  
+Tray  
+Vpn indicator  
+Workspaces  
+
+20 custom widget slots
 
 ## System Menu
 
