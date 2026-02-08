@@ -166,7 +166,11 @@ export default function () {
                                 contentFit={Gtk.ContentFit.COVER}
                                 $={(self) => {
                                     if (wallpaperPath !== null) {
-                                        self.set_filename(wallpaperPath)
+                                        const media = Gtk.MediaFile.new_for_file(Gio.File.new_for_path(wallpaperPath))
+                                        self.set_paintable(media)
+                                        media.muted = true
+                                        media.loop = true
+                                        media.play()
                                     }
                                 }}/>
                         </overlay>

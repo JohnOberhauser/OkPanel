@@ -261,7 +261,6 @@ function WallpaperColumn(
                             cssClasses={["wallpaper"]}
                             contentFit={Gtk.ContentFit.COVER}
                             $={(self) => {
-                                console.log(`media path: ${file}`)
                                 const media = Gtk.MediaFile.new_for_file(Gio.File.new_for_path(file))
                                 self.set_paintable(media)
                             }}/>
