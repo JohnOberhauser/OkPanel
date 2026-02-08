@@ -1,7 +1,7 @@
 import {Gtk} from "ags/gtk4"
 import Pango from "gi://Pango?version=1.0";
 import {Mpris, Player} from "../../utils/mpris"
-import MprisControlButtons from "../../mpris/MprisControlButtons";
+import MprisControlButtons from "../../common/mpris/MprisControlButtons";
 import {For} from "ags";
 import {OkButtonHorizontalPadding, OkButtonVerticalPadding} from "../../common/OkButton";
 

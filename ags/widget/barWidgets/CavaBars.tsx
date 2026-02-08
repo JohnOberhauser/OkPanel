@@ -2,7 +2,7 @@ import {Mpris} from "../utils/mpris";
 import {With} from "ags";
 import {Bar} from "../../config/bar";
 import {variableConfig} from "../../config/config";
-import CavaWaveform from "../cava/CavaWaveform";
+import CavaWaveform from "../common/cava/CavaWaveform";
 import {getCavaFlipStartValue} from "../utils/cava";
 
 export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {

@@ -1,6 +1,6 @@
 import {Mpris} from "../utils/mpris";
 import {With} from "ags";
-import MprisControlButtons from "../mpris/MprisControlButtons";
+import MprisControlButtons from "../common/mpris/MprisControlButtons";
 import {Bar} from "../../config/bar";
 import {getHPadding, getVPadding} from "./BarWidgets";
 import {Gtk} from "ags/gtk4";

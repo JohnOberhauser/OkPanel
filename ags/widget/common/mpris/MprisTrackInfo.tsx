@@ -1,11 +1,11 @@
-import {Player} from "../utils/mpris";
-import VerticalLabel from "../common/VerticalLabel";
-import {truncateString} from "../utils/strings";
-import {variableConfig} from "../../config/config";
-import {alignmentToGtk} from "../utils/configHelper";
+import {Player} from "../../utils/mpris";
+import VerticalLabel from "../VerticalLabel";
+import {truncateString} from "../../utils/strings";
+import {variableConfig} from "../../../config/config";
+import {alignmentToGtk} from "../../utils/configHelper";
 import {Gtk} from "ags/gtk4";
-import {Accessor, createComputed, With} from "ags";
-import {Alignment} from "../../config/schema/definitions/barWidgets";
+import {Accessor, createComputed} from "ags";
+import {Alignment} from "../../../config/schema/definitions/barWidgets";
 
 export default function (
     {

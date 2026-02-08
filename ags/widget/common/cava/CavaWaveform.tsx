@@ -1,10 +1,10 @@
 import {Gtk} from "ags/gtk4";
 import Cairo from 'gi://cairo';
 import AstalCava from "gi://AstalCava"
-import {variableConfig} from "../../config/config";
-import {isAccessor} from "../utils/bindings";
+import {variableConfig} from "../../../config/config";
+import {isAccessor} from "../../utils/bindings";
 import { timeout } from "ags/time"
-import {hexToRgba} from "../utils/strings";
+import {hexToRgba} from "../../utils/strings";
 import {Accessor, createBinding, createComputed, createState, onCleanup, With} from "ags";
 
 function getCoordinate(

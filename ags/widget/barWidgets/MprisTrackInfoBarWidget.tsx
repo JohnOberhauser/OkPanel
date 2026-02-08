@@ -2,7 +2,7 @@ import {Mpris} from "../utils/mpris";
 import {Bar} from "../../config/bar";
 import {With} from "ags";
 import {variableConfig} from "../../config/config";
-import MprisTrackInfo from "../mpris/MprisTrackInfo";
+import MprisTrackInfo from "../common/mpris/MprisTrackInfo";
 
 export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
     const mpris = Mpris.get_default()
