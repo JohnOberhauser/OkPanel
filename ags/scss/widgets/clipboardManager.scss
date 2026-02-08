@@ -1,3 +1,13 @@
+@use "../variables" as vars;
+@use "sass:color";
+@use "../functions" as fun;
+
 .clipboardBox {
   padding: 20px;
+}
+
+.clipboardItem {
+  border: 2px solid fun.smart-lighten(vars.$bg);
+  border-radius: vars.$buttonBorderRadius;
+  padding: 8px;
 }

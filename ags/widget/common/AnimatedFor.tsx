@@ -29,6 +29,7 @@ type AnimatedForProps<Item, El extends JSX.Element, Key> = {
     /** Revealer transition duration in ms (default: 220) */
     transitionDuration?: number
     orientation?: Gtk.Orientation
+    spacing?: number
 }
 
 /**
@@ -44,6 +45,7 @@ export function AnimatedFor<Item, El extends JSX.Element, Key>({
     transitionType = Gtk.RevealerTransitionType.CROSSFADE,
     transitionDuration = 220,
     orientation = Gtk.Orientation.VERTICAL,
+    spacing = 0,
 }: AnimatedForProps<Item, El, Key>) {
     const [rendered, renderedSet] = createState<Map<Key, Item>>(new Map())
     const [exiting, exitingSet] = createState<Map<Key, Item>>(new Map())
@@ -100,6 +102,7 @@ export function AnimatedFor<Item, El extends JSX.Element, Key>({
 
     // Render via your existing <For>, keyed by .key
     return <box
+        spacing={spacing}
         orientation={orientation}>
         <For
             each={innerList}

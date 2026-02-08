@@ -1,6 +1,5 @@
 import {execAsync} from "ags/process";
 import {Gtk} from "ags/gtk4";
-import Divider from "../common/Divider";
 import OkButton, {OkButtonHorizontalPadding} from "../common/OkButton";
 import AsyncClipboardPicture from "./AsyncClipboardPicture";
 import AsyncClipboardLabel from "./AsyncClipboardLabel";
@@ -165,6 +164,7 @@ export function ClipboardManagerContent() {
                 }}/>
         </box>
         <AnimatedFor
+            spacing={10}
             each={clipboardEntries}
             id={(it) => it.number}
             reverse={true}
@@ -191,38 +191,28 @@ export function ClipboardManagerContent() {
                 }
 
                 return <box
-                        orientation={Gtk.Orientation.VERTICAL}>
+                    cssClasses={["clipboardItem"]}
+                    orientation={Gtk.Orientation.HORIZONTAL}>
+                    {content}
                     <box
-                        orientation={Gtk.Orientation.HORIZONTAL}>
-                        {content}
-                        <box
-                            orientation={Gtk.Orientation.HORIZONTAL}
-                            vexpand={false}>
-                            <OkButton
-                                hpadding={OkButtonHorizontalPadding.THIN}
-                                valign={Gtk.Align.START}
-                                label=""
-                                onClicked={() => {
-                                    copyEntry(entry)
-                                    toggleIntegratedClipboardManager()
-                                }}/>
-                            <OkButton
-                                hpadding={OkButtonHorizontalPadding.THIN}
-                                valign={Gtk.Align.START}
-                                label=""
-                                onClicked={() => {
-                                    deleteEntry(entry)
-                                }}/>
-                        </box>
+                        orientation={Gtk.Orientation.HORIZONTAL}
+                        vexpand={false}>
+                        <OkButton
+                            hpadding={OkButtonHorizontalPadding.THIN}
+                            valign={Gtk.Align.START}
+                            label=""
+                            onClicked={() => {
+                                copyEntry(entry)
+                                toggleIntegratedClipboardManager()
+                            }}/>
+                        <OkButton
+                            hpadding={OkButtonHorizontalPadding.THIN}
+                            valign={Gtk.Align.START}
+                            label=""
+                            onClicked={() => {
+                                deleteEntry(entry)
+                            }}/>
                     </box>
-                    <Divider
-                        visible={clipboardEntries.as((entries) => {
-                            if (entries.length === 0) return false
-                            return entries[entries.length - 1].number !== entry.number
-                        })}
-                        marginTop={10}
-                        marginBottom={10}
-                        thin={true}/>
                 </box>
             }}
         </AnimatedFor>
