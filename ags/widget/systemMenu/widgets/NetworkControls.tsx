@@ -635,6 +635,7 @@ export default function (
                 {network.wifi && <With value={createBinding(network.wifi, "activeAccessPoint")}>
                     {(activeAccessPoint: AstalNetwork.AccessPoint) => {
                         return <box
+                            orientation={Gtk.Orientation.VERTICAL}
                             hexpand={true}
                             marginBottom={8}
                             spacing={8}>
