@@ -472,6 +472,9 @@ export default function ({vertical, bar}: { vertical: boolean, bar: Bar }) {
                                         }
 
                                         const generalSection = new Gio.Menu()
+                                        if (app !== null) {
+                                            addLaunchToMenu(generalSection, actionGroup, pop, app)
+                                        }
                                         addCopyClassToMenu(generalSection, actionGroup, pop, clazz)
                                         addQuitToMenu(generalSection, actionGroup, pop, clazz)
                                         menu.append_section(null, generalSection)
