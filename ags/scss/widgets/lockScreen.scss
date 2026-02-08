@@ -10,6 +10,11 @@
   background-color: transparent;
   font-size: 20px;
   caret-color: transparent;
+  placeholder {
+    font-size: 16px;
+    font-weight: bold;
+    color: vars.$warning;
+  }
 }
 
 .lockScreenEntryWrapper {

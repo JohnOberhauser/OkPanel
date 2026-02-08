@@ -24,6 +24,7 @@ export default function () {
         const windows = new Map<Gdk.Monitor, Gtk.Window>();
 
         const textBuffer = new Gtk.EntryBuffer()
+        const [errorText, setErrorText] = createState("")
         const [entryCharactersVisible, entryCharactersVisibleSetter] = createState(false)
         const [screenRevealed, screenRevealedSetter] = createState(false)
         const [isAttemptingLogin, isAttemptingLoginSetter] = createState(false)
@@ -122,6 +123,7 @@ export default function () {
                                                     isAttemptingLoginSetter(true)
                                                     pam.supply_secret(textBuffer.text)
                                                 }}
+                                                placeholderText={errorText}
                                                 hexpand={false}
                                                 buffer={textBuffer}
                                                 $={(self) => {
@@ -198,6 +200,7 @@ export default function () {
                 console.log("[Lock Screen]:", `fail: ${msg}`)
                 textBuffer.set_text("", -1)
                 isAttemptingLoginSetter(false)
+                setErrorText("Authentication failure")
                 pam.start_authenticate()
             })
 
