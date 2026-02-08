@@ -15,33 +15,10 @@ const animationDuration = 400
 export let isSessionLocked = false
 
 export default function () {
-    const pam = new AstalAuth.Pam()
+    let pam = new AstalAuth.Pam()
 
     const bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, null)
     let timer: Timer | null = null
-
-    // When the system wakes up, sometimes it messes up fingerprint login.
-    // Detect wakeup and reset the auth process.
-    const sleepId = bus.signal_subscribe(
-        "org.freedesktop.login1",
-        "org.freedesktop.login1.Manager",
-        "PrepareForSleep",
-        "/org/freedesktop/login1",
-        null,
-        Gio.DBusSignalFlags.NONE,
-        (_conn, _sender, _path, _iface, _signal, params) => {
-            const isWakingUp = !params.get_child_value(0).get_boolean()
-
-            if (isWakingUp) {
-                console.log("System woke up")
-                // delay to give time for fingerprint to be ready
-                timer = timeout(3000, () => {
-                    pam.start_authenticate()
-                    console.log("auth reset")
-                })
-            }
-        }
-    )
 
     createRoot((dispose) => {
         const windows = new Map<Gdk.Monitor, Gtk.Window>();
@@ -67,6 +44,31 @@ export default function () {
 
             return GLib.DateTime.new_now_local().format(format)!
         })
+
+        // When the system wakes up, sometimes it messes up fingerprint login.
+        // Detect wakeup and reset the auth process.
+        const sleepId = bus.signal_subscribe(
+            "org.freedesktop.login1",
+            "org.freedesktop.login1.Manager",
+            "PrepareForSleep",
+            "/org/freedesktop/login1",
+            null,
+            Gio.DBusSignalFlags.NONE,
+            (_conn, _sender, _path, _iface, _signal, params) => {
+                const isWakingUp = !params.get_child_value(0).get_boolean()
+
+                if (isWakingUp) {
+                    console.log("[Lock Screen]:", "System woke up")
+                    // delay to give time for fingerprint to be ready
+                    timer = timeout(2_000, () => {
+                        pam.run_dispose()
+                        pam = new AstalAuth.Pam()
+                        startPam()
+                        console.log("[Lock Screen]:", "auth reset")
+                    })
+                }
+            }
+        )
 
         function LockScreen(
             monitor: Gdk.Monitor,
@@ -171,6 +173,41 @@ export default function () {
             </window> as Astal.Window
         }
 
+        function startPam() {
+            pam.connect("auth-prompt-visible", (auth, msg) => {
+                console.log("[Lock Screen]:", `visible: ${msg}`)
+            })
+
+            pam.connect("auth-prompt-hidden", (auth, msg) => {
+                console.log("[Lock Screen]:", `hidden: ${msg}`)
+            })
+
+            pam.connect("success", () => {
+                timer?.cancel()
+                console.log("[Lock Screen]:", "success")
+                screenRevealedSetter(false)
+                timeout(animationDuration, () => {
+                    dispose()
+                    lock.unlock()
+                    isSessionLocked = false
+                    bus.signal_unsubscribe(sleepId)
+                })
+            })
+
+            pam.connect("fail", (auth, msg) => {
+                console.log("[Lock Screen]:", `fail: ${msg}`)
+                textBuffer.set_text("", -1)
+                isAttemptingLoginSetter(false)
+                pam.start_authenticate()
+            })
+
+            pam.connect("auth-error", (auth, msg) => {
+                console.log("[Lock Screen]:", `error: ${msg}`)
+            })
+
+            pam.start_authenticate()
+        }
+
         const lock = Gtk4SessionLock.Instance.new()
 
         function spawnWindow(
@@ -213,42 +250,10 @@ export default function () {
             timeout(250, () => {
                 screenRevealedSetter(true)
             })
-            console.log("locking")
+            console.log("[Lock Screen]:", "locking")
+            startPam()
         }
 
-        pam.connect("auth-prompt-visible", (auth, msg) => {
-            console.log(`visible: ${msg}`)
-        })
-
-        pam.connect("auth-prompt-hidden", (auth, msg) => {
-            console.log(`hidden: ${msg}`)
-        })
-
-        pam.connect("success", () => {
-            timer?.cancel()
-            console.log("success")
-            screenRevealedSetter(false)
-            timeout(animationDuration, () => {
-                dispose()
-                lock.unlock()
-                isSessionLocked = false
-                bus.signal_unsubscribe(sleepId)
-            })
-        })
-
-        pam.connect("fail", (auth, msg) => {
-            console.log(`fail: ${msg}`)
-            textBuffer.set_text("", -1)
-            isAttemptingLoginSetter(false)
-            pam.start_authenticate()
-        })
-
-        pam.connect("auth-error", (auth, msg) => {
-            console.log(`error: ${msg}`)
-        })
-
         lockScreen()
-
-        pam.start_authenticate()
     })
 }
