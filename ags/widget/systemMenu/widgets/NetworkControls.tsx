@@ -261,9 +261,9 @@ function PasswordEntry(
     }
 
     return <box
-        marginTop={4}
+        cssClasses={["systemMenuInnerRevealedContent"]}
         orientation={Gtk.Orientation.VERTICAL}
-        spacing={4}>
+        spacing={10}>
         {accessPoint.flags !== 0 && <box
             orientation={Gtk.Orientation.VERTICAL}>
             <label
@@ -311,7 +311,7 @@ function WifiConnections() {
     return <box
         orientation={Gtk.Orientation.VERTICAL}>
         <label
-            halign={Gtk.Align.START}
+            halign={Gtk.Align.CENTER}
             cssClasses={["labelLargeBold"]}
             label="Saved networks"/>
         <For each={inactiveWifiConnections}>
@@ -345,9 +345,9 @@ function WifiConnections() {
                         transitionDuration={200}
                         transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}>
                         <box
-                            marginTop={4}
+                            cssClasses={["systemMenuInnerRevealedContent"]}
                             orientation={Gtk.Orientation.VERTICAL}
-                            spacing={4}>
+                            spacing={10}>
                             {canConnect && <OkButton
                                 hexpand={true}
                                 primary={true}
@@ -391,7 +391,7 @@ function WifiScannedConnections(
             {(scanning) => {
                 if (scanning) {
                     return <label
-                        halign={Gtk.Align.START}
+                        halign={Gtk.Align.CENTER}
                         cssClasses={["labelLargeBold"]}
                         marginBottom={4}
                         label="Scanning…"/>
@@ -462,7 +462,7 @@ function VpnActiveConnections() {
                     return <box/>
                 }
                 return <label
-                    halign={Gtk.Align.START}
+                    halign={Gtk.Align.CENTER}
                     cssClasses={["labelLargeBold"]}
                     label="Active VPN"/>
             }}
@@ -485,10 +485,9 @@ function VpnActiveConnections() {
                         transitionDuration={200}
                         transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}>
                         <box
-                            marginTop={4}
-                            marginBottom={4}
+                            cssClasses={["systemMenuInnerRevealedContent"]}
                             orientation={Gtk.Orientation.VERTICAL}
-                            spacing={4}>
+                            spacing={10}>
                             <OkButton
                                 hexpand={true}
                                 primary={true}
@@ -522,59 +521,61 @@ function VpnConnections() {
         orientation={Gtk.Orientation.VERTICAL}
         spacing={4}>
         <label
-            halign={Gtk.Align.START}
+            halign={Gtk.Align.CENTER}
             cssClasses={["labelLargeBold"]}
             label="VPN Connections"/>
-        <For each={vpnConnections}>
-            {(connection) => {
-                const [buttonsRevealed, buttonsRevealedSetter] = createState(false)
-                const [isConnecting, isConnectingSetter] = createState(false)
+        <box
+            orientation={Gtk.Orientation.VERTICAL}>
+            <For each={vpnConnections}>
+                {(connection) => {
+                    const [buttonsRevealed, buttonsRevealedSetter] = createState(false)
+                    const [isConnecting, isConnectingSetter] = createState(false)
 
-                return <box
-                    orientation={Gtk.Orientation.VERTICAL}>
-                    <OkButton
-                        hexpand={true}
-                        labelHalign={Gtk.Align.START}
-                        label={`󰯄  ${connection}`}
-                        onClicked={() => {
-                            buttonsRevealedSetter(!buttonsRevealed.peek())
-                        }}/>
-                    <revealer
-                        revealChild={buttonsRevealed}
-                        transitionDuration={200}
-                        transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}>
-                        <box
-                            marginTop={4}
-                            marginBottom={4}
-                            orientation={Gtk.Orientation.VERTICAL}
-                            spacing={4}>
-                            <OkButton
-                                hexpand={true}
-                                primary={true}
-                                label={isConnecting.as((connecting) => {
-                                    if (connecting) {
-                                        return "Connecting"
-                                    } else {
-                                        return "Connect"
-                                    }
-                                })}
-                                onClicked={() => {
-                                    if (!isConnecting.peek()) {
-                                        connectVpn(connection, isConnectingSetter)
-                                    }
-                                }}/>
-                            <OkButton
-                                hexpand={true}
-                                primary={true}
-                                label="Forget"
-                                onClicked={() => {
-                                    deleteConnection(connection)
-                                }}/>
-                        </box>
-                    </revealer>
-                </box>
-            }}
-        </For>
+                    return <box
+                        orientation={Gtk.Orientation.VERTICAL}>
+                        <OkButton
+                            hexpand={true}
+                            labelHalign={Gtk.Align.START}
+                            label={`󰯄  ${connection}`}
+                            onClicked={() => {
+                                buttonsRevealedSetter(!buttonsRevealed.peek())
+                            }}/>
+                        <revealer
+                            revealChild={buttonsRevealed}
+                            transitionDuration={200}
+                            transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}>
+                            <box
+                                cssClasses={["systemMenuInnerRevealedContent"]}
+                                orientation={Gtk.Orientation.VERTICAL}
+                                spacing={10}>
+                                <OkButton
+                                    hexpand={true}
+                                    primary={true}
+                                    label={isConnecting.as((connecting) => {
+                                        if (connecting) {
+                                            return "Connecting"
+                                        } else {
+                                            return "Connect"
+                                        }
+                                    })}
+                                    onClicked={() => {
+                                        if (!isConnecting.peek()) {
+                                            connectVpn(connection, isConnectingSetter)
+                                        }
+                                    }}/>
+                                <OkButton
+                                    hexpand={true}
+                                    primary={true}
+                                    label="Forget"
+                                    onClicked={() => {
+                                        deleteConnection(connection)
+                                    }}/>
+                            </box>
+                        </revealer>
+                    </box>
+                }}
+            </For>
+        </box>
         <OkButton
             primary={true}
             label="Add Wireguard VPN"

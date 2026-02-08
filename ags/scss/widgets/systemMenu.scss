@@ -29,3 +29,10 @@
   border: 2px solid fun.smart-lighten(vars.$bg);
   border-radius: vars.$buttonBorderRadius;
 }
+
+.systemMenuInnerRevealedContent {
+  border: 2px solid fun.smart-lighten(vars.$bg);
+  border-radius: vars.$buttonBorderRadius;
+  padding: 8px;
+  margin: 10px;
+}
