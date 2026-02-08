@@ -44,7 +44,7 @@ export function resolveWallpaper(): string | null {
                     while ((info = enumerator.next_file(null))) {
                         if (info.get_file_type() === Gio.FileType.REGULAR) {
                             const name = info.get_name().toLowerCase();
-                            if (name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png")) {
+                            if (name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png") || name.endsWith(".mp4")) {
                                 wallpaper = `${dirPath}/${info.get_name()}`;
                                 break;
                             }

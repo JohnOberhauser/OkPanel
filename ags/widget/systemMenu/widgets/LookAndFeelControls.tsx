@@ -1,6 +1,5 @@
 import {Gtk} from "ags/gtk4"
 import Pango from "gi://Pango?version=1.0";
-import {createScaledTexture} from "../../utils/images";
 import {
     availableConfigs, ConfigFile,
     selectedConfig,
@@ -14,6 +13,7 @@ import {createComputed, createState, For, onCleanup, With} from "ags";
 import GLib from "gi://GLib?version=2.0";
 import {integratedMenuRevealed} from "../IntegratedMenu";
 import {setWallpaper} from "../../wallpaper/setWallpaper";
+import Gio from "gi://Gio?version=2.0";
 
 const [files, filesSetter] = createState<string[][]>([])
 const numberOfColumns = 2
@@ -52,7 +52,7 @@ function updateFiles() {
     filesSetter(
         chunkIntoColumns(
             listFilenamesInDir(dir)
-                .filter((file) => file.includes("jpg") || file.includes("png"))
+                .filter((file) => file.includes("jpg") || file.includes("png") || file.includes(".mp4"))
                 .map((file) => `${dir}/${file}`),
             numberOfColumns
         )
@@ -238,17 +238,6 @@ function WallpaperColumn(
         <For each={filesListInColumn}>
             {(file) => {
                 return <button
-                    $={(self) => {
-                        // 140x70 is a magic number that scales well and doesn't cause unwanted expansion of the scroll window
-                        createScaledTexture(140, 70, file).then((texture) => {
-                            const picture = Gtk.Picture.new_for_paintable(texture)
-                            picture.heightRequest = 90
-                            picture.cssClasses = ["wallpaper"]
-                            picture.contentFit = Gtk.ContentFit.COVER
-
-                            self.set_child(picture)
-                        })
-                    }}
                     cssClasses={["wallpaperButton"]}
                     onClicked={() => {
                         if (changingWallpaperBusy) return
@@ -258,7 +247,26 @@ function WallpaperColumn(
                                 changingWallpaperBusy = false
                                 console.log("wallpaper set")
                             })
-                    }}/>
+                    }}>
+                    <Gtk.AspectFrame
+                        marginStart={8}
+                        marginBottom={8}
+                        marginTop={8}
+                        marginEnd={8}
+                        ratio={2}
+                        obeyChild={false}>
+                        <Gtk.Picture
+                            hexpand={true}
+                            heightRequest={90}
+                            cssClasses={["wallpaper"]}
+                            contentFit={Gtk.ContentFit.COVER}
+                            $={(self) => {
+                                console.log(`media path: ${file}`)
+                                const media = Gtk.MediaFile.new_for_file(Gio.File.new_for_path(file))
+                                self.set_paintable(media)
+                            }}/>
+                    </Gtk.AspectFrame>
+                </button>
             }}
         </For>
     </box>
