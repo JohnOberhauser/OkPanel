@@ -101,6 +101,7 @@ function addMoveFocusedClientToMenu(
 ) {
     const focusedClient = hyprland.get_focused_client()
     if (focusedClient !== null && focusedClient.class === clazz) {
+        if (hyprland.workspaces.length <= 1) return
         const moveFocusedAction = new Gio.SimpleAction({
             name: "move-focused",
             parameterType: new GLib.VariantType("i"),
