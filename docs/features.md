@@ -177,3 +177,9 @@ misc:session_lock_xray = true
 for a better locking animation
 
 ![screenshot](https://raw.githubusercontent.com/JohnOberhauser/OkPanelScreenshots/refs/heads/main/lock_screen.png)
+
+## Polkit agent
+
+OkPanel acts as a polkit agent.
+
+![screenshot](https://raw.githubusercontent.com/JohnOberhauser/OkPanelScreenshots/refs/heads/main/polkit.png)
