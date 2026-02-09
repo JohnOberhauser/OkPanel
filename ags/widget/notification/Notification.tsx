@@ -40,7 +40,7 @@ export default function Notification(props: Props) {
             marginTop={2}
             orientation={Gtk.Orientation.HORIZONTAL}>
             <label
-                cssClasses={["labelSmallBold", "notificationTitle"]}
+                cssClasses={["labelSmallBold", "colorPrimary"]}
                 marginStart={8}
                 halign={START}
                 ellipsize={Pango.EllipsizeMode.END}

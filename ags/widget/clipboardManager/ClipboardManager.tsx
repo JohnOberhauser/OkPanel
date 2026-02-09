@@ -206,7 +206,7 @@ export function ClipboardManagerContent() {
                             <label
                                 halign={Gtk.Align.START}
                                 hexpand={true}
-                                cssClasses={["labelSmallBold", "clipboardItemNumber"]}
+                                cssClasses={["labelSmallBold", "colorPrimary"]}
                                 label={`#${entry.number}`}/>
                             <OkButton
                                 hpadding={OkButtonHorizontalPadding.THIN}
