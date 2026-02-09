@@ -321,7 +321,7 @@ function WifiHeader() {
                     spacing={8}>
                     <label
                         halign={Gtk.Align.CENTER}
-                        cssClasses={["labelLargeBold"]}
+                        cssClasses={["labelLargeBold", "colorPrimary"]}
                         label="Active Network"/>
                     <box
                         orientation={Gtk.Orientation.VERTICAL}>
@@ -363,7 +363,7 @@ function WifiSavedConnections() {
         orientation={Gtk.Orientation.VERTICAL}>
         <label
             halign={Gtk.Align.CENTER}
-            cssClasses={["labelLargeBold"]}
+            cssClasses={["labelLargeBold", "colorPrimary"]}
             label="Saved Networks"/>
         <For each={inactiveWifiConnections}>
             {(connection) => {
@@ -491,7 +491,7 @@ function WifiScannedConnections(
                         orientation={Gtk.Orientation.VERTICAL}>
                         <label
                             halign={Gtk.Align.CENTER}
-                            cssClasses={["labelLargeBold"]}
+                            cssClasses={["labelLargeBold", "colorPrimary"]}
                             label="Available Networks"/>
                         {accessPointsUi}
                     </box>
@@ -514,7 +514,7 @@ function VpnActiveConnections() {
                 }
                 return <label
                     halign={Gtk.Align.CENTER}
-                    cssClasses={["labelLargeBold"]}
+                    cssClasses={["labelLargeBold", "colorPrimary"]}
                     label="Active VPN"/>
             }}
         </With>
@@ -573,7 +573,7 @@ function VpnConnections() {
         spacing={4}>
         <label
             halign={Gtk.Align.CENTER}
-            cssClasses={["labelLargeBold"]}
+            cssClasses={["labelLargeBold", "colorPrimary"]}
             label="Available VPNs"/>
         <box
             orientation={Gtk.Orientation.VERTICAL}>

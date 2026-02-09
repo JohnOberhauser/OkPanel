@@ -150,7 +150,7 @@ export default function () {
                         halign={Gtk.Align.START}
                         hexpand={true}
                         label="Devices"
-                        cssClasses={["labelLargeBold"]}/>
+                        cssClasses={["labelLargeBold", "colorPrimary"]}/>
                     <OkButton
                         label={createBinding(bluetooth.adapter, "discovering").as((discovering) => {
                             return discovering ? "Stop scanning" : "Scan"
