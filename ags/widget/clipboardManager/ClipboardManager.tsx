@@ -190,35 +190,41 @@ export function ClipboardManagerContent() {
                         cliphistId={entry.number}/>
                 }
 
-                return <button
-                    cssClasses={["clipboardItemButtonWrapper"]}
-                    onClicked={() => {
-                        copyEntry(entry)
-                        toggleIntegratedClipboardManager()
-                    }}>
-                    <box
-                        cssClasses={["clipboardItem"]}
-                        orientation={Gtk.Orientation.VERTICAL}
-                        spacing={10}>
-                        <box
-                            orientation={Gtk.Orientation.HORIZONTAL}
-                            vexpand={false}>
-                            <label
-                                halign={Gtk.Align.START}
-                                hexpand={true}
-                                cssClasses={["labelSmallBold", "colorPrimary"]}
-                                label={`#${entry.number}`}/>
+                return <overlay
+                    $={(self) => {
+                        self.add_overlay(
                             <OkButton
+                                halign={Gtk.Align.END}
+                                marginTop={8}
+                                marginEnd={8}
                                 hpadding={OkButtonHorizontalPadding.THIN}
                                 valign={Gtk.Align.START}
                                 label=""
                                 onClicked={() => {
                                     deleteEntry(entry)
-                                }}/>
+                                }}/> as Gtk.Widget
+                        )
+                    }}>
+                    <button
+                        cssClasses={["clipboardItemButtonWrapper"]}
+                        onClicked={() => {
+                            copyEntry(entry)
+                            toggleIntegratedClipboardManager()
+                        }}>
+                        <box
+                            cssClasses={["clipboardItem"]}
+                            orientation={Gtk.Orientation.VERTICAL}
+                            spacing={10}>
+                            <label
+                                marginTop={4}
+                                halign={Gtk.Align.START}
+                                hexpand={true}
+                                cssClasses={["labelSmallBold", "colorPrimary"]}
+                                label={`#${entry.number}`}/>
+                            {content}
                         </box>
-                        {content}
-                    </box>
-                </button>
+                    </button>
+                </overlay>
             }}
         </AnimatedFor>
     </box>
