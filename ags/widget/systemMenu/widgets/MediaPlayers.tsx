@@ -32,7 +32,7 @@ function MediaPlayer({ player }: { player: Player }) {
         orientation={Gtk.Orientation.VERTICAL}>
         <label
             visible={player.title[0]((t) => t !== null)}
-            cssClasses={["labelSmallBold"]}
+            cssClasses={["labelSmallBold", "colorPrimary"]}
             ellipsize={Pango.EllipsizeMode.END}
             halign={CENTER}
             label={title}/>
