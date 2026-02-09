@@ -34,7 +34,7 @@ export async function getTextureFromCliphist(
 
 export default function ({cliphistId}: {cliphistId: number}) {
     const picture = new Gtk.Picture({
-        heightRequest: 150,
+        heightRequest: 300,
         cssClasses: ["image"],
         keepAspectRatio: true,
         contentFit: Gtk.ContentFit.COVER,

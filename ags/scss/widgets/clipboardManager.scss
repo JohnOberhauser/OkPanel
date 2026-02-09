@@ -10,4 +10,13 @@
   border: 2px solid fun.smart-lighten(vars.$bg);
   border-radius: vars.$buttonBorderRadius;
   padding: 8px;
+  @include fun.hoverLightenLesser(vars.$bg);
+}
+
+.clipboardItemButtonWrapper {
+  all: unset;
+}
+
+.clipboardItemNumber {
+  color: vars.$primary;
 }

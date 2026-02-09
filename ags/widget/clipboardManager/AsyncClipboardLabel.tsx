@@ -8,7 +8,7 @@ export default function ({cliphistId}: {cliphistId: number}) {
         xalign={0}
         wrap={true}
         hexpand={true}
-        cssClasses={["labelSmall"]}
+        cssClasses={["labelMedium"]}
         label={text}/>
 
     execAsync(["bash", "-c", `cliphist decode ${cliphistId}`]).catch((error) => {
@@ -17,7 +17,7 @@ export default function ({cliphistId}: {cliphistId: number}) {
         if (typeof value !== "string") {
             return
         }
-        textSetter(insertNewlines(value, 33))
+        textSetter(insertNewlines(value, 46))
     })
 
     return label

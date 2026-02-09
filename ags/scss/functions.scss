@@ -14,3 +14,17 @@
   }
 }
 
+@function smart-lighten-lesser($bg) {
+  @return if(
+                  color.alpha($bg) < 0.5,
+                  color.change(color.scale($bg, $lightness: 25%), $alpha: 0.25),
+                  color.scale($bg, $lightness: 10%)
+  );
+}
+
+@mixin hoverLightenLesser($bg) {
+  &:hover {
+    background-color: smart-lighten-lesser($bg);
+  }
+}
+

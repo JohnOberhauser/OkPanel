@@ -2,7 +2,7 @@ import {Gtk} from "ags/gtk4";
 import {createState} from "ags";
 import ClipboardManager from "./ClipboardManager";
 
-export const integratedClipboardManagerWidth = 410
+export const integratedClipboardManagerWidth = 500
 
 export const [integratedClipboardManagerRevealed, integratedClipboardManagerRevealedSetting] = createState(false)
 

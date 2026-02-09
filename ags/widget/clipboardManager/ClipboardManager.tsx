@@ -190,30 +190,35 @@ export function ClipboardManagerContent() {
                         cliphistId={entry.number}/>
                 }
 
-                return <box
-                    cssClasses={["clipboardItem"]}
-                    orientation={Gtk.Orientation.HORIZONTAL}>
-                    {content}
+                return <button
+                    cssClasses={["clipboardItemButtonWrapper"]}
+                    onClicked={() => {
+                        copyEntry(entry)
+                        toggleIntegratedClipboardManager()
+                    }}>
                     <box
-                        orientation={Gtk.Orientation.HORIZONTAL}
-                        vexpand={false}>
-                        <OkButton
-                            hpadding={OkButtonHorizontalPadding.THIN}
-                            valign={Gtk.Align.START}
-                            label=""
-                            onClicked={() => {
-                                copyEntry(entry)
-                                toggleIntegratedClipboardManager()
-                            }}/>
-                        <OkButton
-                            hpadding={OkButtonHorizontalPadding.THIN}
-                            valign={Gtk.Align.START}
-                            label=""
-                            onClicked={() => {
-                                deleteEntry(entry)
-                            }}/>
+                        cssClasses={["clipboardItem"]}
+                        orientation={Gtk.Orientation.VERTICAL}
+                        spacing={10}>
+                        <box
+                            orientation={Gtk.Orientation.HORIZONTAL}
+                            vexpand={false}>
+                            <label
+                                halign={Gtk.Align.START}
+                                hexpand={true}
+                                cssClasses={["labelSmallBold", "clipboardItemNumber"]}
+                                label={`#${entry.number}`}/>
+                            <OkButton
+                                hpadding={OkButtonHorizontalPadding.THIN}
+                                valign={Gtk.Align.START}
+                                label=""
+                                onClicked={() => {
+                                    deleteEntry(entry)
+                                }}/>
+                        </box>
+                        {content}
                     </box>
-                </box>
+                </button>
             }}
         </AnimatedFor>
     </box>
