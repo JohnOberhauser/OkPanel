@@ -19,11 +19,7 @@ function applyWallpaper(
     const w = Math.max(1, wallpaperStack.get_allocated_width());
     const h = Math.max(1, wallpaperStack.get_allocated_height());
 
-    const media = Gtk.MediaFile.new_for_file(Gio.File.new_for_path(path))
-    const pic = Gtk.Picture.new_for_paintable(media)
-    media.muted = true
-    media.loop = true
-    media.play()
+    const pic = Gtk.Picture.new_for_filename(path)
     pic.contentFit = Gtk.ContentFit.COVER;
     pic.hexpand = true;
     pic.vexpand = true;
@@ -72,12 +68,10 @@ export default function (
         <stack
             $={(self) => {
                 if (wallpaperPath === null) return
-                const media = Gtk.MediaFile.new_for_file(Gio.File.new_for_path(wallpaperPath))
-                const picture = Gtk.Picture.new_for_paintable(media)
-                media.muted = true
-                media.loop = true
-                media.play()
+                const picture = Gtk.Picture.new_for_filename(wallpaperPath)
                 picture.contentFit = Gtk.ContentFit.COVER
+                picture.hexpand = true
+                picture.vexpand = true
 
                 self.add_named(picture, "initial");
                 self.set_visible_child_name("initial");

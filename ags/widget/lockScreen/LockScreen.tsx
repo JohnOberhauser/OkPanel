@@ -164,13 +164,11 @@ export default function () {
                             }}>
                             <Gtk.Picture
                                 contentFit={Gtk.ContentFit.COVER}
+                                hexpand={true}
+                                vexpand={true}
                                 $={(self) => {
                                     if (wallpaperPath !== null) {
-                                        const media = Gtk.MediaFile.new_for_file(Gio.File.new_for_path(wallpaperPath))
-                                        self.set_paintable(media)
-                                        media.muted = true
-                                        media.loop = true
-                                        media.play()
+                                        self.set_filename(wallpaperPath)
                                     }
                                 }}/>
                         </overlay>

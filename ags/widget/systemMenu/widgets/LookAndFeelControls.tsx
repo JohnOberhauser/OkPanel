@@ -52,7 +52,7 @@ function updateFiles() {
     filesSetter(
         chunkIntoColumns(
             listFilenamesInDir(dir)
-                .filter((file) => file.includes("jpg") || file.includes("png") || file.includes(".mp4"))
+                .filter((file) => file.includes("jpg") || file.includes("png"))
                 .map((file) => `${dir}/${file}`),
             numberOfColumns
         )
@@ -261,8 +261,7 @@ function WallpaperColumn(
                             cssClasses={["wallpaper"]}
                             contentFit={Gtk.ContentFit.COVER}
                             $={(self) => {
-                                const media = Gtk.MediaFile.new_for_file(Gio.File.new_for_path(file))
-                                self.set_paintable(media)
+                                self.set_filename(file)
                             }}/>
                     </Gtk.AspectFrame>
                 </button>
