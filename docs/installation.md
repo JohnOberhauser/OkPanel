@@ -28,12 +28,6 @@ cliphist \
 dart-sass \
 go-yq \
 grim \
-gstreamer \
-gst-libav \
-gst-plugins-bad \
-gst-plugins-base \
-gst-plugins-good \
-gst-plugins-ugly \
 gvfs \
 hyprland \
 hyprpicker \
