@@ -305,7 +305,58 @@ function PasswordEntry(
     </box>
 }
 
-function WifiConnections() {
+function WifiHeader() {
+    const network = AstalNetwork.get_default()
+
+    const [buttonsRevealed, buttonsRevealedSetter] = createState(false)
+
+    return <box>
+        {network.wifi && <With value={createBinding(network.wifi, "activeAccessPoint")}>
+            {(activeAccessPoint: AstalNetwork.AccessPoint) => {
+                return <box
+                    visible={activeAccessPoint !== null}
+                    orientation={Gtk.Orientation.VERTICAL}
+                    hexpand={true}
+                    marginBottom={8}
+                    spacing={8}>
+                    <label
+                        halign={Gtk.Align.CENTER}
+                        cssClasses={["labelLargeBold"]}
+                        label="Active Network"/>
+                    <box
+                        orientation={Gtk.Orientation.VERTICAL}>
+                        <OkButton
+                            hexpand={true}
+                            label={`${getAccessPointIcon(activeAccessPoint)}  ${activeAccessPoint.ssid}`}
+                            labelHalign={Gtk.Align.START}
+                            onClicked={() => {
+                                buttonsRevealedSetter(!buttonsRevealed.peek())
+                            }}/>
+                        <revealer
+                            revealChild={buttonsRevealed}
+                            transitionDuration={200}
+                            transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}>
+                            <box
+                                cssClasses={["systemMenuInnerRevealedContent"]}
+                                orientation={Gtk.Orientation.VERTICAL}
+                                spacing={10}>
+                                <OkButton
+                                    hexpand={true}
+                                    primary={true}
+                                    label="Disconnect"
+                                    onClicked={() => {
+                                        disconnect(activeAccessPoint.ssid)
+                                    }}/>
+                            </box>
+                        </revealer>
+                    </box>
+                </box>
+            }}
+        </With>}
+    </box>
+}
+
+function WifiSavedConnections() {
     const network = AstalNetwork.get_default()
 
     return <box
@@ -313,7 +364,7 @@ function WifiConnections() {
         <label
             halign={Gtk.Align.CENTER}
             cssClasses={["labelLargeBold"]}
-            label="Saved networks"/>
+            label="Saved Networks"/>
         <For each={inactiveWifiConnections}>
             {(connection) => {
                 const [buttonsRevealed, buttonsRevealedSetter] = createState(false)
@@ -441,7 +492,7 @@ function WifiScannedConnections(
                         <label
                             halign={Gtk.Align.CENTER}
                             cssClasses={["labelLargeBold"]}
-                            label="Available networks"/>
+                            label="Available Networks"/>
                         {accessPointsUi}
                     </box>
                 }
@@ -523,7 +574,7 @@ function VpnConnections() {
         <label
             halign={Gtk.Align.CENTER}
             cssClasses={["labelLargeBold"]}
-            label="VPN Connections"/>
+            label="Available VPNs"/>
         <box
             orientation={Gtk.Orientation.VERTICAL}>
             <For each={vpnConnections}>
@@ -632,31 +683,10 @@ export default function (
             <box
                 orientation={Gtk.Orientation.VERTICAL}
                 spacing={12}>
-                {network.wifi && <With value={createBinding(network.wifi, "activeAccessPoint")}>
-                    {(activeAccessPoint: AstalNetwork.AccessPoint) => {
-                        return <box
-                            orientation={Gtk.Orientation.VERTICAL}
-                            hexpand={true}
-                            marginBottom={8}
-                            spacing={8}>
-                            <label
-                                halign={Gtk.Align.CENTER}
-                                cssClasses={["labelLargeBold"]}
-                                label="Wifi Connection"/>
-                            <OkButton
-                                hexpand={true}
-                                visible={activeAccessPoint !== null}
-                                primary={true}
-                                label="Disconnect"
-                                onClicked={() => {
-                                    disconnect(activeAccessPoint.ssid)
-                                }}/>
-                        </box>
-                    }}
-                </With>}
                 <VpnActiveConnections/>
                 <VpnConnections/>
-                {network.wifi && <WifiConnections/>}
+                <WifiHeader/>
+                {network.wifi && <WifiSavedConnections/>}
                 {network.wifi && <WifiScannedConnections frameWindow={frameWindow}/>}
             </box>
         }
