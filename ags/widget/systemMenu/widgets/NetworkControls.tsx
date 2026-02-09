@@ -313,8 +313,8 @@ function WifiHeader() {
     return <box>
         {network.wifi && <With value={createBinding(network.wifi, "activeAccessPoint")}>
             {(activeAccessPoint: AstalNetwork.AccessPoint) => {
+                if (activeAccessPoint === null) return <box/>
                 return <box
-                    visible={activeAccessPoint !== null}
                     orientation={Gtk.Orientation.VERTICAL}
                     hexpand={true}
                     marginBottom={8}
