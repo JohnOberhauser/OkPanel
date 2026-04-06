@@ -1,3 +1,7 @@
+> [!WARNING]
+> 
+> This project has been rebuilt in Rust. Check out [OkShell](https://johnoberhauser.github.io/OkShell/) instead.
+
 # OkPanel
 
 A desktop shell for Hyprland, built on AGS/Astal

@@ -1,3 +1,7 @@
+> [!WARNING]
+>
+> This project has been rebuilt in Rust. Check out [OkShell](https://johnoberhauser.github.io/OkShell/) instead.
+
 <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem;">OkPanel</h1>
 
 # A desktop panel for Hyprland, built on Ags/Astal.  It's okay.
