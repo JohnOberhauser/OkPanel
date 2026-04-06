@@ -1,0 +1,72 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.lockScreen = void 0;
+exports.lockScreen = {
+    name: "lockScreen",
+    type: "object",
+    description: "Configuration for the lock screen.",
+    children: [
+        {
+            name: 'entryBackground',
+            type: 'color',
+            default: { from: 'theme.colors.background' },
+            description: 'Background color of the lock screen text entry',
+            reactive: false,
+        },
+        {
+            name: 'entryForeground',
+            type: 'color',
+            default: { from: 'theme.colors.foreground' },
+            description: 'Foreground color of the lock screen text entry',
+        },
+        {
+            name: 'entryBorderRadius',
+            type: 'number',
+            default: 8,
+            description: 'Corner radius (px) for the lock screen text entry.',
+            reactive: false,
+        },
+        {
+            name: 'entryBorderWidth',
+            type: 'number',
+            default: 0,
+            description: 'Lock screen text entry border width (px).',
+            reactive: false,
+        },
+        {
+            name: 'entryBorderColor',
+            type: 'color',
+            default: { from: 'theme.colors.primary' },
+            description: 'Color of the lock screen text entry.',
+            reactive: false,
+        },
+        {
+            name: 'entryWidth',
+            type: 'number',
+            default: 300,
+            description: 'Lock screen text entry width (px).',
+            reactive: false,
+        },
+        {
+            name: 'entryAlignment',
+            type: 'number',
+            default: 0,
+            withinConstraints: (it) => it >= 0 && it <= 1,
+            constraintDescription: 'Must be between 0 and 1.',
+            description: 'Lock screen text entry alignment. Number between 0 and 1.',
+            reactive: false,
+        },
+        {
+            name: 'dateForeground',
+            type: 'color',
+            default: { from: 'theme.colors.foreground' },
+            description: 'Foreground color of the lock screen date',
+        },
+        {
+            name: 'timeForeground',
+            type: 'color',
+            default: { from: 'theme.colors.foreground' },
+            description: 'Foreground color of the lock screen time',
+        },
+    ],
+};

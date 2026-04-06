@@ -1,0 +1,78 @@
+/* Round all Material buttons */
+.md-button {
+    border-radius: 999px !important; /* Fully rounded */
+    padding: 0.4em 1.2em; /* Optional: tweak padding for better shape */
+}
+
+/* Search bar input */
+.md-search__input {
+    background-color: #1C2128;
+    color: #D0EBEE;
+}
+
+.md-search-result__meta {
+    background-color: #1C2128;
+    color: #D0EBEE;
+}
+
+/* Increase the width of the main content area */
+.md-grid {
+    max-width: 80rem; /* default is 61rem */
+}
+
+.md-copyright {
+    display: none !important;
+}
+
+@font-face {
+    font-family: "JetBrains Mono Nerd";
+    src: url("../fonts/JetBrainsMonoNerdFont-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root  > * {
+    --md-text-font: "JetBrains Mono Nerd", sans-serif;
+    --md-code-font: "JetBrains Mono Nerd", monospace;
+
+    --md-primary-fg-color:        #52677C;
+    --md-primary-fg-color--light: #52677C;
+    --md-primary-fg-color--dark:  #52677C;
+    --md-primary-bg-color:        #D0EBEE;
+    --md-primary-bg-color--light: #D0EBEE;
+
+    --md-accent-fg-color:                #665276;
+    --md-accent-fg-color--transparent:   #665276;
+    --md-accent-bg-color:                #0C0E11;
+    --md-accent-bg-color--light:         #0C0E11;
+
+    --md-default-fg-color:               #D0EBEE;
+    --md-default-fg-color--light:        #8295A9;
+    --md-default-fg-color--lighter:      #8295A9;
+    --md-default-fg-color--lightest:     #8295A9;
+    --md-default-bg-color:               #121519;
+    --md-default-bg-color--light:        #1C2128;
+    --md-default-bg-color--lighter:      #222830;
+    --md-default-bg-color--lightest:     #272E38;
+
+    --md-code-fg-color:                  #D0EBEE;
+    --md-code-bg-color:                  #1C2128;
+
+    --md-code-hl-color:                  #52677C;
+    --md-code-hl-color--light:           #52677C;
+
+    --md-typeset-table-color:            #D0EBEE;
+    --md-typeset-table-color--light:     #1C2128;
+
+    --md-admonition-fg-color:            #D0EBEE;
+    --md-admonition-bg-color:            #0C0E11;
+
+    --md-warning-fg-color:              #0C0E11;
+    --md-warning-bg-color:              #665276;
+
+    --md-footer-fg-color:                #D0EBEE;
+    --md-footer-fg-color--light:         #8295A9;
+    --md-footer-fg-color--lighter:       #8295A9;
+    --md-footer-bg-color:                #0C0E11;
+    --md-footer-bg-color--dark:          #0C0E11;
+}

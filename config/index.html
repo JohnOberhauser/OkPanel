@@ -1,0 +1,8097 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://johnoberhauser.github.io/OkPanel/config/">
+      
+      
+        <link rel="prev" href="../configurationSystem/">
+      
+      
+        <link rel="next" href="../example/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Configuration Schema - OkPanel</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OkPanel" class="md-header__button md-logo" aria-label="OkPanel" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OkPanel
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JohnOberhauser/OkPanel" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OkPanel
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OkPanel" class="md-nav__button md-logo" aria-label="OkPanel" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    OkPanel
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JohnOberhauser/OkPanel" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OkPanel
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurationSystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Schema
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#config-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config values
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sounds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#osd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        osd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weather" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        weather
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemcommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemCommands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="frame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framemenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.menu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framenotifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framecalendar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.calendar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frameclipboardmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.clipboardManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescreenshottool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.screenshotTool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frameapplauncher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.appLauncher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescreenshare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.screenshare
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemmenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemMenu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="systemMenu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemmenuclock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemMenu.clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemmenuquickactions1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemMenu.quickActions1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemmenuquickactions2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemMenu.quickActions2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="barWidgets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsapplauncher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.appLauncher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsaudioin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.audioIn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsaudioout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.audioOut
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsbattery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.battery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsbluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.bluetooth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscavawaveform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.cavaWaveform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsclipboardmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.clipboardManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsclock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscolorpicker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.colorPicker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsdock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.dock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsdockglyphoverride" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.dock.glyphOverride[]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetslock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.lock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetslogout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.logout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsmenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.menu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsmpriscontrols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.mprisControls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsmprisprimaryplayerswitcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.mprisPrimaryPlayerSwitcher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsmpristrackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.mprisTrackInfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsnetwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsnotificationhistory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.notificationHistory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetspowerprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.powerProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsrecordingindicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.recordingIndicator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsrestart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.restart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsscreenshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.screenshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsshutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.shutdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetstimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.timer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetstray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.tray
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsvpnindicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.vpnIndicator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsworkspaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.workspaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom7
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom8
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom9
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom10
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom11
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom12
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom13
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom14
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom15
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom16
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom17
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom18
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom19
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom20
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        theme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="theme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#themecolors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        theme.colors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#themewindows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        theme.windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        topBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottombar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bottomBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leftbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        leftBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rightbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rightBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wallpaper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wallpaper
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applicationicons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        applicationIcons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="applicationIcons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applicationiconsglyphoverride" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        applicationIcons.glyphOverride[]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lockscreen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lockScreen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customBarWidgets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Bar Widgets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windowAnimations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Animations and Blur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#config-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config values
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sounds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#osd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        osd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weather" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        weather
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemcommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemCommands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="frame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framemenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.menu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framenotifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framecalendar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.calendar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frameclipboardmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.clipboardManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescreenshottool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.screenshotTool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frameapplauncher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.appLauncher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#framescreenshare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frame.screenshare
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemmenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemMenu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="systemMenu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemmenuclock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemMenu.clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemmenuquickactions1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemMenu.quickActions1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemmenuquickactions2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        systemMenu.quickActions2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="barWidgets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsapplauncher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.appLauncher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsaudioin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.audioIn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsaudioout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.audioOut
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsbattery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.battery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsbluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.bluetooth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscavawaveform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.cavaWaveform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsclipboardmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.clipboardManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsclock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscolorpicker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.colorPicker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsdock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.dock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsdockglyphoverride" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.dock.glyphOverride[]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetslock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.lock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetslogout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.logout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsmenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.menu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsmpriscontrols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.mprisControls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsmprisprimaryplayerswitcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.mprisPrimaryPlayerSwitcher
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsmpristrackinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.mprisTrackInfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsnetwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsnotificationhistory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.notificationHistory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetspowerprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.powerProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsrecordingindicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.recordingIndicator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsrestart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.restart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsscreenshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.screenshot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsshutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.shutdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetstimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.timer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetstray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.tray
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsvpnindicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.vpnIndicator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetsworkspaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.workspaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom7
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom8
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom9
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom10
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom11
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom12
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom13
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom14
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom15
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom16
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom17
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom18
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom19
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barwidgetscustom20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        barWidgets.custom20
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        theme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="theme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#themecolors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        theme.colors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#themewindows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        theme.windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        topBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottombar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bottomBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leftbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        leftBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rightbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rightBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wallpaper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wallpaper
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applicationicons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        applicationIcons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="applicationIcons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applicationiconsglyphoverride" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        applicationIcons.glyphOverride[]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lockscreen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lockScreen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="configuration-schema">Configuration Schema</h1>
+<p>Here you will find the definitions of all available configurations</p>
+<h2 id="config-values">Config values</h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td>icon</td>
+<td></td>
+<td>Icon (glyph) representing this config file.</td>
+</tr>
+<tr>
+<td>iconOffset</td>
+<td>number</td>
+<td>0</td>
+<td>Icon offset (‑10 … 10).</td>
+</tr>
+<tr>
+<td>configUpdateScript</td>
+<td>string</td>
+<td></td>
+<td>Absolute path to the script run when the config changes where you can update the theme and configuration for the rest of your system.  Theme name and config file name are sent as arguments to the script.</td>
+</tr>
+<tr>
+<td>barUpdateScript</td>
+<td>string</td>
+<td></td>
+<td>Absolute path to the script run when the bar changes.  Bar type is sent as an argument to the script.</td>
+</tr>
+<tr>
+<td>framedMonitors</td>
+<td>[string]</td>
+<td>[0]</td>
+<td>A list of monitors that should show the frame.  Values can be a monitor index, name, or description.  For example, "0" or "DP-1" or "LG Electronics LG ULTRAGEAR+ 303NTRL72662".</td>
+</tr>
+<tr>
+<td>clockFormat24h</td>
+<td>boolean</td>
+<td>false</td>
+<td>If true, use 24-hour format. If false, use 12-hour format with AM/PM</td>
+</tr>
+<tr>
+<td>enablePolkitAgent</td>
+<td>boolean</td>
+<td>true</td>
+<td>If true, OkPanel will register as a polkit agent.  This field is non-reactive.  If you change it, you should restart OkPanel.</td>
+</tr>
+<tr>
+<td>sounds</td>
+<td>object</td>
+<td></td>
+<td>Global sound configs.</td>
+</tr>
+<tr>
+<td>osd</td>
+<td>object</td>
+<td></td>
+<td>Configuration for on screen displays.</td>
+</tr>
+<tr>
+<td>weather</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the menu bar widget.</td>
+</tr>
+<tr>
+<td>notifications</td>
+<td>object</td>
+<td></td>
+<td>Notification pop‑up behaviour.</td>
+</tr>
+<tr>
+<td>systemCommands</td>
+<td>object</td>
+<td></td>
+<td>Shell commands executed by power options.</td>
+</tr>
+<tr>
+<td>frame</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the frame.</td>
+</tr>
+<tr>
+<td>systemMenu</td>
+<td>object</td>
+<td></td>
+<td>System menu configurations.</td>
+</tr>
+<tr>
+<td>barWidgets</td>
+<td>object</td>
+<td></td>
+<td>Theming configurations for the bars.</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>object</td>
+<td></td>
+<td>Global theme definitions.</td>
+</tr>
+<tr>
+<td>topBar</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the top bar layout.</td>
+</tr>
+<tr>
+<td>bottomBar</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the bottom bar layout.</td>
+</tr>
+<tr>
+<td>leftBar</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the left bar layout.</td>
+</tr>
+<tr>
+<td>rightBar</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the right bar layout.</td>
+</tr>
+<tr>
+<td>wallpaper</td>
+<td>object</td>
+<td></td>
+<td>Wallpaper configs.</td>
+</tr>
+<tr>
+<td>applicationIcons</td>
+<td>object</td>
+<td></td>
+<td>Configuration for app icons.</td>
+</tr>
+<tr>
+<td>lockScreen</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the lock screen.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sounds">sounds</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>playVolumeChangingSound</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether or not to play a sound when changing volume</td>
+</tr>
+<tr>
+<td>volumeChangingSoundPath</td>
+<td>string</td>
+<td></td>
+<td>Full path to a sound file that will be used for volume changes</td>
+</tr>
+<tr>
+<td>playScreenshotSound</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether or not to play a sound when taking a screenshot</td>
+</tr>
+<tr>
+<td>screenshotSoundPath</td>
+<td>string</td>
+<td></td>
+<td>Full path to a sound file that will be used for screenshots</td>
+</tr>
+<tr>
+<td>playLowBatteryWarningSound</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether or not to play a sound when the battery is low</td>
+</tr>
+<tr>
+<td>lowBatteryWarningSoundPath</td>
+<td>string</td>
+<td></td>
+<td>Full path to a sound file that will be used for low battery warnings</td>
+</tr>
+<tr>
+<td>playChargingSound</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether or not to play a sound when charging the battery</td>
+</tr>
+<tr>
+<td>chargingPlugInSoundPath</td>
+<td>string</td>
+<td></td>
+<td>Full path to a sound file that will be used for starting battery charging</td>
+</tr>
+<tr>
+<td>chargingUnplugSoundPath</td>
+<td>string</td>
+<td></td>
+<td>Full path to a sound file that will be used for stopping battery charging</td>
+</tr>
+<tr>
+<td>timerSoundPath</td>
+<td>string</td>
+<td></td>
+<td>Full path to a sound file that will be used when the timer goes off</td>
+</tr>
+</tbody>
+</table>
+<h3 id="osd">osd</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>soundOSDEnabled</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enables the sound OSD.</td>
+</tr>
+<tr>
+<td>brightnessOSDEnabled</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enables the brightness OSD.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="weather">weather</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>latitude</td>
+<td>string</td>
+<td>0.0</td>
+<td>Latitude coordinate for weather location</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>string</td>
+<td>0.0</td>
+<td>Longitude coordinate for weather location</td>
+</tr>
+<tr>
+<td>temperatureUnit</td>
+<td>enum (fahrenheit, celsius)</td>
+<td>fahrenheit</td>
+<td>Temperature unit</td>
+</tr>
+<tr>
+<td>speedUnit</td>
+<td>enum (mph, kph)</td>
+<td>mph</td>
+<td>Speed unit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="notifications">notifications</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>enum (left, right, center)</td>
+<td>right</td>
+<td>Screen edge where notification bubbles appear.</td>
+</tr>
+<tr>
+<td>respectExclusive</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether to avoid overlaying exclusive zones declared by widgets.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="systemcommands">systemCommands</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logout</td>
+<td>string</td>
+<td>uwsm stop</td>
+<td>Command to log the current user out.</td>
+</tr>
+<tr>
+<td>logoutConfirmationEnabled</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enable a confirmation dialog when logging out.</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>string</td>
+<td>okpanel lock</td>
+<td>Command to lock the screen.</td>
+</tr>
+<tr>
+<td>lockConfirmationEnabled</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enable a confirmation dialog when locking the screen.</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>string</td>
+<td>systemctl reboot</td>
+<td>Command to reboot the machine.</td>
+</tr>
+<tr>
+<td>restartConfirmationEnabled</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enable a confirmation dialog when restarting the computer.</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>string</td>
+<td>systemctl poweroff</td>
+<td>Command to shut down the machine safely.</td>
+</tr>
+<tr>
+<td>shutdownConfirmationEnabled</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enable a confirmation dialog when shutting the computer down.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="frame">frame</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>drawFrame</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether to draw the frame or not.</td>
+</tr>
+<tr>
+<td>margin</td>
+<td>number</td>
+<td>5</td>
+<td>Margin (px) between the frame and other windows.</td>
+</tr>
+<tr>
+<td>topThickness</td>
+<td>number</td>
+<td>2</td>
+<td>Thickness of the full screen frame.</td>
+</tr>
+<tr>
+<td>bottomThickness</td>
+<td>number</td>
+<td>2</td>
+<td>Thickness of the full screen frame.</td>
+</tr>
+<tr>
+<td>leftThickness</td>
+<td>number</td>
+<td>2</td>
+<td>Thickness of the full screen frame.</td>
+</tr>
+<tr>
+<td>rightThickness</td>
+<td>number</td>
+<td>2</td>
+<td>Thickness of the full screen frame.</td>
+</tr>
+<tr>
+<td>enableTopSpacer</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enables the top spacer.  The spacer pushes window content below the top of the frame.</td>
+</tr>
+<tr>
+<td>enableBottomSpacer</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enables the bottom spacer.  The spacer pushes window content above the bottom of the frame.</td>
+</tr>
+<tr>
+<td>enableLeftSpacer</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enables the left spacer.  The spacer pushes window content to the right of the left side of the frame.</td>
+</tr>
+<tr>
+<td>enableRightSpacer</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enables the right spacer.  The spacer pushes window content to the left of the right side of the frame.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>8</td>
+<td>Corner radius (px) for bars.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>2</td>
+<td>Bar border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.primary</td>
+<td>Color of the bar border</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.background</td>
+<td>Color of the bar background</td>
+</tr>
+<tr>
+<td>menu</td>
+<td>object</td>
+<td></td>
+<td>Configurations for the expandable menu integration.</td>
+</tr>
+<tr>
+<td>notifications</td>
+<td>object</td>
+<td></td>
+<td>Configurations for the expandable notifications integration.</td>
+</tr>
+<tr>
+<td>calendar</td>
+<td>object</td>
+<td></td>
+<td>Configurations for the expandable calendar integration.</td>
+</tr>
+<tr>
+<td>clipboardManager</td>
+<td>object</td>
+<td></td>
+<td>Configurations for the expandable clipboard manager integration.</td>
+</tr>
+<tr>
+<td>screenshotTool</td>
+<td>object</td>
+<td></td>
+<td>Configurations for the expandable screenshot tool integration.</td>
+</tr>
+<tr>
+<td>appLauncher</td>
+<td>object</td>
+<td></td>
+<td>Configurations for the expandable appLauncher integration.</td>
+</tr>
+<tr>
+<td>screenshare</td>
+<td>object</td>
+<td></td>
+<td>Configurations for the screen share menu integration.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="framemenu">frame.menu</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>enum (left, right)</td>
+<td>left</td>
+<td>What side of the frame the integration is on.</td>
+</tr>
+<tr>
+<td>pushContent</td>
+<td>boolean</td>
+<td>false</td>
+<td>If the integration should push normal windows / content when expanded.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="framenotifications">frame.notifications</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>enum (left, right)</td>
+<td>left</td>
+<td>What side of the frame the integration is on.</td>
+</tr>
+<tr>
+<td>pushContent</td>
+<td>boolean</td>
+<td>false</td>
+<td>If the integration should push normal windows / content when expanded.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="framecalendar">frame.calendar</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>enum (left, right)</td>
+<td>left</td>
+<td>What side of the frame the integration is on.</td>
+</tr>
+<tr>
+<td>pushContent</td>
+<td>boolean</td>
+<td>false</td>
+<td>If the integration should push normal windows / content when expanded.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="frameclipboardmanager">frame.clipboardManager</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>enum (left, right)</td>
+<td>left</td>
+<td>What side of the frame the integration is on.</td>
+</tr>
+<tr>
+<td>pushContent</td>
+<td>boolean</td>
+<td>false</td>
+<td>If the integration should push normal windows / content when expanded.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="framescreenshottool">frame.screenshotTool</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>enum (left, right)</td>
+<td>left</td>
+<td>What side of the frame the integration is on.</td>
+</tr>
+<tr>
+<td>pushContent</td>
+<td>boolean</td>
+<td>false</td>
+<td>If the integration should push normal windows / content when expanded.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="frameapplauncher">frame.appLauncher</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>enum (left, right)</td>
+<td>left</td>
+<td>What side of the frame the integration is on.</td>
+</tr>
+<tr>
+<td>pushContent</td>
+<td>boolean</td>
+<td>false</td>
+<td>If the integration should push normal windows / content when expanded.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="framescreenshare">frame.screenshare</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>enum (left, right)</td>
+<td>left</td>
+<td>What side of the frame the integration is on.</td>
+</tr>
+<tr>
+<td>pushContent</td>
+<td>boolean</td>
+<td>false</td>
+<td>If the integration should push normal windows / content when expanded.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="systemmenu">systemMenu</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>widgets</td>
+<td>enum[(audioIn, audioOut, bluetooth, clock, lookAndFeel, mprisPlayers, network, notificationHistory, powerProfile, quickActions1, quickActions2)]</td>
+<td>[clock, quickActions1, network, bluetooth, audioOut, audioIn, lookAndFeel, mprisPlayers, quickActions2, notificationHistory]</td>
+<td>Widgets inside the system menu</td>
+</tr>
+<tr>
+<td>clock</td>
+<td>object</td>
+<td></td>
+<td>Configurations for the system menu clock.</td>
+</tr>
+<tr>
+<td>quickActions1</td>
+<td>object</td>
+<td></td>
+<td>Configurations for quick actions.</td>
+</tr>
+<tr>
+<td>quickActions2</td>
+<td>object</td>
+<td></td>
+<td>Configurations for quick actions.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="systemmenuclock">systemMenu.clock</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dayAllCaps</td>
+<td>boolean</td>
+<td>false</td>
+<td>If the week day name text should be in all caps</td>
+</tr>
+<tr>
+<td>dayFont</td>
+<td>string</td>
+<td>Inherits from: theme.font</td>
+<td>Font used for the week day name</td>
+</tr>
+</tbody>
+</table>
+<h4 id="systemmenuquickactions1">systemMenu.quickActions1</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>actions</td>
+<td>enum[(airplaneModeToggle, appLauncherToggle, bluetoothToggle, clipboardManagerToggle, colorPicker, doNotDisturbToggle, lock, logout, nightlightToggle, restart, screenshotToggle, shutdown)]</td>
+<td>[bluetoothToggle, airplaneModeToggle, nightlightToggle, doNotDisturbToggle]</td>
+<td>Actions inside the group</td>
+</tr>
+<tr>
+<td>maxPerRow</td>
+<td>number</td>
+<td>4</td>
+<td>Max number of actions per row.  1-5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="systemmenuquickactions2">systemMenu.quickActions2</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>actions</td>
+<td>enum[(airplaneModeToggle, appLauncherToggle, bluetoothToggle, clipboardManagerToggle, colorPicker, doNotDisturbToggle, lock, logout, nightlightToggle, restart, screenshotToggle, shutdown)]</td>
+<td>[logout, lock, restart, shutdown]</td>
+<td>Actions inside the group</td>
+</tr>
+<tr>
+<td>maxPerRow</td>
+<td>number</td>
+<td>4</td>
+<td>Max number of actions per row.  1-5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="barwidgets">barWidgets</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>widgetForeground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.foreground</td>
+<td>Foreground color of the bar widgets.</td>
+</tr>
+<tr>
+<td>widgetBackground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.background</td>
+<td>Background color of the bar widgets.</td>
+</tr>
+<tr>
+<td>widgetBorderColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.primary</td>
+<td>Color of the widget borders</td>
+</tr>
+<tr>
+<td>widgetBorderRadius</td>
+<td>number</td>
+<td>8</td>
+<td>Corner radius (px) for bar widgets.</td>
+</tr>
+<tr>
+<td>widgetBorderWidth</td>
+<td>number</td>
+<td>0</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>widgetMarginStart</td>
+<td>number</td>
+<td>0</td>
+<td>Margin at the start of bar widgets.</td>
+</tr>
+<tr>
+<td>widgetMarginEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Margin at the end of bar widgets.</td>
+</tr>
+<tr>
+<td>widgetMarginTop</td>
+<td>number</td>
+<td>0</td>
+<td>Margin at the top of bar widgets.</td>
+</tr>
+<tr>
+<td>widgetMarginBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Margin at the bottom of bar widgets.</td>
+</tr>
+<tr>
+<td>appLauncher</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the app launcher bar widget.</td>
+</tr>
+<tr>
+<td>audioIn</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the audio in bar widget.</td>
+</tr>
+<tr>
+<td>audioOut</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the audio out bar widget.</td>
+</tr>
+<tr>
+<td>battery</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the battery bar widget.</td>
+</tr>
+<tr>
+<td>bluetooth</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the bluetooth bar widget.</td>
+</tr>
+<tr>
+<td>cavaWaveform</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the cava waveform bar widget.</td>
+</tr>
+<tr>
+<td>clipboardManager</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the clipboardManager bar widget.</td>
+</tr>
+<tr>
+<td>clock</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the clock bar widget.</td>
+</tr>
+<tr>
+<td>colorPicker</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the color picker bar widget.</td>
+</tr>
+<tr>
+<td>dock</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the dock bar widget.</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the lock bar widget.</td>
+</tr>
+<tr>
+<td>logout</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the logout bar widget.</td>
+</tr>
+<tr>
+<td>menu</td>
+<td>object</td>
+<td></td>
+<td>Theme configuration for the menu bar widget.</td>
+</tr>
+<tr>
+<td>mprisControls</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the mprisControls bar widget.</td>
+</tr>
+<tr>
+<td>mprisPrimaryPlayerSwitcher</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the mpris primary player switcher bar widget.</td>
+</tr>
+<tr>
+<td>mprisTrackInfo</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the mpris track info bar widget.</td>
+</tr>
+<tr>
+<td>network</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the network bar widget.</td>
+</tr>
+<tr>
+<td>notificationHistory</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the notification history bar widget.</td>
+</tr>
+<tr>
+<td>powerProfile</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the power profile bar widget.</td>
+</tr>
+<tr>
+<td>recordingIndicator</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the recording indicator bar widget.</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the restart bar widget.</td>
+</tr>
+<tr>
+<td>screenshot</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the screenshot bar widget.</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the shutdown bar widget.</td>
+</tr>
+<tr>
+<td>timer</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the timer bar widget.</td>
+</tr>
+<tr>
+<td>tray</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the tray bar widget.</td>
+</tr>
+<tr>
+<td>vpnIndicator</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the vpn indicator bar widget.</td>
+</tr>
+<tr>
+<td>workspaces</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the workspaces bar widget.</td>
+</tr>
+<tr>
+<td>custom1</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom2</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom3</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom4</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom5</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom6</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom7</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom8</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom9</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom10</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom11</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom12</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom13</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom14</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom15</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom16</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom17</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom18</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom19</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+<tr>
+<td>custom20</td>
+<td>object</td>
+<td></td>
+<td>Configuration for the custom bar widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsapplauncher">barWidgets.appLauncher</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsaudioin">barWidgets.audioIn</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsaudioout">barWidgets.audioOut</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsbattery">barWidgets.battery</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsbluetooth">barWidgets.bluetooth</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscavawaveform">barWidgets.cavaWaveform</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+<tr>
+<td>length</td>
+<td>number</td>
+<td>200</td>
+<td>Length of the cava waveform.  This has no effect on the full bar waveform.</td>
+</tr>
+<tr>
+<td>expanded</td>
+<td>boolean</td>
+<td>false</td>
+<td>Expands the waveform to fill the empty space.  This can expand beyond the set length.  This has no effect on the full bar waveform.</td>
+</tr>
+<tr>
+<td>position</td>
+<td>enum (inner, outer, start, end)</td>
+<td>outer</td>
+<td>The base position of the waveform</td>
+</tr>
+<tr>
+<td>intensityMultiplier</td>
+<td>number</td>
+<td>1</td>
+<td>Makes the waves bigger or smaller.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsclipboardmanager">barWidgets.clipboardManager</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsclock">barWidgets.clock</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscolorpicker">barWidgets.colorPicker</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsdock">barWidgets.dock</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+<tr>
+<td>selectedBackground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.buttonPrimary</td>
+<td>Background color of the widget when selected.</td>
+</tr>
+<tr>
+<td>onlyShowPinnedApps</td>
+<td>boolean</td>
+<td>false</td>
+<td>If only pinned apps should show in the dock.</td>
+</tr>
+<tr>
+<td>pinnedApps</td>
+<td>[string]</td>
+<td></td>
+<td>A list of pinned apps in the dock. Each value should be a hyprland client class name.  Use hyprctl clients to view open clients to find the name.</td>
+</tr>
+<tr>
+<td>glyphOverride</td>
+<td>[object]</td>
+<td></td>
+<td>A list of glyph overrides for apps in the dock.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsdockglyphoverride">barWidgets.dock.glyphOverride[]</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class</td>
+<td>string</td>
+<td></td>
+<td>The hyprland client class name of the glyph to be overridden.</td>
+</tr>
+<tr>
+<td>glyph</td>
+<td>icon</td>
+<td>󰘔</td>
+<td>The glyph to override with.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>number</td>
+<td>0</td>
+<td>The pixel offset of the glyph.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetslock">barWidgets.lock</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetslogout">barWidgets.logout</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsmenu">barWidgets.menu</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>icon</td>
+<td></td>
+<td>Icon shown on the menu button (ex: Nerd Font glyph).</td>
+</tr>
+<tr>
+<td>iconOffset</td>
+<td>number</td>
+<td>1</td>
+<td>Offset of the menu button icon.  Use this if the icon is not centered properly</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsmpriscontrols">barWidgets.mprisControls</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsmprisprimaryplayerswitcher">barWidgets.mprisPrimaryPlayerSwitcher</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsmpristrackinfo">barWidgets.mprisTrackInfo</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+<tr>
+<td>textLength</td>
+<td>number</td>
+<td>30</td>
+<td>The max number of characters to display.</td>
+</tr>
+<tr>
+<td>textAlignment</td>
+<td>enum (start, center, end)</td>
+<td>center</td>
+<td>How to align the text.</td>
+</tr>
+<tr>
+<td>minimumLength</td>
+<td>number</td>
+<td>300</td>
+<td>The minimum length of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsnetwork">barWidgets.network</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsnotificationhistory">barWidgets.notificationHistory</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+<tr>
+<td>indicatorForeground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.warning</td>
+<td>Foreground color of the unread notification indicator.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetspowerprofile">barWidgets.powerProfile</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsrecordingindicator">barWidgets.recordingIndicator</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.warning</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsrestart">barWidgets.restart</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsscreenshot">barWidgets.screenshot</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsshutdown">barWidgets.shutdown</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetstimer">barWidgets.timer</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetstray">barWidgets.tray</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+<tr>
+<td>collapsable</td>
+<td>boolean</td>
+<td>true</td>
+<td>If true, a tray icon will show and need to be clicked to reveal the tray apps.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsvpnindicator">barWidgets.vpnIndicator</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetsworkspaces">barWidgets.workspaces</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+<tr>
+<td>largeActive</td>
+<td>boolean</td>
+<td>false</td>
+<td>Make the active workspace icon larger</td>
+</tr>
+<tr>
+<td>activeIcon</td>
+<td>icon</td>
+<td></td>
+<td>Icon of the active workspace</td>
+</tr>
+<tr>
+<td>activeOffset</td>
+<td>number</td>
+<td>1</td>
+<td>Offset of the active workspace icon.  Use this if the icon is not centered properly</td>
+</tr>
+<tr>
+<td>inactiveIcon</td>
+<td>icon</td>
+<td></td>
+<td>Icon of the inactive workspace</td>
+</tr>
+<tr>
+<td>inactiveOffset</td>
+<td>number</td>
+<td>1</td>
+<td>Offset of the active workspace icon.  Use this if the icon is not centered properly</td>
+</tr>
+<tr>
+<td>inactiveForeground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.workspaces.foreground</td>
+<td>Foreground color of inactive workspaces.</td>
+</tr>
+<tr>
+<td>scrollUpCommand</td>
+<td>string</td>
+<td>r-1</td>
+<td>The hyprland workspace argument to dispatch when scrolling up while hovering over the workspaces bar widget.  See all options here https://wiki.hypr.land/Configuring/Dispatchers/#workspaces</td>
+</tr>
+<tr>
+<td>scrollDownCommand</td>
+<td>string</td>
+<td>r+1</td>
+<td>The hyprland workspace argument to dispatch when scrolling down while hovering over the workspaces bar widget.  See all options here https://wiki.hypr.land/Configuring/Dispatchers/#workspaces</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom1">barWidgets.custom1</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom2">barWidgets.custom2</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom3">barWidgets.custom3</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom4">barWidgets.custom4</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom5">barWidgets.custom5</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom6">barWidgets.custom6</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom7">barWidgets.custom7</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom8">barWidgets.custom8</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom9">barWidgets.custom9</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom10">barWidgets.custom10</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom11">barWidgets.custom11</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom12">barWidgets.custom12</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom13">barWidgets.custom13</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom14">barWidgets.custom14</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom15">barWidgets.custom15</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom16">barWidgets.custom16</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom17">barWidgets.custom17</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom18">barWidgets.custom18</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom19">barWidgets.custom19</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="barwidgetscustom20">barWidgets.custom20</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>string</td>
+<td></td>
+<td>The initial label for the custom widget.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnInit</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is created.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>execOnClick</td>
+<td>string</td>
+<td></td>
+<td>The absolute path of the script to execute when the widget is clicked.  This is not reactive, so you need to restart OkPanel or switch configs after changing this value.</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetForeground</td>
+<td>Foreground color of the widget.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBackground</td>
+<td>Background color of the widget.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderRadius</td>
+<td>Corner radius (px) for the widget.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetBorderWidth</td>
+<td>Widget border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: barWidgets.widgetBorderColor</td>
+<td>Color of the widget border</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginStart</td>
+<td>Margin at the start of the widget.</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginEnd</td>
+<td>Margin at the end of the widget.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginTop</td>
+<td>Margin at the top of the widget.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>Inherits from: barWidgets.widgetMarginBottom</td>
+<td>Margin at the bottom of the widget.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="theme">theme</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>myTheme</td>
+<td>Theme name.  Passed as the first argument to the configUpdateScript when changing configs.</td>
+</tr>
+<tr>
+<td>buttonBorderRadius</td>
+<td>number</td>
+<td>8</td>
+<td>Border radius (px) used by regular buttons.</td>
+</tr>
+<tr>
+<td>largeButtonBorderRadius</td>
+<td>number</td>
+<td>16</td>
+<td>Border radius (px) used by large buttons.</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>JetBrainsMono NF</td>
+<td>Default font family used across the panel widgets.</td>
+</tr>
+<tr>
+<td>nightLightTemperature</td>
+<td>number</td>
+<td>5000</td>
+<td>The temperature of the night light.</td>
+</tr>
+<tr>
+<td>colors</td>
+<td>object</td>
+<td></td>
+<td>Palette used by widgets &amp; windows.</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>object</td>
+<td></td>
+<td>Global window styling defaults.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="themecolors">theme.colors</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>background</td>
+<td>color</td>
+<td>#1F2932</td>
+<td>Background color</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>color</td>
+<td>#AFB3BD</td>
+<td>Foreground color</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>color</td>
+<td>#7C545F</td>
+<td>Primary / accent color</td>
+</tr>
+<tr>
+<td>buttonPrimary</td>
+<td>color</td>
+<td>#7C545F</td>
+<td>Button color</td>
+</tr>
+<tr>
+<td>warning</td>
+<td>color</td>
+<td>#7C7C54</td>
+<td>Warning color</td>
+</tr>
+<tr>
+<td>alertBorder</td>
+<td>color</td>
+<td>#7C545F</td>
+<td>Color of alert borders (OSD)</td>
+</tr>
+<tr>
+<td>scrimColor</td>
+<td>color</td>
+<td>#00000001</td>
+<td>Color used for translucent overlays (RGBA hex).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="themewindows">theme.windows</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gaps</td>
+<td>number</td>
+<td>5</td>
+<td>Gap (px) between windows.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>8</td>
+<td>Corner radius (px) for client‑side decorations.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>2</td>
+<td>Window border width (px).</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.background</td>
+<td>Color of window backgrounds</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.foreground</td>
+<td>Color of window borders</td>
+</tr>
+</tbody>
+</table>
+<h3 id="topbar">topBar</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>leftWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets anchored left.</td>
+</tr>
+<tr>
+<td>centerWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets centered horizontally.</td>
+</tr>
+<tr>
+<td>rightWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets anchored right.</td>
+</tr>
+<tr>
+<td>minimumWidth</td>
+<td>number</td>
+<td>600</td>
+<td>The minimum width of the bar if not expanded.</td>
+</tr>
+<tr>
+<td>expanded</td>
+<td>boolean</td>
+<td>true</td>
+<td>If true, the group expands to full width</td>
+</tr>
+<tr>
+<td>compact</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enabled compact bar mode.</td>
+</tr>
+<tr>
+<td>widgetSpacing</td>
+<td>number</td>
+<td>0</td>
+<td>Spacing (px) between widgets inside the bar.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>0</td>
+<td>Corner radius (px) for bars.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>0</td>
+<td>Bar border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.primary</td>
+<td>Color of the bar border</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>color</td>
+<td>Inherits from: frame.backgroundColor</td>
+<td>Color of the bar background</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>0</td>
+<td>Starting margin of the bar</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Ending margin of the bar</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>0</td>
+<td>Top margin of the bar</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Bottom margin of the bar</td>
+</tr>
+<tr>
+<td>paddingStart</td>
+<td>number</td>
+<td>0</td>
+<td>Starting padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Ending padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingTop</td>
+<td>number</td>
+<td>0</td>
+<td>Top padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Bottom padding of the bar.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bottombar">bottomBar</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>leftWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets anchored left.</td>
+</tr>
+<tr>
+<td>centerWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets centered horizontally.</td>
+</tr>
+<tr>
+<td>rightWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets anchored right.</td>
+</tr>
+<tr>
+<td>minimumWidth</td>
+<td>number</td>
+<td>600</td>
+<td>The minimum width of the bar if not expanded.</td>
+</tr>
+<tr>
+<td>expanded</td>
+<td>boolean</td>
+<td>true</td>
+<td>If true, the group expands to full width</td>
+</tr>
+<tr>
+<td>compact</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enabled compact bar mode.</td>
+</tr>
+<tr>
+<td>widgetSpacing</td>
+<td>number</td>
+<td>0</td>
+<td>Spacing (px) between widgets inside the bar.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>0</td>
+<td>Corner radius (px) for bars.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>0</td>
+<td>Bar border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.primary</td>
+<td>Color of the bar border</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>color</td>
+<td>Inherits from: frame.backgroundColor</td>
+<td>Color of the bar background</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>0</td>
+<td>Starting margin of the bar</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Ending margin of the bar</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>0</td>
+<td>Top margin of the bar</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Bottom margin of the bar</td>
+</tr>
+<tr>
+<td>paddingStart</td>
+<td>number</td>
+<td>0</td>
+<td>Starting padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Ending padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingTop</td>
+<td>number</td>
+<td>0</td>
+<td>Top padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Bottom padding of the bar.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="leftbar">leftBar</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>topWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets anchored at the top.</td>
+</tr>
+<tr>
+<td>centerWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets centered vertically.</td>
+</tr>
+<tr>
+<td>bottomWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets anchored at the bottom.</td>
+</tr>
+<tr>
+<td>minimumHeight</td>
+<td>number</td>
+<td>800</td>
+<td>The minimum height of the bar if not expanded.</td>
+</tr>
+<tr>
+<td>expanded</td>
+<td>boolean</td>
+<td>true</td>
+<td>If true, the group expands to full width</td>
+</tr>
+<tr>
+<td>compact</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enabled compact bar mode.</td>
+</tr>
+<tr>
+<td>widgetSpacing</td>
+<td>number</td>
+<td>0</td>
+<td>Spacing (px) between widgets inside the bar.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>0</td>
+<td>Corner radius (px) for bars.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>0</td>
+<td>Bar border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.primary</td>
+<td>Color of the bar border</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>color</td>
+<td>Inherits from: frame.backgroundColor</td>
+<td>Color of the bar background</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>0</td>
+<td>Starting margin of the bar</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Ending margin of the bar</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>0</td>
+<td>Top margin of the bar</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Bottom margin of the bar</td>
+</tr>
+<tr>
+<td>paddingStart</td>
+<td>number</td>
+<td>0</td>
+<td>Starting padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Ending padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingTop</td>
+<td>number</td>
+<td>0</td>
+<td>Top padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Bottom padding of the bar.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rightbar">rightBar</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>topWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets anchored at the top.</td>
+</tr>
+<tr>
+<td>centerWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets centered vertically.</td>
+</tr>
+<tr>
+<td>bottomWidgets</td>
+<td>enum[(appLauncher, audioIn, audioOut, battery, bluetooth, cavaWaveform, clipboardManager, clock, colorPicker, dock, lock, logout, menu, mprisControls, mprisPrimaryPlayerSwitcher, mprisTrackInfo, network, notificationHistory, powerProfile, recordingIndicator, restart, screenshot, shutdown, timer, tray, vpnIndicator, workspaces, custom1, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, custom11, custom12, custom13, custom14, custom15, custom16, custom17, custom18, custom19, custom20)]</td>
+<td></td>
+<td>Widgets anchored at the bottom.</td>
+</tr>
+<tr>
+<td>minimumHeight</td>
+<td>number</td>
+<td>800</td>
+<td>The minimum height of the bar if not expanded.</td>
+</tr>
+<tr>
+<td>expanded</td>
+<td>boolean</td>
+<td>true</td>
+<td>If true, the group expands to full width</td>
+</tr>
+<tr>
+<td>compact</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enabled compact bar mode.</td>
+</tr>
+<tr>
+<td>widgetSpacing</td>
+<td>number</td>
+<td>0</td>
+<td>Spacing (px) between widgets inside the bar.</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>number</td>
+<td>0</td>
+<td>Corner radius (px) for bars.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>number</td>
+<td>0</td>
+<td>Bar border width (px).</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.primary</td>
+<td>Color of the bar border</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>color</td>
+<td>Inherits from: frame.backgroundColor</td>
+<td>Color of the bar background</td>
+</tr>
+<tr>
+<td>marginStart</td>
+<td>number</td>
+<td>0</td>
+<td>Starting margin of the bar</td>
+</tr>
+<tr>
+<td>marginEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Ending margin of the bar</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td>number</td>
+<td>0</td>
+<td>Top margin of the bar</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Bottom margin of the bar</td>
+</tr>
+<tr>
+<td>paddingStart</td>
+<td>number</td>
+<td>0</td>
+<td>Starting padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingEnd</td>
+<td>number</td>
+<td>0</td>
+<td>Ending padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingTop</td>
+<td>number</td>
+<td>0</td>
+<td>Top padding of the bar.</td>
+</tr>
+<tr>
+<td>paddingBottom</td>
+<td>number</td>
+<td>0</td>
+<td>Bottom padding of the bar.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wallpaper">wallpaper</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>showWallpaper</td>
+<td>boolean</td>
+<td>true</td>
+<td>Show the wallpaper in OkPanel.  Set to false if you want to use another wallpaper program</td>
+</tr>
+<tr>
+<td>wallpaperUpdateScript</td>
+<td>string</td>
+<td></td>
+<td>Absolute path to the script run when the wallpaper changes.  Wallpaper path is sent as an argument to the script.</td>
+</tr>
+<tr>
+<td>wallpaperDir</td>
+<td>string</td>
+<td></td>
+<td>Directory containing theme wallpapers (may be empty).</td>
+</tr>
+<tr>
+<td>transitionType</td>
+<td>enum (none, crossfade, slideRight, slideLeft, slideUp, slideDown, slideLeftRight, slideUpDown, overUp, overDown, overLeft, overRight, underUp, underDown, underLeft, underRight, overUpDown, overDownUp, overLeftRight, overRightLeft, rotateLeft, rotateRight, rotateLeftRight)</td>
+<td>crossfade</td>
+<td>The type of transition animation when switching wallpapers.</td>
+</tr>
+<tr>
+<td>transitionDuration</td>
+<td>number</td>
+<td>200</td>
+<td>The duration of the transition animation when switching wallpapers in milliseconds.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="applicationicons">applicationIcons</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>glyphOverride</td>
+<td>[object]</td>
+<td></td>
+<td>A list of glyph overrides when using glyphs instead of icons.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="applicationiconsglyphoverride">applicationIcons.glyphOverride[]</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appName</td>
+<td>string</td>
+<td></td>
+<td>The name of the application for which to override the glyph. An exact match is not require.  For example, if you enter "Android Studio", but the real app name is "Android Studio Otter", it will match and the glyph will be overriden.</td>
+</tr>
+<tr>
+<td>glyph</td>
+<td>icon</td>
+<td>󰘔</td>
+<td>The glyph to override with.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>number</td>
+<td>0</td>
+<td>The pixel offset of the glyph.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lockscreen">lockScreen</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entryBackground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.background</td>
+<td>Background color of the lock screen text entry</td>
+</tr>
+<tr>
+<td>entryForeground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.foreground</td>
+<td>Foreground color of the lock screen text entry</td>
+</tr>
+<tr>
+<td>entryBorderRadius</td>
+<td>number</td>
+<td>8</td>
+<td>Corner radius (px) for the lock screen text entry.</td>
+</tr>
+<tr>
+<td>entryBorderWidth</td>
+<td>number</td>
+<td>0</td>
+<td>Lock screen text entry border width (px).</td>
+</tr>
+<tr>
+<td>entryBorderColor</td>
+<td>color</td>
+<td>Inherits from: theme.colors.primary</td>
+<td>Color of the lock screen text entry.</td>
+</tr>
+<tr>
+<td>entryWidth</td>
+<td>number</td>
+<td>300</td>
+<td>Lock screen text entry width (px).</td>
+</tr>
+<tr>
+<td>entryAlignment</td>
+<td>number</td>
+<td>0</td>
+<td>Lock screen text entry alignment. Number between 0 and 1.</td>
+</tr>
+<tr>
+<td>dateForeground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.foreground</td>
+<td>Foreground color of the lock screen date</td>
+</tr>
+<tr>
+<td>timeForeground</td>
+<td>color</td>
+<td>Inherits from: theme.colors.foreground</td>
+<td>Foreground color of the lock screen time</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../configurationSystem/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configuration System">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Configuration System
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../example/" class="md-footer__link md-footer__link--next" aria-label="Next: Configuration Example">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Configuration Example
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
